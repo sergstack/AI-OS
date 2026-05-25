@@ -7,6 +7,14 @@
 3. использовать обязательные главные файлы `stage_main_full`, `mart_main_full`, `mart_main_tz/compact`;
 4. передавать задачи в `[Codex]`, `[LLM]`, `[Thinking]` или `[AI OS]` только когда это действительно нужно.
 
+## Canonical GitHub path
+
+Canonical project path:
+
+`ChatGPT/[Analytics]`
+
+The root-level path `/[Analytics]` is not the active source unless it is explicitly created later.
+
 ## Как загрузить
 
 1. Скопируй содержимое `PROJECT_INSTRUCTIONS.md` в Project Instructions проекта `[Analytics]`.
@@ -33,6 +41,22 @@ Handoff only when implementation, prompt orchestration, strategy decision, or AI
 6. Остальные файлы `Knowledge/`
 7. `Templates/`
 8. `Codex_Tasks/`
+
+## What not to upload to ChatGPT Project Knowledge
+
+Do not upload:
+
+- `Codex_Tasks/`
+- `.DS_Store`
+- secrets / `.env` / credentials
+- raw transcripts
+- source cards
+- chunks
+- temp files
+- logs
+- embeddings
+- vector DB
+- web UI artifacts
 
 ## Package status
 

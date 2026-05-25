@@ -28,6 +28,7 @@
 - `SMOKE_QA_FOR_ANALYTICS.md`
 - `SMOKE_QA_RESULT.md`
 - `CHANGELOG.md`
+- `MEMO_RUBRIC.md`
 
 ## Included templates
 
@@ -36,6 +37,8 @@
 - `Templates/MART_SPEC_TEMPLATE.md`
 - `Templates/MEMO_TEMPLATE.md`
 - `Templates/CODEX_HANDOFF_TEMPLATE.md`
+- `Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
+- `Templates/EVIDENCE_CARD_TEMPLATE.md`
 
 ## Included Codex task files
 

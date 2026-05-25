@@ -1,7 +1,7 @@
 # Smoke QA Result — Analytics
 
 Date: 2026-05-21
-Scope: `analytics-project-settings-full-v1`
+Scope: `analytics-project-settings-full-v2`
 Source checklist: `Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
 
 ## Result
@@ -12,6 +12,7 @@ failed_questions: none
 residual_risks:
 - Smoke QA checks documentation behavior only; it is not production readiness.
 - A real pilot analytics case is still required to verify practical use with data.
+- Inventory changes remain docs-only until a pilot case validates them.
 next_step: upload package and run a pilot case before claiming production readiness
 ```
 
@@ -24,6 +25,7 @@ next_step: upload package and run a pilot case before claiming production readin
 - [x] Memo question passes.
 - [x] Stop conditions question passes.
 - [x] Acceptance question passes.
+- [x] Inventory / template sync question passes.
 
 ## Evidence
 
