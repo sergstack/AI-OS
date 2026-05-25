@@ -28,6 +28,8 @@ For tiny docs-only tasks, Codex may proceed with safe assumptions if:
 - no governed KB or production code is touched;
 - acceptance can be verified by grep or file check.
 
+Tasks produced by `ChatGPT/[Codex]` should also be validated against `CODEX_APP_TASK_PACKAGE_CONTRACT.md` before implementation.
+
 ## Blocker response
 
 ```text

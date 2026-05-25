@@ -15,6 +15,13 @@
 - Run listed tests.
 - Add focused tests if useful.
 
+## Task package source
+
+Prefer tasks prepared by `ChatGPT/[Codex]`.
+Before implementation, verify that the task contains objective, context, repo, files to inspect, files allowed to modify, forbidden actions, expected outputs, acceptance criteria, tests/smoke checks and rollback plan.
+
+If the task package is incomplete, stop and return a blocker instead of guessing.
+
 ## Forbidden actions
 
 - Do not touch `.env`, secrets, credentials, tokens.

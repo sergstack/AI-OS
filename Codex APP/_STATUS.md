@@ -2,7 +2,7 @@
 
 ## Status
 
-created
+created / bridge-contract-added
 
 ## Location
 
@@ -24,4 +24,4 @@ This folder stores local app configuration and reusable templates.
 
 ## Next step
 
-Use `templates/AGENTS.md` inside each real coding repo before assigning large Codex tasks.
+Run a docs-only smoke task through `ChatGPT/[Codex]` → `Codex APP` to verify the package contract.
