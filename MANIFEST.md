@@ -10,22 +10,24 @@
 
 ## Knowledge files to upload
 
-- `[AI OS]/Project/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`
-- `[AI OS]/Project/Knowledge/AI_OS_WORKFLOW.md`
-- `[AI OS]/Project/Knowledge/ANTI_PATTERNS.md`
-- `[AI OS]/Project/Knowledge/GOVERNANCE_RULES.md`
-- `[AI OS]/Project/Knowledge/HANDOFF_PROTOCOL.md`
-- `[AI OS]/Project/Knowledge/KB_USAGE_RULES.md`
-- `[AI OS]/Project/Knowledge/PROJECT_ROUTING.md`
-- `[AI OS]/Project/Knowledge/SMOKE_QA_FOR_AI_OS.md`
+- `[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`
+- `[AI OS]/Knowledge/AI_OS_WORKFLOW.md`
+- `[AI OS]/Knowledge/ANTI_PATTERNS.md`
+- `[AI OS]/Knowledge/GOVERNANCE_RULES.md`
+- `[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
+- `[AI OS]/Knowledge/KB_USAGE_RULES.md`
+- `[AI OS]/Knowledge/PROJECT_ROUTING.md`
+- `[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
 
 ## Local / setup files
 
 - `ARCHIVE_MAP.md`
 - `UPLOAD_GUIDE.md`
-- `[AI OS]/Project/PROJECT_INSTRUCTIONS.md`
-- `[AI OS]/Project/README.md`
+- `[AI OS]/PROJECT_INSTRUCTIONS.md`
+- `[AI OS]/README.md`
 
 ## Rule
 
 Upload only Knowledge files. Paste `PROJECT_INSTRUCTIONS.md` into Project Instructions. Keep `README.md` local.
+This package updates project behavior and operational memory only.
+It is not proof of production readiness.

@@ -5,7 +5,7 @@
 Скопируй весь текст из:
 
 ```text
-[AI OS]/Project/PROJECT_INSTRUCTIONS.md
+[AI OS]/PROJECT_INSTRUCTIONS.md
 ```
 
 в поле **Project Instructions** существующего ChatGPT Project `[AI OS]`.
@@ -15,14 +15,14 @@
 Загрузи только эти файлы:
 
 ```text
-[AI OS]/Project/Knowledge/AI_OS_PROJECT_FILES_INDEX.md
-[AI OS]/Project/Knowledge/PROJECT_ROUTING.md
-[AI OS]/Project/Knowledge/KB_USAGE_RULES.md
-[AI OS]/Project/Knowledge/GOVERNANCE_RULES.md
-[AI OS]/Project/Knowledge/AI_OS_WORKFLOW.md
-[AI OS]/Project/Knowledge/HANDOFF_PROTOCOL.md
-[AI OS]/Project/Knowledge/SMOKE_QA_FOR_AI_OS.md
-[AI OS]/Project/Knowledge/ANTI_PATTERNS.md
+[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md
+[AI OS]/Knowledge/PROJECT_ROUTING.md
+[AI OS]/Knowledge/KB_USAGE_RULES.md
+[AI OS]/Knowledge/GOVERNANCE_RULES.md
+[AI OS]/Knowledge/AI_OS_WORKFLOW.md
+[AI OS]/Knowledge/HANDOFF_PROTOCOL.md
+[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md
+[AI OS]/Knowledge/ANTI_PATTERNS.md
 ```
 
 ## 3. Не загружать
