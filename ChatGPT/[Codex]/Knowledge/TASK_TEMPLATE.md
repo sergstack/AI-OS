@@ -1,6 +1,6 @@
 # Task Template for Codex
 
-```markdown
+````markdown
 # Codex Task
 
 ## Context
@@ -60,4 +60,4 @@ Assumptions:
 Risks:
 Acceptance status:
 Next step:
-```
+````

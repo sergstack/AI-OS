@@ -9,7 +9,7 @@
 Скопируй содержимое:
 
 ```text
-Project/PROJECT_INSTRUCTIONS.md
+ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md
 ```
 
 ## Что загружать в Knowledge
@@ -17,33 +17,49 @@ Project/PROJECT_INSTRUCTIONS.md
 Загрузи все файлы из:
 
 ```text
-Project/Knowledge/
+ChatGPT/[Codex]/Knowledge/
 ```
 
 ## Файлы Knowledge
 
-Основные:
+- `ACCEPTANCE_CRITERIA.md`
 - `AGENTS.md`
-- `CLAUDE.md`
-- `PROJECT_CONTEXT.md`
-- `CODEX_HANDOFF_WORKFLOW.md`
-- `TASK_TEMPLATE.md`
-- `SUBAGENT_DECOMPOSITION.md`
-
-Implementation:
-- `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`
+- `AI_OS_REFERENCE.md`
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`
-- `REFACTORING_WORKFLOW.md`
+- `ANALYTICAL_TECHNIQUES_FOR_CODEX.md`
 - `BUGFIX_WORKFLOW.md`
+- `CLAUDE.md`
+- `CLAUDE_CODE_HANDOFF.md`
+- `CODEX_HANDOFF_WORKFLOW.md`
+- `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`
+- `DONE_DEFINITION.md`
+- `FAILURE_MODES.md`
+- `KESTRA_AUTOMATION_STANDARD_REFERENCE.md`
+- `PROJECT_CONTEXT.md`
+- `PROMPT_LIBRARY_CODEX.md`
+- `REFACTORING_WORKFLOW.md`
+- `RELEASE_CHECKLIST.md`
+- `REVIEW_CHECKLIST.md`
+- `SMOKE_QA_CHECKLIST.md`
+- `SUBAGENT_DECOMPOSITION.md`
+- `TASK_TEMPLATE.md`
 - `TESTING_WORKFLOW.md`
 
-QA / release:
-- `SMOKE_QA_CHECKLIST.md`
-- `ACCEPTANCE_CRITERIA.md`
-- `REVIEW_CHECKLIST.md`
-- `RELEASE_CHECKLIST.md`
-- `FAILURE_MODES.md`
-- `DONE_DEFINITION.md`
+## What not to upload to ChatGPT Project Knowledge
+
+Do not upload:
+
+- `Codex_App/`
+- `.gitkeep`
+- secrets / `.env` / credentials
+- raw transcripts
+- source cards
+- chunks
+- temp files
+- logs
+- embeddings
+- vector DB
+- web UI artifacts
 
 ## Что не делать
 
