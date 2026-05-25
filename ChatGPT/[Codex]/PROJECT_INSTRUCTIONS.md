@@ -122,6 +122,12 @@ Use clear branch names when asked to create a branch:
 - `chore/...` for structure / hygiene;
 - `qa/...` for tests or smoke checks.
 
+Default GitHub write-flow:
+- Do not write directly to `main` unless explicitly instructed.
+- Use a scoped branch for repository changes.
+- Prepare PR summary before merge.
+- Merge/deploy only after explicit approval.
+
 PR or final report must include:
 
 - summary;
