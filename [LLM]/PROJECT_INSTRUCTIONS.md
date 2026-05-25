@@ -41,6 +41,48 @@ LLM-output должен:
 - не превращать weak evidence в supported fact;
 - быть пригодным к QA.
 
+## Prompt registry
+
+For reusable prompts and workflows, maintain a prompt registry structure:
+
+- `prompt_id`;
+- `task_type`;
+- `input_requirements`;
+- `output_schema`;
+- `model_class`: fast / reasoning / high-reasoning / local / judge;
+- `quality_gate`;
+- `known_failure_modes`;
+- `last_reviewed`;
+- `owner_project`.
+
+Reusable prompts should be treated as controlled assets, not one-off chat text.
+
+## Model routing matrix
+
+Do not hardcode specific model names as permanent truth.
+Route by task class:
+
+- fast lookup / formatting → fast model;
+- synthesis / critique / judge → reasoning model;
+- complex planning / long context → high-reasoning model;
+- private/local draft → local model;
+- deterministic calculation → `[Analytics]`, not LLM;
+- implementation / repo changes → `[Codex]`;
+- AI pattern / KB evidence → `[AI OS]`.
+
+## Eval gate
+
+Before reusing an LLM workflow, verify:
+
+- output follows requested schema;
+- facts are separated from interpretation;
+- unsupported claims are listed;
+- evidence references are present where needed;
+- hallucinations are not visible;
+- judge result is recorded;
+- revision is applied if judge fails;
+- limitations are visible.
+
 ## Context rules
 
 Используй compact package over raw dump:
