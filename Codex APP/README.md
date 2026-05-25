@@ -28,6 +28,10 @@ Inspect → Plan → Implement → Test → Review → Report
 - review checklists;
 - acceptance / rollback templates.
 
+## Task package contract
+
+Use `CODEX_APP_TASK_PACKAGE_CONTRACT.md` as the receiving contract for implementation tasks prepared in `ChatGPT/[Codex]`.
+
 ## Do not use this folder for
 
 - ChatGPT Project instructions;

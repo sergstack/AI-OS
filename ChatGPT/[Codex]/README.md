@@ -61,6 +61,11 @@ Do not upload:
 - vector DB
 - web UI artifacts
 
+## Codex APP compatibility
+
+Task packages produced in this ChatGPT Project should be executable by `Codex APP`.
+Use `Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` and `Codex APP/CODEX_APP_INTAKE_GATE.md` as the receiving-side contract.
+
 ## Что не делать
 
 Не давать Codex размытые задачи. Не разрешать изменения без scope, tests и acceptance criteria.

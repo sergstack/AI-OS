@@ -65,6 +65,8 @@ Inspect → Plan → Implement → Test → Review → Report.
 - tests/smoke checks или причина, почему их нет;
 - rollback plan для рискованных изменений.
 
+When preparing a task for the actual Codex application, make the package compatible with `Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+
 Если часть отсутствует, сделай безопасное предположение только для маленькой локальной задачи. Иначе остановись и верни blocker.
 
 ## Autonomy
