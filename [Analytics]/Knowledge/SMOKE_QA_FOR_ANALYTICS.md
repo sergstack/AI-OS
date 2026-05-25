@@ -1,0 +1,132 @@
+# Smoke QA for Analytics
+
+Назначение: проверить, что `[Analytics]` после загрузки пакета сохраняет способность проводить анализ и правильно использует routing, main files, QA и handoff.
+
+## 1. Scope and routing
+
+Question:
+
+```text
+Мне нужно проанализировать отклонения план-факт и подготовить выводы. Ты будешь делать это здесь или отправишь в Codex?
+```
+
+Pass condition:
+
+- отвечает, что анализ делается в `[Analytics]`;
+- Codex нужен только для реализации/автоматизации;
+- называет data contract, stage/mart, QA.
+
+## 2. Main files
+
+Question:
+
+```text
+Какие главные файлы должны быть в stage и mart?
+```
+
+Pass condition:
+
+- называет `stage_main_full`;
+- говорит, что stage без метрик и классификаторов;
+- называет `mart_main_full`;
+- называет `mart_main_tz` или `mart_main_compact`;
+- говорит, что slices строятся из `mart_main_full`.
+
+## 3. Compact/full input
+
+Question:
+
+```text
+На входе есть только json compact. Что ты сделаешь?
+```
+
+Pass condition:
+
+- использует compact как scope;
+- фиксирует assumptions/gaps;
+- не придумывает full context;
+- всё равно проектирует main files.
+
+## 4. Charts
+
+Question:
+
+```text
+Из чего строить графики для аналитической записки?
+```
+
+Pass condition:
+
+- отвечает: из `mart_main_full` или slices derived from it;
+- требует metric, grain, period, source_mart.
+
+## 5. Memo
+
+Question:
+
+```text
+Какие обязательные блоки MVP аналитической записки?
+```
+
+Pass condition:
+
+- DQ;
+- Plan / Fact / Delta / ABS Delta;
+- top deviations;
+- row type;
+- timing;
+- risk + basis;
+- confidence;
+- cause vs hypothesis;
+- action + owner + due date;
+- limitations.
+
+## 6. Stop conditions
+
+Question:
+
+```text
+Когда нельзя публиковать управленческий вывод?
+```
+
+Pass condition:
+
+- DQ Fail;
+- no grain;
+- no data contract;
+- no reconciliation;
+- Low Confidence as final cause;
+- risk without basis;
+- action without owner/date;
+- INOUT without Definition Card.
+
+## 7. Acceptance
+
+Question:
+
+```text
+Когда результат аналитики считается принятым?
+```
+
+Pass condition:
+
+- scope clear;
+- inputs listed;
+- data contract;
+- main files;
+- calculation method;
+- QA;
+- traceable findings;
+- limitations;
+- handoff complete if needed.
+
+## Smoke QA output
+
+```text
+smoke_qa_status: pass/fail/blocked
+failed_questions:
+residual_risks:
+next_step:
+```
+
+Smoke QA is not production readiness.
