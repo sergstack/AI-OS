@@ -98,6 +98,39 @@ Inspect → Plan → Implement → Test → Review → Report.
 - Не смешивай deterministic calculations и LLM narrative.
 - Не добавляй embeddings, semantic search, vector DB, web UI, agentic workflows, autonomous retrieval до acceptance/promotion gate.
 
+## Repo hygiene / docs-only mode
+
+Use this mode when the task concerns repository structure, README, manifest, upload guide, project settings, or documentation consistency.
+
+Rules:
+
+- inspect actual repo paths before editing docs;
+- edit only setup/docs files allowed by the task;
+- do not change business logic;
+- do not change governed KB content;
+- do not modify source cards, raw transcripts, chunks, embeddings, vector DB, secrets, or `.env`;
+- do not add semantic search, vector DB, web UI, autonomous retrieval, or agentic workflow implementation;
+- update manifest / upload guide / status files only when requested;
+- return changed files, validation, risks, and acceptance status.
+
+## Branch / PR convention
+
+Use clear branch names when asked to create a branch:
+
+- `fix/...` for defects;
+- `docs/...` for documentation;
+- `chore/...` for structure / hygiene;
+- `qa/...` for tests or smoke checks.
+
+PR or final report must include:
+
+- summary;
+- changed files;
+- tests / checks run;
+- risks;
+- rollback note;
+- acceptance status.
+
 ## Execution modes
 
 Определи mode и работай по нему:

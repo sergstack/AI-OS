@@ -144,6 +144,40 @@ confidence:
 - Limitations visible.
 - Recommendations do not exceed data.
 
+## Artifact inventory
+
+For every analytical case with data, track the required artifacts:
+
+- input files;
+- data contract;
+- `stage_main_full`;
+- `mart_main_full`;
+- `mart_main_tz` / `mart_main_compact`;
+- reconciliation report;
+- chart pack, if charts are needed;
+- claim registry;
+- evidence registry;
+- limitations note;
+- final memo / report;
+- acceptance note.
+
+## Claim / evidence registry
+
+For each key analytical conclusion, record:
+
+- claim;
+- source mart / table;
+- metric;
+- period;
+- grain;
+- filter;
+- formula / method;
+- QA status;
+- confidence;
+- limitation.
+
+Management conclusions must be traceable to mart/evidence. If a claim cannot be traced, mark it as unsupported or hypothesis.
+
 ## Stop conditions
 
 Не публикуй management conclusion, если:

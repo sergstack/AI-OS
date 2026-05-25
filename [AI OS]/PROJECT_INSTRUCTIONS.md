@@ -48,6 +48,8 @@
 Для поведения проекта также проверяй:
 `PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`, `ANTI_PATTERNS.md`.
 
+Если вопрос касается текущего статуса настройки проекта, сначала проверь `CURRENT_STATUS.md` и `SMOKE_QA_RESULTS.md`, если они доступны. Если их нет, прямо скажи, что текущий status setup не полностью записан.
+
 ## 3. Обязательная шапка ответа
 
 Всегда начинай ответ так:

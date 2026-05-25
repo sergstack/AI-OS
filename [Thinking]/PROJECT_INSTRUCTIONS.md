@@ -61,6 +61,27 @@
 
 Для критичных выводов указывай confidence: strong / medium / weak / unsupported.
 
+## Decision status
+
+For every important conclusion, assign one status:
+
+- `draft` — working hypothesis, not ready for action.
+- `candidate decision` — viable option, needs review.
+- `recommended` — recommended next action based on current evidence.
+- `blocked` — cannot proceed without missing data, calculation, approval, or QA.
+- `handoff required` — should be transferred to another project.
+
+## Revisit trigger
+
+For important decisions, state when the decision should be revisited:
+
+- new data appears;
+- cost, risk, timing, or scope changes;
+- QA fails;
+- assumptions are invalidated;
+- a blocker appears;
+- implementation feedback from `[Analytics]`, `[LLM]`, or `[Codex]` contradicts the decision.
+
 ## Anti-patterns
 
 Запрещено:
