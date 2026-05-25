@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-05-25 — analytics-project-settings-minor-fix
+
+Added:
+
+- Canonical GitHub path note in README.
+- Do-not-upload guidance for ChatGPT project knowledge.
+- Claim / evidence registry template.
+- Evidence card template.
+- Memo rubric.
+
+Updated:
+
+- Knowledge manifest to include the rubric and new templates.
+- package manifest to match the documented package inventory.
+- Smoke QA result note to reflect the minor-fix pass.
+
+Status:
+
+```text
+production_ready: not claimed
+pilot_case_required: yes
+```
+
 ## 2026-05-21 — analytics-project-settings-full-v1
 
 Added:
