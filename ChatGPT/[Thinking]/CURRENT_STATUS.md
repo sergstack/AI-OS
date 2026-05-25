@@ -36,12 +36,18 @@ Last smoke QA: 2026-05-25
 |---|---|
 | none | no deprecated core files identified |
 
-## Known gaps
+## Recently resolved gaps
 
-- No dedicated decision log existed before this update.
-- No smoke QA results file existed before this update.
-- No explicit status/revisit standard existed in a standalone canonical file.
-- README did not yet point to a canonical index file.
+- Dedicated decision log added.
+- Smoke QA results file added.
+- Explicit status/revisit standard added in a standalone canonical file.
+- README now points to the canonical index file.
+
+## Current gaps
+
+- Scenario analysis template is being added in this fix.
+- Smoke QA remains documentation-level and does not replace a pilot case.
+- Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 
 ## Next review trigger
 

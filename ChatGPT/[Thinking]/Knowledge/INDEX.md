@@ -22,6 +22,7 @@ GitHub path: `ChatGPT/[Thinking]`
 - `Knowledge/RISK_REVIEW.md`
 - `Knowledge/JUDGE_REVIEW.md`
 - `Knowledge/STRATEGY_OPTIONS_TEMPLATE.md`
+- `Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`
 - `Knowledge/ROUTING_AND_HANDOFF.md`
 - `Knowledge/AI_OS_REFERENCE.md`
 

@@ -29,6 +29,7 @@ Load the canonical files listed in `Knowledge/INDEX.md`.
 - `Knowledge/RISK_REVIEW.md` - risk review.
 - `Knowledge/JUDGE_REVIEW.md` - critical review mode.
 - `Knowledge/STRATEGY_OPTIONS_TEMPLATE.md` - compare options.
+- `Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md` - decision-focused scenario analysis.
 - `Knowledge/ROUTING_AND_HANDOFF.md` - handoff to Analytics / LLM / Codex / AI OS.
 - `Knowledge/AI_OS_REFERENCE.md` - reference to existing AI OS KB.
 
