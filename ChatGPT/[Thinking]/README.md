@@ -1,35 +1,39 @@
 # [Thinking] Project Setup
 
-## Что это
+## What this is
 
-`[Thinking]` — проект для стратегии, сложных решений, сценариев, рисков и judge/revisor review.
+`[Thinking]` is the project for strategy, hard decisions, scenarios, risks, and judge / revisor review.
 
-## Что копировать в Project Instructions
+## Canonical path
 
-Скопируй содержимое:
+GitHub path: `ChatGPT/[Thinking]`
 
-```text
-Project/PROJECT_INSTRUCTIONS.md
-```
+## What to load
 
-## Что загружать в Knowledge
+Load the canonical files listed in `Knowledge/INDEX.md`.
 
-Загрузи все файлы из:
+## Canonical files
 
-```text
-Project/Knowledge/
-```
+- `PROJECT_INSTRUCTIONS.md` - core project instructions.
+- `CURRENT_STATUS.md` - live status.
+- `SMOKE_QA_RESULTS.md` - smoke QA record.
+- `DECISION_LOG.md` - reusable decision log.
+- `Knowledge/INDEX.md` - canonical knowledge index.
+- `Knowledge/REVISOR_REWRITE.md` - revisor standard.
+- `Knowledge/DECISION_STATUS_AND_REVISIT.md` - decision status standard.
 
-## Файлы Knowledge
+## Optional support files
 
-- `THINKING_WORKFLOW.md` — базовый thinking workflow.
-- `DECISION_MEMO_TEMPLATE.md` — шаблон decision memo.
-- `RISK_REVIEW.md` — риск-анализ.
-- `JUDGE_REVIEW.md` — режим критической проверки.
-- `STRATEGY_OPTIONS_TEMPLATE.md` — сравнение вариантов.
-- `ROUTING_AND_HANDOFF.md` — передача в Analytics / LLM / Codex / AI OS.
-- `AI_OS_REFERENCE.md` — как обращаться к существующей AI OS KB.
+- `Knowledge/THINKING_WORKFLOW.md` - base workflow.
+- `Knowledge/DECISION_MEMO_TEMPLATE.md` - decision memo template.
+- `Knowledge/RISK_REVIEW.md` - risk review.
+- `Knowledge/JUDGE_REVIEW.md` - critical review mode.
+- `Knowledge/STRATEGY_OPTIONS_TEMPLATE.md` - compare options.
+- `Knowledge/ROUTING_AND_HANDOFF.md` - handoff to Analytics / LLM / Codex / AI OS.
+- `Knowledge/AI_OS_REFERENCE.md` - reference to existing AI OS KB.
 
-## Что не делать
+## What not to do
 
-Не использовать этот проект для deterministic расчётов, production-кода или загрузки всей AI OS KB.
+Do not use this project for deterministic calculations, production code, or loading the full AI OS KB.
+
+Do not absorb the responsibilities of `[Analytics]`, `[LLM]`, `[Codex]`, or `[AI OS]`.
