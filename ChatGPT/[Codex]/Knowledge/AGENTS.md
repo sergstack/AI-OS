@@ -18,14 +18,21 @@ Codex is an implementation agent. It reads task packages, inspects the repositor
 
 ## Autonomy
 
-Act autonomously when scope is clear and changes are reversible.
+Act autonomously when scope is clear, changes are local/reversible, and checks are possible.
 
-Stop when:
+Stop only on hard blockers:
 - secrets are needed;
-- requirements conflict;
-- business logic changes are requested without approval;
-- tests cannot verify the change;
-- forbidden files must be modified.
+- production/runtime/deploy/migration is involved;
+- schema/API/output contract/business logic may change;
+- destructive action is required;
+- no meaningful validation is possible;
+- acceptance criteria conflict.
+
+For safe uncertainty, make the safest assumption and log it.
+
+## Repository template
+
+For real working repositories, use `Codex_App/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
 
 ## Assumptions
 

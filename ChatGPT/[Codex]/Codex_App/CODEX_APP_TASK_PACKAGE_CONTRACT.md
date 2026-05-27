@@ -27,6 +27,15 @@ Every task package must include:
 - `rollback plan`
 - `final response format`
 
+## Local + GitHub task fields
+
+For local + GitHub tasks, also include:
+
+- local repository path;
+- target branch;
+- expected PR behavior;
+- branch cleanup expectation.
+
 ## Refuse or block conditions
 
 Refuse or block execution when:
