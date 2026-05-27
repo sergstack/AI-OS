@@ -49,7 +49,7 @@ ChatGPT/[Codex]/Knowledge/
 
 Do not upload:
 
-- `Codex_App/`
+- top-level `../../Codex APP/` executor-layer files
 - `.gitkeep`
 - secrets / `.env` / credentials
 - raw transcripts
@@ -64,7 +64,7 @@ Do not upload:
 ## Codex APP compatibility
 
 Task packages produced in this ChatGPT Project should be executable by `Codex APP`.
-Use `Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` and `Codex APP/CODEX_APP_INTAKE_GATE.md` as the receiving-side contract.
+Use `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` and `../../Codex APP/CODEX_APP_INTAKE_GATE.md` as the receiving-side contract.
 
 ## Что не делать
 
