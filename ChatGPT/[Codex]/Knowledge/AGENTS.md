@@ -32,7 +32,7 @@ For safe uncertainty, make the safest assumption and log it.
 
 ## Repository template
 
-For real working repositories, use `Codex_App/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
+For real working repositories, use `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
 
 ## Assumptions
 

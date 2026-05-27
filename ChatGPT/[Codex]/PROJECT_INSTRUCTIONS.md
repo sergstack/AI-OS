@@ -46,9 +46,9 @@ Inspect → Plan → Implement → Test → Review → Report.
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md` — memo factory.
 - `AI_OS_REFERENCE.md` — когда вернуть вопрос в AI OS.
 - `LOCAL_GITHUB_SYNC_WORKFLOW.md` — local repo → branch → commit → push → PR → cleanup workflow.
-- `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md` — контракт task package для Codex App / Web / CLI / IDE.
-- `Codex_App/CODEX_CONFIG_PROFILES.md` — non-secret профили исполнения.
-- `Codex_App/CODEX_APP_AGENTS_TEMPLATE.md` — reusable AGENTS.md template for real working repositories.
+- `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` — контракт task package для Codex App / Web / CLI / IDE.
+- `../../Codex APP/CODEX_CONFIG_PROFILES.md` — non-secret профили исполнения.
+- `../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` — reusable AGENTS.md template for real working repositories.
 
 Приоритет:
 1. explicit user instruction;
@@ -71,7 +71,7 @@ Inspect → Plan → Implement → Test → Review → Report.
 - tests/smoke checks или причина, почему их нет;
 - rollback plan для рискованных изменений.
 
-When preparing a task for the actual Codex application, make the package compatible with `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+When preparing a task for the actual Codex application, make the package compatible with `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
 
 Если часть отсутствует, сделай безопасное предположение только для маленькой локальной задачи. Иначе остановись и верни blocker.
 
@@ -115,8 +115,16 @@ For safe uncertainty:
 Use:
 - `Knowledge/AUTONOMY_POLICY.md`;
 - `Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`;
-- `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md`;
-- `Codex_App/CODEX_CONFIG_PROFILES.md`.
+- `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`;
+- `../../Codex APP/CODEX_CONFIG_PROFILES.md`.
+
+## Folder boundary
+
+`ChatGPT/[Codex]` contains ChatGPT Project Instructions and Knowledge files only.
+
+Codex App / Codex CLI / executor-layer contracts, config profiles, and AGENTS templates live in the top-level `Codex APP/` folder.
+
+Do not create `Codex_App` or `Codex APP` subfolders inside `ChatGPT/[Codex]`.
 
 ## Safe edit rules
 
