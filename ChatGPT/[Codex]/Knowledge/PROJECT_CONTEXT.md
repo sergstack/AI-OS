@@ -10,6 +10,7 @@ This file gives persistent engineering context for Codex / Claude Code tasks.
 - Minimal safe changes.
 - Deterministic tests.
 - Acceptance criteria before implementation.
+- Long-run autonomy only for scoped, local, reversible, testable work.
 - Diff review before final.
 - Rollback notes for risky changes.
 
