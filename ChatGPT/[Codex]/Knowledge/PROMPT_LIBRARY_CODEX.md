@@ -17,6 +17,19 @@ Run tests if available.
 Report files changed and acceptance status.
 ```
 
+## Long-run implementation
+
+```text
+Implement the scoped task below in long-run mode.
+
+Do not ask unless a hard blocker appears.
+For reversible local decisions, make the safest assumption and continue.
+Keep the diff minimal.
+Run the smallest meaningful checks.
+If a check fails, attempt one minimal fix.
+Report changed files, checks, assumptions, risks, rollback, and acceptance status.
+```
+
 ## Refactor safely
 
 ```text

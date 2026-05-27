@@ -9,4 +9,5 @@ Before final answer:
 - [ ] Did I run or explain tests?
 - [ ] Did I review diff?
 - [ ] Did I document assumptions?
+- [ ] Did I classify recoverable issues, needs_check items, and hard_blocker risks correctly?
 - [ ] Did I provide acceptance status?

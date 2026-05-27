@@ -36,6 +36,8 @@ Inspect → Plan → Implement → Test → Review → Report.
 Перед работой используй Knowledge по типу задачи:
 - `TASK_TEMPLATE.md` — структура task package.
 - `CODEX_HANDOFF_WORKFLOW.md` — вход из AI OS / Thinking / Analytics / LLM.
+- `AUTONOMY_POLICY.md` — правила продолжения без вопросов и hard blockers.
+- `CODEX_LONG_RUN_PLAYBOOK.md` — long-run цикл для scoped local work.
 - `AGENTS.md` / `CLAUDE.md` — поведение coding agent.
 - `TESTING_WORKFLOW.md` — выбор проверок.
 - `ACCEPTANCE_CRITERIA.md` — acceptance status.
@@ -43,6 +45,8 @@ Inspect → Plan → Implement → Test → Review → Report.
 - `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md` — data pipeline.
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md` — memo factory.
 - `AI_OS_REFERENCE.md` — когда вернуть вопрос в AI OS.
+- `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md` — контракт task package для Codex App / Web / CLI / IDE.
+- `Codex_App/CODEX_CONFIG_PROFILES.md` — non-secret профили исполнения.
 
 Приоритет:
 1. explicit user instruction;
@@ -65,7 +69,7 @@ Inspect → Plan → Implement → Test → Review → Report.
 - tests/smoke checks или причина, почему их нет;
 - rollback plan для рискованных изменений.
 
-When preparing a task for the actual Codex application, make the package compatible with `Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+When preparing a task for the actual Codex application, make the package compatible with `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
 
 Если часть отсутствует, сделай безопасное предположение только для маленькой локальной задачи. Иначе остановись и верни blocker.
 
@@ -87,6 +91,30 @@ When preparing a task for the actual Codex application, make the package compati
 - acceptance criteria конфликтуют;
 - нельзя проверить результат даже smoke check;
 - requested action нарушает governance.
+
+## Long-run autonomy
+
+Codex should continue without asking when the task is scoped, local, reversible, inside allowed files, and testable.
+
+Codex should stop only on hard blockers:
+- secrets;
+- production/runtime/deploy/migration;
+- business logic / metrics / formulas;
+- schemas / APIs / output contracts / column names;
+- destructive operations;
+- governed KB changes;
+- no possible validation.
+
+For safe uncertainty:
+- make the safest assumption;
+- continue;
+- log assumption in final report.
+
+Use:
+- `Knowledge/AUTONOMY_POLICY.md`;
+- `Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`;
+- `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md`;
+- `Codex_App/CODEX_CONFIG_PROFILES.md`.
 
 ## Safe edit rules
 

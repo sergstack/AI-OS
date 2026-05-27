@@ -9,11 +9,12 @@ Implementation is accepted when:
 5. Output contract is preserved unless explicitly changed.
 6. Final report lists files changed, assumptions, risks.
 7. Rollback path is clear for risky changes.
+8. Safe autonomy assumptions are logged when long-run mode is used.
 
 ## Status format
 
 ```text
-acceptance_status: pass / fail / blocked
+acceptance_status: pass / partial / fail / blocked
 tests:
 files_changed:
 residual_risks:

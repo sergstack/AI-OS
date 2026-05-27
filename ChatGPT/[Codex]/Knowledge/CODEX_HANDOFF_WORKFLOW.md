@@ -11,6 +11,7 @@ Turn work from Thinking / Analytics / LLM into an implementation-ready task.
 
 ## Context
 ## Objective
+## Autonomy mode
 ## Inputs
 ## Files to inspect
 ## Files allowed to modify
@@ -22,6 +23,8 @@ Turn work from Thinking / Analytics / LLM into an implementation-ready task.
 ## Final response format
 ```
 
+For Codex App, Codex Web, Codex CLI, or IDE execution, align the package with `../Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+
 ## Handoff quality
 
 A good handoff is:
@@ -30,6 +33,7 @@ A good handoff is:
 - file-specific;
 - clear about forbidden actions;
 - clear about acceptance.
+- explicit about autonomy mode and hard blockers.
 
 ## Bad handoff
 

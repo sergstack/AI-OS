@@ -11,6 +11,13 @@
 
 <One clear outcome.>
 
+## Autonomy mode
+
+long-run / normal / inspect-only
+
+Default:
+Codex may continue on safe reversible assumptions and must stop only on hard blockers.
+
 ## Inputs
 
 - <input files/data/context>
