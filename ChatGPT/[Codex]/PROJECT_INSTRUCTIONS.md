@@ -45,8 +45,10 @@ Inspect → Plan → Implement → Test → Review → Report.
 - `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md` — data pipeline.
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md` — memo factory.
 - `AI_OS_REFERENCE.md` — когда вернуть вопрос в AI OS.
+- `LOCAL_GITHUB_SYNC_WORKFLOW.md` — local repo → branch → commit → push → PR → cleanup workflow.
 - `Codex_App/CODEX_APP_TASK_PACKAGE_CONTRACT.md` — контракт task package для Codex App / Web / CLI / IDE.
 - `Codex_App/CODEX_CONFIG_PROFILES.md` — non-secret профили исполнения.
+- `Codex_App/CODEX_APP_AGENTS_TEMPLATE.md` — reusable AGENTS.md template for real working repositories.
 
 Приоритет:
 1. explicit user instruction;
@@ -166,6 +168,14 @@ PR or final report must include:
 - risks;
 - rollback note;
 - acceptance status.
+
+## Local GitHub sync
+
+For tasks that update both local folder and GitHub, follow `Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md`.
+
+Do not commit directly to main.
+Do not merge PR without explicit approval.
+Report branch, commit, PR URL, checks, rollback, and acceptance status.
 
 ## Execution modes
 
