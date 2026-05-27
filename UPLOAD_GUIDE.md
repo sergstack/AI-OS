@@ -21,6 +21,7 @@
 [AI OS]/Knowledge/GOVERNANCE_RULES.md
 [AI OS]/Knowledge/AI_OS_WORKFLOW.md
 [AI OS]/Knowledge/HANDOFF_PROTOCOL.md
+[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md
 [AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md
 [AI OS]/Knowledge/ANTI_PATTERNS.md
 ```

@@ -12,6 +12,8 @@
 | Нужно написать код, тесты, refactor, bugfix | `[Codex]` |
 | Нужно внедрять production workflow | `[Codex]` / `[LLM]` |
 
+Если handoff в `[Codex]` связан с repository work, предпочтительно оформлять его как GitHub Issue-driven task package с явным scope, allowed files, checks и acceptance criteria.
+
 ## Handoff template
 
 ```text

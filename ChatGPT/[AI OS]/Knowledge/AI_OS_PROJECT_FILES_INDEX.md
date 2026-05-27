@@ -19,6 +19,7 @@
 | `GOVERNANCE_RULES.md` | governance | Acceptance, promotion gates, review queue, blocked items | Когда вопрос касается статуса, готовности, promotion |
 | `AI_OS_WORKFLOW.md` | workflow | Минимальный workflow ответа в `[AI OS]` | Для регулярной работы с вопросами |
 | `HANDOFF_PROTOCOL.md` | handoff | Как передавать задачи в другие проекты | Когда результат должен уйти в Thinking/Analytics/LLM/Codex |
+| `GITHUB_ISSUE_DRIVEN_HANDOFF.md` | handoff | Как оформлять handoff в GitHub Issue для `Codex` | Когда нужно передать repository work через issue-driven task package |
 | `SMOKE_QA_FOR_AI_OS.md` | QA | Проверка, что проект отвечает по KB, а не из воздуха | После загрузки/обновления файлов |
 | `ANTI_PATTERNS.md` | anti-patterns | Что нельзя делать в `[AI OS]` | Перед спорными или рискованными задачами |
 
