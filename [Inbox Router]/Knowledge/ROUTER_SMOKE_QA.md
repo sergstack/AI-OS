@@ -1,6 +1,6 @@
 # Router Smoke QA
 
-Smoke QA pass criteria:
+Быстрая проверка считается пройденной, если:
 
 - Router does not solve the task.
 - Router chooses a destination.
@@ -10,27 +10,27 @@ Smoke QA pass criteria:
 
 | # | Raw input | Expected classification | Expected destination | Expected next action or handoff | Pass criteria |
 |---:|---|---|---|---|---|
-| 1 | Позвонить врачу | action | Things | Create task: call doctor. | Concrete action, no extra questions unless doctor/context is missing. |
-| 2 | Надо заняться здоровьем | project | User | Ask whether this means appointment, habit, research, or plan. | Clarifies because route is unclear. |
-| 3 | Встреча с бухгалтером в пятницу | calendar event | Calendar | Create or clarify calendar event details. | Routes to Calendar and asks only missing time/location if needed. |
-| 4 | Хочу разобраться с AI agents | AI concept / AI pattern | `[AI OS]` | Handoff for concept, use cases, evidence, and governance. | Does not explain agents in Router. |
-| 5 | Сделать prompt для аналитической записки | prompt / LLM workflow | `[LLM]` | Handoff for prompt design. | Routes prompt work to `[LLM]`. |
-| 6 | Посчитать variance по выручке | data / calculation | `[Analytics]` | Handoff for deterministic variance analysis. | Does not calculate in Router. |
-| 7 | Починить pipeline | code / implementation | `[Codex]` | Handoff requesting repo context, files, checks, and rollback. | Routes implementation to `[Codex]`. |
-| 8 | Написать Codex задачу на refactor | code / implementation | `[Codex]` | Handoff package for refactor task. | Requires allowed files, forbidden actions, tests. |
-| 9 | Подумать про карьеру | decision | `[Thinking]` | Handoff for decision framing. | Does not provide career advice in Router. |
-| 10 | Идея: личный дашборд энергии | context / note | Notes / Obsidian | Save idea note with title and context. | Does not turn it into a project unless user asks. |
-| 11 | Жду ответ банка по справке | waiting item | Things | Create waiting-for item. | Routes to actionable follow-up tracking. |
-| 12 | Проверить подписки | action | Things | Create task: review subscriptions. | Direct route, no unnecessary questions. |
-| 13 | Нужно сравнить две модели LLM | prompt / LLM workflow | `[LLM]` | Handoff for model comparison/eval. | Does not invent model facts. |
-| 14 | Нужно найти supported pattern в AI OS KB | AI concept / AI pattern | `[AI OS]` | Handoff for KB evidence check. | Requires evidence status from `[AI OS]`. |
-| 15 | Разобрать выписку | data / calculation | `[Analytics]` | Handoff for statement parsing and reconciliation. | Does not parse or calculate in Router. |
-| 16 | Сделать презентацию | project | User | Ask purpose/audience/deadline or route if context exists. | Clarifies because destination is ambiguous. |
-| 17 | Настроить автоматизацию | project | User | Ask what workflow and whether manual validation exists. | Does not recommend automation before validation. |
-| 18 | Проверить качество memo | decision | `[Thinking]` | Handoff for review criteria and risk check. | Routes judgment/review work to `[Thinking]`. |
-| 19 | Сохранить идею для потом | someday | Notes / Obsidian | Save as someday idea note. | Does not create immediate task. |
-| 20 | Удалить мусорную задачу | trash | Things | Create/update task cleanup action or mark trash. | Handles as task system cleanup. |
-| 21 | Написать тесты для parser.py | code / implementation | `[Codex]` | Handoff with file, expected tests, and checks. | Routes code work to `[Codex]`. |
-| 22 | Собрать метрики по retention | data / calculation | `[Analytics]` | Handoff for metric definition and source data. | Requires deterministic analysis. |
-| 23 | Записать мысль про доверие к AI | context / note | Notes / Obsidian | Save note with source context. | Does not analyze unless asked. |
-| 24 | Забронировать слот на демо завтра | calendar event | Calendar | Create or clarify demo calendar slot. | Routes hard time slot to Calendar. |
+| 1 | Позвонить врачу | action | Things | Задача: Позвонить врачу. | Конкретное действие; без лишних вопросов, если врач и контекст понятны. |
+| 2 | Надо заняться здоровьем | project | User | Уточнить, это запись к врачу, привычка, исследование или план. | Уточняет, потому что маршрут неясен. |
+| 3 | Встреча с бухгалтером в пятницу | calendar event | Calendar | Событие: встреча с бухгалтером; уточнить время/место, если их нет. | Маршрут в Calendar; спрашивает только недостающие детали. |
+| 4 | Хочу разобраться с AI agents | AI concept / AI pattern | `[AI OS]` | Передача в AI OS для разбора концепта, use cases, evidence и governance. | Не объясняет agents внутри Router. |
+| 5 | Сделать prompt для аналитической записки | prompt / LLM workflow | `[LLM]` | Передача в LLM для prompt design. | Направляет prompt work в `[LLM]`. |
+| 6 | Посчитать variance по выручке | data / calculation | `[Analytics]` | Передача в Analytics для расчета variance по данным. | Не считает внутри Router. |
+| 7 | Починить pipeline | code / implementation | `[Codex]` | Передача в Codex с repo context, files to inspect, checks and rollback. | Направляет implementation в `[Codex]`. |
+| 8 | Написать Codex задачу на refactor | code / implementation | `[Codex]` | Пакет передачи в Codex для refactor task. | Требует allowed files, forbidden actions и tests. |
+| 9 | Подумать про карьеру | decision | `[Thinking]` | Передача в Thinking для рамки решения. | Не дает карьерный совет внутри Router. |
+| 10 | Идея: личный дашборд энергии | context / note | Notes / Obsidian | Заметка: сохранить идею с названием и контекстом. | Не превращает в проект без запроса пользователя. |
+| 11 | Жду ответ банка по справке | waiting item | Things | Ожидание: Жду банк — справку — дата запроса. | Направляет в отслеживаемое ожидание. |
+| 12 | Проверить подписки | action | Things | Задача: Проверить активные подписки. | Прямой маршрут, без лишних вопросов. |
+| 13 | Нужно сравнить две модели LLM | prompt / LLM workflow | `[LLM]` | Передача в LLM для model comparison / eval. | Не придумывает факты о моделях. |
+| 14 | Нужно найти supported pattern в AI OS KB | AI concept / AI pattern | `[AI OS]` | Передача в AI OS для KB evidence check. | Требует evidence status из `[AI OS]`. |
+| 15 | Разобрать выписку | data / calculation | `[Analytics]` | Передача в Analytics для parsing и reconciliation выписки. | Не парсит и не считает внутри Router. |
+| 16 | Сделать презентацию | project | User | Уточнить цель, аудиторию и срок или направить по контексту. | Уточняет, потому что destination неоднозначен. |
+| 17 | Настроить автоматизацию | project | User | Уточнить workflow и есть ли manual validation. | Не рекомендует automation до проверки ручного процесса. |
+| 18 | Проверить качество memo | decision | `[Thinking]` | Передача в Thinking для критериев review и risk check. | Направляет judgment / review work в `[Thinking]`. |
+| 19 | Сохранить идею для потом | someday | Notes / Obsidian | Заметка: сохранить как someday idea. | Не создает немедленную задачу. |
+| 20 | Удалить мусорную задачу | trash | Things | Задача: очистить или пометить trash в Things. | Обрабатывает как cleanup в task system. |
+| 21 | Написать тесты для parser.py | code / implementation | `[Codex]` | Передача в Codex с файлом, expected tests и checks. | Направляет code work в `[Codex]`. |
+| 22 | Собрать метрики по retention | data / calculation | `[Analytics]` | Передача в Analytics для metric definition и source data. | Требует deterministic analysis. |
+| 23 | Записать мысль про доверие к AI | context / note | Notes / Obsidian | Заметка: сохранить мысль с исходным контекстом. | Не анализирует, если пользователь не попросил. |
+| 24 | Забронировать слот на демо завтра | calendar event | Calendar | Событие: забронировать слот на демо; уточнить время, если его нет. | Направляет hard time slot в Calendar. |

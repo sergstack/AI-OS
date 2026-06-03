@@ -29,6 +29,13 @@ clear route, clarification, next action, or handoff.
 The repo folder does not include `/` because slash creates nested folders in
 repository paths.
 
+Do not move the folder in this task. The repo folder may remain
+`[Inbox Router]`, while the ChatGPT Project name may remain
+`[Inbox / Router]`.
+
+Russian is the default user-facing language. English is allowed for stable
+product names, file names, and inter-project handoff fields.
+
 ## Folder structure
 
 ```text
