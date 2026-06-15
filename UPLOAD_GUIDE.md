@@ -5,25 +5,33 @@
 Скопируй весь текст из:
 
 ```text
-[AI OS]/PROJECT_INSTRUCTIONS.md
+ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 ```
 
 в поле **Project Instructions** существующего ChatGPT Project `[AI OS]`.
+
+Before pasting, verify that every `PROJECT_INSTRUCTIONS.md` file is <= 8000 characters:
+
+```bash
+python3 scripts/check_project_instructions_length.py
+```
+
+If a Project Instructions file is longer than 8000 characters, do not paste it into ChatGPT Project Settings. Move supporting content into `Knowledge/` and keep Project Instructions as a compact behavior kernel.
 
 ## 2. Project Knowledge
 
 Загрузи только эти файлы:
 
 ```text
-[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md
-[AI OS]/Knowledge/PROJECT_ROUTING.md
-[AI OS]/Knowledge/KB_USAGE_RULES.md
-[AI OS]/Knowledge/GOVERNANCE_RULES.md
-[AI OS]/Knowledge/AI_OS_WORKFLOW.md
-[AI OS]/Knowledge/HANDOFF_PROTOCOL.md
-[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md
-[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md
-[AI OS]/Knowledge/ANTI_PATTERNS.md
+ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md
+ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md
+ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md
+ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md
+ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md
+ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md
+ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md
+ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md
+ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md
 ```
 
 ## 3. Не загружать

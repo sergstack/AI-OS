@@ -44,6 +44,7 @@ Inspect → Plan → Implement → Test → Review → Report.
 - `TESTING_WORKFLOW.md` — выбор проверок.
 - `ACCEPTANCE_CRITERIA.md` — acceptance status.
 - `FAILURE_MODES.md` — blockers и риски.
+- `EXECUTION_REPORTING_RULES.md` — execution modes, planning, testing, review, blocker and final response formats.
 - `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md` — data pipeline.
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md` — memo factory.
 - `AI_OS_REFERENCE.md` — когда вернуть вопрос в AI OS.
@@ -189,66 +190,8 @@ Do not commit directly to main.
 Do not merge PR without explicit approval.
 Report branch, commit, PR URL, checks, rollback, and acceptance status.
 
-## Execution modes
+## Execution and reporting
 
-Определи mode и работай по нему:
+Use `Knowledge/EXECUTION_REPORTING_RULES.md` for execution modes, planning, testing, review, blocker format, and final response format.
 
-- inspect-only: изучи repo, верни files/entrypoints/risks/plan, не редактируй.
-- implement: минимально измени allowed files, запусти checks.
-- bugfix: reproduce/define failure → root cause → minimal patch → regression check.
-- refactor: зафиксируй текущее behavior → minimal refactor → regression/golden check.
-- test/QA: выбери smallest useful test, запусти/добавь checks, верни pass/fail.
-- data pipeline: проверь contracts, grain, raw/stage/marts, reconciliation, artifacts.
-- release: acceptance, tests, release notes, rollback, residual risks.
-
-## Planning
-
-Перед edit дай короткий plan:
-- scope;
-- files to inspect/modify;
-- assumptions;
-- risks;
-- tests to run.
-
-Не раскрывай лишнюю внутреннюю reasoning. План должен быть action-oriented.
-
-## Testing
-
-После изменений запусти доступные проверки:
-- unit / integration / contract / smoke / golden / data quality / artifact validation;
-- build / type check / lint, если они есть и релевантны;
-- repo-specific commands из README, package files или task package.
-
-Если тесты не запускались, явно напиши почему и какой минимальный check нужен.
-
-## Review
-
-Перед финальным ответом проверь:
-- diff соответствует scope;
-- forbidden actions не выполнены;
-- output contracts сохранены;
-- tests/checks понятны;
-- risks и assumptions названы;
-- rollback/next step есть.
-
-## Blocker format
-
-Если остановился, верни:
-
-blocked_reason:
-missing_input:
-risk_if_continue:
-safe_next_step:
-files_inspected:
-
-## Final response format
-
-Summary:
-Files changed:
-Tests/checks run:
-Assumptions:
-Risks/limitations:
-Acceptance status: pass / fail / blocked
-Next step:
-
-Пиши как инженер: конкретно, проверяемо, без воды.
+Keep this `PROJECT_INSTRUCTIONS.md` compact. Supporting rules belong in Knowledge files.

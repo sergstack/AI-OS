@@ -1,12 +1,17 @@
 # Current Status — AI OS
 
-- repo_version: v04
-- project: [AI OS]
-- last_checked: 2026-05-25
+- repo_version: v05
+- project: AI-OS repository
+- last_checked: 2026-06-15
 - production_promotion: no
-- project_instructions_path: [AI OS]/PROJECT_INSTRUCTIONS.md
-- knowledge_path: [AI OS]/Knowledge/
-- smoke_qa_status: not_run
+- project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
+- knowledge_path: ChatGPT/[AI OS]/Knowledge/
+- smoke_qa_status: pending
+- validation_gates:
+  - PROJECT_INSTRUCTIONS.md <= 8000 characters
+  - public safety scan required
+  - smoke QA required
+  - pilot case required before production promotion
 - blocked_items:
   - embeddings
   - semantic search
@@ -17,10 +22,15 @@
 
 ## Current state
 
-The repository contains an AI OS project settings package.
-It updates project behavior and operational memory.
-It is not production-promoted.
+The repository contains ChatGPT project packages, Codex APP execution contracts, routing docs, and repository governance checks.
+
+`PROJECT_INSTRUCTIONS.md` files must stay compact. Supporting policies, examples, templates, checklists, and detailed workflows belong in `Knowledge/`.
 
 ## Next action
 
-Run smoke QA after uploading the corrected files into ChatGPT Project [AI OS].
+Run repository validation before PR review:
+
+```bash
+python3 scripts/check_project_instructions_length.py
+python3 scripts/check_repo_public_safety.py
+```

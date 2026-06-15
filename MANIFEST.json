@@ -1,29 +1,35 @@
 {
-  "package": "AI_OS_Project_Settings_v04",
+  "package": "AI_OS_Project_Settings_v05",
   "created_at": "2026-05-20T09:25:58.096823+00:00",
   "project": "[AI OS]",
   "purpose": "Project settings for existing AI OS governed KB project",
-  "project_instructions_chars": 3988,
+  "project_instructions_chars_limit": 8000,
   "knowledge_files": [
-    "[AI OS]/Project/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
-    "[AI OS]/Project/Knowledge/AI_OS_WORKFLOW.md",
-    "[AI OS]/Project/Knowledge/ANTI_PATTERNS.md",
-    "[AI OS]/Project/Knowledge/GOVERNANCE_RULES.md",
-    "[AI OS]/Project/Knowledge/HANDOFF_PROTOCOL.md",
-    "[AI OS]/Project/Knowledge/KB_USAGE_RULES.md",
-    "[AI OS]/Project/Knowledge/PROJECT_ROUTING.md",
-    "[AI OS]/Project/Knowledge/SMOKE_QA_FOR_AI_OS.md"
+    "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
+    "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
+    "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
+    "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
+    "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
+    "ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md",
+    "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md",
+    "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md"
   ],
   "local_files": [
     "ARCHIVE_MAP.md",
     "UPLOAD_GUIDE.md",
-    "[AI OS]/Project/PROJECT_INSTRUCTIONS.md",
-    "[AI OS]/Project/README.md"
+    "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+    "ChatGPT/[AI OS]/README.md"
   ],
   "do_not_reupload_existing_kb": true,
   "two_index_rule": {
     "kb_index": "KB__00_INDEX.md",
     "project_files_index": "AI_OS_PROJECT_FILES_INDEX.md"
   },
-  "production_promotion": "no"
+  "production_promotion": "no",
+  "validation_gates": {
+    "project_instructions_chars_limit": 8000,
+    "public_safety_scan": "required",
+    "smoke_qa": "required",
+    "pilot_case_before_production_promotion": "required"
+  }
 }
