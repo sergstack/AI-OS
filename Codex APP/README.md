@@ -18,6 +18,12 @@ Do not mix these folders.
 Inspect → Plan → Implement → Test → Review → Report
 ```
 
+For long tasks, use:
+
+```text
+Intake gate → Decompose → Batch execute → Checkpoint → Validate → Safe retry once → Report
+```
+
 ## Use this folder for
 
 - Codex App setup;
@@ -26,11 +32,19 @@ Inspect → Plan → Implement → Test → Review → Report
 - AGENTS.md templates;
 - task templates;
 - review checklists;
-- acceptance / rollback templates.
+- acceptance / rollback templates;
+- ultra-long local run protocol and checkpoint discipline.
 
-## Task package contract
+## Core files
 
-Use `CODEX_APP_TASK_PACKAGE_CONTRACT.md` as the receiving contract for implementation tasks prepared in `ChatGPT/[Codex]`.
+- `CODEX_APP_SETUP.md` — safe setup defaults.
+- `CODEX_APP_OPERATING_MODES.md` — execution modes and stop conditions.
+- `CODEX_APP_USAGE_POLICY.md` — cost, time, scope and autonomy rules.
+- `CODEX_APP_TASK_PACKAGE_CONTRACT.md` — receiving contract for implementation tasks prepared in `ChatGPT/[Codex]`.
+- `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` — protocol for multi-batch long-running work.
+- `CODEX_CONFIG_PROFILES.md` — non-secret execution profiles.
+- `CODEX_APP_AGENTS_TEMPLATE.md` — reusable root `AGENTS.md` template for real repos.
+- `templates/ULTRA_LONG_TASK_PACKAGE.md` — task package template for long multi-batch execution.
 
 ## Do not use this folder for
 

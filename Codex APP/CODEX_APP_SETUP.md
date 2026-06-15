@@ -21,6 +21,25 @@ Define how to use Codex App / Web / CLI / IDE surfaces safely.
 - Default output: changed files + checks + acceptance status.
 - Default risk rule: if no test is possible, report `blocked` or `partial`.
 
+## Ultra-long local setup
+
+Use `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` when a task needs more than one execution batch.
+
+Ultra-long work requires:
+
+- complete task package;
+- explicit autonomy profile;
+- branch or PR plan;
+- batch plan;
+- checkpoint policy;
+- tests / smoke checks;
+- rollback plan;
+- final report format.
+
+Default ultra-long profile: `ultra-long-local` from `CODEX_CONFIG_PROFILES.md`.
+
+Codex must not start ultra-long implementation from a vague instruction. It must first convert the request into a task package or return a blocker.
+
 ## Repository preparation
 
 Every repo used with Codex should contain:
@@ -31,6 +50,8 @@ Every repo used with Codex should contain:
 - acceptance criteria;
 - forbidden files list;
 - rollback note.
+
+For real working repositories, start from `CODEX_APP_AGENTS_TEMPLATE.md` and customize the project-specific sections.
 
 ## Security defaults
 
