@@ -73,6 +73,7 @@ Checkpoint format:
 ```text
 Goal:
 Mode:
+Autonomy profile:
 Branch:
 Allowed files:
 Forbidden actions:
@@ -164,8 +165,11 @@ Every ultra-long run must end with:
 ```text
 Summary:
 Mode:
+Autonomy profile:
 Branch:
 Batches completed:
+Current checkpoint:
+Remaining batches:
 Files changed:
 Tests/checks run:
 Assumptions:

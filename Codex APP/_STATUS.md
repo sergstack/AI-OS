@@ -2,7 +2,7 @@
 
 ## Status
 
-created / bridge-contract-added / ultra-long-protocol-added
+created / bridge-contract-added / ultra-long-protocol-added / smoke-qa-passed
 
 ## Location
 
@@ -22,6 +22,12 @@ This folder stores local app configuration and reusable templates.
 
 2026-06-15
 
+## Smoke QA result
+
+Docs-only ultra-long smoke task verified through `ChatGPT/[Codex]` → `Codex APP` using `templates/ULTRA_LONG_TASK_PACKAGE.md`.
+
+Result: Codex can classify mode, work type, allowed files, forbidden actions, batch plan, checkpoint policy, checks, rollback, and acceptance status before implementation.
+
 ## Next step
 
-Run one docs-only ultra-long smoke task through `ChatGPT/[Codex]` → `Codex APP` using `templates/ULTRA_LONG_TASK_PACKAGE.md` and verify that Codex can classify mode, allowed files, forbidden actions, batch plan, checkpoint policy, checks, rollback, and acceptance status before implementation.
+Review and merge PR after approval.

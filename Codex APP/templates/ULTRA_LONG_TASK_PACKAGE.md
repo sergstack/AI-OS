@@ -14,7 +14,8 @@ Use this template when `ChatGPT/[Codex]` prepares a task for Codex App / Web / C
 
 - Surface: Codex App / Codex Web / Codex CLI / IDE
 - Autonomy profile: `ultra-long-local`
-- Mode: inspect-only / docs-only / repo-hygiene / implementation / test-qa / release
+- Mode: `ultra-long-local`
+- Work type: inspect-only / docs-only / repo-hygiene / implementation / test-qa / release
 
 ## Repo
 
@@ -98,8 +99,11 @@ git diff --check
 ```text
 Summary:
 Mode:
+Autonomy profile:
 Branch:
 Batches completed:
+Current checkpoint:
+Remaining batches:
 Files changed:
 Tests/checks run:
 Assumptions:
