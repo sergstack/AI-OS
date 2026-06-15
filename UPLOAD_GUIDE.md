@@ -78,3 +78,9 @@ SMOKE_QA_FOR_AI_OS.md
 ## 6. Operational verification
 
 After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smoke QA from `SMOKE_QA_REFRESH_PLAN.md`, and complete the relevant pilot in `PILOT_CASES.md`.
+
+## 7. Compact Knowledge bundles
+
+Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading compact bundle files into ChatGPT Sources.
+
+Granular `Knowledge/` files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.

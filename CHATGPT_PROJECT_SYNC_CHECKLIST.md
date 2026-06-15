@@ -6,6 +6,8 @@ Track manual synchronization from repository source files into ChatGPT Projects.
 
 Repository validation does not prove ChatGPT UI sync. Use `not_verified` until there is explicit human evidence.
 
+For compact Sources sync, use each project's `Knowledge_Bundles/UPLOAD_LIST.md`. Upload bundle files OR granular Knowledge files, not both, unless debugging.
+
 Allowed sync status values: `not_verified`, `pending`, `partial`, `done`, `not_applicable`, `blocked`.
 Allowed confidence values: `strong`, `medium`, `weak`, `unsupported`.
 Allowed acceptance status values: `draft`, `candidate`, `accepted`, `blocked`, `not_applicable`.
