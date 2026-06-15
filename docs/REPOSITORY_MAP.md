@@ -25,7 +25,22 @@ If the input is raw, unclear, mixed, emotional, or not yet task-ready, route it 
 | Calendar | Time-bound commitments. |
 | Notes / Obsidian | Context and reference material. |
 
-## Actual path note
+## Path exception
 
-The Inbox Router repository folder is `[Inbox Router]`.
-The ChatGPT Project may be named `[Inbox / Router]`.
+`[Inbox Router]` currently lives at repository root as a legacy / active project folder.
+
+Do not move it in this PR.
+
+Canonical active path for this project package:
+
+```text
+[Inbox Router]
+```
+
+Display name in ChatGPT may be:
+
+```text
+[Inbox / Router]
+```
+
+Future normalization to `ChatGPT/[Inbox Router]` requires a separate migration issue.

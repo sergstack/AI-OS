@@ -33,6 +33,26 @@ Do not move the folder in this task. The repo folder may remain
 `[Inbox Router]`, while the ChatGPT Project name may remain
 `[Inbox / Router]`.
 
+## Path exception
+
+`[Inbox Router]` currently lives at repository root as a legacy / active project folder.
+
+Do not move it in this PR.
+
+Canonical active path for this project package:
+
+```text
+[Inbox Router]
+```
+
+Display name in ChatGPT may be:
+
+```text
+[Inbox / Router]
+```
+
+Future normalization to `ChatGPT/[Inbox Router]` requires a separate migration issue.
+
 Russian is the default user-facing language. English is allowed for stable
 product names, file names, and inter-project handoff fields.
 

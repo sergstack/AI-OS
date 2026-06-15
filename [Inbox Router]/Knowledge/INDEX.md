@@ -13,6 +13,24 @@
 - `ROUTER_SMOKE_QA.md` — existing smoke examples.
 - `ROUTER_ANTI_PATTERNS.md` — existing anti-patterns.
 
+## Source priority
+
+For v05 front-door behavior use:
+
+1. `ROUTING_RULES.md`
+2. `THINGS_OUTPUT_SCHEMA.md`
+3. `HANDOFF_PROTOCOL.md`
+4. `SMOKE_QA_FOR_INBOX_ROUTER.md`
+
+Legacy/support files remain available for context:
+
+- `ROUTER_WORKFLOW.md`
+- `ROUTER_HANDOFF_PROTOCOL.md`
+- `ROUTER_SMOKE_QA.md`
+- `ROUTER_ANTI_PATTERNS.md`
+
+If files conflict, v05 files override legacy router files.
+
 ## Boundary
 
 Inbox Router classifies raw input, formulates clean output, and routes to Things, Calendar, Notes / Obsidian, or the right AI-OS project.
