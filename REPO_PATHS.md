@@ -20,6 +20,14 @@
 - `scripts/check_manifest_paths.py`
 - `.github/workflows/docs-safety.yml`
 
+## Operational Verification
+
+- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `PROJECT_SYNC_TEMPLATE.md`
+- `PILOT_CASES.md`
+- `PILOT_RESULTS_TEMPLATE.md`
+- `SMOKE_QA_REFRESH_PLAN.md`
+
 ## Project Instructions Rule
 
 Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.

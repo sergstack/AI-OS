@@ -25,3 +25,9 @@
 - Manifest/path consistency: required
 - Smoke QA: required
 - Pilot case: required before production promotion
+
+## Operational Artifacts
+
+- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `PILOT_CASES.md`
+- `SMOKE_QA_REFRESH_PLAN.md`

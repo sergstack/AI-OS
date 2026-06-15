@@ -22,6 +22,18 @@ The public safety scan also checks for blocked public-repo artifacts such as `.e
 
 The manifest/path consistency scan checks that `MANIFEST.json` paths exist, upload guide paths use canonical repo paths, project registry paths match actual folders, and legacy path variants stay blocked.
 
+## Operational verification
+
+Repository validation is not enough to claim ChatGPT Project readiness.
+
+Before production promotion:
+
+1. Sync Project Instructions manually into ChatGPT Projects.
+2. Upload expected Knowledge files.
+3. Run smoke QA.
+4. Complete at least one pilot case.
+5. Record results in `CHATGPT_PROJECT_SYNC_CHECKLIST.md` and `PILOT_CASES.md`.
+
 ## Local Path Placeholders
 
 Public docs must not contain raw machine-specific absolute paths from local user profiles, home directories, or mounted volumes.
