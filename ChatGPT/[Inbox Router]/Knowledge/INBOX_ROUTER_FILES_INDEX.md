@@ -4,9 +4,11 @@
 
 Map files used by the `[Inbox / Router]` ChatGPT Project setup.
 
+Canonical repository path: `ChatGPT/[Inbox Router]`.
+
 ## Project instruction
 
-- `../PROJECT_INSTRUCTIONS.md` — paste into ChatGPT Project Instructions.
+- `ChatGPT/[Inbox Router]/PROJECT_INSTRUCTIONS.md` — paste into ChatGPT Project Instructions.
 
 ## Knowledge files
 

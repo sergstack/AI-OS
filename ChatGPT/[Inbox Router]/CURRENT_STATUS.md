@@ -1,10 +1,12 @@
 # Current Status — Inbox Router
 
 - project: `[Inbox Router]`
+- canonical_repo_path: `ChatGPT/[Inbox Router]`
+- display_name: `[Inbox / Router]`
 - role: front-door router for AI-OS
-- status: v05-front-door-integration
+- status: v05-path-normalized
 - production_promotion: no
-- smoke_qa_status: pending
+- smoke_qa_status: pending_after_path_migration
 - last_checked: 2026-06-15
 
 ## Current state
