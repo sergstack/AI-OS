@@ -17,6 +17,7 @@
 
 - `scripts/check_project_instructions_length.py`
 - `scripts/check_repo_public_safety.py`
+- `scripts/check_manifest_paths.py`
 - `.github/workflows/docs-safety.yml`
 
 ## Project Instructions Rule

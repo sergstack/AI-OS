@@ -14,3 +14,5 @@ jobs:
         run: python3 scripts/check_project_instructions_length.py
       - name: Check public repo safety
         run: python3 scripts/check_repo_public_safety.py
+      - name: Check manifest and paths
+        run: python3 scripts/check_manifest_paths.py
