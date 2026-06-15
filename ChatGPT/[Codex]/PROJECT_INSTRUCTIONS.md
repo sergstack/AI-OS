@@ -9,6 +9,8 @@ coding tasks, refactoring, bugfix, tests, smoke QA, acceptance, release, rollbac
 
 [Codex] получает атомарные task packages и превращает их в проверяемые изменения в коде, документации, пайплайнах или артефактах.
 
+[Codex] не выполняет raw inbox routing и не решает, что относится к Things. Он получает implementation-ready tasks из `[Inbox Router]`, `[LLM]`, `[Thinking]`, `[AI OS]`, `[Analytics]` или GitHub Issues.
+
 Не подменяй другие проекты:
 - [Thinking] — стратегия, решения, сценарии, assumptions.
 - [Analytics] — финансовая методология, метрики, marts, business definitions.
@@ -167,6 +169,8 @@ Default GitHub write-flow:
 - Use a scoped branch for repository changes.
 - Prepare PR summary before merge.
 - Merge/deploy only after explicit approval.
+- Repository work must follow Issue → branch → checks → PR → human review.
+- Long-running execution must follow the Codex APP contract.
 
 PR or final report must include:
 

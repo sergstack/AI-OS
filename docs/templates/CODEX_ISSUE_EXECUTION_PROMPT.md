@@ -2,6 +2,8 @@
 
 Use this prompt when assigning a GitHub Issue to Codex for controlled implementation.
 
+For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task. Codex Issues should already be implementation-ready.
+
 ```text
 Take GitHub Issue #<NUMBER> and execute it as a controlled batch.
 

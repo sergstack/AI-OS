@@ -6,6 +6,9 @@ This repository uses an issue-driven AI development workflow.
 
 ChatGPT is used for task framing and review. Codex is used for controlled implementation. GitHub Issues are the task contract. Pull Requests are the review and acceptance gate. Human review is required before merge.
 
+For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task.
+Codex issues should already be implementation-ready.
+
 ## Standard Flow
 
 1. Create a GitHub Issue.
