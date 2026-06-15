@@ -1,5 +1,9 @@
 # Inbox Router Knowledge Index
 
+Canonical repository path: `ChatGPT/[Inbox Router]`
+
+ChatGPT Project display name may remain `[Inbox / Router]`.
+
 ## Active files
 
 - `INBOX_ROUTER_FILES_INDEX.md` — legacy file index.

@@ -14,7 +14,7 @@ If the input is raw, unclear, mixed, emotional, or not yet task-ready, route it 
 
 | Path / destination | Role |
 |---|---|
-| `[Inbox Router]` | Front-door router; turns raw input into Things task, Calendar item, Note, Someday / Maybe item, or project handoff. |
+| `ChatGPT/[Inbox Router]` | Front-door router; turns raw input into Things task, Calendar item, Note, Someday / Maybe item, or project handoff. |
 | `ChatGPT/[AI OS]` | AI concepts, patterns, evidence, confidence, governance. |
 | `ChatGPT/[Thinking]` | Strategy, decisions, assumptions, risks, options, judge/revisor work. |
 | `ChatGPT/[Analytics]` | Calculations, marts, metrics, reconciliations, deterministic data QA. |
@@ -25,22 +25,18 @@ If the input is raw, unclear, mixed, emotional, or not yet task-ready, route it 
 | Calendar | Time-bound commitments. |
 | Notes / Obsidian | Context and reference material. |
 
-## Path exception
+## Inbox Router path
 
-`[Inbox Router]` currently lives at repository root as a legacy / active project folder.
-
-Do not move it in this PR.
-
-Canonical active path for this project package:
+Canonical repository path:
 
 ```text
-[Inbox Router]
+ChatGPT/[Inbox Router]
 ```
 
-Display name in ChatGPT may be:
+ChatGPT Project display name may remain:
 
 ```text
 [Inbox / Router]
 ```
 
-Future normalization to `ChatGPT/[Inbox Router]` requires a separate migration issue.
+`ChatGPT/[Inbox Router]` is the project package for the Inbox Router front-door layer.

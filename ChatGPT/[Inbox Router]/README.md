@@ -24,34 +24,13 @@ clear route, clarification, next action, or handoff.
 ## Folder naming
 
 - ChatGPT Project name: `[Inbox / Router]`
-- Repo folder name: `[Inbox Router]`
+- Canonical repo folder path: `ChatGPT/[Inbox Router]`
 
-The repo folder does not include `/` because slash creates nested folders in
-repository paths.
-
-Do not move the folder in this task. The repo folder may remain
-`[Inbox Router]`, while the ChatGPT Project name may remain
-`[Inbox / Router]`.
-
-## Path exception
-
-`[Inbox Router]` currently lives at repository root as a legacy / active project folder.
-
-Do not move it in this PR.
-
-Canonical active path for this project package:
-
-```text
-[Inbox Router]
-```
-
-Display name in ChatGPT may be:
+The ChatGPT Project may be named:
 
 ```text
 [Inbox / Router]
 ```
-
-Future normalization to `ChatGPT/[Inbox Router]` requires a separate migration issue.
 
 Russian is the default user-facing language. English is allowed for stable
 product names, file names, and inter-project handoff fields.
@@ -59,9 +38,11 @@ product names, file names, and inter-project handoff fields.
 ## Folder structure
 
 ```text
-[Inbox Router]/
+ChatGPT/[Inbox Router]/
 ├── README.md
 ├── PROJECT_INSTRUCTIONS.md
+├── CURRENT_STATUS.md
+├── SMOKE_QA_RESULTS.md
 └── Knowledge/
     ├── INBOX_ROUTER_FILES_INDEX.md
     ├── INDEX.md
@@ -78,8 +59,8 @@ product names, file names, and inter-project handoff fields.
 ## How to configure ChatGPT Project
 
 1. Create ChatGPT Project named `[Inbox / Router]`.
-2. Paste `PROJECT_INSTRUCTIONS.md` into Project Instructions.
-3. Upload Knowledge files from `Knowledge/`.
+2. Paste `ChatGPT/[Inbox Router]/PROJECT_INSTRUCTIONS.md` into Project Instructions.
+3. Upload Knowledge files from `ChatGPT/[Inbox Router]/Knowledge/`.
 4. Do not upload governed KB dumps or unrelated project folders.
 
 ## What to upload
