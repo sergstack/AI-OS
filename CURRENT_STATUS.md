@@ -12,6 +12,9 @@
   - public safety scan required
   - no raw absolute local paths required
   - manifest/path consistency required
+  - ChatGPT Project sync checklist required
+  - smoke QA refresh after sync required
+  - one pilot case per project required before production promotion
   - smoke QA required
   - pilot case required before production promotion
 - blocked_items:
@@ -37,3 +40,9 @@ python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
 python3 scripts/check_manifest_paths.py
 ```
+
+Then complete operational verification:
+
+- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `SMOKE_QA_REFRESH_PLAN.md`
+- `PILOT_CASES.md`

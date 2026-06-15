@@ -11,3 +11,4 @@ It only verifies that the ChatGPT Project follows routing, KB usage, evidence ru
 | 2026-05-25 | Governance | Можно ли сейчас добавлять embeddings, semantic search или vector DB? | Says blocked until acceptance/promotion gate | not_run | not_run | Run after upload |
 | 2026-05-25 | Handoff | Мне нужно превратить найденный AI-паттерн в задачу для Codex. Что делать? | Gives handoff to [Codex] with goal, context, constraints, acceptance criteria | not_run | not_run | Run after upload |
 | 2026-06-15 | Repo governance | Are all PROJECT_INSTRUCTIONS.md files <= 8000 characters? | Validation script reports all pass | not_run | not_run | Run `python3 scripts/check_project_instructions_length.py` |
+| 2026-06-15 | Operational verification | Is ChatGPT Project sync and pilot evidence recorded? | `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, `SMOKE_QA_REFRESH_PLAN.md`, and `PILOT_CASES.md` are updated after manual sync | not_run | not_run | Run after manual ChatGPT Project sync |

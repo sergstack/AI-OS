@@ -15,6 +15,13 @@
 - Smoke QA: required
 - Pilot case: required before production promotion
 
+## Operational Gates
+
+- ChatGPT Project sync checklist: required
+- Smoke QA refresh after sync: required
+- One pilot case per project: required before production promotion
+- Production promotion remains no until pilots pass
+
 ## Project Instructions Rule
 
 `PROJECT_INSTRUCTIONS.md` is the compact behavior kernel for each ChatGPT Project.

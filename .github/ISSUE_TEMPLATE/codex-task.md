@@ -37,6 +37,12 @@ python3 scripts/check_manifest_paths.py
 python3 -m unittest  # optional, if tests exist
 ```
 
+For project sync / pilot tasks, update:
+
+- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `PILOT_CASES.md`
+- `SMOKE_QA_REFRESH_PLAN.md`
+
 ## Expected PR summary
 
 The PR must include:

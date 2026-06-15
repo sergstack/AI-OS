@@ -74,3 +74,7 @@ SMOKE_QA_FOR_AI_OS.md
 ## 5. Статус
 
 Этот пакет не делает `[AI OS]` production-promoted. Он только обновляет project behavior и operational memory.
+
+## 6. Operational verification
+
+After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smoke QA from `SMOKE_QA_REFRESH_PLAN.md`, and complete the relevant pilot in `PILOT_CASES.md`.
