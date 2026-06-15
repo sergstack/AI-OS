@@ -6,7 +6,7 @@ created / bridge-contract-added / ultra-long-protocol-added / smoke-qa-passed
 
 ## Location
 
-`/Users/sst/Documents/Артефакты/MAIN/Codex APP`
+`<LOCAL_CODEX_APP_ROOT>`
 
 ## Purpose
 

@@ -26,17 +26,9 @@ SECRET_PATTERNS = [
     re.compile(r"\bgh[opsu]_[A-Za-z0-9_]{20,}\b"),
     re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
 ]
-LOCAL_PATH_PATTERN = re.compile(r"/Users/[^\s)`'\"]+")
-
-# Existing historical/status references outside this task's allowed edit scope.
-# These are tracked so the safety scan does not invent a clean repo state.
-ALLOWED_LOCAL_PATH_REFERENCES = {
-    ("Codex APP/_STATUS.md", "/Users/sst/Documents/Артефакты/MAIN/Codex"),
-    (
-        "ChatGPT/[Analytics]/Codex_Tasks/Фикс проблем/2026-05-22-Ошибки при массовой генерации.md",
-        "/Users/sst/Documents/Python",
-    ),
-}
+LOCAL_PATH_PATTERN = re.compile(
+    r"(?:(?<![A-Za-z0-9:])/(?:Users|home|Volumes)/[^\s)`'\"]+|[A-Za-z]:\\Users\\[^\s)`'\"]+)"
+)
 
 
 def iter_paths(root: Path):
@@ -48,10 +40,6 @@ def iter_paths(root: Path):
 
 def is_text_file(path: Path) -> bool:
     return path.name == ".gitignore" or path.suffix.lower() in TEXT_SUFFIXES
-
-
-def is_allowed_local_path(rel: str, value: str) -> bool:
-    return any(rel == allowed_rel and value.startswith(prefix) for allowed_rel, prefix in ALLOWED_LOCAL_PATH_REFERENCES)
 
 
 def main() -> int:
@@ -87,9 +75,7 @@ def main() -> int:
                     break
 
             for match in LOCAL_PATH_PATTERN.finditer(text):
-                value = match.group(0)
-                if not is_allowed_local_path(rel, value):
-                    failures.append(f"Absolute local path reference: {rel}: {value}")
+                failures.append(f"Absolute local path reference: {rel}: {match.group(0)}")
 
     length_exit = check_project_instructions()
     if length_exit:
