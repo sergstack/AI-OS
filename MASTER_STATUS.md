@@ -10,6 +10,8 @@
 
 - Project instructions length: <= 8000 chars
 - Public safety scan: required
+- No raw absolute local paths: required
+- Manifest/path consistency: required
 - Smoke QA: required
 - Pilot case: required before production promotion
 

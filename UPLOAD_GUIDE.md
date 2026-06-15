@@ -54,6 +54,8 @@ secrets
 .env
 ```
 
+`README.md` remains local / repo guidance and is not uploaded as Project Knowledge unless explicitly intended.
+
 ## 4. После загрузки
 
 Задай smoke questions из:

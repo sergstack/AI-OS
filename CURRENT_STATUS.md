@@ -10,6 +10,8 @@
 - validation_gates:
   - PROJECT_INSTRUCTIONS.md <= 8000 characters
   - public safety scan required
+  - no raw absolute local paths required
+  - manifest/path consistency required
   - smoke QA required
   - pilot case required before production promotion
 - blocked_items:
@@ -33,4 +35,5 @@ Run repository validation before PR review:
 ```bash
 python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
+python3 scripts/check_manifest_paths.py
 ```
