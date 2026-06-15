@@ -12,12 +12,14 @@
 - Public safety scan: required
 - No raw absolute local paths: required
 - Manifest/path consistency: required
+- Knowledge bundle consistency: required
 - Smoke QA: required
 - Pilot case: required before production promotion
 
 ## Operational Gates
 
 - ChatGPT Project sync checklist: required
+- Knowledge_Bundles upload layer: required for compact Sources sync
 - Smoke QA refresh after sync: required
 - One pilot case per project: required before production promotion
 - Production promotion remains no until pilots pass

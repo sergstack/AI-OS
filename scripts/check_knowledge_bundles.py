@@ -1,0 +1,256 @@
+#!/usr/bin/env python3
+"""Validate compact Knowledge bundle folders for ChatGPT projects."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+import re
+import sys
+
+
+PROJECTS = {
+    "[AI OS]": Path("ChatGPT/[AI OS]"),
+    "[Thinking]": Path("ChatGPT/[Thinking]"),
+    "[Analytics]": Path("ChatGPT/[Analytics]"),
+    "[LLM]": Path("ChatGPT/[LLM]"),
+    "[Codex]": Path("ChatGPT/[Codex]"),
+    "[Inbox Router]": Path("ChatGPT/[Inbox Router]"),
+}
+REQUIRED_UPLOAD_SECTIONS = [
+    "## Required upload files",
+    "## Optional upload files",
+    "## Do not upload",
+    "## File count",
+    "Limit: 40",
+    "Status: pass",
+]
+REQUIRED_BUNDLE_SECTIONS = [
+    "## Purpose",
+    "## Source files",
+    "## Upload target",
+    "## Status",
+    "# Content",
+]
+RAW_LOCAL_PATH_PATTERN = re.compile(
+    r"(?:(?<![A-Za-z0-9:])/(?:Users|home|Volumes)/[^\s)`'\"]+|[A-Za-z]:\\Users\\[^\s)`'\"]+)"
+)
+SECRET_PATTERNS = [
+    re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
+    re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
+    re.compile(r"\bgh[opsu]_[A-Za-z0-9_]{20,}\b"),
+    re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
+]
+
+
+@dataclass
+class ProjectReport:
+    project: str
+    bundle_folder: bool
+    upload_list: bool
+    required_files: int
+    optional_files: int
+    total_upload_files: int
+    source_paths: bool
+    forbidden_content: bool
+    failures: list[str]
+
+
+def repo_root() -> Path:
+    root = Path(__file__).resolve().parents[1]
+    if not (root / ".git").exists():
+        raise SystemExit("FAIL: script must run from inside the AI-OS repository")
+    return root
+
+
+def listed_files(section: str) -> list[str]:
+    files = []
+    for line in section.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("- `"):
+            continue
+        value = stripped.split("`", 2)[1]
+        if value != "none":
+            files.append(value)
+    return files
+
+
+def section_between(text: str, start: str, end: str) -> str:
+    if start not in text:
+        return ""
+    tail = text.split(start, 1)[1]
+    if end in tail:
+        return tail.split(end, 1)[0]
+    return tail
+
+
+def source_files_from_bundle(text: str) -> list[str]:
+    source_section = section_between(text, "## Source files", "## Upload target")
+    return listed_files(source_section)
+
+
+def validate_upload_list(root: Path, project_dir: Path, upload_text: str, failures: list[str]) -> tuple[list[str], list[str]]:
+    for section in REQUIRED_UPLOAD_SECTIONS:
+        if section not in upload_text:
+            failures.append(f"UPLOAD_LIST.md missing section/value: {section}")
+
+    required_section = section_between(upload_text, "## Required upload files", "## Optional upload files")
+    optional_section = section_between(upload_text, "## Optional upload files", "## Do not upload")
+    required = listed_files(required_section)
+    optional = listed_files(optional_section)
+
+    total = len(required) + len(optional)
+    if total > 40:
+        failures.append(f"upload file count exceeds 40: {total}")
+    if len(required) > 12:
+        failures.append(f"required bundle count exceeds 12: {len(required)}")
+
+    for file_name in required + optional:
+        if file_name == "PROJECT_INSTRUCTIONS.md":
+            failures.append("PROJECT_INSTRUCTIONS.md must not be an upload bundle file")
+        if "/" in file_name or "\\" in file_name:
+            failures.append(f"upload bundle file must be local file name only: {file_name}")
+        if not (root / project_dir / "Knowledge_Bundles" / file_name).exists():
+            failures.append(f"listed bundle file does not exist: {project_dir}/Knowledge_Bundles/{file_name}")
+
+    if "`PROJECT_INSTRUCTIONS.md` — paste into Project Instructions instead." not in upload_text:
+        failures.append("PROJECT_INSTRUCTIONS.md must be mentioned only as paste into Project Instructions")
+
+    return required, optional
+
+
+def validate_forbidden_content(rel: str, text: str, failures: list[str]) -> None:
+    if RAW_LOCAL_PATH_PATTERN.search(text):
+        failures.append(f"raw absolute local path found in {rel}")
+    for pattern in SECRET_PATTERNS:
+        if pattern.search(text):
+            failures.append(f"secret-looking pattern found in {rel}")
+    lowered = text.lower()
+    unsafe_recommendations = [
+        "upload raw transcripts",
+        "upload source-card dumps",
+        "upload chunks",
+        "upload embeddings",
+        "upload vector db",
+        "upload vector database",
+        "use embeddings as current upload",
+        "use vector db as current upload",
+    ]
+    for phrase in unsafe_recommendations:
+        if phrase in lowered:
+            failures.append(f"forbidden upload recommendation in {rel}: {phrase}")
+
+
+def validate_bundle(root: Path, project_dir: Path, bundle_name: str, failures: list[str]) -> tuple[bool, bool]:
+    path = root / project_dir / "Knowledge_Bundles" / bundle_name
+    rel = str(path.relative_to(root))
+    text = path.read_text(encoding="utf-8")
+    source_ok = True
+    forbidden_ok = True
+
+    for section in REQUIRED_BUNDLE_SECTIONS:
+        if section not in text:
+            failures.append(f"{rel} missing required section: {section}")
+
+    sources = source_files_from_bundle(text)
+    if not sources:
+        failures.append(f"{rel} has no source files")
+        source_ok = False
+    for source in sources:
+        if "PROJECT_INSTRUCTIONS.md" in source:
+            failures.append(f"{rel} must not list PROJECT_INSTRUCTIONS.md as source/upload bundle content")
+            source_ok = False
+        if not (root / source).exists():
+            failures.append(f"{rel} source file missing: {source}")
+            source_ok = False
+
+    before_failures = len(failures)
+    validate_forbidden_content(rel, text, failures)
+    forbidden_ok = len(failures) == before_failures
+    return source_ok, forbidden_ok
+
+
+def check_project(root: Path, project: str, project_dir: Path) -> ProjectReport:
+    failures: list[str] = []
+    bundle_dir = root / project_dir / "Knowledge_Bundles"
+    bundle_folder = bundle_dir.exists() and bundle_dir.is_dir()
+    if not bundle_folder:
+        failures.append(f"bundle folder missing: {project_dir}/Knowledge_Bundles")
+        return ProjectReport(project, False, False, 0, 0, 0, False, False, failures)
+
+    readme = bundle_dir / "README.md"
+    upload_list = bundle_dir / "UPLOAD_LIST.md"
+    if not readme.exists():
+        failures.append(f"README.md missing: {project_dir}/Knowledge_Bundles/README.md")
+    upload_ok = upload_list.exists()
+    if not upload_ok:
+        failures.append(f"UPLOAD_LIST.md missing: {project_dir}/Knowledge_Bundles/UPLOAD_LIST.md")
+        return ProjectReport(project, True, False, 0, 0, 0, False, False, failures)
+
+    upload_text = upload_list.read_text(encoding="utf-8")
+    validate_forbidden_content(str(upload_list.relative_to(root)), upload_text, failures)
+    required, optional = validate_upload_list(root, project_dir, upload_text, failures)
+
+    source_ok = True
+    forbidden_ok = True
+    for bundle_name in required + optional:
+        current_source_ok, current_forbidden_ok = validate_bundle(root, project_dir, bundle_name, failures)
+        source_ok = source_ok and current_source_ok
+        forbidden_ok = forbidden_ok and current_forbidden_ok
+
+    extra_bundles = [
+        path.name
+        for path in bundle_dir.glob("*.md")
+        if path.name not in {"README.md", "UPLOAD_LIST.md"} and path.name not in set(required + optional)
+    ]
+    for extra in sorted(extra_bundles):
+        failures.append(f"bundle file not listed in UPLOAD_LIST.md: {project_dir}/Knowledge_Bundles/{extra}")
+
+    return ProjectReport(
+        project=project,
+        bundle_folder=True,
+        upload_list=upload_ok,
+        required_files=len(required),
+        optional_files=len(optional),
+        total_upload_files=len(required) + len(optional),
+        source_paths=source_ok,
+        forbidden_content=forbidden_ok,
+        failures=failures,
+    )
+
+
+def main() -> int:
+    root = repo_root()
+    reports = [check_project(root, project, project_dir) for project, project_dir in PROJECTS.items()]
+    failed = 0
+    bundles_checked = 0
+    upload_max = 0
+
+    print("Knowledge Bundle Check")
+    print()
+    for report in reports:
+        failed += len(report.failures)
+        bundles_checked += report.total_upload_files
+        upload_max = max(upload_max, report.total_upload_files)
+        print(f"Project: {report.project}")
+        print(f"- bundle folder: {'pass' if report.bundle_folder else 'fail'}")
+        print(f"- upload list: {'pass' if report.upload_list else 'fail'}")
+        print(f"- required files: {report.required_files}")
+        print(f"- optional files: {report.optional_files}")
+        print(f"- total upload files: {report.total_upload_files} / 40")
+        print(f"- source paths: {'pass' if report.source_paths else 'fail'}")
+        print(f"- forbidden content: {'pass' if report.forbidden_content else 'fail'}")
+        for failure in report.failures:
+            print(f"  FAIL: {failure}")
+        print()
+
+    print("Summary:")
+    print(f"- projects checked: {len(reports)}")
+    print(f"- bundles checked: {bundles_checked}")
+    print(f"- upload files max: {upload_max}")
+    print(f"- failed: {failed}")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

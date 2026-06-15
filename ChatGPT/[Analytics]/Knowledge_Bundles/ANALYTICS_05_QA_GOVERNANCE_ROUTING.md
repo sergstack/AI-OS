@@ -1,0 +1,390 @@
+# [Analytics] — QA Governance Routing
+
+## Purpose
+
+Compact upload artifact for [Analytics] covering qa governance routing.
+
+## Source files
+
+- `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`
+- `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`
+- `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`
+- `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`
+- `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`
+- `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
+
+## Upload target
+
+ChatGPT Project Sources / Knowledge for `[Analytics]`.
+
+## Status
+
+- bundle_type: compact upload artifact
+- source_of_truth: granular files listed above
+- production_promotion: no, unless explicitly accepted elsewhere
+
+---
+
+# Content
+
+## From: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`
+
+# Analytics QA Checklist
+## Data QA
+- [ ] Required files exist.
+- [ ] Required columns exist.
+- [ ] Data types valid.
+- [ ] Dates parsed correctly.
+- [ ] Currency / units normalized.
+- [ ] Null policy applied.
+- [ ] Duplicate policy applied.
+- [ ] Freshness checked.
+- [ ] Mapping tables checked.
+- [ ] Unmatched rows listed.
+## Main files QA
+- [ ] `stage_main_full` exists or is designed.
+- [ ] `stage_main_full` has no business metrics.
+- [ ] `stage_main_full` has no analytical classifiers.
+- [ ] `stage_main_full` is portable to DB / BI / Excel.
+- [ ] `mart_main_full` exists or is designed.
+- [ ] `mart_main_full` contains metrics and formulas.
+- [ ] `mart_main_tz` or `mart_main_compact` exists or is designed.
+- [ ] Mart slices are derived from `mart_main_full`.
+## Calculation QA
+- [ ] RAW totals reconciled.
+- [ ] STAGE totals reconciled.
+- [ ] MART totals reconciled.
+- [ ] Metric formulas documented.
+- [ ] Edge cases tested or listed.
+- [ ] Outliers reviewed.
+- [ ] Thresholds explicit.
+- [ ] Grain explicit.
+- [ ] Period explicit.
+## Analysis QA
+- [ ] Method stated.
+- [ ] Source mart stated.
+- [ ] Top deviations ranked by materiality / ABS Delta.
+- [ ] Driver logic documented.
+- [ ] Timing status not overstated.
+- [ ] Confirmed cause separated from hypothesis.
+- [ ] Confidence rationale stated.
+## Chart QA
+- [ ] Chart source mart/slice listed.
+- [ ] Metric listed.
+- [ ] Grain listed.
+- [ ] Period listed.
+- [ ] Caption does not exceed data.
+- [ ] Chart adds insight.
+- [ ] Chart labels, legends, axes, titles and captions are Russian / business-readable.
+- [ ] Executive chart palette uses muted executive colors.
+- [ ] Technical IDs are absent from executive chart body unless the chart is appendix / evidence.
+## Memo QA
+- [ ] No unsupported claims.
+- [ ] Every key conclusion has evidence.
+- [ ] Limitations visible.
+- [ ] Recommendations do not exceed data.
+- [ ] Confidence stated.
+- [ ] Risk has `risk_basis`.
+- [ ] Action has owner / due date / status.
+- [ ] Visible report language is Russian.
+- [ ] No technical IDs in executive body.
+- [ ] Technical values such as `fact_only`, `plan_only`, `p_fact_adjusted`, `refund_only`, `source_mix`, `slice_*`, `mart_*`, `EV-*`, `CH_EXEC_*` appear only in appendix / evidence context.
+- [ ] Appendix is clearly separated from executive memo.
+## Handoff QA
+- [ ] Handoff only if another project is needed.
+- [ ] Expected output clear.
+- [ ] Acceptance criteria clear.
+- [ ] Inputs listed.
+- [ ] Risks listed.
+- [ ] No unresolved analysis hidden in Codex task.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`
+
+# Analytics Acceptance Criteria
+A result is accepted when:
+1. Question and scope are clear.
+2. Inputs are listed.
+3. Data contract exists or missing fields are explicit.
+4. Grain, period and filters are documented.
+5. Stage and mart main files are created or designed.
+6. Calculation method is documented.
+7. QA checks passed or failed with explanation.
+8. Findings are traceable to data.
+9. Limitations are explicit.
+10. Handoff package is complete if another project is needed.
+## Main file acceptance
+```text
+stage_main_full: pass/fail/blocked/not_applicable
+mart_main_full: pass/fail/blocked/not_applicable
+mart_main_tz_or_compact: pass/fail/blocked/not_applicable
+slices_from_mart_main_full: pass/fail/blocked/not_applicable
+```
+## Acceptance status
+```text
+accepted: yes/no
+qa_status: pass/fail/blocked
+confidence: high/medium/low
+residual_risks:
+known_limitations:
+next_step:
+```
+## Blocked status
+Use `blocked` when:
+- required data is missing;
+- grain is unknown;
+- DQ Fail;
+- no reconciliation possible;
+- metric formulas undefined;
+- compact-only input is insufficient for requested conclusion;
+- implementation is required before result can be produced.
+## Not production-ready rule
+Smoke QA or a good memo does not equal production readiness. Production readiness requires implementation evidence, tests, acceptance and rollback/release notes where relevant.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`
+
+# Routing and Handoff
+## Project routing
+```text
+AI-концепция / supported KB pattern → [AI OS]
+Стратегия / решение / риски → [Thinking]
+Расчёты / данные / marts → [Analytics]
+Prompts / model routing / LLM quality → [LLM]
+Код / implementation / tests / release → [Codex]
+```
+## Analytics default
+For metrics, marts, data contracts, QA, calculations, deviations, charts and analytical memo structure: stay in `[Analytics]`.
+## Do not hand off too early
+Before handoff, provide:
+- analytical framing;
+- data contract or missing fields;
+- main files standard;
+- expected metrics;
+- QA requirements;
+- acceptance criteria.
+## Standard handoff format
+```text
+# Handoff
+
+From:
+To:
+Task type:
+Objective:
+Context:
+Inputs:
+Constraints:
+Expected outputs:
+Acceptance criteria:
+Risks:
+Evidence / confidence:
+Open questions:
+```
+## Thinking → Analytics
+Pass:
+- question;
+- metrics;
+- period;
+- assumptions;
+- options to test;
+- expected analytical output.
+## Analytics → LLM
+Use when verified numbers need narrative, prompt workflow or model routing.
+Pass:
+- curated facts;
+- tables or marts;
+- reconciled metrics;
+- limitations;
+- tone and output format.
+## Analytics → Codex
+Pass:
+- files to inspect/change;
+- input/output contract;
+- main files rules;
+- task packet;
+- forbidden actions;
+- tests;
+- acceptance criteria.
+## Codex → QA / Release
+Pass:
+- changed files;
+- tests run;
+- smoke QA;
+- acceptance status;
+- residual risks;
+- rollback notes.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`
+
+# AI OS Reference
+## Purpose
+- understand a new AI concept;
+- find supported AI pattern;
+- check confidence / evidence for AI claims;
+- connect AI trend to Sergey’s work;
+- find governance rule;
+- distinguish supported / weak / unsupported AI claim.
+## Do not copy into Analytics
+Do not copy:
+- full AI OS compact KB package;
+- raw transcripts;
+- source cards;
+- chunks;
+- temp files;
+- logs;
+- embeddings;
+- vector DB;
+- web UI artifacts.
+## How to ask AI OS
+```text
+Используй AI OS KB. Найди supported/weak/unsupported evidence по теме:
+<topic>
+
+Верни:
+- найдено в KB: да/нет/частично
+- sources
+- confidence
+- supported claims
+- weak/unsupported claims
+- practical use for Sergey
+```
+## Boundary rule
+AI OS gives evidence and patterns. `[Analytics]` applies them only when they affect analytics workflow, QA, marts, memo or reporting.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`
+
+# Governance and Anti-Patterns
+## Governance principles
+- Deterministic calculations before LLM narrative.
+- Traceability before automation.
+- Main files before slices.
+- Evidence before conclusions.
+- Acceptance before production readiness.
+- Analysis inside `[Analytics]` before handoff.
+## Evidence labels
+```text
+DATA FACT
+CALCULATION RESULT
+INTERPRETATION
+RECOMMENDATION
+HYPOTHESIS
+LIMITATION
+BLOCKER
+```
+## Blockers
+Do not publish final management conclusion when:
+- data contract missing;
+- grain missing;
+- DQ Fail;
+- unreconciled totals;
+- missing metric formula;
+- unsupported cause;
+- risk without basis;
+- action without owner/due date;
+- no main mart for a mart-based conclusion.
+## Anti-patterns
+| Handoff to Codex too early | Analytics loses its role | Analyze first, handoff implementation only |
+| Raw-to-memo | Unsupported conclusions | Use mart/evidence |
+| Pretty memo before QA | Looks right, may be wrong | QA first |
+| Low Confidence as fact | Misleading | Label hypothesis |
+| Action without owner/date | Not actionable | Add owner/due date/status |
+## Production readiness rule
+Do not claim production readiness unless:
+- implementation exists;
+- tests passed;
+- smoke QA recorded;
+- acceptance criteria passed;
+- residual risks listed;
+- rollback/release notes exist.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
+
+# Smoke QA for Analytics
+Назначение: проверить, что `[Analytics]` после загрузки пакета сохраняет способность проводить анализ и правильно использует routing, main files, QA и handoff.
+## 1. Scope and routing
+```text
+Мне нужно проанализировать отклонения план-факт и подготовить выводы. Ты будешь делать это здесь или отправишь в Codex?
+```
+Pass condition:
+- отвечает, что анализ делается в `[Analytics]`;
+- Codex нужен только для реализации/автоматизации;
+- называет data contract, stage/mart, QA.
+## 2. Main files
+```text
+Какие главные файлы должны быть в stage и mart?
+```
+Pass condition:
+- называет `stage_main_full`;
+- говорит, что stage без метрик и классификаторов;
+- называет `mart_main_full`;
+- называет `mart_main_tz` или `mart_main_compact`;
+- говорит, что slices строятся из `mart_main_full`.
+## 3. Compact/full input
+```text
+На входе есть только json compact. Что ты сделаешь?
+```
+Pass condition:
+- использует compact как scope;
+- фиксирует assumptions/gaps;
+- не придумывает full context;
+- всё равно проектирует main files.
+## 4. Charts
+```text
+Из чего строить графики для аналитической записки?
+```
+Pass condition:
+- отвечает: из `mart_main_full` или slices derived from it;
+- требует metric, grain, period, source_mart.
+## 5. Memo
+```text
+Какие обязательные блоки MVP аналитической записки?
+```
+Pass condition:
+- DQ;
+- Plan / Fact / Delta / ABS Delta;
+- top deviations;
+- row type;
+- timing;
+- risk + basis;
+- confidence;
+- cause vs hypothesis;
+- action + owner + due date;
+- limitations.
+## 6. Stop conditions
+```text
+Когда нельзя публиковать управленческий вывод?
+```
+Pass condition:
+- DQ Fail;
+- no grain;
+- no data contract;
+- no reconciliation;
+- Low Confidence as final cause;
+- risk without basis;
+- action without owner/date;
+- INOUT without Definition Card.
+## 7. Acceptance
+```text
+Когда результат аналитики считается принятым?
+```
+Pass condition:
+- scope clear;
+- inputs listed;
+- data contract;
+- main files;
+- calculation method;
+- QA;
+- traceable findings;
+- limitations;
+- handoff complete if needed.
+## Smoke QA output
+```text
+smoke_qa_status: pass/fail/blocked
+failed_questions:
+residual_risks:
+next_step:
+```
+Smoke QA is not production readiness.

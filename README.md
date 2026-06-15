@@ -16,11 +16,20 @@ Run before opening or merging documentation/configuration PRs:
 python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
 python3 scripts/check_manifest_paths.py
+python3 scripts/check_knowledge_bundles.py
 ```
 
 The public safety scan also checks for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
 
 The manifest/path consistency scan checks that `MANIFEST.json` paths exist, upload guide paths use canonical repo paths, project registry paths match actual folders, and legacy path variants stay blocked.
+
+The Knowledge bundle scan checks compact `Knowledge_Bundles/` upload artifacts for source paths, upload counts, required sections, and unsafe content.
+
+## Knowledge Bundles
+
+Use `Knowledge_Bundles/` for ChatGPT Project Sources upload when a compact source set is preferred.
+
+Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
 ## Operational verification
 

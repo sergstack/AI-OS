@@ -18,6 +18,7 @@
 - `scripts/check_project_instructions_length.py`
 - `scripts/check_repo_public_safety.py`
 - `scripts/check_manifest_paths.py`
+- `scripts/check_knowledge_bundles.py`
 - `.github/workflows/docs-safety.yml`
 
 ## Operational Verification
@@ -27,6 +28,15 @@
 - `PILOT_CASES.md`
 - `PILOT_RESULTS_TEMPLATE.md`
 - `SMOKE_QA_REFRESH_PLAN.md`
+
+## Knowledge Bundle Paths
+
+- `ChatGPT/[AI OS]/Knowledge_Bundles`
+- `ChatGPT/[Thinking]/Knowledge_Bundles`
+- `ChatGPT/[Analytics]/Knowledge_Bundles`
+- `ChatGPT/[LLM]/Knowledge_Bundles`
+- `ChatGPT/[Codex]/Knowledge_Bundles`
+- `ChatGPT/[Inbox Router]/Knowledge_Bundles`
 
 ## Project Instructions Rule
 

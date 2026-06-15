@@ -1,0 +1,127 @@
+# [AI OS] — Governance and Evidence
+
+## Purpose
+
+Compact upload artifact for [AI OS] covering governance and evidence.
+
+## Source files
+
+- `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`
+- `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
+
+## Upload target
+
+ChatGPT Project Sources / Knowledge for `[AI OS]`.
+
+## Status
+
+- bundle_type: compact upload artifact
+- source_of_truth: granular files listed above
+- production_promotion: no, unless explicitly accepted elsewhere
+
+---
+
+# Content
+
+## From: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`
+
+# Governance Rules
+## 1. Governed pipeline
+```text
+source material
+→ source cards / clean notes
+→ concept / workflow / pattern extraction
+→ grounded synthesis
+→ publish package
+→ compact package
+→ smoke QA
+→ acceptance check
+→ next scope decision
+→ use-case routing
+```
+Smoke QA — это не финальная готовность. Финальная готовность требует acceptance status, residual risks, known gaps, next scope и routing.
+## 2. Confidence rules
+| Confidence | Значение |
+| medium | подтверждено одним package file или ограниченным evidence |
+- нельзя продвигать в canonical facts;
+- нельзя использовать как grounded operational fact;
+- нужно помечать как backlog/review item;
+- нельзя выдавать как production-ready.
+## 3. Promotion gates
+```text
+embeddings
+semantic search
+vector DB
+web UI
+agentic workflows
+autonomous retrieval
+```
+## 4. Review queue
+Если обнаружено weak/unsupported/mixed evidence:
+```text
+Review item:
+- claim:
+- source files checked:
+- evidence status:
+- risk if used:
+- recommended action:
+- owner project:
+```
+## 5. Acceptance checklist
+- [ ] KB files checked.
+- [ ] Evidence listed.
+- [ ] Confidence label set.
+- [ ] Weak/unsupported claims separated.
+- [ ] Routing clear.
+- [ ] Risks named.
+- [ ] Next step concrete.
+- [ ] No blocked promotion items recommended as current implementation.
+## 6. Boundary rules
+- raw transcripts;
+- source card dumps без packaging;
+- clean notes dumps;
+- chunks;
+- temp files;
+- logs;
+- runtime artifacts;
+- embeddings;
+- vector DB;
+- secrets;
+- API keys;
+- zip archives как knowledge source.
+## 7. Conflict rule
+1. `KB__RELEASE_MANIFEST.md` и `KB__PROMOTION_GATES.md` выше всего.
+2. Затем `KB__CONFIDENCE_RULES.md` и `KB__REVIEW_QUEUE.md`.
+3. Затем canonical KB files.
+4. Затем рабочие настройки этого пакета.
+## 8. Status of this package
+
+
+## From: `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
+
+# Anti-patterns
+## Knowledge anti-patterns
+| Выдать weak evidence как supported | Нарушение governance | Пометить weak и отправить в review queue |
+| Игнорировать `KB__RELEASE_MANIFEST.md` | Можно принять blocked статус за ready | Проверить release status |
+## Routing anti-patterns
+| Давать Codex размытое пожелание | Codex нужен atomic task package | Подготовить handoff по шаблону |
+## Promotion anti-patterns
+```text
+embeddings
+semantic search
+vector DB
+web UI
+agentic workflows
+autonomous retrieval
+```
+```text
+Это future backlog / hypothesis. Внедрять только после acceptance gate и clearing review queue.
+```
+## Response anti-patterns
+- длинная теория без применения к работе Сергея;
+- отсутствие confidence/evidence;
+- нет risks/limitations;
+- нет next step;
+- нет routing при выходе за scope;
+- скрыта неопределённость;
+- нет web-проверки для текущих AI-релизов.

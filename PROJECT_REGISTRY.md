@@ -23,6 +23,7 @@
 - Public safety scan: required
 - No raw absolute local paths: required
 - Manifest/path consistency: required
+- Knowledge bundle consistency: required
 - Smoke QA: required
 - Pilot case: required before production promotion
 
@@ -31,3 +32,4 @@
 - `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
 - `PILOT_CASES.md`
 - `SMOKE_QA_REFRESH_PLAN.md`
+- `ChatGPT/[Project]/Knowledge_Bundles/`
