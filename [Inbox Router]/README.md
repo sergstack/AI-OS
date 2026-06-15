@@ -2,14 +2,14 @@
 
 ## Purpose
 
-`[Inbox / Router]` is a manual v0 input routing layer for Sergey's AI OS.
+`[Inbox / Router]` is the manual v0 front-door routing layer for Sergey's AI OS.
 It receives raw thoughts, tasks, ideas, and problems, then turns them into a
 clear route, clarification, next action, or handoff.
 
 ## What this project is
 
 - lightweight ChatGPT Project setup;
-- manual intake / routing helper;
+- manual front-door intake / routing helper;
 - entry layer before Things, Calendar, Notes, `[AI OS]`, `[Thinking]`, `[Analytics]`, `[LLM]`, `[Codex]`.
 
 ## What this project is not
@@ -44,6 +44,11 @@ product names, file names, and inter-project handoff fields.
 ├── PROJECT_INSTRUCTIONS.md
 └── Knowledge/
     ├── INBOX_ROUTER_FILES_INDEX.md
+    ├── INDEX.md
+    ├── ROUTING_RULES.md
+    ├── THINGS_OUTPUT_SCHEMA.md
+    ├── HANDOFF_PROTOCOL.md
+    ├── SMOKE_QA_FOR_INBOX_ROUTER.md
     ├── ROUTER_WORKFLOW.md
     ├── ROUTER_HANDOFF_PROTOCOL.md
     ├── ROUTER_SMOKE_QA.md
@@ -60,6 +65,11 @@ product names, file names, and inter-project handoff fields.
 ## What to upload
 
 - `Knowledge/INBOX_ROUTER_FILES_INDEX.md`
+- `Knowledge/INDEX.md`
+- `Knowledge/ROUTING_RULES.md`
+- `Knowledge/THINGS_OUTPUT_SCHEMA.md`
+- `Knowledge/HANDOFF_PROTOCOL.md`
+- `Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`
 - `Knowledge/ROUTER_WORKFLOW.md`
 - `Knowledge/ROUTER_HANDOFF_PROTOCOL.md`
 - `Knowledge/ROUTER_SMOKE_QA.md`

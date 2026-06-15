@@ -2,6 +2,8 @@
 
 Closes #
 
+For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task. Codex PRs should come from implementation-ready Issues.
+
 ## Summary
 
 What changed?

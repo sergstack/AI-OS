@@ -1,5 +1,8 @@
 # Codex Task
 
+For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task.
+Codex issues should already be implementation-ready.
+
 ## Goal
 
 What should be achieved?
