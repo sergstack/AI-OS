@@ -18,3 +18,14 @@ python3 scripts/check_repo_public_safety.py
 ```
 
 The public safety scan also checks for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
+
+## Local Path Placeholders
+
+Public docs must not contain raw machine-specific absolute paths from local user profiles, home directories, or mounted volumes.
+
+Use placeholders instead:
+
+- `<LOCAL_AI_OS_ROOT>` for the local AI-OS repository root.
+- `<LOCAL_REPO_ROOT>` for the current repository root in generic examples.
+- `<LOCAL_CODEX_APP_ROOT>` for the local `Codex APP` folder.
+- `<LOCAL_ARTIFACTS_ROOT>` for local working artifacts outside the public repository.

@@ -22,3 +22,12 @@
 ## Project Instructions Rule
 
 Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
+
+## Local Path Placeholders
+
+Do not commit raw machine-specific absolute paths.
+
+- `<LOCAL_AI_OS_ROOT>`: local AI-OS repository root.
+- `<LOCAL_REPO_ROOT>`: current local repository root.
+- `<LOCAL_CODEX_APP_ROOT>`: local `Codex APP` folder.
+- `<LOCAL_ARTIFACTS_ROOT>`: local working artifacts outside this public repository.
