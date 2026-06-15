@@ -1,13 +1,13 @@
-# Archive Map — AI OS Project Settings v04
+# Archive Map — AI OS Project Settings v05
 
 ```text
-AI_OS_Project_Settings_v04/
+AI_OS_Project_Settings_v05/
 ├── ARCHIVE_MAP.md
 ├── MANIFEST.json
 ├── MANIFEST.md
 ├── UPLOAD_GUIDE.md
-└── [AI OS]/
-    └── Project/
+└── ChatGPT/
+    └── [AI OS]/
         ├── README.md
         ├── PROJECT_INSTRUCTIONS.md
         └── Knowledge/
@@ -37,3 +37,8 @@ AI_OS_Project_Settings_v04/
 Загрузить в Project Knowledge только файлы из `Knowledge/`.
 `README.md` хранить локально как инструкцию по установке.
 `PROJECT_INSTRUCTIONS.md` скопировать в поле Project Instructions.
+
+## Validation policy
+
+Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
+If a file exceeds the limit, move supporting content into `Knowledge/`.

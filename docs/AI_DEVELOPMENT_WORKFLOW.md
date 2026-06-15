@@ -49,6 +49,14 @@ Risks:
 Do not merge.
 ```
 
+## Project Instructions Length Gate
+
+Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
+
+`PROJECT_INSTRUCTIONS.md` is the compact behavior kernel for a ChatGPT Project. Put supporting policies, examples, templates, checklists, and detailed workflows in `Knowledge/`.
+
+If Project Instructions exceed 8000 characters, do not paste oversized instructions into ChatGPT Project Settings. Split supporting content into `Knowledge/` and keep only routing, scope, evidence, output, and critical safety rules in Project Instructions.
+
 ## PR Requirements
 
 Each PR must include:
@@ -70,6 +78,7 @@ Each PR must include:
 - Do not treat AI output as accepted without review.
 - Do not introduce production workflows without acceptance gates.
 - Do not add secrets, raw dumps, runtime artifacts, logs, vector DB files, or embeddings to the repository.
+- Do not merge a PR if `scripts/check_project_instructions_length.py` or `scripts/check_repo_public_safety.py` fails.
 
 ## Acceptance
 

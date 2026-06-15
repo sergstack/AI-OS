@@ -31,8 +31,9 @@ What is included?
 
 ```bash
 git status --short
+python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
-python3 -m unittest
+python3 -m unittest  # optional, if tests exist
 ```
 
 ## Expected PR summary
