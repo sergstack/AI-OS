@@ -10,6 +10,7 @@ Compact upload artifact for [AI OS] covering routing and workflow.
 - `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`
 - `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`
 - `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`
+- `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
 
 ## Upload target
 
@@ -178,6 +179,37 @@ AI_OS_PROJECT_FILES_INDEX.md
 PROJECT_ROUTING.md
 GOVERNANCE_RULES.md
 AI_OS_WORKFLOW.md
+
+
+## From: `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
+
+# Analytical Memo Factory via Codex APP
+## Purpose
+Canonical workflow for producing analytical memos as executable artifacts through Codex APP while keeping project roles separate.
+## End-to-end workflow
+```text
+Analyst defines the analytical task
+-> [Analytics] structures analytical methodology
+-> [Codex] prepares an ultra-long Codex APP task package
+-> Codex APP executes the task package
+-> Python calculates
+-> LLM writes from evidence
+-> Judge/QA checks
+-> Human accepts the result
+```
+## Modes
+### Mode A - Interactive Analytics
+Use when the user wants to reason, explore, discuss methodology, or manually inspect outputs.
+### Mode B - Analytical Memo Factory via Codex APP
+Use when the user wants the memo produced as an artifact/work package with Python calculations, charts, QA, and final report.
+## Routing rule
+If the user asks to create an analytical memo as an executable artifact, the default route is:
+```text
+[Analytics] for analytical task framing
+-> [Codex] for ultra-long Codex APP task package
+-> Codex APP for execution
+```
+Do not force the user into a manual loop where `[Analytics]` asks for Python outputs back and forth, unless the user explicitly wants interactive analysis.
 HANDOFF_PROTOCOL.md
 ```
 ## 2. Стандартная шапка ответа

@@ -84,3 +84,5 @@ After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smo
 Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading compact bundle files into ChatGPT Sources.
 
 Granular `Knowledge/` files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
+
+For analytical memo production, upload bundle files that include the `Analytical Memo Factory via Codex APP` workflow. Do not upload granular and bundle files together unless debugging.

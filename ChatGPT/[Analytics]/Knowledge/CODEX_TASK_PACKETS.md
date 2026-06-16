@@ -8,6 +8,8 @@
 
 Codex task packets are for implementation. Analytical logic stays in `[Analytics]` first.
 
+For analytical memo production, `[Codex]` prepares the ultra-long Codex APP task package and Codex APP executes it locally. Python calculates metrics, deltas, shares, rankings, totals, charts, and evidence tables. LLM narrative must write only from Python/evidence outputs.
+
 ## Input
 
 ```text

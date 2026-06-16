@@ -16,6 +16,7 @@ Compact upload artifact for [Analytics] covering codex handoff optional.
 - `ChatGPT/[Analytics]/Codex_Tasks/05_WORD.md`
 - `ChatGPT/[Analytics]/Codex_Tasks/06_TEXT_QA.md`
 - `ChatGPT/[Analytics]/Codex_Tasks/07_SMOKE_QA.md`
+- `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
 
 ## Upload target
 
@@ -30,6 +31,18 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ---
 
 # Content
+
+## From: `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
+
+# Analytical Memo Factory via Codex APP
+## Routing rule
+If the user asks to create an analytical memo as an executable artifact, the default route is:
+```text
+[Analytics] for analytical task framing
+-> [Codex] for ultra-long Codex APP task package
+-> Codex APP for execution
+```
+`[Analytics]` remains the analytical methodology layer. `[Codex]` prepares the task package. Codex APP executes locally. Python calculates; LLM writes only from Python/evidence outputs; Judge/QA checks; Human accepts.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md`
 

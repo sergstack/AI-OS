@@ -43,6 +43,16 @@ Before production promotion:
 4. Complete at least one pilot case.
 5. Record results in `CHATGPT_PROJECT_SYNC_CHECKLIST.md` and `PILOT_CASES.md`.
 
+## Analytical Memo Factory
+
+For analytical memo production, use the `Analytical Memo Factory via Codex APP` workflow:
+
+```text
+Analyst -> [Analytics] -> [Codex] -> Codex APP -> Python -> LLM -> Judge/QA -> Human
+```
+
+Use `[Analytics]` for analytical task framing, `[Codex]` for the ultra-long Codex APP task package, and Codex APP for execution. Python calculates; LLM writes only from evidence.
+
 ## Local Path Placeholders
 
 Public docs must not contain raw machine-specific absolute paths from local user profiles, home directories, or mounted volumes.

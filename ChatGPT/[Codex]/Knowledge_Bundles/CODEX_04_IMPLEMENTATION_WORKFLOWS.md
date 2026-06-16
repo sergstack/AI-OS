@@ -12,6 +12,7 @@ Compact upload artifact for [Codex] covering implementation workflows.
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`
 - `ChatGPT/[Codex]/Knowledge/KESTRA_AUTOMATION_STANDARD_REFERENCE.md`
+- `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
 
 ## Upload target
 
@@ -26,6 +27,22 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 ---
 
 # Content
+
+## From: `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
+
+# Analytical Memo Factory via Codex APP
+## End-to-end workflow
+```text
+Analyst defines the analytical task
+-> [Analytics] structures analytical methodology
+-> [Codex] prepares an ultra-long Codex APP task package
+-> Codex APP executes the task package
+-> Python calculates
+-> LLM writes from evidence
+-> Judge/QA checks
+-> Human accepts the result
+```
+`[Codex]` is the task package design layer. Codex APP is the executor layer.
 
 ## From: `ChatGPT/[Codex]/Knowledge/BUGFIX_WORKFLOW.md`
 

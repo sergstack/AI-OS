@@ -8,6 +8,8 @@ Repository validation does not prove ChatGPT UI sync. Use `not_verified` until t
 
 For compact Sources sync, use each project's `Knowledge_Bundles/UPLOAD_LIST.md`. Upload bundle files OR granular Knowledge files, not both, unless debugging.
 
+For analytical memo production, verify that the uploaded bundles include the `Analytical Memo Factory via Codex APP` workflow before running a memo pilot.
+
 Allowed sync status values: `not_verified`, `pending`, `partial`, `done`, `not_applicable`, `blocked`.
 Allowed confidence values: `strong`, `medium`, `weak`, `unsupported`.
 Allowed acceptance status values: `draft`, `candidate`, `accepted`, `blocked`, `not_applicable`.
