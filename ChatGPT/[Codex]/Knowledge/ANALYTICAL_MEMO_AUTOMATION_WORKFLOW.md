@@ -1,5 +1,22 @@
 # Analytical Memo Automation Workflow
 
+## Canonical route
+
+Use the Analytical Memo Factory via Codex APP pattern:
+
+```text
+Analyst defines the task
+-> [Analytics] structures methodology
+-> [Codex] prepares an ultra-long Codex APP task package
+-> Codex APP executes
+-> Python calculates
+-> LLM writes from evidence
+-> Judge/QA checks
+-> Human accepts
+```
+
+`[Codex]` is the task package design layer in this route. Codex APP is the executor layer.
+
 ## Pipeline
 
 ```text

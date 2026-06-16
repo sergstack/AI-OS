@@ -33,3 +33,7 @@
 - `PILOT_CASES.md`
 - `SMOKE_QA_REFRESH_PLAN.md`
 - `ChatGPT/[Project]/Knowledge_Bundles/`
+
+## Canonical Workflows
+
+- `Analytical Memo Factory via Codex APP`: `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`

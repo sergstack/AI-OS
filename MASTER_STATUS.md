@@ -24,6 +24,11 @@
 - One pilot case per project: required before production promotion
 - Production promotion remains no until pilots pass
 
+## Canonical Workflow Patterns
+
+- Analytical Memo Factory via Codex APP: active
+- Route: Analyst -> `[Analytics]` -> `[Codex]` -> Codex APP -> Python -> LLM -> Judge/QA -> Human
+
 ## Project Instructions Rule
 
 `PROJECT_INSTRUCTIONS.md` is the compact behavior kernel for each ChatGPT Project.

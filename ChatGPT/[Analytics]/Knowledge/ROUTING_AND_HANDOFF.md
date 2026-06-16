@@ -14,6 +14,20 @@ Prompts / model routing / LLM quality → [LLM]
 
 For metrics, marts, data contracts, QA, calculations, deviations, charts and analytical memo structure: stay in `[Analytics]`.
 
+## Analytical Memo Factory via Codex APP
+
+If the user asks to create an analytical memo as an executable artifact, use:
+
+```text
+[Analytics] for analytical task framing
+-> [Codex] for ultra-long Codex APP task package
+-> Codex APP for execution
+```
+
+Keep `[Analytics]` responsible for methodology, data contracts, assumptions, limitations, and acceptance criteria. `[Codex]` designs the task package; Codex APP executes locally.
+
+Do not force an interactive loop where `[Analytics]` asks for Python outputs back and forth unless the user explicitly wants manual exploration.
+
 ## Do not hand off too early
 
 Before handoff, provide:
