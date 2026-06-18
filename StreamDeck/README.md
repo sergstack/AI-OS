@@ -10,17 +10,11 @@ Current active version: v2.7
 - `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.json`
 - `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.csv`
 
-## Previous version
-
-- `ROUTING_FIXED_AIOS_StreamDeck_Setup_Instruction_v2.6_RU_QA_CAPTURE_RESEARCH_MEMO_PILOTS_UPDATED.md`
-- `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.6_RU_QA_CAPTURE_RESEARCH_MEMO_PILOTS_UPDATED.json`
-- `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.6_RU_QA_CAPTURE_RESEARCH_MEMO_PILOTS_UPDATED.csv`
-
 ## v2.7 scope
 
 - Project-aligned English labels.
 - Routing-fixed 15-screen layout.
-- v2.6 files preserved as previous version.
+- Old Stream Deck version files were removed after v2.7 promotion.
 
 ## Safety
 
