@@ -1,0 +1,2557 @@
+{
+  "version": "2.6",
+  "source_baseline": "ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.5_RU_QA_CAPTURE_RESEARCH_MEMO_UPDATED.json",
+  "change_scope": "Only screen ПРОГОНЫ updated: duplicate generic pilot prompts replaced with a staged pilot workflow (Brief, Hypothesis, Test case, Run log, Result, QA, Lessons, Decision, Backlog, Scale gate, To Codex, Pilot card). QA v2.2, Capture v2.3, Research v2.4, and Memo v2.5 preserved; other screens/buttons preserved. Documentation index updated.",
+  "rows": [
+    {
+      "экран": "ДОМ",
+      "кнопка": "K1",
+      "название": "🧭 МАРШРУТ",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🧭 МАРШРУТ",
+      "заметка": "Главный маршрутизатор задач"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K2",
+      "название": "🧠 AI OS",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🧠 AI OS",
+      "заметка": "AI-concepts, evidence, use cases"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K3",
+      "название": "♟ РЕШЕНИЯ",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку ♟ РЕШЕНИЯ",
+      "заметка": "Решения, сценарии, риски"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K4",
+      "название": "📊 АНАЛИЗ",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 📊 АНАЛИЗ",
+      "заметка": "Метрики, dashboard, данные"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K5",
+      "название": "✍ ЗАПРОСЫ",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку ✍ ЗАПРОСЫ",
+      "заметка": "Prompts, model routing, eval"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K6",
+      "название": "🛠 CODEX",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🛠 CODEX",
+      "заметка": "Codex task package factory"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K7",
+      "название": "⚖ ПРОВЕРКА",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку ⚖ ПРОВЕРКА",
+      "заметка": "Judge, evidence, quality gates"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K8",
+      "название": "📥 ВХОД",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 📥 ВХОД",
+      "заметка": "Быстрый захват"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K9",
+      "название": "📝 ЗАПИСКА",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 📝 ЗАПИСКА",
+      "заметка": "Фабрика записок"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K10",
+      "название": "🔎 ПОИСК",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🔎 ПОИСК",
+      "заметка": "Источник, hype filter"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K11",
+      "название": "🗂 РЕПО",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🗂 РЕПО",
+      "заметка": "GitHub/validation"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K12",
+      "название": "🚦 ПРОГОНЫ",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 🚦 ПРОГОНЫ",
+      "заметка": "Pilot cases"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K13",
+      "название": "📚 БАЗА",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку 📚 БАЗА",
+      "заметка": "Knowledge base"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K14",
+      "название": "⚙ СИСТЕМА",
+      "действие": "Folder",
+      "настройка": "Folder",
+      "текст_или_цель": "Открыть папку ⚙ СИСТЕМА",
+      "заметка": "Системные утилиты"
+    },
+    {
+      "экран": "ДОМ",
+      "кнопка": "K15",
+      "название": "⛔ СТОП",
+      "действие": "Multi Action",
+      "настройка": "Multi Action",
+      "текст_или_цель": "Esc → switch/open AI OS HOME",
+      "заметка": "Не удалять, не закрывать критичные приложения"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Не перепрограммировать"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K2",
+      "название": "Raw → Route",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — RAW → ROUTE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nОбщий вход без предварительной классификации. Найди лучший destination и один безопасный следующий шаг.\n\nСначала определи лучший маршрут, не подгоняй под название кнопки.\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\n\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Главный triage: route first, solve never"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K3",
+      "название": "Things?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — THINGS GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, является ли вход конкретным действием для Things.\n\nПредпочтительный маршрут для проверки: Things.\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nThings gate:\n1. Есть ли глагол действия?\n2. Понятно ли, где / в каком инструменте делать?\n3. Понятно ли, когда задача готова?\nЕсли хотя бы один ответ «нет» — не отправляй в Things, предложи уточнение или Notes / Obsidian.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Проверка: можно ли сделать task в Things"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K4",
+      "название": "Calendar?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — CALENDAR GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, является ли вход событием, дедлайном или жёстким временным слотом.\n\nПредпочтительный маршрут для проверки: Calendar.\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nCalendar gate:\n- Есть дата YYYY-MM-DD или её можно надёжно вывести?\n- Есть время / дедлайн / событие?\n- Нужен ли участник, место, длительность?\nЕсли времени нет, но есть действие — вероятно Things, не Calendar.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Проверка: календарь или задача"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K5",
+      "название": "Notes?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — NOTES / OBSIDIAN GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, является ли вход контекстом, идеей, reference material или длинной заметкой.\n\nПредпочтительный маршрут для проверки: Notes / Obsidian.\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nNotes gate:\n- Это знание, контекст, идея или материал без немедленного действия?\n- Есть ли смысл сохранить как reference?\n- Если есть конкретный следующий шаг — выдели его отдельно для Things.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Проверка: контекст не превращать в задачу"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K6",
+      "название": "AI OS?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — AI OS GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, относится ли вход к AI concepts, AI use cases, AI patterns, evidence или governance.\n\nПредпочтительный маршрут для проверки: [AI OS].\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nAI OS gate:\n- Не делай расчёты.\n- Не проектируй prompts вместо [LLM].\n- Не пиши код вместо [Codex].\n- Требуй evidence / KB / governance check, если идея будет использоваться дальше.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "AI concept / evidence / governance"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K7",
+      "название": "Thinking?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — THINKING GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, является ли вход решением, стратегией, выбором вариантов, сценарием или risk review.\n\nПредпочтительный маршрут для проверки: [Thinking].\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nThinking gate:\n- Если нужны числа, расчёты или проверка данных — handoff в [Analytics].\n- Если нужно писать prompt/workflow — handoff в [LLM].\n- Если нужно реализовать код — handoff в [Codex] только после принятого решения.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Decision / strategy / risk"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K8",
+      "название": "Analytics?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — ANALYTICS GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, относится ли вход к данным, метрикам, расчётам, сверкам, dashboard, marts или data quality.\n\nПредпочтительный маршрут для проверки: [Analytics].\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nAnalytics gate:\n- Зафиксируй period, grain, metric, source, currency / units, если они известны.\n- Не делай вывод сильнее данных.\n- Если нужна реализация pipeline — сначала analytics spec, потом handoff в [Codex].\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Data / metrics / calculations"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K9",
+      "название": "LLM?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — LLM GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, относится ли вход к prompt, GPT instructions, context package, workflow, model routing или eval.\n\nПредпочтительный маршрут для проверки: [LLM].\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nLLM gate:\n- Не передавай raw dump как context package.\n- Не hardcode конкретную модель как постоянную истину.\n- Для цен, лимитов, API, release status нужен fresh check.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Prompt / workflow / model routing"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K10",
+      "название": "Codex?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — CODEX GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, является ли вход задачей на код, tests, refactor, repo changes или automation task package.\n\nПредпочтительный маршрут для проверки: [Codex].\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nCodex gate:\n- Нужны repo, files to inspect, files to change, forbidden actions, checks, acceptance criteria, rollback.\n- Не отправляй в Codex, если решение ещё не принято или аналитическая логика не определена.\n- Не разрешай merge / push / destructive actions без явного gate.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Code / repo / tests / automation"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K11",
+      "название": "Codex APP?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — CODEX APP / ULTRA-LONG GATE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nРаботай как [Inbox Router]. Не решай целевую задачу. Нужно только классифицировать вход, выбрать маршрут, назвать риски и подготовить следующий шаг / handoff.\n\nФокус кнопки:\nПроверь, нужна ли сверхдолгая работа Codex: много файлов, PR, checks, staged batches, long local execution.\n\nПредпочтительный маршрут для проверки: Codex APP.\n\nПравила маршрутизации:\n- Things — конкретное физическое или цифровое действие.\n- Calendar — встреча, дедлайн или жёсткий слот времени.\n- Notes / Obsidian — контекст, идея, reference material, длинная заметка.\n- [AI OS] — AI concept, AI use case, AI pattern, evidence, governance.\n- [Thinking] — решение, стратегия, варианты, сценарии, риски.\n- [Analytics] — данные, метрики, расчёты, сверки, dashboards, marts.\n- [LLM] — prompt, GPT instructions, workflow, model routing, eval.\n- [Codex] — код, implementation, tests, refactor, automation task package.\n- Codex APP — сверхдолгая работа Codex / ultra-long run package.\n- User — если без уточнения есть высокий риск неверного маршрута.\nCodex APP gate:\n- Использовать для ultra-long-local / long repo task package.\n- Требуются batches, allowed scope, forbidden actions, checks, final report contract.\n- Если задача маленькая — обычный [Codex], не Codex APP.\n\nПроверка перед ответом:\n- не решай задачу внутри Router;\n- не отправляй не-actionable контекст в Things;\n- не отправляй расчёты в [AI OS];\n- не отправляй код в [Thinking];\n- не отправляй в [Codex] без constraints, acceptance criteria и rollback;\n- если маршрут unclear, задай максимум 1–3 вопроса.\n\nВерни строго:\n\n## Решение по маршруту\nКуда:\nПочему:\nУверенность: strong / medium / weak\nСтатус: direct / clarify / handoff / park / trash\n\n## Классификация\nТип:\nМожно действовать сейчас: да / нет\nНужно уточнение: да / нет\n\n## Факты / допущения / пробелы\nФакты:\nДопущения:\nЧего не хватает:\nРиски:\n\n## Следующее действие\nЗадача:\nArea / Project:\nTag:\nГотово, когда:\n\n## Передача в проект\nFrom:\nTo:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Ultra-long Codex routing"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K12",
+      "название": "Handoff",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — PROJECT HANDOFF PACKAGE\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nПодготовь пакет передачи из [Inbox Router] в целевой проект. Не решай задачу. Не добавляй неподтверждённые факты. Если destination неясен — сначала укажи clarify и максимум 1–3 вопроса.\n\nDestination rules:\n- [AI OS] — AI concept / evidence / governance.\n- [Thinking] — decision / options / risks.\n- [Analytics] — data / metrics / calculations / reconciliation / dashboards.\n- [LLM] — prompts / workflows / model routing / eval.\n- [Codex] — code / tests / repo changes / automation.\n- Codex APP — ultra-long Codex run.\n\nВерни строго:\nDestination:\nTask type:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nEvidence / confidence:\nOpen questions:\nSuggested first step:\n\nЕсли Destination = [Codex] или Codex APP, дополнительно:\nRepository:\nFiles to inspect:\nFiles allowed to change:\nForbidden actions:\nChecks / smoke tests:\nRollback / stop condition:",
+      "заметка": "Строгий handoff вместо пустого бланка"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K13",
+      "название": "Clarify",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — CLARIFICATION REQUIRED\n\nИсходный запрос:\n[вставить]\n\nЗадача:\nОпредели, почему маршрут нельзя выбрать безопасно. Не задавай широкое интервью. Сформулируй максимум 1–3 критических вопроса, без которых высок риск неправильного routing.\n\nВерни строго:\nПредварительный маршрут:\nПочему не хватает данных:\nРиск неверного маршрута:\nКритические вопросы: максимум 3\nЧто можно сделать без уточнения:\nЧто заблокировано до ответа:\nСледующий шаг:",
+      "заметка": "Когда без уточнения нельзя"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K14",
+      "название": "QA route",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — ROUTE QA / JUDGE\n\nМаршрут или handoff для проверки:\n[вставить]\n\nЗадача:\nПроверь как @judge, корректен ли routing. Router не должен решать целевую задачу.\n\nПроверь:\n- destination explicit;\n- confidence honest;\n- facts / assumptions / risks separated;\n- missing data visible;\n- one next step provided;\n- handoff used for project work;\n- no calculations routed to [AI OS];\n- no code routed to [Thinking];\n- no vague context routed to Things;\n- no Codex without constraints / acceptance / rollback.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nWrong routing:\nMissing constraints:\nUnsupported assumptions:\nMain risk:\nRequired fix:\nCorrected route:\nApproved next step:",
+      "заметка": "Быстрая проверка маршрута"
+    },
+    {
+      "экран": "МАРШРУТ",
+      "кнопка": "K15",
+      "название": "Open project",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ROUTER — OPEN TARGET PROJECT\n\nПринятый маршрут:\n[вставить destination]\n\nДействие:\nОткрой соответствующий ChatGPT Project вручную и вставь подготовленный handoff.\n\nКарта открытия:\n- [AI OS] → <CHATGPT_AI_OS_PROJECT_URL>\n- [Thinking] → <CHATGPT_THINKING_PROJECT_URL>\n- [Analytics] → <CHATGPT_ANALYTICS_PROJECT_URL>\n- [LLM] → <CHATGPT_LLM_PROJECT_URL>\n- [Codex] → <CHATGPT_CODEX_PROJECT_URL>\n- Codex APP → <CHATGPT_CODEX_APP_PROJECT_URL>\n\nНе открывай проект до route QA, если confidence = weak или status = clarify / blocked.",
+      "заметка": "Второй шаг после handoff, не первый"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K2",
+      "название": "Анализ",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — АНАЛИЗ\n\nТема или идея:\n[вставить]\n\nРежим:\nconcept / use case / comparison / next step / routing\n\nЗадача:\nСделай grounded-разбор внутри [AI OS]. Сначала определи routing, затем проверь KB и только после этого формулируй вывод.\n\nПроверь по порядку:\n1. Есть ли релевантные KB-файлы / Gold cards.\n2. Что подтверждено, слабо подтверждено, смешано, не подтверждено или не найдено.\n3. Требуется ли свежая внешняя проверка: AI-релизы, модели, API, pricing, лимиты, benchmark, market facts.\n4. Как это применимо к работе Сергея: аудит, аналитика, governance, AI-workflows.\n5. Нужен ли handoff в [Thinking] / [Analytics] / [LLM] / [Codex].\n\nРаздели:\n- FACT:\n- INTERPRETATION:\n- RECOMMENDATION:\n- HYPOTHESIS:\n- BLOCKER:\n\nВерни строго:\nKB проверен: да / нет\nИсточники: [...]\nНайдено в KB: да / нет / частично\nFresh external check: не нужен / нужен / выполнен\nConfidence: strong / medium / weak\nEvidence: supported / weak / mixed / unsupported / not found\n\nСуть:\nКак это работает:\nПрименение для Сергея:\nРиски и ограничения:\nRouting:\nИтог:\nNext step:",
+      "заметка": "Grounded AI OS analysis"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K3",
+      "название": "Применить",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ПРИМЕНИТЬ К РАБОТЕ СЕРГЕЯ\n\nТема, AI-паттерн или инструмент:\n[вставить]\n\nЗадача:\nНайди практическое применение для работы Сергея внутри [AI OS]. Не делай стратегическое решение вместо [Thinking], расчёты вместо [Analytics], prompt-orchestration вместо [LLM] и код вместо [Codex].\n\nСначала проверь:\n- что уже есть в KB;\n- evidence status: supported / weak / mixed / unsupported / not found;\n- какие ограничения и gates есть;\n- что требует свежей проверки;\n- какие use cases реально подходят финансовому аудитору / стратег-аналитику.\n\nСобери 3–5 use cases, затем выбери топ-2 по критериям:\n- польза для аудита / аналитики;\n- скорость внедрения;\n- риск;\n- evidence strength;\n- зависимость от других проектов;\n- обратимость.\n\nВерни:\nKB проверен:\nИсточники:\nEvidence:\nUse cases table:\n| Use case | Value for Sergey | Evidence | Risk | Owner project | First safe step |\n|---|---|---|---|---|---|\nТоп-2 рекомендации:\nЧто НЕ делать сейчас:\nReview item, если evidence weak/mixed/unsupported:\nRouting:\nNext step:",
+      "заметка": "Use case for Sergey"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K4",
+      "название": "Подтв.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ПОДТВЕРЖДЕНИЕ / EVIDENCE CHECK\n\nУтверждение, идея или рекомендация:\n[вставить]\n\nЗадача:\nПроверь, можно ли считать это подтверждённым внутри [AI OS]. Отвечай как evidence judge: не усиливай вывод выше источников.\n\nПорядок проверки:\n1. Найди релевантные KB-файлы / cards.\n2. Проверь support_status, confidence, evidence_count, limitations, review queue.\n3. Отдели KB knowledge от fresh external check.\n4. Определи статус: supported / weak / mixed / unsupported / not found.\n5. Если weak / mixed / unsupported / not found — оформи review item.\n\nРаздели:\n- FACT:\n- INTERPRETATION:\n- RECOMMENDATION:\n- HYPOTHESIS:\n- BLOCKER:\n\nВерни строго:\nKB проверен: да / нет\nИсточники:\nНайдено в KB: да / нет / частично\nConfidence: strong / medium / weak\nEvidence: supported / weak / mixed / unsupported / not found\nVerdict: подтверждено / частично / не подтверждено / не найдено\nWhat can be safely claimed:\nWhat must NOT be claimed:\nReview item:\n- claim:\n- source files checked:\n- evidence status:\n- risk if used:\n- recommended action:\n- owner project:\nRouting:\nNext step:",
+      "заметка": "Evidence verdict / confirmation"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K5",
+      "название": "Ловушки",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ЛОВУШКИ / ANTI-PATTERN CHECK\n\nТема, идея, AI-инструмент или workflow:\n[вставить]\n\nЗадача:\nПроверь как @judge: где здесь hype, слабое evidence, неправильный routing или преждевременная автоматизация.\n\nИщи:\n- unsupported claims;\n- weak evidence, выдаваемое как fact;\n- hidden assumptions;\n- missing limitations;\n- wrong project routing;\n- premature Codex / production execution;\n- blocked promotion items: embeddings, semantic search, vector DB, web UI, agentic workflows, autonomous retrieval;\n- raw dumps / chunks / logs / secrets as knowledge source;\n- отсутствие acceptance criteria.\n\nВерни:\nKB проверен:\nИсточники:\nEvidence:\nMain trap:\nRisk level: low / medium / high\nFailure modes:\n| Trap | Why risky | Evidence status | Detection check | Safer alternative |\n|---|---|---|---|---|\nWhat not to claim:\nWhat to defer:\nReview item, если нужен:\nRouting:\nNext step:",
+      "заметка": "Hype / anti-pattern / risk scan"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K6",
+      "название": "На проверку",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ЗАПИСЬ НА ПРОВЕРКУ / REVIEW ITEM\n\nУтверждение или решение-кандидат:\n[вставить]\n\nЗадача:\nОформи review item для AI OS. Используй, если evidence weak / mixed / unsupported / not found, либо если есть риск premature implementation.\n\nЗаполни строго:\n- claim:\n- source files checked:\n- evidence status: weak / mixed / unsupported / not found\n- confidence: strong / medium / weak\n- risk if used:\n- what can be safely said now:\n- what must not be claimed:\n- recommended action:\n- owner project: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex]\n- acceptance condition:\n- next review trigger:\n- next step:",
+      "заметка": "Review queue item"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K7",
+      "название": "Свежесть",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — СВЕЖЕСТЬ / FRESHNESS CHECK\n\nТема, инструмент, модель, API, benchmark, pricing или правило:\n[вставить]\n\nЗадача:\nОпредели, что можно взять из KB, а что требует свежей внешней проверки. Не отвечай устаревшими фактами как текущими.\n\nПроверь:\n- относится ли тема к текущим AI-релизам, моделям, API, pricing, лимитам, benchmark, market facts, законам, продуктовым правилам;\n- есть ли в KB стабильное знание;\n- какие утверждения могут измениться после даты KB;\n- нужен ли web-check перед рекомендацией;\n- можно ли сейчас дать только предварительный вывод.\n\nВерни:\nKB проверен:\nKB knowledge:\nFresh external check: нужен / не нужен / уже выполнен\nClaims requiring freshness:\n| Claim | Why freshness matters | Risk if stale | Source to check |\n|---|---|---|---|\nSafe interim answer:\nBlocked claims until fresh check:\nRouting:\nNext step:",
+      "заметка": "Freshness / external check decision"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K8",
+      "название": "В LLM",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS → [LLM] HANDOFF\n\nТема или задача:\n[вставить]\n\nЗадача:\nПодготовь handoff из [AI OS] в [LLM] для prompt/workflow/model routing/context package. Не передавай raw dumps и не превращай weak evidence в facts.\n\nСобери curated context:\n- цель;\n- verified facts;\n- interpretations clearly marked;\n- unsupported / weak claims clearly marked;\n- constraints;\n- risks;\n- expected output;\n- acceptance criteria.\n\nНе передавать:\n- raw transcripts;\n- source-card dumps;\n- chunks / embeddings / vector DB;\n- secrets / API keys / `.env`;\n- неподтверждённые claims как facts;\n- production-ready claims без acceptance.\n\nВерни строго:\nHandoff to: [LLM]\nTask type: prompt / workflow / model routing / context package / revisor\nGoal:\nContext from AI OS:\nKB evidence used:\nConfidence:\nInputs required:\nExpected output:\nConstraints:\nRisks:\nAcceptance criteria:\nWhat not to claim:\nSuggested first step:",
+      "заметка": "AI OS → LLM handoff"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K9",
+      "название": "В Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS → [Codex] HANDOFF / GATED\n\nЗадача или идея для реализации:\n[вставить]\n\nВНИМАНИЕ:\nИспользовать только если есть accepted / recommended decision или явная задача на repository docs / tests / tooling. Если evidence weak или решение не принято — сначала вернуть в [AI OS] / [Thinking] / [LLM].\n\nПеред handoff проверь:\n- KB evidence used;\n- confidence;\n- decision status;\n- allowed files;\n- forbidden changes;\n- acceptance criteria;\n- checks to run;\n- rollback / stop condition.\n\nЗапрещено:\n- менять business logic без acceptance;\n- добавлять secrets / API keys / `.env`;\n- мержить автоматически;\n- расширять scope;\n- реализовывать blocked promotion items без gate;\n- выдавать weak evidence как requirement.\n\nВерни строго:\nHandoff to: [Codex]\nTask type: docs / implementation / tests / tooling / QA\nProceed gate: pass / blocked / needs [Thinking] / needs [LLM]\nGoal:\nAccepted context:\nKB evidence used:\nConfidence:\nAllowed files:\nForbidden changes:\nExpected output:\nChecks to run:\nAcceptance criteria:\nRollback / stop condition:\nRisks:\nSuggested first step:",
+      "заметка": "AI OS → Codex gated handoff"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K10",
+      "название": "Правила",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/ChatGPT/%5BAI%20OS%5D/Knowledge/GOVERNANCE_RULES.md",
+      "заметка": ""
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K11",
+      "название": "Приём",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ПРИЁМ / ACCEPTANCE GATE\n\nРезультат, вывод, KB-update или workflow:\n[вставить]\n\nЗадача:\nПроверь, можно ли принять результат как рабочий для [AI OS], или его нужно доработать / заблокировать / передать в другой проект.\n\nПроверь acceptance checklist:\n- KB files checked;\n- evidence listed;\n- confidence label set;\n- weak / unsupported claims separated;\n- routing clear;\n- risks named;\n- limitations visible;\n- next step concrete;\n- no blocked promotion items recommended as current implementation;\n- smoke QA не назван production readiness.\n\nВерни:\nKB проверен:\nИсточники:\nAcceptance status: pass / revise / blocked\nEvidence:\nMissing items:\nResidual risks:\nWhat must change before acceptance:\nWhat not to claim:\nOwner project:\nNext step:",
+      "заметка": "Acceptance / promotion gate"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K12",
+      "название": "Сбои",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — СБОИ / FAILURE MODES\n\nОтвет, workflow, KB-идея или handoff:\n[вставить]\n\nЗадача:\nНайди, как это может сломаться внутри [AI OS]. Проверяй не содержание ради содержания, а failure modes governance/evidence/routing.\n\nПроверь сбои:\n- ответ без KB grounding;\n- нет source_id / card_id / evidence references, если нужны;\n- weak evidence стало fact;\n- unsupported claim не помечен;\n- свежий факт дан без fresh check;\n- route выбран неверно;\n- handoff без constraints / acceptance criteria;\n- blocked promotion item предложен как текущая реализация;\n- raw dump предложен как knowledge source;\n- вывод сильнее данных.\n\nВерни:\nFailure status: pass / revise / blocked\nFailure modes table:\n| Failure mode | Severity | Trigger | Detection check | Required fix | Owner project |\n|---|---|---|---|---|---|\nMain blocker:\nSafer version:\nRouting:\nNext step:",
+      "заметка": "AI OS failure modes"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K13",
+      "название": "Статус БЗ",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — СТАТУС БЗ / KB COVERAGE CHECK\n\nТема, область или вопрос:\n[вставить]\n\nЗадача:\nПроверь, что именно покрыто в KB по этой теме, а что отсутствует или требует review. Не заполняй пробелы догадками.\n\nПроверь:\n- релевантные KB-файлы / Gold cards;\n- support_status;\n- confidence;\n- evidence_count;\n- limitations;\n- review queue;\n- release / promotion status;\n- есть ли blocked items.\n\nВерни:\nKB проверен:\nИсточники:\nCoverage status: strong / partial / weak / not found\nSupported items:\nWeak or missing items:\nLimitations:\nReview queue impact:\nPromotion / acceptance status:\nWhat can be answered now:\nWhat cannot be answered from KB:\nRouting:\nNext step:",
+      "заметка": "KB coverage / status check"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K14",
+      "название": "Источники",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ИСТОЧНИКИ / SOURCE MAP\n\nТема или утверждение:\n[вставить]\n\nЗадача:\nСобери карту источников и evidence inventory. Не делай большой пересказ; покажи, на чём можно строить ответ.\n\nПроверь и раздели:\n- governed KB files;\n- working project files;\n- release / manifest / confidence files;\n- review queue;\n- fresh external sources, если нужны;\n- missing sources.\n\nВерни:\nKB проверен:\nSource map:\n| Source | Type | What it supports | Evidence status | Limitation |\n|---|---|---|---|---|\nStrongest evidence:\nWeak / missing evidence:\nConflicts or gaps:\nFresh check needed:\nSafe claims:\nUnsafe claims:\nRouting:\nNext step:",
+      "заметка": "Source map / evidence inventory"
+    },
+    {
+      "экран": "AI OS",
+      "кнопка": "K15",
+      "название": "Практика",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# AI OS — ПРАКТИКА / NEXT SAFE ACTION\n\nТема, вывод или предыдущий ответ:\n[вставить]\n\nЗадача:\nСформулируй один следующий безопасный практический шаг. Не строй большую стратегию и не уходи в реализацию без gate.\n\nПроверь:\n- что уже подтверждено в KB;\n- какой evidence status;\n- есть ли blocker;\n- нужен ли fresh check;\n- какой owner project;\n- какие acceptance criteria;\n- что нельзя делать сейчас.\n\nВерни:\nKB проверен:\nCurrent status: draft / supported / weak / blocked / needs handoff\nBest next step:\nWhy this step:\nOwner project:\nInputs required:\nAcceptance criteria:\nRisk if skipped:\nWhat not to do now:\nRouting:\nИтог:\nNext step:",
+      "заметка": "Next safe action / practical step"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K2",
+      "название": "Решение",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — DECISION MEMO\n\nВопрос:\n[описать]\n\nРежим:\nFAST / STANDARD / DEEP\n\nЗадача:\nПодготовь decision memo в [Thinking]. Не делай расчёты вместо [Analytics], не проектируй код вместо [Codex], не оформляй финальный текст вместо [LLM], если нужен отдельный handoff.\n\nСобери:\n1. Frame:\n- какой вопрос решаем;\n- какой результат нужен;\n- кто пользователь решения;\n- цена ошибки;\n- обратимость решения.\n\n2. Facts / Assumptions / Unknowns:\n- FACT:\n- ASSUMPTION:\n- HYPOTHESIS:\n- UNKNOWN:\n- BLOCKER:\n\n3. Options:\nСравни 2–4 варианта, включая «ничего не делать».\n\n4. Criteria:\n- риск;\n- скорость;\n- стоимость;\n- обратимость;\n- evidence strength;\n- operational complexity;\n- dependency on [Analytics] / [LLM] / [Codex] / [AI OS].\n\n5. Risk review:\n- downside;\n- hidden assumptions;\n- failure modes;\n- detection checks;\n- mitigations.\n\n6. Decision:\n- recommendation;\n- why now;\n- what not to do;\n- what to defer.\n\nВерни:\n- decision:\n- status: черновик / кандидат решения / рекомендовано / заблокировано / нужна передача / принято / устарело\n- confidence: X/10\n- why not 10/10:\n- acceptance criteria:\n- revisit trigger:\n- next review:\n- handoff / next step:\n",
+      "заметка": "Decision memo / итоговое решение"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K3",
+      "название": "Варианты",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — OPTIONS MATRIX\n\nВопрос:\n[описать]\n\nКонтекст:\n[факты / ограничения / цель]\n\nЗадача:\nСобери 2–4 реалистичных варианта решения в [Thinking]. Обязательно включи вариант «ничего не делать».\n\nДля каждого варианта определи:\n- что означает вариант;\n- когда он уместен;\n- плюсы;\n- минусы;\n- риск;\n- стоимость / трудозатраты, если известно;\n- обратимость;\n- evidence strength;\n- зависимости от других проектов.\n\nСравни по критериям:\n- скорость;\n- качество;\n- стоимость;\n- риск;\n- доказательность;\n- сложность;\n- обратимость.\n\nВерни:\n1. Decision question:\n2. Options table:\n| Option | What it means | Best when | Pros | Cons | Risk | Cost | Reversibility | Evidence |\n|---|---|---|---|---|---|---|---|---|\n3. Comparison table:\n4. Recommended option:\n5. Why not the alternatives:\n6. Critical assumptions:\n7. Status:\n8. Confidence:\n9. Next step:\n",
+      "заметка": "Options matrix with trade-offs"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K4",
+      "название": "Риски",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — RISK REVIEW\n\nРешение / идея / план:\n[описать]\n\nПроверь как @judge в [Thinking]:\n- unsupported claims;\n- weak evidence;\n- hidden assumptions;\n- missing alternatives;\n- ignored downside;\n- wrong project routing;\n- premature automation;\n- missing acceptance criteria.\n\nРаздели:\n- FACT:\n- ASSUMPTION:\n- HYPOTHESIS:\n- BLOCKER:\n\nОцени риски:\n| Risk | Severity | Trigger | Impact | Detection check | Mitigation | Owner | Reversibility |\n|---|---|---|---|---|---|---|---|\n\nВерни:\n- risk level: low / medium / high\n- main blocker:\n- weak assumptions:\n- what would make this fail:\n- safer next step:\n- decision: proceed / revise / stop / handoff\n- status:\n- confidence:\n",
+      "заметка": "Judge-style risk review"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K5",
+      "название": "Допущения",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — ASSUMPTION AUDIT\n\nВопрос / решение:\n[описать]\n\nЗадача:\nПроведи аудит допущений в [Thinking]. Не превращай гипотезы в факты.\n\nРаздели входной контекст:\n- FACT: подтверждено входными данными / источниками;\n- ASSUMPTION: принято для рассуждения, но не доказано;\n- HYPOTHESIS: полезная версия, которую надо проверить;\n- UNKNOWN: неизвестно;\n- BLOCKER: без этого нельзя принимать решение.\n\nДля каждого допущения оцени:\n| Assumption | Why needed | Evidence | Risk if false | How to verify | Owner | Deadline | Decision impact |\n|---|---|---|---|---|---|---|---|\n\nВерни:\n1. Critical assumptions:\n2. Weak assumptions:\n3. Blockers:\n4. What can be decided now:\n5. What cannot be decided yet:\n6. Required verification:\n7. Status:\n8. Confidence:\n9. Next step:\n",
+      "заметка": "Assumption audit / blockers"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K6",
+      "название": "Сценарии",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — SCENARIO ANALYSIS\n\nВопрос:\n[описать]\n\nКонтекст решения:\n[описать]\n\nЗадача:\nПострой сценарный анализ в [Thinking]. Не выдумывай числа. Если нужны расчёты, sensitivity или финансовый эффект — отметь handoff в [Analytics].\n\nПострой 3 сценария:\n1. Base\n2. Optimistic\n3. Downside\n\nДля каждого сценария определи:\n- что происходит;\n- ключевые допущения;\n- trigger;\n- leading indicators;\n- downside;\n- reversibility;\n- decision implication.\n\nВерни:\n| Scenario | What happens | Key assumptions | Trigger | Leading indicators | Downside | Reversibility | Decision implication |\n|---|---|---|---|---|---|---|---|\n\nДополнительно:\n- cross-scenario risks:\n- what would change the decision:\n- handoff required: [Analytics] / [LLM] / [Codex] / [AI OS] / none\n- recommendation:\n- status:\n- confidence:\n- next step:\n",
+      "заметка": "Base / optimistic / downside"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K7",
+      "название": "Критерии",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — CRITERIA / DECISION RULES\n\nВопрос:\n[описать]\n\nВарианты, если уже есть:\n[вставить]\n\nЗадача:\nОпредели критерии выбора в [Thinking] и проверь, какое решение будет рациональным при текущих ограничениях.\n\nСобери критерии:\n- speed;\n- quality;\n- cost;\n- risk;\n- reversibility;\n- evidence strength;\n- operational complexity;\n- dependency on other projects;\n- personal / stakeholder impact, если применимо.\n\nДля каждого критерия укажи:\n| Criterion | Weight 1–5 | Why it matters | Measurement / signal | Deal-breaker threshold |\n|---|---:|---|---|---|\n\nВерни:\n1. Decision criteria:\n2. Deal-breakers:\n3. Trade-offs:\n4. Which option wins under current criteria:\n5. What changes the decision:\n6. Missing evidence:\n7. Status:\n8. Confidence:\n9. Next step:\n",
+      "заметка": "Weighted criteria / decision rules"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K8",
+      "название": "Пересмотр",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — REVISIT TRIGGER\n\nРешение / кандидат решения:\n[описать]\n\nТекущий статус:\nчерновик / кандидат решения / рекомендовано / заблокировано / нужна передача / принято / устарело\n\nЗадача:\nОпредели условия пересмотра решения в [Thinking]. Решение не должно жить вечно без проверки.\n\nПроверь возможные triggers:\n- появились новые данные;\n- изменились cost / risk / timing / scope;\n- QA fail;\n- допущение оказалось неверным;\n- implementation feedback из [Analytics] / [LLM] / [Codex] противоречит решению;\n- owner rejects hypothesis;\n- решение становится трудно обратимым.\n\nВерни:\n1. Decision:\n2. Current status:\n3. Revisit triggers:\n4. Leading indicators:\n5. Next review date / condition:\n6. Owner:\n7. What to monitor:\n8. What would force rollback / pause:\n9. Confidence:\n10. Next step:\n",
+      "заметка": "Revisit trigger / next review"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K9",
+      "название": "В Анализ",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ИЗ [Thinking] В [Analytics]\n\nОт: [Thinking]\nКому: [Analytics]\n\nТип задачи:\n[calculation / scenario quantification / metric check / budget impact / plan-fact / data validation]\n\nDecision context:\n- вопрос решения:\n- варианты для проверки:\n- период:\n- метрики:\n- единицы / валюта:\n- допущения:\n- что нужно посчитать:\n- что нельзя считать без данных:\n\nExpected analytical output:\n- таблица / расчёт / sensitivity / dashboard / data quality check\n\nAcceptance criteria:\n- формулы видны;\n- источники указаны;\n- assumptions отделены от facts;\n- limitations указаны;\n- выводы не сильнее данных.\n\nRisks:\nEvidence / confidence:\nOpen questions:\nNext step:\n",
+      "заметка": "Thinking → Analytics handoff"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K10",
+      "название": "В LLM",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ИЗ [Thinking] В [LLM]\n\nОт: [Thinking]\nКому: [LLM]\n\nТип задачи:\n[memo rewrite / narrative / prompt / context package / revisor]\n\nDecision context:\n- вопрос:\n- recommended decision:\n- status:\n- audience:\n- desired tone:\n\nПередавать только curated context:\n- verified facts;\n- assumptions clearly marked;\n- options considered;\n- risks;\n- limitations;\n- confidence;\n- accepted terminology.\n\nНе передавать:\n- raw dump;\n- secrets / API keys / .env;\n- неподтверждённые claims как facts;\n- приватные данные без разрешения.\n\nExpected output:\n[описать]\n\nAcceptance criteria:\n- facts / interpretation / recommendation разделены;\n- unsupported claims помечены или удалены;\n- confidence и limitations сохранены;\n- стиль стал яснее, но смысл не усилен;\n- revisor не добавляет новые факты.\n\nRisks:\nOpen questions:\nNext step:\n",
+      "заметка": "Thinking → LLM handoff"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K11",
+      "название": "В Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ИЗ [Thinking] В [Codex]\n\nВНИМАНИЕ:\nИспользовать только если решение уже имеет статус «рекомендовано» или «принято».\nЕсли решение не принято — сначала вернуть в [Thinking] / [Analytics].\n\nОт: [Thinking]\nКому: [Codex]\n\nТип задачи:\n[implementation / automation / tests / file generation]\n\nAccepted decision:\n- decision:\n- status:\n- owner:\n- acceptance criteria:\n- constraints:\n- what not to change:\n\nFiles to inspect:\n-\n\nFiles to change:\n-\n\nForbidden actions:\n- не менять business logic без acceptance;\n- не добавлять secrets / API keys / .env;\n- не править main branch напрямую;\n- не сливать автоматически;\n- не расширять scope без согласования.\n\nExpected outputs:\n-\n\nTests / checks:\n-\n\nRollback:\n-\n\nResidual risks:\nOpen questions:\nNext step:\n",
+      "заметка": "Thinking → Codex after accepted decision"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K12",
+      "название": "Участники",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — STAKEHOLDER MAP\n\nРешение / ситуация:\n[описать]\n\nУчастники:\n[кто вовлечён]\n\nЗадача:\nРазобрать участников, интересы, сопротивление и коммуникационные риски в [Thinking].\n\nДля каждого участника определи:\n| Stakeholder | Role | Interest | Incentive | Concern | Influence | Support / resist / neutral | Needed action |\n|---|---|---|---|---|---|---|---|\n\nПроверь:\n- кто принимает решение;\n- кто влияет неформально;\n- кто несёт последствия;\n- где конфликт интересов;\n- где скрытое сопротивление;\n- где нужно согласование;\n- где решение может сломаться из-за коммуникации.\n\nВерни:\n1. Stakeholder map:\n2. Main alignment risk:\n3. Communication risks:\n4. Required approvals:\n5. Safer framing:\n6. What not to say / not to promise:\n7. Status:\n8. Confidence:\n9. Next step:\n",
+      "заметка": "Stakeholder / incentives map"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K13",
+      "название": "Остановка",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — STOP / PAUSE / ROLLBACK\n\nРешение / план:\n[описать]\n\nЗадача:\nОпредели условия остановки, паузы и отката в [Thinking].\n\nРаздели:\n- STOP: когда продолжать нельзя;\n- PAUSE: когда нужно остановиться и собрать данные;\n- ROLLBACK: когда нужно вернуться к предыдущему состоянию;\n- ESCALATE: когда нужно передать выше / в другой проект.\n\nПроверь stop conditions:\n- нет ключевых данных;\n- цена ошибки выше ожидаемой;\n- риск стал необратимым;\n- QA fail;\n- владелец не подтверждён;\n- acceptance criteria не определены;\n- появились новые blockers;\n- решение требует [Analytics] / [LLM] / [Codex], но handoff не сделан.\n\nВерни:\n| Condition | Type: stop/pause/rollback/escalate | Trigger | Detection check | Owner | Action |\n|---|---|---|---|---|---|\n\nИтог:\n- current verdict: proceed / pause / stop / rollback / handoff\n- main blocker:\n- minimum safe next step:\n- confidence:\n",
+      "заметка": "Stop / pause / rollback"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K14",
+      "название": "Итог",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# РЕШЕНИЯ — FINAL DECISION RECORD\n\nВопрос:\n[описать]\n\nЧерновик решения / обсуждение:\n[вставить]\n\nЗадача:\nСобери финальную запись решения в [Thinking]. Не усиливай выводы выше evidence.\n\nПроверь перед финалом:\n- вопрос сформулирован;\n- facts отделены от assumptions;\n- рассмотрены 2–4 варианта;\n- вариант «ничего не делать» рассмотрен;\n- критерии выбора указаны;\n- риски и blockers видны;\n- acceptance criteria есть;\n- revisit trigger есть;\n- handoff нужен / не нужен;\n- owner указан.\n\nВерни:\n1. Decision:\n2. Status: черновик / кандидат решения / рекомендовано / заблокировано / нужна передача / принято / устарело\n3. Owner:\n4. Date:\n5. Context:\n6. Facts:\n7. Assumptions:\n8. Options considered:\n9. Recommendation:\n10. Why not alternatives:\n11. Risks / blockers:\n12. Acceptance criteria:\n13. Revisit trigger:\n14. Next review:\n15. Handoff:\n16. Confidence:\n17. What not to claim:\n18. Next step:\n",
+      "заметка": "Final decision record"
+    },
+    {
+      "экран": "РЕШЕНИЯ",
+      "кнопка": "K15",
+      "название": "Проект",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "<CHATGPT_THINKING_PROJECT_URL>",
+      "заметка": ""
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K2",
+      "название": "Панель",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ПАНЕЛЬ / DASHBOARD\n\nБизнес-вопрос:\n[описать]\n\nКонтекст:\n- аудитория:\n- решение, для которого нужна панель:\n- период:\n- валюта / единицы:\n- доступные данные:\n- отсутствующие данные:\n\nЗадача:\nСпроектируй аналитическую панель внутри [Analytics]. Не передавай в Codex, если не требуется реализация, код или автоматизация.\n\nОбязательно определи:\n- KPI / показатели;\n- grain;\n- period;\n- filters / slicers;\n- formulas;\n- source mart;\n- QA checks;\n- limitations.\n\nГлавные файлы:\n- stage_main_full: создать / спроектировать; без метрик, классификаторов и выводов;\n- mart_main_full: источник показателей, flags, QA, evidence и confidence;\n- mart_main_tz / mart_main_compact: управленческая версия для панели;\n- dashboard slices: только из mart_main_full.\n\nВерни:\n1. Question / scope:\n2. Audience / decision:\n3. Data available / missing:\n4. Data contract status:\n5. Main files:\n6. KPI catalog:\n7. Dashboard structure:\n8. Filters / slicers:\n9. Chart specs:\n   - chart_name:\n   - purpose:\n   - source_mart:\n   - metric:\n   - period:\n   - grain:\n   - filter:\n   - caption_claim:\n   - limitation:\n10. QA:\n11. What cannot be claimed:\n12. Acceptance status:\n13. Next step:",
+      "заметка": "Analytics dashboard / executive panel"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K3",
+      "название": "Показатель",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ПОКАЗАТЕЛЬ / METRIC CARD\n\nПоказатель или бизнес-вопрос:\n[описать]\n\nКонтекст:\n- аудитория:\n- период:\n- валюта / единицы:\n- источники данных:\n- известные ограничения:\n\nЗадача:\nСформируй Definition Card для показателя в [Analytics]. Расчётная логика должна быть deterministic, без скрытой LLM-интерпретации.\n\nОпредели:\n- business meaning;\n- formula;\n- numerator / denominator, если применимо;\n- grain;\n- period logic;\n- filters / exclusions;\n- source fields;\n- required mappings;\n- null / duplicate / currency policy;\n- reconciliation checks.\n\nГлавные файлы:\n- stage_main_full: какие поля нужны без метрик и классификаторов;\n- mart_main_full: где живёт формула и QA fields;\n- mart_main_tz / mart_main_compact: как показатель показывать руководителю.\n\nВерни:\n1. Metric name:\n2. Business purpose:\n3. Formula:\n4. Grain / period / filters:\n5. Required source columns:\n6. Stage requirements:\n7. Mart requirements:\n8. QA checks:\n9. Edge cases:\n10. Limitations:\n11. Forbidden claims:\n12. Confidence:\n13. Next step:",
+      "заметка": "Metric definition card"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K4",
+      "название": "Исх→Слой",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ИСХОДНИКИ → STAGE_MAIN_FULL\n\nБизнес-вопрос:\n[описать]\n\nВходные данные:\n[файлы / таблицы / поля / период]\n\nЗадача:\nСпроектируй слой RAW → stage_main_full для аналитического кейса в [Analytics].\n\nПравила:\n- RAW не изменять смыслово: только inventory, source metadata, raw totals, raw column list.\n- stage_main_full должен быть очищенным, нормализованным и типизированным.\n- В stage_main_full запрещены бизнес-метрики, классификаторы, risk labels, confidence labels, интерпретации и memo-текст.\n- Stage slices можно проектировать только после stage_main_full.\n- Если данных мало, явно зафиксируй gaps и assumptions.\n\nВерни:\n1. Question / scope:\n2. Input inventory:\n3. Data contract draft:\n   - dataset:\n   - owner:\n   - source:\n   - period:\n   - grain:\n   - primary keys:\n   - required columns:\n   - column types:\n   - date logic:\n   - currency / units:\n   - null policy:\n   - duplicate policy:\n   - freshness rule:\n   - mapping rules:\n4. RAW checks:\n5. stage_main_full spec:\n   - grain:\n   - required columns:\n   - transformations:\n   - lineage fields:\n   - QA fields:\n6. Reconciliation checks:\n7. Data risks:\n8. BLOCKERS:\n9. Next step:",
+      "заметка": "RAW → stage_main_full"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K5",
+      "название": "План/Факт",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ПЛАН / ФАКТ\n\nБизнес-вопрос:\n[описать]\n\nДанные:\n[план, факт, период, разрезы, валюта]\n\nЗадача:\nПодготовь план-факт анализ внутри [Analytics] с проверяемой логикой расчёта.\n\nОбязательно:\n- зафиксируй grain, period, filters и currency / units;\n- определи formulas: Plan, Fact, Delta, Delta %, ABS Delta, share_of_total;\n- отдели real variance, timing, data issue, mapping issue и hypothesis;\n- ранжируй отклонения по ABS Delta / materiality;\n- не называй причину подтверждённой без evidence.\n\nГлавные файлы:\n- stage_main_full: входные поля без бизнес-метрик;\n- mart_main_full: все расчёты, row_type, timing_status, risk_basis, confidence;\n- mart_main_tz / mart_main_compact: top deviations и управленческий вывод.\n\nВерни:\n1. Scope:\n2. Data contract status:\n3. Calculation method:\n4. Mart fields required:\n5. Top deviations logic:\n6. Findings:\n   - DATA FACT:\n   - CALCULATION RESULT:\n   - INTERPRETATION:\n   - HYPOTHESIS:\n   - RECOMMENDATION:\n7. Risks with risk_basis:\n8. Actions with owner / due date / status, если применимо:\n9. QA / reconciliation:\n10. Limitations:\n11. What cannot be claimed:\n12. Acceptance status:\n13. Next step:",
+      "заметка": "Plan / fact variance analysis"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K6",
+      "название": "Кач.данн.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — КАЧЕСТВО ДАННЫХ / DQ GATE\n\nДанные или кейс:\n[описать / вставить]\n\nЗадача:\nПроверь качество данных для аналитического кейса в [Analytics] до выводов, графиков и memo.\n\nПроверь:\n- required files exist;\n- required columns exist;\n- data types valid;\n- dates parsed correctly;\n- currency / units normalized;\n- null policy applied;\n- duplicate policy applied;\n- freshness checked;\n- mapping tables checked;\n- unmatched rows listed;\n- RAW total = STAGE total, если применимо;\n- STAGE total = MART total, если применимо.\n\nГлавные файлы:\n- stage_main_full exists or designed;\n- stage_main_full has no metrics / classifiers;\n- mart_main_full exists or designed;\n- mart_main_tz / compact exists or designed;\n- slices are derived from mart_main_full.\n\nВерни:\n1. DQ status: pass / fail / blocked\n2. Data contract gaps:\n3. Required checks:\n4. Nulls:\n5. Duplicates:\n6. Unmatched rows:\n7. Freshness issues:\n8. Reconciliation status:\n9. Impact on analysis:\n10. BLOCKERS:\n11. Allowed conclusions:\n12. Forbidden conclusions:\n13. Next step:",
+      "заметка": "Data quality gate"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K7",
+      "название": "Витрина",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ВИТРИНА / MART DESIGN\n\nБизнес-вопрос:\n[описать]\n\nДанные:\n[что доступно]\n\nЗадача:\nСпроектируй mart layer для анализа в [Analytics].\n\nОбязательно:\n- mart_main_full — полный источник истины для анализа, slices, charts и evidence;\n- mart_main_tz / mart_main_compact — короткая версия для руководителя / ТЗ;\n- все slices строятся только из mart_main_full;\n- формулы метрик не скрывать в тексте prompt;\n- не делать isolated mini-marts из raw slices.\n\nВерни:\n1. mart_main_full:\n   - business purpose:\n   - audience:\n   - grain:\n   - period:\n   - keys:\n   - source stage files:\n   - metrics:\n   - formulas:\n   - dimensions:\n   - classifiers:\n   - filters:\n   - QA totals:\n   - evidence fields:\n   - limitations:\n2. mart_main_tz / mart_main_compact:\n   - audience:\n   - shortened field list:\n   - headline metrics:\n   - risk / confidence fields:\n   - reference back to mart_main_full:\n3. Required slices:\n   - used_for:\n   - source_mart:\n   - metric:\n   - grain:\n   - filter:\n4. QA:\n   - STAGE total = MART total:\n   - formulas documented:\n   - unmatched rows:\n   - limitations:\n5. Acceptance status:\n6. Next step:",
+      "заметка": "mart_main_full + compact mart design"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K8",
+      "название": "Отклон.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ОТКЛОНЕНИЯ / DRIVER ANALYSIS\n\nБизнес-вопрос:\n[описать]\n\nДанные:\n[период, факт/план/база, разрезы]\n\nЗадача:\nНайди и объясни отклонения внутри [Analytics] через variance / driver / contribution logic.\n\nОбязательно:\n- зафиксируй metric, grain, period, filters;\n- используй mart_main_full или спроектируй его перед анализом;\n- ранжируй отклонения по ABS Delta / materiality;\n- отдели confirmed driver от hypothesis;\n- timing candidate не называй confirmed timing;\n- risk указывай только с risk_basis;\n- action указывай только с owner / due date / status.\n\nВерни:\n1. Question / scope:\n2. Source mart / required mart:\n3. Method:\n4. Top deviations table spec:\n   - item:\n   - plan / baseline:\n   - fact:\n   - delta:\n   - abs_delta:\n   - share_of_total:\n   - row_type:\n   - driver_candidate:\n   - driver_confirmed:\n   - confidence:\n5. Findings:\n6. Hypotheses to verify:\n7. Risks:\n8. Recommended actions:\n9. QA:\n10. Limitations:\n11. What cannot be claimed:\n12. Next step:",
+      "заметка": "Deviation / driver analysis"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K9",
+      "название": "Источник",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ИСТОЧНИК / DATA CONTRACT REVIEW\n\nИсточник или набор данных:\n[описать]\n\nЗадача:\nПроверь пригодность источника для аналитического кейса в [Analytics] и собери data contract.\n\nОпредели:\n- source system / file;\n- owner / business owner / technical owner;\n- refresh frequency;\n- load timestamp;\n- period;\n- grain;\n- primary keys;\n- foreign keys;\n- required columns;\n- optional columns;\n- column types;\n- allowed values;\n- date logic;\n- currency / units;\n- null policy;\n- duplicate policy;\n- freshness rule;\n- mapping rules.\n\nПроверь связь с главными файлами:\n- какие поля идут в stage_main_full;\n- какие расчётные поля появятся только в mart_main_full;\n- что попадёт в mart_main_tz / compact;\n- какие slices допустимы только после mart_main_full.\n\nВерни:\n1. Source inventory:\n2. Data contract status: complete / partial / blocked\n3. Missing fields:\n4. Mapping risks:\n5. Reconciliation approach:\n6. DQ checks:\n7. Analysis allowed:\n8. Analysis blocked:\n9. Next step:",
+      "заметка": "Source / data contract review"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K10",
+      "название": "Огранич.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ОГРАНИЧЕНИЯ / STOP CONDITIONS\n\nКейс, вывод или расчёт:\n[вставить]\n\nЗадача:\nПроверь, какие выводы можно и нельзя делать в [Analytics].\n\nСтоп-условия для управленческого вывода:\n- нет data contract;\n- grain не определён;\n- DQ status = Fail;\n- totals не reconciled;\n- metric formula missing;\n- currency / units mixed;\n- Low Confidence подаётся как финальная причина;\n- timing candidate подаётся как confirmed timing;\n- risk указан без risk_basis;\n- action указан без owner / due date / status;\n- INOUT используется без Definition Card;\n- chart caption сильнее данных;\n- нет mart_main_full для mart-based conclusion.\n\nВерни:\n1. Verdict: allowed / revise / blocked\n2. BLOCKERS:\n3. LIMITATIONS:\n4. Unsupported claims:\n5. Claims allowed as DATA FACT:\n6. Claims allowed as CALCULATION RESULT:\n7. Claims allowed only as HYPOTHESIS:\n8. Required QA before publication:\n9. Required data / fields:\n10. Next step:",
+      "заметка": "Limitations / stop conditions"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K11",
+      "название": "В LLM",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ИЗ [Analytics] В [LLM]\n\nОт: [Analytics]\nКому: [LLM]\nТип задачи:\n[редактура / narrative / prompt / context package / judge]\n\nЦель:\n[описать]\n\nКонтекст:\n[коротко]\n\nПередавать только curated context:\n- verified facts;\n- reconciled metrics;\n- source mart / table references;\n- compact tables;\n- limitations;\n- confidence;\n- desired tone / output format.\n\nНе передавать:\n- raw dump;\n- неподтверждённые claims как facts;\n- secrets / API keys / .env;\n- сырые логи;\n- chunks / embeddings / vector DB;\n- private client data без явного разрешения.\n\nАналитическая база:\n- stage_main_full:\n- mart_main_full:\n- mart_main_tz / compact:\n- QA status:\n- reconciliation status:\n\nОжидаемый результат:\n[описать]\n\nКритерии приёмки:\n- facts и interpretation разделены;\n- unsupported claims удалены или помечены;\n- limitations видны;\n- confidence указан;\n- текст не сильнее evidence.\n\nРиски:\nОткрытые вопросы:\nNext step:",
+      "заметка": "Analytics → LLM handoff with verified facts only"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K12",
+      "название": "В Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ИЗ [Analytics] В [Codex]\n\nОт: [Analytics]\nКому: [Codex]\nТип задачи:\n[implementation / automation / file generation / tests / pipeline]\n\nЦель:\n[описать]\n\nКонтекст, уже решённый в [Analytics]:\n- business question:\n- period:\n- grain:\n- metrics:\n- formulas:\n- data contract status:\n- stage_main_full spec:\n- mart_main_full spec:\n- mart_main_tz / compact spec:\n- QA requirements:\n\nFiles to inspect:\n-\n\nFiles to change:\n-\n\nConstraints:\n- не менять business logic без acceptance;\n- не строить mini-marts из raw slices;\n- не скрывать unresolved analysis в кодовой задаче;\n- не добавлять secrets / API keys / .env;\n- не править main branch напрямую;\n- не сливать изменения автоматически;\n- не расширять scope без согласования.\n\nExpected outputs:\n-\n\nTests / checks:\n-\n\nAcceptance criteria:\n- stage_main_full создан / обновлён согласно spec;\n- mart_main_full создан / обновлён согласно formulas;\n- compact mart создан из full mart;\n- slices derived from mart_main_full;\n- reconciliation checks passed or failed with explanation;\n- residual risks listed;\n- rollback notes provided.\n\nРиски:\nОткрытые вопросы:\nNext step:",
+      "заметка": "Analytics → Codex implementation handoff"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K13",
+      "название": "Вопросы",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ВОПРОСЫ / GAP CHECK\n\nБизнес-вопрос:\n[описать]\n\nДоступный контекст:\n[что известно]\n\nЗадача:\nОпредели, каких данных и решений не хватает для корректного анализа в [Analytics]. Не придумывай недостающий full context.\n\nПроверь gaps по блокам:\n- scope;\n- audience;\n- decision context;\n- period;\n- grain;\n- filters;\n- metrics;\n- formulas;\n- source files;\n- required columns;\n- mappings;\n- currency / units;\n- null / duplicate policy;\n- reconciliation;\n- stage_main_full;\n- mart_main_full;\n- mart_main_tz / compact;\n- QA / acceptance.\n\nВерни:\n1. Known facts:\n2. Assumptions:\n3. Missing data:\n4. Blocking questions: максимум 7\n5. Non-blocking questions:\n6. What can be designed now:\n7. What cannot be concluded yet:\n8. Suggested next step:",
+      "заметка": "Missing data / clarification checklist"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K14",
+      "название": "Для рук.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# АНАЛИЗ — ДЛЯ РУКОВОДИТЕЛЯ / EXECUTIVE MEMO\n\nБизнес-вопрос:\n[описать]\n\nПроверенные данные / расчёты:\n[вставить]\n\nЗадача:\nПодготовь структуру управленческого вывода в [Analytics] на основе verified evidence. Не делай сильный вывод без QA и source mart.\n\nИсточник для executive layer:\n- mart_main_tz / mart_main_compact для headline numbers;\n- mart_main_full для appendix / evidence;\n- charts только из slices derived from mart_main_full.\n\nСтруктура:\n1. Executive summary:\n2. Key numbers:\n   - metric:\n   - value:\n   - period:\n   - source mart:\n   - QA status:\n3. Main deviations:\n4. Main driver / confirmed cause / hypothesis:\n5. Risks with risk_basis:\n6. Confidence and why not higher:\n7. Recommended actions:\n   - action:\n   - owner:\n   - due date:\n   - status:\n8. Limitations:\n9. Appendix / evidence references:\n\nПравила:\n- numbers before adjectives;\n- hypothesis is not cause;\n- observation is not action;\n- risk without basis is not publishable;\n- action without owner / due date / status is observation;\n- visible report language: Russian business-readable;\n- technical IDs only in appendix / evidence.\n\nВерни:\n- memo_draft:\n- evidence_registry_needed:\n- unsupported_claims:\n- QA status:\n- acceptance status:\n- next step:",
+      "заметка": "Executive memo from compact mart"
+    },
+    {
+      "экран": "АНАЛИЗ",
+      "кнопка": "K15",
+      "название": "Проект",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "<CHATGPT_ANALYTICS_PROJECT_URL>",
+      "заметка": ""
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K2",
+      "название": "Реестр",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — РЕЕСТР PROMPT\n\nЗадача или prompt:\n[описать / вставить]\n\nОформи reusable prompt как запись реестра [LLM].\n\nЗаполни:\n- prompt_id:\n- task_type: draft / summarize / judge / revise / classify / extract / synthesize / orchestrate / route / eval\n- purpose:\n- input_requirements:\n- output_schema:\n- model_class: fast / reasoning / high-reasoning / local / judge\n- quality_gate:\n- known_failure_modes:\n- owner_project:\n- status: draft / active / deprecated / needs_review\n\nПравила:\n- не добавляй неподтверждённые факты;\n- не называй конкретную модель как постоянную истину;\n- отделяй факты от интерпретаций;\n- если данных мало, отметь missing evidence.\n\nВерни:\n- registry_item:\n- риски:\n- что проверить перед reuse:\n- следующий шаг:",
+      "заметка": "Prompt registry entry"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K3",
+      "название": "Проверка",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — JUDGE-ПРОВЕРКА\n\nТекст, prompt, workflow или результат:\n[вставить]\n\nПроверь как [LLM] judge:\n- отвечает ли исходной задаче;\n- отделены ли факты от интерпретаций;\n- есть ли hallucinations или unsupported claims;\n- не перепутан ли маршрут: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex];\n- хватает ли входных данных, ограничений и output schema;\n- видны ли confidence, limitations и next step;\n- нужен ли revise.\n\nВерни строго:\n- verdict: pass / revise / blocked\n- reason:\n- unsupported_claims:\n- weak_evidence:\n- wrong_routing:\n- missing_constraints:\n- required_fixes:\n- final_quality_status:",
+      "заметка": "Judge review / hallucination check"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K4",
+      "название": "Доработка",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — ДОРАБОТКА PROMPT / OUTPUT\n\nИсходный текст:\n[вставить]\n\nЗадача:\nПерепиши яснее, короче и структурнее, сохранив смысл.\n\nПравила:\n- не добавляй новые факты;\n- не усиливай уверенность;\n- не превращай гипотезы в факты;\n- отметь места, где нужна проверка;\n- сохрани routing и ограничения;\n- если исходник слабый, явно скажи, что именно слабое.\n\nВерни:\n- улучшенная версия:\n- что изменено:\n- что осталось неподтверждённым:\n- риски:\n- следующий шаг:",
+      "заметка": "Revise without new facts"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K5",
+      "название": "Контекст",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — CONTEXT PACKAGE\n\nЗадача:\n[описать]\n\nСобери compact context package для LLM.\n\nВключи:\n- цель;\n- task_type;\n- проверенные факты;\n- релевантные выдержки / таблицы / ограничения;\n- assumptions;\n- missing evidence;\n- forbidden claims;\n- desired output format;\n- quality gate.\n\nНе включай:\n- raw dump;\n- секреты, API keys, `.env`;\n- сырые логи;\n- chunks / embeddings / vector DB;\n- неподтверждённые утверждения как факты.\n\nВерни:\n- context_package:\n- что исключено и почему:\n- риски контекста:\n- следующий шаг:",
+      "заметка": "Compact context package"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K6",
+      "название": "Модель",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — MODEL ROUTING\n\nЗадача:\n[описать]\n\nОпредели класс модели для выполнения задачи.\n\nПроверь критерии:\n- task_type;\n- reasoning need;\n- context size;\n- latency;\n- privacy;\n- tool access;\n- cost sensitivity;\n- quality gate;\n- need for judge/revise.\n\nКлассы:\n- fast;\n- reasoning;\n- high-reasoning;\n- local;\n- judge.\n\nПравила:\n- не hardcode конкретные модели как постоянную истину;\n- для актуальных цен, лимитов, API и release status нужна свежая проверка;\n- deterministic расчёты маршрутизируй в [Analytics];\n- код и repo changes — в [Codex].\n\nВерни:\n- recommended_model_class:\n- почему:\n- альтернативный класс:\n- quality_gate:\n- handoff_target:\n- следующий шаг:",
+      "заметка": "Model class routing"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K7",
+      "название": "Качество",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — EVAL GATE\n\nOutput для проверки:\n[вставить]\n\nПроверь качество LLM-output:\n- следует ли requested schema;\n- отвечает ли задаче;\n- отделены ли facts / interpretation / recommendation / hypothesis;\n- перечислены ли unsupported claims;\n- есть ли evidence references, если они доступны;\n- указаны ли confidence и limitations;\n- корректен ли route / handoff;\n- результат actionable.\n\nВерни строго:\n- quality_status: pass / revise / blocked\n- reason:\n- schema_mismatches:\n- unsupported_claims:\n- missing_evidence:\n- required_revision:\n- revision_applied: yes / no / not_applicable\n- next_step:",
+      "заметка": "LLM eval gate"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K8",
+      "название": "Внешн.ИИ",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — EXTERNAL AI HANDOFF\n\nЗадача для внешнего AI / инструмента:\n[описать]\n\nСобери handoff package.\n\nЗаполни:\n- goal:\n- owner_project:\n- context_summary:\n- allowed_inputs:\n- forbidden_inputs:\n- expected_output:\n- evidence_rules:\n- acceptance_criteria:\n- rollback_or_stop_condition:\n- QA_gate:\n\nЗапрещено передавать:\n- secrets / API keys / `.env`;\n- raw financial dumps без явного разрешения;\n- сырые логи;\n- raw transcripts;\n- chunks / vector DB / embeddings;\n- private client data;\n- production credentials.\n\nВерни:\n- handoff_package:\n- hype / tool-choice risk:\n- что проверить после результата:\n- следующий шаг:",
+      "заметка": "External AI handoff package"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K9",
+      "название": "В Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПЕРЕДАЧА ЗАДАЧИ\n\nОт:\nКому: [Codex]\nТип задачи:\nЦель:\nКонтекст:\nВходные данные:\nОграничения:\nОжидаемый результат:\nКритерии приёмки:\nРиски:\nПодтверждения и уверенность:\nОткрытые вопросы:",
+      "заметка": ""
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K10",
+      "название": "Порядок",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — LLM WORKFLOW ORDER\n\nЗадача:\n[описать]\n\nПострой порядок работы без новых концепций.\n\nИспользуй цепочку:\n1. route;\n2. context package;\n3. prompt / template;\n4. model routing;\n5. generate draft;\n6. judge;\n7. revise;\n8. final;\n9. handoff / next step.\n\nДля каждого шага укажи:\n- вход;\n- выход;\n- owner project;\n- quality gate;\n- stop condition.\n\nВерни:\n- recommended_workflow:\n- где нужен judge:\n- где нужен handoff:\n- риски:\n- следующий шаг:",
+      "заметка": "Route → context → prompt → model → generate → judge → revise → final"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K11",
+      "название": "Черн→Пров",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — ЧЕРНОВИК → ПРОВЕРКА → ДОРАБОТКА\n\nЗадача:\n[описать]\n\nСделай controlled LLM loop:\n\n1. Draft:\n- подготовь черновик по задаче;\n- отдели факты от интерпретаций;\n- не добавляй неподтверждённые факты.\n\n2. Judge:\n- найди unsupported claims;\n- проверь routing, constraints, evidence и limitations;\n- дай verdict: pass / revise / blocked.\n\n3. Revise:\n- исправь только найденные проблемы;\n- не добавляй новые claims;\n- явно покажи, что изменено.\n\nВерни:\n- draft:\n- judge_verdict:\n- required_revision:\n- revised_final:\n- limitations:\n- next_step:",
+      "заметка": "Controlled draft → judge → revise loop"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K12",
+      "название": "Сбои",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — FAILURE MODES\n\nPrompt, workflow или output:\n[вставить]\n\nНайди возможные сбои LLM-процесса:\n- wrong routing;\n- raw dump вместо curated context;\n- неподтверждённые claims;\n- скрытые assumptions;\n- слабый output schema;\n- отсутствие acceptance criteria;\n- отсутствие judge/revise;\n- overconfidence;\n- tool chosen before task;\n- vague Codex handoff.\n\nВерни:\n- failure_modes:\n- severity: low / medium / high\n- trigger:\n- prevention:\n- detection_check:\n- required_fix:\n- next_step:",
+      "заметка": "Known failure modes"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K13",
+      "название": "Структура",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — OUTPUT SCHEMA / CONTRACT\n\nЗадача:\n[описать]\n\nСпроектируй структуру ответа / output contract.\n\nОпредели:\n- task_type;\n- required sections;\n- fields;\n- accepted statuses;\n- evidence rules;\n- confidence format;\n- limitations format;\n- handoff format, если нужен;\n- acceptance criteria.\n\nПравила:\n- структура должна быть проверяемой;\n- не добавляй неподтверждённые факты;\n- отделяй facts от interpretation;\n- укажи, что считается fail.\n\nВерни:\n- output_schema:\n- validation_rules:\n- examples_of_fail:\n- quality_gate:\n- следующий шаг:",
+      "заметка": "Output schema / contract"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K14",
+      "название": "Финал QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПРОСЫ — FINAL QA\n\nФинальный output:\n[вставить]\n\nПроверь перед использованием / сохранением / передачей дальше:\n- задача выполнена;\n- схема соблюдена;\n- facts и interpretation разделены;\n- unsupported claims удалены или помечены;\n- confidence указан;\n- limitations видны;\n- route / owner project верный;\n- handoff содержит acceptance criteria, если нужен;\n- next step конкретный.\n\nВерни:\n- final_verdict: pass / revise / blocked\n- release_notes:\n- residual_risks:\n- what_not_to_claim:\n- approved_next_step:",
+      "заметка": "Final QA before reuse"
+    },
+    {
+      "экран": "ЗАПРОСЫ",
+      "кнопка": "K15",
+      "название": "Проект",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "<CHATGPT_LLM_PROJECT_URL>",
+      "заметка": ""
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K2",
+      "название": "ТЗ Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Universal implementation-ready task package",
+      "текст_или_цель": "# CODEX — TASK PACKAGE FACTORY\n\nВходной handoff:\n[вставить]\n\nЗадача:\nСобери implementation-ready task package для Codex. Не реализуй задачу. Не редактируй файлы. Не добавляй неподтверждённые требования.\n\nПроверь, что вход содержит или явно помечает:\n- context;\n- objective;\n- repository / local path;\n- inputs;\n- files to inspect;\n- files allowed to modify;\n- forbidden actions;\n- expected outputs;\n- acceptance criteria;\n- tests / smoke checks;\n- rollback plan;\n- autonomy mode.\n\nЕсли данных не хватает, не выдумывай. Пометь status: revise / blocked.\n\nВерни строго:\n\n# Codex Task\n\n## Context\n## Objective\n## Autonomy mode\nnormal / long-run / inspect-only\n\n## Inputs\n## Repository / local path\n## Files to inspect\n## Files allowed to modify\n## Forbidden actions\n## Expected outputs\n## Acceptance criteria\n## Tests / smoke checks\n## Rollback plan\n## Hard blockers\n## Assumptions\n## Final response format\n\nSummary:\nFiles changed:\nTests/checks run:\nAssumptions:\nRisks/limitations:\nRollback:\nAcceptance status:\nNext step:"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K3",
+      "название": "Long-run",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Ultra-long / Codex APP task package",
+      "текст_или_цель": "# CODEX — LONG-RUN TASK PACKAGE\n\nВходной handoff:\n[вставить]\n\nЗадача:\nСобери ultra-long / Codex APP task package. Не исполняй задачу. Не редактируй файлы.\n\nИспользовать только если:\n- задача scoped;\n- изменения локальные и обратимые;\n- allowed files понятны;\n- есть checks / smoke checks;\n- можно продолжать без микровопросов до hard blocker.\n\nДобавь:\n- execution mode;\n- batches;\n- allowed scope;\n- forbidden actions;\n- retry policy;\n- stop conditions;\n- final report contract.\n\nВерни:\n\n# Codex APP Long-run Task\n\n## Context\n## Objective\n## Execution mode\nultra-long-local / long-run / inspect-only\n\n## Inputs\n## Repository / local path\n## Allowed files\n## Forbidden files/actions\n## Batch plan\n## Checks per batch\n## Acceptance criteria\n## Stop conditions\n## Rollback plan\n## Final report format"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K4",
+      "название": "QA ТЗ",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Judge check before executor handoff",
+      "текст_или_цель": "# CODEX — TASK PACKAGE QA / JUDGE\n\nCodex task package:\n[вставить]\n\nЗадача:\nПроверь как @judge, готово ли ТЗ к передаче исполнителю Codex. Не реализуй задачу.\n\nПроверь:\n- objective один и проверяемый;\n- context достаточный;\n- repository / local path указан;\n- files to inspect указаны;\n- files allowed to modify указаны;\n- forbidden actions указаны;\n- expected outputs проверяемы;\n- acceptance criteria можно отметить pass/fail;\n- tests / smoke checks соответствуют риску;\n- rollback plan есть;\n- hard blockers видны;\n- scope не расширен;\n- нет business logic / formulas / schemas / output contracts без explicit acceptance;\n- нет secrets / `.env` / credentials;\n- нет production/deploy/runtime mutation.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nMissing fields:\nScope risks:\nForbidden-action risks:\nUnsupported assumptions:\nHard blockers:\nRequired fixes:\nApproved task type:\nReady for Codex: yes / no"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K5",
+      "название": "Blocker",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Why the task cannot safely proceed",
+      "текст_или_цель": "# CODEX — BLOCKER REPORT\n\nВходная задача / handoff:\n[вставить]\n\nЗадача:\nОпредели, почему задачу нельзя безопасно передать в Codex сейчас. Не реализуй. Не придумывай недостающие данные.\n\nПроверь blocker categories:\n- нет objective;\n- нет repository / local path;\n- нет allowed files;\n- нет forbidden actions;\n- нет acceptance criteria;\n- нет tests / smoke checks;\n- нет rollback;\n- нужны secrets / `.env` / credentials;\n- затрагивается production/deploy/runtime;\n- меняются business logic / formulas / schemas / APIs / output contracts;\n- требуется destructive action;\n- невозможно проверить результат.\n\nВерни:\nblocked_reason:\nmissing_input:\nrisk_if_continue:\nsafe_next_step:\nwhat can be prepared now:\nwhat is blocked:"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K6",
+      "название": "Docs-only",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Safe documentation/settings task package",
+      "текст_или_цель": "# CODEX — DOCS-ONLY TASK PACKAGE\n\nВходной handoff:\n[вставить]\n\nЗадача:\nСобери task package для безопасной docs-only задачи. Не реализуй.\n\nРазрешённый scope:\n- README;\n- setup docs;\n- manifest;\n- upload guide;\n- project settings;\n- documentation consistency.\n\nЗапрещено:\n- менять business logic;\n- менять governed KB content без explicit scope;\n- менять source cards / raw transcripts / chunks / embeddings / vector DB;\n- добавлять web UI / semantic search / agentic workflow;\n- трогать secrets / `.env`.\n\nВерни полный Codex Task Package с:\n- allowed files;\n- forbidden files/actions;\n- docs-only checks;\n- acceptance criteria;\n- rollback plan."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K7",
+      "название": "Bugfix",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Bugfix package: reproduce/root cause/test",
+      "текст_или_цель": "# CODEX — BUGFIX TASK PACKAGE\n\nОписание ошибки:\n[вставить]\n\nЗадача:\nСобери task package на bugfix. Не исправляй ошибку.\n\nОбязательно включи:\n- observed behavior;\n- expected behavior;\n- reproduction steps or evidence;\n- likely files to inspect;\n- files allowed to modify;\n- forbidden actions;\n- minimal fix principle;\n- regression test / smoke check;\n- acceptance criteria;\n- rollback plan.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K8",
+      "название": "Refactor",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Refactor package without behavior changes",
+      "текст_или_цель": "# CODEX — REFACTOR TASK PACKAGE\n\nВходной handoff:\n[вставить]\n\nЗадача:\nСобери task package на безопасный refactor. Не реализуй.\n\nОбязательные условия:\n- behavior must be preserved;\n- output contracts must be preserved;\n- no business logic changes;\n- no schema/API/column changes unless explicitly accepted;\n- regression/golden checks required where possible.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K9",
+      "название": "Pipeline",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Notebook/script to RAW-STAGE-MART-GRAPHICS-LLM-MEMO package",
+      "текст_или_цель": "# CODEX — NOTEBOOK / SCRIPT TO PIPELINE TASK PACKAGE\n\nВходной handoff из [Analytics] или текущего проекта:\n[вставить]\n\nЗадача:\nСобери task package на перевод Python notebooks / scripts в воспроизводимый pipeline. Не реализуй.\n\nЦелевая архитектура:\nRAW → STAGE → MART → GRAPHICS → LLM PACKAGE → MEMO → QA\n\nПроверь, что уже определено:\n- repository / local path;\n- notebooks / scripts to inspect;\n- source input files;\n- current outputs / baseline artifacts;\n- business question;\n- period;\n- grain;\n- metrics;\n- formulas;\n- data contract;\n- RAW inventory rules;\n- STAGE normalization rules;\n- MART metrics and dimensions;\n- GRAPHICS list and source mart/slices;\n- LLM PACKAGE evidence / context rules;\n- MEMO structure;\n- QA / reconciliation requirements.\n\nЕсли formulas, grain, output contracts или business definitions не определены — status: blocked / needs [Analytics].\n\nОбязательные ограничения:\n- не менять формулы без explicit acceptance;\n- не менять schemas / column names / output contracts без explicit acceptance;\n- не строить graphics напрямую из raw, только из mart/slices;\n- deterministic расчёты отделить от LLM narrative;\n- LLM MEMO писать только из evidence / context package;\n- не трогать raw/private files;\n- не добавлять secrets / `.env`;\n- не добавлять web UI / vector DB / agentic workflow без отдельного gate.\n\nExpected outputs:\n- raw loader;\n- stage builder;\n- mart builder;\n- graphics generator;\n- LLM context/evidence package builder;\n- memo draft generator or memo package;\n- QA / validation checks;\n- README / run instructions;\n- tests / smoke checks.\n\nAcceptance criteria:\n- baseline воспроизводится или явно зафиксирован как unavailable;\n- RAW totals = STAGE totals, где применимо;\n- STAGE totals = MART totals, где применимо;\n- output contract сохранён;\n- graphics generated from mart/slices;\n- LLM package contains verified facts only;\n- tests / smoke checks defined;\n- rollback plan provided.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K10",
+      "название": "Tests",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Tests / smoke / regression package",
+      "текст_или_цель": "# CODEX — TESTS / SMOKE CHECKS TASK PACKAGE\n\nВходная задача:\n[вставить]\n\nЗадача:\nСобери task package на tests / smoke checks. Не запускай проверки.\n\nОпредели:\n- risk level;\n- smallest meaningful checks;\n- existing tests to run;\n- tests to add, если нужно;\n- contract checks;\n- smoke checks;\n- golden/regression checks;\n- artifact validation;\n- pass/fail criteria.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K11",
+      "название": "Repo/PR",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Repository branch / PR workflow package",
+      "текст_или_цель": "# CODEX — REPO / PR TASK PACKAGE\n\nВходная задача:\n[вставить]\n\nЗадача:\nСобери task package для local repo → branch → commit → push → PR workflow. Не выполняй git-команды.\n\nВключи:\n- repository / local path;\n- expected branch name;\n- allowed files;\n- forbidden files;\n- checks before commit;\n- commit message type;\n- PR summary requirements;\n- merge restrictions;\n- cleanup expectations;\n- rollback plan.\n\nЗапрещено:\n- direct commit to main;\n- force push;\n- merge without explicit approval;\n- broad unrelated changes.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K12",
+      "название": "Review",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Review Codex result / diff / report before acceptance",
+      "текст_или_цель": "# CODEX — RESULT / DIFF REVIEW\n\nРезультат Codex, diff, PR summary или final report:\n[вставить]\n\nИсходное ТЗ / acceptance criteria:\n[вставить, если есть]\n\nЗадача:\nПроверь как @judge, можно ли принимать результат. Не добавляй новые требования и не исправляй код.\n\nПроверь:\n- objective выполнен;\n- изменения остались в allowed files;\n- forbidden actions не выполнены;\n- business logic / formulas / schemas / output contracts не изменены без explicit acceptance;\n- tests / smoke checks реально указаны;\n- failing checks не скрыты;\n- rollback path понятен;\n- residual risks названы;\n- final report содержит Summary, Files changed, Tests/checks, Assumptions, Risks, Acceptance status, Next step.\n\nВерни строго:\nReview verdict: pass / revise / blocked\nWhat passed:\nWhat failed:\nScope issues:\nContract / schema risks:\nMissing tests:\nUnsupported claims:\nRequired fix:\nAcceptance status:\nSafe next step:"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K13",
+      "название": "Handoff",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Return to source project or executor handoff",
+      "текст_или_цель": "# CODEX — HANDOFF BACK / NEXT PROJECT\n\nCodex task / result / blocker:\n[вставить]\n\nЗадача:\nОпредели, нужно ли вернуть задачу в [Thinking], [Analytics], [LLM], [AI OS] или можно передавать executor-layer.\n\nВерни:\nCurrent status:\nBest destination:\nReason:\nWhat is ready:\nWhat is missing:\nRisks:\nNext handoff package:"
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K14",
+      "название": "Inspect",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "заметка": "Inspect-only project structure package",
+      "текст_или_цель": "# CODEX — INSPECT-ONLY PROJECT STRUCTURE PACKAGE\n\nЗадача / репозиторий:\n[вставить]\n\nЗадача:\nСобери inspect-only task package для получения структуры проекта. Не реализуй, не редактируй файлы.\n\nЦель inspect:\n- понять архитектуру проекта;\n- найти ключевые папки;\n- найти notebooks / scripts / entrypoints;\n- найти tests / configs / docs;\n- найти input/output/artifact locations;\n- выявить private/sensitive зоны;\n- подготовить следующий safe handoff для Refactor / Pipeline / Tests / Long-run.\n\nAutonomy mode:\ninspect-only\n\nFiles allowed to modify:\nnone\n\nForbidden actions:\n- не менять файлы;\n- не делать commit / push / merge;\n- не удалять файлы;\n- не трогать secrets / `.env` / credentials;\n- не запускать destructive commands;\n- не менять business logic / formulas / output contracts.\n\nExpected output:\n- project tree на 2–3 уровня;\n- назначение ключевых папок;\n- main entrypoints;\n- notebooks / scripts inventory;\n- data / artifacts / generated outputs inventory;\n- tests/checks available;\n- configs / environment notes;\n- private/sensitive areas;\n- risks / blockers;\n- recommended next step.\n\nВерни Codex Task Package."
+    },
+    {
+      "экран": "CODEX",
+      "кнопка": "K15",
+      "название": "Проект",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "заметка": "",
+      "текст_или_цель": "<CHATGPT_CODEX_PROJECT_URL>"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Не перепрограммировать"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K2",
+      "название": "Quick QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — QUICK QA\n\nМатериал для проверки:\n[вставить]\n\nIntended use:\nчерновик / handoff / memo / prompt / Codex task / KB / руководитель / другое\n\nЗадача:\nПроверь как @judge. Не переписывай материал и не решай исходную задачу. Дай короткий verdict и один безопасный следующий шаг.\n\nПроверь:\n- отвечает ли материал исходной задаче;\n- есть ли unsupported claims;\n- разделены ли FACT / INTERPRETATION / HYPOTHESIS / RECOMMENDATION;\n- видны ли missing evidence, confidence и limitations;\n- верен ли routing / owner project;\n- есть ли actionable next step.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nReason:\nUnsupported claims:\nMissing evidence:\nWrong routing:\nMain risk:\nRequired revision:\nApproved next step:",
+      "заметка": "Universal 30-second judge gate"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K3",
+      "название": "Evidence",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — EVIDENCE QA\n\nМатериал для проверки:\n[вставить]\n\nClaim context / intended use:\n[черновик / memo / KB / handoff / руководитель / другое]\n\nЗадача:\nПроверь только доказательность. Не улучшай стиль и не расширяй содержание. Главный вопрос: какие утверждения нельзя безопасно использовать как facts.\n\nРаздели claims:\n- SUPPORTED FACT: подтверждено входным контекстом / источниками;\n- WEAK CLAIM: есть слабая опора или неполный контекст;\n- UNSUPPORTED CLAIM: нет подтверждения;\n- FRESHNESS REQUIRED: нужен свежий web/API/pricing/release/legal check;\n- INTERPRETATION: допустимое толкование, но не факт;\n- HYPOTHESIS: версия для проверки.\n\nВерни строго:\nEvidence verdict: pass / revise / blocked\nSupported claims:\nWeak claims:\nUnsupported claims:\nFreshness-required claims:\nWhat must not be claimed:\nRequired evidence:\nSafe wording:\nOwner project for verification:\nNext step:",
+      "заметка": "Evidence / unsupported claims check"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K4",
+      "название": "Факт/Толк",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — FACT / INTERPRETATION SPLIT\n\nМатериал для проверки:\n[вставить]\n\nЗадача:\nРаздели материал на факты, расчётные результаты, интерпретации, гипотезы, рекомендации и blockers. Не добавляй новые факты.\n\nКлассифицируй каждое значимое утверждение:\n- DATA FACT: прямо дано во входе / источнике;\n- CALCULATION RESULT: следует из формулы или расчёта;\n- INTERPRETATION: вывод из фактов;\n- HYPOTHESIS: версия, требующая проверки;\n- RECOMMENDATION: действие / совет;\n- BLOCKER: то, без чего нельзя принять вывод;\n- UNSUPPORTED: не подтверждено входом.\n\nПроверь:\n- не поданы ли гипотезы как факты;\n- не названа ли причина подтверждённой без evidence;\n- не сильнее ли рекомендация, чем данные;\n- есть ли confidence и limitations.\n\nВерни строго:\nSplit verdict: pass / revise / blocked\nDATA FACT:\nCALCULATION RESULT:\nINTERPRETATION:\nHYPOTHESIS:\nRECOMMENDATION:\nBLOCKER:\nUNSUPPORTED:\nRequired rewrite rules:\nSafe final wording:\nNext step:",
+      "заметка": "Facts vs interpretation splitter"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K5",
+      "название": "Schema QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — SCHEMA / OUTPUT CONTRACT QA\n\nМатериал для проверки:\n[вставить]\n\nExpected schema / output contract:\n[вставить, если есть]\n\nЗадача:\nПроверь, соблюдена ли требуемая структура ответа. Не оценивай красоту текста, оценивай проверяемость и полноту contract.\n\nПроверь:\n- есть ли все обязательные разделы;\n- заполнены ли обязательные поля;\n- статусы из допустимого набора;\n- facts / assumptions / risks / limitations разделены;\n- output можно проверить pass/fail;\n- next step конкретный;\n- handoff содержит objective, inputs, constraints, expected output, acceptance criteria, risks;\n- нет лишних неподтверждённых разделов.\n\nВерни строго:\nSchema verdict: pass / revise / blocked\nMissing required sections:\nMissing required fields:\nInvalid statuses / labels:\nAmbiguous fields:\nExtra risky content:\nRequired schema fixes:\nCorrected output skeleton:\nNext step:",
+      "заметка": "Output schema / contract check"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K6",
+      "название": "Fix brief",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — REVISION BRIEF\n\nМатериал для доработки:\n[вставить]\n\nИсходная задача / intended use:\n[вставить]\n\nЗадача:\nНе переписывай весь материал. Составь точный brief на доработку: что исправить, удалить, смягчить, подтвердить или передать в другой проект.\n\nПроверь:\n- unsupported claims;\n- missing evidence;\n- wrong routing;\n- overconfidence;\n- missing constraints;\n- нарушенную структуру;\n- слабый next step;\n- риск использования без acceptance.\n\nВерни строго:\nRevision verdict: revise / blocked / no revision needed\nMust delete:\nMust mark as hypothesis:\nMust support with evidence:\nMust soften wording:\nMust add:\nMust route / handoff:\nDo not change:\nPatch plan:\nAcceptance check after revision:\nNext step:",
+      "заметка": "Revision brief without rewriting everything"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K7",
+      "название": "Blocker",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — BLOCKER GATE\n\nМатериал / решение / handoff:\n[вставить]\n\nЗадача:\nОпредели, можно ли продолжать, или есть stop / pause / blocked condition. Не решай задачу вместо владельца.\n\nПроверь blockers:\n- нет исходной задачи / objective;\n- нет owner project;\n- нет ключевых данных / источников;\n- вывод сильнее evidence;\n- route неясен;\n- handoff без constraints / acceptance criteria;\n- Codex-задача без files / tests / rollback;\n- аналитический вывод без data contract / QA;\n- есть destructive action без явного gate;\n- есть secrets / `.env` / private data risk;\n- нужен fresh check, но он не выполнен.\n\nВерни строго:\nBlocker verdict: proceed / pause / blocked / escalate\nMain blocker:\nStop conditions:\nPause conditions:\nWhat is safe to do now:\nWhat is blocked:\nOwner project:\nRequired fix to unblock:\nMinimum safe next step:",
+      "заметка": "Stop / pause / blocked gate"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K8",
+      "название": "Status",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — STATUS CLASSIFIER\n\nМатериал / prompt / решение / handoff / output:\n[вставить]\n\nЗадача:\nОпредели рабочий статус материала. Не улучшай текст. Не повышай статус без evidence и acceptance.\n\nДопустимые статусы:\n- raw_capture: сырой вход;\n- draft: черновик;\n- candidate: можно обсуждать, но не использовать как финал;\n- revise_required: нужна доработка;\n- blocked: нельзя использовать до исправления blocker;\n- accepted: можно использовать в указанном intended use;\n- deprecated: устарело;\n- needs_handoff: нужно передать в другой проект.\n\nПроверь:\n- intended use;\n- evidence status;\n- completeness;\n- routing;\n- acceptance criteria;\n- residual risks;\n- next review trigger.\n\nВерни строго:\nStatus:\nWhy:\nAllowed use:\nForbidden use:\nEvidence status:\nAcceptance status: pass / revise / blocked\nResidual risks:\nRevisit trigger:\nOwner project:\nNext step:",
+      "заметка": "Artifact / decision / output status classification"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K9",
+      "название": "Risk QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — RISK QA\n\nМатериал / решение / план:\n[вставить]\n\nЗадача:\nПроверь как @judge риски, скрытые assumptions и failure modes. Не спорь ради спора: ищи реальные условия поломки.\n\nПроверь:\n- hidden assumptions;\n- weak evidence;\n- overconfidence;\n- ignored downside;\n- wrong routing;\n- premature automation;\n- missing owner / acceptance / rollback;\n- риск использования результата не по назначению;\n- что будет, если главный assumption ложный.\n\nВерни строго:\nRisk verdict: low / medium / high / blocked\nTop risks table:\n| Risk | Severity | Trigger | Impact | Detection check | Mitigation | Owner |\n|---|---|---|---|---|---|---|\nCritical assumptions:\nFailure modes:\nWhat would make this unsafe:\nRequired safeguards:\nSafer next step:\nConfidence:",
+      "заметка": "Risk / hidden assumptions / failure modes"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K10",
+      "название": "Accept",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — ACCEPTANCE GATE\n\nМатериал для приёмки:\n[вставить]\n\nIntended use:\nсохранить / передать / использовать в memo / использовать в KB / отправить в Codex / показать руководителю / другое\n\nAcceptance criteria:\n[вставить, если есть]\n\nЗадача:\nПроверь, можно ли принять материал для указанного intended use. Не принимай черновик как финал только потому, что он выглядит убедительно.\n\nПроверь:\n- задача выполнена;\n- output schema соблюдена;\n- evidence / sources / limitations видны;\n- unsupported claims удалены или помечены;\n- routing / owner project корректен;\n- acceptance criteria проверяемы;\n- residual risks перечислены;\n- next step конкретный;\n- для Codex есть constraints, tests, rollback;\n- для KB есть confidence и what_not_to_claim.\n\nВерни строго:\nAcceptance verdict: pass / revise / blocked\nAccepted for intended use: да / нет\nMissing acceptance criteria:\nRequired fixes before acceptance:\nResidual risks:\nWhat not to claim:\nSave / handoff allowed: да / нет\nApproved next step:",
+      "заметка": "Acceptance / save / handoff gate"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K11",
+      "название": "Halluc.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — HALLUCINATION / OVERCLAIM QA\n\nМатериал для проверки:\n[вставить]\n\nKnown source context, если есть:\n[вставить]\n\nЗадача:\nНайди возможные hallucinations, overclaiming и факты, которые могли устареть. Не добавляй новые факты и не ищи оправдания слабым claims.\n\nПроверь:\n- конкретные факты без источника;\n- имена, даты, версии, цены, лимиты, API, законы, релизы, benchmark claims;\n- причинно-следственные утверждения без evidence;\n- “лучший / самый / всегда / доказано” без основания;\n- выводы, которые сильнее входных данных;\n- invented sources / invented file references;\n- скрытое смешение факта и интерпретации.\n\nВерни строго:\nHallucination verdict: pass / revise / blocked\nLikely hallucinations:\nOverclaimed statements:\nFreshness required:\nUnsupported causality:\nInvented or missing sources:\nSafe replacements:\nClaims to remove:\nNext step:",
+      "заметка": "Hallucination / overclaiming check"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K12",
+      "название": "Route QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — ROUTE QA\n\nМаршрут / ответ / handoff для проверки:\n[вставить]\n\nЗадача:\nПроверь как @judge, корректен ли routing между проектами. Не решай целевую задачу.\n\nПроверь:\n- destination explicit;\n- task type корректный;\n- confidence honest;\n- facts / assumptions / risks разделены;\n- missing data visible;\n- one next step provided;\n- handoff used for project work;\n- нет расчётов в [AI OS];\n- нет кода в [Thinking];\n- нет prompt/workflow в [Analytics];\n- нет vague context в Things;\n- нет Codex без constraints / acceptance / rollback.\n\nВерни строго:\nRoute verdict: pass / revise / blocked\nWrong routing:\nCorrect destination:\nMissing constraints:\nUnsupported assumptions:\nMain risk:\nRequired fix:\nCorrected handoff skeleton:\nApproved next step:",
+      "заметка": "Cross-project routing judge"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K13",
+      "название": "Handoff",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — HANDOFF QA\n\nHandoff для проверки:\n[вставить]\n\nЗадача:\nПроверь, готов ли handoff к передаче в целевой проект. Не выполняй handoff и не решай задачу.\n\nПроверь обязательные поля:\n- From;\n- To;\n- Task type;\n- Objective;\n- Context;\n- Inputs;\n- Constraints;\n- Expected output;\n- Acceptance criteria;\n- Risks;\n- Evidence / confidence;\n- Open questions;\n- Suggested first step.\n\nДополнительно для [Codex] / Codex APP:\n- repository / local path;\n- files to inspect;\n- files allowed to change;\n- forbidden actions;\n- checks / smoke tests;\n- rollback / stop condition;\n- final report format.\n\nВерни строго:\nHandoff verdict: pass / revise / blocked\nMissing fields:\nAmbiguous scope:\nWrong destination:\nUnsupported claims inside handoff:\nMissing acceptance criteria:\nMissing rollback / stop condition:\nRequired fixes:\nApproved handoff summary:\nNext step:",
+      "заметка": "Handoff completeness and safety QA"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K14",
+      "название": "Final QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — FINAL QA\n\nФинальный материал:\n[вставить]\n\nIntended final use:\nсохранить в Knowledge / отправить в проект / использовать в memo / показать руководителю / передать в Codex / другое\n\nЗадача:\nПроверь материал перед финальным использованием. Не переписывай его полностью; дай verdict, release notes и обязательные исправления.\n\nПроверь:\n- исходная задача выполнена;\n- output schema соблюдена;\n- facts / interpretation / hypothesis / recommendation разделены;\n- unsupported claims удалены или помечены;\n- confidence и limitations видны;\n- route / owner project верный;\n- handoff содержит acceptance criteria, если нужен;\n- next step конкретный;\n- residual risks честно указаны;\n- материал не обещает production readiness без acceptance.\n\nВерни строго:\nFinal verdict: pass / revise / blocked\nRelease notes:\nUnsupported claims:\nRequired final fixes:\nResidual risks:\nWhat not to claim:\nApproved use:\nSave / share allowed: да / нет\nApproved next step:",
+      "заметка": "Final gate before save / share / reuse"
+    },
+    {
+      "экран": "ПРОВЕРКА",
+      "кнопка": "K15",
+      "название": "Fast Pass",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА — FAST PASS\n\nМатериал:\n[вставить]\n\nЗадача:\nДай ультракороткую QA-проверку. Не делай полный аудит. Используй только для низкорисковых черновиков.\n\nПроверь за один проход:\n- задача выполнена;\n- нет очевидных unsupported claims;\n- маршрут не выглядит ошибочным;\n- есть понятный next step.\n\nВерни строго:\nVerdict: pass / revise / blocked\nOne-line reason:\nBiggest risk:\nOne required fix:\nApproved next step:",
+      "заметка": "Ultra-short QA verdict"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Не перепрограммировать"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K2",
+      "название": "Inbox",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — INBOX / БЫСТРЫЙ ВХОД\n\nRaw input:\n[вставить]\n\nЗадача:\nНормализуй входящий материал для последующей обработки. Не решай задачу, не делай глубокий анализ, не создавай финальный routing и не превращай всё подряд в Things.\n\nExtract only:\n- capture_title:\n- raw_summary:\n- type_candidate: idea / problem / task / meeting / metric / bug / risk / memo_seed / research_seed / prompt_seed / decision_seed / unclear\n- facts_given:\n- missing_details:\n- capture_status: raw / normalized / route_needed / ready_for_project\n- routing_needed: yes / no\n- urgency: none / today / dated / unclear\n- next_safe_action: route later / ask / save to notes / create Things / create Calendar / handoff candidate\n- note_for_later:\n\nRules:\n- не придумывай недостающие факты;\n- если тип неясен, ставь unclear;\n- максимум один следующий безопасный шаг;\n- QA и project routing выполняются позже.",
+      "заметка": "Universal fast capture / normalize only"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K3",
+      "название": "Idea",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — IDEA / ГИПОТЕЗА\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй идею как сырой кандидат. Не оценивай её глубоко и не превращай в решение.\n\nExtract only:\n- idea:\n- trigger / why it appeared:\n- possible use:\n- known facts:\n- assumptions:\n- related area / project candidate:\n- evidence_needed:\n- not_decided:\n- capture_status: raw / normalized / route_needed\n- next_safe_action:\n\nRules:\n- гипотезу не называй фактом;\n- не обещай реализацию;\n- если идея требует проверки AI / инструмента / модели / pricing, пометь freshness_needed.",
+      "заметка": "Idea / hypothesis intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K4",
+      "название": "Problem",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — PROBLEM / БОЛЬ\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй проблему без поиска виноватых и без преждевременного решения.\n\nExtract only:\n- problem:\n- context:\n- affected area:\n- observed symptom:\n- evidence_given:\n- missing_details:\n- possible impact:\n- severity: low / medium / high / unclear\n- owner_project_candidate:\n- capture_status: raw / normalized / route_needed\n- next_safe_action:\n\nRules:\n- не назначай root cause, если он не указан;\n- не предлагай Codex, пока не определены scope и acceptance;\n- если проблема про данные, пометь candidate_owner: [Analytics].",
+      "заметка": "Problem / friction intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K5",
+      "название": "Task",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — TASK / ДЕЙСТВИЕ\n\nRaw input:\n[вставить]\n\nЗадача:\nПроверь, является ли вход конкретным действием. Не выполняй задачу.\n\nExtract only:\n- action:\n- object:\n- where / tool:\n- due date / time, if any:\n- done when:\n- blocker:\n- route_candidate: Things / Calendar / Project / unclear\n- project_candidate, if any:\n- capture_status: ready_for_task / route_needed / unclear\n- next_safe_action:\n\nRules:\n- если нет глагола действия, не отправляй в Things;\n- если есть жёсткая дата/время, пометь Calendar candidate;\n- если задача проектная, нужен later handoff.",
+      "заметка": "Action intake for Things or project"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K6",
+      "название": "Meeting",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — MEETING / CALENDAR\n\nRaw input:\n[вставить]\n\nЗадача:\nВытащи только данные для потенциального календарного события. Не создавай событие.\n\nExtract only:\n- event:\n- date:\n- time:\n- duration:\n- participants:\n- location / link:\n- preparation_needed:\n- deadline_or_event: deadline / meeting / reminder / unclear\n- calendar_readiness: ready / missing_details / unclear\n- missing_details:\n- next_safe_action:\n\nRules:\n- если нет даты или времени, не называй событие готовым;\n- если это действие без жёсткого времени, пометь Things candidate;\n- используй даты в формате YYYY-MM-DD, если дата известна.",
+      "заметка": "Calendar intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K7",
+      "название": "Metric",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — METRIC / KPI\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй показатель или аналитический вопрос для [Analytics]. Не считай и не придумывай формулу.\n\nExtract only:\n- metric_name:\n- business_question:\n- period:\n- grain:\n- formula_if_known:\n- source_if_known:\n- currency / units:\n- required_dimensions:\n- owner_project: [Analytics]\n- missing_data:\n- capture_status: raw / normalized / route_needed\n- next_safe_action:\n\nRules:\n- deterministic calculation позже в [Analytics];\n- если формула неизвестна, пиши formula_missing;\n- не делай выводы без data contract.",
+      "заметка": "Analytics metric intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K8",
+      "название": "Bug",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — BUG / ERROR\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй ошибку или сбой. Не исправляй и не назначай root cause без evidence.\n\nExtract only:\n- what_failed:\n- expected_behavior:\n- actual_behavior:\n- where_it_happened:\n- steps_to_reproduce:\n- impact:\n- severity: low / medium / high / blocker / unclear\n- likely_owner_project:\n- logs_or_files_mentioned:\n- missing_details:\n- next_safe_action:\n\nRules:\n- не проси raw logs/secrets в общий prompt;\n- если нужен Codex, позже потребуется repo, files, checks, rollback;\n- если severity blocker, пометь stop_or_escalate_candidate.",
+      "заметка": "Bug / incident intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K9",
+      "название": "Risk",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — RISK / WEAK SIGNAL\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй риск или слабый сигнал. Не превращай его в подтверждённую проблему без evidence.\n\nExtract only:\n- risk_signal:\n- source / context:\n- affected_area:\n- possible_trigger:\n- possible_impact:\n- evidence_given:\n- assumptions:\n- severity: low / medium / high / unclear\n- owner_project_candidate:\n- monitoring_signal:\n- next_safe_action:\n\nRules:\n- risk != fact;\n- не усиливай вероятность без данных;\n- если требуется decision review, пометь owner_project_candidate: [Thinking].",
+      "заметка": "Risk / weak signal intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K10",
+      "название": "Memo seed",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — MEMO SEED\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй заготовку будущей записки. Не пиши записку сейчас.\n\nExtract only:\n- memo_topic:\n- audience:\n- decision_or_question:\n- period:\n- key_facts_given:\n- sections_needed:\n- evidence_needed:\n- limitations:\n- owner_project_candidate: [Analytics] / [LLM] / [Thinking] / unclear\n- capture_status: raw / normalized / route_needed\n- next_safe_action:\n\nRules:\n- memo без evidence остаётся seed;\n- числа и таблицы должны прийти из [Analytics];\n- стиль и финальная упаковка позже в [LLM].",
+      "заметка": "Memo seed intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K11",
+      "название": "Research",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — RESEARCH SEED\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй тему исследования и границы. Не проводи исследование сейчас.\n\nExtract only:\n- research_topic:\n- research_question:\n- scope:\n- freshness_needed: yes / no / unclear\n- source_types_needed:\n- avoid_list:\n- expected_output:\n- relevance_for_Sergey:\n- owner_project_candidate: [AI OS] / [LLM] / [Thinking] / unclear\n- missing_details:\n- next_safe_action:\n\nRules:\n- если тема про AI-релизы, модели, API, pricing, benchmark или market facts — freshness_needed: yes;\n- не делай web claims внутри capture;\n- сохраняй как seed для последующего routing.",
+      "заметка": "Research topic intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K12",
+      "название": "Prompt seed",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — PROMPT SEED / LLM WORKFLOW\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй идею prompt, workflow или model routing для [LLM]. Не делай финальный prompt без quality gate.\n\nExtract only:\n- prompt_or_workflow_goal:\n- task_type_candidate: draft / summarize / judge / revise / classify / extract / synthesize / orchestrate / route / eval / unclear\n- input_requirements:\n- desired_output:\n- constraints:\n- model_class_candidate: fast / reasoning / high-reasoning / local / judge / unclear\n- quality_gate_needed:\n- known_risks:\n- owner_project: [LLM]\n- next_safe_action:\n\nRules:\n- не hardcode конкретную модель как постоянную истину;\n- reusable prompt требует registry item;\n- unsupported claims пометить как missing evidence.",
+      "заметка": "Prompt / LLM workflow intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K13",
+      "название": "Decision seed",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — DECISION SEED / РЕШЕНИЕ-КАНДИДАТ\n\nRaw input:\n[вставить]\n\nЗадача:\nЗафиксируй кандидат решения. Не отмечай его как принятое решение.\n\nExtract only:\n- decision_question:\n- candidate_option:\n- current_status: idea / candidate / discussed / unclear\n- facts_given:\n- assumptions:\n- unknowns:\n- blockers:\n- owner_project: [Thinking]\n- decision_readiness: not_ready / needs_options / needs_data / ready_for_review\n- next_safe_action:\n\nRules:\n- accepted decision может появиться только после review;\n- если нужны числа или сценарии, пометь handoff_candidate: [Analytics];\n- если нужна реализация, Codex только после accepted decision.",
+      "заметка": "Candidate decision intake"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K14",
+      "название": "Route later",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# CAPTURE — ROUTE LATER / TRIAGE PREP\n\nRaw input:\n[вставить]\n\nЗадача:\nПодготовь материал к последующей маршрутизации. Не решай целевую задачу и не делай финальный handoff.\n\nExtract only:\n- normalized_summary:\n- type_candidate:\n- possible_destinations:\n- why_unclear:\n- blocking_questions: максимум 3\n- facts_given:\n- missing_details:\n- capture_status: route_needed / ready_for_router / unclear\n- suggested_router_button: Raw → Route / Things? / Calendar? / Analytics? / LLM? / Codex? / Clarify\n- next_safe_action:\n\nRules:\n- если route confidence weak, не открывай project;\n- project handoff выполняется в папке МАРШРУТ;\n- QA выполняется позже, если материал пойдёт в project / Codex / memo / KB.",
+      "заметка": "Prepare material for later routing"
+    },
+    {
+      "экран": "ВХОД",
+      "кнопка": "K15",
+      "название": "Obsidian",
+      "действие": "Website/Open",
+      "настройка": "System → Website / Open",
+      "текст_или_цель": "<OBSIDIAN_INBOX_URI>",
+      "заметка": "Open Obsidian Inbox / AI OS capture note"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Не перепрограммировать"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K2",
+      "название": "Brief",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — BRIEF\n\nТема:\n[указать]\n\nАудитория:\n[руководитель / CFO / команда / личная база / другое]\n\nЦель записки:\n[решение / информирование / контроль / объяснение отклонений / предложение действий]\n\nПериод:\n[YYYY-MM-DD / месяц / квартал / год / не применимо]\n\nИсточник контекста:\n[Analytics / Thinking / AI OS / Research / другое]\n\nВходные материалы:\n[вставить кратко]\n\nОжидаемый output:\n[executive memo / analytical memo / decision memo / status memo / QA note]\n\nОграничения:\n- не придумывать факты;\n- не усиливать вывод выше evidence;\n- отделять факты, расчёт, интерпретацию, гипотезу и рекомендацию;\n- если данных не хватает — указать missing evidence;\n- не делать deterministic расчёты внутри memo;\n- если нужны расчёты — handoff в [Analytics].\n\nВерни строго:\n- memo_type:\n- audience:\n- intended_use:\n- decision/use:\n- required_sections:\n- required_inputs:\n- missing_inputs:\n- owner_project:\n- routing_needed: yes / no\n- next_step:",
+      "заметка": "Memo brief / постановка записки"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K3",
+      "название": "Context",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — CONTEXT PACKAGE\n\nМатериалы:\n[вставить]\n\nЗадача:\nСобери compact context package для записки. Не пиши финальный memo. Не передавай raw dump дальше.\n\nРаздели:\n- DATA FACT:\n- CALCULATION RESULT:\n- INTERPRETATION:\n- HYPOTHESIS:\n- RECOMMENDATION:\n- LIMITATION:\n- MISSING EVIDENCE:\n- UNSUPPORTED CLAIM:\n\nПроверь:\n- есть ли период у чисел;\n- есть ли source / mart / file reference;\n- не смешаны ли разные периоды;\n- не названы ли гипотезы подтверждёнными причинами;\n- какие claims нельзя использовать в memo.\n\nВерни строго:\n1. Memo question:\n2. Audience:\n3. Verified facts:\n4. Reconciled numbers:\n5. Source / mart / file references:\n6. Open assumptions:\n7. Unsupported claims:\n8. What cannot be claimed:\n9. Recommended memo structure:\n10. Handoff needed:\n11. Next step:",
+      "заметка": "Curated context package"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K4",
+      "название": "Facts",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — FACT TABLE\n\nКонтекст / данные:\n[вставить]\n\nЗадача:\nСобери только проверенные факты для записки. Не делай выводы, причины и рекомендации.\n\nВерни таблицу:\n| Fact | Period | Source | Evidence status | Confidence | Limitation |\n|---|---|---|---|---|---|\n\nОтдельно:\n- calculation_results:\n- assumptions:\n- hypotheses:\n- unsupported_claims:\n- facts_not_usable_yet:\n- missing_sources:\n- what_must_not_be_claimed:",
+      "заметка": "Fact table / evidence inventory"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K5",
+      "название": "Structure",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — STRUCTURE\n\nMemo brief:\n[вставить]\n\nCurated context / facts:\n[вставить]\n\nЗадача:\nСпроектируй структуру записки под цель и аудиторию. Не пиши полный текст и не добавляй новые факты.\n\nВыбери тип:\n- executive memo;\n- analytical memo;\n- decision memo;\n- status memo;\n- QA note.\n\nСобери структуру:\n1. Title\n2. Executive summary\n3. Key facts\n4. Analysis / interpretation\n5. Risks\n6. Recommendations / actions\n7. Limitations\n8. Evidence appendix\n\nДля каждого раздела укажи:\n| Section | Purpose | Inputs needed | Evidence required | What not to include |\n|---|---|---|---|---|\n\nВерни:\n- memo_type:\n- outline:\n- required evidence:\n- missing inputs:\n- sections to omit:\n- next step:",
+      "заметка": "Memo structure / outline"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K6",
+      "название": "Draft",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — DRAFT\n\nMemo brief:\n[вставить]\n\nCurated context:\n[вставить]\n\nЗадача:\nНапиши черновик записки на основе только предоставленного context.\n\nСтруктура:\n1. Executive summary\n2. Key facts\n3. Analysis\n4. Risks\n5. Recommendations\n6. Limitations\n7. Evidence appendix\n\nПравила:\n- не добавляй новые факты;\n- числа показывай с периодом и источником;\n- причины называй гипотезами, если они не подтверждены;\n- рекомендации делай только из facts / calculation results;\n- риски указывай только с risk_basis;\n- ограничения показывай явно;\n- если evidence слабое — помечай это в тексте.\n\nВерни строго:\n- memo_draft:\n- unsupported_claims:\n- missing_evidence:\n- weak_points:\n- confidence:\n- next_step:",
+      "заметка": "First memo draft from curated context"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K7",
+      "название": "Exec summary",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — EXECUTIVE SUMMARY\n\nMemo draft / facts:\n[вставить]\n\nАудитория:\n[указать]\n\nЗадача:\nСобери короткое executive summary. Не добавляй новые факты, числа или причины.\n\nПравила:\n- сначала вывод, потом 2–4 ключевых факта;\n- numbers before adjectives;\n- причина = hypothesis, если не подтверждена;\n- не обещай action без owner / due date / status;\n- явно покажи limitation, если вывод неполный.\n\nВерни:\n1. Executive summary: 3–6 предложений\n2. Key numbers:\n3. Main risk:\n4. Recommended action, if supported:\n5. Limitation:\n6. Confidence:\n7. What not to claim:",
+      "заметка": "Executive summary from memo/facts"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K8",
+      "название": "Risks",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — RISKS SECTION\n\nMemo context / draft:\n[вставить]\n\nЗадача:\nСобери блок рисков для записки. Не добавляй риски без основания.\n\nДля каждого риска укажи:\n| Risk | Risk basis | Trigger | Impact | Evidence | Severity | Mitigation | Owner |\n|---|---|---|---|---|---|---|---|\n\nПроверь:\n- риск подтверждён данными или это гипотеза;\n- есть ли trigger;\n- не перепутан ли риск с проблемой;\n- не перепутана ли рекомендация с наблюдением.\n\nВерни:\n- publishable_risks:\n- hypothesis_risks:\n- unsupported_risks_to_remove:\n- main_risk:\n- mitigation_needed:\n- confidence:",
+      "заметка": "Memo risk section with basis"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K9",
+      "название": "Actions",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — ACTIONS / RECOMMENDATIONS\n\nMemo context / findings:\n[вставить]\n\nЗадача:\nСобери рекомендации и action register для записки. Не превращай наблюдения в действия.\n\nПравила:\n- action должен иметь owner / due date / status или быть помечен как proposed;\n- recommendation должна следовать из facts / calculation results;\n- не добавляй инициативы без evidence;\n- если данных мало — предложи verification action.\n\nВерни таблицу:\n| Action | Why needed | Evidence | Owner | Due date | Status | Risk if skipped | Next check |\n|---|---|---|---|---|---|---|---|\n\nОтдельно:\n- recommendations_supported:\n- recommendations_to_defer:\n- observations_not_actions:\n- missing_owners:\n- confidence:",
+      "заметка": "Recommendations / action register"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K10",
+      "название": "Limitations",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — LIMITATIONS / WHAT NOT TO CLAIM\n\nMemo draft / context:\n[вставить]\n\nЗадача:\nОпредели ограничения записки и claims, которые нельзя публиковать.\n\nПроверь:\n- missing evidence;\n- mixed periods;\n- unreconciled numbers;\n- unclear source / mart;\n- hypothesis stated as cause;\n- risk without risk_basis;\n- action without owner / due date / status;\n- stale facts requiring fresh check;\n- unsupported recommendations.\n\nВерни строго:\n1. Limitations:\n2. Unsupported claims:\n3. Claims allowed as DATA FACT:\n4. Claims allowed as CALCULATION RESULT:\n5. Claims allowed only as HYPOTHESIS:\n6. Claims to remove:\n7. Required QA before final:\n8. Publication status: allowed / revise / blocked\n9. Next step:",
+      "заметка": "Limitations and forbidden claims"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K11",
+      "название": "Evidence",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — EVIDENCE APPENDIX\n\nMemo draft / facts / sources:\n[вставить]\n\nЗадача:\nСобери evidence appendix для записки. Не делай новый анализ.\n\nВерни таблицу:\n| Claim in memo | Evidence source | Period | Evidence status | Confidence | Limitation | Appendix note |\n|---|---|---|---|---|---|---|\n\nОтдельно:\n- claims_without_evidence:\n- weak_evidence_claims:\n- source_gaps:\n- fresh_check_needed:\n- what_to_remove_before_final:\n- evidence_readiness: pass / revise / blocked:",
+      "заметка": "Evidence appendix"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K12",
+      "название": "To LLM",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА → [LLM] HANDOFF\n\nОт:\n[Analytics / Thinking / AI OS / Research / Memo]\n\nКому:\n[LLM]\n\nТип задачи:\n[memo draft / memo revise / executive summary / style edit / memo QA]\n\nGoal:\n[описать]\n\nCurated context:\n[только проверенные факты, расчёты, ограничения]\n\nDo not pass:\n- raw dump;\n- неподтверждённые claims как facts;\n- secrets / .env / private data без разрешения;\n- расчёты без QA;\n- выводы сильнее evidence;\n- новые факты без источника.\n\nExpected output:\n[описать]\n\nAcceptance criteria:\n- facts / interpretation / recommendation separated;\n- unsupported claims listed;\n- limitations visible;\n- style improved but meaning not amplified;\n- no new facts added.\n\nRisks:\nEvidence / confidence:\nOpen questions:\nNext step:",
+      "заметка": "Memo → [LLM] handoff"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K13",
+      "название": "Memo QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — MEMO QA / JUDGE\n\nMemo draft:\n[вставить]\n\nBrief / intended use:\n[вставить]\n\nПроверь:\n- отвечает ли memo цели и аудитории;\n- есть ли executive summary;\n- отделены ли facts / calculation results / interpretation / hypothesis / recommendation;\n- есть ли unsupported claims;\n- не смешаны ли периоды;\n- не названы ли гипотезы подтверждёнными причинами;\n- есть ли risk_basis для рисков;\n- есть ли owner / due date / status у действий;\n- видны ли limitations;\n- есть ли evidence appendix;\n- можно ли передавать руководителю / сохранять.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nReason:\nUnsupported claims:\nPeriod issues:\nOverclaimed causes:\nMissing evidence:\nWeak recommendations:\nRequired revision:\nFinal readiness:\nApproved next step:",
+      "заметка": "Memo-specific judge gate"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K14",
+      "название": "Final",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ЗАПИСКА — FINAL MEMO\n\nRevised memo:\n[вставить]\n\nQA result:\n[вставить]\n\nЗадача:\nСобери финальную версию записки. Не добавляй новые факты после QA.\n\nВерни строго:\n1. Title:\n2. Date:\n3. Audience:\n4. Status: draft / reviewed / approved / blocked\n5. Executive summary:\n6. Key facts:\n7. Analysis:\n8. Risks:\n9. Recommendations:\n10. Limitations:\n11. Evidence appendix:\n12. Open questions:\n13. Next review trigger:\n14. Save / handoff recommendation:\n15. Confidence:\n16. What not to claim:",
+      "заметка": "Final memo record"
+    },
+    {
+      "экран": "ЗАПИСКА",
+      "кнопка": "K15",
+      "название": "Project",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "<CHATGPT_LLM_PROJECT_URL>",
+      "заметка": "Открыть целевой проект для memo / LLM work"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Built-in folder back; не перепрограммировать"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K2",
+      "название": "Brief",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — RESEARCH BRIEF\n\nСырая тема / вопрос:\n[вставить]\n\nЗадача:\nСформулируй исследовательское ТЗ. Не ищи источники и не делай финальный вывод. Нужно подготовить точный brief для внешнего поиска / Gemini / Perplexity / YouTube / GitHub.\n\nПравила:\n- не превращай тему в рекомендацию;\n- не выдумывай факты, цены, лимиты, даты и benchmarks;\n- отделяй known facts от assumptions;\n- укажи, какие claims требуют fresh check;\n- цель Research — найти candidate evidence / workflows / tools, а не принять решение.\n\nВерни строго:\nResearch question:\nBackground / known facts:\nAssumptions:\nScope in:\nScope out:\nMust-have criteria:\nAvoid / reject:\nFreshness requirement: needed / not needed / unknown\nSource types to search:\nOutput format:\nScoring rubric:\nOwner project candidate: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex] / unclear\nSuccess criteria:\nNext step:",
+      "заметка": "Research brief: topic, scope, criteria, freshness, output"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K3",
+      "название": "Sources",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — SOURCE MAP / INVENTORY\n\nТема / research brief / найденные источники:\n[вставить]\n\nЗадача:\nСобери карту источников. Источник — это кандидат на evidence, а не готовый факт.\n\nПроверь:\n- тип источника: official docs / paper / repo / demo / article / video / vendor / forum / listicle;\n- дату / freshness;\n- что именно источник поддерживает;\n- ограничения и bias;\n- есть ли первоисточник;\n- какие claims требуют повторной проверки.\n\nВерни строго:\nSource map:\n| Source | Type | Date / freshness | What it supports | Evidence strength: strong/medium/weak | Limitation / bias | Action: use/verify/reject |\n|---|---|---|---|---|---|---|\nStrongest sources:\nWeak / risky sources:\nMissing source types:\nClaims safe to carry forward:\nClaims requiring verification:\nClaims to reject:\nRecommended next search:\nRouting:",
+      "заметка": "Source inventory: what supports what, limits, use/verify/reject"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K4",
+      "название": "AI tools",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — AI TOOL SCAN\n\nИнструмент / категория / задача:\n[вставить]\n\nЗадача:\nОцени AI-инструмент или группу инструментов как candidate для работы Сергея. Не делай покупочную рекомендацию без свежей проверки цен, лимитов, условий и доступности.\n\nПроверь:\n- use case;\n- кто получает пользу;\n- входы / выходы;\n- setup complexity;\n- data privacy / client data risk;\n- vendor lock-in;\n- API / pricing / limit freshness;\n- альтернативы;\n- применимость к аудиту, аналитике, memo, routing, QA или Codex workflow.\n\nВерни строго:\nTool / category:\nPrimary use case:\nValue for Sergey:\nInput data needed:\nOutput artifact:\nSetup complexity: low / medium / high\nFreshness check needed: yes / no\nPrivacy / data risk:\nIntegration risk:\nAlternatives to compare:\nEvidence found / needed:\nHype risk: low / medium / high\nRecommendation status: explore / verify / reject / backlog\nOwner project:\nNext step:",
+      "заметка": "AI tool scan with use case, freshness, privacy, integration risk"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K5",
+      "название": "Workflow",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — WORKFLOW HUNT\n\nТема / задача / источник:\n[вставить]\n\nЗадача:\nНайди или извлеки повторяемый порядок работы. Ценность — не в новости, а в reproducible workflow с входами, шагами, выходом и проверкой качества.\n\nИщи:\n- concrete steps;\n- tools used;\n- input data / prompt / files;\n- output artifact;\n- quality check;\n- repeatability;\n- limitations;\n- применимость для Сергея.\n\nОтбраковывай:\n- мнения без demo;\n- новости без workflow;\n- listicles;\n- pure promotion;\n- claims без source trail.\n\nВерни строго:\nWorkflow name:\nProblem solved:\nInputs:\nSteps:\nTools:\nOutput artifact:\nQuality check:\nRepeatability: high / medium / low\nEvidence/source:\nAdaptation for Sergey:\nRisks / limits:\nOwner project candidate:\nNext safe step:",
+      "заметка": "Find repeatable workflow, not generic news or opinion"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K6",
+      "название": "Compare",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — COMPARE OPTIONS\n\nЧто сравнить:\n[вставить]\n\nКонтекст применения:\n[вставить]\n\nЗадача:\nСравни инструменты, источники, workflows или подходы. Не выбирай победителя сильнее, чем позволяет evidence.\n\nКритерии:\n- fit to task;\n- evidence quality;\n- operational depth;\n- freshness;\n- privacy / data risk;\n- setup complexity;\n- repeatability;\n- cost / pricing freshness, если применимо;\n- Sergey relevance;\n- hype risk.\n\nВерни строго:\nComparison scope:\nOptions compared:\n| Option | Best use | Evidence | Freshness | Setup | Risk | Sergey relevance | Hype risk | Verdict |\n|---|---|---|---|---|---|---|---|---|\nBest option if evidence holds:\nWhy not alternatives:\nWhat requires fresh check:\nUnsupported claims:\nDecision status: explore / verify / defer / reject\nHandoff target:\nNext step:",
+      "заметка": "Compare options with criteria and no unsupported winner"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K7",
+      "название": "Hype?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — HYPE / AD / BIAS CHECK\n\nИсточник / инструмент / claim:\n[вставить]\n\nЗадача:\nПроверь, нет ли рекламы, affiliate bias, vendor bias, hype или неподтверждённых обещаний. Не спорь ради спора; отдели полезное зерно от маркетинговой шелухи.\n\nRed flags:\n- sponsored / affiliate / vendor bias;\n- vague claims;\n- no demo;\n- no source trail;\n- benchmark without method;\n- “10 tools” listicle;\n- no limitations;\n- cherry-picked examples;\n- pricing / availability claims without date;\n- “must-have / game changer” without evidence.\n\nВерни строго:\nHype verdict: low / medium / high\nBias type:\nSupported parts:\nUnsupported / exaggerated claims:\nMissing evidence:\nWhat can be reused safely:\nWhat must not be claimed:\nUsefulness: use / verify / reject / backlog\nSafer source needed:\nRouting:\nNext step:",
+      "заметка": "Ad, affiliate, sponsored, vague claim, benchmark-without-method detector"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K8",
+      "название": "Score",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — RESEARCH SCORECARD\n\nИсточник / инструмент / workflow / repo:\n[вставить]\n\nЗадача:\nОцени research-кандидата по rubric. Не превращай score в финальное решение; это фильтр, а не verdict истины.\n\nОцени 1–5:\n- signal score;\n- operational depth;\n- novelty;\n- practicality;\n- evidence quality;\n- freshness;\n- repeatability;\n- Sergey relevance;\n- privacy / security risk, где 5 = безопаснее;\n- hype risk, где 5 = низкий hype.\n\nВерни строго:\nScorecard:\n| Criterion | Score 1-5 | Reason | Evidence / limitation |\n|---|---:|---|---|\nTotal / interpretation:\nKeep / verify / reject:\nMain reason:\nMain risk:\nMissing evidence:\nBest owner project:\nNext step:",
+      "заметка": "Research scorecard 1–5 with hype risk and Sergey relevance"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K9",
+      "название": "Gemini DR",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — GEMINI DEEP RESEARCH PACKAGE\n\nТема:\n[вставить]\n\nЗадача:\nПодготовь prompt-пакет для Gemini Deep Research. Цель — найти повторяемые workflows, сильные источники, AI-инструменты, repos или практики, а не собрать generic AI news.\n\nСкопируй и используй как research brief:\n\nTopic:\n[вставить]\n\nResearch objective:\nFind practical, repeatable workflows / tools / sources relevant to Sergey’s work in audit, financial analytics, memo generation, AI governance, prompt workflows, routing, QA, or Codex handoff.\n\nScope in:\n- workflow demos;\n- official docs;\n- GitHub repos;\n- deep articles with reproducible steps;\n- comparison with evidence;\n- current tools only if date/source is clear.\n\nScope out:\n- generic news;\n- pricing-only comparisons;\n- shallow “top 10 tools” lists;\n- pure opinions;\n- clickbait;\n- unsupported vendor claims;\n- no-demo videos.\n\nMust-have criteria:\n- source trail;\n- concrete steps;\n- input/output artifact;\n- quality check;\n- repeatability;\n- limitations;\n- relevance to Sergey.\n\nScoring rubric:\n- signal score;\n- operational depth;\n- novelty;\n- practicality;\n- evidence quality;\n- hype risk;\n- Sergey relevance.\n\nOutput schema:\n1. Executive summary.\n2. Source list with dates and source types.\n3. Workflow candidates table.\n4. Tool / repo candidates table.\n5. Unsupported or weak claims.\n6. Anti-patterns / hype detected.\n7. Top 3 candidates for AI OS ingestion.\n8. What requires fresh verification.\n9. Recommended handoff target.\n\nReturn:\nGemini prompt:\n[готовый текст для копирования]\nExpected output:\nAcceptance criteria:\nHow to QA the result:",
+      "заметка": "Deep Research package for Gemini: broad source/workflow discovery"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K10",
+      "название": "Perplexity",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — PERPLEXITY SOURCE SCOUT\n\nТема / вопрос:\n[вставить]\n\nЗадача:\nПодготовь короткий prompt для Perplexity как быстрого разведчика источников. Не проси финальную рекомендацию без evidence scoring.\n\nСкопируй и используй:\n\nFind current, credible sources for:\n[topic]\n\nReturn:\n- 5–10 sources;\n- source type: official docs / paper / repo / article / video / forum / vendor;\n- publication or update date;\n- claim each source supports;\n- why the source is credible or risky;\n- what needs verification;\n- conflicts between sources;\n- links / source names.\n\nRules:\n- prioritize primary sources;\n- mark vendor claims separately;\n- do not treat listicles as strong evidence;\n- do not provide final recommendation without source scoring;\n- flag stale pricing, API limits, model capabilities and benchmarks.\n\nВерни:\nPerplexity prompt:\nExpected output:\nSource quality criteria:\nHow to route results:\nResearch QA checklist:",
+      "заметка": "Fast source scout: current sources, dates, claims, verification needs"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K11",
+      "название": "YouTube",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — YOUTUBE WORKFLOW DISCOVERY\n\nТема / workflow:\n[вставить]\n\nЗадача:\nПодготовь запрос для поиска YouTube-роликов, где показывают workflow-demo. Не ищи мнения, новости и поверхностные обзоры.\n\nИщи видео, где автор показывает:\n- конкретный workflow;\n- экран / demo;\n- входные данные;\n- шаги;\n- инструменты;\n- output artifact;\n- quality check;\n- repeatability.\n\nReject:\n- opinion videos;\n- news;\n- shallow reviews;\n- no demo;\n- pure promotion;\n- “top tools” without workflow;\n- claims without examples.\n\nВерни строго:\nSearch query ideas:\nSelection criteria:\nReject criteria:\nExtraction schema:\n| Video / channel | Workflow shown | Inputs | Output artifact | Quality check | Evidence strength | Hype risk | Relevance |\n|---|---|---|---|---|---|---|---|\nWhat to capture for AI OS:\nWhat not to claim:\nNext step:",
+      "заметка": "Find workflow demos, not opinions, news or shallow reviews"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K12",
+      "название": "GitHub",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — GITHUB / REPO SCOUT\n\nRepo / тема / задача:\n[вставить]\n\nЗадача:\nОцени GitHub repo как candidate source / tool / implementation reference. Stars are signal, not proof.\n\nПроверь:\n- purpose;\n- last activity;\n- README quality;\n- install / quickstart;\n- examples;\n- tests;\n- issues / maintenance;\n- license;\n- security / privacy risks;\n- dependency risk;\n- fit for Sergey;\n- suitability for Codex handoff.\n\nВерни строго:\nRepo:\nPurpose:\nLast activity / freshness:\nREADME / docs quality:\nExamples:\nTests / CI:\nMaintenance signals:\nSecurity / privacy risks:\nLicense / usage constraints:\nFit for Sergey:\nUse as: source / pattern / tool candidate / reject\nNeed Codex? yes / no / later\nUnsupported claims:\nNext step:",
+      "заметка": "Repo scout: README, activity, tests, examples, security, fit"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K13",
+      "название": "Backlog",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — RESEARCH BACKLOG ITEM\n\nТема / источник / идея:\n[вставить]\n\nЗадача:\nОформи research backlog item. Используй, когда тема потенциально полезна, но сейчас нет времени, evidence слабое или fresh check нужен позже.\n\nВерни строго:\nBacklog item:\nResearch question:\nWhy it may matter:\nCurrent evidence: none / weak / mixed / promising\nFresh check needed: yes / no\nPotential owner project:\nTrigger to revisit:\nMinimum sources needed:\nExpected output if researched:\nRisk if ignored:\nRisk if acted on now:\nNext safe action:",
+      "заметка": "Research backlog card: defer without losing signal"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K14",
+      "название": "To AI OS",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК → [AI OS] HANDOFF\n\nResearch output / sources / workflow candidates:\n[вставить]\n\nЗадача:\nПодготовь handoff в [AI OS] для evidence check, pattern candidate, source map или anti-pattern. Не превращай weak evidence в KB fact.\n\nПередавать только curated context:\n- topic;\n- source list;\n- supported claims;\n- weak / unsupported claims;\n- workflow candidates;\n- anti-patterns;\n- freshness status;\n- limitations;\n- recommended KB action.\n\nНе передавать:\n- raw dump;\n- long transcript;\n- secrets / API keys / .env;\n- source-card dumps;\n- unsupported claims as facts;\n- production-ready recommendation.\n\nВерни строго:\nHandoff to: [AI OS]\nTask type: evidence / pattern candidate / source map / anti-pattern / review item\nTopic:\nCandidate sources:\nSupported claims:\nWeak / unsupported claims:\nWorkflow candidates:\nAnti-patterns / hype detected:\nFresh check status:\nConfidence:\nWhat not to claim:\nRecommended KB action:\nAcceptance criteria for AI OS:\nNext step:",
+      "заметка": "Research → AI OS handoff for evidence/pattern ingestion"
+    },
+    {
+      "экран": "ПОИСК",
+      "кнопка": "K15",
+      "название": "Research QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОИСК — RESEARCH QA GATE\n\nResearch output / source map / comparison:\n[вставить]\n\nIntended use:\nAI OS ingestion / LLM prompt / Thinking decision / Analytics spec / Codex task / personal backlog / other\n\nЗадача:\nПроверь research-result как @judge. Research не должен выдавать candidate evidence как final truth.\n\nПроверь:\n- есть ли research question;\n- источники перечислены;\n- source types и dates указаны, где важно;\n- supported / weak / unsupported claims разделены;\n- hype / vendor bias проверен;\n- freshness risks видны;\n- recommendations не сильнее evidence;\n- routing корректен;\n- нет premature Codex / production handoff;\n- есть next safe step.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nReason:\nUnsupported claims:\nWeak evidence:\nFreshness gaps:\nHype / bias risk:\nWrong routing:\nMissing sources:\nRequired fix:\nApproved handoff target:\nApproved next step:",
+      "заметка": "Final gate: research output pass/revise/blocked before handoff"
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K2",
+      "название": "AI-OS",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K3",
+      "название": "README",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/README.md",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K4",
+      "название": "Манифест",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/MANIFEST.json",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K5",
+      "название": "Маршрут",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/ChatGPT/%5BAI%20OS%5D/Knowledge/PROJECT_ROUTING.md",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K6",
+      "название": "Правила",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/ChatGPT/%5BAI%20OS%5D/Knowledge/GOVERNANCE_RULES.md",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K7",
+      "название": "Сверка",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K8",
+      "название": "Проверки",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "cd <LOCAL_AI_OS_ROOT>\npython3 scripts/check_project_instructions_length.py\npython3 scripts/check_repo_public_safety.py\npython3 scripts/check_manifest_paths.py\npython3 scripts/check_knowledge_bundles.py",
+      "заметка": "Вставить в терминал, Enter вручную"
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K9",
+      "название": "Статус",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "cd <LOCAL_AI_OS_ROOT>\ngit status --short\ngit diff --stat",
+      "заметка": "Вставить в терминал, Enter вручную"
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K10",
+      "название": "Запросы",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/pulls",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K11",
+      "название": "Задачи",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/issues",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K12",
+      "название": "Пакеты",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/tree/main/Knowledge_Bundles",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K13",
+      "название": "Прогоны",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/PILOT_CASES.md",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K14",
+      "название": "Пути",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "В публичных документах нельзя использовать сырые абсолютные локальные пути.\n\nИспользуй:\n<LOCAL_AI_OS_ROOT>\n<LOCAL_REPO_ROOT>\n<LOCAL_CODEX_APP_ROOT>\n<LOCAL_ARTIFACTS_ROOT>",
+      "заметка": ""
+    },
+    {
+      "экран": "РЕПО",
+      "кнопка": "K15",
+      "название": "Безопасн.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОВЕРКА БЕЗОПАСНОСТИ РЕПОЗИТОРИЯ\n\nПроверь:\n- нет .env;\n- нет секретов;\n- нет ключей доступа;\n- нет сырых журналов;\n- нет служебных файлов выполнения;\n- нет векторной базы;\n- нет сырых локальных путей;\n- нет архивов как источников знаний.\n\nВердикт: принято / доработать / заблокировано",
+      "заметка": ""
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": "Не перепрограммировать"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K2",
+      "название": "Brief",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — PILOT BRIEF\n\nТема / workflow / идея для проверки:\n[вставить]\n\nЗадача:\nПодготовь маленький безопасный pilot. Не решай всю задачу, не строй production-фабрику и не передавай в Codex до результата pilot.\n\nЗафиксируй:\n- hypothesis: что хотим проверить;\n- owner project: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex] / Memo / Research / другое;\n- test scope: что входит;\n- out of scope: что НЕ проверяем;\n- input sample: минимальный вход;\n- expected output: что должно получиться;\n- success criteria;\n- failure criteria;\n- timebox / effort limit;\n- QA gate after run;\n- decision options: adopt / revise / automate / archive / reject.\n\nВерни строго:\nPilot name:\nHypothesis:\nWhy this pilot matters:\nOwner project:\nScope:\nOut of scope:\nMinimal test case:\nExpected output:\nSuccess criteria:\nFailure criteria:\nRisks:\nStop condition:\nNext step:",
+      "заметка": "Постановка pilot: что проверяем и зачем"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K3",
+      "название": "Hypothesis",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — HYPOTHESIS\n\nИдея / наблюдение:\n[вставить]\n\nЗадача:\nПреврати идею в проверяемую pilot-гипотезу. Не доказывай её текстом; определи, как её можно проверить маленьким прогоном.\n\nПроверь:\n- claim: что предполагаем;\n- why it matters;\n- assumptions;\n- evidence available;\n- missing evidence;\n- observable signals;\n- disconfirming signals: что покажет, что гипотеза неверна;\n- decision impact: что изменится после проверки.\n\nВерни строго:\nHypothesis:\nAssumptions:\nEvidence available:\nMissing evidence:\nTest signal:\nDisconfirming signal:\nRisk if false:\nDecision after test:\nMinimal pilot needed:\nNext step:",
+      "заметка": "Проверяемая гипотеза перед прогоном"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K4",
+      "название": "Test case",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — TEST CASE\n\nPilot hypothesis / brief:\n[вставить]\n\nЗадача:\nСпроектируй минимальный test case для pilot. Он должен быть достаточно маленьким, чтобы выполнить руками, но достаточно показательным, чтобы проверить workflow.\n\nОпредели:\n- input data / prompt / source;\n- steps to run;\n- expected intermediate outputs;\n- expected final output;\n- tools / folders to use;\n- QA checks;\n- stop conditions;\n- what not to do.\n\nВерни строго:\nTest case name:\nInput:\nPreconditions:\nSteps:\nExpected intermediate outputs:\nExpected final output:\nQA checks:\nStop conditions:\nOut of scope:\nRun-ready: yes / no\nMissing items:\nNext step:",
+      "заметка": "Мини-кейс для проверки workflow"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K5",
+      "название": "Run log",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — RUN LOG\n\nPilot brief / test case:\n[вставить]\n\nФактический прогон:\n[вставить что было сделано]\n\nЗадача:\nЗафиксируй фактический ход pilot. Не улучшай результат задним числом и не исправляй workflow внутри run log.\n\nРаздели:\n- planned steps;\n- actually performed steps;\n- deviations;\n- outputs produced;\n- errors / friction;\n- evidence collected;\n- time / effort, если известно;\n- notes for QA.\n\nВерни строго:\nPilot name:\nPlanned steps:\nActual steps:\nDeviations:\nOutputs:\nErrors / friction:\nEvidence:\nTime / effort:\nImmediate observations:\nDo not conclude yet:\nNext step:",
+      "заметка": "Фиксация фактического выполнения pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K6",
+      "название": "Result",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — RESULT\n\nPilot brief:\n[вставить]\n\nRun log:\n[вставить]\n\nЗадача:\nСравни ожидаемый и фактический результат pilot. Не превращай один удачный прогон в production-ready вывод.\n\nПроверь:\n- success criteria met / not met;\n- failure criteria triggered / not triggered;\n- actual output quality;\n- evidence strength;\n- residual risks;\n- whether another run is needed.\n\nВерни строго:\nPilot result: pass / partial / fail / blocked\nExpected vs actual:\nSuccess criteria status:\nFailure criteria status:\nEvidence strength: strong / medium / weak\nWhat worked:\nWhat failed:\nResidual risks:\nNeed another run: yes / no\nRecommended decision: adopt / revise / automate / archive / reject\nNext step:",
+      "заметка": "Результат pilot без преждевременного масштабирования"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K7",
+      "название": "QA",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — PILOT QA / JUDGE\n\nPilot result:\n[вставить]\n\nЗадача:\nПроверь как @judge, можно ли доверять результату pilot. Pilot проверяет workflow, а не доказывает production-readiness.\n\nПроверь:\n- была ли гипотеза явной;\n- был ли test case достаточно маленьким и релевантным;\n- не расширился ли scope;\n- есть ли evidence результата;\n- не сделан ли вывод сильнее одного прогона;\n- видны ли failure modes;\n- есть ли честный next decision;\n- не отправляется ли преждевременно в Codex / production.\n\nВерни строго:\nQA verdict: pass / revise / blocked\nReason:\nUnsupported conclusions:\nScope creep:\nMissing evidence:\nMain failure mode:\nRequired fix:\nApproved decision:\nApproved next step:",
+      "заметка": "Judge-проверка pilot-output"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K8",
+      "название": "Lessons",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — LESSONS LEARNED\n\nPilot result / QA:\n[вставить]\n\nЗадача:\nИзвлеки уроки из pilot. Не переписывай историю и не усиливай вывод выше evidence.\n\nВерни:\nWhat worked:\nWhat did not work:\nWhat was unnecessary:\nWhat was missing:\nWorkflow changes needed:\nPrompt/button changes needed:\nQA changes needed:\nDocumentation changes needed:\nRisks discovered:\nReusable pattern candidate:\nAnti-pattern discovered:\nNext step:",
+      "заметка": "Уроки и улучшения после pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K9",
+      "название": "Decision",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — PILOT DECISION\n\nPilot result / QA / lessons:\n[вставить]\n\nЗадача:\nПрими операционное решение по pilot. Не принимай стратегическое решение шире evidence; если нужен выбор вариантов — передай в [Thinking].\n\nВарианты решения:\n- adopt: оставить как ручной workflow;\n- revise: доработать и прогнать ещё раз;\n- automate: готовить gated handoff в [Codex];\n- archive: сохранить как опыт, не развивать сейчас;\n- reject: отказаться от идеи.\n\nВерни строго:\nDecision: adopt / revise / automate / archive / reject\nWhy:\nEvidence used:\nConfidence: strong / medium / weak\nWhat changes before reuse:\nOwner project:\nAcceptance criteria:\nRevisit trigger:\nHandoff needed: none / [Thinking] / [Analytics] / [LLM] / [Codex] / [AI OS]\nNext step:",
+      "заметка": "Решение по судьбе pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K10",
+      "название": "Backlog",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — BACKLOG ITEM\n\nPilot lesson / decision:\n[вставить]\n\nЗадача:\nОформи отложенную задачу или улучшение после pilot. Не делай production-задачу без acceptance criteria.\n\nВерни строго:\nBacklog item:\nSource pilot:\nProblem / opportunity:\nProposed change:\nOwner project:\nPriority: low / medium / high\nEvidence strength: strong / medium / weak\nAcceptance criteria:\nRisks:\nDependencies:\nNot now because:\nNext review trigger:\nNext step:",
+      "заметка": "Отложенный item по результату pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K11",
+      "название": "Scale?",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — SCALE / AUTOMATE GATE\n\nPilot decision:\n[вставить]\n\nЗадача:\nОцени, стоит ли масштабировать pilot в методику, отдельную папку Stream Deck, фабрику или Codex-автоматизацию.\n\nПроверь критерии:\n- repeatability: будет ли повторяться;\n- frequency: как часто нужно;\n- impact: польза;\n- risk: цена ошибки;\n- manual effort saved;\n- complexity of automation;\n- evidence strength;\n- reversibility;\n- owner readiness.\n\nВерни:\nScale verdict: keep manual / revise workflow / create method / create Stream Deck screen / automate with Codex / reject\nRationale:\nCriteria table:\nMinimum viable next version:\nWhat not to automate:\nRequired QA before scaling:\nHandoff target:\nNext step:",
+      "заметка": "Проверка: масштабировать, автоматизировать или оставить руками"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K12",
+      "название": "To Codex",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ → [Codex] HANDOFF / GATED\n\nPilot decision:\n[вставить]\n\nВНИМАНИЕ:\nИспользовать только если pilot decision = automate или есть явно принятое решение на изменение файлов / tooling. Не передавать в Codex слабую гипотезу как requirement.\n\nПодготовь handoff:\nHandoff to: [Codex]\nTask type: implementation / docs / tests / tooling / automation\nGoal:\nAccepted pilot evidence:\nScope:\nFiles to inspect:\nFiles allowed to change:\nForbidden actions:\nExpected output:\nChecks / smoke tests:\nAcceptance criteria:\nRollback / stop condition:\nResidual risks:\nOpen questions:\nSuggested first step:",
+      "заметка": "Gated handoff в Codex после успешного pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K13",
+      "название": "Card",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПРОГОНЫ — PILOT CARD / RECORD\n\nМатериалы pilot:\n[вставить brief, result, QA, decision]\n\nЗадача:\nСобери компактную карточку pilot для журнала прогонов. Не добавляй новых выводов.\n\nВерни строго:\npilot_id:\ndate: YYYY-MM-DD\ntitle:\nowner_project:\nhypothesis:\ntest_case:\nresult: pass / partial / fail / blocked\nqa_verdict: pass / revise / blocked\ndecision: adopt / revise / automate / archive / reject\nevidence_strength: strong / medium / weak\nlessons:\nchanges_needed:\nrisks:\nnext_step:\nlink_or_location:",
+      "заметка": "Карточка pilot для PILOT_CASES.md / журнала прогонов"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K14",
+      "название": "Сверка",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+      "заметка": "Сверка проекта / документации после pilot"
+    },
+    {
+      "экран": "ПРОГОНЫ",
+      "кнопка": "K15",
+      "название": "Сводка",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/PILOT_CASES.md",
+      "заметка": "Журнал pilot cases"
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K2",
+      "название": "Индекс",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ИНДЕКС\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K3",
+      "название": "Примен.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПРИМЕН.\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K4",
+      "название": "Приёмы",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПРИЁМЫ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K5",
+      "название": "Рамки",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — РАМКИ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K6",
+      "название": "Понятия",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПОНЯТИЯ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K7",
+      "название": "Порядки",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПОРЯДКИ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K8",
+      "название": "Маршрут",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — МАРШРУТ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K9",
+      "название": "Уверенн.",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — УВЕРЕНН.\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K10",
+      "название": "Проверка",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПРОВЕРКА\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K11",
+      "название": "Манифест",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://github.com/sergstack/AI-OS/blob/main/MANIFEST.json",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K12",
+      "название": "Поиск",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ПОИСК\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K13",
+      "название": "Добавить",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ДОБАВИТЬ\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K14",
+      "название": "Источник",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — ИСТОЧНИК\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "БАЗА",
+      "кнопка": "K15",
+      "название": "Не найдено",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# БАЗА ЗНАНИЙ — НЕ НАЙДЕНО\n\nТема:\n[указать]\n\nПроверь:\n- найдено в базе знаний: да / нет / частично;\n- источники;\n- подтверждённые утверждения;\n- слабые или неподтверждённые утверждения;\n- уверенность;\n- что отправить на дополнительную проверку;\n- следующий шаг.\n\nНе придумывай данные, если в базе не найдено.",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K1",
+      "название": "⬆ НАЗАД",
+      "действие": "Navigation Back",
+      "настройка": "штатный возврат из папки",
+      "текст_или_цель": "Built-in folder back",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K2",
+      "название": "ChatGPT",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "https://chatgpt.com",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K3",
+      "название": "Obsidian",
+      "действие": "Website/Open",
+      "настройка": "System → Website / Open",
+      "текст_или_цель": "<OBSIDIAN_AI_OS_URI>",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K4",
+      "название": "Things",
+      "действие": "Website/Open",
+      "настройка": "System → Website / Open",
+      "текст_или_цель": "<THINGS_INBOX_URI>",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K5",
+      "название": "Календарь",
+      "действие": "Website",
+      "настройка": "System → Website",
+      "текст_или_цель": "<GOOGLE_CALENDAR_URL>",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K6",
+      "название": "Дата",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "ГГГГ-ММ-ДД",
+      "заметка": "Можно заменить shortcut-generated date"
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K7",
+      "название": "Шапка",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "База знаний проверена:\nИсточники:\nНайдено в базе знаний:\nУверенность:\nСтатус подтверждения:",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K8",
+      "название": "Буфер",
+      "действие": "Hotkey/Script",
+      "настройка": "System → Hotkey / Script",
+      "текст_или_цель": "Optional",
+      "заметка": "Только если безопасно"
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K9",
+      "название": "Окно ←",
+      "действие": "Hotkey",
+      "настройка": "System → Hotkey",
+      "текст_или_цель": "Win + Left / custom macOS shortcut",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K10",
+      "название": "Окно →",
+      "действие": "Hotkey",
+      "настройка": "System → Hotkey",
+      "текст_или_цель": "Win + Right / custom macOS shortcut",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K11",
+      "название": "Звук",
+      "действие": "Hotkey",
+      "настройка": "System → Hotkey",
+      "текст_или_цель": "System mute toggle",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K12",
+      "название": "Таймер",
+      "действие": "Multi Action",
+      "настройка": "Multi Action",
+      "текст_или_цель": "Open timer / start 25 min focus",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K13",
+      "название": "Корень",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "<LOCAL_AI_OS_ROOT>",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K14",
+      "название": "Помощь",
+      "действие": "Text",
+      "настройка": "System → Text",
+      "текст_или_цель": "# ПОМОЩЬ ПО STREAM DECK\n\nТекущий экран:\nЗадача:\nОжидаемое действие:\nРиск:\nНужно ли сначала определить маршрут?\nНужно ли сначала проверить подтверждения?\nНужно ли передать задачу в другой проект?",
+      "заметка": ""
+    },
+    {
+      "экран": "СИСТЕМА",
+      "кнопка": "K15",
+      "название": "СТОП",
+      "действие": "Multi Action",
+      "настройка": "Multi Action",
+      "текст_или_цель": "Esc → switch/open AI OS HOME",
+      "заметка": "Без destructive actions"
+    }
+  ],
+  "qa": {
+    "total_rows": 225,
+    "changed_rows": 15,
+    "changed": [
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K1",
+        "название": "⬆ НАЗАД",
+        "changed_fields": [
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K2",
+        "название": "Quick QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K3",
+        "название": "Evidence",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K4",
+        "название": "Факт/Толк",
+        "changed_fields": [
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K5",
+        "название": "Schema QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K6",
+        "название": "Fix brief",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K7",
+        "название": "Blocker",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K8",
+        "название": "Status",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K9",
+        "название": "Risk QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K10",
+        "название": "Accept",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K11",
+        "название": "Halluc.",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K12",
+        "название": "Route QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K13",
+        "название": "Handoff",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K14",
+        "название": "Final QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПРОВЕРКА",
+        "кнопка": "K15",
+        "название": "Fast Pass",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      }
+    ],
+    "safety": {
+      "auto_send_enter": "off / manual only",
+      "destructive_actions_added": false,
+      "screens_changed": [
+        "ПРОВЕРКА"
+      ],
+      "non_qa_screens_changed": [],
+      "executor_actions_added": false,
+      "qa_role": "universal judge / evidence / acceptance gate, not executor"
+    }
+  },
+  "qa_capture": {
+    "total_rows": 225,
+    "changed_rows": 15,
+    "changed": [
+      {
+        "экран": "ВХОД",
+        "кнопка": "K1",
+        "название": "⬆ НАЗАД",
+        "changed_fields": [
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K2",
+        "название": "Inbox",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K3",
+        "название": "Idea",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K4",
+        "название": "Problem",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K5",
+        "название": "Task",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K6",
+        "название": "Meeting",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K7",
+        "название": "Metric",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K8",
+        "название": "Bug",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K9",
+        "название": "Risk",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K10",
+        "название": "Memo seed",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K11",
+        "название": "Research",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K12",
+        "название": "Prompt seed",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K13",
+        "название": "Decision seed",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K14",
+        "название": "Route later",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ВХОД",
+        "кнопка": "K15",
+        "название": "Obsidian",
+        "changed_fields": [
+          "текст_или_цель",
+          "заметка"
+        ]
+      }
+    ],
+    "checks": {
+      "capture_rows": 15,
+      "old_generic_capture_prompt_removed_from_vhod": true,
+      "no_auto_send_added": true,
+      "capture_rule_no_solve_or_later_gate_present": true
+    }
+  },
+  "qa_capture_research": {
+    "total_rows": 225,
+    "changed_rows": 15,
+    "changed": [
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K1",
+        "название": "⬆ НАЗАД",
+        "changed_fields": [
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K2",
+        "название": "Brief",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K3",
+        "название": "Sources",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K4",
+        "название": "AI tools",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K5",
+        "название": "Workflow",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K6",
+        "название": "Compare",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K7",
+        "название": "Hype?",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K8",
+        "название": "Score",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K9",
+        "название": "Gemini DR",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K10",
+        "название": "Perplexity",
+        "changed_fields": [
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K11",
+        "название": "YouTube",
+        "changed_fields": [
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K12",
+        "название": "GitHub",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K13",
+        "название": "Backlog",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K14",
+        "название": "To AI OS",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      },
+      {
+        "экран": "ПОИСК",
+        "кнопка": "K15",
+        "название": "Research QA",
+        "changed_fields": [
+          "название",
+          "текст_или_цель",
+          "заметка"
+        ]
+      }
+    ],
+    "checks": {
+      "research_rows": 15,
+      "old_generic_research_prompt_removed_from_poisk": true,
+      "specialized_research_modes_present": [
+        "⬆ НАЗАД",
+        "Brief",
+        "Sources",
+        "AI tools",
+        "Workflow",
+        "Compare",
+        "Hype?",
+        "Score",
+        "Gemini DR",
+        "Perplexity",
+        "YouTube",
+        "GitHub",
+        "Backlog",
+        "To AI OS",
+        "Research QA"
+      ],
+      "no_auto_send_added": true,
+      "research_rule_candidate_evidence_not_final_truth_present": true,
+      "ai_os_handoff_present": true,
+      "research_qa_present": true
+    }
+  },
+  "qa_capture_research_memo": {
+    "qa_version": "v2.2 preserved",
+    "capture_version": "v2.3 preserved",
+    "research_version": "v2.4 preserved",
+    "memo_update": "v2.5",
+    "memo_role": "memo factory: brief -> context -> facts -> structure -> draft -> judge -> revise -> final",
+    "safety": "System → Text only; no auto-send; no destructive actions"
+  },
+  "qa_capture_research_memo_pilots": {
+    "updated_screen": "ПРОГОНЫ",
+    "updated_version": "v2.6",
+    "preserved": [
+      "QA v2.2",
+      "Capture v2.3",
+      "Research v2.4",
+      "Memo v2.5"
+    ],
+    "role": "Pilot cases / workflow validation / safe scaling gate",
+    "decision_options": [
+      "adopt",
+      "revise",
+      "automate",
+      "archive",
+      "reject"
+    ]
+  }
+}
