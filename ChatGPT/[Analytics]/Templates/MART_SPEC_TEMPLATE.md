@@ -6,6 +6,13 @@ audience:
 grain:
 period:
 keys:
+mode:
+field_budget:
+visible_columns:
+hidden_evidence_columns:
+excluded_fields:
+reason_for_each_extra_metric:
+compact_front_view: yes/no
 source stage files:
 source stage main file:
 metrics:

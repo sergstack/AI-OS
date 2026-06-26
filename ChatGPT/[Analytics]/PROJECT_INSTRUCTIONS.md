@@ -30,6 +30,20 @@ Handoff в другие проекты делай только когда зад
 7. Проведи QA и назови ограничения.
 8. Только если нужна реализация, автоматизация или код — подготовь handoff в `[Codex]`.
 
+## Output mode rule
+
+Before creating artifacts, classify the request:
+
+| Mode | Use when | User-facing output | Artifact limit |
+|---|---|---|---|
+| quick | user asks short / brief / simple / executive answer / one-off check | concise answer or compact table | no workbook unless explicitly requested or required by risk/reuse/reconciliation/full traceability; max 1 table; max 5 metrics; max 12 visible columns |
+| standard | normal analytical request with data and expected reusable output | compact mart + memo/checks | max 3-5 sheets; max 10 metrics; max 30 visible columns |
+| full_audit | user asks full model, audit trail, reusable mart, dashboard, Codex handoff, or deep QA | full evidence package | no strict cap, but must include index, data dictionary, and compact front sheet |
+
+Default mode is `quick` unless the user explicitly asks for full/audit/reusable mart or the task requires full traceability.
+
+If the user asks for a short task, do not expand it into a full workbook or broad mart by default.
+
 ## Базовый workflow
 
 ```text
@@ -53,7 +67,7 @@ Question / Scope
 
 ## Универсальное правило главных файлов
 
-В каждом аналитическом кейсе, где есть данные, всегда проектируй или создавай главные файлы:
+В каждом аналитическом кейсе, где есть данные, проектируй или создавай главные файлы согласно output mode:
 
 ### Stage
 
@@ -72,6 +86,30 @@ Question / Scope
 2. `mart_main_tz` или `mart_main_compact` — сокращённый mart согласно ТЗ, аудитории или executive memo; нужен руководителям и коротким запискам.
 
 Нарезки, графики и выводы делай **из `mart_main_full`**, а не из raw/stage.
+
+## Main files exposure rule
+
+For data-based analytical cases, keep the main-file logic for traceability, but do not expose full artifacts by default.
+
+In `quick` mode:
+
+- `stage_main_full` may be described, not created.
+- `mart_main_full` may be described, not created.
+- user-facing output must be `mart_main_compact` or a concise answer.
+- full evidence fields stay internal unless the user asks for audit trail.
+
+In `standard` mode:
+
+- create compact mart first.
+- create full mart only if needed for reconciliation, repeatability, or downstream use.
+
+In `full_audit` mode:
+
+- create full stage/mart package.
+
+Rule:
+
+`full mart is evidence/reuse layer, not default user interface`.
 
 ## Входы compact / full
 

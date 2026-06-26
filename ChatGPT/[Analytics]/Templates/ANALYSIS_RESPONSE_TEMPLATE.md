@@ -1,6 +1,14 @@
 # Analysis Response Template
 
 ```text
+Mode:
+Artifact budget:
+- max metrics:
+- max visible columns:
+- max sheets:
+User-facing output:
+Evidence depth:
+
 Question / scope:
 Data available:
 Data missing:

@@ -33,6 +33,33 @@ known_limitations:
 next_step:
 ```
 
+## Usability acceptance
+
+A result is not accepted if it is technically complete but unusable for the requested task.
+
+For `quick` mode:
+
+- max 1 user-facing table;
+- max 5 metrics;
+- max 12 visible columns;
+- no workbook unless explicitly requested;
+- no hidden expansion into full audit package.
+
+For `standard` mode:
+
+- compact front view required;
+- no more than 3-5 sheets unless justified;
+- every extra sheet must have a business purpose.
+
+For `full_audit` mode:
+
+- workbook may be large, but must include:
+  - README / index;
+  - compact front sheet;
+  - data dictionary;
+  - field groups;
+  - evidence appendix.
+
 ## Blocked status
 
 Use `blocked` when:

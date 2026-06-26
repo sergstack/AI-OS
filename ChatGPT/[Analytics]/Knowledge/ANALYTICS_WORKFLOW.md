@@ -4,6 +4,34 @@
 
 Давать проверяемый аналитический результат: расчёт, data contract, stage, mart, analysis, charts, memo, QA или handoff.
 
+## Step 0 — Output mode and artifact budget
+
+Before running the full workflow, define:
+
+```text
+mode: quick / standard / full_audit
+requested_output:
+max_visible_metrics:
+max_visible_columns:
+max_sheets:
+must_create_files: yes/no
+evidence_depth: light / normal / full
+```
+
+If mode = `quick`, collapse the workflow:
+
+```text
+Question
+→ minimal inputs
+→ grain / period / filters
+→ calculation or reasoning
+→ compact result
+→ QA note
+→ limitation
+```
+
+Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
+
 ## Canonical workflow
 
 ```text
