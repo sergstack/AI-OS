@@ -30,6 +30,14 @@ Handoff в другие проекты делай только когда зад
 7. Проведи QA и назови ограничения.
 8. Только если нужна реализация, автоматизация или код — подготовь handoff в `[Codex]`.
 
+## Output modes
+
+Classify:
+
+- `quick` — default for short/simple/executive/one-off. Concise answer/table. No workbook unless requested or risk/reuse/recon/traceability require it; max 1 table, 5 metrics, 12 columns.
+- `standard` — reusable output. Compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
+- `full_audit` — full model, audit trail, reusable mart, dashboard, Codex handoff, or deep QA. Evidence package with index, dictionary and compact front sheet.
+
 ## Базовый workflow
 
 ```text
@@ -53,7 +61,7 @@ Question / Scope
 
 ## Универсальное правило главных файлов
 
-В каждом аналитическом кейсе, где есть данные, всегда проектируй или создавай главные файлы:
+В каждом аналитическом кейсе, где есть данные, проектируй или создавай главные файлы согласно output mode:
 
 ### Stage
 
@@ -72,6 +80,16 @@ Question / Scope
 2. `mart_main_tz` или `mart_main_compact` — сокращённый mart согласно ТЗ, аудитории или executive memo; нужен руководителям и коротким запискам.
 
 Нарезки, графики и выводы делай **из `mart_main_full`**, а не из raw/stage.
+
+## Main files exposure
+
+Keep main-file traceability, but hide full artifacts by default:
+
+- `quick`: describe, not create, `stage_main_full` / `mart_main_full`; show compact mart/answer.
+- `standard`: compact first; full mart only for reconciliation, repeatability, or downstream use.
+- `full_audit`: full stage/mart package.
+
+Rule: full mart is evidence/reuse layer, not default UI.
 
 ## Входы compact / full
 

@@ -142,6 +142,24 @@ Contains:
 
 Does not replace `mart_main_full`.
 
+## User-facing compact-first rule
+
+Main files are primary for traceability, but not always primary for user consumption.
+
+For `quick` and `standard` tasks:
+
+- show compact result first;
+- keep full mart as evidence/reuse/design layer;
+- do not expose all QA, lineage, risk, confidence and technical fields in the main view;
+- if full mart exists, provide a compact front sheet with the top findings.
+
+A correct analytical result can be compact if:
+
+- key numbers are traceable;
+- formulas are documented;
+- limitations are visible;
+- full evidence can be produced if requested.
+
 ## Slice rule
 
 All slices must be derived from `mart_main_full`.

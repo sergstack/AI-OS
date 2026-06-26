@@ -51,6 +51,26 @@ Do not publish final management conclusion when:
 | Risk without basis | Decorative risk | Add `risk_basis` or remove |
 | Action without owner/date | Not actionable | Add owner/due date/status |
 
+## Metric / artifact explosion
+
+Anti-pattern:
+A short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
+
+Why bad:
+
+- user cannot inspect the result;
+- decision signal is buried;
+- QA fields become noise;
+- compact task becomes full audit project.
+
+Correct action:
+
+- classify output mode first;
+- default to compact view;
+- expose only decision-relevant metrics;
+- move evidence/QA/lineage to appendix or internal design;
+- ask for full audit mode only when needed.
+
 ## Production readiness rule
 
 Do not claim production readiness unless:

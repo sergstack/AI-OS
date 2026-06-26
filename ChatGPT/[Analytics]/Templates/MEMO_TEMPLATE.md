@@ -6,6 +6,12 @@ Verdict:
 Key numbers:
 Decision needed:
 
+## Scope control
+
+Mode:
+Why this output size is sufficient:
+What is intentionally excluded:
+
 ## Key numbers
 
 | Metric | Value | Period | Source mart | QA status |
