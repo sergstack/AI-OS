@@ -64,6 +64,32 @@ Do not invent facts.
 Mark missing evidence.
 Return structured output in markdown.
 ```
+## karpathy_minimal_loop
+```text
+Сожми workflow до минимального проверяемого контура.
+
+Верни:
+1. Goal.
+2. Input.
+3. Minimal transformation.
+4. QA / judge check.
+5. Output.
+6. Acceptance criteria.
+7. What to remove as bloat.
+8. What must not be automated now.
+9. Decision status.
+10. Revisit trigger.
+11. rollback / deletion rule.
+
+Constraints:
+- do not create a new project, mode, folder, button, dashboard, agent, or automation unless unavoidable.
+- If evidence is weak, mark it as weak.
+- If deterministic calculation is required, route to [Analytics].
+- If implementation or tests are required, route to [Codex] only with task package.
+- If AI OS evidence or supported pattern is required, route to [AI OS].
+- Preserve risks, assumptions, blockers, acceptance criteria, and unsupported claims.
+- Do not upgrade candidate patterns to recommended/canonical without pilot evidence.
+```
 
 
 ## From: `ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md`
@@ -77,4 +103,5 @@ Return structured output in markdown.
 | context_package_builder | synthesize | build curated context package | source excerpts, facts, boundaries | compact context package | reasoning | facts separated from interpretation | raw dump leakage; missing evidence | 2026-05-25 | [LLM] | active |
 | model_router | route | choose model class by task | task type, risk, context size, privacy | routing decision and rationale | reasoning | routing matches task class | hardcoded permanent model names | 2026-05-25 | [LLM] | active |
 | eval_gate | evaluate | validate LLM output quality | output, schema, evidence, limitations | pass / revise / blocked | judge | schema match; unsupported claims listed | false pass; hidden gaps | 2026-05-25 | [LLM] | active |
+| karpathy_minimal_loop | simplify / judge workflow | Reduce a workflow to a minimal verifiable loop before promotion or automation | workflow draft + target project + constraints | goal, input, minimal transformation, QA check, output, acceptance criteria, remove list, non-automation list, decision status, revisit trigger, rollback rule | reasoning / judge | 3 pilot cases pass; unsupported claims visible; no new tool unless justified | oversimplifies regulated/data tasks; becomes another layer; hides evidence gaps | 2026-06-26 | Sergey / LLM Lead | candidate |
 | external_ai_handoff | handoff | route work to external AI surfaces | goal, owner, inputs, forbidden inputs | handoff package | reasoning | handoff package complete | raw dump sent; wrong surface chosen | 2026-05-25 | [LLM] | active |
