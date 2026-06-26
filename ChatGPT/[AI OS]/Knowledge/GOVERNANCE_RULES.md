@@ -51,6 +51,34 @@ autonomous retrieval
 
 Эти элементы можно обсуждать только как future backlog / hypothesis, не как текущую рекомендацию.
 
+## 3A. Karpathy-inspired minimal verifiable loop
+
+Status: candidate governance pattern.
+Evidence: adapted pattern, not canonical AI OS production rule.
+
+Use as anti-bloat check:
+
+```text
+input → minimal transformation → QA → output → acceptance → revisit
+```
+
+Promotion rule:
+
+- evidence status recorded;
+- 3 pilot cases passed;
+- no new folder, mode, automation, dashboard, agent, or broad workflow added;
+- routing remains unchanged;
+- rollback rule exists.
+
+Do not use this pattern to justify:
+
+- autonomous retrieval;
+- embeddings / vector DB;
+- semantic search;
+- web UI;
+- agentic workflows;
+- broad refactoring.
+
 ## 4. Review queue
 
 Если обнаружено weak/unsupported/mixed evidence:
