@@ -49,6 +49,28 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 # Analytics Workflow
 ## Purpose
 Давать проверяемый аналитический результат: расчёт, data contract, stage, mart, analysis, charts, memo, QA или handoff.
+## Step 0 — Output mode and artifact budget
+Before running the full workflow, define:
+```text
+mode: quick / standard / full_audit
+requested_output:
+max_visible_metrics:
+max_visible_columns:
+max_sheets:
+must_create_files: yes/no
+evidence_depth: light / normal / full
+```
+If mode = `quick`, collapse the workflow:
+```text
+Question
+→ minimal inputs
+→ grain / period / filters
+→ calculation or reasoning
+→ compact result
+→ QA note
+→ limitation
+```
+Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
 ## Canonical workflow
 ```text
 Question
@@ -336,6 +358,16 @@ Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions an
 - confidence;
 - visible limitations;
 - references back to `mart_main_full`.
+## User-facing compact-first rule
+For `quick` and `standard` tasks:
+- show compact result first;
+- keep full mart as evidence/reuse/design layer;
+- do not expose all QA, lineage, risk, confidence and technical fields in the main view;
+- if full mart exists, provide a compact front sheet with the top findings.
+
+A correct analytical result can be compact if key numbers are traceable, formulas are documented, limitations are visible, and full evidence can be produced if requested.
+
+Rule: full mart is evidence layer, not default user interface.
 ## Slice rule
 All slices must be derived from `mart_main_full`.
 Each slice must state:

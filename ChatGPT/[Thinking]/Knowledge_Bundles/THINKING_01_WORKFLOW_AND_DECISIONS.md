@@ -10,6 +10,7 @@ Compact upload artifact for [Thinking] covering workflow and decisions.
 - `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`
 - `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`
 - `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`
+- `ChatGPT/[Thinking]/DECISION_LOG.md`
 
 ## Upload target
 
@@ -176,3 +177,12 @@ Require status plus revisit trigger for:
 Рекомендуемый вариант и почему.
 
 ```
+
+
+## From: `ChatGPT/[Thinking]/DECISION_LOG.md`
+
+# [Thinking] Decision Log
+
+| Decision ID | Date | Decision | Status | Confidence | Owner | Revisit trigger | Next review | Handoff | Accepted by | Acceptance evidence | Supersedes | Superseded by | Outcome | Link |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| TH-2026-06-26-01 | 2026-06-26 | Adopt Karpathy-inspired minimal verifiable loop as candidate anti-bloat review pattern. Start in [LLM] prompt registry and [Thinking] judge check. Do not implement as repo-wide mode. | candidate decision | medium | Sergey / Thinking Lead | 3 pilot cases fail; prompt adds complexity; routing conflict; Codex task proposed without acceptance; user stops using it | After 3 pilot cases | [LLM] for prompt; [Thinking] for judge; [AI OS] only after candidate evidence; [Codex] only after task package | pending | no pilot evidence yet | no new folder / no automation / no routing changes | none | candidate |  |

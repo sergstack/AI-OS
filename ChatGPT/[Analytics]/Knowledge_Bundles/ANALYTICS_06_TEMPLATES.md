@@ -31,6 +31,14 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 
 # Analysis Response Template
 ```text
+Mode:
+Artifact budget:
+- max metrics:
+- max visible columns:
+- max sheets:
+User-facing output:
+Evidence depth:
+
 Question / scope:
 Data available:
 Data missing:
@@ -74,6 +82,13 @@ required columns:
 ## From: `ChatGPT/[Analytics]/Templates/MART_SPEC_TEMPLATE.md`
 
 # Mart Spec Template
+mode:
+field_budget:
+visible_columns:
+hidden_evidence_columns:
+excluded_fields:
+reason_for_each_extra_metric:
+compact_front_view: yes/no
 QA totals:
 evidence fields:
 ## Required main mart files
@@ -84,6 +99,10 @@ evidence fields:
 
 # Analytical Memo Template
 ## Executive summary
+## Scope control
+Mode:
+Why this output size is sufficient:
+What is intentionally excluded:
 ## Key numbers
 | Metric | Value | Period | Source mart | QA status |
 ## Main deviations
