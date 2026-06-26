@@ -47,3 +47,33 @@ Do not invent facts.
 Mark missing evidence.
 Return structured output in markdown.
 ```
+
+## karpathy_minimal_loop
+
+```text
+Сожми workflow до минимального проверяемого контура.
+
+Верни:
+
+1. Goal.
+2. Input.
+3. Minimal transformation.
+4. QA / judge check.
+5. Output.
+6. Acceptance criteria.
+7. What to remove as bloat.
+8. What must not be automated now.
+9. Decision status.
+10. Revisit trigger.
+11. Rollback / deletion rule.
+
+Constraints:
+
+- Do not create a new project, mode, folder, button, dashboard, agent, or automation unless unavoidable.
+- If evidence is weak, mark it as weak.
+- If deterministic calculation is required, route to [Analytics].
+- If implementation or tests are required, route to [Codex] only with task package.
+- If AI OS evidence or supported pattern is required, route to [AI OS].
+- Preserve risks, assumptions, blockers, acceptance criteria, and unsupported claims.
+- Do not upgrade candidate patterns to recommended/canonical without pilot evidence.
+```
