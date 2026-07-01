@@ -41,9 +41,20 @@ K11 K12 K13 K14 K15
 ├────────────┼────────────┼────────────┼────────────┼────────────┤
 │ 🛠 CODEX    │ ⚖ QA       │ 📥 INBOX    │ 📝 MEMO     │ 🔎 RESEARCH │
 ├────────────┼────────────┼────────────┼────────────┼────────────┤
-│ 🗂 REPO     │ 🚦 PILOTS   │ 📚 KB       │ ⚙ SYSTEM   │ ⛔ STOP     │
+│ Judge      │ Revisor    │ AI Operator │ ⚙ SYSTEM   │ ⛔ STOP     │
 └────────────┴────────────┴────────────┴────────────┴────────────┘
 ```
+
+### HOME universal role buttons
+
+- HOME includes three universal role buttons: `Judge`, `Revisor`, `AI Operator`.
+- They are top-level accelerators for the ChatGPT project folders `[AI OS]`, `[Thinking]`, `[Analytics]`, `[LLM]`, `[Codex]`, `Memo`, `Research`, and `Inbox Router`.
+- UX rule: the user does not manually paste material and does not manually provide project context.
+- Material is the last meaningful message above the prompt button.
+- Project context comes automatically from the current ChatGPT project folder instructions and Knowledge.
+- Architecture rule: buttons should stay short. Long contracts, fallback prompts, checklists, and reusable workflows should live in Knowledge / prompt registry, not be duplicated across Stream Deck button text.
+- Role boundaries: `Judge` checks and does not rewrite; `Revisor` revises without changing meaning or adding facts; `AI Operator` packages the next safe step and does not execute dangerous actions.
+- STOP must remain available as an emergency capability. If `STOP` is removed from HOME later, preserve access through `SYSTEM`, long press, or a separate emergency gesture. Do not claim STOP was deleted unless the actual config proves it.
 
 ### K1 — `🧭 ROUTE`
 
@@ -185,47 +196,35 @@ K11 K12 K13 K14 K15
 Открыть папку 🔎 RESEARCH
 ```
 
-### K11 — `🗂 REPO`
+### K11 — `Judge`
 
-- **Action:** `Folder`
+- **Action:** `Text`
 
-- **Note:** GitHub/validation
+- **Note:** Quality / evidence / routing review of the previous meaningful message.
 
-- **Create a folder with this exact label.**
+- **Prompt source:** Use the `Judge` prompt in `Current HOME role prompt text`.
 
-- **Target:**
+- **Role boundary:** Checks unsupported claims, weak evidence, missing constraints, wrong routing, risks, and blockers. Does not rewrite the material.
 
-```text
-Открыть папку 🗂 REPO
-```
+### K12 — `Revisor`
 
-### K12 — `🚦 PILOTS`
+- **Action:** `Text`
 
-- **Action:** `Folder`
+- **Note:** Meaning-preserving revision of the previous meaningful message.
 
-- **Note:** Pilot cases
+- **Prompt source:** Use the `Revisor` prompt in `Current HOME role prompt text`.
 
-- **Create a folder with this exact label.**
+- **Role boundary:** Makes the text clearer, shorter, and more structured without adding facts, changing meaning, or removing risks, limitations, blockers, uncertainty, or evidence status.
 
-- **Target:**
+### K13 — `AI Operator`
 
-```text
-Открыть папку 🚦 PILOTS
-```
+- **Action:** `Text`
 
-### K13 — `📚 KB`
+- **Note:** Safe next-step / handoff / checklist / QA-step builder.
 
-- **Action:** `Folder`
+- **Prompt source:** Use the `AI Operator` prompt in `Current HOME role prompt text`.
 
-- **Note:** Knowledge base
-
-- **Create a folder with this exact label.**
-
-- **Target:**
-
-```text
-Открыть папку 📚 KB
-```
+- **Role boundary:** Packages the next safe step. Does not execute destructive actions, send, delete, merge, deploy, or claim files/accounts changed unless they really changed.
 
 ### K14 — `⚙ SYSTEM`
 
@@ -251,6 +250,105 @@ K11 K12 K13 K14 K15
 
 ```text
 Esc → switch/open AI OS HOME
+```
+
+### Current HOME role prompt text
+
+#### Judge
+
+```text
+@judge
+
+Проверь последнее содержательное сообщение выше.
+
+Не проси вставлять материал.
+Не проси указывать project context вручную.
+Используй инструкции текущего project folder и его Knowledge.
+
+Если локальная роль @judge уже определена — применяй её.
+
+Fallback, если локальная роль не определена или слишком краткая:
+- проверь unsupported claims, weak evidence, missing constraints, wrong routing, risks и blockers;
+- отдели факты от интерпретаций, гипотез и рекомендаций;
+- не переписывай материал;
+- не решай целевую задачу;
+- не усиливай выводы сильнее, чем позволяют данные;
+- если нужны расчёты, метрики или data QA — route to [Analytics];
+- если нужны code, repo, files, tests или implementation — route to [Codex];
+- если нужны KB evidence, governance или supported pattern — route to [AI OS];
+- если нужны prompt, workflow, model routing или LLM quality — route to [LLM];
+- если нужны стратегия, trade-off или решение — route to [Thinking].
+
+Верни строго:
+
+Judge verdict: pass / revise / blocked
+
+Unsupported claims:
+
+Missing constraints:
+
+Risks:
+
+Required fixes:
+
+Stop / blocked conditions:
+
+Safe next step:
+```
+
+#### Revisor
+
+Canonical source: `ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md` → `## @revisor`.
+
+The current `@revisor` prompt is Judge-aware:
+- if the last meaningful message is Judge verdict / Judge review / QA review, Revisor uses that output as the fix list and revises the original material Judge reviewed;
+- if `Judge verdict = blocked`, Revisor returns blocked and lists blockers instead of creating a final revision;
+- if the original material cannot be safely identified, Revisor returns blocked with: “Не могу безопасно определить исходный материал для доработки”;
+- if the last meaningful message is not Judge output, Revisor revises it directly.
+
+Do not duplicate the full prompt here; keep the long contract in the prompt library.
+
+#### AI Operator
+
+```text
+@ai_operator
+
+Упакуй последнее содержательное сообщение выше в следующий безопасный шаг.
+
+Не проси вставлять input.
+Не проси указывать project context вручную.
+Используй инструкции текущего project folder и его Knowledge.
+
+Если локальная роль @ai_operator уже определена — применяй её.
+
+Fallback, если локальная роль не определена или слишком краткая:
+- собери checklist / task brief / handoff / QA step / routing recommendation;
+- не решай целевую задачу за другой проект;
+- не выполняй destructive actions;
+- не отправляй, не удаляй, не мержи, не деплой;
+- не утверждай, что repo, files или accounts были изменены, если этого реально не было;
+- не выдумывай repo, files, paths, data sources, tests или approvals.
+
+Routing gates:
+- если нужен Codex — собери handoff с repo, files, forbidden actions, tests, rollback и acceptance criteria;
+- если нужен Analytics — собери handoff с business question, metrics, period, data sources, reconciliation и QA;
+- если нужен AI OS — собери handoff с topic, evidence, KB status, freshness и confidence;
+- если нужен Thinking — собери handoff для decision, trade-off или risk review;
+- если нужен LLM — собери prompt / workflow / context package / quality gate.
+
+Верни строго:
+
+AI Operator status: ready / needs_revision / blocked
+
+Safe next action:
+
+Output package:
+
+Missing inputs:
+
+Quality gate:
+
+Ready for:
 ```
 
 ## Screen: `ROUTE`
