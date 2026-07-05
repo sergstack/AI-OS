@@ -22,6 +22,10 @@ This helper validates repo settings and prints sync guidance. It does not perfor
 
 See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
 
+## Goal Packs
+
+Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
+
 ## Governance Rule
 
 Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
