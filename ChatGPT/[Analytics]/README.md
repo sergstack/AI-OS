@@ -65,6 +65,6 @@ Do not upload:
 ```text
 status: ready_to_upload
 production_readiness: not claimed
-smoke_qa_status: pass
+smoke_qa_status: repo_checks_passed / chatgpt_project_smoke_qa_pending
 requires_pilot_case: yes
 ```

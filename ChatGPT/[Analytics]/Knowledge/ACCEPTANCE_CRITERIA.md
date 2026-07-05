@@ -45,7 +45,7 @@ For `quick` mode:
 - no workbook unless explicitly requested;
 - no hidden expansion into `full` package.
 
-For `standart` mode:
+For `standard` mode:
 
 - compact front view required;
 - no more than 3-5 sheets unless justified;
