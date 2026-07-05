@@ -7,6 +7,7 @@
 - `AIOS_03_HANDOFF_AND_SMOKE_QA.md`
 - `AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
 - `AIOS_05_SUPERVISED_AGENT_LOOPS.md`
+- `AIOS_06_CROSS_PROJECT_AI_EVALS.md`
 
 ## Optional upload files
 
@@ -28,8 +29,8 @@
 
 ## File count
 
-Required: 5
+Required: 6
 Optional: 0
-Total if all uploaded: 5
+Total if all uploaded: 6
 Limit: 40
 Status: pass
