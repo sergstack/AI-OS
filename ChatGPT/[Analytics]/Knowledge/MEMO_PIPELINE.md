@@ -56,7 +56,7 @@ For Sergey / Finance Team / deep review:
 
 - full evidence;
 - DQ;
-- timing logs;
+- timing notes;
 - INOUT checks if valid;
 - baseline;
 - cards;
