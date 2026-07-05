@@ -12,11 +12,13 @@ Goal Mode is the default user-facing workflow. Sergey can provide a broad goal; 
 
 Atomic task packages remain available as advanced/strict mode, but they are not the default user burden. GitHub is the live source of truth; ChatGPT Project Knowledge is a cached baseline for Project bootstrapping and formal sync.
 
-Run validation before opening a PR:
+Run sync readiness checks before opening a PR:
 
 ```bash
 python3 scripts/sync_aios.py
 ```
+
+This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
 
 See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
 
@@ -45,9 +47,9 @@ The Knowledge bundle scan checks compact `Knowledge_Bundles/` upload artifacts f
 
 ## Knowledge Bundles
 
-Use `Knowledge_Bundles/` for ChatGPT Project Sources upload when a compact source set is preferred.
+Use `Knowledge_Bundles/` as the default ChatGPT Project Sources upload mode.
 
-Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
+Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
 ## Operational verification
 

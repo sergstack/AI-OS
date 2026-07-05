@@ -37,10 +37,11 @@ def run_check(root: Path, rel: str) -> int:
 
 def print_guidance() -> None:
     print()
-    print("Sync guidance:")
+    print("Sync readiness guidance:")
     print("- GitHub is the current source of truth.")
     print("- ChatGPT Project Knowledge upload is needed only for baseline or bundle changes.")
     print("- Codex uses AGENTS.md plus repository files for fresh state.")
+    print("- This helper validates repository consistency but does not upload to ChatGPT or push to GitHub.")
     print("- This helper does not perform external sync or modify remote systems.")
 
 
