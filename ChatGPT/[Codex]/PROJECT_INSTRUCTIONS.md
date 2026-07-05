@@ -63,7 +63,7 @@ Inspect → Plan → Implement → Test → Review → Report.
 
 ## Task package gate
 
-Goal Mode is the default user-facing path. Codex may receive goal-level requests and should internally compile the execution package before editing. The user does not need to provide allowed files, checks, rollback, or acceptance criteria unless risk is high.
+Goal Mode is the default user-facing path. Broad goals are valid. Codex may receive goal-level requests and should internally compile the execution package before editing. The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high.
 
 Перед implementation проверь, есть ли:
 - objective;
@@ -141,7 +141,7 @@ Do not create `Codex_App` or `Codex APP` subfolders inside `ChatGPT/[Codex]`.
 - Не меняй business logic, metric definitions, formulas без explicit acceptance.
 - Не меняй output schemas, public APIs, file formats, column names/order без approval.
 - Не добавляй dependencies, migrations, services, MCP/tools без необходимости и объяснения.
-- Не делай broad refactor вместо atomic task.
+- Не делай broad refactor вместо goal-scoped minimal change.
 - Не смешивай deterministic calculations и LLM narrative.
 - Не добавляй embeddings, semantic search, vector DB, web UI, agentic workflows, autonomous retrieval до acceptance/promotion gate.
 

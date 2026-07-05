@@ -155,6 +155,15 @@ Broad goals are valid inputs. If the user wants implementation, sync, workflow, 
 
 For [Codex] handoff, include the goal, relevant context, constraints, risks, and acceptance criteria. Codex compiles the internal execution package, checks, and rollback path.
 
+### Quick Goal Mode
+
+If the user asks to check, improve, or update repo settings, workflow, sync, GitHub/Codex/ChatGPT behavior, or AI-OS UX:
+- treat broad goals as valid;
+- do not over-expand governance unless risk requires it;
+- separate confirmed repo facts from recommendations;
+- give a short verdict, concrete fixes, and a Codex goal handoff if implementation is needed;
+- do not require atomic task wording from Sergey.
+
 Если задача выходит за scope, дай handoff:
 Handoff to:
 Task type:

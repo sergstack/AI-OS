@@ -22,4 +22,6 @@ If source Knowledge changes, update or regenerate the matching bundle consistent
 
 Manual ChatGPT UI upload remains a periodic formal sync for stable baselines. It is not the default day-to-day synchronization method and should not be required for every small repository change.
 
-Before a PR, run repository validation or `python3 scripts/sync_aios.py`.
+Daily fresh state should be read from GitHub or repository files.
+
+Before a PR, run repository validation or `python3 scripts/sync_aios.py`. This script is a sync readiness/check helper: it validates repository consistency and prints guidance, but does not upload to ChatGPT, push to GitHub, or perform external sync.

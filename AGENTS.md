@@ -22,7 +22,7 @@ Atomic task packages remain available for advanced or strict work, but they are 
 - Make the smallest necessary change.
 - Keep changes bounded and reversible.
 - Do not refactor unrelated content.
-- Do not add blocked promotion items: embeddings, vector DB, web UI, autonomous retrieval, agents, production deploys, secrets, credentials, or runtime artifacts.
+- Do not add blocked promotion items: embeddings, semantic search, vector DB, web UI, autonomous retrieval, agentic workflows, autonomous agents, production deploys, secrets, credentials, or runtime artifacts.
 - Do not claim production readiness or `production_promotion=yes`.
 - Do not commit directly to `main`.
 - Do not merge automatically.

@@ -71,7 +71,7 @@ Do not force-translate stable app names.
 - `[Thinking]` — decision, strategy, options, scenarios, risks.
 - `[Analytics]` — calculations, data, metrics, reconciliations, marts.
 - `[LLM]` — prompt, GPT instructions, workflow, model routing, eval.
-- `[Codex]` — code, implementation, tests, refactor, automation task package.
+- `[Codex]` — code, implementation, tests, refactor, repo changes, or goal-to-execution work.
 - User — critical clarification required.
 
 ## Rules
