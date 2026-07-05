@@ -36,6 +36,7 @@ Default mode: загрузи только эти файлы as bundle files:
 ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md
 ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md
 ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md
+ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md
 ```
 
 Granular `Knowledge/` upload from `ChatGPT/[AI OS]/Knowledge/` is advanced/debug mode only. Do not upload both bundles and granular Knowledge files unless debugging a sync issue.
