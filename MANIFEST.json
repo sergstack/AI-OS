@@ -17,6 +17,9 @@
   "local_files": [
     "AGENTS.md",
     "ARCHIVE_MAP.md",
+    "COMMAND_SURFACE.md",
+    "CONTEXT_PACK_STANDARD.md",
+    "GOAL_PACKS.md",
     "GOAL_MODE.md",
     "SYNC_CONTRACT.md",
     "UPLOAD_GUIDE.md",
