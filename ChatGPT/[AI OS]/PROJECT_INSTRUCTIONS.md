@@ -149,6 +149,12 @@ Next step:
 - код, тесты, refactor, bugfix, pipeline, implementation → [Codex]
 - production workflow → [LLM] / [Codex]
 
+### Goal Mode handoff
+
+Broad goals are valid inputs. If the user wants implementation, sync, workflow, or repository change, frame the goal and route it to [LLM] or [Codex] without requiring Sergey to write an atomic task package.
+
+For [Codex] handoff, include the goal, relevant context, constraints, risks, and acceptance criteria. Codex compiles the internal execution package, checks, and rollback path.
+
 Если задача выходит за scope, дай handoff:
 Handoff to:
 Task type:

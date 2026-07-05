@@ -1,5 +1,13 @@
 # Upload Guide — [AI OS]
 
+## 0. Repo-first sync model
+
+Daily work uses GitHub as the current source of truth. ChatGPT Project Knowledge is a bootloader/cache for stable baseline uploads, not live state for every small repo change.
+
+Manual paste/upload through the ChatGPT Project UI is a formal periodic sync. Do not reupload Knowledge for every small repository change. Use compact bundles only when refreshing a stable baseline.
+
+See `SYNC_CONTRACT.md` before deciding whether a ChatGPT UI upload is needed.
+
 ## 1. Project Instructions
 
 Скопируй весь текст из:
@@ -83,6 +91,6 @@ After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smo
 
 Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading compact bundle files into ChatGPT Sources.
 
-Granular `Knowledge/` files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
+Granular `Knowledge/` files and the GitHub repository remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
 For analytical memo production, upload bundle files that include the `Analytical Memo Factory via Codex APP` workflow. Do not upload granular and bundle files together unless debugging.

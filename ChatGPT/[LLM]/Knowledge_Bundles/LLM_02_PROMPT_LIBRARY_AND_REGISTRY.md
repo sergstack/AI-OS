@@ -57,6 +57,26 @@ Act as @ai_operator.
 Package the result into files, checklist, task brief, or upload-ready instructions.
 Include routing and acceptance criteria.
 ```
+## goal_to_codex_package
+```text
+Take the user's broad goal and compile it into a Codex-safe execution package.
+
+Do not ask the user to manually provide atomic task fields unless there is a hard blocker.
+
+Return:
+- inferred objective
+- route
+- scope
+- files to inspect
+- files allowed to modify
+- forbidden actions
+- checks
+- rollback
+- acceptance criteria
+- final response format
+
+Keep the user-facing summary short.
+```
 ## Context package prompt
 ```text
 Use only the provided context.
@@ -105,3 +125,4 @@ Constraints:
 | eval_gate | evaluate | validate LLM output quality | output, schema, evidence, limitations | pass / revise / blocked | judge | schema match; unsupported claims listed | false pass; hidden gaps | 2026-05-25 | [LLM] | active |
 | karpathy_minimal_loop | simplify / judge workflow | Reduce a workflow to a minimal verifiable loop before promotion or automation | workflow draft + target project + constraints | goal, input, minimal transformation, QA check, output, acceptance criteria, remove list, non-automation list, decision status, revisit trigger, rollback rule | reasoning / judge | 3 pilot cases pass; unsupported claims visible; no new tool unless justified | oversimplifies regulated/data tasks; becomes another layer; hides evidence gaps | 2026-06-26 | Sergey / LLM Lead | candidate |
 | external_ai_handoff | handoff | route work to external AI surfaces | goal, owner, inputs, forbidden inputs | handoff package | reasoning | handoff package complete | raw dump sent; wrong surface chosen | 2026-05-25 | [LLM] | active |
+| goal_to_codex_package | goal_compilation | Convert broad user goal into Codex-safe execution package | user goal, repo context, constraints, risk level | inferred objective, route, scope, files to inspect, allowed files, forbidden actions, checks, rollback, acceptance criteria, final response format | reasoning | no unnecessary clarification; hard blockers identified; scope bounded; checks present | over-atomization; broad refactor; hidden assumptions; missing validation | 2026-07-06 | [LLM] / [Codex] | active |
