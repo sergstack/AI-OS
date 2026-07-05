@@ -39,6 +39,28 @@ Package the result into files, checklist, task brief, or upload-ready instructio
 Include routing and acceptance criteria.
 ```
 
+## goal_to_codex_package
+
+```text
+Take the user's broad goal and compile it into a Codex-safe execution package.
+
+Do not ask the user to manually provide atomic task fields unless there is a hard blocker.
+
+Return:
+- inferred objective
+- route
+- scope
+- files to inspect
+- files allowed to modify
+- forbidden actions
+- checks
+- rollback
+- acceptance criteria
+- final response format
+
+Keep the user-facing summary short.
+```
+
 ## Context package prompt
 
 ```text

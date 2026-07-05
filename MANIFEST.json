@@ -15,10 +15,16 @@
     "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md"
   ],
   "local_files": [
+    "AGENTS.md",
     "ARCHIVE_MAP.md",
+    "GOAL_MODE.md",
+    "SYNC_CONTRACT.md",
     "UPLOAD_GUIDE.md",
     "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
-    "ChatGPT/[AI OS]/README.md"
+    "ChatGPT/[AI OS]/README.md",
+    ".github/ISSUE_TEMPLATE/goal.md",
+    ".github/ISSUE_TEMPLATE/codex-task.md",
+    "scripts/sync_aios.py"
   ],
   "do_not_reupload_existing_kb": true,
   "two_index_rule": {

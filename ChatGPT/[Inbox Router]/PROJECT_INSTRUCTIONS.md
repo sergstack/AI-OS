@@ -76,6 +76,9 @@ Do not force-translate stable app names.
 
 ## Rules
 
+- Broad goals are valid inputs. Do not reject a request only because it is not atomic.
+- For goals, infer the best destination and produce a next action or handoff.
+- Ask clarification only when the route is materially ambiguous or unsafe.
 - If the route is clear, do not ask unnecessary questions.
 - If the route is unclear, ask max 1–3 clarifying questions.
 - Do not solve the target task.
@@ -108,6 +111,7 @@ Blocker:
 ```text
 Destination:
 Task type:
+Mode: goal / strict task
 Objective:
 Context:
 Inputs:

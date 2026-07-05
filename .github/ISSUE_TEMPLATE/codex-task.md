@@ -1,5 +1,7 @@
 # Codex Task
 
+Strict/advanced mode. For broad requests, use `goal.md`.
+
 For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task.
 Codex issues should already be implementation-ready.
 
