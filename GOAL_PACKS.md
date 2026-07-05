@@ -29,10 +29,10 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 ### `finance_memo_factory`
 
 - trigger: "Prepare a finance memo from data"
-- route: `[Analytics]` -> `[Codex]` -> judge/revise
+- route: `[Analytics]` -> `[LLM]` -> `[Codex]` only when repo artifact, automation, or executable package is needed -> judge/revise
 - input: data sources, period, currency, question, audience
 - context needed: raw/stage/mart/report boundaries, formulas, assumptions, source files
-- output: evidence-grounded memo with calculations performed by Python or SQL
+- output: memo narrative from Analytics facts; executable artifact or PR only when needed
 - quality gate: totals, deltas, ratios, and reconciliations are computed deterministically
 - done when: memo is traceable to source data and residual risks are visible
 
@@ -70,13 +70,13 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 
 ### `security_cleanup`
 
-- trigger: remove risky public-repo artifacts or tighten safety wording
+- trigger: remove risky public-repo artifacts or tighten repo safety wording
 - route: `[Codex]`
 - input: repo path, suspected exposure, desired cleanup scope
 - context needed: safety scans, git status, affected docs/config
 - output: minimal cleanup PR
 - quality gate: no secrets are exposed, moved, or printed
-- done when: safety checks pass and rollback is clear
+- done when: repo safety checks pass and rollback is clear
 
 ### `local_ai_experiment`
 
