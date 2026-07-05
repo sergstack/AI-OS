@@ -21,6 +21,16 @@ Define how to use Codex App / Web / CLI / IDE surfaces safely.
 - Default output: changed files + checks + acceptance status.
 - Default risk rule: if no test is possible, report `blocked` or `partial`.
 
+## Goal Mode default
+
+Broad user goals are valid before the Codex APP layer.
+
+`ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should compile broad goals into executor-ready packages.
+
+`Codex APP` must still inspect before edit, state inferred mode, confirm safe scope, and report blockers when scope cannot be safely inferred.
+
+Do not ask Sergey for atomic task wording when the producer layer can compile it.
+
 ## Ultra-long local setup
 
 Use `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` when a task needs more than one execution batch.
