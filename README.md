@@ -22,6 +22,16 @@ This helper validates repo settings and prints sync guidance. It does not perfor
 
 See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
 
+## Daily Use
+
+- Use ChatGPT Projects for reasoning, routing, analytics framing, prompts, and evidence.
+- Use Codex APP for repo/file execution, branches, checks, PRs, and local run reports.
+- GitHub remains the live source of truth.
+- ChatGPT Project Knowledge is a baseline/cache for upload and bootstrapping.
+- Codex APP execution must report checks, risks, rollback, and acceptance status.
+
+See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
+
 ## Goal Packs
 
 Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
