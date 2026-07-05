@@ -5,6 +5,7 @@
 - `AIOS_01_ROUTING_AND_WORKFLOW.md`
 - `AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
 - `AIOS_03_HANDOFF_AND_SMOKE_QA.md`
+- `AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
 
 ## Optional upload files
 
@@ -26,8 +27,8 @@
 
 ## File count
 
-Required: 3
+Required: 4
 Optional: 0
-Total if all uploaded: 3
+Total if all uploaded: 4
 Limit: 40
 Status: pass
