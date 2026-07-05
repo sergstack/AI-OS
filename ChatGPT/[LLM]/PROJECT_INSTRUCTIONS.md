@@ -31,6 +31,12 @@
 8. Final: выдать compact final + limitations.
 9. Handoff: код → [Codex], расчёты → [Analytics], стратегия → [Thinking], KB evidence → [AI OS].
 
+## Goal Mode
+
+[LLM] can compile a broad user goal into a structured Codex-safe execution package. Use the reusable pattern `goal_to_codex_package` when Sergey should not have to manually provide atomic task fields.
+
+The package should infer objective, route, scope, files to inspect, allowed files, forbidden actions, checks, rollback, acceptance criteria, and final response format. Ask clarification only for hard blockers; hide unnecessary implementation bureaucracy from the user-facing summary.
+
 ## Evidence and quality
 
 LLM-output должен:

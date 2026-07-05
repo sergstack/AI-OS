@@ -1,5 +1,13 @@
 # Upload Guide — [AI OS]
 
+## 0. Repo-first sync model
+
+Daily work uses GitHub as the current source of truth. ChatGPT Project Knowledge is a bootloader/cache for stable baseline uploads, not live state for every small repo change.
+
+Manual paste/upload through the ChatGPT Project UI is a formal periodic sync. Do not reupload Knowledge for every small repository change. Use compact bundles only when refreshing a stable baseline.
+
+See `SYNC_CONTRACT.md` before deciding whether a ChatGPT UI upload is needed.
+
 ## 1. Project Instructions
 
 Скопируй весь текст из:
@@ -20,19 +28,18 @@ If a Project Instructions file is longer than 8000 characters, do not paste it i
 
 ## 2. Project Knowledge
 
-Загрузи только эти файлы:
+Default upload mode: `Knowledge_Bundles`.
+
+Default mode: загрузи только эти файлы as bundle files:
 
 ```text
-ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md
-ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md
-ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md
-ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md
-ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md
-ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md
-ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md
-ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md
-ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md
+ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md
+ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md
+ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md
+ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md
 ```
+
+Granular `Knowledge/` upload from `ChatGPT/[AI OS]/Knowledge/` is advanced/debug mode only. Do not upload both bundles and granular Knowledge files unless debugging a sync issue.
 
 ## 3. Не загружать
 
@@ -81,8 +88,8 @@ After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smo
 
 ## 7. Compact Knowledge bundles
 
-Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading compact bundle files into ChatGPT Sources.
+Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading bundle files into ChatGPT Sources.
 
-Granular `Knowledge/` files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
+Granular `Knowledge/` files and the GitHub repository remain the source of truth. `Knowledge_Bundles` is the default upload mode; granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
 For analytical memo production, upload bundle files that include the `Analytical Memo Factory via Codex APP` workflow. Do not upload granular and bundle files together unless debugging.

@@ -2,6 +2,30 @@
 
 Repository for ChatGPT project settings, routing docs, Codex execution contracts, and governance checks.
 
+## Default Workflow
+
+```text
+GOAL -> route -> infer scope -> Codex execution package -> checks -> PR -> ChatGPT reads GitHub for fresh state
+```
+
+Goal Mode is the default user-facing workflow. Sergey can provide a broad goal; Router, AI OS, LLM, or Codex should infer the route, scope, checks, rollback, and acceptance criteria before implementation.
+
+Atomic task packages remain available as advanced/strict mode, but they are not the default user burden. GitHub is the live source of truth; ChatGPT Project Knowledge is a cached baseline for Project bootstrapping and formal sync.
+
+Run sync readiness checks before opening a PR:
+
+```bash
+python3 scripts/sync_aios.py
+```
+
+This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
+
+See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
+
+## Goal Packs
+
+Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
+
 ## Governance Rule
 
 Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
@@ -27,9 +51,9 @@ The Knowledge bundle scan checks compact `Knowledge_Bundles/` upload artifacts f
 
 ## Knowledge Bundles
 
-Use `Knowledge_Bundles/` for ChatGPT Project Sources upload when a compact source set is preferred.
+Use `Knowledge_Bundles/` as the default ChatGPT Project Sources upload mode.
 
-Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Upload bundles OR granular files, not both, unless debugging a sync issue.
+Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
 ## Operational verification
 
