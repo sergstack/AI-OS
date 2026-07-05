@@ -41,7 +41,7 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 | `analytics_factory_loop` | full analytics cycle for a question | `[Analytics]` -> `[LLM]` for narrative -> `[Codex]` only for artifacts/repo changes | compact analytical answer or memo with method, QA, limitations, and next run trigger | deterministic calculation before findings |
 | `autoloop` | iterate analysis until QA passes or blockers are clear | `[Analytics]` | revised findings or blocker report | supervised loop only; stop on DQ fail, unclear grain, missing contract, or no validation path |
 | `supervised_agent_loop_design` | design a safe loop for a workflow | `[AI OS]` -> `[Thinking]` / `[Codex]` when implementation packaging is needed | loop design with retry/rerun rule, stop conditions, human acceptance point, and next trigger | supervised only; no autonomous retrieval or production agentic workflow |
-| `cross_project_eval_review` | evaluate or judge an output, PR, memo, loop, or evidence claim | `[AI OS]` -> owner project | eval type, evidence checked, deterministic checks, judge verdict, required revision, risks, next step | deterministic checks override LLM judge |
+| `cross_project_eval_review` | check this AI output / PR / memo / workflow | `[AI OS]` for evidence/governance routing, then owner project | eval verdict with required fixes, residual risks, final quality status, next step | deterministic checks override LLM judge |
 | `audit_anomaly_review` | anomaly, variance, or suspicious record | `[Analytics]` -> `[Thinking]` if decision framing is needed | finding, likely cause, evidence, risk, recommended action | no LLM arithmetic |
 | `streamdeck_prompt_upgrade` | improve a Stream Deck / quick prompt workflow | `[LLM]` -> `[Codex]` when repo edits are needed | tighter prompt or repo PR | prompt is short, routable, evidence-aware, and does not add unsupported automation |
 
@@ -68,7 +68,7 @@ One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each co
 | `Analytics Loop` | `[Analytics]` | question, data sources, period, grain, filters | full cycle from data contract to findings, memo, QA, and next run | `analytics_factory_loop` |
 | `Autoloop Analysis` | `[Analytics]` | question, data, QA criteria, stop conditions | supervised revise/rerun loop or blocker report | `autoloop` |
 | `Agent Loop Design` | `[AI OS]` | workflow goal, owner, checks, stop conditions | supervised loop design with acceptance gate | `supervised_agent_loop_design` |
-| `Eval / Judge` | `[AI OS]` -> owner project | output, PR, memo, loop, or evidence claim | eval owner, deterministic checks, judge verdict, revise/block/accept next step | `cross_project_eval_review` |
+| `Eval / Judge` | `[LLM]` / `[Thinking]` / `[Codex]` / `[Analytics]` / `[AI OS]` | output, workflow result, PR, memo, claim, or loop design | pass / revise / blocked review with required fixes | `cross_project_eval_review` |
 | `Audit Anomaly` | `[Analytics]` | anomaly, account/entity, period, expected behavior | finding, evidence, risk, recommended action | `audit_anomaly_review` |
 | `StreamDeck Improve` | `[LLM]` / `[Codex]` | current button/prompt and desired result | improved prompt or PR | `streamdeck_prompt_upgrade` |
 | `PR Judge` | `[Thinking]` / `[Codex]` | PR link, goal, checks, risks | pass / revise / blocked review | context-dependent |

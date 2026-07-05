@@ -21,50 +21,27 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
 - runtime_eval_automation: no
+- acceptance_status: candidate / ready for human review
 
 ---
 
 # Content
 
-## Eval Registry
+## AI Eval Registry Summary
 
-LLM-as-a-Judge is a reviewer, not truth.
+Single lightweight registry of AI evals across AI-OS projects.
 
-Deterministic checks override LLM judge for calculations, tests, schemas, contracts, formulas, metric definitions, column names, and business rules.
-
-| Eval type | Owner project | Primary evidence | Verdict |
-|---|---|---|---|
-| AI OS evidence check | `[AI OS]` | source files, confidence labels, promotion gates | supported / weak / unsupported |
-| LLM output quality | `[LLM]` | context package, prompt, output, unsupported claims | pass / revise / blocked |
-| Analytics memo QA | `[Analytics]` | data contract, stage, mart, formulas, QA checklist | pass / revise / blocked |
-| Codex PR Judge | `[Codex]` / `[Thinking]` | diff, checks, scope, rollback, risks | pass / revise / blocked |
-| Agent loop review | `[AI OS]` / `[Thinking]` | loop goal, allowed actions, checks, stop conditions | pass / revise / blocked |
-
-Minimal eval record:
+Status values:
 
 ```text
-eval_id:
-owner_project:
-eval_type:
-input:
-evidence_checked:
-deterministic_checks:
-judge_verdict:
-required_revision:
-final_status:
-limitations:
-next_step:
+draft
+candidate
+active
+blocked
+deprecated
 ```
 
-## Judge Calibration
-
-Judge output can help find unsupported claims, missing checks, weak evidence, scope creep, and unclear next steps.
-
-Judge output cannot validate calculations, tests, schemas, formulas, contracts, metric definitions, column names, or business logic by opinion.
-
-Judge results can vary by model class, prompt wording, context quality, missing evidence, output format, hidden assumptions, and broad criteria.
-
-Use:
+Verdict values:
 
 ```text
 pass
@@ -72,44 +49,94 @@ revise
 blocked
 ```
 
-`pass` means ready for human review or adoption decision, not production-ready by default.
+Deterministic checks override LLM judge for calculations, tests, schemas, output contracts, source traceability, formulas, metric definitions, column names, and business rules.
 
-If tests fail, data QA fails, schema checks fail, or contracts are missing, eval status cannot be `pass` even if the judge likes the text.
+Registry definitions:
 
-## Golden Eval Cases
+| eval_id | workflow | owner_project | eval_type | judge/check |
+|---|---|---|---|---|
+| `AIOS-EVIDENCE` | AI OS evidence answer | `[AI OS]` | evidence | confidence and source check |
+| `LLM-OUTPUT` | draft -> judge -> revise | `[LLM]` | judge | rubric + unsupported claims check |
+| `ANALYTICS-QA` | analytical memo / QA | `[Analytics]` | deterministic QA + narrative judge | data contract, mart, metric, period, grain, QA status |
+| `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | workflow eval | diff, checks, scope, rollback |
+| `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | governance eval | loop acceptance checklist |
+| `THINKING-DECISION` | decision review | `[Thinking]` | judge | assumptions, downside, reversibility, revisit trigger |
 
-Golden cases cover:
+## Judge Calibration Summary
 
-- AI OS evidence: source files or fresh sources named, confidence visible, promotion gates respected.
-- LLM output: facts separated from interpretation, unsupported claims listed, judge/revise status present.
-- Analytics memo: deterministic calculations, explicit grain/period/filter/method, claims trace to mart/evidence.
-- Codex PR: scope matches goal, checks actually run or blockers stated, no unrelated refactor.
-- Agent loop: supervised `goal -> action -> check -> revise/rerun -> acceptance -> next trigger` with bounded retry and human acceptance.
+Judge is a reviewer, not truth.
 
-## Cross-Project Playbook
+Rules:
 
-| Work item | Owner project | Use |
-|---|---|---|
-| Evidence confidence, promotion gate, AI OS pattern | `[AI OS]` | AI OS evidence check |
-| LLM output quality, prompt quality, judge/revise | `[LLM]` | LLM quality gate |
-| Calculations, data QA, schemas, marts, analytical memo | `[Analytics]` | deterministic QA plus memo QA |
-| PR review, implementation checks, test evidence | `[Codex]` | PR Judge and workflow eval |
-| Strategic critique, risk review, revisor pass | `[Thinking]` | judge/revisor decision review |
+- Judge must use explicit rubric.
+- Judge output must include `pass`, `revise`, or `blocked`.
+- High-risk outputs require human review.
+- Unsupported claims must be listed, not silently fixed.
+- Revision must be traceable to judge findings.
+- Do not hardcode permanent model names as governance truth.
 
-Flow:
+Use model classes:
 
 ```text
-route eval type
--> gather compact evidence
--> run deterministic checks where applicable
--> run judge/review
--> revise or block
--> final status
--> human acceptance or next step
+fast
+reasoning
+high-reasoning
+local
+judge
+```
+
+When judge model class changes, rerun golden eval cases, compare verdict drift, record risk if verdicts change, and do not silently promote new judge behavior.
+
+## Golden Eval Cases Summary
+
+Golden cases are small reusable manual smoke QA examples, not runtime logs or benchmark framework.
+
+Required cases:
+
+- `CASE-AIOS-EVIDENCE-001`: AI OS evidence answer; must detect unsupported / weak claims.
+- `CASE-LLM-JUDGE-001`: LLM draft -> judge -> revise; must detect unsupported claims and missing limitations.
+- `CASE-ANALYTICS-QA-001`: Analytics memo; must require source mart/table, metric, period, grain, QA status, confidence.
+- `CASE-CODEX-PR-001`: Codex PR Judge; must detect scope creep, missing checks, rollback gaps.
+- `CASE-AGENT-LOOP-001`: Agent Loop Design; must distinguish supervised loop from autonomous agentic workflow.
+- `CASE-THINKING-DECISION-001`: Thinking decision review; must detect hidden assumptions, downside, reversibility, revisit trigger.
+
+## Cross-Project Eval Playbook Summary
+
+Eval routing:
+
+| Output / workflow | Owner project | Eval method | Verdict |
+|---|---|---|---|
+| AI concept / KB claim | `[AI OS]` | evidence / confidence check | supported / weak / mixed / unsupported |
+| LLM draft / prompt output | `[LLM]` | judge -> revise | pass / revise / blocked |
+| Financial / analytical memo | `[Analytics]` | deterministic QA + narrative judge | pass / revise / blocked |
+| Repo change / PR | `[Codex]` | PR Judge + checks | pass / revise / blocked |
+| Decision memo | `[Thinking]` | assumption / risk / reversibility judge | pass / revise / blocked |
+| Agent loop design | `[AI OS]` | Loop Acceptance Checklist | pass / revise / blocked |
+
+Evaluation order:
+
+1. Deterministic checks first when available.
+2. Source/evidence checks before narrative polish.
+3. LLM judge reviews only against explicit criteria.
+4. Revise only from visible judge findings.
+5. Human acceptance for high-risk outputs.
+
+Output format:
+
+```text
+Eval:
+Owner project:
+Input reviewed:
+Checks:
+Judge verdict:
+Required fixes:
+Residual risks:
+Final quality status:
+Next step:
 ```
 
 ## Boundaries
 
 RAGAS and SWE-Bench may be referenced as future/reference patterns only.
 
-This layer does not add runtime RAGAS setup, SWE-Bench benchmark setup, embeddings, vector DB, semantic search, web UI, autonomous retrieval, runtime artifacts, logs, secrets, or production eval automation.
+This layer does not add runtime RAGAS setup, SWE-Bench benchmark runner, vector DB, embeddings, semantic search, web UI, autonomous retrieval, autonomous eval agents, production automation, logs, runtime artifacts, eval result database, secrets, or `.env`.

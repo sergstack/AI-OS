@@ -2,55 +2,69 @@
 
 ## Purpose
 
-Define a lightweight cross-project eval registry for AI-OS.
+Single lightweight registry of AI evals across AI-OS projects.
 
-This registry connects existing judge/revise, PR Judge, Codex workflow evals, Analytics QA, and AI OS evidence checks without adding runtime eval automation.
+This registry defines eval standards only. It does not store run results, runtime logs, eval databases, or benchmark outputs.
 
-## Rule
+## Eval Status Values
+
+- `draft`
+- `candidate`
+- `active`
+- `blocked`
+- `deprecated`
+
+## Verdict Values
+
+- `pass`
+- `revise`
+- `blocked`
+
+## Core Rule
 
 LLM-as-a-Judge is a reviewer, not truth.
 
-Deterministic checks override LLM judge for:
+Deterministic checks override LLM judge for calculations, tests, schemas, output contracts, source traceability, formulas, metric definitions, column names, and business rules.
 
-- calculations;
-- tests;
-- schemas;
-- contracts;
-- formulas;
-- metric definitions;
-- column names;
-- business rules.
+## Registry
 
-If deterministic evidence and LLM judge disagree, use deterministic evidence and mark the judge result as `revise` or `blocked`.
+| eval_id | workflow | owner_project | task_type | eval_type | judge/check | pass criteria | revise criteria | blocked criteria | last_reviewed | status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `AIOS-EVIDENCE` | AI OS evidence answer | `[AI OS]` | claim / pattern / governance | evidence | confidence and source check | supported evidence or clearly marked weak/mixed/not found | missing confidence, weak sourcing, unclear routing | unsupported claim presented as fact or blocked promotion item recommended | 2026-07-06 | active |
+| `LLM-OUTPUT` | draft -> judge -> revise | `[LLM]` | prompt output / memo text | judge | explicit rubric + unsupported claims check | schema followed, facts separated, limitations visible | local unsupported claims or missing limitations | hallucinated sources, hidden blockers, or no evidence path | 2026-07-06 | active |
+| `ANALYTICS-QA` | analytical memo / QA | `[Analytics]` | data / memo / mart | deterministic QA + narrative judge | data contract, source mart/table, metric, period, grain, QA status | deterministic QA passes and memo claims trace to evidence | fixable missing method, limitation, or traceability field | failed reconciliation, missing contract, unclear grain, or unapproved formula/schema change | 2026-07-06 | active |
+| `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | repo change / PR | workflow eval | diff, checks, scope, rollback | goal match, checks observed, rollback and risks visible | bounded scope or documentation fixes needed | secrets, production risk, failing checks, unsafe scope, or missing acceptance | 2026-07-06 | active |
+| `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | loop design | governance eval | loop acceptance checklist | supervised loop, bounded retry, stop conditions, human acceptance | missing owner, retry rule, or stop condition | autonomous retrieval, uncontrolled agents, runtime artifacts, or no validation | 2026-07-06 | active |
+| `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 
-## Eval Types
+## Required Eval Types
 
-| Eval type | Owner project | Primary evidence | Verdict |
-|---|---|---|---|
-| AI OS evidence check | `[AI OS]` | source files, confidence labels, promotion gates | supported / weak / unsupported |
-| LLM output quality | `[LLM]` | context package, prompt, output, unsupported claims | pass / revise / blocked |
-| Analytics memo QA | `[Analytics]` | data contract, stage, mart, formulas, QA checklist | pass / revise / blocked |
-| Codex PR Judge | `[Codex]` / `[Thinking]` | diff, checks, scope, rollback, risks | pass / revise / blocked |
-| Agent loop review | `[AI OS]` / `[Thinking]` | loop goal, allowed actions, checks, stop conditions | pass / revise / blocked |
+### AI OS Evidence Eval
 
-## Lightweight Eval Record
+Checks whether claims are supported, weak, mixed, unsupported, or not found.
 
-```text
-eval_id:
-owner_project:
-eval_type:
-input:
-evidence_checked:
-deterministic_checks:
-judge_verdict:
-required_revision:
-final_status:
-limitations:
-next_step:
-```
+### LLM Output Eval
+
+Checks schema, facts vs interpretation, unsupported claims, evidence references, limitations, judge/revise.
+
+### Analytics Eval
+
+Checks deterministic QA, source mart/table, metric, period, grain, calculation method, QA status, confidence, and limitations.
+
+### Codex PR Eval
+
+Checks goal match, scope, tests/checks, forbidden changes, rollback, risks, and acceptance status.
+
+### Agent Loop Eval
+
+Checks supervised loop boundary, stop conditions, bounded retry/rerun, validation path, and human acceptance.
+
+### Thinking Decision Eval
+
+Checks assumptions, options, downside, reversibility, confidence, and revisit trigger.
 
 ## Reference-Only Patterns
 
 RAGAS and SWE-Bench may be referenced as future or external patterns for inspiration.
 
-Do not add runtime RAGAS setup, SWE-Bench benchmark setup, embeddings, vector DB, semantic search, web UI, autonomous retrieval, runtime artifacts, logs, secrets, or production eval automation.
+Do not add runtime RAGAS setup, SWE-Bench benchmark runner, vector DB, embeddings, semantic search, web UI, autonomous retrieval, autonomous eval agents, production automation, logs, runtime artifacts, eval result database, secrets, or `.env`.
