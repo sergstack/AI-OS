@@ -61,7 +61,7 @@ Why bad:
 - user cannot inspect the result;
 - decision signal is buried;
 - QA fields become noise;
-- compact task becomes full audit project.
+- compact task becomes `full` package.
 
 Correct action:
 
@@ -69,7 +69,7 @@ Correct action:
 - default to compact view;
 - expose only decision-relevant metrics;
 - move evidence/QA/lineage to appendix or internal design;
-- ask for full audit mode only when needed.
+- ask for `full` mode only when needed.
 
 ## Production readiness rule
 

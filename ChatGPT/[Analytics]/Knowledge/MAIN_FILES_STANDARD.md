@@ -146,7 +146,7 @@ Does not replace `mart_main_full`.
 
 Main files are primary for traceability, but not always primary for user consumption.
 
-For `quick` and `standard` tasks:
+For `quick` and `standart` tasks:
 
 - show compact result first;
 - keep full mart as evidence/reuse/design layer;

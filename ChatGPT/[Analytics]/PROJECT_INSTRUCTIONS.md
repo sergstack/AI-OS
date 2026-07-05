@@ -4,7 +4,7 @@
 
 ## Роль проекта
 
-`[Analytics]` — рабочая папка для данных, расчётов, финансовой аналитики, data contracts, RAW/STAGE/MARTS, variance / driver / bridge / cohort / anomaly / reconciliation analysis, графиков, аналитических записок и QA.
+`[Analytics]` — Analytics Factory: question → data contract → stage → mart → calc → findings → memo → judge/QA → revise/rerun → acceptance → next run.
 
 Главное: **по умолчанию выполняй анализ внутри `[Analytics]`**, если задача касается метрик, данных, отклонений, marts, графиков, memo или аналитических выводов.
 
@@ -35,8 +35,9 @@ Handoff в другие проекты делай только когда зад
 Classify:
 
 - `quick` — default for short/simple/executive/one-off. Concise answer/table. No workbook unless requested or risk/reuse/recon/traceability require it; max 1 table, 5 metrics, 12 columns.
-- `standard` — reusable output. Compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
-- `full_audit` — full model, audit trail, reusable mart, dashboard, Codex handoff, or deep QA. Evidence package with index, dictionary and compact front sheet.
+- `standart` — compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
+- `full` — full stage/mart/evidence package with compact front sheet; not audit journal/history.
+- `autoloop` — supervised loop: deterministic first, judge/QA before final memo, revise/rerun on QA fail, stop on blockers. Not autonomous agent/retrieval/vector DB/embeddings/logs/journals/runtime artifacts.
 
 ## Базовый workflow
 
@@ -45,18 +46,17 @@ Question / Scope
 → Inputs
 → Data Contract
 → RAW
-→ STAGE MAIN FULL
-→ STAGE SLICES, if needed
-→ MART MAIN FULL
-→ MART MAIN TZ / COMPACT
-→ MART SLICES FROM MART MAIN FULL
-→ ANALYSIS
-→ CHARTS
-→ LLM CONTEXT PACKAGE, if narrative is needed
-→ REPORT / MEMO / DOCX STRUCTURE
-→ QA
+→ stage_main_full
+→ mart_main_full
+→ mart_main_tz / compact
+→ deterministic calculation
+→ findings
+→ LLM context
+→ memo / report
+→ judge / QA
+→ revise or rerun
 → ACCEPTANCE
-→ ARCHIVE / HANDOFF, if needed
+→ next run trigger
 ```
 
 ## Универсальное правило главных файлов
@@ -86,8 +86,8 @@ Question / Scope
 Keep main-file traceability, but hide full artifacts by default:
 
 - `quick`: describe, not create, `stage_main_full` / `mart_main_full`; show compact mart/answer.
-- `standard`: compact first; full mart only for reconciliation, repeatability, or downstream use.
-- `full_audit`: full stage/mart package.
+- `standart`: compact first; full mart only for reconciliation, repeatability, or downstream use.
+- `full`: full stage/mart/evidence package with compact front sheet.
 
 Rule: full mart is evidence/reuse layer, not default UI.
 
@@ -162,9 +162,9 @@ confidence:
 - Limitations visible.
 - Recommendations do not exceed data.
 
-## Artifact inventory
+## Internal artifact checklist
 
-For every analytical case with data, track the required artifacts:
+For data cases, track internally, not as default user-facing output:
 
 - input files;
 - data contract;
@@ -172,11 +172,11 @@ For every analytical case with data, track the required artifacts:
 - `mart_main_full`;
 - `mart_main_tz` / `mart_main_compact`;
 - reconciliation report;
-- chart pack, if charts are needed;
+- chart pack if needed;
 - claim registry;
 - evidence registry;
 - limitations note;
-- final memo / report;
+- memo / report;
 - acceptance note.
 
 ## Claim / evidence registry
@@ -216,19 +216,13 @@ Management conclusions must be traceable to mart/evidence. If a claim cannot be 
 
 ```text
 Question / scope:
-Data required / available:
+Data status:
 Grain / period / filters:
-Data contract status:
-Main files:
-- stage_main_full:
-- mart_main_full:
-- mart_main_tz / compact:
 Method:
-Calculation / analysis:
 Findings:
 QA:
 Limitations:
-Routing / handoff:
+Decision / recommendation:
 Next step:
 ```
 

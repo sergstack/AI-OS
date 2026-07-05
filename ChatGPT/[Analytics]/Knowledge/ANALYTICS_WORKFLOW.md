@@ -9,7 +9,7 @@
 Before running the full workflow, define:
 
 ```text
-mode: quick / standard / full_audit
+mode: quick / standart / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -35,23 +35,34 @@ Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by 
 ## Canonical workflow
 
 ```text
-Question
-→ Inputs
-→ Data contract
+question / scope
+→ inputs
+→ data contract
 → RAW
-→ STAGE MAIN FULL
-→ STAGE slices, if needed
-→ MART MAIN FULL
-→ MART MAIN TZ / COMPACT
-→ MART slices from MART MAIN FULL
-→ ANALYSIS
-→ CHARTS
-→ LLM context package, if needed
-→ REPORT / MEMO / DOCX structure
-→ QA
-→ ACCEPTANCE
-→ ARCHIVE / HANDOFF
+→ stage_main_full
+→ mart_main_full
+→ compact mart
+→ deterministic calculation
+→ findings
+→ LLM context package
+→ memo / report
+→ judge / QA
+→ revise or rerun
+→ acceptance
+→ next run trigger
 ```
+
+## `autoloop`
+
+`autoloop` is a supervised analytical loop, not an autonomous agent.
+
+Rules:
+
+- deterministic calculations first;
+- judge/QA before final memo;
+- revise or rerun only from visible QA findings;
+- stop on blockers, missing data contract, failed DQ, unclear grain, or no validation path;
+- do not add autonomous retrieval, vector DB, embeddings, semantic search, web UI, logs, journals, or runtime artifacts.
 
 ## Step 1 — Question / scope
 
@@ -189,17 +200,13 @@ Run QA before final conclusion.
 ## Default output
 
 ```text
-Question:
-Scope:
-Inputs:
-Data contract:
-Main files:
-- stage_main_full:
-- mart_main_full:
-- mart_main_tz / compact:
+Question / scope:
+Data status:
+Grain / period / filters:
 Method:
-Results:
+Findings:
 QA:
 Limitations:
+Decision / recommendation:
 Next step:
 ```

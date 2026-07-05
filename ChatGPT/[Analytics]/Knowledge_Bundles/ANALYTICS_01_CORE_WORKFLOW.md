@@ -52,7 +52,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Step 0 — Output mode and artifact budget
 Before running the full workflow, define:
 ```text
-mode: quick / standard / full_audit
+mode: quick / standart / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -73,23 +73,30 @@ Question
 Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
 ## Canonical workflow
 ```text
-Question
-→ Inputs
-→ Data contract
+question / scope
+→ inputs
+→ data contract
 → RAW
-→ STAGE MAIN FULL
-→ STAGE slices, if needed
-→ MART MAIN FULL
-→ MART MAIN TZ / COMPACT
-→ MART slices from MART MAIN FULL
-→ ANALYSIS
-→ CHARTS
-→ LLM context package, if needed
-→ REPORT / MEMO / DOCX structure
-→ QA
-→ ACCEPTANCE
-→ ARCHIVE / HANDOFF
+→ stage_main_full
+→ mart_main_full
+→ compact mart
+→ deterministic calculation
+→ findings
+→ LLM context package
+→ memo / report
+→ judge / QA
+→ revise or rerun
+→ acceptance
+→ next run trigger
 ```
+## `autoloop`
+`autoloop` is a supervised analytical loop, not an autonomous agent.
+Rules:
+- deterministic calculations first;
+- judge/QA before final memo;
+- revise or rerun only from visible QA findings;
+- stop on blockers, missing data contract, failed DQ, unclear grain, or no validation path;
+- do not add autonomous retrieval, vector DB, embeddings, semantic search, web UI, logs, journals, or runtime artifacts.
 ## Step 1 — Question / scope
 - business question;
 - decision context;
@@ -169,10 +176,17 @@ Important sentences must be backed by metric/table/mart/period/evidence or marke
 ## Step 12 — QA and acceptance
 Run QA before final conclusion.
 ## Default output
-- stage_main_full:
-- mart_main_full:
-- mart_main_tz / compact:
+```text
+Question / scope:
+Data status:
+Grain / period / filters:
+Method:
+Findings:
 QA:
+Limitations:
+Decision / recommendation:
+Next step:
+```
 
 
 ## From: `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`
@@ -199,6 +213,7 @@ QA:
 - таблицы выводов;
 - QA checklist;
 - acceptance status;
+- supervised `autoloop`: deterministic calculation → judge/QA → revise/rerun → acceptance → next run trigger;
 - ограничения и риски;
 - подготовка ТЗ для Codex, если после анализа нужна реализация.
 ## Не отправлять в Codex, если пользователь просит
@@ -260,6 +275,8 @@ Handoff to Codex:
 ```text
 В [Analytics] фиксирую стандарт и аналитическую логику. В Codex передавать только реализацию изменений файлов и тесты.
 ```
+## Autoloop boundary
+`autoloop` is a supervised analytical loop. It is not autonomous retrieval, an autonomous agent, vector DB, embeddings, semantic search, web UI, log system, journal, or runtime artifact store.
 
 
 ## From: `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`
@@ -359,7 +376,7 @@ Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions an
 - visible limitations;
 - references back to `mart_main_full`.
 ## User-facing compact-first rule
-For `quick` and `standard` tasks:
+For `quick` and `standart` tasks:
 - show compact result first;
 - keep full mart as evidence/reuse/design layer;
 - do not expose all QA, lineage, risk, confidence and technical fields in the main view;
