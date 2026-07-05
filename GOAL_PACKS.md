@@ -36,6 +36,26 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: totals, deltas, ratios, and reconciliations are computed deterministically
 - done when: memo is traceable to source data and residual risks are visible
 
+### `analytics_factory_loop`
+
+- trigger: "Run the full analytics cycle for this question"
+- route: `[Analytics]` -> `[LLM]` for narrative -> `[Codex]` only for executable artifacts or repo changes
+- input: question, data sources, period, grain, filters, audience, constraints
+- context needed: data contract, RAW/STAGE/MART boundaries, formulas, QA checks, memo goal
+- output: compact analytical answer or memo with traceable method, QA, limitations, and next run trigger
+- quality gate: deterministic calculation before findings; memo claims trace to `mart_main_full` or compact mart
+- done when: acceptance is candidate / ready for human review and next run trigger is explicit
+
+### `supervised_autoloop_analysis`
+
+- trigger: "Iterate analysis until QA passes or blockers are clear"
+- route: `[Analytics]`
+- input: question, available data, QA criteria, stop conditions
+- context needed: data contract, deterministic checks, judge/QA rubric, rerun criteria
+- output: revised findings or blocker report; no autonomous retrieval or runtime artifacts
+- quality gate: supervised loop only; stop on DQ fail, unclear grain, missing contract, or no validation path
+- done when: judge/QA passes, or rerun/blocker is explicit
+
 ### `audit_anomaly_review`
 
 - trigger: "Check this anomaly, variance, or suspicious record"

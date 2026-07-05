@@ -51,7 +51,7 @@ For `standard` mode:
 - no more than 3-5 sheets unless justified;
 - every extra sheet must have a business purpose.
 
-For `full_audit` mode:
+For `full_traceable_analysis` mode (`full_audit` alias):
 
 - workbook may be large, but must include:
   - README / index;

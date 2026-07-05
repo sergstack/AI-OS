@@ -58,11 +58,12 @@ Default visible field budget:
 |---|---:|---:|---:|
 | quick | 3-5 | 8-12 | 0-1 |
 | standard | 5-10 | 15-30 | 3-5 |
-| full_audit | as needed | as needed | as needed, but requires index and compact front sheet |
+| full_traceable_analysis | as needed | as needed | as needed, but requires index and compact front sheet |
 
 Rules:
 
-- Do not create 40 sheets or 200 columns unless user explicitly requests full audit / reusable model / dashboard-ready package.
+- Backward-compatible alias: `full_audit` means `full_traceable_analysis`, a traceable analytical package, not an audit journal/history.
+- Do not create 40 sheets or 200 columns unless user explicitly requests full traceable analysis / reusable model / dashboard-ready package.
 - If more than 30 columns are needed, split fields into groups:
   - identity;
   - core metrics;

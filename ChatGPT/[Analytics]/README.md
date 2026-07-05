@@ -31,6 +31,8 @@ Default: solve in [Analytics].
 Handoff only when implementation, prompt orchestration, strategy decision, or AI OS evidence check is needed.
 ```
 
+`[Analytics]` is the Analytics Factory for the full loop: question → data contract → stage → mart → deterministic calculation → findings → memo → judge/QA → revise/rerun → acceptance → next run.
+
 ## Upload order
 
 1. `PROJECT_INSTRUCTIONS.md`
