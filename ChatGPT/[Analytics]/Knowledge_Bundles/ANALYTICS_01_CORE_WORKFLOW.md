@@ -52,7 +52,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Step 0 — Output mode and artifact budget
 Before running the full workflow, define:
 ```text
-mode: quick / standart / full / autoloop
+mode: quick / standard / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -376,7 +376,7 @@ Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions an
 - visible limitations;
 - references back to `mart_main_full`.
 ## User-facing compact-first rule
-For `quick` and `standart` tasks:
+For `quick` and `standard` tasks:
 - show compact result first;
 - keep full mart as evidence/reuse/design layer;
 - do not expose all QA, lineage, risk, confidence and technical fields in the main view;

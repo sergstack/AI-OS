@@ -9,7 +9,7 @@
 Before running the full workflow, define:
 
 ```text
-mode: quick / standart / full / autoloop
+mode: quick / standard / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:

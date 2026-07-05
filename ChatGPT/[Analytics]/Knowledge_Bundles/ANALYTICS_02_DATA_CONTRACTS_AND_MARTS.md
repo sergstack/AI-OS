@@ -148,7 +148,7 @@ A mart must be useful to read, not just complete.
 | Mode | Metrics | Visible columns | Sheets / views |
 |---|---:|---:|---:|
 | quick | 3-5 | 8-12 | 0-1 |
-| standart | 5-10 | 15-30 | 3-5 |
+| standard | 5-10 | 15-30 | 3-5 |
 | full | as needed | as needed | as needed, but requires index and compact front sheet |
 
 Rules:

@@ -68,7 +68,7 @@ mart_main_tz / mart_main_compact
 ### Finance working package
 - full evidence;
 - DQ;
-- timing logs;
+- timing notes;
 - INOUT checks if valid;
 - baseline;
 - cards;

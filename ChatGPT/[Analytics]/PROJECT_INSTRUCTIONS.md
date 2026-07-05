@@ -35,7 +35,7 @@ Handoff в другие проекты делай только когда зад
 Classify:
 
 - `quick` — default for short/simple/executive/one-off. Concise answer/table. No workbook unless requested or risk/reuse/recon/traceability require it; max 1 table, 5 metrics, 12 columns.
-- `standart` — compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
+- `standard` — compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
 - `full` — full stage/mart/evidence package with compact front sheet; not audit journal/history.
 - `autoloop` — supervised loop: deterministic first, judge/QA before final memo, revise/rerun on QA fail, stop on blockers. Not autonomous agent/retrieval/vector DB/embeddings/logs/journals/runtime artifacts.
 
@@ -86,7 +86,7 @@ Question / Scope
 Keep main-file traceability, but hide full artifacts by default:
 
 - `quick`: describe, not create, `stage_main_full` / `mart_main_full`; show compact mart/answer.
-- `standart`: compact first; full mart only for reconciliation, repeatability, or downstream use.
+- `standard`: compact first; full mart only for reconciliation, repeatability, or downstream use.
 - `full`: full stage/mart/evidence package with compact front sheet.
 
 Rule: full mart is evidence/reuse layer, not default UI.
