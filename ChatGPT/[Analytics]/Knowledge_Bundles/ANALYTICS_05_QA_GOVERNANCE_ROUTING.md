@@ -137,14 +137,14 @@ For `quick` mode:
 - max 5 metrics;
 - max 12 visible columns;
 - no workbook unless explicitly requested;
-- no hidden expansion into full audit package.
+- no hidden expansion into `full` package.
 
-For `standard` mode:
+For `standart` mode:
 - compact front view required;
 - no more than 3-5 sheets unless justified;
 - every extra sheet must have a business purpose.
 
-For `full_traceable_analysis` mode (`full_audit` alias):
+For `full` mode:
 - workbook may be large, but must include README / index, compact front sheet, data dictionary, field groups and evidence appendix.
 ## Blocked status
 Use `blocked` when:
@@ -314,14 +314,14 @@ Why bad:
 - user cannot inspect the result;
 - decision signal is buried;
 - QA fields become noise;
-- compact task becomes full audit project.
+- compact task becomes `full` package.
 
 Correct action:
 - classify output mode first;
 - default to compact view;
 - expose only decision-relevant metrics;
 - move evidence/QA/lineage to appendix or internal design;
-- ask for full audit mode only when needed.
+- ask for `full` mode only when needed.
 ## Production readiness rule
 Do not claim production readiness unless:
 - implementation exists;
@@ -419,7 +419,7 @@ Pass condition:
 Pass condition:
 - mode = `quick`;
 - no workbook unless requested;
-- no full audit package;
+- no `full` package;
 - max 1 table;
 - max 5 metrics;
 - max 12 visible columns;

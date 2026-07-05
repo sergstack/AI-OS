@@ -43,15 +43,15 @@ For `quick` mode:
 - max 5 metrics;
 - max 12 visible columns;
 - no workbook unless explicitly requested;
-- no hidden expansion into full audit package.
+- no hidden expansion into `full` package.
 
-For `standard` mode:
+For `standart` mode:
 
 - compact front view required;
 - no more than 3-5 sheets unless justified;
 - every extra sheet must have a business purpose.
 
-For `full_traceable_analysis` mode (`full_audit` alias):
+For `full` mode:
 
 - workbook may be large, but must include:
   - README / index;

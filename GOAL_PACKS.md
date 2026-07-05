@@ -46,7 +46,7 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: deterministic calculation before findings; memo claims trace to `mart_main_full` or compact mart
 - done when: acceptance is candidate / ready for human review and next run trigger is explicit
 
-### `supervised_autoloop_analysis`
+### `autoloop`
 
 - trigger: "Iterate analysis until QA passes or blockers are clear"
 - route: `[Analytics]`

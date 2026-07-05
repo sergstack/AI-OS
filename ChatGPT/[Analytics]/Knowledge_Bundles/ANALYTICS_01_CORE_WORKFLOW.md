@@ -52,7 +52,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Step 0 — Output mode and artifact budget
 Before running the full workflow, define:
 ```text
-mode: quick / standard / full_traceable_analysis / autoloop_analysis
+mode: quick / standart / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -60,7 +60,6 @@ max_sheets:
 must_create_files: yes/no
 evidence_depth: light / normal / full
 ```
-Backward-compatible alias: `full_audit` means `full_traceable_analysis`: a traceable analytical package, not an audit-history folder or journal.
 If mode = `quick`, collapse the workflow:
 ```text
 Question
@@ -90,8 +89,8 @@ question / scope
 → acceptance
 → next run trigger
 ```
-## `autoloop_analysis`
-`autoloop_analysis` is a supervised analytical loop, not an autonomous agent.
+## `autoloop`
+`autoloop` is a supervised analytical loop, not an autonomous agent.
 Rules:
 - deterministic calculations first;
 - judge/QA before final memo;
@@ -214,7 +213,7 @@ Next step:
 - таблицы выводов;
 - QA checklist;
 - acceptance status;
-- supervised `autoloop_analysis`: deterministic calculation → judge/QA → revise/rerun → acceptance → next run trigger;
+- supervised `autoloop`: deterministic calculation → judge/QA → revise/rerun → acceptance → next run trigger;
 - ограничения и риски;
 - подготовка ТЗ для Codex, если после анализа нужна реализация.
 ## Не отправлять в Codex, если пользователь просит
@@ -277,7 +276,7 @@ Handoff to Codex:
 В [Analytics] фиксирую стандарт и аналитическую логику. В Codex передавать только реализацию изменений файлов и тесты.
 ```
 ## Autoloop boundary
-`autoloop_analysis` is a supervised analytical loop. It is not autonomous retrieval, an autonomous agent, vector DB, embeddings, semantic search, web UI, log system, journal, or runtime artifact store.
+`autoloop` is a supervised analytical loop. It is not autonomous retrieval, an autonomous agent, vector DB, embeddings, semantic search, web UI, log system, journal, or runtime artifact store.
 
 
 ## From: `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`
@@ -377,7 +376,7 @@ Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions an
 - visible limitations;
 - references back to `mart_main_full`.
 ## User-facing compact-first rule
-For `quick` and `standard` tasks:
+For `quick` and `standart` tasks:
 - show compact result first;
 - keep full mart as evidence/reuse/design layer;
 - do not expose all QA, lineage, risk, confidence and technical fields in the main view;

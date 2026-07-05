@@ -132,7 +132,7 @@ Pass condition:
 
 - mode = `quick`;
 - no workbook unless requested;
-- no full audit package;
+- no `full` package;
 - max 1 table;
 - max 5 metrics;
 - max 12 visible columns;

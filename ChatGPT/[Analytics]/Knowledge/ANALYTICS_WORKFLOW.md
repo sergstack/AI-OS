@@ -9,7 +9,7 @@
 Before running the full workflow, define:
 
 ```text
-mode: quick / standard / full_traceable_analysis / autoloop_analysis
+mode: quick / standart / full / autoloop
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -17,8 +17,6 @@ max_sheets:
 must_create_files: yes/no
 evidence_depth: light / normal / full
 ```
-
-Backward-compatible alias: `full_audit` means `full_traceable_analysis`: a traceable analytical package, not an audit-history folder or journal.
 
 If mode = `quick`, collapse the workflow:
 
@@ -54,9 +52,9 @@ question / scope
 → next run trigger
 ```
 
-## `autoloop_analysis`
+## `autoloop`
 
-`autoloop_analysis` is a supervised analytical loop, not an autonomous agent.
+`autoloop` is a supervised analytical loop, not an autonomous agent.
 
 Rules:
 
