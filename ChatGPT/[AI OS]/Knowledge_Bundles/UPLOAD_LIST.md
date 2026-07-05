@@ -6,6 +6,7 @@
 - `AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
 - `AIOS_03_HANDOFF_AND_SMOKE_QA.md`
 - `AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
+- `AIOS_05_SUPERVISED_AGENT_LOOPS.md`
 
 ## Optional upload files
 
@@ -27,8 +28,8 @@
 
 ## File count
 
-Required: 4
+Required: 5
 Optional: 0
-Total if all uploaded: 4
+Total if all uploaded: 5
 Limit: 40
 Status: pass

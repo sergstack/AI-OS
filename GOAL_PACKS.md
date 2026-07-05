@@ -76,6 +76,16 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: prompt is short, routable, evidence-aware, and does not add unsupported automation
 - done when: Sergey has a usable command/prompt and validation passes when files changed
 
+### `supervised_agent_loop_design`
+
+- trigger: "Design a safe loop for this workflow"
+- route: `[AI OS]` -> `[Thinking]` / `[Codex]` when implementation packaging is needed
+- input: goal, owner project, allowed actions, checks, stop conditions, acceptance gate
+- context needed: supervised loop boundary, promotion gates, tool decision matrix
+- output: loop design with retry/rerun rule, stop conditions, human acceptance point, and next trigger
+- quality gate: supervised only; no autonomous retrieval, vector DB, embeddings, semantic search, web UI, or production agentic workflow
+- done when: loop is pass/revise/blocked with candidate / ready for human review status
+
 ## Candidate Packs
 
 ### `dashboard_critic`
