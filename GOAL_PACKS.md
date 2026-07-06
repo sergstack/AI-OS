@@ -138,16 +138,6 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: no secrets are exposed, moved, or printed
 - done when: repo safety checks pass and rollback is clear
 
-### `local_ai_experiment`
-
-- trigger: test a local AI idea without production promotion
-- route: `[LLM]` / `[Codex]`
-- input: hypothesis, sample input, success criteria, local constraints
-- context needed: model routing, privacy needs, evaluation method
-- output: experiment plan or local prototype PR
-- quality gate: marked as experiment, not production-ready
-- done when: pilot result or blocker is documented without adding heavy status layers
-
 ### `weekly_ai_os_review`
 
 - trigger: review AI-OS drift, open ideas, and next useful improvement

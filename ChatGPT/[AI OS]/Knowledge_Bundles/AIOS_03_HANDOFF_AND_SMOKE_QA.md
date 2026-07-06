@@ -49,7 +49,7 @@ Suggested first step:
 1. `[Thinking]` формулирует решение, сценарии, риски, assumptions.
 2. `[Analytics]` считает deterministic часть: data contracts, marts, metrics, QA.
 3. `[LLM]` собирает context package, prompts, model routing, memo workflow.
-4. `[Codex]` реализует только по atomic task package с tests/acceptance.
+4. `[Codex]` реализует через Goal Mode handoff или strict task package со scope, checks, rollback и acceptance.
 5. QA проверяет evidence, tests, artifacts, regression, smoke checks.
 6. Release фиксирует status, residual risks, rollback и changelog.
 ## Что передавать из [AI OS]

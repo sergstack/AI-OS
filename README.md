@@ -29,6 +29,7 @@ See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
 - GitHub remains the live source of truth.
 - ChatGPT Project Knowledge is a baseline/cache for upload and bootstrapping.
 - Codex APP execution must report checks, risks, rollback, and acceptance status.
+- Use `HANDOFF_STYLE_STANDARD.md` for cross-project handoff wording and required fields.
 
 See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
 
