@@ -37,7 +37,7 @@ Classify:
 - `quick` — default for short/simple/executive/one-off. Concise answer/table. No workbook unless requested or risk/reuse/recon/traceability require it; max 1 table, 5 metrics, 12 columns.
 - `standard` — compact mart + memo/checks. Max 3-5 sheets, 10 metrics, 30 visible columns.
 - `full` — full stage/mart/evidence package with compact front sheet; not audit journal/history.
-- `autoloop` — supervised loop: deterministic first, judge/QA before final memo, revise/rerun on QA fail, stop on blockers. Not autonomous agent/retrieval/vector DB/embeddings/logs/journals/runtime artifacts.
+- `autoloop_analysis` — supervised analytical loop: deterministic first, judge/QA before final memo, revise/rerun on QA fail, stop on blockers. Backward-compatible alias: `autoloop`. Not autonomous agent/retrieval/vector DB/embeddings/logs/journals/runtime artifacts.
 
 ## Базовый workflow
 
