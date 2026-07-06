@@ -9,7 +9,7 @@
 Before running the full workflow, define:
 
 ```text
-mode: quick / standard / full / autoloop
+mode: quick / standard / full / autoloop_analysis
 requested_output:
 max_visible_metrics:
 max_visible_columns:
@@ -52,9 +52,9 @@ question / scope
 → next run trigger
 ```
 
-## `autoloop`
+## `autoloop_analysis`
 
-`autoloop` is a supervised analytical loop, not an autonomous agent.
+`autoloop_analysis` is a supervised analytical loop, not an autonomous agent. Backward-compatible alias: `autoloop`.
 
 Rules:
 
