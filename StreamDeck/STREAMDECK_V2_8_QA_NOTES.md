@@ -8,6 +8,7 @@ Status: candidate / revised after live prompt QA / ready for human review.
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json`
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.csv`
 - `STREAMDECK_V2_8_LIVE_PROMPT_QA.md`
+- `STREAMDECK_V2_8_LEVEL2_RISK_QA.md`
 
 ## Source alignment checked
 
@@ -42,9 +43,20 @@ Status: candidate / revised after live prompt QA / ready for human review.
 - Full Draft -> HOME JUDGE -> HOME REVISOR -> Final workflow passed in `[LLM]` with no folder hopping and no manual prompt editing.
 - v2.8 remains candidate-only until Sergey accepts promotion.
 
+## Level 2 risk QA update
+
+- Risk QA artifact: `STREAMDECK_V2_8_LEVEL2_RISK_QA.md`.
+- Tested high-risk / high-frequency / high-impact Level 2 prompts only, not all 195 rows.
+- Target buttons tested across JUDGE, REVISOR, CODEX, ANALYTICS, MEMO, AI OS, LOCAL AI, and KB.
+- Result: 26 pass, 1 blocked / human choice needed.
+- Blocked item: `REVISOR / Prompt Revise` repeatedly reintroduced raw input-placeholder patterns during live `[LLM]` testing despite prompt-level fixes.
+- Candidate fix attempted: require approved StreamDeck UX opening and return `blocked` if placeholders cannot be removed safely.
+- v2.8 remains candidate-only until Sergey accepts promotion.
+
 ## Residual risks
 
 - Actual Stream Deck device/profile behavior is not tested by repository checks.
 - Live prompt QA used Codex browser/runtime behavior, not physical StreamDeck device behavior.
 - Live ChatGPT Project sync can drift after manual Knowledge uploads; runtime smoke QA should be repeated after migration.
 - The v2.8 JSON/CSV are setup maps, not an Elgato import package.
+- `REVISOR / Prompt Revise` remains a known Level 2 risk after live QA.

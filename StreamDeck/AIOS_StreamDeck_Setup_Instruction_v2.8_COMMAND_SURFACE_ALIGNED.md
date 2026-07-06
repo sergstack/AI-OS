@@ -2864,13 +2864,15 @@ Use the last meaningful message above, selected text, or material pasted below.
 If no material is available, ask Sergey to paste it in one message.
 
 Task:
-Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Tighten the prompt so it is shorter, safer, and more routable.
+Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Tighten the prompt so it is shorter, safer, and more routable. Remove any original input template section. The revised prompt must begin with this exact StreamDeck UX opening: `Use the last meaningful message above, selected text, or material pasted below. If no material is available, ask Sergey to paste it in one message.` The final revised prompt must not contain an input-colon template, square-bracket paste placeholders, or Russian insert placeholders. If you cannot remove those placeholders safely, return `Verdict: blocked` instead of a revised prompt.
 
 Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Return:
+Verdict: pass / blocked
 Revised prompt:
+Placeholder check: no an input-colon template, square-bracket paste placeholders, or Russian insert placeholders remain
 Safety preserved:
 Unsupported automation removed:
 ```
