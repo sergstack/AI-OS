@@ -1,0 +1,1781 @@
+{
+  "version": "2.8",
+  "status": "candidate / command-surface aligned",
+  "active_version_preserved": "v2.7 remains active until Sergey manually migrates and accepts v2.8",
+  "source_files_inspected": [
+    "COMMAND_SURFACE.md",
+    "GOAL_PACKS.md",
+    "docs/PROJECT_ROUTING.md",
+    "PROJECT_FOLDER_QA_PILOT_REPORT.md",
+    "PILOT_RESULTS_2026-07-06_RUNTIME_CHATGPT_AND_OLLAMA.md",
+    "StreamDeck/ROUTING_FIXED_AIOS_StreamDeck_Setup_Instruction_v2.7_PROJECT_ALIGNED_EN_LABELS.md",
+    "StreamDeck/ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.json",
+    "StreamDeck/ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.csv"
+  ],
+  "safety_rules": "Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.",
+  "migration_notes": {
+    "QA": "Renamed/reframed as JUDGE on HOME with pass / revise / blocked verdict.",
+    "REVISOR": "Added to HOME as a one-touch revise-from-Judge-notes prompt.",
+    "REPO": "Replaced by SYNC on HOME; repo actions live under CODEX and SYNC Check.",
+    "SYSTEM": "Demoted from HOME; no clear daily command-surface use in current evidence.",
+    "STOP": "Removed from HOME; no destructive or app-control stop action is included. Use built-in back/Esc manually if needed.",
+    "RESEARCH": "Renamed/reframed as AI TREND for trend triage and hype filtering."
+  },
+  "rows": [
+    {
+      "screen": "HOME",
+      "button": "K1",
+      "label": "ROUTE",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen ROUTE",
+      "note": "Classify raw input and choose destination"
+    },
+    {
+      "screen": "HOME",
+      "button": "K2",
+      "label": "AI OS",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen AI OS",
+      "note": "AI concepts, trends, evidence, governance"
+    },
+    {
+      "screen": "HOME",
+      "button": "K3",
+      "label": "THINKING",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen THINKING",
+      "note": "Decisions, options, risks, assumptions"
+    },
+    {
+      "screen": "HOME",
+      "button": "K4",
+      "label": "ANALYTICS",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen ANALYTICS",
+      "note": "Data contracts, deterministic calculations, QA"
+    },
+    {
+      "screen": "HOME",
+      "button": "K5",
+      "label": "LLM",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen LLM",
+      "note": "Prompts, context packs, model routing, evals"
+    },
+    {
+      "screen": "HOME",
+      "button": "K6",
+      "label": "CODEX",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen CODEX",
+      "note": "Goal Mode repo execution and PR workflow"
+    },
+    {
+      "screen": "HOME",
+      "button": "K7",
+      "label": "JUDGE",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME JUDGE - universal pass / revise / blocked verdict\n\nInput:\n[paste]\n\nTask:\nReview the pasted output, workflow result, PR summary, memo, claim, or analysis. Produce a strict verdict: pass, revise, or blocked. Deterministic checks override LLM judgment. List unsupported claims and required fixes.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: pass / revise / blocked\nWhy:\nRequired fixes:\nUnsupported or weak claims:\nChecks observed:\nResidual risks:\nNext action:",
+      "note": "One-touch universal judge from HOME"
+    },
+    {
+      "screen": "HOME",
+      "button": "K8",
+      "label": "REVISOR",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME REVISOR - apply Judge notes without new facts\n\nInput:\n[paste]\n\nTask:\nRevise the pasted draft using only the provided source text and Judge notes. Do not add new unsupported facts, new claims, or invented evidence. If a requested fix needs missing evidence, mark it as blocked instead of filling the gap.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRevised version:\nApplied Judge notes:\nFacts preserved:\nClaims removed or softened:\nBlocked items:",
+      "note": "One-touch revisor from HOME"
+    },
+    {
+      "screen": "HOME",
+      "button": "K9",
+      "label": "INBOX",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Capture, sort, and formulate the next action without solving the owner-project work\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Capture, sort, and formulate the next action without solving the owner-project work.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": "Fast capture and routing prompt"
+    },
+    {
+      "screen": "HOME",
+      "button": "K10",
+      "label": "MEMO",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen MEMO",
+      "note": "Finance and management memo workflow"
+    },
+    {
+      "screen": "HOME",
+      "button": "K11",
+      "label": "AI TREND",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME AI TREND - trend triage / hype filter\n\nInput:\n[paste]\n\nTask:\nRoute to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. Use fresh web check when facts may have changed. Recommend adopt, watch, ignore, or investigate.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: adopt / watch / ignore / investigate\nWhat changed:\nSupported claims:\nWeak claims:\nUnsupported claims:\nSergey relevance:\nRisks:\nNext step:",
+      "note": "Renames v2.7 RESEARCH into command-oriented AI Trend"
+    },
+    {
+      "screen": "HOME",
+      "button": "K12",
+      "label": "SYNC",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME SYNC - repo/main/checks sync check\n\nInput:\n[paste]\n\nTask:\nWork in [Codex] / Codex APP. Check local repo branch, remote main, working tree status, and relevant checks. Identify whether there is a mismatch between local files, branch, main, and expected validation. Avoid creating a PR unless a mismatch/change is found and human review is required.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRepo:\nCurrent branch:\nMain/remote status:\nWorking tree:\nChecks to run:\nMismatch found: yes / no\nRequired action:\nCreate PR: no unless mismatch/change requires review\nRisks:",
+      "note": "Replaces v2.7 REPO with daily Sync Check"
+    },
+    {
+      "screen": "HOME",
+      "button": "K13",
+      "label": "LOCAL AI",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen LOCAL AI",
+      "note": "Candidate-only Ollama/Open WebUI safe pilot"
+    },
+    {
+      "screen": "HOME",
+      "button": "K14",
+      "label": "PILOTS",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen PILOTS",
+      "note": "Pilot cases, results, acceptance gates"
+    },
+    {
+      "screen": "HOME",
+      "button": "K15",
+      "label": "KB",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen KB",
+      "note": "Knowledge bundle evidence checks"
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K2",
+      "label": "Raw -> Route",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Raw unclear input; find best destination\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Raw unclear input; find best destination.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": "Router: classify and hand off, do not solve"
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K3",
+      "label": "Things?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is a concrete Things action\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is a concrete Things action. Preferred route to test: Things.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K4",
+      "label": "Calendar?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is a hard time commitment, event, meeting, or deadline\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is a hard time commitment, event, meeting, or deadline. Preferred route to test: Calendar.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K5",
+      "label": "Notes?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is reference material, context, or a note\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is reference material, context, or a note. Preferred route to test: Notes / Obsidian.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K6",
+      "label": "AI OS?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is AI concept, AI pattern, evidence, governance, or use case\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is AI concept, AI pattern, evidence, governance, or use case. Preferred route to test: [AI OS].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K7",
+      "label": "Thinking?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is decision, strategy, options, scenario, or risk review\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is decision, strategy, options, scenario, or risk review. Preferred route to test: [Thinking].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K8",
+      "label": "Analytics?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is data, metrics, calculation, reconciliation, dashboard, mart, or data quality\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is data, metrics, calculation, reconciliation, dashboard, mart, or data quality. Preferred route to test: [Analytics].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K9",
+      "label": "LLM?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is prompt, context pack, workflow, model routing, or eval\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is prompt, context pack, workflow, model routing, or eval. Preferred route to test: [LLM].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K10",
+      "label": "Codex?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input is implementation, tests, repo change, refactor, script, or release\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is implementation, tests, repo change, refactor, script, or release. Preferred route to test: [Codex].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K11",
+      "label": "Codex APP?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - Check whether input needs long-running Codex APP execution with batches, checks, and PR workflow\n\nInput:\n[paste]\n\nTask:\nWork as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input needs long-running Codex APP execution with batches, checks, and PR workflow. Preferred route to test: Codex APP.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nReason:\nConfidence: strong / medium / weak\nStatus: direct / clarify / handoff / park / trash\nFacts:\nAssumptions:\nMissing information:\nRisks:\nNext action:\nHandoff package, if needed:\n- From:\n- To:\n- Objective:\n- Context:\n- Constraints:\n- Expected output:\n- Acceptance criteria:\n- Open questions:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K12",
+      "label": "Handoff",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - project handoff\n\nInput:\n[paste]\n\nTask:\nPrepare a compact handoff package to the chosen owner project. Do not solve the task. If destination is unclear, ask at most 1-3 critical questions.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDestination:\nObjective:\nContext:\nInputs:\nConstraints:\nExpected output:\nAcceptance criteria:\nRisks:\nOpen questions:\nSuggested first step:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K13",
+      "label": "Clarify",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# ROUTE - clarification required\n\nInput:\n[paste]\n\nTask:\nExplain why the route cannot be chosen safely yet. Ask only the critical questions needed to route correctly.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nPreliminary route:\nMissing information:\nRisk of wrong routing:\nCritical questions, max 3:\nWhat can proceed now:\nWhat is blocked:",
+      "note": ""
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "ROUTE",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K2",
+      "label": "AI Trend",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME AI TREND - trend triage / hype filter\n\nInput:\n[paste]\n\nTask:\nRoute to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. Use fresh web check when facts may have changed. Recommend adopt, watch, ignore, or investigate.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: adopt / watch / ignore / investigate\nWhat changed:\nSupported claims:\nWeak claims:\nUnsupported claims:\nSergey relevance:\nRisks:\nNext step:",
+      "note": "Trend triage / hype filter"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K3",
+      "label": "Pattern Explain",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Explain the AI pattern, where it is useful, where it fails, and what evidence supports it.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Explain the AI pattern, where it is useful, where it fails, and what evidence supports it..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate fact, inference, assumption, and unsupported claim.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K4",
+      "label": "Use Case",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Translate the AI topic into a practical Sergey use case or reject it if relevance is weak.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Translate the AI topic into a practical Sergey use case or reject it if relevance is weak..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not claim adoption readiness without evidence.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K5",
+      "label": "Evidence Check",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Check evidence for the pasted AI claim or recommendation.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Check evidence for the pasted AI claim or recommendation..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nLabel every claim as supported, weak, mixed, unsupported, or needs fresh check.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K6",
+      "label": "Governance",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Check whether the proposed AI workflow violates blocked promotion items or safety boundaries.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Check whether the proposed AI workflow violates blocked promotion items or safety boundaries..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nBlock embeddings, semantic search, vector DB, autonomous retrieval, production web UI workflow, autonomous agents, secrets, and production automation unless explicitly approved and promoted.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K7",
+      "label": "To Thinking",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# AI OS - handoff to Thinking\n\nInput:\n[paste]\n\nTask:\nPrepare a decision/risk handoff from [AI OS] to [Thinking].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nDecision needed:\nOptions:\nEvidence:\nAssumptions:\nRisks:\nReversibility:\nOpen questions:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K8",
+      "label": "To LLM",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# AI OS - handoff to LLM\n\nInput:\n[paste]\n\nTask:\nPrepare a prompt/workflow/model-routing handoff from [AI OS] to [LLM].\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nGoal:\nContext:\nEvidence:\nConstraints:\nExpected prompt/workflow output:\nQuality gate:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K9",
+      "label": "To Codex",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# AI OS - handoff to Codex\n\nInput:\n[paste]\n\nTask:\nPrepare a repo-work handoff only if implementation is actually needed.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRepo goal:\nFiles to inspect:\nAllowed changes:\nForbidden actions:\nChecks:\nAcceptance:\nRollback:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K10",
+      "label": "Agent Loop",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Design a supervised loop with owner, allowed actions, checks, stop conditions, and human acceptance gate.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Design a supervised loop with owner, allowed actions, checks, stop conditions, and human acceptance gate..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo autonomous retrieval, vector DB, embeddings, semantic search, production web UI, or autonomous agents.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K11",
+      "label": "StreamDeck",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Evaluate whether a StreamDeck command or prompt should be kept, revised, demoted, or rejected.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Evaluate whether a StreamDeck command or prompt should be kept, revised, demoted, or rejected..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nKeep prompts short, routable, evidence-aware, and manual-only.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "AI OS",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "AI OS",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "THINKING",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "THINKING",
+      "button": "K2",
+      "label": "Decision Memo",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Create a decision memo from the pasted context.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Create a decision memo from the pasted context..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate facts, assumptions, options, downside, reversibility, and revisit trigger.\n\nReturn:\nDecision:\nContext:\nOptions:\nRecommendation:\nRisks:\nReversibility:\nRevisit trigger:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K3",
+      "label": "Options",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Generate realistic options and trade-offs for the decision.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Generate realistic options and trade-offs for the decision..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not invent constraints or facts.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K4",
+      "label": "Risks",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Identify downside, failure modes, mitigation, and stop conditions.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Identify downside, failure modes, mitigation, and stop conditions..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate likely risks from speculative risks.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K5",
+      "label": "Assumptions",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Extract assumptions, unknowns, and what would change the decision.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Extract assumptions, unknowns, and what would change the decision..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nMark assumptions explicitly.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K6",
+      "label": "Reversible?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Classify reversibility and propose the smallest reversible next step.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Classify reversibility and propose the smallest reversible next step..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nPrefer reversible action unless irreversible action is justified.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K7",
+      "label": "Judge Decision",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# THINKING - judge decision\n\nInput:\n[paste]\n\nTask:\nJudge the decision memo or option set. Require verdict pass, revise, or blocked.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: pass / revise / blocked\nReason:\nMissing facts:\nRisks:\nRequired revision:\nNext action:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K8",
+      "label": "To Analytics",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# THINKING - handoff to Analytics\n\nInput:\n[paste]\n\nTask:\nPrepare analytics handoff for questions requiring data, metrics, calculations, variance, or reconciliation.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nQuestion:\nData sources:\nPeriod:\nGrain:\nMetrics:\nFormulas:\nQA checks:\nExpected output:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K9",
+      "label": "To Codex",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# THINKING - handoff to Codex\n\nInput:\n[paste]\n\nTask:\nPrepare Codex handoff after the decision is clear and implementation is needed.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nObjective:\nScope:\nAllowed files:\nForbidden actions:\nChecks:\nAcceptance:\nRollback:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K10",
+      "label": "Scenario",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Build best/base/worst scenarios and leading indicators.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Build best/base/worst scenarios and leading indicators..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not calculate numbers without Analytics/Python/SQL.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K11",
+      "label": "Next Step",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - Reduce the decision to one next action and one stop condition.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. Reduce the decision to one next action and one stop condition..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nMake the next step local, reversible, and verifiable when possible.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "THINKING",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "THINKING",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "THINKING",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "THINKING",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K2",
+      "label": "Data Contract",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Draft a data contract before analysis.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Draft a data contract before analysis..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nInput layer:\nOutput layer:\nPeriod:\nGrain:\nCurrency/units:\nMetrics:\nFormulas:\nFilters:\nQA checks:\nRisks:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K3",
+      "label": "Variance",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Analyze a variance using deterministic calculation only.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Analyze a variance using deterministic calculation only..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nPeriod:\nBaseline:\nActual:\nFormula:\nPython/SQL check needed:\nFindings:\nRisks:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K4",
+      "label": "Reconcile",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Plan or perform a reconciliation with explicit join keys and exception handling.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Plan or perform a reconciliation with explicit join keys and exception handling..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nSources:\nJoin keys:\nPeriod:\nCurrency/units:\nExpected equality/control:\nExceptions:\nQA:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K5",
+      "label": "Audit Anomaly",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Review an anomaly or suspicious record.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Review an anomaly or suspicious record..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nAnomaly:\nEvidence:\nLikely cause:\nRisk:\nRequired deterministic checks:\nAction:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K6",
+      "label": "Memo Facts",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Prepare verified facts for a finance or management memo.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Prepare verified facts for a finance or management memo..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nApproved facts:\nSource layer:\nCalculations performed:\nLimitations:\nClaims not supported:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K7",
+      "label": "QA Checks",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Design the smallest meaningful QA checks for the analysis.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Design the smallest meaningful QA checks for the analysis..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nChecks:\nExpected results:\nFailure meaning:\nBlockers:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K8",
+      "label": "Analytics Loop",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Run the analytics factory loop from question to data contract, mart, findings, memo facts, QA, and next run trigger.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Run the analytics factory loop from question to data contract, mart, findings, memo facts, QA, and next run trigger..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nStatus: candidate / ready for review / blocked\nMethod:\nQA:\nFindings:\nNext run trigger:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K9",
+      "label": "Supervised Loop",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Iterate analysis until QA passes or blockers are clear.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Iterate analysis until QA passes or blockers are clear..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks. Stop on data quality failure, unclear grain, missing contract, or no validation path.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K10",
+      "label": "Mart Spec",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Specify a mart or compact output table.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Specify a mart or compact output table..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nMart name:\nSource:\nGrain:\nColumns:\nMetrics:\nFormulas:\nQA:\nConsumers:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K11",
+      "label": "Formula Review",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Analytics] - Review formulas for correctness and reproducibility.\n\nInput:\n[paste]\n\nTask:\nWork in [Analytics]. Review formulas for correctness and reproducibility..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nFormula:\nInputs:\nPython/SQL implementation needed:\nEdge cases:\nQA:",
+      "note": ""
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "ANALYTICS",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LLM",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "LLM",
+      "button": "K2",
+      "label": "Prompt Build",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Build a short, routable prompt for the pasted goal.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Build a short, routable prompt for the pasted goal..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo raw dumps, no unsupported facts, no hidden automation.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K3",
+      "label": "Context Pack",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Build a compact context pack from goal, facts, constraints, expected output, and quality gate.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Build a compact context pack from goal, facts, constraints, expected output, and quality gate..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCurated context only; no raw dumps, logs, transcripts, secrets, chunks, vector DB, embeddings, or autonomous retrieval.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K4",
+      "label": "Judge Screen",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen JUDGE",
+      "note": "Open full Judge screen"
+    },
+    {
+      "screen": "LLM",
+      "button": "K5",
+      "label": "Revisor Screen",
+      "action": "Folder",
+      "setting": "Folder",
+      "text_or_target": "Open screen REVISOR",
+      "note": "Open full Revisor screen"
+    },
+    {
+      "screen": "LLM",
+      "button": "K6",
+      "label": "Model Routing",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Recommend a model or surface only from current verified needs and constraints.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Recommend a model or surface only from current verified needs and constraints..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nFor prices, limits, availability, or release status, require fresh official check.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K7",
+      "label": "Eval Rubric",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Create an evaluation rubric for the output or workflow.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Create an evaluation rubric for the output or workflow..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nRubric must include pass/revise/blocked and unsupported-claim handling.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K8",
+      "label": "Workflow Design",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Design a safe manual workflow with owner, inputs, outputs, checks, and stop conditions.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Design a safe manual workflow with owner, inputs, outputs, checks, and stop conditions..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo production automation or autonomous agents.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K9",
+      "label": "Local AI Prompt",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LLM - local AI prompt\n\nInput:\n[paste]\n\nTask:\nCreate a local AI prompt for draft-only use.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nPrompt:\nSensitive-data boundary:\nEval matrix:\nJudge step:\nLimitations:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K10",
+      "label": "StreamDeck",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Improve a StreamDeck prompt or command.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Improve a StreamDeck prompt or command..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nKeep it short, command-oriented, manual-only, and aligned with COMMAND_SURFACE.md.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K11",
+      "label": "No Raw Dump",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] - Convert raw context into a safe concise context pack.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM]. Convert raw context into a safe concise context pack..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nRemove secrets, private data, logs, transcripts, runtime artifacts, and unsupported source dumps.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LLM",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LLM",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LLM",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LLM",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K2",
+      "label": "Goal -> Issue",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - goal to issue\n\nInput:\n[paste]\n\nTask:\nConvert a broad repo/workflow goal into a GitHub issue-ready task brief without requiring Sergey to write atomic task wording.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nGoal:\nContext:\nAllowed scope:\nForbidden actions:\nExpected files:\nChecks:\nAcceptance criteria:\nRollback:\nHuman review:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K3",
+      "label": "Issue -> PR",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - issue to PR\n\nInput:\n[paste]\n\nTask:\nWork from a GitHub issue or handoff toward a minimal branch/checks/PR result.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nBranch:\nFiles inspected:\nFiles changed:\nChecks:\nPR needed: yes / no\nHuman review:\nNo auto-merge:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K4",
+      "label": "PR Judge",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - PR judge\n\nInput:\n[paste]\n\nTask:\nReview a PR or PR summary for correctness, checks, risks, and merge readiness.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: pass / revise / blocked\nRequired fixes:\nMissing checks:\nRisks:\nNo auto-merge reminder:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K5",
+      "label": "Sync Check",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# HOME SYNC - repo/main/checks sync check\n\nInput:\n[paste]\n\nTask:\nWork in [Codex] / Codex APP. Check local repo branch, remote main, working tree status, and relevant checks. Identify whether there is a mismatch between local files, branch, main, and expected validation. Avoid creating a PR unless a mismatch/change is found and human review is required.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRepo:\nCurrent branch:\nMain/remote status:\nWorking tree:\nChecks to run:\nMismatch found: yes / no\nRequired action:\nCreate PR: no unless mismatch/change requires review\nRisks:",
+      "note": "Repo/main/checks sync prompt"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K6",
+      "label": "Run Checks",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - run checks plan\n\nInput:\n[paste]\n\nTask:\nPrepare the smallest relevant local check list. Insert terminal commands as text only; Sergey/Codex runs them manually.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nCommands to run manually:\nExpected result:\nFailure handling:\nWhat not to run:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K7",
+      "label": "Fix Mismatch",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - fix mismatch\n\nInput:\n[paste]\n\nTask:\nIf sync/checks find mismatch, propose the smallest file change to repair it.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nMismatch:\nRoot cause:\nAllowed files:\nPatch plan:\nChecks:\nRisk:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K8",
+      "label": "Release Notes",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Codex] - Draft concise release notes from actual changed files and observed checks.\n\nInput:\n[paste]\n\nTask:\nWork in [Codex]. Draft concise release notes from actual changed files and observed checks..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not invent changed files, tests, or results.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K9",
+      "label": "No Auto-Merge",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - no auto-merge reminder\n\nInput:\n[paste]\n\nTask:\nState the safe PR workflow for this repo task.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nBranch:\nCommit:\nChecks:\nDraft PR:\nHuman review required:\nAuto-merge: prohibited:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K10",
+      "label": "Branch Pack",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# CODEX - branch task pack\n\nInput:\n[paste]\n\nTask:\nPrepare a compact Codex APP task package for bounded repo work.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.\n\nReturn:\nObjective:\nAllowed files:\nForbidden actions:\nChecks:\nAcceptance:\nRollback:\nFinal report format:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K11",
+      "label": "Review Report",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Codex] - Summarize actual changed files, commands run, test results, blockers, and final status.\n\nInput:\n[paste]\n\nTask:\nWork in [Codex]. Summarize actual changed files, commands run, test results, blockers, and final status..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nReport only observed facts.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "CODEX",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "CODEX",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K2",
+      "label": "Universal",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - universal\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: pass / revise / blocked\nReason:\nRequired fixes:\nUnsupported claims:\nEvidence checked:\nResidual risks:\nNext action:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K3",
+      "label": "PR Judge",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - PR\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on PR scope, diff, checks, risks, and no auto-merge.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nBlocking issues:\nMissing checks:\nRisk:\nHuman review note:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K4",
+      "label": "Memo Judge",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - memo\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on facts, audience, finance/data support, and unsupported management claims.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nUnsupported claims:\nRequired revisions:\nResidual risks:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K5",
+      "label": "Analytics",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - analytics\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on deterministic calculations, data contract, period, grain, formulas, and QA.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nCalculation checks:\nData contract gaps:\nQA gaps:\nRequired fixes:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K6",
+      "label": "Evidence",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - evidence\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Label claims as supported, weak, mixed, unsupported, or needs fresh check.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nSupported:\nWeak:\nMixed:\nUnsupported:\nNeeds fresh check:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K7",
+      "label": "Risk",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - risk\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on downside, reversibility, blocked actions, and stop conditions.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nRisks:\nStop conditions:\nRequired mitigation:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K8",
+      "label": "Blocker",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - blocker review\n\nInput:\n[paste]\n\nTask:\nDetermine whether the task is truly blocked or can continue with a smaller safe next step.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict: pass / revise / blocked\nBlocker:\nCan proceed with:\nCannot proceed because:\nQuestion needed:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K9",
+      "label": "Local AI",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - local AI output\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Treat local AI output as draft/candidate until reviewed.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nVerdict:\nSafety boundary:\nSensitive data risk:\nUnsupported claims:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K10",
+      "label": "Route Judge",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - route decision\n\nInput:\n[paste]\n\nTask:\nJudge whether the route chosen by Inbox Router is correct and safe.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nCorrect destination:\nWrong-route risk:\nClarifying question if needed:\nNext action:",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K11",
+      "label": "Final Gate",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - final acceptance gate\n\nInput:\n[paste]\n\nTask:\nCompare output to stated acceptance criteria and observed checks only.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nAcceptance criteria met:\nNot met:\nChecks observed:\nResidual risks:\nReady for human review: yes / no",
+      "note": ""
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "JUDGE",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K2",
+      "label": "Apply Notes",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - apply Judge notes\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Apply all actionable Judge notes.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRevised output:\nApplied notes:\nUnapplied notes and why:\nNo-new-claims check:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K3",
+      "label": "Shorten",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - shorten\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Make it shorter without losing required facts or caveats.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nShort version:\nRemoved detail:\nPreserved facts:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K4",
+      "label": "Clearer",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - make clear\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Improve clarity and structure.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nClear version:\nAmbiguities resolved:\nRemaining blockers:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K5",
+      "label": "Exec Version",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - executive version\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Produce an executive version for a busy reader.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nExecutive version:\nKey caveats:\nDecisions needed:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K6",
+      "label": "File-ready",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - file-ready final\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Format as a clean final artifact ready to paste into a file.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nFinal artifact:\nSource facts used:\nUnsupported items excluded:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K7",
+      "label": "No New Claims",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - no new claims check\n\nInput:\n[paste]\n\nTask:\nCheck the revision against the source/Judge notes and flag any new unsupported facts.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nNew claims found:\nUnsupported claims removed:\nSafe revised text:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K8",
+      "label": "Memo Revise",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - memo revise\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Revise memo narrative while preserving only Analytics-approved facts.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRevised memo:\nApproved facts preserved:\nClaims softened/removed:\nResidual risks:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K9",
+      "label": "Prompt Revise",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# REVISOR - prompt revise\n\nInput:\n[paste]\n\nTask:\nRevise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Tighten the prompt so it is shorter, safer, and more routable.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nRevised prompt:\nSafety preserved:\nUnsupported automation removed:",
+      "note": ""
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K10",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K11",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "REVISOR",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K2",
+      "label": "Finance Memo",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# MEMO - finance memo factory\n\nInput:\n[paste]\n\nTask:\nCreate a finance memo only from verified Analytics facts. If calculations are needed, route to [Analytics] first.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAll numeric calculations, totals, deltas, percentages, ratios, variances, reconciliations, and statistics must be performed deterministically by Python or SQL, not by LLM reasoning. Always state data contract, source layer, output layer, period, grain, currency or units, metrics, formulas, filters, QA checks, assumptions, and residual risks.\n\nReturn:\nAudience:\nPeriod:\nCurrency:\nApproved facts:\nFindings:\nRisks:\nRecommendations:\nEvidence appendix:\nBlocked claims:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K3",
+      "label": "Exec Summary",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Draft an executive summary from approved facts only.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Draft an executive summary from approved facts only..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo new facts; no unsupported management claims.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K4",
+      "label": "Findings",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Turn approved facts into findings with source traceability.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Turn approved facts into findings with source traceability..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nEach finding must trace to provided evidence.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K5",
+      "label": "Risks",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Write the risks section from provided evidence and assumptions.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Write the risks section from provided evidence and assumptions..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate evidence-backed risks from assumptions.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K6",
+      "label": "Recommend",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Draft recommendations that do not exceed the evidence.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Draft recommendations that do not exceed the evidence..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nTie each recommendation to a finding or mark it as assumption.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K7",
+      "label": "Appendix",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Prepare an evidence appendix.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Prepare an evidence appendix..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nList sources, calculations observed, limitations, and unsupported exclusions.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K8",
+      "label": "Final Memo",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# MEMO - final memo\n\nInput:\n[paste]\n\nTask:\nAssemble final memo from approved sections only.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nTitle:\nExecutive summary:\nFacts and findings:\nRisks:\nRecommendations:\nEvidence appendix:\nResidual risks:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K9",
+      "label": "Mgmt Memo",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [LLM] / [MEMO] - Prepare a management memo from verified facts and decision context.\n\nInput:\n[paste]\n\nTask:\nWork in [LLM] / [MEMO]. Prepare a management memo from verified facts and decision context..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo invented business rules or metrics.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K10",
+      "label": "Judge/Revise",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# MEMO - judge then revise\n\nInput:\n[paste]\n\nTask:\nJudge memo as pass/revise/blocked, then revise only if notes are actionable and source facts are sufficient.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nReturn:\nVerdict:\nRequired revisions:\nRevised memo if safe:\nBlocked items:",
+      "note": ""
+    },
+    {
+      "screen": "MEMO",
+      "button": "K11",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "MEMO",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K2",
+      "label": "Ollama Smoke",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - Ollama smoke plan\n\nInput:\n[paste]\n\nTask:\nPrepare a non-sensitive local smoke test plan for Ollama. Commands are text only and run manually.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nManual commands:\nNon-sensitive prompt:\nExpected behavior:\nPass/revise/blocked criteria:\nRisks:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K3",
+      "label": "Model Compare",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - model compare\n\nInput:\n[paste]\n\nTask:\nCompare local model outputs using sanitized prompts only.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nModels:\nPrompt:\nEval matrix:\nVerdict:\nLimitations:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K4",
+      "label": "Open WebUI",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - Open WebUI check\n\nInput:\n[paste]\n\nTask:\nPrepare a safe Open WebUI check without private data or production workflow claims.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nCheck:\nSensitive-data boundary:\nExpected result:\nLimitations:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K5",
+      "label": "Draft Only",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - local draft only\n\nInput:\n[paste]\n\nTask:\nRewrite or generate a draft using local AI boundaries.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nDraft:\nHuman review required:\nUnsupported claims:\nNext judge step:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K6",
+      "label": "Safety",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - safety boundary\n\nInput:\n[paste]\n\nTask:\nState whether the proposed local AI use is allowed, revise, or blocked.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nVerdict: pass / revise / blocked\nSensitive data risk:\nBlocked items:\nAllowed next step:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K7",
+      "label": "Record Pilot",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - record pilot result\n\nInput:\n[paste]\n\nTask:\nPrepare a pilot result note from observed local checks only.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nPilot ID:\nDate:\nInput:\nObserved behavior:\nChecks run:\nVerdict:\nResidual risks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K8",
+      "label": "Candidate?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - candidate verdict\n\nInput:\n[paste]\n\nTask:\nDecide whether a local AI result remains candidate, ready for review, revise, or blocked.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nStatus:\nEvidence:\nRisks:\nPromotion blocked by:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K9",
+      "label": "No Sensitive",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# LOCAL AI - sensitive data guard\n\nInput:\n[paste]\n\nTask:\nCheck the pasted plan or prompt for sensitive/private/production data risk before local AI use.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nAllowed: yes / no\nSensitive items to remove:\nSafe sanitized prompt:\nBlocked items:",
+      "note": ""
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K10",
+      "label": "Judge Output",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# JUDGE - local AI output\n\nInput:\n[paste]\n\nTask:\nJudge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Treat local AI output as draft/candidate until reviewed.\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nCandidate-only local experiment. Use only non-sensitive or explicitly approved sanitized context. Do not use secrets, credentials, private data, financial raw data, production data, runtime artifacts, autonomous retrieval, embeddings, vector DB, semantic search, production web UI workflow, or autonomous agents. Output is draft/candidate until judged and accepted by a human.\n\nReturn:\nVerdict:\nSafety boundary:\nSensitive data risk:\nUnsupported claims:\nNext step:",
+      "note": "Judge local AI output as candidate/draft"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K11",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "LOCAL AI",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K2",
+      "label": "Pilot Plan",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] / [LLM] / [Codex] - Draft a pilot plan with owner, status, inputs, checks, acceptance gate, residual risks, and stop condition.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS] / [LLM] / [Codex]. Draft a pilot plan with owner, status, inputs, checks, acceptance gate, residual risks, and stop condition..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nPilot remains candidate until evidence and human review.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K3",
+      "label": "Pilot Result",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] / [LLM] - Record a pilot result from observed behavior only.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS] / [LLM]. Record a pilot result from observed behavior only..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not invent checks or results.\n\nReturn:\nPilot ID:\nDate:\nOwner project:\nInput:\nObserved behavior:\nChecks run:\nVerdict:\nResidual risks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K4",
+      "label": "Candidate?",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Assess candidate to active promotion readiness.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Assess candidate to active promotion readiness..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not claim production readiness. Promotion requires evidence, checks, and human acceptance.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K5",
+      "label": "Acceptance",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Map pilot evidence to acceptance criteria.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Map pilot evidence to acceptance criteria..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse observed evidence only.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K6",
+      "label": "Residual Risk",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] - List residual risks and whether they block promotion.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking]. List residual risks and whether they block promotion..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate blocker, risk, assumption, and next check.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K7",
+      "label": "Registry",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Codex] - Prepare a minimal registry update plan if pilot status changes.\n\nInput:\n[paste]\n\nTask:\nWork in [Codex]. Prepare a minimal registry update plan if pilot status changes..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo file changes unless requested; no production_promotion=yes.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K8",
+      "label": "Runtime Smoke",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Prepare a live smoke QA prompt and expected result for a project runtime.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Prepare a live smoke QA prompt and expected result for a project runtime..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo secrets, private data, runtime artifacts, or raw transcripts.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K9",
+      "label": "Rollback",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Thinking] / [Codex] - Define rollback or stop condition for a candidate pilot.\n\nInput:\n[paste]\n\nTask:\nWork in [Thinking] / [Codex]. Define rollback or stop condition for a candidate pilot..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nKeep action manual and reversible.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K10",
+      "label": "Status Note",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Write a concise pilot status note.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Write a concise pilot status note..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nAllowed status must be explicit; avoid production readiness claims.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K11",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "PILOTS",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K1",
+      "label": "BACK",
+      "action": "Navigation Back",
+      "setting": "Built-in folder back",
+      "text_or_target": "Built-in folder back",
+      "note": "Do not reprogram"
+    },
+    {
+      "screen": "KB",
+      "button": "K2",
+      "label": "KB Search",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] / [LLM] - Plan a KB evidence lookup from known repository/Knowledge files.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS] / [LLM]. Plan a KB evidence lookup from known repository/Knowledge files..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo autonomous retrieval or semantic search; use provided files or explicit manual lookup.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K3",
+      "label": "Evidence Label",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Label claims as supported, weak, mixed, unsupported, or needs fresh check.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Label claims as supported, weak, mixed, unsupported, or needs fresh check..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nSeparate source fact from inference.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K4",
+      "label": "Review Item",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Review a KB item for owner, status, manifest/upload role, evidence, and residual risk.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Review a KB item for owner, status, manifest/upload role, evidence, and residual risk..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nDo not promote candidate material without evidence.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K5",
+      "label": "Support Mix",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Classify the pasted claim set as supported, weak, mixed, or unsupported.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Classify the pasted claim set as supported, weak, mixed, or unsupported..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nEvery material claim needs a label.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K6",
+      "label": "Manifest",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Codex] - Check whether manifest paths and upload lists stay consistent.\n\nInput:\n[paste]\n\nTask:\nWork in [Codex]. Check whether manifest paths and upload lists stay consistent..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nUse repository files and validation scripts only.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K7",
+      "label": "Source Truth",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Identify the source of truth and whether a bundle/source sync is needed.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Identify the source of truth and whether a bundle/source sync is needed..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nKeep source files and Knowledge bundle files consistent.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K8",
+      "label": "Bundle Sync",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [Codex] - Prepare a minimal bundle sync task if source and Knowledge bundle diverge.\n\nInput:\n[paste]\n\nTask:\nWork in [Codex]. Prepare a minimal bundle sync task if source and Knowledge bundle diverge..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nNo broad rewrite; run manifest/bundle checks.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K9",
+      "label": "Upload Check",
+      "action": "Text",
+      "setting": "System -> Text",
+      "text_or_target": "# [AI OS] - Prepare a manual ChatGPT Project upload/sync checklist.\n\nInput:\n[paste]\n\nTask:\nWork in [AI OS]. Prepare a manual ChatGPT Project upload/sync checklist..\n\nSafety:\nText insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.\n\nRequired constraints:\nRepository file checks do not prove live runtime sync.\n\nReturn:\nSummary:\nFacts used:\nAssumptions:\nRisks:\nNext step:",
+      "note": ""
+    },
+    {
+      "screen": "KB",
+      "button": "K10",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K11",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K12",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K13",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K14",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    },
+    {
+      "screen": "KB",
+      "button": "K15",
+      "label": "EMPTY",
+      "action": "Empty",
+      "setting": "Leave blank",
+      "text_or_target": "",
+      "note": "Reserved; keep HOME uncluttered"
+    }
+  ]
+}
