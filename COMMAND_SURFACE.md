@@ -14,6 +14,7 @@ This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prom
 | `Eval / Judge` | `[LLM]` / `[Thinking]` / `[Codex]` / `[Analytics]` / `[AI OS]` | output, workflow result, PR, memo, claim, or loop design | pass / revise / blocked review with required fixes | `cross_project_eval_review` |
 | `Audit Anomaly` | `[Analytics]` | anomaly, account/entity, period, expected behavior | finding, evidence, risk, recommended action | `audit_anomaly_review` |
 | `StreamDeck Improve` | `[LLM]` / `[Codex]` | current button/prompt and desired result | improved prompt or PR | `streamdeck_prompt_upgrade` |
+| `Local AI Pilot` | `[LLM]` / `[Thinking]` | local model, Ollama/Open WebUI idea, hardware question, or private draft use case | controlled experiment plan, security boundary, eval matrix, limitations | `local_ai_pilot` |
 | `PR Judge` | `[Thinking]` / `[Codex]` | PR link, goal, checks, risks | pass / revise / blocked review | context-dependent |
 | `Revisor` | `[LLM]` | draft plus judge notes | clearer final without new claims | context-dependent |
 | `Context Pack` | `[LLM]` | goal, files, facts, constraints, expected output | compact reusable context pack or CTC prompt | `context_pack_builder` |
