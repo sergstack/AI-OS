@@ -20,7 +20,7 @@
 - составление data contract;
 - проектирование RAW/STAGE/MARTS;
 - проектирование `stage_main_full`, `mart_main_full`, `mart_main_tz/compact`;
-- расчёт вручную или с доступными инструментами, если данных достаточно;
+- расчёт через Python, SQL, spreadsheet или другой проверяемый deterministic метод, если данных достаточно;
 - reconciliation logic;
 - variance/driver/bridge/cohort/anomaly/trend analysis;
 - подбор графиков;
