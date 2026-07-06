@@ -53,7 +53,6 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 |---|---|---|---|
 | `dashboard_critic` | `[Analytics]` / `[Thinking]` | review dashboard usefulness, clarity, or decision support | separate visual critique from metric correctness |
 | `security_cleanup` | `[Codex]` | repo-only safety cleanup for risky public-repo artifacts or safety wording | not full access/security management |
-| `local_ai_experiment` | `[LLM]` / `[Codex]` | test a local AI idea | mark as experiment, not production-ready |
 | `weekly_ai_os_review` | `[AI OS]` -> `[Thinking]` / `[Codex]` | review drift and choose one next useful improvement | do not create status ledgers or operating journals |
 | `reconciliation_builder` | `[Analytics]` -> `[Codex]` | build or improve reconciliation workflow | keep numeric logic deterministic and source layers explicit |
 
