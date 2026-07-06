@@ -5,17 +5,24 @@ Profile targeted: `AI OS StreamDeck v2.8 Candidate`
 Promotion status: candidate only
 Human acceptance required: yes
 
-## MCP available: no
+## MCP available: yes
 
-No Stream Deck MCP integration is exposed in the current Codex environment.
+Elgato MCP Server is installed and configured for Codex.
 
-Observed MCP/tool discovery result:
+Observed setup result:
 
-- Available MCP/app surfaces found: Gmail, Google Calendar, GitHub, Hugging Face, Node REPL.
-- Stream Deck MCP operations found: none.
+- Official setup guide used: https://www.elgato.com/us/en/explorer/products/stream-deck/sd-mcp-setup/
+- Stream Deck app version observed from user screenshot: 7.4.2.
+- Stream Deck setting observed from user screenshot: `Enable MCP Deck` enabled.
+- Installed npm package: `@elgato/mcp-server@0.1.1`.
+- Installed binary on PATH: `elgato-mcp-server`.
+- Codex MCP config added: `[mcp_servers.elgato_streamdeck]` in the user Codex config.
+- Direct MCP handshake result: success.
+- Stream Deck MCP tools found: `streamdeck__get_executable_actions`, `streamdeck__execute_action`.
+- Current executable actions returned by MCP: 0.
 - Stream Deck profile control performed: none.
 
-Because no Stream Deck MCP tool is available, this report does not claim that a Stream Deck profile was created, duplicated, configured, or smoke-tested through MCP.
+Because the Elgato MCP server exposes executable actions rather than profile-authoring operations, this report does not claim that a Stream Deck profile was created, duplicated, configured, or smoke-tested through MCP.
 
 ## MCP operations supported
 
@@ -23,15 +30,17 @@ Stream Deck operations supported in this environment:
 
 | Operation | Supported through available MCP | Result |
 |---|---:|---|
-| Create profile | no | Not available |
-| Duplicate profile | no | Not available |
-| Set button title | no | Not available |
-| Set button icon | no | Not available |
-| Set button action | no | Not available |
-| Set text action body | no | Not available |
-| Create folders/pages | no | Not available |
-| Set icons from local PNG files | no | Not available |
-| Read visible Stream Deck profile state | no | Not available |
+| Get executable MCP actions | yes | Available; returned an empty action list because no actions are configured on the MCP Actions profile yet |
+| Execute an exposed MCP action | yes | Available; not used because no candidate action should be triggered automatically |
+| Create profile | no | Not exposed by Elgato MCP server |
+| Duplicate profile | no | Not exposed by Elgato MCP server |
+| Set button title | no | Not exposed by Elgato MCP server |
+| Set button icon | no | Not exposed by Elgato MCP server |
+| Set button action | no | Not exposed by Elgato MCP server |
+| Set text action body | no | Not exposed by Elgato MCP server |
+| Create folders/pages | no | Not exposed by Elgato MCP server |
+| Set icons from local PNG files | no | Not exposed by Elgato MCP server |
+| Read full visible Stream Deck profile state | no | Not exposed by Elgato MCP server |
 
 ## Candidate inputs inspected
 
@@ -62,7 +71,7 @@ Target candidate profile name:
 AI OS StreamDeck v2.8 Candidate
 ```
 
-Profile creation status: not created through MCP because Stream Deck MCP is not available.
+Profile creation status: not created through MCP because Elgato MCP does not expose profile creation or duplication operations.
 
 Safety requirement:
 
@@ -98,9 +107,16 @@ Manual setup must apply icons from `StreamDeck/STREAMDECK_V2_8_ICON_MAP.csv`, us
 
 ## Smoke QA result
 
-MCP/device smoke QA result: not run.
+MCP/device smoke QA result: partial connection smoke passed; candidate profile smoke not run.
 
-Reason: no Stream Deck MCP operations are available, and no physical/manual Stream Deck setup was performed in this run.
+Observed MCP smoke:
+
+- `elgato-mcp-server --help` returned usage information.
+- Direct MCP client handshake succeeded.
+- `listTools` returned `streamdeck__get_executable_actions` and `streamdeck__execute_action`.
+- `streamdeck__get_executable_actions` returned an empty actions list.
+
+Reason candidate profile smoke was not run: Elgato MCP does not expose profile-authoring operations, no candidate profile was created through MCP, and no physical/manual candidate profile setup was performed in this run.
 
 Source-map QA evidence available:
 
@@ -117,10 +133,10 @@ Source-map QA evidence available:
 
 ## Deviations from map
 
-- No MCP setup was executed.
-- No candidate profile was created or duplicated.
+- MCP server installation and Codex config were executed, but profile-authoring setup was not available through MCP.
+- No candidate profile was created or duplicated through MCP.
 - No buttons, folders, text actions, or icons were applied to a Stream Deck profile.
-- No device-visible state was inspected.
+- MCP-visible executable actions were inspected and returned an empty list.
 - No physical HOME or Level 2 navigation smoke test was performed.
 
 ## Manual steps still needed
@@ -147,9 +163,14 @@ Source-map QA evidence available:
     - v2.7 profile remains available.
 13. Record human acceptance or requested fixes before any promotion.
 
+MCP-specific manual step:
+
+- Add only safe, candidate-approved actions to the Stream Deck `MCP Actions` profile if Sergey wants AI tools to execute them through MCP. Do not expose destructive, send, merge, publish, deploy, secret, or production actions.
+
 ## Residual risks
 
-- Stream Deck MCP integration may exist outside this Codex environment, but it is not available here.
+- Current Codex session may need restart or MCP reload before `elgato_streamdeck` appears as a first-class callable tool.
+- Elgato MCP exposes executable actions, not profile construction; v2.8 profile setup still requires manual Stream Deck app work or another profile-authoring API.
 - Elgato profile import/export behavior remains untested in this run.
 - Physical-device behavior, folder navigation, icon rendering, key timing, and text insertion behavior remain unverified.
 - Manual setup may introduce transcription errors unless checked against the CSV, JSON, setup markdown, icon map, and previews.
