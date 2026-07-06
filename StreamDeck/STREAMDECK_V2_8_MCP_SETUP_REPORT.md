@@ -16,10 +16,12 @@ Observed setup result:
 - Stream Deck setting observed from user screenshot: `Enable MCP Deck` enabled.
 - Installed npm package: `@elgato/mcp-server@0.1.1`.
 - Installed binary on PATH: `elgato-mcp-server`.
-- Codex MCP config added: `[mcp_servers.elgato_streamdeck]` in the user Codex config.
+- Codex MCP config added: `[mcp_servers.elgato_streamdeck]` in `~/.codex/config.toml`, not in the repository.
+- Codex config validation result: passed; TOML parsed and the `elgato_streamdeck` server entry was present and enabled.
 - Direct MCP handshake result: success.
 - Stream Deck MCP tools found: `streamdeck__get_executable_actions`, `streamdeck__execute_action`.
 - Current executable actions returned by MCP: 0.
+- Reason current executable action list is empty: the Stream Deck `MCP Actions` profile has no configured action buttons/descriptions yet.
 - Stream Deck profile control performed: none.
 
 Because the Elgato MCP server exposes executable actions rather than profile-authoring operations, this report does not claim that a Stream Deck profile was created, duplicated, configured, or smoke-tested through MCP.
@@ -41,6 +43,11 @@ Stream Deck operations supported in this environment:
 | Create folders/pages | no | Not exposed by Elgato MCP server |
 | Set icons from local PNG files | no | Not exposed by Elgato MCP server |
 | Read full visible Stream Deck profile state | no | Not exposed by Elgato MCP server |
+
+Capability boundary:
+
+- MCP can execute existing actions that have already been placed on the Stream Deck `MCP Actions` profile.
+- This does not currently prove that MCP can create or edit full Stream Deck profiles, folders, icons, text actions, or the complete v2.8 layout.
 
 ## Candidate inputs inspected
 
@@ -72,6 +79,8 @@ AI OS StreamDeck v2.8 Candidate
 ```
 
 Profile creation status: not created through MCP because Elgato MCP does not expose profile creation or duplication operations.
+
+Direct v2.8 profile setup via MCP: not completed.
 
 Safety requirement:
 
@@ -112,9 +121,10 @@ MCP/device smoke QA result: partial connection smoke passed; candidate profile s
 Observed MCP smoke:
 
 - `elgato-mcp-server --help` returned usage information.
+- Codex config parsed successfully after adding the Elgato MCP server entry.
 - Direct MCP client handshake succeeded.
 - `listTools` returned `streamdeck__get_executable_actions` and `streamdeck__execute_action`.
-- `streamdeck__get_executable_actions` returned an empty actions list.
+- `streamdeck__get_executable_actions` returned an empty actions list because the Stream Deck `MCP Actions` profile has no configured action buttons/descriptions yet.
 
 Reason candidate profile smoke was not run: Elgato MCP does not expose profile-authoring operations, no candidate profile was created through MCP, and no physical/manual candidate profile setup was performed in this run.
 
@@ -137,6 +147,7 @@ Source-map QA evidence available:
 - No candidate profile was created or duplicated through MCP.
 - No buttons, folders, text actions, or icons were applied to a Stream Deck profile.
 - MCP-visible executable actions were inspected and returned an empty list.
+- Direct v2.8 profile setup via MCP was not completed.
 - No physical HOME or Level 2 navigation smoke test was performed.
 
 ## Manual steps still needed
@@ -166,6 +177,12 @@ Source-map QA evidence available:
 MCP-specific manual step:
 
 - Add only safe, candidate-approved actions to the Stream Deck `MCP Actions` profile if Sergey wants AI tools to execute them through MCP. Do not expose destructive, send, merge, publish, deploy, secret, or production actions.
+
+Recommended next step:
+
+- Create a small `MCP Actions` pilot with 5-7 safe, candidate-only action buttons and clear descriptions, then retest `streamdeck__get_executable_actions`.
+- Keep the active v2.7 profile unchanged.
+- Keep the full v2.8 layout candidate-only until a separate candidate profile is manually accepted.
 
 ## Residual risks
 
