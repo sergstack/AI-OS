@@ -7,8 +7,8 @@ HOME,K5,LLM,Folder,Folder,Open screen LLM,"Prompts, context packs, model routing
 HOME,K6,CODEX,Folder,Folder,Open screen CODEX,Goal Mode repo execution and PR workflow
 HOME,K7,JUDGE,Text,System -> Text,"# HOME JUDGE - universal pass / revise / blocked verdict
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Review the pasted output, workflow result, PR summary, memo, claim, or analysis. Produce a strict verdict: pass, revise, or blocked. Deterministic checks override LLM judgment. List unsupported claims and required fixes.
@@ -26,8 +26,8 @@ Residual risks:
 Next action:",One-touch universal judge from HOME
 HOME,K8,REVISOR,Text,System -> Text,"# HOME REVISOR - apply Judge notes without new facts
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise the pasted draft using only the provided source text and Judge notes. Do not add new unsupported facts, new claims, or invented evidence. If a requested fix needs missing evidence, mark it as blocked instead of filling the gap.
@@ -43,8 +43,8 @@ Claims removed or softened:
 Blocked items:",One-touch revisor from HOME
 HOME,K9,INBOX,Text,System -> Text,"# ROUTE - Capture, sort, and formulate the next action without solving the owner-project work
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Capture, sort, and formulate the next action without solving the owner-project work.
@@ -74,11 +74,11 @@ Handoff package, if needed:
 HOME,K10,MEMO,Folder,Folder,Open screen MEMO,Finance and management memo workflow
 HOME,K11,AI TREND,Text,System -> Text,"# HOME AI TREND - trend triage / hype filter
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
-Route to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. Use fresh web check when facts may have changed. Recommend adopt, watch, ignore, or investigate.
+Route to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. If facts may have changed, label them as needs fresh check and ask Sergey before any live web check. Recommend adopt, watch, ignore, or investigate.
 
 Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
@@ -94,8 +94,8 @@ Risks:
 Next step:",Renames v2.7 RESEARCH into command-oriented AI Trend
 HOME,K12,SYNC,Text,System -> Text,"# HOME SYNC - repo/main/checks sync check
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex] / Codex APP. Check local repo branch, remote main, working tree status, and relevant checks. Identify whether there is a mismatch between local files, branch, main, and expected validation. Avoid creating a PR unless a mismatch/change is found and human review is required.
@@ -119,8 +119,8 @@ HOME,K15,KB,Folder,Folder,Open screen KB,Knowledge bundle evidence checks
 ROUTE,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 ROUTE,K2,Raw -> Route,Text,System -> Text,"# ROUTE - Raw unclear input; find best destination
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Raw unclear input; find best destination.
@@ -149,8 +149,8 @@ Handoff package, if needed:
 - Open questions:","Router: classify and hand off, do not solve"
 ROUTE,K3,Things?,Text,System -> Text,"# ROUTE - Check whether input is a concrete Things action
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is a concrete Things action. Preferred route to test: Things.
@@ -179,8 +179,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K4,Calendar?,Text,System -> Text,"# ROUTE - Check whether input is a hard time commitment, event, meeting, or deadline
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is a hard time commitment, event, meeting, or deadline. Preferred route to test: Calendar.
@@ -209,8 +209,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K5,Notes?,Text,System -> Text,"# ROUTE - Check whether input is reference material, context, or a note
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is reference material, context, or a note. Preferred route to test: Notes / Obsidian.
@@ -239,8 +239,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K6,AI OS?,Text,System -> Text,"# ROUTE - Check whether input is AI concept, AI pattern, evidence, governance, or use case
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is AI concept, AI pattern, evidence, governance, or use case. Preferred route to test: [AI OS].
@@ -269,8 +269,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K7,Thinking?,Text,System -> Text,"# ROUTE - Check whether input is decision, strategy, options, scenario, or risk review
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is decision, strategy, options, scenario, or risk review. Preferred route to test: [Thinking].
@@ -299,8 +299,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K8,Analytics?,Text,System -> Text,"# ROUTE - Check whether input is data, metrics, calculation, reconciliation, dashboard, mart, or data quality
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is data, metrics, calculation, reconciliation, dashboard, mart, or data quality. Preferred route to test: [Analytics].
@@ -329,8 +329,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K9,LLM?,Text,System -> Text,"# ROUTE - Check whether input is prompt, context pack, workflow, model routing, or eval
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is prompt, context pack, workflow, model routing, or eval. Preferred route to test: [LLM].
@@ -359,8 +359,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K10,Codex?,Text,System -> Text,"# ROUTE - Check whether input is implementation, tests, repo change, refactor, script, or release
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input is implementation, tests, repo change, refactor, script, or release. Preferred route to test: [Codex].
@@ -389,8 +389,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K11,Codex APP?,Text,System -> Text,"# ROUTE - Check whether input needs long-running Codex APP execution with batches, checks, and PR workflow
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work as [Inbox Router]. Route first, solve never. Classify raw input as Things, Calendar, Notes/Obsidian, [AI OS], [Thinking], [Analytics], [LLM], [Codex], Codex APP, or clarify. Do not solve owner-project work inside Router. Focus: Check whether input needs long-running Codex APP execution with batches, checks, and PR workflow. Preferred route to test: Codex APP.
@@ -419,8 +419,8 @@ Handoff package, if needed:
 - Open questions:",
 ROUTE,K12,Handoff,Text,System -> Text,"# ROUTE - project handoff
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a compact handoff package to the chosen owner project. Do not solve the task. If destination is unclear, ask at most 1-3 critical questions.
@@ -441,8 +441,8 @@ Open questions:
 Suggested first step:",
 ROUTE,K13,Clarify,Text,System -> Text,"# ROUTE - clarification required
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Explain why the route cannot be chosen safely yet. Ask only the critical questions needed to route correctly.
@@ -462,11 +462,11 @@ ROUTE,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 AI OS,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 AI OS,K2,AI Trend,Text,System -> Text,"# HOME AI TREND - trend triage / hype filter
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
-Route to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. Use fresh web check when facts may have changed. Recommend adopt, watch, ignore, or investigate.
+Route to [AI OS]. Triage the AI topic, release, tool, link, or question. Separate supported, weak, and unsupported claims. If facts may have changed, label them as needs fresh check and ask Sergey before any live web check. Recommend adopt, watch, ignore, or investigate.
 
 Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
@@ -482,8 +482,8 @@ Risks:
 Next step:",Trend triage / hype filter
 AI OS,K3,Pattern Explain,Text,System -> Text,"# [AI OS] - Explain the AI pattern, where it is useful, where it fails, and what evidence supports it.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Explain the AI pattern, where it is useful, where it fails, and what evidence supports it..
@@ -502,8 +502,8 @@ Risks:
 Next step:",
 AI OS,K4,Use Case,Text,System -> Text,"# [AI OS] - Translate the AI topic into a practical Sergey use case or reject it if relevance is weak.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Translate the AI topic into a practical Sergey use case or reject it if relevance is weak..
@@ -522,8 +522,8 @@ Risks:
 Next step:",
 AI OS,K5,Evidence Check,Text,System -> Text,"# [AI OS] - Check evidence for the pasted AI claim or recommendation.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Check evidence for the pasted AI claim or recommendation..
@@ -542,8 +542,8 @@ Risks:
 Next step:",
 AI OS,K6,Governance,Text,System -> Text,"# [AI OS] - Check whether the proposed AI workflow violates blocked promotion items or safety boundaries.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Check whether the proposed AI workflow violates blocked promotion items or safety boundaries..
@@ -562,8 +562,8 @@ Risks:
 Next step:",
 AI OS,K7,To Thinking,Text,System -> Text,"# AI OS - handoff to Thinking
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a decision/risk handoff from [AI OS] to [Thinking].
@@ -581,8 +581,8 @@ Reversibility:
 Open questions:",
 AI OS,K8,To LLM,Text,System -> Text,"# AI OS - handoff to LLM
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a prompt/workflow/model-routing handoff from [AI OS] to [LLM].
@@ -599,8 +599,8 @@ Expected prompt/workflow output:
 Quality gate:",
 AI OS,K9,To Codex,Text,System -> Text,"# AI OS - handoff to Codex
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a repo-work handoff only if implementation is actually needed.
@@ -618,8 +618,8 @@ Acceptance:
 Rollback:",
 AI OS,K10,Agent Loop,Text,System -> Text,"# [AI OS] - Design a supervised loop with owner, allowed actions, checks, stop conditions, and human acceptance gate.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Design a supervised loop with owner, allowed actions, checks, stop conditions, and human acceptance gate..
@@ -638,8 +638,8 @@ Risks:
 Next step:",
 AI OS,K11,StreamDeck,Text,System -> Text,"# [AI OS] - Evaluate whether a StreamDeck command or prompt should be kept, revised, demoted, or rejected.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Evaluate whether a StreamDeck command or prompt should be kept, revised, demoted, or rejected..
@@ -663,8 +663,8 @@ AI OS,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 THINKING,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 THINKING,K2,Decision Memo,Text,System -> Text,"# [Thinking] - Create a decision memo from the pasted context.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Create a decision memo from the pasted context..
@@ -685,8 +685,8 @@ Reversibility:
 Revisit trigger:",
 THINKING,K3,Options,Text,System -> Text,"# [Thinking] - Generate realistic options and trade-offs for the decision.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Generate realistic options and trade-offs for the decision..
@@ -705,8 +705,8 @@ Risks:
 Next step:",
 THINKING,K4,Risks,Text,System -> Text,"# [Thinking] - Identify downside, failure modes, mitigation, and stop conditions.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Identify downside, failure modes, mitigation, and stop conditions..
@@ -725,8 +725,8 @@ Risks:
 Next step:",
 THINKING,K5,Assumptions,Text,System -> Text,"# [Thinking] - Extract assumptions, unknowns, and what would change the decision.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Extract assumptions, unknowns, and what would change the decision..
@@ -745,8 +745,8 @@ Risks:
 Next step:",
 THINKING,K6,Reversible?,Text,System -> Text,"# [Thinking] - Classify reversibility and propose the smallest reversible next step.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Classify reversibility and propose the smallest reversible next step..
@@ -765,8 +765,8 @@ Risks:
 Next step:",
 THINKING,K7,Judge Decision,Text,System -> Text,"# THINKING - judge decision
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the decision memo or option set. Require verdict pass, revise, or blocked.
@@ -783,8 +783,8 @@ Required revision:
 Next action:",
 THINKING,K8,To Analytics,Text,System -> Text,"# THINKING - handoff to Analytics
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare analytics handoff for questions requiring data, metrics, calculations, variance, or reconciliation.
@@ -803,8 +803,8 @@ QA checks:
 Expected output:",
 THINKING,K9,To Codex,Text,System -> Text,"# THINKING - handoff to Codex
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare Codex handoff after the decision is clear and implementation is needed.
@@ -822,8 +822,8 @@ Acceptance:
 Rollback:",
 THINKING,K10,Scenario,Text,System -> Text,"# [Thinking] - Build best/base/worst scenarios and leading indicators.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Build best/base/worst scenarios and leading indicators..
@@ -842,8 +842,8 @@ Risks:
 Next step:",
 THINKING,K11,Next Step,Text,System -> Text,"# [Thinking] - Reduce the decision to one next action and one stop condition.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. Reduce the decision to one next action and one stop condition..
@@ -867,8 +867,8 @@ THINKING,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 ANALYTICS,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 ANALYTICS,K2,Data Contract,Text,System -> Text,"# [Analytics] - Draft a data contract before analysis.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Draft a data contract before analysis..
@@ -892,8 +892,8 @@ QA checks:
 Risks:",
 ANALYTICS,K3,Variance,Text,System -> Text,"# [Analytics] - Analyze a variance using deterministic calculation only.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Analyze a variance using deterministic calculation only..
@@ -914,8 +914,8 @@ Findings:
 Risks:",
 ANALYTICS,K4,Reconcile,Text,System -> Text,"# [Analytics] - Plan or perform a reconciliation with explicit join keys and exception handling.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Plan or perform a reconciliation with explicit join keys and exception handling..
@@ -936,8 +936,8 @@ Exceptions:
 QA:",
 ANALYTICS,K5,Audit Anomaly,Text,System -> Text,"# [Analytics] - Review an anomaly or suspicious record.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Review an anomaly or suspicious record..
@@ -957,8 +957,8 @@ Required deterministic checks:
 Action:",
 ANALYTICS,K6,Memo Facts,Text,System -> Text,"# [Analytics] - Prepare verified facts for a finance or management memo.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Prepare verified facts for a finance or management memo..
@@ -977,8 +977,8 @@ Limitations:
 Claims not supported:",
 ANALYTICS,K7,QA Checks,Text,System -> Text,"# [Analytics] - Design the smallest meaningful QA checks for the analysis.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Design the smallest meaningful QA checks for the analysis..
@@ -996,8 +996,8 @@ Failure meaning:
 Blockers:",
 ANALYTICS,K8,Analytics Loop,Text,System -> Text,"# [Analytics] - Run the analytics factory loop from question to data contract, mart, findings, memo facts, QA, and next run trigger.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Run the analytics factory loop from question to data contract, mart, findings, memo facts, QA, and next run trigger..
@@ -1016,8 +1016,8 @@ Findings:
 Next run trigger:",
 ANALYTICS,K9,Supervised Loop,Text,System -> Text,"# [Analytics] - Iterate analysis until QA passes or blockers are clear.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Iterate analysis until QA passes or blockers are clear..
@@ -1036,8 +1036,8 @@ Risks:
 Next step:",
 ANALYTICS,K10,Mart Spec,Text,System -> Text,"# [Analytics] - Specify a mart or compact output table.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Specify a mart or compact output table..
@@ -1059,8 +1059,8 @@ QA:
 Consumers:",
 ANALYTICS,K11,Formula Review,Text,System -> Text,"# [Analytics] - Review formulas for correctness and reproducibility.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Analytics]. Review formulas for correctness and reproducibility..
@@ -1084,8 +1084,8 @@ ANALYTICS,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 LLM,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 LLM,K2,Prompt Build,Text,System -> Text,"# [LLM] - Build a short, routable prompt for the pasted goal.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Build a short, routable prompt for the pasted goal..
@@ -1104,8 +1104,8 @@ Risks:
 Next step:",
 LLM,K3,Context Pack,Text,System -> Text,"# [LLM] - Build a compact context pack from goal, facts, constraints, expected output, and quality gate.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Build a compact context pack from goal, facts, constraints, expected output, and quality gate..
@@ -1126,8 +1126,8 @@ LLM,K4,Judge Screen,Folder,Folder,Open screen JUDGE,Open full Judge screen
 LLM,K5,Revisor Screen,Folder,Folder,Open screen REVISOR,Open full Revisor screen
 LLM,K6,Model Routing,Text,System -> Text,"# [LLM] - Recommend a model or surface only from current verified needs and constraints.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Recommend a model or surface only from current verified needs and constraints..
@@ -1136,7 +1136,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-For prices, limits, availability, or release status, require fresh official check.
+For prices, limits, availability, or release status, label as needs fresh official check and ask Sergey before any live web check.
 
 Return:
 Summary:
@@ -1146,8 +1146,8 @@ Risks:
 Next step:",
 LLM,K7,Eval Rubric,Text,System -> Text,"# [LLM] - Create an evaluation rubric for the output or workflow.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Create an evaluation rubric for the output or workflow..
@@ -1166,8 +1166,8 @@ Risks:
 Next step:",
 LLM,K8,Workflow Design,Text,System -> Text,"# [LLM] - Design a safe manual workflow with owner, inputs, outputs, checks, and stop conditions.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Design a safe manual workflow with owner, inputs, outputs, checks, and stop conditions..
@@ -1186,8 +1186,8 @@ Risks:
 Next step:",
 LLM,K9,Local AI Prompt,Text,System -> Text,"# LLM - local AI prompt
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Create a local AI prompt for draft-only use.
@@ -1206,8 +1206,8 @@ Judge step:
 Limitations:",
 LLM,K10,StreamDeck,Text,System -> Text,"# [LLM] - Improve a StreamDeck prompt or command.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Improve a StreamDeck prompt or command..
@@ -1226,8 +1226,8 @@ Risks:
 Next step:",
 LLM,K11,No Raw Dump,Text,System -> Text,"# [LLM] - Convert raw context into a safe concise context pack.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM]. Convert raw context into a safe concise context pack..
@@ -1251,8 +1251,8 @@ LLM,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 CODEX,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 CODEX,K2,Goal -> Issue,Text,System -> Text,"# CODEX - goal to issue
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Convert a broad repo/workflow goal into a GitHub issue-ready task brief without requiring Sergey to write atomic task wording.
@@ -1261,7 +1261,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Goal:
@@ -1275,8 +1275,8 @@ Rollback:
 Human review:",
 CODEX,K3,Issue -> PR,Text,System -> Text,"# CODEX - issue to PR
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work from a GitHub issue or handoff toward a minimal branch/checks/PR result.
@@ -1285,7 +1285,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Branch:
@@ -1297,8 +1297,8 @@ Human review:
 No auto-merge:",
 CODEX,K4,PR Judge,Text,System -> Text,"# CODEX - PR judge
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Review a PR or PR summary for correctness, checks, risks, and merge readiness.
@@ -1314,8 +1314,8 @@ Risks:
 No auto-merge reminder:",
 CODEX,K5,Sync Check,Text,System -> Text,"# HOME SYNC - repo/main/checks sync check
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex] / Codex APP. Check local repo branch, remote main, working tree status, and relevant checks. Identify whether there is a mismatch between local files, branch, main, and expected validation. Avoid creating a PR unless a mismatch/change is found and human review is required.
@@ -1335,8 +1335,8 @@ Create PR: no unless mismatch/change requires review
 Risks:",Repo/main/checks sync prompt
 CODEX,K6,Run Checks,Text,System -> Text,"# CODEX - run checks plan
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare the smallest relevant local check list. Insert terminal commands as text only; Sergey/Codex runs them manually.
@@ -1345,7 +1345,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Commands to run manually:
@@ -1354,8 +1354,8 @@ Failure handling:
 What not to run:",
 CODEX,K7,Fix Mismatch,Text,System -> Text,"# CODEX - fix mismatch
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 If sync/checks find mismatch, propose the smallest file change to repair it.
@@ -1364,7 +1364,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Mismatch:
@@ -1375,8 +1375,8 @@ Checks:
 Risk:",
 CODEX,K8,Release Notes,Text,System -> Text,"# [Codex] - Draft concise release notes from actual changed files and observed checks.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex]. Draft concise release notes from actual changed files and observed checks..
@@ -1395,8 +1395,8 @@ Risks:
 Next step:",
 CODEX,K9,No Auto-Merge,Text,System -> Text,"# CODEX - no auto-merge reminder
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 State the safe PR workflow for this repo task.
@@ -1405,7 +1405,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Branch:
@@ -1416,8 +1416,8 @@ Human review required:
 Auto-merge: prohibited:",
 CODEX,K10,Branch Pack,Text,System -> Text,"# CODEX - branch task pack
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a compact Codex APP task package for bounded repo work.
@@ -1426,7 +1426,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
 
 Return:
 Objective:
@@ -1438,8 +1438,8 @@ Rollback:
 Final report format:",
 CODEX,K11,Review Report,Text,System -> Text,"# [Codex] - Summarize actual changed files, commands run, test results, blockers, and final status.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex]. Summarize actual changed files, commands run, test results, blockers, and final status..
@@ -1463,8 +1463,8 @@ CODEX,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 JUDGE,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 JUDGE,K2,Universal,Text,System -> Text,"# JUDGE - universal
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference.
@@ -1482,8 +1482,8 @@ Residual risks:
 Next action:",
 JUDGE,K3,PR Judge,Text,System -> Text,"# JUDGE - PR
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on PR scope, diff, checks, risks, and no auto-merge.
@@ -1499,8 +1499,8 @@ Risk:
 Human review note:",
 JUDGE,K4,Memo Judge,Text,System -> Text,"# JUDGE - memo
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on facts, audience, finance/data support, and unsupported management claims.
@@ -1515,8 +1515,8 @@ Required revisions:
 Residual risks:",
 JUDGE,K5,Analytics,Text,System -> Text,"# JUDGE - analytics
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on deterministic calculations, data contract, period, grain, formulas, and QA.
@@ -1532,8 +1532,8 @@ QA gaps:
 Required fixes:",
 JUDGE,K6,Evidence,Text,System -> Text,"# JUDGE - evidence
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Label claims as supported, weak, mixed, unsupported, or needs fresh check.
@@ -1550,8 +1550,8 @@ Unsupported:
 Needs fresh check:",
 JUDGE,K7,Risk,Text,System -> Text,"# JUDGE - risk
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on downside, reversibility, blocked actions, and stop conditions.
@@ -1566,8 +1566,8 @@ Stop conditions:
 Required mitigation:",
 JUDGE,K8,Blocker,Text,System -> Text,"# JUDGE - blocker review
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Determine whether the task is truly blocked or can continue with a smaller safe next step.
@@ -1583,8 +1583,8 @@ Cannot proceed because:
 Question needed:",
 JUDGE,K9,Local AI,Text,System -> Text,"# JUDGE - local AI output
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Treat local AI output as draft/candidate until reviewed.
@@ -1603,8 +1603,8 @@ Unsupported claims:
 Next step:",
 JUDGE,K10,Route Judge,Text,System -> Text,"# JUDGE - route decision
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge whether the route chosen by Inbox Router is correct and safe.
@@ -1620,8 +1620,8 @@ Clarifying question if needed:
 Next action:",
 JUDGE,K11,Final Gate,Text,System -> Text,"# JUDGE - final acceptance gate
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Compare output to stated acceptance criteria and observed checks only.
@@ -1643,8 +1643,8 @@ JUDGE,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 REVISOR,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 REVISOR,K2,Apply Notes,Text,System -> Text,"# REVISOR - apply Judge notes
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Apply all actionable Judge notes.
@@ -1659,8 +1659,8 @@ Unapplied notes and why:
 No-new-claims check:",
 REVISOR,K3,Shorten,Text,System -> Text,"# REVISOR - shorten
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Make it shorter without losing required facts or caveats.
@@ -1674,8 +1674,8 @@ Removed detail:
 Preserved facts:",
 REVISOR,K4,Clearer,Text,System -> Text,"# REVISOR - make clear
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Improve clarity and structure.
@@ -1689,8 +1689,8 @@ Ambiguities resolved:
 Remaining blockers:",
 REVISOR,K5,Exec Version,Text,System -> Text,"# REVISOR - executive version
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Produce an executive version for a busy reader.
@@ -1704,8 +1704,8 @@ Key caveats:
 Decisions needed:",
 REVISOR,K6,File-ready,Text,System -> Text,"# REVISOR - file-ready final
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Format as a clean final artifact ready to paste into a file.
@@ -1719,8 +1719,8 @@ Source facts used:
 Unsupported items excluded:",
 REVISOR,K7,No New Claims,Text,System -> Text,"# REVISOR - no new claims check
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Check the revision against the source/Judge notes and flag any new unsupported facts.
@@ -1734,8 +1734,8 @@ Unsupported claims removed:
 Safe revised text:",
 REVISOR,K8,Memo Revise,Text,System -> Text,"# REVISOR - memo revise
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Revise memo narrative while preserving only Analytics-approved facts.
@@ -1750,8 +1750,8 @@ Claims softened/removed:
 Residual risks:",
 REVISOR,K9,Prompt Revise,Text,System -> Text,"# REVISOR - prompt revise
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Tighten the prompt so it is shorter, safer, and more routable.
@@ -1772,8 +1772,8 @@ REVISOR,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 MEMO,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 MEMO,K2,Finance Memo,Text,System -> Text,"# MEMO - finance memo factory
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Create a finance memo only from verified Analytics facts. If calculations are needed, route to [Analytics] first.
@@ -1796,8 +1796,8 @@ Evidence appendix:
 Blocked claims:",
 MEMO,K3,Exec Summary,Text,System -> Text,"# [LLM] / [MEMO] - Draft an executive summary from approved facts only.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Draft an executive summary from approved facts only..
@@ -1816,8 +1816,8 @@ Risks:
 Next step:",
 MEMO,K4,Findings,Text,System -> Text,"# [LLM] / [MEMO] - Turn approved facts into findings with source traceability.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Turn approved facts into findings with source traceability..
@@ -1836,8 +1836,8 @@ Risks:
 Next step:",
 MEMO,K5,Risks,Text,System -> Text,"# [LLM] / [MEMO] - Write the risks section from provided evidence and assumptions.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Write the risks section from provided evidence and assumptions..
@@ -1856,8 +1856,8 @@ Risks:
 Next step:",
 MEMO,K6,Recommend,Text,System -> Text,"# [LLM] / [MEMO] - Draft recommendations that do not exceed the evidence.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Draft recommendations that do not exceed the evidence..
@@ -1876,8 +1876,8 @@ Risks:
 Next step:",
 MEMO,K7,Appendix,Text,System -> Text,"# [LLM] / [MEMO] - Prepare an evidence appendix.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Prepare an evidence appendix..
@@ -1896,8 +1896,8 @@ Risks:
 Next step:",
 MEMO,K8,Final Memo,Text,System -> Text,"# MEMO - final memo
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Assemble final memo from approved sections only.
@@ -1915,8 +1915,8 @@ Evidence appendix:
 Residual risks:",
 MEMO,K9,Mgmt Memo,Text,System -> Text,"# [LLM] / [MEMO] - Prepare a management memo from verified facts and decision context.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [LLM] / [MEMO]. Prepare a management memo from verified facts and decision context..
@@ -1935,8 +1935,8 @@ Risks:
 Next step:",
 MEMO,K10,Judge/Revise,Text,System -> Text,"# MEMO - judge then revise
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge memo as pass/revise/blocked, then revise only if notes are actionable and source facts are sufficient.
@@ -1957,8 +1957,8 @@ MEMO,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 LOCAL AI,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 LOCAL AI,K2,Ollama Smoke,Text,System -> Text,"# LOCAL AI - Ollama smoke plan
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a non-sensitive local smoke test plan for Ollama. Commands are text only and run manually.
@@ -1977,8 +1977,8 @@ Pass/revise/blocked criteria:
 Risks:",
 LOCAL AI,K3,Model Compare,Text,System -> Text,"# LOCAL AI - model compare
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Compare local model outputs using sanitized prompts only.
@@ -1997,8 +1997,8 @@ Verdict:
 Limitations:",
 LOCAL AI,K4,Open WebUI,Text,System -> Text,"# LOCAL AI - Open WebUI check
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a safe Open WebUI check without private data or production workflow claims.
@@ -2016,8 +2016,8 @@ Expected result:
 Limitations:",
 LOCAL AI,K5,Draft Only,Text,System -> Text,"# LOCAL AI - local draft only
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Rewrite or generate a draft using local AI boundaries.
@@ -2035,8 +2035,8 @@ Unsupported claims:
 Next judge step:",
 LOCAL AI,K6,Safety,Text,System -> Text,"# LOCAL AI - safety boundary
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 State whether the proposed local AI use is allowed, revise, or blocked.
@@ -2054,8 +2054,8 @@ Blocked items:
 Allowed next step:",
 LOCAL AI,K7,Record Pilot,Text,System -> Text,"# LOCAL AI - record pilot result
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Prepare a pilot result note from observed local checks only.
@@ -2077,8 +2077,8 @@ Residual risks:
 Next step:",
 LOCAL AI,K8,Candidate?,Text,System -> Text,"# LOCAL AI - candidate verdict
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Decide whether a local AI result remains candidate, ready for review, revise, or blocked.
@@ -2097,8 +2097,8 @@ Promotion blocked by:
 Next step:",
 LOCAL AI,K9,No Sensitive,Text,System -> Text,"# LOCAL AI - sensitive data guard
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Check the pasted plan or prompt for sensitive/private/production data risk before local AI use.
@@ -2116,8 +2116,8 @@ Safe sanitized prompt:
 Blocked items:",
 LOCAL AI,K10,Judge Output,Text,System -> Text,"# JUDGE - local AI output
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Treat local AI output as draft/candidate until reviewed.
@@ -2142,8 +2142,8 @@ LOCAL AI,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 PILOTS,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 PILOTS,K2,Pilot Plan,Text,System -> Text,"# [AI OS] / [LLM] / [Codex] - Draft a pilot plan with owner, status, inputs, checks, acceptance gate, residual risks, and stop condition.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS] / [LLM] / [Codex]. Draft a pilot plan with owner, status, inputs, checks, acceptance gate, residual risks, and stop condition..
@@ -2162,8 +2162,8 @@ Risks:
 Next step:",
 PILOTS,K3,Pilot Result,Text,System -> Text,"# [AI OS] / [LLM] - Record a pilot result from observed behavior only.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS] / [LLM]. Record a pilot result from observed behavior only..
@@ -2186,8 +2186,8 @@ Residual risks:
 Next step:",
 PILOTS,K4,Candidate?,Text,System -> Text,"# [AI OS] - Assess candidate to active promotion readiness.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Assess candidate to active promotion readiness..
@@ -2206,8 +2206,8 @@ Risks:
 Next step:",
 PILOTS,K5,Acceptance,Text,System -> Text,"# [AI OS] - Map pilot evidence to acceptance criteria.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Map pilot evidence to acceptance criteria..
@@ -2226,8 +2226,8 @@ Risks:
 Next step:",
 PILOTS,K6,Residual Risk,Text,System -> Text,"# [Thinking] - List residual risks and whether they block promotion.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking]. List residual risks and whether they block promotion..
@@ -2246,8 +2246,8 @@ Risks:
 Next step:",
 PILOTS,K7,Registry,Text,System -> Text,"# [Codex] - Prepare a minimal registry update plan if pilot status changes.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex]. Prepare a minimal registry update plan if pilot status changes..
@@ -2266,8 +2266,8 @@ Risks:
 Next step:",
 PILOTS,K8,Runtime Smoke,Text,System -> Text,"# [AI OS] - Prepare a live smoke QA prompt and expected result for a project runtime.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Prepare a live smoke QA prompt and expected result for a project runtime..
@@ -2286,8 +2286,8 @@ Risks:
 Next step:",
 PILOTS,K9,Rollback,Text,System -> Text,"# [Thinking] / [Codex] - Define rollback or stop condition for a candidate pilot.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Thinking] / [Codex]. Define rollback or stop condition for a candidate pilot..
@@ -2306,8 +2306,8 @@ Risks:
 Next step:",
 PILOTS,K10,Status Note,Text,System -> Text,"# [AI OS] - Write a concise pilot status note.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Write a concise pilot status note..
@@ -2332,8 +2332,8 @@ PILOTS,K15,EMPTY,Empty,Leave blank,,Reserved; keep HOME uncluttered
 KB,K1,BACK,Navigation Back,Built-in folder back,Built-in folder back,Do not reprogram
 KB,K2,KB Search,Text,System -> Text,"# [AI OS] / [LLM] - Plan a KB evidence lookup from known repository/Knowledge files.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS] / [LLM]. Plan a KB evidence lookup from known repository/Knowledge files..
@@ -2352,8 +2352,8 @@ Risks:
 Next step:",
 KB,K3,Evidence Label,Text,System -> Text,"# [AI OS] - Label claims as supported, weak, mixed, unsupported, or needs fresh check.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Label claims as supported, weak, mixed, unsupported, or needs fresh check..
@@ -2372,8 +2372,8 @@ Risks:
 Next step:",
 KB,K4,Review Item,Text,System -> Text,"# [AI OS] - Review a KB item for owner, status, manifest/upload role, evidence, and residual risk.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Review a KB item for owner, status, manifest/upload role, evidence, and residual risk..
@@ -2392,8 +2392,8 @@ Risks:
 Next step:",
 KB,K5,Support Mix,Text,System -> Text,"# [AI OS] - Classify the pasted claim set as supported, weak, mixed, or unsupported.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Classify the pasted claim set as supported, weak, mixed, or unsupported..
@@ -2412,8 +2412,8 @@ Risks:
 Next step:",
 KB,K6,Manifest,Text,System -> Text,"# [Codex] - Check whether manifest paths and upload lists stay consistent.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex]. Check whether manifest paths and upload lists stay consistent..
@@ -2432,8 +2432,8 @@ Risks:
 Next step:",
 KB,K7,Source Truth,Text,System -> Text,"# [AI OS] - Identify the source of truth and whether a bundle/source sync is needed.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Identify the source of truth and whether a bundle/source sync is needed..
@@ -2452,8 +2452,8 @@ Risks:
 Next step:",
 KB,K8,Bundle Sync,Text,System -> Text,"# [Codex] - Prepare a minimal bundle sync task if source and Knowledge bundle diverge.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [Codex]. Prepare a minimal bundle sync task if source and Knowledge bundle diverge..
@@ -2472,8 +2472,8 @@ Risks:
 Next step:",
 KB,K9,Upload Check,Text,System -> Text,"# [AI OS] - Prepare a manual ChatGPT Project upload/sync checklist.
 
-Input:
-[paste]
+Use the last meaningful message above, selected text, or material pasted below.
+If no material is available, ask Sergey to paste it in one message.
 
 Task:
 Work in [AI OS]. Prepare a manual ChatGPT Project upload/sync checklist..

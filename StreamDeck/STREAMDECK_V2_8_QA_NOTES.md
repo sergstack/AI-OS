@@ -1,12 +1,13 @@
 # StreamDeck v2.8 QA Notes
 
-Status: candidate / ready for human review.
+Status: candidate / revised after live prompt QA / ready for human review.
 
 ## Files produced
 
 - `AIOS_StreamDeck_Setup_Instruction_v2.8_COMMAND_SURFACE_ALIGNED.md`
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json`
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.csv`
+- `STREAMDECK_V2_8_LIVE_PROMPT_QA.md`
 
 ## Source alignment checked
 
@@ -30,8 +31,20 @@ Status: candidate / ready for human review.
 - v2.7 files are preserved; v2.8 is a candidate side-by-side migration.
 - Safety/manual-only rules are explicit in setup markdown and prompt text.
 
+## Live prompt QA update
+
+- Live QA artifact: `STREAMDECK_V2_8_LIVE_PROMPT_QA.md`.
+- HOME prompt UX was revised to avoid raw `Input: [paste]` placeholders.
+- Final prompt opening now uses: "Use the last meaningful message above, selected text, or material pasted below. If no material is available, ask Sergey to paste it in one message."
+- AI TREND initial live behavior started a web/evidence check by default; verdict was revise.
+- AI TREND fix: label volatile facts as `needs fresh check` and ask Sergey before any live web check.
+- CODEX fix: require repo branch prefix conventions such as `codex/...` when present.
+- Full Draft -> HOME JUDGE -> HOME REVISOR -> Final workflow passed in `[LLM]` with no folder hopping and no manual prompt editing.
+- v2.8 remains candidate-only until Sergey accepts promotion.
+
 ## Residual risks
 
 - Actual Stream Deck device/profile behavior is not tested by repository checks.
+- Live prompt QA used Codex browser/runtime behavior, not physical StreamDeck device behavior.
 - Live ChatGPT Project sync can drift after manual Knowledge uploads; runtime smoke QA should be repeated after migration.
 - The v2.8 JSON/CSV are setup maps, not an Elgato import package.
