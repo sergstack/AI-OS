@@ -6,6 +6,7 @@
 - `LLM_02_PROMPT_LIBRARY_AND_REGISTRY.md`
 - `LLM_03_QUALITY_GATES_AND_EVAL.md`
 - `LLM_04_WORKFLOWS_AND_HANDOFF.md`
+- `LLM_05_CONTEXT_ENGINEERING.md`
 
 ## Optional upload files
 
@@ -27,8 +28,8 @@
 
 ## File count
 
-Required: 4
+Required: 5
 Optional: 0
-Total if all uploaded: 4
+Total if all uploaded: 5
 Limit: 40
 Status: pass

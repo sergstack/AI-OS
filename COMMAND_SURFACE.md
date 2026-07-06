@@ -16,7 +16,7 @@ This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prom
 | `StreamDeck Improve` | `[LLM]` / `[Codex]` | current button/prompt and desired result | improved prompt or PR | `streamdeck_prompt_upgrade` |
 | `PR Judge` | `[Thinking]` / `[Codex]` | PR link, goal, checks, risks | pass / revise / blocked review | context-dependent |
 | `Revisor` | `[LLM]` | draft plus judge notes | clearer final without new claims | context-dependent |
-| `Context Pack` | `[LLM]` | goal, files, facts, constraints, expected output | compact reusable context pack | context-dependent |
+| `Context Pack` | `[LLM]` | goal, files, facts, constraints, expected output | compact reusable context pack or CTC prompt | `context_pack_builder` |
 | `Sync Check` | `[Codex]` / Codex APP | repo branch or local checkout | repo checks plus sync guidance | `codex_goal_to_pr` |
 
 ## Usage
