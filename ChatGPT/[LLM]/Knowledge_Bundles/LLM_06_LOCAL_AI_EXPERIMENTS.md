@@ -56,6 +56,14 @@ Rules:
 
 ## Ollama / Open WebUI Pilot
 
+Owner project: `[LLM]`
+
+Pilot status: `candidate`
+
+Manifest/upload status: source file is `ChatGPT/[LLM]/Knowledge/OLLAMA_OPENWEBUI_PILOT.md`.
+
+Residual risk: repository-file guidance only; local tool behavior still needs a recorded pilot result.
+
 Ollama and Open WebUI are allowed as local experiment surfaces for draft generation, local model comparison, and curated excerpt exploration.
 
 They are not production systems and do not replace source review, judge/revise, Analytics QA, or AI-OS evidence checks.

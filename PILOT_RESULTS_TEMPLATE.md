@@ -3,6 +3,9 @@
 Pilot ID:
 Date:
 Project:
+Owner project:
+Pilot status: backlog / candidate / active / accepted / deprecated / blocked
+Manifest/upload status:
 Owner:
 Input:
 Expected behavior:
