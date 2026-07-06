@@ -29,7 +29,7 @@
 - таблицы выводов;
 - QA checklist;
 - acceptance status;
-- supervised `autoloop`: deterministic calculation → judge/QA → revise/rerun → acceptance → next run trigger;
+- supervised `autoloop_analysis`: deterministic calculation → judge/QA → revise/rerun → acceptance → next run trigger;
 - ограничения и риски;
 - подготовка ТЗ для Codex, если после анализа нужна реализация.
 
@@ -114,6 +114,6 @@ Handoff to Codex:
 В [Analytics] фиксирую стандарт и аналитическую логику. В Codex передавать только реализацию изменений файлов и тесты.
 ```
 
-## Autoloop boundary
+## Autoloop analysis boundary
 
-`autoloop` is a supervised analytical loop. It is not autonomous retrieval, an autonomous agent, vector DB, embeddings, semantic search, web UI, log system, journal, or runtime artifact store.
+`autoloop_analysis` is a supervised analytical loop. Backward-compatible alias: `autoloop`. It is not autonomous retrieval, an autonomous agent, vector DB, embeddings, semantic search, web UI, log system, journal, or runtime artifact store.
