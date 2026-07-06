@@ -76,6 +76,16 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: prompt is short, routable, evidence-aware, and does not add unsupported automation
 - done when: Sergey has a usable command/prompt and validation passes when files changed
 
+### `context_pack_builder`
+
+- trigger: "Build a compact context package or prompt from this goal"
+- route: `[LLM]` -> owner project by output type
+- input: goal, source files or facts, constraints, expected output, risk level
+- context needed: `CONTEXT_PACK_STANDARD.md`, prompt registry, routing rules, raw-dump guardrails
+- output: Context Pack or CTC prompt with goal, facts, constraints, forbidden inputs, expected output, and quality gate
+- quality gate: curated context only; no raw dumps, source-card dumps, chunks, logs, runtime artifacts, secrets, vector DB, embeddings, semantic search, web UI, or autonomous retrieval
+- done when: receiving project can act without asking Sergey to rewrite the context from scratch
+
 ### `supervised_agent_loop_design`
 
 - trigger: "Design a safe loop for this workflow"
