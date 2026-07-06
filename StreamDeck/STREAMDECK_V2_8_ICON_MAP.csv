@@ -1,0 +1,196 @@
+screen,button,label,icon_file,style_group,color_group,notes
+HOME,K1,ROUTE,icons/v2.8/home/K1_route.png,level1_gloss_pictogram,level1_dark_operator,compass pictogram. Classify raw input and choose destination
+HOME,K2,AI OS,icons/v2.8/home/K2_ai_os.png,level1_gloss_pictogram,level1_dark_operator,"network pictogram. AI concepts, trends, evidence, governance"
+HOME,K3,THINKING,icons/v2.8/home/K3_thinking.png,level1_gloss_pictogram,level1_dark_operator,"knight pictogram. Decisions, options, risks, assumptions"
+HOME,K4,ANALYTICS,icons/v2.8/home/K4_analytics.png,level1_gloss_pictogram,level1_dark_operator,"bars pictogram. Data contracts, deterministic calculations, QA"
+HOME,K5,LLM,icons/v2.8/home/K5_llm.png,level1_gloss_pictogram,level1_dark_operator,"bubble pictogram. Prompts, context packs, model routing, evals"
+HOME,K6,CODEX,icons/v2.8/home/K6_codex.png,level1_gloss_pictogram,level1_dark_operator,brackets pictogram. Goal Mode repo execution and PR workflow
+HOME,K7,JUDGE,icons/v2.8/home/K7_judge.png,level1_gloss_pictogram,level1_dark_operator,shield pictogram. One-touch universal judge from HOME
+HOME,K8,REVISOR,icons/v2.8/home/K8_revisor.png,level1_gloss_pictogram,level1_dark_operator,pencil_doc pictogram. One-touch revisor from HOME
+HOME,K9,INBOX,icons/v2.8/home/K9_inbox.png,level1_gloss_pictogram,level1_dark_operator,inbox pictogram. Fast capture and routing prompt
+HOME,K10,MEMO,icons/v2.8/home/K10_memo.png,level1_gloss_pictogram,level1_dark_operator,memo pictogram. Finance and management memo workflow
+HOME,K11,AI TREND,icons/v2.8/home/K11_ai_trend.png,level1_gloss_pictogram,level1_dark_operator,trend pictogram. Renames v2.7 RESEARCH into command-oriented AI Trend
+HOME,K12,SYNC,icons/v2.8/home/K12_sync.png,level1_gloss_pictogram,level1_dark_operator,sync pictogram. Replaces v2.7 REPO with daily Sync Check
+HOME,K13,LOCAL AI,icons/v2.8/home/K13_local_ai.png,level1_gloss_pictogram,level1_dark_operator,chip pictogram. Candidate-only Ollama/Open WebUI safe pilot
+HOME,K14,PILOTS,icons/v2.8/home/K14_pilots.png,level1_gloss_pictogram,level1_dark_operator,"flag pictogram. Pilot cases, results, acceptance gates"
+HOME,K15,KB,icons/v2.8/home/K15_kb.png,level1_gloss_pictogram,level1_dark_operator,books pictogram. Knowledge bundle evidence checks
+ROUTE,K1,BACK,icons/v2.8/level2/route/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+ROUTE,K2,Raw -> Route,icons/v2.8/level2/route/K2_raw_route.png,level2_colored_text,blue_navigation,"Router: classify and hand off, do not solve"
+ROUTE,K3,Things?,icons/v2.8/level2/route/K3_things.png,level2_colored_text,blue_navigation,
+ROUTE,K4,Calendar?,icons/v2.8/level2/route/K4_calendar.png,level2_colored_text,blue_navigation,
+ROUTE,K5,Notes?,icons/v2.8/level2/route/K5_notes.png,level2_colored_text,blue_navigation,
+ROUTE,K6,AI OS?,icons/v2.8/level2/route/K6_ai_os.png,level2_colored_text,blue_navigation,
+ROUTE,K7,Thinking?,icons/v2.8/level2/route/K7_thinking.png,level2_colored_text,blue_navigation,
+ROUTE,K8,Analytics?,icons/v2.8/level2/route/K8_analytics.png,level2_colored_text,blue_navigation,
+ROUTE,K9,LLM?,icons/v2.8/level2/route/K9_llm.png,level2_colored_text,blue_navigation,
+ROUTE,K10,Codex?,icons/v2.8/level2/route/K10_codex.png,level2_colored_text,blue_navigation,
+ROUTE,K11,Codex APP?,icons/v2.8/level2/route/K11_codex_app.png,level2_colored_text,blue_navigation,
+ROUTE,K12,Handoff,icons/v2.8/level2/route/K12_handoff.png,level2_colored_text,blue_navigation,
+ROUTE,K13,Clarify,icons/v2.8/level2/route/K13_clarify.png,level2_colored_text,blue_navigation,
+ROUTE,K14,EMPTY,icons/v2.8/level2/route/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+ROUTE,K15,EMPTY,icons/v2.8/level2/route/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+AI OS,K1,BACK,icons/v2.8/level2/ai_os/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+AI OS,K2,AI Trend,icons/v2.8/level2/ai_os/K2_ai_trend.png,level2_colored_text,green_ai,Trend triage / hype filter
+AI OS,K3,Pattern Explain,icons/v2.8/level2/ai_os/K3_pattern_explain.png,level2_colored_text,green_ai,
+AI OS,K4,Use Case,icons/v2.8/level2/ai_os/K4_use_case.png,level2_colored_text,green_ai,
+AI OS,K5,Evidence Check,icons/v2.8/level2/ai_os/K5_evidence_check.png,level2_colored_text,green_ai,
+AI OS,K6,Governance,icons/v2.8/level2/ai_os/K6_governance.png,level2_colored_text,green_ai,
+AI OS,K7,To Thinking,icons/v2.8/level2/ai_os/K7_to_thinking.png,level2_colored_text,green_ai,
+AI OS,K8,To LLM,icons/v2.8/level2/ai_os/K8_to_llm.png,level2_colored_text,green_ai,
+AI OS,K9,To Codex,icons/v2.8/level2/ai_os/K9_to_codex.png,level2_colored_text,green_ai,
+AI OS,K10,Agent Loop,icons/v2.8/level2/ai_os/K10_agent_loop.png,level2_colored_text,green_ai,
+AI OS,K11,StreamDeck,icons/v2.8/level2/ai_os/K11_streamdeck.png,level2_colored_text,green_ai,
+AI OS,K12,EMPTY,icons/v2.8/level2/ai_os/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+AI OS,K13,EMPTY,icons/v2.8/level2/ai_os/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+AI OS,K14,EMPTY,icons/v2.8/level2/ai_os/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+AI OS,K15,EMPTY,icons/v2.8/level2/ai_os/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+THINKING,K1,BACK,icons/v2.8/level2/thinking/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+THINKING,K2,Decision Memo,icons/v2.8/level2/thinking/K2_decision_memo.png,level2_colored_text,teal_docs,
+THINKING,K3,Options,icons/v2.8/level2/thinking/K3_options.png,level2_colored_text,teal_docs,
+THINKING,K4,Risks,icons/v2.8/level2/thinking/K4_risks.png,level2_colored_text,amber_risk,
+THINKING,K5,Assumptions,icons/v2.8/level2/thinking/K5_assumptions.png,level2_colored_text,teal_docs,
+THINKING,K6,Reversible?,icons/v2.8/level2/thinking/K6_reversible.png,level2_colored_text,teal_docs,
+THINKING,K7,Judge Decision,icons/v2.8/level2/thinking/K7_judge_decision.png,level2_colored_text,red_review,
+THINKING,K8,To Analytics,icons/v2.8/level2/thinking/K8_to_analytics.png,level2_colored_text,teal_docs,
+THINKING,K9,To Codex,icons/v2.8/level2/thinking/K9_to_codex.png,level2_colored_text,teal_docs,
+THINKING,K10,Scenario,icons/v2.8/level2/thinking/K10_scenario.png,level2_colored_text,teal_docs,
+THINKING,K11,Next Step,icons/v2.8/level2/thinking/K11_next_step.png,level2_colored_text,teal_docs,
+THINKING,K12,EMPTY,icons/v2.8/level2/thinking/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+THINKING,K13,EMPTY,icons/v2.8/level2/thinking/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+THINKING,K14,EMPTY,icons/v2.8/level2/thinking/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+THINKING,K15,EMPTY,icons/v2.8/level2/thinking/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+ANALYTICS,K1,BACK,icons/v2.8/level2/analytics/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+ANALYTICS,K2,Data Contract,icons/v2.8/level2/analytics/K2_data_contract.png,level2_colored_text,blue_navigation,
+ANALYTICS,K3,Variance,icons/v2.8/level2/analytics/K3_variance.png,level2_colored_text,blue_navigation,
+ANALYTICS,K4,Reconcile,icons/v2.8/level2/analytics/K4_reconcile.png,level2_colored_text,blue_navigation,
+ANALYTICS,K5,Audit Anomaly,icons/v2.8/level2/analytics/K5_audit_anomaly.png,level2_colored_text,blue_navigation,
+ANALYTICS,K6,Memo Facts,icons/v2.8/level2/analytics/K6_memo_facts.png,level2_colored_text,teal_docs,
+ANALYTICS,K7,QA Checks,icons/v2.8/level2/analytics/K7_qa_checks.png,level2_colored_text,blue_navigation,
+ANALYTICS,K8,Analytics Loop,icons/v2.8/level2/analytics/K8_analytics_loop.png,level2_colored_text,blue_navigation,
+ANALYTICS,K9,Supervised Loop,icons/v2.8/level2/analytics/K9_supervised_loop.png,level2_colored_text,blue_navigation,
+ANALYTICS,K10,Mart Spec,icons/v2.8/level2/analytics/K10_mart_spec.png,level2_colored_text,blue_navigation,
+ANALYTICS,K11,Formula Review,icons/v2.8/level2/analytics/K11_formula_review.png,level2_colored_text,red_review,
+ANALYTICS,K12,EMPTY,icons/v2.8/level2/analytics/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+ANALYTICS,K13,EMPTY,icons/v2.8/level2/analytics/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+ANALYTICS,K14,EMPTY,icons/v2.8/level2/analytics/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+ANALYTICS,K15,EMPTY,icons/v2.8/level2/analytics/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LLM,K1,BACK,icons/v2.8/level2/llm/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+LLM,K2,Prompt Build,icons/v2.8/level2/llm/K2_prompt_build.png,level2_colored_text,teal_docs,
+LLM,K3,Context Pack,icons/v2.8/level2/llm/K3_context_pack.png,level2_colored_text,teal_docs,
+LLM,K4,Judge Screen,icons/v2.8/level2/llm/K4_judge_screen.png,level2_colored_text,teal_docs,Open full Judge screen
+LLM,K5,Revisor Screen,icons/v2.8/level2/llm/K5_revisor_screen.png,level2_colored_text,teal_docs,Open full Revisor screen
+LLM,K6,Model Routing,icons/v2.8/level2/llm/K6_model_routing.png,level2_colored_text,teal_docs,
+LLM,K7,Eval Rubric,icons/v2.8/level2/llm/K7_eval_rubric.png,level2_colored_text,teal_docs,
+LLM,K8,Workflow Design,icons/v2.8/level2/llm/K8_workflow_design.png,level2_colored_text,teal_docs,
+LLM,K9,Local AI Prompt,icons/v2.8/level2/llm/K9_local_ai_prompt.png,level2_colored_text,teal_docs,
+LLM,K10,StreamDeck,icons/v2.8/level2/llm/K10_streamdeck.png,level2_colored_text,teal_docs,
+LLM,K11,No Raw Dump,icons/v2.8/level2/llm/K11_no_raw_dump.png,level2_colored_text,teal_docs,
+LLM,K12,EMPTY,icons/v2.8/level2/llm/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LLM,K13,EMPTY,icons/v2.8/level2/llm/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LLM,K14,EMPTY,icons/v2.8/level2/llm/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LLM,K15,EMPTY,icons/v2.8/level2/llm/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+CODEX,K1,BACK,icons/v2.8/level2/codex/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+CODEX,K2,Goal -> Issue,icons/v2.8/level2/codex/K2_goal_issue.png,level2_colored_text,blue_navigation,
+CODEX,K3,Issue -> PR,icons/v2.8/level2/codex/K3_issue_pr.png,level2_colored_text,blue_navigation,
+CODEX,K4,PR Judge,icons/v2.8/level2/codex/K4_pr_judge.png,level2_colored_text,red_review,
+CODEX,K5,Sync Check,icons/v2.8/level2/codex/K5_sync_check.png,level2_colored_text,teal_docs,Repo/main/checks sync prompt
+CODEX,K6,Run Checks,icons/v2.8/level2/codex/K6_run_checks.png,level2_colored_text,blue_navigation,
+CODEX,K7,Fix Mismatch,icons/v2.8/level2/codex/K7_fix_mismatch.png,level2_colored_text,blue_navigation,
+CODEX,K8,Release Notes,icons/v2.8/level2/codex/K8_release_notes.png,level2_colored_text,blue_navigation,
+CODEX,K9,No Auto-Merge,icons/v2.8/level2/codex/K9_no_auto_merge.png,level2_colored_text,blue_navigation,
+CODEX,K10,Branch Pack,icons/v2.8/level2/codex/K10_branch_pack.png,level2_colored_text,blue_navigation,
+CODEX,K11,Review Report,icons/v2.8/level2/codex/K11_review_report.png,level2_colored_text,red_review,
+CODEX,K12,EMPTY,icons/v2.8/level2/codex/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+CODEX,K13,EMPTY,icons/v2.8/level2/codex/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+CODEX,K14,EMPTY,icons/v2.8/level2/codex/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+CODEX,K15,EMPTY,icons/v2.8/level2/codex/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+JUDGE,K1,BACK,icons/v2.8/level2/judge/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+JUDGE,K2,Universal,icons/v2.8/level2/judge/K2_universal.png,level2_colored_text,red_review,
+JUDGE,K3,PR Judge,icons/v2.8/level2/judge/K3_pr_judge.png,level2_colored_text,red_review,
+JUDGE,K4,Memo Judge,icons/v2.8/level2/judge/K4_memo_judge.png,level2_colored_text,teal_docs,
+JUDGE,K5,Analytics,icons/v2.8/level2/judge/K5_analytics.png,level2_colored_text,red_review,
+JUDGE,K6,Evidence,icons/v2.8/level2/judge/K6_evidence.png,level2_colored_text,red_review,
+JUDGE,K7,Risk,icons/v2.8/level2/judge/K7_risk.png,level2_colored_text,red_review,
+JUDGE,K8,Blocker,icons/v2.8/level2/judge/K8_blocker.png,level2_colored_text,red_review,
+JUDGE,K9,Local AI,icons/v2.8/level2/judge/K9_local_ai.png,level2_colored_text,red_review,
+JUDGE,K10,Route Judge,icons/v2.8/level2/judge/K10_route_judge.png,level2_colored_text,blue_navigation,
+JUDGE,K11,Final Gate,icons/v2.8/level2/judge/K11_final_gate.png,level2_colored_text,red_review,
+JUDGE,K12,EMPTY,icons/v2.8/level2/judge/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+JUDGE,K13,EMPTY,icons/v2.8/level2/judge/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+JUDGE,K14,EMPTY,icons/v2.8/level2/judge/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+JUDGE,K15,EMPTY,icons/v2.8/level2/judge/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K1,BACK,icons/v2.8/level2/revisor/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+REVISOR,K2,Apply Notes,icons/v2.8/level2/revisor/K2_apply_notes.png,level2_colored_text,amber_risk,
+REVISOR,K3,Shorten,icons/v2.8/level2/revisor/K3_shorten.png,level2_colored_text,amber_risk,
+REVISOR,K4,Clearer,icons/v2.8/level2/revisor/K4_clearer.png,level2_colored_text,amber_risk,
+REVISOR,K5,Exec Version,icons/v2.8/level2/revisor/K5_exec_version.png,level2_colored_text,amber_risk,
+REVISOR,K6,File-ready,icons/v2.8/level2/revisor/K6_file_ready.png,level2_colored_text,amber_risk,
+REVISOR,K7,No New Claims,icons/v2.8/level2/revisor/K7_no_new_claims.png,level2_colored_text,amber_risk,
+REVISOR,K8,Memo Revise,icons/v2.8/level2/revisor/K8_memo_revise.png,level2_colored_text,teal_docs,
+REVISOR,K9,Prompt QA,icons/v2.8/level2/revisor/K9_prompt_qa.png,level2_colored_text,teal_docs,Judge prompt safety and UX; do not rewrite
+REVISOR,K10,EMPTY,icons/v2.8/level2/revisor/K10_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K11,EMPTY,icons/v2.8/level2/revisor/K11_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K12,EMPTY,icons/v2.8/level2/revisor/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K13,EMPTY,icons/v2.8/level2/revisor/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K14,EMPTY,icons/v2.8/level2/revisor/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+REVISOR,K15,EMPTY,icons/v2.8/level2/revisor/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+MEMO,K1,BACK,icons/v2.8/level2/memo/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+MEMO,K2,Finance Memo,icons/v2.8/level2/memo/K2_finance_memo.png,level2_colored_text,teal_docs,
+MEMO,K3,Exec Summary,icons/v2.8/level2/memo/K3_exec_summary.png,level2_colored_text,teal_docs,
+MEMO,K4,Findings,icons/v2.8/level2/memo/K4_findings.png,level2_colored_text,teal_docs,
+MEMO,K5,Risks,icons/v2.8/level2/memo/K5_risks.png,level2_colored_text,teal_docs,
+MEMO,K6,Recommend,icons/v2.8/level2/memo/K6_recommend.png,level2_colored_text,teal_docs,
+MEMO,K7,Appendix,icons/v2.8/level2/memo/K7_appendix.png,level2_colored_text,teal_docs,
+MEMO,K8,Final Memo,icons/v2.8/level2/memo/K8_final_memo.png,level2_colored_text,teal_docs,
+MEMO,K9,Mgmt Memo,icons/v2.8/level2/memo/K9_mgmt_memo.png,level2_colored_text,teal_docs,
+MEMO,K10,Judge/Revise,icons/v2.8/level2/memo/K10_judge_revise.png,level2_colored_text,teal_docs,
+MEMO,K11,EMPTY,icons/v2.8/level2/memo/K11_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+MEMO,K12,EMPTY,icons/v2.8/level2/memo/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+MEMO,K13,EMPTY,icons/v2.8/level2/memo/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+MEMO,K14,EMPTY,icons/v2.8/level2/memo/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+MEMO,K15,EMPTY,icons/v2.8/level2/memo/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LOCAL AI,K1,BACK,icons/v2.8/level2/local_ai/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+LOCAL AI,K2,Ollama Smoke,icons/v2.8/level2/local_ai/K2_ollama_smoke.png,level2_colored_text,green_operator,
+LOCAL AI,K3,Model Compare,icons/v2.8/level2/local_ai/K3_model_compare.png,level2_colored_text,green_operator,
+LOCAL AI,K4,Open WebUI,icons/v2.8/level2/local_ai/K4_open_webui.png,level2_colored_text,green_operator,
+LOCAL AI,K5,Draft Only,icons/v2.8/level2/local_ai/K5_draft_only.png,level2_colored_text,green_operator,
+LOCAL AI,K6,Safety,icons/v2.8/level2/local_ai/K6_safety.png,level2_colored_text,green_operator,
+LOCAL AI,K7,Record Pilot,icons/v2.8/level2/local_ai/K7_record_pilot.png,level2_colored_text,green_operator,
+LOCAL AI,K8,Candidate?,icons/v2.8/level2/local_ai/K8_candidate.png,level2_colored_text,green_operator,
+LOCAL AI,K9,No Sensitive,icons/v2.8/level2/local_ai/K9_no_sensitive.png,level2_colored_text,green_operator,
+LOCAL AI,K10,Judge Output,icons/v2.8/level2/local_ai/K10_judge_output.png,level2_colored_text,green_operator,Judge local AI output as candidate/draft
+LOCAL AI,K11,EMPTY,icons/v2.8/level2/local_ai/K11_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LOCAL AI,K12,EMPTY,icons/v2.8/level2/local_ai/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LOCAL AI,K13,EMPTY,icons/v2.8/level2/local_ai/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LOCAL AI,K14,EMPTY,icons/v2.8/level2/local_ai/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+LOCAL AI,K15,EMPTY,icons/v2.8/level2/local_ai/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+PILOTS,K1,BACK,icons/v2.8/level2/pilots/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+PILOTS,K2,Pilot Plan,icons/v2.8/level2/pilots/K2_pilot_plan.png,level2_colored_text,green_operator,
+PILOTS,K3,Pilot Result,icons/v2.8/level2/pilots/K3_pilot_result.png,level2_colored_text,green_operator,
+PILOTS,K4,Candidate?,icons/v2.8/level2/pilots/K4_candidate.png,level2_colored_text,green_operator,
+PILOTS,K5,Acceptance,icons/v2.8/level2/pilots/K5_acceptance.png,level2_colored_text,green_operator,
+PILOTS,K6,Residual Risk,icons/v2.8/level2/pilots/K6_residual_risk.png,level2_colored_text,green_operator,
+PILOTS,K7,Registry,icons/v2.8/level2/pilots/K7_registry.png,level2_colored_text,green_operator,
+PILOTS,K8,Runtime Smoke,icons/v2.8/level2/pilots/K8_runtime_smoke.png,level2_colored_text,green_operator,
+PILOTS,K9,Rollback,icons/v2.8/level2/pilots/K9_rollback.png,level2_colored_text,green_operator,
+PILOTS,K10,Status Note,icons/v2.8/level2/pilots/K10_status_note.png,level2_colored_text,green_operator,
+PILOTS,K11,EMPTY,icons/v2.8/level2/pilots/K11_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+PILOTS,K12,EMPTY,icons/v2.8/level2/pilots/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+PILOTS,K13,EMPTY,icons/v2.8/level2/pilots/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+PILOTS,K14,EMPTY,icons/v2.8/level2/pilots/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+PILOTS,K15,EMPTY,icons/v2.8/level2/pilots/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K1,BACK,icons/v2.8/level2/kb/K1_back.png,level2_colored_text,blue_neutral,Do not reprogram
+KB,K2,KB Search,icons/v2.8/level2/kb/K2_kb_search.png,level2_colored_text,green_ai,
+KB,K3,Evidence Label,icons/v2.8/level2/kb/K3_evidence_label.png,level2_colored_text,green_ai,
+KB,K4,Review Item,icons/v2.8/level2/kb/K4_review_item.png,level2_colored_text,green_ai,
+KB,K5,Support Mix,icons/v2.8/level2/kb/K5_support_mix.png,level2_colored_text,green_ai,
+KB,K6,Manifest,icons/v2.8/level2/kb/K6_manifest.png,level2_colored_text,green_ai,
+KB,K7,Source Truth,icons/v2.8/level2/kb/K7_source_truth.png,level2_colored_text,green_ai,
+KB,K8,Bundle Sync,icons/v2.8/level2/kb/K8_bundle_sync.png,level2_colored_text,green_ai,
+KB,K9,Upload Check,icons/v2.8/level2/kb/K9_upload_check.png,level2_colored_text,green_ai,
+KB,K10,EMPTY,icons/v2.8/level2/kb/K10_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K11,EMPTY,icons/v2.8/level2/kb/K11_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K12,EMPTY,icons/v2.8/level2/kb/K12_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K13,EMPTY,icons/v2.8/level2/kb/K13_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K14,EMPTY,icons/v2.8/level2/kb/K14_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
+KB,K15,EMPTY,icons/v2.8/level2/kb/K15_empty.png,level2_colored_text,neutral_empty,Reserved; keep HOME uncluttered
