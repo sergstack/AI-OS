@@ -2852,27 +2852,31 @@ Claims softened/removed:
 Residual risks:
 ```
 
-#### K9 - `Prompt Revise`
+#### K9 - `Prompt QA`
 
 - Action: `Text`
 - Setting: `System -> Text`
+- Note: Judge prompt safety and UX; do not rewrite
 
 ```text
-# REVISOR - prompt revise
+# REVISOR - prompt QA
 
 Use the last meaningful message above, selected text, or material pasted below.
 If no material is available, ask Sergey to paste it in one message.
 
 Task:
-Revise only using the pasted draft, approved source facts, and Judge notes. Do not add new unsupported facts or invented evidence. Tighten the prompt so it is shorter, safer, and more routable.
+Judge the prompt or prompt revision request only. Do not rewrite the prompt. Check whether it is safe, routable, compact, and free of raw input-template placeholders. If a rewrite is needed, return `Verdict: revise` with exact requirements for Sergey or another revisor; do not produce the rewritten prompt yourself.
 
 Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Return:
-Revised prompt:
-Safety preserved:
-Unsupported automation removed:
+Verdict: pass / revise / blocked
+Placeholder risk: none / present
+Routing risk:
+Unsupported automation risk:
+Required changes:
+Human decision needed:
 ```
 
 #### K10 - `EMPTY`
