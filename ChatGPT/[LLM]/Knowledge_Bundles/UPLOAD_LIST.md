@@ -7,6 +7,7 @@
 - `LLM_03_QUALITY_GATES_AND_EVAL.md`
 - `LLM_04_WORKFLOWS_AND_HANDOFF.md`
 - `LLM_05_CONTEXT_ENGINEERING.md`
+- `LLM_06_LOCAL_AI_EXPERIMENTS.md`
 
 ## Optional upload files
 
@@ -28,8 +29,8 @@
 
 ## File count
 
-Required: 5
+Required: 6
 Optional: 0
-Total if all uploaded: 5
+Total if all uploaded: 6
 Limit: 40
 Status: pass

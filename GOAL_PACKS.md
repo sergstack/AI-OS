@@ -86,6 +86,16 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 - quality gate: curated context only; no raw dumps, source-card dumps, chunks, logs, runtime artifacts, secrets, vector DB, embeddings, semantic search, web UI, or autonomous retrieval
 - done when: receiving project can act without asking Sergey to rewrite the context from scratch
 
+### `local_ai_pilot`
+
+- trigger: "Test this local AI / Ollama / Open WebUI idea safely"
+- route: `[LLM]` -> `[Thinking]` for hardware decisions -> `[Codex]` only for approved repo work
+- input: local AI use case, model/surface, context type, security boundary, success criteria
+- context needed: local AI experiment playbook, Ollama/Open WebUI pilot rules, model eval matrix, security boundary
+- output: pilot plan or verdict with context rules, judge/revise step, limitations, security notes, and next step
+- quality gate: experiment only; no production automation, autonomous retrieval, vector DB, embeddings, semantic search, MCP tools, web UI production workflow, secrets, or runtime artifacts
+- done when: pilot is pass / revise / blocked with candidate / ready for human review status
+
 ### `supervised_agent_loop_design`
 
 - trigger: "Design a safe loop for this workflow"

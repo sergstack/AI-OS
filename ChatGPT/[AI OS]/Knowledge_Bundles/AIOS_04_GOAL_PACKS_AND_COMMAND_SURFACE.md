@@ -43,6 +43,7 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 | `supervised_agent_loop_design` | design a safe loop for a workflow | `[AI OS]` -> `[Thinking]` / `[Codex]` when implementation packaging is needed | loop design with retry/rerun rule, stop conditions, human acceptance point, and next trigger | supervised only; no autonomous retrieval or production agentic workflow |
 | `cross_project_eval_review` | check this AI output / PR / memo / workflow | `[AI OS]` for evidence/governance routing, then owner project | eval verdict with required fixes, residual risks, final quality status, next step | deterministic checks override LLM judge |
 | `context_pack_builder` | build a compact context package or prompt from a goal | `[LLM]` -> owner project by output type | Context Pack or CTC prompt with facts, constraints, forbidden inputs, expected output, and quality gate | curated context only; no raw dumps or unsupported retrieval |
+| `local_ai_pilot` | test a local AI / Ollama / Open WebUI idea safely | `[LLM]` -> `[Thinking]` for hardware decisions -> `[Codex]` only for approved repo work | pilot plan or verdict with security boundary, eval matrix, limitations, and next step | experiment only; no production automation or autonomous retrieval |
 | `audit_anomaly_review` | anomaly, variance, or suspicious record | `[Analytics]` -> `[Thinking]` if decision framing is needed | finding, likely cause, evidence, risk, recommended action | no LLM arithmetic |
 | `streamdeck_prompt_upgrade` | improve a Stream Deck / quick prompt workflow | `[LLM]` -> `[Codex]` when repo edits are needed | tighter prompt or repo PR | prompt is short, routable, evidence-aware, and does not add unsupported automation |
 
@@ -72,6 +73,7 @@ One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each co
 | `Eval / Judge` | `[LLM]` / `[Thinking]` / `[Codex]` / `[Analytics]` / `[AI OS]` | output, workflow result, PR, memo, claim, or loop design | pass / revise / blocked review with required fixes | `cross_project_eval_review` |
 | `Audit Anomaly` | `[Analytics]` | anomaly, account/entity, period, expected behavior | finding, evidence, risk, recommended action | `audit_anomaly_review` |
 | `StreamDeck Improve` | `[LLM]` / `[Codex]` | current button/prompt and desired result | improved prompt or PR | `streamdeck_prompt_upgrade` |
+| `Local AI Pilot` | `[LLM]` / `[Thinking]` | local model, Ollama/Open WebUI idea, hardware question, or private draft use case | controlled experiment plan, security boundary, eval matrix, limitations | `local_ai_pilot` |
 | `PR Judge` | `[Thinking]` / `[Codex]` | PR link, goal, checks, risks | pass / revise / blocked review | context-dependent |
 | `Revisor` | `[LLM]` | draft plus judge notes | clearer final without new claims | context-dependent |
 | `Context Pack` | `[LLM]` | goal, files, facts, constraints, expected output | compact reusable context pack or CTC prompt | `context_pack_builder` |
