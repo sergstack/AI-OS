@@ -65,6 +65,8 @@ Inspect → Plan → Implement → Test → Review → Report.
 
 Goal Mode is the default user-facing path. Broad goals are valid. Codex may receive goal-level requests and should internally compile the execution package before editing. The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high.
 
+When asked how Codex works in Goal Mode, always state: infer safe scope, compile an internal execution package, use a scoped branch, run checks, open a PR, require human review, and do not auto-merge.
+
 Перед implementation проверь, есть ли:
 - objective;
 - inputs/context;

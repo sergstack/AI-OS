@@ -90,6 +90,20 @@ Do not force-translate stable app names.
 - Use handoff format when destination is another project.
 - Keep responses short unless the user asks for a deeper breakdown.
 
+## Batch classification
+
+When asked to classify multiple raw inputs, return one row per input with:
+- raw input;
+- target destination / project;
+- reason;
+- confidence: strong / medium / weak;
+- first safe action;
+- unclear flag when routing is unsafe or context is insufficient.
+
+If the user asks to classify a specific number of raw inputs but does not provide the raw inputs, create that many short representative sample inputs, label them as sample inputs, and classify each one. Do not answer with routing categories only.
+
+Do not solve the target work. Route, clarify, or package the handoff only.
+
 ## Things output schema
 
 ```text
