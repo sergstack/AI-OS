@@ -15,13 +15,15 @@ Overall result:
 - Tested target buttons: 27.
 - Passed: 26.
 - Blocked / human choice needed: 1.
-- Prompt fix applied: `REVISOR / Prompt Revise`.
+- Prompt fix applied: `REVISOR / Prompt Revise` is converted to `REVISOR / Prompt QA`.
 - v2.8 remains candidate-only.
 - v2.7 remains active.
 
-Blocked item:
+Blocked item resolved by recommendation:
 
-- `REVISOR / Prompt Revise`: live output repeatedly reintroduced raw input placeholders when asked to revise a prompt draft containing that bad pattern. The candidate prompt was strengthened, but live retests still failed. Keep this button candidate / blocked until Sergey accepts a different behavior or the owner Project instructions are tightened.
+- `REVISOR / Prompt Revise`: live output repeatedly reintroduced raw input placeholders when asked to revise a prompt draft containing that bad pattern. PR #75 records this as QA evidence, not as a reason to keep retrying.
+- Chosen recommendation: **B) rename it to `Prompt QA` and make it judge-only, not rewrite-first**.
+- Result: v2.8 candidate now uses `REVISOR / Prompt QA`, which judges prompt safety/UX and returns pass / revise / blocked without producing a rewritten prompt.
 
 ## Test environment
 
@@ -46,7 +48,7 @@ Blocked item:
 | JUDGE / Final Gate | `[LLM]` | Compare acceptance criteria and observed checks. | Returned `pass` for no placeholders, live QA recorded, candidate-only status, and observed checks. | pass | 9 | none | not needed | Depends on truthful supplied check summary. |
 | REVISOR / No New Claims | `[LLM]` | Detect and remove unsupported new claims. | Flagged `v2.8 is active` and `production-ready` as unsupported. | pass | 9 | none | not needed | Needs source/Judge context in real use. |
 | REVISOR / File-ready | `[LLM]` | Produce file-ready final from approved facts only. | Produced concise file-ready status artifact preserving candidate-only and browser-QA limits. | pass | 8 | none | not needed | Formatting still needs human taste check. |
-| REVISOR / Prompt Revise | `[LLM]` | Rewrite unsafe prompt without raw input placeholders. | Initial output reintroduced raw input placeholders. | blocked | 4 | Strengthened prompt to require approved StreamDeck UX opening and block if placeholders remain. | Still reintroduced raw placeholders after 3 revised attempts. | Human choice needed; likely Project-level instruction/rubric issue. |
+| REVISOR / Prompt Revise -> Prompt QA | `[LLM]` | Avoid unsafe rewrite-first behavior. | Rewrite-first behavior repeatedly reintroduced raw input placeholders. | revise -> selected B | 4 -> 8 expected | Renamed to `Prompt QA`; changed to judge-only pass / revise / blocked prompt. | Not retested after rename; PR #75 is retained as QA evidence for the design choice. | Needs human acceptance before active promotion. |
 | CODEX / Goal -> Issue | `[Codex]` | Produce issue-ready brief without atomic burden. | Returned goal, context, allowed scope, forbidden actions, checks, rollback, human review. | pass | 9 | none | not needed | It prepares issue text only. |
 | CODEX / Run Checks | `[Codex]` | Manual-only smallest relevant checks. | Returned manual command list including repo status, diff, and checks; no execution/automerge. | pass | 9 | none | not needed | Commands still require manual/Codex execution. |
 | CODEX / Branch Pack | `[Codex]` | Bounded branch task pack with `codex/...` convention. | Returned bounded docs-only package using Goal Mode and `codex/...` branch. | pass | 9 | none | not needed | Does not execute package. |
@@ -70,7 +72,7 @@ Blocked item:
 
 ## Prompt changes made
 
-### REVISOR / Prompt Revise
+### REVISOR / Prompt Revise -> Prompt QA
 
 Observed bug:
 
@@ -86,14 +88,16 @@ Retest result:
 
 - Still returned a prompt containing raw input-placeholder patterns after 3 revised attempts.
 
-Final QA verdict:
+Final QA verdict before design decision:
 
 - `blocked / human choice needed`.
 
-Recommendation:
+Chosen recommendation:
 
-- Keep `REVISOR / Prompt Revise` in candidate status.
-- Do not rely on it for final prompt cleanup until Sergey either accepts the risk or the `[LLM]` Project instructions are tightened.
+- **B) rename it to `Prompt QA` and make it judge-only, not rewrite-first.**
+- Rationale: rewrite-first behavior is the risky part; judge-only behavior still gives Sergey useful QA without generating another unsafe prompt.
+- Candidate change applied: `REVISOR / Prompt QA` now checks prompt safety/UX and returns pass / revise / blocked, but does not rewrite the prompt.
+- Active promotion status: not promoted; Sergey acceptance is still required.
 
 ## Buttons intentionally not tested
 
@@ -109,7 +113,7 @@ This was a risk-based pass. It did not test:
 - Keep v2.7 active.
 - Keep v2.8 candidate.
 - Do not promote v2.8 active until Sergey accepts the candidate after manual/physical StreamDeck pilot.
-- Treat `REVISOR / Prompt Revise` as blocked or high-risk until resolved.
+- Treat `REVISOR / Prompt QA` as candidate-only until Sergey accepts the design change.
 
 ## Residual risks
 
@@ -118,4 +122,4 @@ This was a risk-based pass. It did not test:
 - ChatGPT Project runtime behavior can drift after manual Knowledge sync or settings changes.
 - Live QA used synthetic, non-sensitive data only.
 - Browser summaries are recorded, not raw transcripts.
-- One target button remains blocked despite prompt-level fixes.
+- `REVISOR / Prompt Revise` remains QA evidence for the risk; the candidate design now demotes rewrite behavior into judge-only `Prompt QA`.
