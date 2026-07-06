@@ -12,6 +12,16 @@ This folder contains local operating settings, templates and checklists for usin
 
 Do not mix these folders.
 
+## Goal Mode boundary
+
+Sergey may start in ChatGPT with a broad goal.
+
+`ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue compiles that goal into a Codex-safe execution package.
+
+`Codex APP` is the executor layer. It should receive or safely infer an executor-ready package before editing.
+
+Do not require Sergey to manually write atomic task fields. Goal Mode removes user-facing bureaucracy, not execution safety.
+
 ## Default workflow
 
 ```text

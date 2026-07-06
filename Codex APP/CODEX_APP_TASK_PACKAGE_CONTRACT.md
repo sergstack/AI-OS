@@ -9,9 +9,19 @@ Define the required interface between `ChatGPT/[Codex]` and the Codex App, Codex
 - Producer: `ChatGPT/[Codex]`
 - Executor: `Codex APP / Codex App / Codex Web / Codex CLI / IDE`
 
+## Goal Mode boundary
+
+This contract applies to the executor-ready package, not to Sergey’s initial request.
+
+Sergey may start with a broad goal in ChatGPT. The producer layer — `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue — is responsible for converting that goal into objective, scope, allowed files, checks, rollback, and acceptance criteria.
+
+`Codex APP` must preserve execution safety. Before editing, it should confirm the objective, repo, branch, allowed scope, forbidden actions, checks, rollback, and final response format.
+
+For small, local, reversible tasks, `Codex APP` may safely infer missing fields and report what was inferred. For unclear, high-risk, production, destructive, secret-related, or governed-KB tasks, stop and report a blocker.
+
 ## Required input fields
 
-Every task package must include:
+Every executor-ready task package should include or safely infer:
 
 - `objective`
 - `context`
