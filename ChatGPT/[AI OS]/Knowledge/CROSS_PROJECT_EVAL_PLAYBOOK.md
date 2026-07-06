@@ -1,58 +1,51 @@
-# Cross Project Eval Playbook
+# Cross-Project Eval Playbook
 
 ## Purpose
 
-Route eval and judge work to the right AI-OS project.
+Route AI evals to the right project and choose the right judge/check.
 
-## Ownership Map
+This playbook connects existing checks; it does not replace project-specific QA, PR Judge, judge/revise, or evidence rules.
 
-| Work item | Owner project | Use |
-|---|---|---|
-| Evidence confidence, promotion gate, AI OS pattern | `[AI OS]` | AI OS evidence check |
-| LLM output quality, prompt quality, judge/revise | `[LLM]` | LLM quality gate |
-| Calculations, data QA, schemas, marts, analytical memo | `[Analytics]` | deterministic QA plus memo QA |
-| PR review, implementation checks, test evidence | `[Codex]` | PR Judge and workflow eval |
-| Strategic critique, risk review, revisor pass | `[Thinking]` | judge/revisor decision review |
+## Eval Routing
 
-## Eval Flow
+| Output / workflow | Owner project | Eval method | Verdict |
+|---|---|---|---|
+| AI concept / KB claim | `[AI OS]` | evidence / confidence check | supported / weak / mixed / unsupported |
+| LLM draft / prompt output | `[LLM]` | judge -> revise | pass / revise / blocked |
+| Financial / analytical memo | `[Analytics]` | deterministic QA + narrative judge | pass / revise / blocked |
+| Repo change / PR | `[Codex]` | PR Judge + checks | pass / revise / blocked |
+| Decision memo | `[Thinking]` | assumption / risk / reversibility judge | pass / revise / blocked |
+| Agent loop design | `[AI OS]` | Loop Acceptance Checklist | pass / revise / blocked |
 
-```text
-route eval type
--> gather compact evidence
--> run deterministic checks where applicable
--> run judge/review
--> revise or block
--> final status
--> human acceptance or next step
-```
+## Evaluation Order
 
-## Deterministic First
+1. Deterministic checks first when available.
+2. Source/evidence checks before narrative polish.
+3. LLM judge reviews only against explicit criteria.
+4. Revise only from visible judge findings.
+5. Human acceptance for high-risk outputs.
 
-Use deterministic checks before LLM judge for:
+## What Overrides Judge
 
-- arithmetic;
-- reconciliation;
-- tests;
-- schemas;
-- contracts;
-- formulas;
-- metric definitions;
-- column names;
-- business logic.
+- failed tests;
+- failed data reconciliation;
+- missing source evidence;
+- schema/output contract mismatch;
+- secrets or `.env`;
+- production/runtime risk;
+- explicit governance blocker.
 
-LLM judge can review clarity, evidence gaps, unsupported claims, scope fit, risks, and missing acceptance criteria.
-
-## Eval / Judge Output
+## Output Format
 
 ```text
-Eval type:
+Eval:
 Owner project:
-Evidence checked:
-Deterministic checks:
+Input reviewed:
+Checks:
 Judge verdict:
-Required revision:
-Risks / limitations:
-Final status:
+Required fixes:
+Residual risks:
+Final quality status:
 Next step:
 ```
 
@@ -60,16 +53,19 @@ Next step:
 
 This playbook does not add:
 
-- runtime RAGAS;
-- SWE-Bench benchmark setup;
-- embeddings;
+- runtime RAGAS setup;
+- SWE-Bench benchmark runner;
 - vector DB;
+- embeddings;
 - semantic search;
 - web UI;
 - autonomous retrieval;
-- runtime artifacts;
+- autonomous eval agents;
+- production automation;
 - logs;
+- runtime artifacts;
+- eval result database;
 - secrets;
-- production eval automation.
+- `.env`.
 
 RAGAS and SWE-Bench remain future/reference patterns only.

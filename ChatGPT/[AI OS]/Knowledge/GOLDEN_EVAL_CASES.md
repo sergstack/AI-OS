@@ -2,98 +2,113 @@
 
 ## Purpose
 
-Define compact golden cases for cross-project evals.
+Small set of reusable golden cases to check AI eval behavior after prompt, model, or workflow changes.
 
-These cases are examples for manual or lightweight checklist evaluation, not a benchmark harness.
+These cases are manual smoke QA examples, not runtime logs or a benchmark framework.
 
-## Case 1: AI OS Evidence
+## Case Schema
 
-Input:
+```text
+case_id:
+workflow:
+owner_project:
+input:
+expected_behavior:
+must_detect:
+must_not_do:
+judge_criteria:
+pass_example:
+revise_example:
+blocked_example:
+revisit_trigger:
+```
 
-- AI trend, pattern, or governance claim.
+## CASE-AIOS-EVIDENCE-001
 
-Expected checks:
+case_id: `CASE-AIOS-EVIDENCE-001`
+workflow: AI OS evidence answer
+owner_project: `[AI OS]`
+input: claim about an AI pattern or governance rule
+expected_behavior: classify as supported / weak / mixed / unsupported / not found
+must_detect: unsupported or weak claims, blocked promotion items, missing sources
+must_not_do: present weak evidence as supported fact or production-ready recommendation
+judge_criteria: evidence label, source reference, risk, next step
+pass_example: claim is supported and sources are named
+revise_example: claim is plausible but confidence or source path is missing
+blocked_example: unsupported claim is recommended as current implementation
+revisit_trigger: new KB evidence, release status change, or external facts change
 
-- source files or fresh sources named;
-- supported / weak / unsupported separated;
-- promotion gates respected;
-- blocked items not recommended as current implementation.
+## CASE-LLM-JUDGE-001
 
-Pass when:
+case_id: `CASE-LLM-JUDGE-001`
+workflow: LLM draft -> judge -> revise
+owner_project: `[LLM]`
+input: prompt, context package, and draft answer
+expected_behavior: detect unsupported claims and missing limitations
+must_detect: hallucinated sources, mixed facts/interpretation, missing limitations
+must_not_do: silently fix unsupported claims without listing judge findings
+judge_criteria: schema fit, evidence references, unsupported claims, revision status
+pass_example: final answer follows schema and marks limitations
+revise_example: draft is useful but missing limitations or evidence references
+blocked_example: draft invents source support or hides a blocker
+revisit_trigger: prompt, model class, context package, or rubric changes
 
-- evidence status is visible;
-- risks and next step are concrete;
-- no production readiness is claimed without acceptance.
+## CASE-ANALYTICS-QA-001
 
-## Case 2: LLM Output
+case_id: `CASE-ANALYTICS-QA-001`
+workflow: Analytics memo
+owner_project: `[Analytics]`
+input: question, data contract, stage/mart evidence, formulas, memo draft
+expected_behavior: require source mart/table, metric, period, grain, QA status, confidence
+must_detect: missing data contract, unclear grain, failed reconciliation, unsupported recommendation
+must_not_do: let LLM judge override failed deterministic QA
+judge_criteria: deterministic checks, traceability, limitations, recommendation scope
+pass_example: memo claims trace to mart/evidence and QA passes
+revise_example: memo needs clearer method, limitation, or source field
+blocked_example: reconciliation fails or formula/schema change lacks approval
+revisit_trigger: source data, formula, schema, grain, period, or business rule changes
 
-Input:
+## CASE-CODEX-PR-001
 
-- prompt, context package, and draft output.
+case_id: `CASE-CODEX-PR-001`
+workflow: Codex PR Judge
+owner_project: `[Codex]` / `[Thinking]`
+input: PR link, goal, diff, checks, risks, rollback
+expected_behavior: detect scope creep, missing checks, rollback gaps
+must_detect: unrelated refactor, invented tests, missing rollback, forbidden files
+must_not_do: merge automatically or summarize without verdict
+judge_criteria: goal fit, scope, checks, risk, rollback, acceptance status
+pass_example: PR is scoped, checks passed, risks and rollback are visible
+revise_example: local docs or test evidence fix is needed
+blocked_example: secrets, production risk, failing checks, or unclear acceptance
+revisit_trigger: new commits, failed CI, review comments, or changed goal
 
-Expected checks:
+## CASE-AGENT-LOOP-001
 
-- facts separated from interpretation;
-- unsupported claims listed;
-- limitations visible;
-- judge result and revision status present.
+case_id: `CASE-AGENT-LOOP-001`
+workflow: Agent Loop Design
+owner_project: `[AI OS]` / `[Thinking]`
+input: loop goal, owner, allowed actions, checks, stop conditions, acceptance gate
+expected_behavior: distinguish supervised loop from autonomous agentic workflow
+must_detect: autonomous retrieval, uncontrolled multi-agent edits, missing validation, unbounded retry
+must_not_do: create production autonomous workflow or runtime artifact store
+judge_criteria: supervised boundary, bounded retry/rerun, stop conditions, human acceptance
+pass_example: loop follows `goal -> action -> check -> revise/rerun -> acceptance -> next trigger`
+revise_example: owner, stop condition, or retry limit is missing
+blocked_example: loop needs autonomous retrieval, production deploy, or no validation path
+revisit_trigger: tool permissions, owner, risk level, or promotion gate changes
 
-Pass when:
+## CASE-THINKING-DECISION-001
 
-- final output follows requested schema;
-- revision removes or marks unsupported claims;
-- judge result is reviewer evidence, not truth.
-
-## Case 3: Analytics Memo
-
-Input:
-
-- question, data contract, stage/mart evidence, formulas, memo draft.
-
-Expected checks:
-
-- calculations are deterministic;
-- grain, period, filters, and method are explicit;
-- claims trace to mart/evidence;
-- memo recommendations do not exceed data.
-
-Pass when:
-
-- Analytics QA passes;
-- LLM judge does not override failed calculation, schema, or contract checks.
-
-## Case 4: Codex PR
-
-Input:
-
-- PR link, goal, changed files, checks, risks, rollback.
-
-Expected checks:
-
-- scope matches requested change;
-- checks are actually run or blockers stated;
-- no unrelated refactor;
-- no forbidden files, secrets, runtime artifacts, or production risk.
-
-Pass when:
-
-- PR Judge returns `pass` or clear `revise`;
-- merge readiness is a human decision.
-
-## Case 5: Agent Loop
-
-Input:
-
-- loop goal, owner, allowed actions, checks, stop conditions, acceptance gate.
-
-Expected checks:
-
-- loop follows `goal -> action -> check -> revise/rerun -> acceptance -> next trigger`;
-- retry/rerun is bounded;
-- stop conditions include no validation, secrets, production/runtime/deploy risk, autonomous retrieval, and uncontrolled multi-agent work.
-
-Pass when:
-
-- loop is supervised;
-- human acceptance is required before merge, deploy, adoption, or promotion;
-- no autonomous agentic workflow is created.
+case_id: `CASE-THINKING-DECISION-001`
+workflow: Thinking decision review
+owner_project: `[Thinking]`
+input: decision memo, options, assumptions, risks, recommendation
+expected_behavior: detect hidden assumptions, downside, reversibility, revisit trigger
+must_detect: one-option framing, weak evidence, missing downside, no revisit trigger
+must_not_do: upgrade hypothesis to recommendation without confidence and risk
+judge_criteria: facts/assumptions separation, options, downside, reversibility, confidence
+pass_example: recommendation includes options, risks, confidence, and revisit trigger
+revise_example: useful recommendation but assumptions or downside need explicit wording
+blocked_example: decision depends on missing calculation, approval, or unsupported premise
+revisit_trigger: new data, cost/risk/scope change, failed QA, or implementation feedback

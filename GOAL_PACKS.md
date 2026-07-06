@@ -88,13 +88,13 @@ Goal Packs are not atomic task packages. Codex still compiles internal scope, ch
 
 ### `cross_project_eval_review`
 
-- trigger: "Evaluate or judge this output, PR, memo, loop, or evidence claim"
-- route: `[AI OS]` -> owner project (`[LLM]`, `[Analytics]`, `[Codex]`, or `[Thinking]`)
-- input: artifact, goal, evidence, checks run, risks, and expected decision
-- context needed: eval registry, judge calibration, golden eval cases, deterministic check results
-- output: eval type, owner project, evidence checked, deterministic checks, judge verdict, required revision, risks, next step
-- quality gate: deterministic checks override LLM judge for calculations, tests, schemas, and contracts
-- done when: verdict is pass / revise / blocked and human acceptance point is explicit
+- trigger: "Check this AI output / PR / memo / workflow"
+- route: `[AI OS]` for evidence/governance routing, then owner project by output type
+- input: output/workflow result, intended use, source context, risk level
+- context needed: eval registry, judge calibration, golden cases, owner project rules
+- output: eval verdict with required fixes, residual risks, final quality status, next step
+- quality gate: deterministic checks override LLM judge; unsupported claims listed; high-risk outputs require human review
+- done when: result is `pass`, `revise`, or `blocked` with concrete next action
 
 ## Candidate Packs
 

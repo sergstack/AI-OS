@@ -2,38 +2,50 @@
 
 ## Purpose
 
-Keep LLM-as-a-Judge useful without treating it as deterministic truth.
+Define how AI-OS uses LLM-as-a-Judge without treating judge output as objective truth.
 
-## Core Rule
+## Core Rules
 
-Judge is a reviewer, not truth.
+- Judge is a reviewer, not truth.
+- Deterministic checks override LLM judge for calculations, tests, schemas, output contracts, source traceability, formulas, metric definitions, column names, and business logic.
+- Judge must use explicit rubric.
+- Judge output must include `pass`, `revise`, or `blocked`.
+- High-risk outputs require human review.
+- Unsupported claims must be listed, not silently fixed.
+- Revision must be traceable to judge findings.
 
-Judge output can help find unsupported claims, missing checks, weak evidence, scope creep, and unclear next steps. It cannot validate calculations, tests, schemas, formulas, contracts, metric definitions, column names, or business logic by opinion.
+## Judge Volatility
 
-## Volatility
+Judge model behavior may change across model versions, prompts, context windows, or temperature/settings.
 
-Judge results can vary by:
+When judge model class changes:
 
-- model class;
-- prompt wording;
-- context quality;
-- missing evidence;
-- output format;
-- hidden assumptions;
-- overly broad criteria.
+- rerun golden eval cases;
+- compare verdict drift;
+- record risk if verdicts change;
+- do not silently promote new judge behavior.
 
-For high-risk work, use the same rubric across revisions and compare only the material verdict and required fixes.
+## Model Naming Rule
 
-## Calibration Questions
+Do not hardcode permanent model names as governance truth.
 
-Before accepting a judge verdict, ask:
+Use model classes:
 
-- Is the task type clear?
-- Was the same evidence available to the judge?
-- Are deterministic checks present where needed?
-- Did the judge identify specific unsupported claims?
-- Did the judge confuse style preference with correctness?
-- Did the judge recommend forbidden tooling or production promotion?
+- `fast`;
+- `reasoning`;
+- `high-reasoning`;
+- `local`;
+- `judge`.
+
+## Calibration Sample
+
+Every important judge workflow should have:
+
+- one pass example;
+- one revise example;
+- one blocked example;
+- known failure modes;
+- owner project.
 
 ## Verdict Discipline
 
@@ -53,6 +65,4 @@ blocked
 
 ## Override Rule
 
-Deterministic evidence overrides judge opinion.
-
-If tests fail, data QA fails, schema checks fail, or contracts are missing, the eval status cannot be `pass` even if the judge likes the text.
+If tests fail, data QA fails, schema checks fail, source traceability fails, or contracts are missing, the eval status cannot be `pass` even if the judge likes the text.
