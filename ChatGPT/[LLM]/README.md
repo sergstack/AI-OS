@@ -34,6 +34,11 @@ ChatGPT/[LLM]/Knowledge/
 - `MEETING_RECAP_TEMPLATE.md` — candidate meeting recap template.
 - `ASK_FOR_ADVICE_TEMPLATE.md` — candidate ask-for-advice template.
 - `NO_SPAM_HUMAN_REVIEW_RULE.md` — no-spam and human-review guardrail.
+- `EXECUTIVE_SUMMARY_TEMPLATE.md` — candidate executive summary from approved facts.
+- `COMMUNICATION_QA_CHECKLIST.md` — candidate QA for communication outputs.
+- `CHART_COMMENTARY_STANDARD.md` — candidate chart commentary standard.
+- `AUDIT_FINDING_WORDING_TEMPLATE.md` — candidate cautious audit finding wording.
+- `SLIDE_STORYLINE_TEMPLATE.md` — optional candidate storyline outline, not a deck generator.
 - `MODEL_ROUTING.md` — выбор модели.
 - `PROMPT_LIBRARY.md` — библиотека промптов.
 - `PROMPT_REGISTRY.md` — controlled registry for reusable prompts.

@@ -20,6 +20,11 @@ current score: 8.6/10
 - `Knowledge/MEETING_RECAP_TEMPLATE.md`
 - `Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`
 - `Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`
+- `Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`
+- `Knowledge/COMMUNICATION_QA_CHECKLIST.md`
+- `Knowledge/CHART_COMMENTARY_STANDARD.md`
+- `Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`
+- `Knowledge/SLIDE_STORYLINE_TEMPLATE.md`
 - `Knowledge/MODEL_ROUTING.md`
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
@@ -35,6 +40,7 @@ current score: 8.6/10
 - No formal decision archive exists in `[LLM]`; that should stay in the relevant project or handoff record.
 - No production automation or CI is defined here.
 - Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
+- Communication Pack templates are candidate / ready for human review, not production reporting automation.
 
 ## Next fix
 
