@@ -31,6 +31,13 @@ Implementation:
 - avoid changing production logic unless explicitly allowed;
 - do not add secrets, logs, raw dumps, runtime artifacts, embeddings, or vector DB files.
 
+Provider/API work:
+- local scaffold, dry-run, no-network paths, preflight checks, config variable name checks, and mock-value tests may proceed without extra approval;
+- local configuration presence is not approval;
+- real provider/API execution requires explicit bounded approval;
+- never print or commit sensitive values, local config files, raw provider responses, runtime logs, or sensitive outputs;
+- report only redacted evidence for approved real execution.
+
 Checks:
 - run all checks listed in the Issue;
 - if a check cannot be run, explain why in the PR;

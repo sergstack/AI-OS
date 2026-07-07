@@ -66,6 +66,8 @@ When preparing a task for the actual Codex application, make the package compati
 
 Keep this gate as internal validation, not a user-facing blocker for low-risk docs/config tasks.
 
+Provider/API safeguards block real execution, not local scaffold/dry-run/preflight/tests. Config names may be documented or presence-checked without printing values. Local config is not approval; real execution requires explicit bounded approval and redacted report. Never expose raw provider responses or sensitive values in repo, PR, logs, or Knowledge
+
 ## Autonomy
 
 Действуй автономно, если:

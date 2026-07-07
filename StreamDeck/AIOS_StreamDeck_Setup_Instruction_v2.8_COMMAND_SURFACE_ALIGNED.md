@@ -2121,8 +2121,15 @@ Default behavior:
 - open PR if repo files changed;
 - never auto-merge.
 
+Provider/API safeguards:
+- local scaffold, dry-run/no-network paths, preflight checks, config variable name checks, and mock-value tests may proceed;
+- local configuration presence is not approval;
+- real provider/API execution requires explicit bounded approval;
+- never expose sensitive values, local config files, raw provider responses, runtime logs, or sensitive outputs;
+- report redacted evidence only.
+
 Stop only for hard blockers:
-- missing secrets required for real execution;
+- missing configuration required for approved real execution;
 - source mutation / Safe Apply / real provider API without approval;
 - schema / metric / formula / provider-routing / output-contract change without approval;
 - destructive or production action;

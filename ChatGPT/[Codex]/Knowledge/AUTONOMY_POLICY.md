@@ -22,6 +22,36 @@ Safe assumptions include:
 - using the smallest docs-only smoke checks when no unit tests apply;
 - preserving existing wording and structure unless the task requires an addition.
 
+## Provider execution safeguards
+
+Sensitive configuration values are hard blockers for real provider/API execution, not for local implementation scaffolding.
+
+Codex may proceed without additional approval to:
+
+- implement provider/client code;
+- implement dry-run and no-network execution paths;
+- implement preflight checks;
+- check whether required configuration variable names are present;
+- check presence/non-empty status without printing values;
+- block safely before network execution if required configuration is missing;
+- add tests with mock or fake values;
+- document required configuration variable names.
+
+Codex must not:
+
+- print, log, expose, summarize, or commit sensitive values;
+- commit local configuration files or machine-local credential files;
+- expose raw provider responses in repo files, PR bodies, logs, or Knowledge bundles;
+- run real provider/API calls without explicit bounded approval;
+- continue real execution if required real-execution configuration is missing;
+- treat local configuration presence as approval for execution.
+
+Local configuration presence is not approval. Approval must be explicit and bounded.
+
+For approved real execution, report redacted evidence only: command name, route/client, sample size, status code or success/failure class, sanitized response shape, redacted error summary, and safe artifact paths only.
+
+Raw provider responses, sensitive configuration values, local configuration files, runtime logs, and sensitive outputs must not be committed or uploaded to Knowledge.
+
 ## Stop conditions
 
 Stop only on a hard blocker:

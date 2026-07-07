@@ -19,6 +19,10 @@ Sergey may start with a broad goal in ChatGPT. Goal Mode is build-first: the pro
 
 For small, local, reversible tasks, `Codex APP` may safely infer missing fields and report what was inferred. Do not convert soft uncertainty into a roadmap, epic, child issue tree, or approval package. For unclear, high-risk, production, destructive, secret-related, schema/metric/formula/provider-routing/output-contract, or governed-KB tasks, stop and report a blocker.
 
+Provider/API safeguards block real external execution, not local scaffolding. The executor may implement provider/client code, dry-run or no-network paths, preflight checks, configuration variable name checks, and tests with mock values without additional approval. It must not print, log, expose, summarize, or commit sensitive values; commit local credential files; expose raw provider responses; run real provider/API calls without explicit bounded approval; or treat local configuration presence as approval.
+
+For approved real provider/API execution, report redacted evidence only: command name, route/client, sample size, status code or success/failure class, sanitized response shape, redacted error summary, and safe artifact paths only.
+
 ## Required input fields
 
 Every executor-ready task package should include or safely infer:
