@@ -1,5 +1,8 @@
 # Router Smoke QA
 
+Reference material. Active smoke QA behavior is defined by
+`SMOKE_QA_FOR_INBOX_ROUTER.md`.
+
 Быстрая проверка считается пройденной, если:
 
 - Router does not solve the task.
@@ -17,7 +20,7 @@
 | 5 | Сделать prompt для аналитической записки | prompt / LLM workflow | `[LLM]` | Передача в LLM для prompt design. | Направляет prompt work в `[LLM]`. |
 | 6 | Посчитать variance по выручке | data / calculation | `[Analytics]` | Передача в Analytics для расчета variance по данным. | Не считает внутри Router. |
 | 7 | Починить pipeline | code / implementation | `[Codex]` | Передача в Codex с repo context, files to inspect, checks and rollback. | Направляет implementation в `[Codex]`. |
-| 8 | Написать Codex задачу на refactor | code / implementation | `[Codex]` | Пакет передачи в Codex для refactor task. | Требует allowed files, forbidden actions и tests. |
+| 8 | Написать Codex задачу на refactor | code / implementation | `[Codex]` | Пакет передачи в Codex для refactor task. | Для strict task указывает allowed files, forbidden actions и tests; для broad goal использует Goal Mode. |
 | 9 | Подумать про карьеру | decision | `[Thinking]` | Передача в Thinking для рамки решения. | Не дает карьерный совет внутри Router. |
 | 10 | Идея: личный дашборд энергии | context / note | Notes / Obsidian | Заметка: сохранить идею с названием и контекстом. | Не превращает в проект без запроса пользователя. |
 | 11 | Жду ответ банка по справке | waiting item | Things | Ожидание: Жду банк — справку — дата запроса. | Направляет в отслеживаемое ожидание. |

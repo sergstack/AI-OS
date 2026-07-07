@@ -138,6 +138,9 @@ Blocker:
 ## From: `ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md`
 
 # Router Workflow
+Reference material. Active routing behavior is defined by `ROUTING_RULES.md`,
+`THINGS_OUTPUT_SCHEMA.md`, `HANDOFF_PROTOCOL.md`, and
+`SMOKE_QA_FOR_INBOX_ROUTER.md`.
 ## Operating Flow
 Capture → Classify → Clarify if needed → Route → Next Action / Handoff → Review
 1. Capture the raw input as given.

@@ -120,23 +120,6 @@ Estimated time:
 Blocker:
 ```
 
-## Handoff schema
-
-```text
-Destination:
-Task type:
-Mode: goal / strict task
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
-
 ## Anti-patterns
 
 - Do not turn every thought into a project.
@@ -182,6 +165,7 @@ Tag:
 From:
 To:
 Task type:
+Mode: goal / strict task
 Objective:
 Context:
 Inputs:
@@ -189,5 +173,6 @@ Constraints:
 Expected output:
 Acceptance criteria:
 Risks:
+Evidence / confidence:
 Open questions:
 Suggested first step:

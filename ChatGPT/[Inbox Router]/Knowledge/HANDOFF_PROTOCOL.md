@@ -3,8 +3,10 @@
 Use this format when the destination is an AI-OS project.
 
 ```text
-Destination:
+From:
+To:
 Task type:
+Mode: goal / strict task
 Objective:
 Context:
 Inputs:
@@ -14,6 +16,7 @@ Acceptance criteria:
 Risks:
 Evidence / confidence:
 Open questions:
+Suggested first step:
 ```
 
 ## Destination notes
@@ -26,4 +29,8 @@ Open questions:
 
 ## Codex handoff minimum
 
-For `[Codex]`, include objective, repo, files to inspect, files allowed to modify, forbidden actions, checks, acceptance criteria, and rollback plan.
+For `[Codex]`, broad repository or workflow goals may use `Mode: goal`.
+Use `Mode: strict task` only when the work is high-risk, already scoped, or
+explicitly requested as a strict task package. Include known repo context,
+constraints, checks, acceptance criteria, and rollback notes without inventing
+missing facts.
