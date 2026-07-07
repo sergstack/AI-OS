@@ -1,0 +1,93 @@
+name: Weekly Audit Digest
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run validation suite
+        id: checks
+        run: |
+          {
+            echo 'results<<RESULTS_EOF'
+            for s in scripts/check_*.py; do
+              if python3 "$s" >/dev/null 2>&1; then
+                echo "- PASS \`$s\`"
+              else
+                echo "- FAIL \`$s\`"
+              fi
+            done
+            if python3 -m pytest tests/ -q >/dev/null 2>&1; then
+              echo "- PASS pytest"
+            else
+              echo "- FAIL pytest"
+            fi
+            echo 'RESULTS_EOF'
+          } >> "$GITHUB_OUTPUT"
+      - name: Open digest issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECKS: ${{ steps.checks.outputs.results }}
+        run: |
+          week_ago=$(date -u -d '7 days ago' +%Y-%m-%d)
+          stale_cutoff=$(date -u -d '14 days ago' +%Y-%m-%d)
+          today=$(date -u +%Y-%m-%d)
+
+          merged=$(gh pr list --repo "$GITHUB_REPOSITORY" --state merged \
+            --search "merged:>=$week_ago" --limit 50 \
+            --json number,title,author \
+            --jq '.[] | "- #\(.number) \(.title) (@\(.author.login))"' || true)
+          [ -n "$merged" ] || merged="- none"
+
+          stale_issues=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "updated:<$stale_cutoff" --limit 50 \
+            --json number,title \
+            --jq '.[] | "- issue #\(.number) \(.title)"' || true)
+          stale_prs=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "updated:<$stale_cutoff" --limit 50 \
+            --json number,title \
+            --jq '.[] | "- PR #\(.number) \(.title)"' || true)
+          stale="$stale_issues"$'\n'"$stale_prs"
+          [ "$(echo "$stale" | tr -d '[:space:]')" ] || stale="- none"
+
+          body_file=$(mktemp)
+          cat > "$body_file" <<BODY
+          # Weekly AI-OS Digest — $today
+
+          Automated post-merge oversight (see #146). Read this instead of reviewing each Tier 0/1 PR.
+
+          ## Validation suite on \`main\`
+
+          $CHECKS
+
+          ## PRs merged in the last 7 days
+
+          $merged
+
+          ## Stale (no activity for 14+ days) — decide: act, defer, or close
+
+          $stale
+
+          ## Owner next action
+
+          - Review the merged-PR list for anything unexpected (Tier 1 oversight).
+          - Pick at most one improvement from stale/backlog per \`WEEKLY_AI_OS_REVIEW_TEMPLATE.md\`.
+          - If any check is FAIL, open or assign a fix issue.
+          BODY
+
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Weekly AI-OS digest $today" \
+            --label ai-os \
+            --assignee sergstack \
+            --body-file "$body_file"
