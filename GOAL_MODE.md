@@ -2,6 +2,49 @@
 
 Goal Mode is the default user-facing workflow for AI-OS and Codex. It is build-first: inspect, infer bounded scope, implement the smallest useful working version, check it, and report evidence.
 
+## Goal Mode Contract
+
+Future issues and handoffs may reference `Goal Mode Contract` by name instead of repeating this block.
+
+```text
+Work in Goal Mode from issue #...
+
+Autonomy:
+Proceed without asking on local, reversible, scoped changes.
+Stop only on hard blockers.
+
+Execution:
+Inspect repo first.
+Infer bounded scope.
+Create/use codex/... branch.
+Make smallest useful verified change.
+Run relevant checks.
+Fix safe in-scope failures once.
+Open PR for human review.
+Do not auto-merge.
+
+Forbidden:
+No sensitive/local config files.
+No unapproved provider/API calls.
+No source workbook mutation.
+No Safe Apply.
+No business logic/schema/formula/output contract changes unless explicit.
+No runtime artifacts committed.
+No deletion without quarantine.
+
+Report:
+Summary
+Branch / PR
+Files changed
+Commands run
+Tests
+Assumptions
+Risks
+Rollback
+Acceptance status
+No auto-merge
+```
+
 ## Flow
 
 ```text

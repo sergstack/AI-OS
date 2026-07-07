@@ -30,6 +30,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 # Autonomy Policy
 ## Purpose
 Define when Codex should continue autonomously and when it must stop.
+For normal bounded repo work, use `Goal Mode Contract` in `GOAL_MODE.md` as the named reusable standard for autonomy, execution order, forbidden actions, reporting, PR review, no-auto-merge, and no-deletion-without-quarantine rules.
 ## Continue without asking
 - the change is local;
 - the change is reversible;

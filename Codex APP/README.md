@@ -16,6 +16,8 @@ Do not mix these folders.
 
 Sergey may start in ChatGPT with a broad goal.
 
+The canonical reusable standard is `Goal Mode Contract` in `GOAL_MODE.md`.
+
 Goal Mode is build-first. `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should help Codex inspect relevant files, infer bounded safe scope, create or use a non-main branch, implement the smallest useful working version, run checks, fix in-scope failures when safe, and report evidence for owner review.
 
 AI-OS uses solo-owner governance by default: explicit owner self-review counts as
