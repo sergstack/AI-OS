@@ -49,6 +49,7 @@ Supervised loops require explicit owner, bounded action, checks, stop conditions
 | Codex long-run | `[Codex]` / Codex APP | retry once when local, reversible, and inside allowed files |
 | PR Judge loop | `[Thinking]` / `[Codex]` | revise PR until pass/revise/blocked is clear |
 | ChatGPT routing loop | `[Inbox Router]` | reroute when task type is unclear |
+| Prompt QA Factory | `[AI OS]` -> owner project | candidate -> test -> judge -> revise -> selected, with human acceptance |
 
 ## Boundary
 

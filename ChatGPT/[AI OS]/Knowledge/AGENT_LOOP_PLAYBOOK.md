@@ -25,6 +25,7 @@ The loop is supervised when a human or explicit project gate controls scope, sto
 | Codex long-run | `[Codex]` / Codex APP | retry once when local, reversible, and inside allowed files |
 | PR Judge loop | `[Thinking]` / `[Codex]` | revise PR until pass/revise/blocked is clear |
 | ChatGPT routing loop | `[Inbox Router]` | reroute when task type is unclear |
+| Prompt QA Factory | `[AI OS]` -> owner project | candidate -> test -> judge -> revise -> selected, with human acceptance |
 
 ## Not Autonomous Agents
 

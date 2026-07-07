@@ -2,13 +2,14 @@
 
 ## Purpose
 
-Compact upload artifact for [AI OS] covering the first Goal Packs layer, one-touch command surface, and context pack standard.
+Compact upload artifact for [AI OS] covering the first Goal Packs layer, one-touch command surface, context pack standard, and Prompt QA Factory.
 
 ## Source files
 
 - `GOAL_PACKS.md`
 - `COMMAND_SURFACE.md`
 - `CONTEXT_PACK_STANDARD.md`
+- `PROMPT_QA_FACTORY.md`
 
 ## Upload target
 
@@ -46,6 +47,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 | `local_ai_pilot` | test a local AI / Ollama / Open WebUI idea safely | `[LLM]` -> `[Thinking]` for hardware decisions -> `[Codex]` only for approved repo work | pilot plan or verdict with security boundary, eval matrix, limitations, and next step | experiment only; no production automation or autonomous retrieval |
 | `audit_anomaly_review` | anomaly, variance, or suspicious record | `[Analytics]` -> `[Thinking]` if decision framing is needed | finding, likely cause, evidence, risk, recommended action | no LLM arithmetic |
 | `streamdeck_prompt_upgrade` | improve a Stream Deck / quick prompt workflow | `[LLM]` -> `[Codex]` when repo edits are needed | tighter prompt or repo PR | prompt is short, routable, evidence-aware, and does not add unsupported automation |
+| `prompt_qa_factory` | turn a reusable prompt into an accepted standard | `[AI OS]` -> owner project -> `[LLM]` / `[Thinking]` judge-revisor when needed -> `[Codex]` only for repo docs or PR work | Prompt QA Record with candidate -> test -> judge -> revise -> selected status, UX score, residual risks, and acceptance status | supervised only; human acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge |
 
 ### Candidate packs
 
@@ -72,6 +74,7 @@ One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each co
 | `Eval / Judge` | `[LLM]` / `[Thinking]` / `[Codex]` / `[Analytics]` / `[AI OS]` | output, workflow result, PR, memo, claim, or loop design | pass / revise / blocked review with required fixes | `cross_project_eval_review` |
 | `Audit Anomaly` | `[Analytics]` | anomaly, account/entity, period, expected behavior | finding, evidence, risk, recommended action | `audit_anomaly_review` |
 | `StreamDeck Improve` | `[LLM]` / `[Codex]` | current button/prompt and desired result | improved prompt or PR | `streamdeck_prompt_upgrade` |
+| `Prompt QA` | `[AI OS]` -> owner project | reusable prompt candidate, use case, tests, judge criteria | Prompt QA Record with selected/candidate status, UX score, residual risks, and acceptance | `prompt_qa_factory` |
 | `Local AI Pilot` | `[LLM]` / `[Thinking]` | local model, Ollama/Open WebUI idea, hardware question, or private draft use case | controlled experiment plan, security boundary, eval matrix, limitations | `local_ai_pilot` |
 | `PR Judge` | `[Thinking]` / `[Codex]` | PR link, goal, checks, risks | pass / revise / blocked review | context-dependent |
 | `Revisor` | `[LLM]` | draft plus judge notes | clearer final without new claims | context-dependent |
@@ -127,3 +130,37 @@ Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows.
 ### Quality gate
 
 A Context Pack is ready when the goal is clear, sources are named, facts and assumptions are separated, constraints and forbidden actions are visible, the expected output is specific, and the receiving project can act without asking Sergey to write an atomic task package.
+
+## From: `PROMPT_QA_FACTORY.md`
+
+Prompt QA Factory is the AI-OS standard for turning reusable prompts into accepted prompt assets.
+
+Core loop:
+
+```text
+candidate -> test -> judge -> revise -> selected
+```
+
+Applies to StreamDeck prompts, ChatGPT Project prompts, Codex prompts, Judge/Revisor prompts, and Analytics memo prompts.
+
+Selection requires recorded test cases, judge criteria, UX score, residual risks, and human acceptance.
+
+Forbidden: production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, auto-merge, and claims of production readiness.
+
+### Prompt QA Record
+
+```markdown
+# Prompt QA Record
+
+## Prompt name
+## Owner project
+## Use case
+## Candidate prompt
+## Test cases
+## Judge criteria
+## Iterations
+## Final selected prompt
+## UX score
+## Residual risks
+## Acceptance status
+```

@@ -77,6 +77,16 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - quality gate: prompt is short, routable, evidence-aware, and does not add unsupported automation
 - done when: Sergey has a usable command/prompt and validation passes when files changed
 
+### `prompt_qa_factory`
+
+- trigger: "Turn this reusable prompt into an accepted standard"
+- route: `[AI OS]` -> owner project -> `[LLM]` / `[Thinking]` judge-revisor when needed -> `[Codex]` only for repo docs or PR work
+- input: candidate prompt, owner project, use case, test cases, judge criteria, acceptance constraints
+- context needed: `PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
+- output: Prompt QA Record with candidate -> test -> judge -> revise -> selected status, UX score, residual risks, and acceptance status
+- quality gate: supervised only; human acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge
+- done when: prompt is selected by human acceptance or remains a candidate with visible risks and next revision need
+
 ### `context_pack_builder`
 
 - trigger: "Build a compact context package or prompt from this goal"
