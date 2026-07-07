@@ -41,7 +41,9 @@ Use only after design package exists:
 
 ## Default
 
-Start with Level 0 or Level 1 unless task package is complete.
+Start with Level 0 or Level 1 unless the task package is complete or the
+canonical `Goal Mode Contract` provides enough bounded scope for a local,
+reversible docs/config change.
 
 For Level 4, require `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` and `templates/ULTRA_LONG_TASK_PACKAGE.md` or an equivalent complete task package.
 

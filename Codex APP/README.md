@@ -12,6 +12,16 @@ This folder contains local operating settings, templates and checklists for usin
 
 Do not mix these folders.
 
+## Executor-layer boundary
+
+`Codex APP` is the executor-layer surface. For normal bounded repo tasks it
+follows the canonical `Goal Mode Contract` defined in `GOAL_MODE.md` and the
+Codex policy files under `ChatGPT/[Codex]/Knowledge/`.
+
+Codex APP templates may specify task package shape, config profiles, checks,
+branch/PR workflow, and executor conventions. They must not weaken autonomy,
+replace hard blockers with approval theatre, or redefine reporting differently.
+
 ## Goal Mode boundary
 
 Sergey may start in ChatGPT with a broad goal.

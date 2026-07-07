@@ -18,9 +18,12 @@
 ## Task package source
 
 Prefer tasks prepared by `ChatGPT/[Codex]`.
+For normal bounded repo work, follow the canonical `Goal Mode Contract` from
+`GOAL_MODE.md` when available; this template defines executor conventions, not
+a competing policy layer.
 Before implementation, verify that the task contains objective, context, repo, files to inspect, files allowed to modify, forbidden actions, expected outputs, acceptance criteria, tests/smoke checks and rollback plan.
 
-If the task package is incomplete, stop and return a blocker instead of guessing.
+If the task package is incomplete and safe scope cannot be inferred from Goal Mode context, stop and return a blocker instead of guessing.
 
 ## Forbidden actions
 
