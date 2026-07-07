@@ -31,7 +31,7 @@ This report records repository checks and direct ChatGPT UI smoke QA evidence.
 - `SMOKE_QA_REFRESH_PLAN.md`
 - `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
 - `PILOT_CASES.md`
-- `KB_COMPACT_CONSISTENCY_REPORT.md`
+- `archive/reports/KB_COMPACT_CONSISTENCY_REPORT.md`
 
 ## ChatGPT UI Smoke QA
 

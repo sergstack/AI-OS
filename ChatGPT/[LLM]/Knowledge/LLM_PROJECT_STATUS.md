@@ -1,7 +1,7 @@
 # [LLM] Project Status
 
 status: minor fix
-last_reviewed: 2026-05-25
+last_reviewed: 2026-07-07
 current score: 8.6/10
 
 ## Files present
@@ -14,6 +14,25 @@ current score: 8.6/10
 - `Knowledge/LLM_ROUTING.md`
 - `Knowledge/LOCAL_LLM_WORKFLOW.md`
 - `Knowledge/MEMO_GENERATION_WORKFLOW.md`
+- `Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`
+- `Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`
+- `Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`
+- `Knowledge/MEETING_RECAP_TEMPLATE.md`
+- `Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`
+- `Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`
+- `Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`
+- `Knowledge/COMMUNICATION_QA_CHECKLIST.md`
+- `Knowledge/CHART_COMMENTARY_STANDARD.md`
+- `Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`
+- `Knowledge/SLIDE_STORYLINE_TEMPLATE.md`
+- `Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`
+- `Knowledge/CONTEXT_INTAKE_CHECKLIST.md`
+- `Knowledge/CTC_PROMPT_STANDARD.md`
+- `Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
+- `Knowledge/LOCAL_AI_EXPERIMENT_PLAYBOOK.md`
+- `Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md`
+- `Knowledge/LOCAL_MODEL_EVAL_MATRIX.md`
+- `Knowledge/OLLAMA_OPENWEBUI_PILOT.md`
 - `Knowledge/MODEL_ROUTING.md`
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
@@ -28,6 +47,8 @@ current score: 8.6/10
 - README still remains a lightweight setup file rather than a full operating manual.
 - No formal decision archive exists in `[LLM]`; that should stay in the relevant project or handoff record.
 - No production automation or CI is defined here.
+- Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
+- Communication Pack templates are candidate / ready for human review, not production reporting automation.
 
 ## Next fix
 

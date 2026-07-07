@@ -8,11 +8,14 @@
 
 ## Validation Gates
 
+Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference this section instead of copying it; the canonical check-command set lives in `AGENTS.md` ("Validation").
+
 - Project instructions length: <= 8000 chars
 - Public safety scan: required
 - No raw absolute local paths: required
 - Manifest/path consistency: required
 - Knowledge bundle consistency: required
+- Knowledge index coverage: required
 - Codex Goal Mode default scan: required
 - Pytest validation script regression tests: required
 - Smoke QA: required

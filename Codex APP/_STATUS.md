@@ -20,7 +20,7 @@ This folder stores local app configuration and reusable templates.
 
 ## Last updated
 
-2026-06-15
+2026-06-15 (local pack content). For current repository-wide status see root `MASTER_STATUS.md`; this file only tracks the Codex APP pack itself.
 
 ## Smoke QA result
 

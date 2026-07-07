@@ -10,6 +10,8 @@ Compact upload artifact for [AI OS] covering the first Goal Packs layer, one-tou
 - `COMMAND_SURFACE.md`
 - `CONTEXT_PACK_STANDARD.md`
 - `PROMPT_QA_FACTORY.md`
+- `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
+- `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
 
 ## Upload target
 
@@ -164,3 +166,145 @@ Forbidden: production automation, sensitive data, autonomous retrieval, vector D
 ## Residual risks
 ## Acceptance status
 ```
+
+## From: `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
+
+# Weekly AI-OS Review Template
+
+Status: candidate / ready for human review.
+Purpose: lightweight weekly review discipline, not a task manager, status ledger, operating journal, or autonomous workflow.
+
+## Inputs
+
+Week:
+Reviewer:
+New inputs:
+Recent issues / PRs:
+Recent repo changes:
+Recent ChatGPT Project changes:
+Recent Stream Deck / command changes:
+
+## Open loops
+
+| loop | owner project | current status | evidence status | risk | next decision |
+|---|---|---|---|---|---|
+
+Evidence status values:
+- `supported`
+- `weak`
+- `unsupported`
+- `mixed`
+
+## Repo / Codex
+
+Open PRs:
+Stale issues:
+Failing checks:
+Blocked branches:
+Repo safety concerns:
+
+## Knowledge / Project sync
+
+Bundles changed:
+Upload needed:
+Smoke QA needed:
+Project Instructions changed:
+Project Knowledge drift:
+
+## Stream Deck / commands
+
+Buttons to improve:
+Buttons to retire:
+Commands needing Prompt QA:
+Prompt QA status:
+
+## Archive / Superseded candidates
+
+| candidate | reason | replacement | affected file | owner project | traceability note |
+|---|---|---|---|---|---|
+
+## Top improvement
+
+Top 1 improvement this week:
+Why it matters:
+Evidence:
+Risk if skipped:
+
+## One next action
+
+Action:
+Owner:
+Route:
+Acceptance criteria:
+Stop condition:
+
+## Guardrails
+
+- End with exactly one next action.
+- Do not create a status ledger or operating journal.
+- Do not create autonomous weekly review, production automation, retrieval, vector DB, embeddings, semantic search, or web UI.
+- Keep candidate status until pilot evidence and owner acceptance exist.
+- Stream Deck productivity commands require Prompt QA before promotion.
+
+## From: `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
+
+# Archive / Superseded Rule
+
+Status: candidate / ready for human review.
+Purpose: traceability rule for removing items from the active layer. This is not an auto-archive rule and not a deletion rule.
+
+## Required record
+
+Item:
+Status:
+Reason:
+Replacement, if any:
+Source / affected file:
+Owner project:
+Removal from active layer:
+Traceability note:
+Reviewer:
+Date:
+
+## Status values
+
+- `active`
+- `candidate`
+- `superseded`
+- `archived`
+- `rejected`
+- `blocked`
+
+## Rules
+
+- Do not delete without reason, replacement, and status.
+- Do not auto-archive.
+- Keep traceability from old item to replacement or decision record.
+- Remove from active layer only after reviewer acceptance.
+- Preserve enough context to understand why the item changed state.
+- Do not archive private data, secrets, raw dumps, logs, runtime artifacts, embeddings, vector DB files, or zip archives into Project Knowledge.
+
+## Superseded checklist
+
+- [ ] Status is set.
+- [ ] Reason is explicit.
+- [ ] Replacement is listed or marked `none`.
+- [ ] Source / affected file is listed.
+- [ ] Owner project is listed.
+- [ ] Active-layer removal is described.
+- [ ] Traceability note links old item to replacement or decision.
+- [ ] Reviewer accepted the change.
+
+## Removal from active layer
+
+Active layer:
+Change needed:
+Replacement pointer:
+Rollback note:
+
+## Human acceptance
+
+- [ ] Reviewer accepted archive / superseded status.
+- [ ] Reviewer accepted replacement or `none`.
+- [ ] Reviewer accepted traceability note.
+- [ ] No production promotion is implied.

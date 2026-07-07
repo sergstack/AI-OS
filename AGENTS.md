@@ -25,7 +25,7 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 - Do not add blocked promotion items: embeddings, semantic search, vector DB, web UI, autonomous retrieval, agentic workflows, autonomous agents, production deploys, secrets, credentials, or runtime artifacts.
 - Do not claim production readiness or `production_promotion=yes`.
 - Do not commit directly to `main`.
-- Do not merge automatically.
+- Do not merge pull requests yourself. The merge gate workflow (`.github/workflows/auto-merge.yml`) auto-merges PRs that touch only Tier 0/1 docs paths after required checks pass. PRs touching Tier 2 protected paths (listed in `.github/CODEOWNERS`) require owner review.
 
 ## Validation
 
@@ -37,6 +37,7 @@ python3 scripts/check_repo_public_safety.py
 python3 scripts/check_codex_goal_mode_defaults.py
 python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
+python3 scripts/check_index_coverage.py
 ```
 
 If checks cannot run, report the blocker instead of inventing results.
