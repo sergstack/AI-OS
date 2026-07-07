@@ -24,7 +24,7 @@ Revision update: the two original `revise` findings from PR #62 were fixed in Pr
 - `SMOKE_QA_RESULTS.md`
 - `SMOKE_QA_REFRESH_PLAN.md`
 - `PILOT_CASES.md`
-- `KB_COMPACT_CONSISTENCY_REPORT.md`
+- `archive/reports/KB_COMPACT_CONSISTENCY_REPORT.md`
 - `ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md`
 - `ChatGPT/[Thinking]/PROJECT_INSTRUCTIONS.md`
 - `ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md`
