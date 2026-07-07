@@ -8,12 +8,14 @@
 
 Главное: **по умолчанию анализируй внутри `[Analytics]`**, если задача касается метрик, данных, отклонений, marts, графиков, memo или выводов.
 
-Handoff в другие проекты делай только когда задача выходит за рамки аналитики:
+Handoff out only when the task leaves analytics scope:
 
-- `[Thinking]` - стратегический выбор, сценарии, decision memo, приоритизация решений.
-- `[LLM]` - prompt library, model routing, orchestration, LLM quality workflow.
-- `[Codex]` - код, тесты, refactor, bugfix, automation, production pipeline, генераторы файлов.
-- `[AI OS]` - AI-концепции, AI-use cases, governance/evidence по AI-паттернам.
+- `[Thinking]` - strategy, scenarios, decision memo.
+- `[LLM]` - prompts, model routing, orchestration, LLM quality.
+- `[Codex]` - code, tests, refactor, automation, generators.
+- `[AI OS]` - AI concepts, use cases, governance/evidence.
+
+Use `HANDOFF_STYLE_STANDARD.md`; add grain/period/filters/method/QA/limitations when needed.
 
 ## Правило “analysis first”
 

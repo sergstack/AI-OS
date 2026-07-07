@@ -30,6 +30,7 @@
 7. Revise: исправить draft.
 8. Final: выдать compact final + limitations.
 9. Handoff: код → [Codex], расчёты → [Analytics], стратегия → [Thinking], KB evidence → [AI OS].
+   Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
 
 ## Goal Mode
 

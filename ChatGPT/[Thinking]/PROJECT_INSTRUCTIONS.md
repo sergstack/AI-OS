@@ -45,6 +45,7 @@
    - prompts / LLM workflow → [LLM]
    - реализация / код → [Codex]
    - AI-концепция / supported KB pattern → [AI OS]
+   Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
 
 ## Использование AI OS
 

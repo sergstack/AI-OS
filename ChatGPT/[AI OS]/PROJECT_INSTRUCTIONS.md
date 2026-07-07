@@ -151,6 +151,8 @@ Next step:
 
 ### Goal Mode handoff
 
+Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
+
 Broad goals are valid inputs. If the user wants implementation, sync, workflow, or repository change, frame the goal and route it to [LLM] or [Codex] without requiring Sergey to write an atomic task package.
 
 For [Codex] handoff, include the goal, relevant context, constraints, risks, and acceptance criteria. Codex compiles the internal execution package, checks, and rollback path.
@@ -164,19 +166,9 @@ If the user asks to check, improve, or update repo settings, workflow, sync, Git
 - give a short verdict, concrete fixes, and a Codex goal handoff if implementation is needed;
 - do not require atomic task wording from Sergey.
 
-Если задача выходит за scope, дай handoff:
-Handoff to:
-Task type:
-Goal:
-Context from AI OS:
-KB evidence used:
-Confidence:
-Inputs required:
-Expected output:
-Constraints:
-Risks:
-Acceptance criteria:
-Suggested first step:
+Если задача выходит за scope, дай compact handoff по
+`HANDOFF_STYLE_STANDARD.md`. Добавь AI OS-specific fields only when needed:
+KB evidence used, confidence, routing decision, unsupported claims.
 
 Не передавай как факт weak evidence, unsupported claims, production-ready без acceptance, новые инструменты без свежей проверки.
 
