@@ -21,8 +21,18 @@
 | `HANDOFF_PROTOCOL.md` | handoff | Как передавать задачи в другие проекты | Когда результат должен уйти в Thinking/Analytics/LLM/Codex |
 | `GITHUB_ISSUE_DRIVEN_HANDOFF.md` | handoff | Как оформлять handoff в GitHub Issue для `Codex` | Когда нужно передать repository work через issue-driven task package |
 | `ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md` | workflow | Канонический путь создания аналитических записок через `[Analytics]` -> `[Codex]` -> Codex APP | Когда memo должен быть произведён как executable artifact |
+| `WEEKLY_AI_OS_REVIEW_TEMPLATE.md` | candidate template | Лёгкий weekly review: inputs, open loops, repo/sync/Stream Deck risks и один next action | Когда нужно выбрать одно следующее улучшение без task-manager слоя |
+| `ARCHIVE_SUPERSEDED_RULE.md` | candidate rule | Traceability rule для archive / superseded статусов без auto-delete | Когда нужно убрать элемент из active layer с причиной, replacement/status и следом |
 | `SMOKE_QA_FOR_AI_OS.md` | QA | Проверка, что проект отвечает по KB, а не из воздуха | После загрузки/обновления файлов |
 | `ANTI_PATTERNS.md` | anti-patterns | Что нельзя делать в `[AI OS]` | Перед спорными или рискованными задачами |
+| `AGENT_LOOP_PLAYBOOK.md` | loop governance | Supervised agent loops без autonomous agents и production agentic workflows | Когда нужно спроектировать или проверить bounded supervised loop |
+| `AI_EVAL_REGISTRY.md` | eval registry | Лёгкий реестр AI evals по AI-OS проектам | Когда нужно выбрать eval status, verdict, owner project и pass/revise/blocked criteria |
+| `AUTO_RESEARCH_BACKLOG.md` | backlog | Future research-loop ideas вне текущих production workflows | Когда AutoResearch или Karpathy-style loops обсуждаются как backlog или pilot candidates |
+| `CROSS_PROJECT_EVAL_PLAYBOOK.md` | eval routing | Маршрутизация AI evals к правильному проекту и judge/check | Когда нужно оценить output между AI OS, LLM, Analytics, Codex, Thinking или loop design |
+| `GOLDEN_EVAL_CASES.md` | eval cases | Reusable manual smoke QA cases для prompt, model или workflow changes | Когда нужно проверить eval behavior или judge drift |
+| `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
+| `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |
+| `SKILLS_HOOKS_MCP_DECISION_MATRIX.md` | tooling governance | Decision matrix для skills, hooks, MCP tools и sub-agents как workflow aids | Когда нужно решить, добавлять или использовать workflow tooling |
 
 ## Существующие KB-файлы, которые должны остаться основой
 

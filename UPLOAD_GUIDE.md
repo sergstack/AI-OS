@@ -30,14 +30,13 @@ If a Project Instructions file is longer than 8000 characters, do not paste it i
 
 Default upload mode: `Knowledge_Bundles`.
 
-Default mode: загрузи только эти файлы as bundle files:
+Default mode: use the project bundle upload list as the authoritative manual upload list:
 
 ```text
-ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md
-ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md
-ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md
-ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md
+ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
 ```
+
+Для default bundle sync загружай только эти файлы: bundle files listed in that project's `Knowledge_Bundles/UPLOAD_LIST.md`.
 
 Granular `Knowledge/` upload from `ChatGPT/[AI OS]/Knowledge/` is advanced/debug mode only. Do not upload both bundles and granular Knowledge files unless debugging a sync issue.
 

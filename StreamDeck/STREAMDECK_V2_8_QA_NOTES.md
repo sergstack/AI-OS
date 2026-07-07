@@ -15,7 +15,7 @@ Status: candidate / revised after live prompt QA / ready for human review.
 - `COMMAND_SURFACE.md`: HOME commands map to Route, Goal -> Codex APP, AI Trend, Finance Memo, Analytics Loop, Eval / Judge, Revisor, Local AI Pilot, PR Judge, Context Pack, and Sync Check.
 - `GOAL_PACKS.md`: prompts use the active packs for AI trend triage, Codex goal-to-PR, finance memo, analytics loop, supervised autoloop, local AI pilot, supervised loop design, and cross-project eval review.
 - `docs/PROJECT_ROUTING.md`: ROUTE prompts classify and hand off; they do not solve owner-project work.
-- `PROJECT_FOLDER_QA_PILOT_REPORT.md` and `PILOT_RESULTS_2026-07-06_RUNTIME_CHATGPT_AND_OLLAMA.md`: v2.8 keeps project/runtime status as candidate where evidence is runtime or pilot-based, especially for Local AI.
+- `archive/reports/PROJECT_FOLDER_QA_PILOT_REPORT.md` and `archive/reports/PILOT_RESULTS_2026-07-06_RUNTIME_CHATGPT_AND_OLLAMA.md`: v2.8 keeps project/runtime status as candidate where evidence is runtime or pilot-based, especially for Local AI.
 
 ## Acceptance mapping
 
