@@ -6,6 +6,8 @@ Current active version: v2.7
 
 Candidate version: v2.8 command-surface aligned operator panel.
 
+Status checked: 2026-07-07.
+
 ## Files
 
 - `ROUTING_FIXED_AIOS_StreamDeck_Setup_Instruction_v2.7_PROJECT_ALIGNED_EN_LABELS.md`
@@ -42,6 +44,8 @@ Candidate version: v2.8 command-surface aligned operator panel.
 - Status: candidate / ready for human review.
 - Active status: v2.7 remains active until Sergey manually migrates and accepts v2.8.
 - Promotion status: not promoted by repo files; manual migration and acceptance remain required.
+- MCP Actions status: registry/run-package artifacts exist, but manual Stream Deck
+  `MCP Actions` profile setup and live MCP execution evidence remain required.
 - Migration path: duplicate or create a separate Stream Deck profile, build v2.8 side by side, then manually promote after pilot review.
 
 ### v2.8 HOME
