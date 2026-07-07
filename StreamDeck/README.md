@@ -16,6 +16,8 @@ Candidate version: v2.8 command-surface aligned operator panel.
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json`
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.csv`
 - `STREAMDECK_V2_8_QA_NOTES.md`
+- `STREAMDECK_V2_8_LIVE_PROMPT_QA.md`
+- `STREAMDECK_V2_8_LEVEL2_RISK_QA.md`
 
 ## v2.7 scope
 
@@ -36,8 +38,10 @@ Candidate version: v2.8 command-surface aligned operator panel.
 - `AIOS_StreamDeck_Setup_Instruction_v2.8_COMMAND_SURFACE_ALIGNED.md` defines the candidate two-level operator panel.
 - `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json` and `.csv` contain the matching setup map.
 - `STREAMDECK_V2_8_QA_NOTES.md` records source alignment, acceptance mapping, and residual risks.
+- `STREAMDECK_V2_8_LIVE_PROMPT_QA.md` and `STREAMDECK_V2_8_LEVEL2_RISK_QA.md` record live prompt and risk QA context.
 - Status: candidate / ready for human review.
 - Active status: v2.7 remains active until Sergey manually migrates and accepts v2.8.
+- Promotion status: not promoted by repo files; manual migration and acceptance remain required.
 - Migration path: duplicate or create a separate Stream Deck profile, build v2.8 side by side, then manually promote after pilot review.
 
 ### v2.8 HOME
