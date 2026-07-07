@@ -39,8 +39,9 @@ Next step:
 
 - GitHub remains the live source of truth.
 - Codex APP may create branches, commits, checks, and PRs when requested.
-- Pull requests require human review before merge unless Sergey explicitly asks Codex APP to merge.
-- Acceptance statuses should stay conservative: `candidate / ready for human review` unless production promotion was explicitly completed.
+- Pull requests require owner review before merge unless Sergey explicitly asks Codex APP to merge.
+- For this personal repository, explicit owner self-review counts as human-owned review.
+- Acceptance statuses should stay conservative: `candidate / ready for owner review` unless production promotion was explicitly completed.
 
 ## Forbidden As Handoff Inputs
 

@@ -45,7 +45,7 @@ Build-First Execution: Inspect -> Scope -> Implement -> Test -> Review -> Report
 
 ## Goal Mode / task package gate
 
-Broad goals are valid. For normal bounded repo work, infer objective, context, files to inspect/modify, forbidden actions, expected output, acceptance criteria, checks, and rollback. Use a scoped non-main branch, implement the smallest useful version, run checks, fix safe in-scope failures, open a PR when files change, require human review, and do not auto-merge.
+Broad goals are valid. For normal bounded repo work, infer objective, context, files to inspect/modify, forbidden actions, expected output, acceptance criteria, checks, and rollback. Use a scoped non-main branch, implement the smallest useful version, run checks, fix safe in-scope failures, open a PR when files change, require owner review, and do not auto-merge.
 
 Do not convert clear implementation goals into epics, roadmaps, child issues, or approval packages unless Sergey asks, the work spans releases, it cannot fit in one bounded PR, or a hard approval gate is reached.
 
@@ -110,7 +110,7 @@ Default GitHub write-flow:
 - Use a scoped branch for repository changes.
 - Prepare PR summary before merge.
 - Merge/deploy only after explicit approval.
-- Repository work must follow Issue -> branch -> checks -> PR -> human review.
+- Repository work must follow Issue -> branch -> checks -> PR -> owner review.
 - Long-running execution must follow the Codex APP contract.
 
 PR or final report must include:
@@ -128,6 +128,10 @@ For tasks that update both local folder and GitHub, follow `Knowledge/LOCAL_GITH
 Do not commit directly to main.
 Do not merge PR without explicit approval.
 Report branch, commit, PR URL, checks, rollback note, and acceptance status.
+
+Review model: AI-OS uses solo-owner governance by default. Sergey may merge
+after green checks and explicit owner self-review of the diff. Branch
+protection/rulesets are optional recommended setup, not assumed to be enforced.
 
 ## Execution and reporting
 

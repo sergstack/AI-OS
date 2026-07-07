@@ -22,7 +22,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - route: `[Codex]`
 - input: broad implementation goal, constraints, repo context, issue or handoff
 - context needed: `AGENTS.md`, relevant repo files, allowed scope inferred from goal
-- output: branch, minimal diff, checks, PR for human review
+- output: branch, minimal diff, checks, PR for owner review
 - quality gate: no atomic-task burden on Sergey; checks pass or blockers are reported
 - done when: PR exists with summary, risks, rollback, and "Do not merge automatically"
 
@@ -44,7 +44,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - context needed: data contract, RAW/STAGE/MART boundaries, formulas, QA checks, memo goal
 - output: compact analytical answer or memo with traceable method, QA, limitations, and next run trigger
 - quality gate: deterministic calculation before findings; memo claims trace to `mart_main_full` or compact mart
-- done when: acceptance is candidate / ready for human review and next run trigger is explicit
+- done when: acceptance is candidate / ready for owner review and next run trigger is explicit
 
 ### `supervised_autoloop_analysis`
 
@@ -84,8 +84,8 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - input: candidate prompt, owner project, use case, test cases, judge criteria, acceptance constraints
 - context needed: `PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
 - output: Prompt QA Record with candidate -> test -> judge -> revise -> selected status, UX score, residual risks, and acceptance status
-- quality gate: supervised only; human acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge
-- done when: prompt is selected by human acceptance or remains a candidate with visible risks and next revision need
+- quality gate: supervised only; human-owned acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge
+- done when: prompt is selected by owner acceptance or remains a candidate with visible risks and next revision need
 
 ### `context_pack_builder`
 
@@ -105,7 +105,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - context needed: local AI experiment playbook, Ollama/Open WebUI pilot rules, model eval matrix, security boundary
 - output: pilot plan or verdict with context rules, judge/revise step, limitations, security notes, and next step
 - quality gate: experiment only; no production automation, autonomous retrieval, vector DB, embeddings, semantic search, MCP tools, web UI production workflow, secrets, or runtime artifacts
-- done when: pilot is pass / revise / blocked with candidate / ready for human review status
+- done when: pilot is pass / revise / blocked with candidate / ready for owner review status
 
 ### `supervised_agent_loop_design`
 
@@ -113,9 +113,9 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - route: `[AI OS]` -> `[Thinking]` / `[Codex]` when implementation packaging is needed
 - input: goal, owner project, allowed actions, checks, stop conditions, acceptance gate
 - context needed: supervised loop boundary, promotion gates, tool decision matrix
-- output: loop design with retry/rerun rule, stop conditions, human acceptance point, and next trigger
+- output: loop design with retry/rerun rule, stop conditions, owner acceptance point, and next trigger
 - quality gate: supervised only; no autonomous retrieval, vector DB, embeddings, semantic search, web UI, or production agentic workflow
-- done when: loop is pass/revise/blocked with candidate / ready for human review status
+- done when: loop is pass/revise/blocked with candidate / ready for owner review status
 
 ### `cross_project_eval_review`
 
@@ -124,7 +124,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - input: output/workflow result, intended use, source context, risk level
 - context needed: eval registry, judge calibration, golden cases, owner project rules
 - output: eval verdict with required fixes, residual risks, final quality status, next step
-- quality gate: deterministic checks override LLM judge; unsupported claims listed; high-risk outputs require human review
+- quality gate: deterministic checks override LLM judge; unsupported claims listed; high-risk outputs require owner review
 - done when: result is `pass`, `revise`, or `blocked` with concrete next action
 
 ## Candidate Packs

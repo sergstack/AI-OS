@@ -20,7 +20,7 @@ The loop is supervised only. A prompt is not selected until a human accepts the 
 | `test` | Candidate is run against small, representative cases. |
 | `judge` | Output is reviewed against explicit criteria and risks. |
 | `revise` | Prompt is changed only to address observed test or judge findings. |
-| `selected` | Final prompt is accepted for reuse by a human reviewer. |
+| `selected` | Final prompt is accepted for reuse by the owner reviewer. |
 
 ## How To Test
 
@@ -72,7 +72,7 @@ A prompt can be marked `selected` only when:
 - judge criteria are recorded;
 - UX score is recorded;
 - residual risks are recorded;
-- human acceptance status is `accepted`;
+- owner acceptance status is `accepted`;
 - no blocked item is required.
 
 ## Supervision Boundary
@@ -148,4 +148,4 @@ Record UX score as `1` to `5`.
 
 ## Done Criteria
 
-The prompt record is complete, the final prompt is selected or explicitly left as a candidate, residual risks are visible, and human acceptance is recorded.
+The prompt record is complete, the final prompt is selected or explicitly left as a candidate, residual risks are visible, and owner acceptance is recorded.

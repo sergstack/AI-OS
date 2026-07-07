@@ -33,6 +33,16 @@ See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
 
 See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
 
+## Review Model
+
+AI-OS uses solo-owner governance by default. The owner may merge after green
+checks and explicit self-review of the diff; this owner review counts as
+human-owned review for this personal repository.
+
+No-auto-merge remains required. PRs should include the checks run, risks or
+residual risks, rollback notes, and merge status. Branch protection and rulesets
+are optional but recommended owner setup, not assumed to be enforced by docs.
+
 ## Goal Packs
 
 Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.

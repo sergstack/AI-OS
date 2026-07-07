@@ -34,7 +34,7 @@ revise
 blocked
 ```
 
-Use `pass` only when the PR is ready for human review or merge decision.
+Use `pass` only when the PR is ready for owner review or merge decision.
 
 Use `revise` when fixes are local, clear, and bounded.
 
@@ -50,4 +50,5 @@ Checks reviewed:
 Merge readiness:
 ```
 
-Do not merge automatically. A human merge decision is required.
+Do not merge automatically. An owner merge decision is required. For this
+personal repository, explicit owner self-review counts as human-owned review.

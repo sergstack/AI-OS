@@ -78,7 +78,7 @@ Checks reviewed:
 Merge readiness:
 ```
 
-Do not merge automatically. A human merge decision is required.
+Do not merge automatically. An owner merge decision is required. For this personal repository, explicit owner self-review counts as human-owned review.
 
 ## From: `ChatGPT/[Codex]/Knowledge/WORKTREE_AND_PARALLEL_AGENT_POLICY.md`
 
@@ -102,6 +102,6 @@ Lightweight workflow evals:
 
 - Goal Mode intake: route, scope, files, forbidden actions, checks, rollback, acceptance.
 - Test discipline: test-first for code/script/pipeline changes; smoke checks for docs-only changes.
-- PR Judge: verdict plus required fixes, risks, checks reviewed, merge readiness.
+- PR Judge: verdict plus required fixes, risks, checks reviewed, owner-review merge readiness.
 - Parallel work safety: isolated files/branches and one owner for final staging.
 - Forbidden feature guard: no secrets, `.env`, vector DB, embeddings, semantic search, web UI, autonomous agents, production deploys, broad refactors, or runtime artifacts.
