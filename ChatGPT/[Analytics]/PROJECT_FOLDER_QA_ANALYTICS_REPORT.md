@@ -4,9 +4,17 @@ Project folder: `[Analytics]`
 
 Issue: GitHub #64, targeted regression check for updated Analytics project folder.
 
-Review date: 2026-07-06
+Review date: 2026-07-07
 
 Verdict: pass
+
+## 2026-07-07 Refresh
+
+This refresh re-checked the Analytics package after later Goal Mode, handoff
+standard, and status-file changes. `ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md`
+is 7153 characters and still below the 8000-character limit. Analytics now
+references `HANDOFF_STYLE_STANDARD.md` for cross-project handoffs while keeping
+Analytics-specific grain/period/filters/method/QA/limitations guidance.
 
 ## Files Checked
 
@@ -146,6 +154,7 @@ These are repository-instruction smoke checks, not a live ChatGPT Project runtim
 ## Residual Risks
 
 - This QA verified repository files and bundled instructions. It did not test a live ChatGPT Project instance after upload.
+- Fresh live Analytics runtime behavior still depends on manual ChatGPT Project sync and live smoke/pilot execution.
 - Historical `Codex_Tasks/` files outside the active package manifest contain older implementation notes and were searched for routing/safety terms, but the active package source of truth remains the manifest-listed files and Knowledge bundles.
 - `ChatGPT/[Analytics]/Knowledge/MEMO_FACTORY_DESIGN_HANDOFF.md` exists in the folder but is not listed in `package_manifest.json`; it was not identified as an active upload source by current bundle manifests.
 
@@ -157,4 +166,6 @@ Reason: the active Analytics package and bundles preserve analytics ownership, c
 
 ## Next Step
 
-Open a draft PR for human review. Do not merge automatically.
+Keep the report as repository-file QA evidence, then run a fresh live Analytics
+ChatGPT Project smoke/pilot after the next manual sync. Do not merge
+automatically.
