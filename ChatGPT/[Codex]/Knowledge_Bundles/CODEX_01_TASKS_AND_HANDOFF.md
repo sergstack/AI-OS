@@ -211,14 +211,15 @@ git push origin --delete <branch>
 ```
 ## Rollback
 ```bash
-git restore <allowed_paths>
+git status
 ```
 ```bash
-git reset --hard HEAD~1
+git restore --source=HEAD -- <allowed_paths>
 ```
 ```bash
 git revert <commit_or_merge_sha>
 ```
+Do not use destructive rollback commands as the default. Commands such as `git reset --hard` require explicit human confirmation and a clean understanding of what uncommitted work would be lost.
 ## Hard blockers
 These are local GitHub sync blockers in addition to the canonical hard blockers in `AUTONOMY_POLICY.md`.
 - remote does not match expected repo;

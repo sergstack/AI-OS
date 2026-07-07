@@ -91,23 +91,27 @@ git push origin --delete <branch>
 
 ## Rollback
 
-Before commit:
+Before any rollback:
 
 ```bash
-git restore <allowed_paths>
+git status
 ```
 
-After local commit:
+For local file restoration before commit:
 
 ```bash
-git reset --hard HEAD~1
+git restore --source=HEAD -- <allowed_paths>
 ```
 
-After pushed PR:
+For pushed commits or merged PRs:
 
 ```bash
 git revert <commit_or_merge_sha>
 ```
+
+Do not use destructive rollback commands as the default. Commands such as
+`git reset --hard` require explicit human confirmation and a clean
+understanding of what uncommitted work would be lost.
 
 ## Hard blockers
 
