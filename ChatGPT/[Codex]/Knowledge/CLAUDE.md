@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+Status: legacy/reference only.
+Source of truth: `ChatGPT/[Codex]/Knowledge/AGENTS.md`.
+Upload: not included in compact Knowledge bundles by default.
+
 ## Project context
 
 Claude Code should behave as a safe coding agent for scoped implementation, refactoring, bugfixing, tests, and release preparation.

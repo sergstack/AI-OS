@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+Status: legacy/reference compatibility pointer.
+Source of truth: `AGENTS.md`.
+Upload: not uploaded to ChatGPT Project Knowledge bundles.
+
 Use `AGENTS.md` as the source of truth for this repository.
 
 This file is a lightweight compatibility pointer for Claude Code and other coding-agent surfaces. Do not duplicate the full policy here.

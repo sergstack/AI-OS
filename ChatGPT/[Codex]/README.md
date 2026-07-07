@@ -14,13 +14,15 @@ ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md
 
 ## Что загружать в Knowledge
 
-Загрузи все файлы из:
+Default mode: upload the compact bundles listed in:
 
 ```text
-ChatGPT/[Codex]/Knowledge/
+ChatGPT/[Codex]/Knowledge_Bundles/UPLOAD_LIST.md
 ```
 
-## Файлы Knowledge
+Do not upload granular `Knowledge/` files together with bundles unless debugging a sync issue.
+
+## Active granular Knowledge sources
 
 - `ACCEPTANCE_CRITERIA.md`
 - `AGENTS.md`
@@ -28,13 +30,11 @@ ChatGPT/[Codex]/Knowledge/
 - `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`
 - `ANALYTICAL_TECHNIQUES_FOR_CODEX.md`
 - `BUGFIX_WORKFLOW.md`
-- `CLAUDE.md`
 - `CLAUDE_CODE_HANDOFF.md`
 - `CODEX_HANDOFF_WORKFLOW.md`
 - `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`
 - `DONE_DEFINITION.md`
 - `FAILURE_MODES.md`
-- `KESTRA_AUTOMATION_STANDARD_REFERENCE.md`
 - `PROJECT_CONTEXT.md`
 - `PROMPT_LIBRARY_CODEX.md`
 - `REFACTORING_WORKFLOW.md`
@@ -45,11 +45,17 @@ ChatGPT/[Codex]/Knowledge/
 - `TASK_TEMPLATE.md`
 - `TESTING_WORKFLOW.md`
 
+## Reference-only / not uploaded by default
+
+- `CLAUDE.md` — legacy/reference only; `AGENTS.md` is canonical.
+- `KESTRA_AUTOMATION_STANDARD_REFERENCE.md` — reference only; Kestra is not an active runtime standard.
+
 ## What not to upload to ChatGPT Project Knowledge
 
 Do not upload:
 
 - top-level `../../Codex APP/` executor-layer files
+- reference-only granular Knowledge files unless explicitly debugging
 - `.gitkeep`
 - secrets / `.env` / credentials
 - raw transcripts

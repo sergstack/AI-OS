@@ -7,7 +7,6 @@ Compact upload artifact for [Codex] covering agent references.
 ## Source files
 
 - `ChatGPT/[Codex]/Knowledge/AGENTS.md`
-- `ChatGPT/[Codex]/Knowledge/CLAUDE.md`
 - `ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md`
 - `ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md`
 - `ChatGPT/[Codex]/Knowledge/PROMPT_LIBRARY_CODEX.md`
@@ -50,39 +49,6 @@ For real working repositories, use `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE
 ## Assumptions
 ## Final report
 Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-specific reports may be shorter but must not conflict.
-
-
-## From: `ChatGPT/[Codex]/Knowledge/CLAUDE.md`
-
-# CLAUDE.md
-## Project context
-## Workflow
-1. Inspect repository.
-2. Restate task and constraints.
-3. Create short plan.
-4. Edit only allowed files.
-5. Run tests/checks.
-6. Review before commit or final answer.
-7. Report changes and risks.
-## Safe edit rules
-- Do not modify secrets.
-- Do not remove validation.
-- Do not change business logic unless explicitly requested.
-- Do not broaden scope.
-- Do not commit unless instructed.
-- Do not add new infrastructure without acceptance.
-## Subagent decomposition
-- planner;
-- implementation engineer;
-- test engineer;
-- reviewer;
-- release operator.
-## Testing expectations
-- unit tests;
-- contract tests;
-- smoke checks;
-- golden output checks;
-- regression checks.
 
 
 ## From: `ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md`

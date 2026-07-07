@@ -1,5 +1,9 @@
 # Kestra Automation Standard Reference
 
+Status: reference only.
+Upload: not included in compact Knowledge bundles by default.
+Reason: Kestra is not an active AI-OS runtime standard; open decisions remain.
+
 ## Purpose
 
 Use Kestra for orchestration and run control of stable workflows.
