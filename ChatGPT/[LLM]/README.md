@@ -28,6 +28,12 @@ ChatGPT/[LLM]/Knowledge/
 - `LLM_ROUTING.md` — выбор LLM workflow.
 - `LOCAL_LLM_WORKFLOW.md` — local/Ollama/Open WebUI workflow.
 - `MEMO_GENERATION_WORKFLOW.md` — draft → judge → revise.
+- `RELATIONSHIP_CRM_LITE_TEMPLATE.md` — candidate relationship CRM-lite fields, no real contact data.
+- `WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md` — candidate weekly relationship review block.
+- `VALUE_FIRST_OUTREACH_TEMPLATE.md` — candidate value-first outreach draft.
+- `MEETING_RECAP_TEMPLATE.md` — candidate meeting recap template.
+- `ASK_FOR_ADVICE_TEMPLATE.md` — candidate ask-for-advice template.
+- `NO_SPAM_HUMAN_REVIEW_RULE.md` — no-spam and human-review guardrail.
 - `MODEL_ROUTING.md` — выбор модели.
 - `PROMPT_LIBRARY.md` — библиотека промптов.
 - `PROMPT_REGISTRY.md` — controlled registry for reusable prompts.

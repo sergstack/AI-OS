@@ -14,6 +14,12 @@ current score: 8.6/10
 - `Knowledge/LLM_ROUTING.md`
 - `Knowledge/LOCAL_LLM_WORKFLOW.md`
 - `Knowledge/MEMO_GENERATION_WORKFLOW.md`
+- `Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`
+- `Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`
+- `Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`
+- `Knowledge/MEETING_RECAP_TEMPLATE.md`
+- `Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`
+- `Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`
 - `Knowledge/MODEL_ROUTING.md`
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
@@ -28,6 +34,7 @@ current score: 8.6/10
 - README still remains a lightweight setup file rather than a full operating manual.
 - No formal decision archive exists in `[LLM]`; that should stay in the relevant project or handoff record.
 - No production automation or CI is defined here.
+- Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
 
 ## Next fix
 
