@@ -34,6 +34,33 @@ Stop only on a hard blocker:
 - governed KB content outside the allowed scope would need to change;
 - no meaningful validation is possible.
 
+## Provider/API safeguards
+
+Sensitive configuration values are hard blockers for real provider/API execution, not for local implementation scaffolding.
+
+Allowed without additional approval:
+
+- implement provider/client code;
+- implement dry-run and no-network execution paths;
+- implement preflight checks;
+- check whether required configuration variable names are present;
+- check presence/non-empty status without printing values;
+- add tests with mock or fake values;
+- document required configuration variable names.
+
+Requires explicit bounded approval:
+
+- real provider/API calls;
+- source mutation;
+- Safe Apply;
+- production/runtime/deploy actions;
+- batch expansion beyond approved sample size;
+- schema, metric, formula, provider-routing, or output-contract changes.
+
+Never print, log, expose, summarize, or commit sensitive values. Never commit local configuration or machine-local credential files. Never expose raw provider responses in repo files, PR bodies, logs, or Knowledge bundles.
+
+Local configuration presence is not approval. Approval must be explicit and bounded.
+
 ## Retry policy
 
 If a check fails and the issue is local, reversible, and inside allowed files, attempt one minimal fix and rerun the smallest relevant check.
