@@ -18,6 +18,7 @@
 - `PROJECT_INSTRUCTIONS.md` — paste into Project Instructions instead.
 - `README.md` — repo/local guidance.
 - granular Knowledge files when bundle files are used, unless debugging.
+- reference-only Knowledge files such as `CLAUDE.md` and `KESTRA_AUTOMATION_STANDARD_REFERENCE.md` unless explicitly debugging.
 - raw transcripts
 - source-card dumps
 - logs
