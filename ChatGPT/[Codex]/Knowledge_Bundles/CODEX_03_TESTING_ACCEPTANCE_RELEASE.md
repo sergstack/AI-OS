@@ -48,10 +48,10 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 ```bash
 git status --short
 git diff --stat
-find "ChatGPT/[Codex]" -name "*.md" -type f | sort
-grep -R "AUTONOMY_POLICY" "ChatGPT/[Codex]" || true
-grep -R "hard_blocker" "ChatGPT/[Codex]" || true
+git diff --check
+find <affected_dir> -name "*.md" -type f | sort
 ```
+For the AI-OS repository, use the standard validation scripts in `scripts/`.
 If `markdownlint` is available, run it against the affected markdown files. Do not install it just for a docs-only task unless the task explicitly asks.
 ## Smoke test command format
 ```bash

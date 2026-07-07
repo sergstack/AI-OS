@@ -21,12 +21,12 @@ A Codex task should include:
 
 ## Small-task exception
 
-For tiny docs-only tasks, Codex may proceed with safe assumptions if:
+For small, local, reversible tasks, Codex may proceed with safe assumptions if:
 
 - target files are obvious;
 - change is reversible;
-- no governed KB or production code is touched;
-- acceptance can be verified by grep or file check.
+- no hard blocker is present;
+- acceptance can be verified with a meaningful check.
 
 Tasks produced by `ChatGPT/[Codex]` should also be validated against `CODEX_APP_TASK_PACKAGE_CONTRACT.md` before implementation.
 

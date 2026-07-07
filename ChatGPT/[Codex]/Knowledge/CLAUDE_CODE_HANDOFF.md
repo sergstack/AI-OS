@@ -19,7 +19,7 @@ Use Claude Code as an alternative or complementary coding-agent surface for repo
 - task is deterministic analytics → use `[Analytics]`;
 - task is AI concept / evidence check → use `[AI OS]`;
 - task is prompt architecture → use `[LLM]`;
-- task lacks allowed files / acceptance criteria.
+- task is high-risk and lacks enough context to infer allowed files or acceptance criteria safely.
 
 ## Required handoff package
 

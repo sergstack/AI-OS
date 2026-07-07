@@ -45,7 +45,7 @@ Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects 
 Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
 Stop only on the canonical hard blockers in `AUTONOMY_POLICY.md`.
 ## Repository template
-For real working repositories, use `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
+For real working repositories, use the repo-root file `Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
 ## Assumptions
 ## Final report
 Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-specific reports may be shorter but must not conflict.
@@ -67,7 +67,7 @@ Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-sp
 - task is deterministic analytics → use `[Analytics]`;
 - task is AI concept / evidence check → use `[AI OS]`;
 - task is prompt architecture → use `[LLM]`;
-- task lacks allowed files / acceptance criteria.
+- task is high-risk and lacks enough context to infer allowed files or acceptance criteria safely.
 ## Required handoff package
 - goal;
 - repo;
