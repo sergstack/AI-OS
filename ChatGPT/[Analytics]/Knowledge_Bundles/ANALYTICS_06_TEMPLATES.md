@@ -10,6 +10,10 @@ Compact upload artifact for [Analytics] covering templates.
 - `ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md`
 - `ChatGPT/[Analytics]/Templates/MART_SPEC_TEMPLATE.md`
 - `ChatGPT/[Analytics]/Templates/MEMO_TEMPLATE.md`
+- `ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md`
+- `ChatGPT/[Analytics]/Templates/VARIANCE_ANALYSIS_PACK_TEMPLATE.md`
+- `ChatGPT/[Analytics]/Templates/AUDIT_ANOMALY_IO_TEMPLATE.md`
+- `ChatGPT/[Analytics]/Templates/FINANCE_MEMO_QA_CHECKLIST.md`
 - `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
 - `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
 
@@ -92,6 +96,100 @@ What is intentionally excluded:
 | Action | Owner | Due date | Status | Evidence |
 ## Limitations
 ## Appendix / evidence
+
+
+## From: `ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md`
+
+# Analytics Context Pack Template
+Question:
+Decision context:
+Audience:
+Data contract:
+Grain:
+Period:
+Comparison period:
+Filters:
+Method:
+Calculation tool:
+Verified facts:
+QA:
+- Data contract, grain, period, filters, and exclusions explicit.
+- Numeric calculations performed by deterministic tool; LLM arithmetic not used.
+- Findings trace to verified facts, source mart, and evidence.
+Limitations:
+Acceptance:
+
+
+## From: `ChatGPT/[Analytics]/Templates/VARIANCE_ANALYSIS_PACK_TEMPLATE.md`
+
+# Variance Analysis Pack Template
+Question:
+Decision context:
+Data contract:
+Plan / baseline source:
+Fact source:
+Grain:
+Period:
+Comparison period:
+Filters:
+Method:
+Calculation tool:
+Variance table:
+Drivers:
+QA:
+- Plan and fact sources identified.
+- Period, grain, filters, and exclusions match across plan and fact.
+- Variance calculations performed by deterministic tool; LLM arithmetic not used.
+Limitations:
+Acceptance:
+
+
+## From: `ChatGPT/[Analytics]/Templates/AUDIT_ANOMALY_IO_TEMPLATE.md`
+
+# Audit Anomaly Input / Output Template
+Anomaly ID:
+Question:
+Decision context:
+Data contract:
+Expected behavior:
+Grain:
+Period:
+Filters:
+Anomaly threshold:
+Method:
+Calculation tool:
+Output:
+Finding:
+Evidence:
+Likely cause:
+Risk:
+Recommended action:
+QA:
+- Expected behavior, period, grain, filters, and threshold explicit.
+- Detection calculations performed by deterministic tool; LLM arithmetic not used.
+- Finding separated from likely cause and hypothesis.
+Limitations:
+Acceptance:
+
+
+## From: `ChatGPT/[Analytics]/Templates/FINANCE_MEMO_QA_CHECKLIST.md`
+
+# Finance Memo QA Checklist
+Data contract:
+- Source datasets, owner, refresh timestamp, required columns, metric rules, currency / units, and source mart listed.
+Grain / period / filters:
+- Grain, period, comparison period, filters, exclusions, and segment scope explicit.
+Method:
+- Method, source layer, output layer, and formula references stated.
+- Numeric calculations performed by deterministic tool; LLM arithmetic not used.
+Memo facts:
+- Key numbers and deviations trace to verified Analytics facts.
+- Risks have `risk_basis`; actions have owner, due date, and status.
+QA:
+- Totals, reconciliations, data quality status, and confidence visible.
+Limitations:
+Acceptance:
+- Memo narrative is based only on verified Analytics facts.
 
 
 ## From: `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
