@@ -125,6 +125,18 @@ def test_public_safety_flags_tracked_zip_archive(tmp_path: Path) -> None:
     assert "Forbidden tracked zip archive: fixture.zip" in result.stdout
 
 
+def test_public_safety_flags_files_inside_forbidden_vector_dirs(tmp_path: Path) -> None:
+    init_git_repo(tmp_path)
+    (tmp_path / "embeddings").mkdir()
+    (tmp_path / "embeddings" / "notes.md").write_text("Safe text.\n", encoding="utf-8")
+    git_add(tmp_path, "embeddings/notes.md")
+
+    result = run_script("check_repo_public_safety.py", tmp_path)
+
+    assert result.returncode == 1
+    assert "Forbidden vector/embedding directory: embeddings/notes.md" in result.stdout
+
+
 def test_public_safety_ignores_untracked_ignored_folders(tmp_path: Path) -> None:
     init_git_repo(tmp_path)
     (tmp_path / ".gitignore").write_text("local/\n", encoding="utf-8")

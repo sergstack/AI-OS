@@ -64,7 +64,7 @@ def main() -> int:
         rel = str(path.relative_to(root))
         lower_parts = {part.lower() for part in path.parts}
 
-        if path.is_dir() and lower_parts & FORBIDDEN_DIR_NAMES:
+        if lower_parts & FORBIDDEN_DIR_NAMES:
             failures.append(f"Forbidden vector/embedding directory: {rel}")
             continue
 
