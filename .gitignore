@@ -2,6 +2,7 @@
 .DS_Store
 .env
 .env.*
+.claude/
 *.log
 *.tmp
 *.sqlite
