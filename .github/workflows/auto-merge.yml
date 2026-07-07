@@ -1,0 +1,48 @@
+name: Merge Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge-gate:
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Classify changed paths
+        id: classify
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          files=$(git diff --name-only "$BASE_SHA...$HEAD_SHA")
+          echo "Changed files:"
+          echo "$files"
+          # Tier 2 protected paths. Keep in sync with .github/CODEOWNERS.
+          protected='^(AGENTS\.md|CLAUDE\.md|GOAL_MODE\.md|MASTER_STATUS\.md|CURRENT_STATUS\.md|SYNC_CONTRACT\.md|scripts/|tests/|\.github/)|(^|/)PROJECT_INSTRUCTIONS\.md$'
+          if [ -z "$files" ] || echo "$files" | grep -Eq "$protected"; then
+            echo "tier=owner" >> "$GITHUB_OUTPUT"
+          else
+            echo "tier=auto" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Auto-approve and enable auto-merge
+        if: steps.classify.outputs.tier == 'auto'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          gh pr review "$PR_URL" --approve --body "Merge gate: changes stay within the Tier 0/1 docs allowlist. Auto-merge enabled; merge waits for required checks. Post-merge review happens in the weekly digest."
+          gh pr merge "$PR_URL" --auto --merge
+      - name: Owner review required
+        if: steps.classify.outputs.tier == 'owner'
+        run: echo "Protected paths changed — owner review required via CODEOWNERS."

@@ -240,6 +240,31 @@ def test_knowledge_bundles_passes_minimal_valid_fixture(tmp_path: Path) -> None:
     assert report.source_paths is True
 
 
+def test_index_coverage_passes_when_all_files_listed(tmp_path: Path) -> None:
+    module = load_script_module("check_index_coverage.py")
+    knowledge = tmp_path / "Knowledge"
+    knowledge.mkdir()
+    (knowledge / "LISTED.md").write_text("Content.\n", encoding="utf-8")
+    (tmp_path / "INDEX.md").write_text("- `LISTED.md`\n", encoding="utf-8")
+
+    failures = module.missing_from_index(tmp_path, "Knowledge", "INDEX.md")
+
+    assert failures == []
+
+
+def test_index_coverage_detects_unlisted_file(tmp_path: Path) -> None:
+    module = load_script_module("check_index_coverage.py")
+    knowledge = tmp_path / "Knowledge"
+    knowledge.mkdir()
+    (knowledge / "LISTED.md").write_text("Content.\n", encoding="utf-8")
+    (knowledge / "MISSING.md").write_text("Content.\n", encoding="utf-8")
+    (tmp_path / "INDEX.md").write_text("- `LISTED.md`\n", encoding="utf-8")
+
+    failures = module.missing_from_index(tmp_path, "Knowledge", "INDEX.md")
+
+    assert failures == ["INDEX.md does not list Knowledge/MISSING.md"]
+
+
 def test_knowledge_bundles_detects_missing_referenced_source(tmp_path: Path) -> None:
     module = load_script_module("check_knowledge_bundles.py")
     root, project_dir = make_bundle_project(tmp_path)

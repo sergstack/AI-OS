@@ -13,6 +13,7 @@
 - No raw absolute local paths: required
 - Manifest/path consistency: required
 - Knowledge bundle consistency: required
+- Knowledge index coverage: required
 - Codex Goal Mode default scan: required
 - Pytest validation script regression tests: required
 - Smoke QA: required
