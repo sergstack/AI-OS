@@ -7,28 +7,21 @@
 ## Структура
 
 ```text
-[AI OS]/
-└── Project/
-    ├── README.md
-    ├── PROJECT_INSTRUCTIONS.md
-    └── Knowledge/
-        ├── AI_OS_PROJECT_FILES_INDEX.md
-        ├── PROJECT_ROUTING.md
-        ├── KB_USAGE_RULES.md
-        ├── GOVERNANCE_RULES.md
-        ├── AI_OS_WORKFLOW.md
-        ├── HANDOFF_PROTOCOL.md
-        ├── SMOKE_QA_FOR_AI_OS.md
-        └── ANTI_PATTERNS.md
+ChatGPT/[AI OS]/
+├── PROJECT_INSTRUCTIONS.md
+├── README.md
+├── Knowledge/
+└── Knowledge_Bundles/
 ```
 
 ## Что делать
 
 1. Открой существующий ChatGPT Project `[AI OS]`.
 2. Скопируй содержимое `PROJECT_INSTRUCTIONS.md` в поле Project Instructions.
-3. Загрузи в Project Knowledge только файлы из папки `Knowledge/`.
-4. Не удаляй существующие KB-файлы.
-5. Используй два индекса:
+3. Для обычного sync используй compact bundles из `Knowledge_Bundles/UPLOAD_LIST.md`.
+4. Загружай granular `Knowledge/` files только в advanced/debug режиме.
+5. Не удаляй существующие KB-файлы.
+6. Используй два индекса:
    - `KB__00_INDEX.md` — индекс базы знаний;
    - `AI_OS_PROJECT_FILES_INDEX.md` — индекс рабочих файлов этого пакета.
 

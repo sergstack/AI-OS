@@ -46,7 +46,8 @@ already-scoped, ultra-long, or explicitly requested task packages.
 
 - GitHub remains the live source of truth.
 - Codex APP may create branches, commits, checks, and PRs when requested.
-- Pull requests require owner review before merge unless Sergey explicitly asks Codex APP to merge.
+- Pull requests require owner review and human-owned merge.
+- Codex / Codex APP must not auto-merge. A merge only occurs as a separate explicit human-owned action requested by Sergey after review.
 - For this personal repository, explicit owner self-review counts as human-owned review.
 - Acceptance statuses should stay conservative: `candidate / ready for owner review` unless production promotion was explicitly completed.
 

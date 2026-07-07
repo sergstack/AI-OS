@@ -6,7 +6,12 @@
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
-- smoke_qa_status: candidate / ready for human review
+- default_upload_mode: Knowledge_Bundles
+- default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
+- smoke_qa_status: pass
+- runtime_smoke_status: candidate
+- realistic_pilot_status: not_run
+- acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates:
   - PROJECT_INSTRUCTIONS.md <= 8000 characters
@@ -41,7 +46,7 @@ Recent verified state:
   already-scoped, ultra-long, or explicitly requested work.
 - ChatGPT Project upload mode is compact `Knowledge_Bundles` by default.
 - `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
-  2026-07-06 smoke QA evidence.
+  2026-07-06 smoke QA evidence. Smoke QA does not equal production readiness.
 - `PILOT_CASES.md` remains backlog/unsupported until pilot result evidence is
   recorded.
 - StreamDeck v2.7 remains active; v2.8 remains candidate/manual-only.

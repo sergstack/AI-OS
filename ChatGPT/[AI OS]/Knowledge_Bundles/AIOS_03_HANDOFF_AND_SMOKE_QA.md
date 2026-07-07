@@ -9,6 +9,7 @@ Compact upload artifact for [AI OS] covering handoff and smoke qa.
 - `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
 - `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
 - `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
+- `HANDOFF_STYLE_STANDARD.md`
 
 ## Upload target
 
@@ -27,6 +28,24 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 ## From: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
 
 # Handoff Protocol
+## Canonical compact field set
+```text
+From:
+To:
+Task type:
+Mode: goal / strict
+Objective:
+Context:
+Inputs:
+Constraints:
+Expected output:
+Acceptance criteria:
+Risks:
+Evidence / confidence:
+Open questions:
+Suggested first step:
+```
+Use `Mode: goal` for broad repo/workflow/project goals where the receiving project can infer bounded safe scope. Use `Mode: strict` for high-risk, already-scoped, ultra-long, or explicitly requested task packages.
 ## Когда делать handoff
 | Нужно собрать prompt/workflow/model routing | `[LLM]` |
 Если handoff в `[Codex]` связан с repository work, предпочтительно оформлять его как GitHub Issue-driven task package с явным scope, allowed files, checks и acceptance criteria.
@@ -160,3 +179,32 @@ Pass condition:
 - включает goal, context, evidence, constraints, acceptance criteria.
 ## Acceptance note
 Smoke QA не означает production readiness. Это только проверка, что проект следует routing, KB usage и governance.
+
+
+## From: `HANDOFF_STYLE_STANDARD.md`
+
+# Handoff Style Standard
+## Default Style
+Handoffs should be compact, scoped, and reviewable.
+```text
+From:
+To:
+Task type:
+Mode: goal / strict
+Objective:
+Context:
+Inputs:
+Constraints:
+Expected output:
+Acceptance criteria:
+Risks:
+Evidence / confidence:
+Open questions:
+Suggested first step:
+```
+## Merge And Acceptance
+- GitHub remains the live source of truth.
+- Codex APP may create branches, commits, checks, and PRs when requested.
+- Pull requests require owner review and human-owned merge.
+- Codex / Codex APP must not auto-merge.
+- Acceptance statuses should stay conservative: `candidate / ready for owner review` unless production promotion was explicitly completed.

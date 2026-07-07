@@ -3,6 +3,9 @@
   "created_at": "2026-05-20T09:25:58.096823+00:00",
   "project": "[AI OS]",
   "purpose": "Project settings for existing AI OS governed KB project",
+  "default_upload_mode": "Knowledge_Bundles",
+  "default_upload_list": "ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md",
+  "knowledge_files_semantics": "source inventory for project settings; granular Knowledge upload is advanced/debug mode only",
   "project_instructions_chars_limit": 8000,
   "knowledge_files": [
     "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
