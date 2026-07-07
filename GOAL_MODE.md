@@ -5,7 +5,7 @@ Goal Mode is the default user-facing workflow for AI-OS and Codex. It is build-f
 ## Flow
 
 ```text
-GOAL -> inspect repo -> infer bounded safe scope -> branch -> implement smallest useful version -> check/fix in scope -> report/PR -> human review
+GOAL -> inspect repo -> infer bounded safe scope -> branch -> implement smallest useful version -> check/fix in scope -> report/PR -> owner review
 ```
 
 ## User Interface

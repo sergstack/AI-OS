@@ -35,7 +35,8 @@ What changed?
 
 Describe what could still be wrong.
 
-## Human review
+## Owner review
 
-- [ ] Ready for human review
+- [ ] Ready for owner review
+- [ ] Owner self-review completed before merge
 - [ ] Do not merge automatically

@@ -55,7 +55,7 @@ The PR must include:
 - checks run;
 - result;
 - risks / residual risks;
-- human review needed;
+- owner review needed;
 - explicit note: Do not merge automatically.
 
 ## Notes for Codex

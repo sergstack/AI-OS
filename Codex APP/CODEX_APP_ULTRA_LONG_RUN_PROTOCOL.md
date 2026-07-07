@@ -139,7 +139,7 @@ Allowed:
 
 - split task into independent branches or batches;
 - assign each batch a clear file scope;
-- merge only after checks and diff review.
+- merge only after checks and owner diff review.
 
 Not allowed by default:
 
