@@ -13,18 +13,7 @@
 - realistic_pilot_status: not_run
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
-- validation_gates:
-  - PROJECT_INSTRUCTIONS.md <= 8000 characters
-  - public safety scan required
-  - no raw absolute local paths required
-  - manifest/path consistency required
-  - Knowledge bundle consistency required
-  - Knowledge index coverage required
-  - Codex Goal Mode default scan required
-  - pytest validation script regression tests required
-  - ChatGPT Project sync checklist required
-  - smoke QA refresh after sync required
-  - pilot result evidence required before production promotion
+- validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
 - blocked_items:
   - embeddings
   - semantic search
@@ -54,17 +43,7 @@ Recent verified state:
 
 ## Next action
 
-Run repository validation before PR review:
-
-```bash
-python3 scripts/check_project_instructions_length.py
-python3 scripts/check_repo_public_safety.py
-python3 scripts/check_manifest_paths.py
-python3 scripts/check_knowledge_bundles.py
-python3 scripts/check_index_coverage.py
-python3 scripts/check_codex_goal_mode_defaults.py
-python3 -m pytest tests/ -q
-```
+Run repository validation before PR review: use the canonical command set from `AGENTS.md` ("Validation" section) or `python3 scripts/sync_aios.py`, plus `python3 -m pytest tests/ -q`.
 
 Then complete operational verification:
 
