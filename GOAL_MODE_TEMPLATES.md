@@ -7,6 +7,8 @@
 
 Improve repo docs/config for: [goal]
 
+Use `Goal Mode Contract` from `GOAL_MODE.md` unless this task package sets stricter rules.
+
 Rules:
 - inspect repo first;
 - infer safe scope;
@@ -26,6 +28,7 @@ Forbidden:
 - output contracts;
 - vector DB / embeddings / semantic search;
 - autonomous agents.
+- deletion without quarantine.
 
 Final report:
 Summary:
@@ -37,6 +40,7 @@ Checks run:
 Risks:
 Rollback:
 Acceptance status:
+No auto-merge:
 Next step:
 ```
 

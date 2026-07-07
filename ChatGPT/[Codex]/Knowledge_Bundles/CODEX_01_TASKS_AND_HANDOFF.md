@@ -46,6 +46,8 @@ long-run / normal / inspect-only
 Default:
 Codex may continue on safe reversible assumptions and must stop only on canonical hard blockers from `AUTONOMY_POLICY.md`.
 
+For normal bounded repo work, the task may say `Use Goal Mode Contract` instead of repeating the full autonomy, execution, forbidden-action, reporting, PR-review, no-auto-merge, and no-deletion-without-quarantine rules.
+
 ## Inputs
 
 - <input files/data/context>

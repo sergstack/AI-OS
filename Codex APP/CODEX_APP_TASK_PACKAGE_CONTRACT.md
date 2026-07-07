@@ -13,6 +13,10 @@ Define the required interface between `ChatGPT/[Codex]` and the Codex App, Codex
 
 This contract applies to the executor-ready package, not to Sergey’s initial request.
 
+For normal bounded repo work, a task may reference `Goal Mode Contract` from
+`GOAL_MODE.md` instead of repeating the full autonomy, execution, forbidden,
+reporting, PR, no-auto-merge, and no-deletion-without-quarantine rules.
+
 Sergey may start with a broad goal in ChatGPT. Goal Mode is build-first: the producer layer — `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue — should help Codex inspect relevant files, infer bounded safe scope, create or use a non-main branch, implement the smallest useful working version, run checks, fix in-scope failures when safe, and report evidence.
 
 `Codex APP` must preserve execution safety. Before editing, it should confirm the objective, repo, branch, allowed scope, forbidden actions, checks, rollback, and final response format.

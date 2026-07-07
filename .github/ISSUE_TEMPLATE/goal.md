@@ -37,4 +37,4 @@ How will we know the goal is achieved?
 
 ## Notes
 
-Use Goal Mode. Do not force the user to provide atomic task package fields unless required for safety.
+Use `Goal Mode Contract` from `GOAL_MODE.md`. Do not force the user to provide atomic task package fields unless required for safety.
