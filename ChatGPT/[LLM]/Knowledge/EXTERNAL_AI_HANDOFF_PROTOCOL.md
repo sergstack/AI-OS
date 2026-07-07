@@ -17,7 +17,7 @@ Choose a tool because the task requires its surface, context handling, tools, or
 |---|---|---|---|---|---|
 | ChatGPT / Claude Chat | reasoning, alternative judge, revisor, executive writing | compact context, constraints, desired output | critique, rewrite, structured memo | [Thinking] / [LLM] | unsupported claims listed |
 | Gemini Deep Research | fresh web / YouTube / creator / repo scouting | research prompt, criteria, scope | sourced research report | [LLM] / [AI OS] | sources checked, hype filtered |
-| Codex | implementation, tests, repo hygiene, docs changes | atomic task package | changed files, tests, PR / commit | [Codex] | tests / smoke checks |
+| Codex | implementation, tests, repo hygiene, docs changes | Goal Mode handoff or scoped task package | changed files, tests, PR / commit | [Codex] | tests / smoke checks |
 | Claude Code | coding agent alternative, repo review, CLAUDE.md workflows, hooks / skills / MCP | task package, allowed files, constraints | code/doc changes, review, PR | [Codex] | diff review and tests |
 | Ollama | local memo reasoning over prepared payloads | metrics, signals, evidence cards, prompts | draft memo, local judgement | [Analytics] / [LLM] | deterministic facts preserved |
 | Kestra | orchestration of stable workflows | validated scripts, configs, artifact policy | execution, artifacts, run_summary | [Codex] | validation + run_summary |
@@ -53,6 +53,6 @@ Every handoff should include:
 
 - tool chosen before task;
 - raw dump sent instead of curated context;
-- coding agent given vague wish instead of task package;
+- coding agent given vague wish without Goal Mode constraints or safe scoped task package;
 - research result accepted without source filtering;
 - orchestration marked successful without business validation.

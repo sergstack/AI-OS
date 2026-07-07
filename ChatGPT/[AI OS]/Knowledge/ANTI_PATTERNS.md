@@ -20,7 +20,7 @@
 | Делать финансовый расчёт в `[AI OS]` | Нет deterministic analytics workflow | `[Analytics]` |
 | Проектировать production workflow в `[AI OS]` | Это orchestration task | `[LLM]` / `[Codex]` |
 | Писать код в `[AI OS]` | Это implementation | `[Codex]` |
-| Давать Codex размытое пожелание | Codex нужен Goal Mode handoff или scoped task package | Подготовить handoff по шаблону со scope, checks, rollback и acceptance |
+| Давать Codex размытое пожелание | Codex can use Goal Mode build-first and infer bounded safe scope | Передать цель с constraints; scoped task package нужен только для strict/high-risk work |
 
 ## Promotion anti-patterns
 

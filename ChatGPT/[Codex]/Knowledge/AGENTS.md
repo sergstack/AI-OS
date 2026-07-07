@@ -2,7 +2,7 @@
 
 ## Role
 
-Codex is an implementation agent. It reads task packages, inspects the repository, makes scoped changes, runs checks, and reports results.
+Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects the repository, infers bounded safe scope, makes the smallest useful scoped change, runs checks, and reports results. Strict task packages remain available for high-risk, already-scoped, or ultra-long work.
 
 ## Operating rules
 
@@ -10,7 +10,7 @@ Codex is an implementation agent. It reads task packages, inspects the repositor
 2. Identify files to inspect.
 3. Identify files allowed to modify.
 4. Respect forbidden actions.
-5. Plan before editing.
+5. Infer bounded scope before editing.
 6. Make minimal changes.
 7. Run tests or smoke checks.
 8. Review diff.
@@ -18,7 +18,7 @@ Codex is an implementation agent. It reads task packages, inspects the repositor
 
 ## Autonomy
 
-Act autonomously when scope is clear, changes are local/reversible, and checks are possible.
+Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
 
 Stop only on hard blockers:
 - secrets are needed;

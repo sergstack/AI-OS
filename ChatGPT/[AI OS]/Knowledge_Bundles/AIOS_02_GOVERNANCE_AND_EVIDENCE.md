@@ -127,7 +127,7 @@ Review item:
 | Выдать weak evidence как supported | Нарушение governance | Пометить weak и отправить в review queue |
 | Игнорировать `KB__RELEASE_MANIFEST.md` | Можно принять blocked статус за ready | Проверить release status |
 ## Routing anti-patterns
-| Давать Codex размытое пожелание | Codex нужен atomic task package | Подготовить handoff по шаблону |
+| Давать Codex размытое пожелание | Codex can use Goal Mode build-first and infer bounded safe scope | Передать цель с constraints; scoped task package нужен только для strict/high-risk work |
 ## Promotion anti-patterns
 ```text
 embeddings

@@ -25,9 +25,9 @@ Define how to use Codex App / Web / CLI / IDE surfaces safely.
 
 Broad user goals are valid before the Codex APP layer.
 
-`ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should compile broad goals into executor-ready packages.
+Goal Mode is build-first. `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should help Codex inspect relevant files, infer bounded safe scope, create or use a non-main branch, implement the smallest useful working version, run checks, fix in-scope failures when safe, and report evidence.
 
-`Codex APP` must still inspect before edit, state inferred mode, confirm safe scope, and report blockers when scope cannot be safely inferred.
+`Codex APP` must still inspect before edit, state inferred mode, confirm safe scope, and report blockers when scope cannot be safely inferred. It should not create roadmaps, epics, child issue trees, or approval packages for normal bounded implementation goals.
 
 Do not ask Sergey for atomic task wording when the producer layer can compile it.
 

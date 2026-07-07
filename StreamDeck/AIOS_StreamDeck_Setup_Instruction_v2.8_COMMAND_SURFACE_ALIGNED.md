@@ -2045,7 +2045,7 @@ Next step:
 ### Screen: `CODEX`
 
 ```text
-BACK | Goal -> Issue | Issue -> PR | PR Judge | Sync Check
+BACK | Goal -> Issue | Build First | PR Judge | Sync Check
 Run Checks | Fix Mismatch | Release Notes | No Auto-Merge | Branch Pack
 Review Report | EMPTY | EMPTY | EMPTY | EMPTY
 ```
@@ -2078,7 +2078,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
 
 Return:
 Goal:
@@ -2092,33 +2092,55 @@ Rollback:
 Human review:
 ```
 
-#### K3 - `Issue -> PR`
+#### K3 - `Build First`
 
 - Action: `Text`
 - Setting: `System -> Text`
+- Note: Goal Mode implementation-first execution
 
 ```text
-# CODEX - issue to PR
+# CODEX - Goal Mode Build First
 
-Use the last meaningful message above, selected text, or material pasted below.
-If no material is available, ask Sergey to paste it in one message.
+Work in Goal Mode.
+
+Do not produce a roadmap unless explicitly asked.
+Do not create an epic unless explicitly asked.
+Do not stop for soft uncertainty.
+Do not create a new approval package after approval already exists for the same bounded execution.
 
 Task:
-Work from a GitHub issue or handoff toward a minimal branch/checks/PR result.
+[PASTE GOAL]
 
-Safety:
-Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
+Default behavior:
+- inspect relevant files;
+- infer bounded safe scope;
+- create/use non-main branch;
+- implement smallest useful working version;
+- run checks;
+- fix failures within scope;
+- open PR if repo files changed;
+- never auto-merge.
 
-Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Stop only for hard blockers:
+- missing secrets required for real execution;
+- source mutation / Safe Apply / real provider API without approval;
+- schema / metric / formula / provider-routing / output-contract change without approval;
+- destructive or production action;
+- no meaningful validation path.
 
-Return:
+Final report:
+Summary:
 Branch:
-Files inspected:
 Files changed:
-Checks:
-PR needed: yes / no
-Human review:
+Commands run:
+Test results:
+Evidence/artifacts:
+Assumptions:
+Blockers:
+Risks:
+Rollback:
+PR:
+Acceptance status:
 No auto-merge:
 ```
 
@@ -2195,7 +2217,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
 
 Return:
 Commands to run manually:
@@ -2222,7 +2244,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
 
 Return:
 Mismatch:
@@ -2279,7 +2301,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
 
 Return:
 Branch:
@@ -2308,7 +2330,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode: inspect relevant files first, infer bounded scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes, run checks, report blockers honestly, open a PR for human review only when the task explicitly asks for PR or a mismatch/change requires it, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
 
 Return:
 Objective:

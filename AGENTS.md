@@ -6,9 +6,9 @@ This is Sergey's AI-OS repository.
 
 Use Goal Mode by default.
 
-Sergey may give a broad goal instead of an atomic task package. Codex should inspect the repository, infer the route and scope, compile an internal safe execution plan, then implement only when the change is local, reversible, bounded, and verifiable.
+Sergey may give a broad goal instead of an atomic task package. Codex should inspect the repository, infer a bounded and reversible scope, create or use a non-main branch for repository changes, implement the smallest useful working version, run meaningful checks, fix in-scope failures once when safe, and report evidence, risks, rollback, and acceptance status.
 
-Atomic task packages remain available for advanced or strict work, but they are not the default user burden.
+Atomic task packages remain available for advanced, high-risk, strict, or ultra-long work, but they are not the default user burden. Do not turn a clear implementation goal into an epic, roadmap, child issue tree, or approval package unless Sergey asks for planning, the work cannot fit in one bounded PR, or a hard approval gate is reached.
 
 ## Source of Truth
 
