@@ -18,6 +18,8 @@
 - `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
 - `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`
 - `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`
+- `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
+- `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
 - `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
 
 ## Local / setup files

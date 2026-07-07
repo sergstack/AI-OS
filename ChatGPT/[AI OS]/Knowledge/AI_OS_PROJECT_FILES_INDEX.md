@@ -21,6 +21,8 @@
 | `HANDOFF_PROTOCOL.md` | handoff | Как передавать задачи в другие проекты | Когда результат должен уйти в Thinking/Analytics/LLM/Codex |
 | `GITHUB_ISSUE_DRIVEN_HANDOFF.md` | handoff | Как оформлять handoff в GitHub Issue для `Codex` | Когда нужно передать repository work через issue-driven task package |
 | `ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md` | workflow | Канонический путь создания аналитических записок через `[Analytics]` -> `[Codex]` -> Codex APP | Когда memo должен быть произведён как executable artifact |
+| `WEEKLY_AI_OS_REVIEW_TEMPLATE.md` | candidate template | Лёгкий weekly review: inputs, open loops, repo/sync/Stream Deck risks и один next action | Когда нужно выбрать одно следующее улучшение без task-manager слоя |
+| `ARCHIVE_SUPERSEDED_RULE.md` | candidate rule | Traceability rule для archive / superseded статусов без auto-delete | Когда нужно убрать элемент из active layer с причиной, replacement/status и следом |
 | `SMOKE_QA_FOR_AI_OS.md` | QA | Проверка, что проект отвечает по KB, а не из воздуха | После загрузки/обновления файлов |
 | `ANTI_PATTERNS.md` | anti-patterns | Что нельзя делать в `[AI OS]` | Перед спорными или рискованными задачами |
 
