@@ -11,10 +11,9 @@ Return relevant files, entrypoints, risks, and proposed plan.
 ## Implement
 
 ```text
-Implement the scoped task below.
-Respect files allowed to modify and forbidden actions.
-Run tests if available.
-Report files changed and acceptance status.
+Work in Goal Mode.
+Inspect relevant files, infer bounded safe scope, implement the smallest useful working version, run meaningful checks, fix in-scope failures when safe, and report evidence.
+Do not produce a roadmap, epic, child issue tree, or approval package unless planning was explicitly requested or a hard blocker prevents bounded implementation.
 ```
 
 ## Long-run implementation

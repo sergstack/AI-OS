@@ -21,10 +21,10 @@ coding tasks, refactoring, bugfix, tests, smoke QA, acceptance, release, rollbac
 
 ## Главный принцип
 
-Сначала routing/scope, потом implementation.
+Goal Mode is implementation-first: inspect, infer bounded safe scope, then implement the smallest useful version unless a hard blocker prevents execution.
 
 Рабочий цикл:
-Inspect → Plan → Implement → Test → Review → Report.
+Inspect → Scope → Implement → Test → Review → Report.
 
 Изменения должны быть:
 - атомарные;
@@ -36,22 +36,9 @@ Inspect → Plan → Implement → Test → Review → Report.
 ## Knowledge usage
 
 Перед работой используй Knowledge по типу задачи:
-- `TASK_TEMPLATE.md` — структура task package.
-- `CODEX_HANDOFF_WORKFLOW.md` — вход из AI OS / Thinking / Analytics / LLM.
-- `AUTONOMY_POLICY.md` — правила продолжения без вопросов и hard blockers.
-- `CODEX_LONG_RUN_PLAYBOOK.md` — long-run цикл для scoped local work.
-- `AGENTS.md` / `CLAUDE.md` — поведение coding agent.
-- `TESTING_WORKFLOW.md` — выбор проверок.
-- `ACCEPTANCE_CRITERIA.md` — acceptance status.
-- `FAILURE_MODES.md` — blockers и риски.
-- `EXECUTION_REPORTING_RULES.md` — execution modes, planning, testing, review, blocker and final response formats.
-- `DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md` — data pipeline.
-- `ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md` — memo factory.
-- `AI_OS_REFERENCE.md` — когда вернуть вопрос в AI OS.
-- `LOCAL_GITHUB_SYNC_WORKFLOW.md` — local repo → branch → commit → push → PR → cleanup workflow.
-- `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` — контракт task package для Codex App / Web / CLI / IDE.
-- `../../Codex APP/CODEX_CONFIG_PROFILES.md` — non-secret профили исполнения.
-- `../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` — reusable AGENTS.md template for real working repositories.
+- task/handoff/autonomy: `TASK_TEMPLATE.md`, `CODEX_HANDOFF_WORKFLOW.md`, `AUTONOMY_POLICY.md`, `CODEX_LONG_RUN_PLAYBOOK.md`;
+- agent/testing/reporting: `AGENTS.md`, `CLAUDE.md`, `TESTING_WORKFLOW.md`, `ACCEPTANCE_CRITERIA.md`, `FAILURE_MODES.md`, `EXECUTION_REPORTING_RULES.md`;
+- domain/GitHub/App: data and memo workflows, `AI_OS_REFERENCE.md`, `LOCAL_GITHUB_SYNC_WORKFLOW.md`, and relevant `../../Codex APP/` contracts/templates.
 
 Приоритет:
 1. explicit user instruction;
@@ -63,20 +50,15 @@ Inspect → Plan → Implement → Test → Review → Report.
 
 ## Task package gate
 
-Goal Mode is the default user-facing path. Broad goals are valid. Codex may receive goal-level requests and should internally compile the execution package before editing. The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high.
+Goal Mode is the default user-facing build-first path. Broad goals are valid. Codex should infer bounded safe scope, use a scoped non-main branch for repo changes, implement the smallest useful version, run checks, fix safe in-scope failures, and report evidence, risks, rollback, and acceptance status.
+
+Do not convert clear implementation goals into epics, roadmaps, child issues, or approval packages unless Sergey asks, the work spans releases, it cannot fit in one bounded PR, or a hard approval gate is reached.
+
+The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high.
 
 When asked how Codex works in Goal Mode, always state: infer safe scope, compile an internal execution package, use a scoped branch, run checks, open a PR, require human review, and do not auto-merge.
 
-Перед implementation проверь, есть ли:
-- objective;
-- inputs/context;
-- files to inspect;
-- files allowed to modify;
-- forbidden actions;
-- expected outputs;
-- acceptance criteria;
-- tests/smoke checks или причина, почему их нет;
-- rollback plan для рискованных изменений.
+Перед implementation проверь or infer objective, context, files to inspect/modify, forbidden actions, expected output, acceptance criteria, checks, and risky-change rollback.
 
 When preparing a task for the actual Codex application, make the package compatible with `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
 

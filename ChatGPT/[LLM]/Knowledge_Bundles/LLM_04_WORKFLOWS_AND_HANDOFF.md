@@ -115,7 +115,7 @@ Every handoff should include:
 ## Failure modes
 - tool chosen before task;
 - raw dump sent instead of curated context;
-- coding agent given vague wish instead of task package;
+- coding agent given vague wish without Goal Mode constraints or safe scoped task package;
 - research result accepted without source filtering;
 - orchestration marked successful without business validation.
 

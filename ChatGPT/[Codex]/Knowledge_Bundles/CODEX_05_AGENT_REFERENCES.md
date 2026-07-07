@@ -31,17 +31,19 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 
 # AGENTS.md
 ## Role
+Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects the repository, infers bounded safe scope, makes the smallest useful scoped change, runs checks, and reports results. Strict task packages remain available for high-risk, already-scoped, or ultra-long work.
 ## Operating rules
 1. Read task context first.
 2. Identify files to inspect.
 3. Identify files allowed to modify.
 4. Respect forbidden actions.
-5. Plan before editing.
+5. Infer bounded scope before editing.
 6. Make minimal changes.
 7. Run tests or smoke checks.
 8. Review diff.
 9. Report clearly.
 ## Autonomy
+Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
 - secrets are needed;
 - production/runtime/deploy/migration is involved;
 - schema/API/output contract/business logic may change;
@@ -176,10 +178,9 @@ Return relevant files, entrypoints, risks, and proposed plan.
 ```
 ## Implement
 ```text
-Implement the scoped task below.
-Respect files allowed to modify and forbidden actions.
-Run tests if available.
-Report files changed and acceptance status.
+Work in Goal Mode.
+Inspect relevant files, infer bounded safe scope, implement the smallest useful working version, run meaningful checks, fix in-scope failures when safe, and report evidence.
+Do not produce a roadmap, epic, child issue tree, or approval package unless planning was explicitly requested or a hard blocker prevents bounded implementation.
 ```
 ## Long-run implementation
 ```text
@@ -219,10 +220,11 @@ Return pass/revise/blocked.
 # Project Context
 ## Purpose
 ## Default principles
-- Atomic task packages.
+- Goal Mode is build-first for normal broad goals.
+- Atomic task packages only for strict, high-risk, already-scoped, or ultra-long work.
 - Minimal safe changes.
 - Deterministic tests.
-- Acceptance criteria before implementation.
+- Safely inferred acceptance criteria before implementation when the task is low risk.
 - Long-run autonomy only for scoped, local, reversible, testable work.
 - Diff review before final.
 - Rollback notes for risky changes.

@@ -16,16 +16,16 @@ Do not mix these folders.
 
 Sergey may start in ChatGPT with a broad goal.
 
-`ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue compiles that goal into a Codex-safe execution package.
+Goal Mode is build-first. `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should help Codex inspect relevant files, infer bounded safe scope, create or use a non-main branch, implement the smallest useful working version, run checks, fix in-scope failures when safe, and report evidence for human review.
 
-`Codex APP` is the executor layer. It should receive or safely infer an executor-ready package before editing.
+`Codex APP` is the executor layer. It should receive or safely infer an executor-ready package before editing, but soft uncertainty should not become a planning-only response.
 
 Do not require Sergey to manually write atomic task fields. Goal Mode removes user-facing bureaucracy, not execution safety.
 
 ## Default workflow
 
 ```text
-Inspect → Plan → Implement → Test → Review → Report
+Inspect → Scope → Implement → Test → Review → Report
 ```
 
 For long tasks, use:
