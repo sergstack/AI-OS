@@ -50,11 +50,14 @@ Run before opening or merging documentation/configuration PRs:
 ```bash
 python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
+python3 scripts/check_codex_goal_mode_defaults.py
 python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
 ```
 
 The public safety scan also checks for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
+
+The Codex Goal Mode scan reports every remaining atomic-task-package wording in Codex-facing files and fails if any wording implies atomic task packages are required by default.
 
 The manifest/path consistency scan checks that `MANIFEST.json` paths exist, upload guide paths use canonical repo paths, project registry paths match actual folders, and legacy path variants stay blocked.
 

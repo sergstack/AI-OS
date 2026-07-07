@@ -29,7 +29,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 
 Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI-OS, LLM, Analytics, or Codex infer safe execution details.
 
-Goal Packs are not atomic task packages. Codex still compiles internal scope, checks, rollback, and acceptance criteria before editing.
+In default Goal Mode, Goal Packs are not atomic task packages. Codex still compiles internal scope, checks, rollback, and acceptance criteria before editing.
 
 ### Active packs
 

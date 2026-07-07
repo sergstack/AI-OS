@@ -2,7 +2,7 @@
 
 Goal Packs are reusable workflows for broad goals. They help Sergey start from intent while AI-OS, LLM, Analytics, or Codex infer the safe execution details.
 
-Goal Packs are not atomic task packages. Codex still compiles internal scope, checks, rollback, and acceptance criteria before editing.
+In default Goal Mode, Goal Packs are not atomic task packages. Codex still compiles internal scope, checks, rollback, and acceptance criteria before editing.
 
 ## Active Packs
 

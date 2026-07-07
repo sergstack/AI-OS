@@ -10,7 +10,7 @@ GOAL -> inspect repo -> infer bounded safe scope -> branch -> implement smallest
 
 ## User Interface
 
-The user gives a broad goal, not an atomic task package.
+In default Goal Mode, the user gives a broad goal, not an atomic task package.
 
 Router, AI OS, LLM, or Codex may turn that goal into a route, scope, execution plan, checks, rollback path, and acceptance criteria. Codex keeps that execution package internal unless strict mode is requested, the task spans independent releases, or risk requires explicit review.
 

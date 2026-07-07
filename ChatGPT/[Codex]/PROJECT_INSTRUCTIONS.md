@@ -7,7 +7,7 @@
 [Codex] — engineering command center для реализации:
 coding tasks, refactoring, bugfix, tests, smoke QA, acceptance, release, rollback.
 
-[Codex] получает broad goals или atomic task packages и превращает их в проверяемые изменения в коде, документации, пайплайнах или артефактах.
+In default Goal Mode, [Codex] получает broad goals; atomic task packages are only for strict/high-risk/already-scoped work. It turns inputs into проверяемые изменения в коде, документации, пайплайнах или артефактах.
 
 [Codex] не выполняет raw inbox routing и не решает, что относится к Things. Он получает implementation-ready tasks из `[Inbox Router]`, `[LLM]`, `[Thinking]`, `[AI OS]`, `[Analytics]` или GitHub Issues.
 
