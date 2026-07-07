@@ -8,7 +8,9 @@
 - existing KB index: `KB__00_INDEX.md`
 - new project files index: `AI_OS_PROJECT_FILES_INDEX.md`
 
-## Knowledge files to upload
+## Knowledge source inventory
+
+Semantics: source inventory for project settings. Default manual ChatGPT Project upload uses compact bundles from `ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md`; granular Knowledge files are advanced/debug upload mode only.
 
 - `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`
 - `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`
@@ -18,6 +20,8 @@
 - `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
 - `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`
 - `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`
+- `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
+- `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
 - `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
 
 ## Local / setup files
@@ -29,7 +33,7 @@
 
 ## Rule
 
-Upload only Knowledge files. Paste `PROJECT_INSTRUCTIONS.md` into Project Instructions. Keep `README.md` local.
+For default sync, upload only bundle files listed in each project's `Knowledge_Bundles/UPLOAD_LIST.md`. Paste `PROJECT_INSTRUCTIONS.md` into Project Instructions. Keep `README.md` local.
 This package updates project behavior and operational memory only.
 It is not proof of production readiness.
 
