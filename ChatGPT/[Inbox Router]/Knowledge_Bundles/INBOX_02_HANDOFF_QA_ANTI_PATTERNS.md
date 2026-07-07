@@ -6,8 +6,8 @@ Compact upload artifact for [Inbox Router] covering handoff qa anti patterns.
 
 ## Source files
 
-- `ChatGPT/[Inbox Router]/Knowledge/ROUTER_HANDOFF_PROTOCOL.md`
-- `ChatGPT/[Inbox Router]/Knowledge/ROUTER_SMOKE_QA.md`
+- `ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md`
+- `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`
 - `ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md`
 
 ## Upload target
@@ -24,45 +24,49 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 
 # Content
 
-## From: `ChatGPT/[Inbox Router]/Knowledge/ROUTER_HANDOFF_PROTOCOL.md`
+## From: `ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md`
 
-# Router Handoff Protocol
-Use handoff when the destination is another project and the Router should package
-# Handoff
-## Project-Specific Notes
-### To `[AI OS]`
-Use for evidence / pattern / governance check. Include the AI concept, use case,
-### To `[Thinking]`
-### To `[Analytics]`
-verification needs. Do not calculate in Router.
-### To `[LLM]`
-Use for prompt / workflow / model routing / eval. Include the target user,
-### To `[Codex]`
-- context;
-- objective;
-- inputs;
-- files to inspect;
-- files allowed to modify;
-- forbidden actions;
-- expected outputs;
-- acceptance criteria;
-- tests / smoke checks;
-- rollback plan.
-## Boundary
+# Inbox Router Handoff Protocol
+Use this format when the destination is an AI-OS project.
+```text
+Destination:
+Task type:
+Objective:
+Context:
+Inputs:
+Constraints:
+Expected output:
+Acceptance criteria:
+Risks:
+Evidence / confidence:
+Open questions:
+```
+## Destination notes
+- `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
+- `[Thinking]` — strategy, decisions, assumptions, risks, options.
+- `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
+- `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
+- `[Codex]` — implementation-ready tasks, code review, tests, release handoff.
+## Codex handoff minimum
+For `[Codex]`, include objective, repo, files to inspect, files allowed to modify, forbidden actions, checks, acceptance criteria, and rollback plan.
 
 
-## From: `ChatGPT/[Inbox Router]/Knowledge/ROUTER_SMOKE_QA.md`
+## From: `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`
 
-# Router Smoke QA
-- Router does not solve the task.
-- Router chooses a destination.
-- Router asks clarification only when destination is unclear.
-- Router gives one next step.
-- Router uses handoff when target project work is required.
-| # | Raw input | Expected classification | Expected destination | Expected next action or handoff | Pass criteria |
-| 4 | Хочу разобраться с AI agents | AI concept / AI pattern | `[AI OS]` | Передача в AI OS для разбора концепта, use cases, evidence и governance. | Не объясняет agents внутри Router. |
-| 8 | Написать Codex задачу на refactor | code / implementation | `[Codex]` | Пакет передачи в Codex для refactor task. | Требует allowed files, forbidden actions и tests. |
-| 14 | Нужно найти supported pattern в AI OS KB | AI concept / AI pattern | `[AI OS]` | Передача в AI OS для KB evidence check. | Требует evidence status из `[AI OS]`. |
+# Smoke QA For Inbox Router
+Run these tests after updating the ChatGPT Project.
+| # | Input | Expected result |
+|---:|---|---|
+| 1 | Надо разобраться с налогами | Things task with title, area, next action, and no fake deadline. |
+| 2 | Нашёл новую AI-фичу, хочу понять, полезна ли она мне | Handoff to `[AI OS]`, not Things-only. |
+| 3 | Стоит ли мне покупать mini PC или Raspberry Pi для self-hosted app? | Handoff to `[Thinking]` or decision framing, not Codex. |
+| 4 | Нужно посчитать экономию от автоматизации отчёта | Handoff to `[Analytics]` with metrics, period, and inputs. |
+| 5 | Нужно поправить скрипт и добавить тесты | Handoff to `[Codex]` with objective, allowed files, checks, and acceptance criteria. |
+## Pass condition
+- Raw or unclear input routes to `[Inbox Router]` first.
+- Things outputs use the Things schema.
+- Project work uses the handoff schema.
+- Router does not deeply solve, calculate, implement, or create production workflows.
 
 
 ## From: `ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md`
