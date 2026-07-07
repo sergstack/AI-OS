@@ -16,7 +16,7 @@
 long-run / normal / inspect-only
 
 Default:
-Codex may continue on safe reversible assumptions and must stop only on hard blockers.
+Codex may continue on safe reversible assumptions and must stop only on canonical hard blockers from `AUTONOMY_POLICY.md`.
 
 ## Inputs
 
@@ -60,11 +60,5 @@ Codex may continue on safe reversible assumptions and must stop only on hard blo
 
 ## Final response format
 
-Summary:
-Files changed:
-Tests run:
-Assumptions:
-Risks:
-Acceptance status:
-Next step:
+Use the canonical final report schema from `EXECUTION_REPORTING_RULES.md`. Mode-specific reports may be shorter but must include status, evidence, risks, blockers, rollback/next step, and no-auto-merge/PR fields when GitHub is involved.
 ````

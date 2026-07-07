@@ -57,15 +57,7 @@ When preparing a strict task for the actual Codex application, make it compatibl
 
 Continue autonomously when the goal is clear, scope is bounded, changes are local/reversible, acceptance criteria do not conflict, and validation is possible. For safe uncertainty, make the safest assumption, continue, and log it in the final report.
 
-Stop and report a blocker when work requires or may cause:
-- secrets, tokens, `.env`, credentials, or access changes;
-- production/runtime/deploy/migration action without explicit approval and rollback;
-- business logic, metrics, formulas, financial controls, or governed KB changes without approval;
-- schemas, APIs, output contracts, file formats, or column names/order changes without approval;
-- destructive operations;
-- conflicting acceptance criteria;
-- no possible validation, even a smoke check;
-- any governance violation.
+Stop on the canonical hard blockers in `Knowledge/AUTONOMY_POLICY.md`: unapproved real provider/API execution, sensitive value exposure, source mutation/Safe Apply, production/runtime/deploy/migration, destructive operations, unapproved schema/API/output contract/file format/column order/business logic/metric/formula/financial-control changes, governed KB changes without evidence/acceptance, conflicting acceptance criteria, no validation path, or governance boundary violation.
 
 Provider/API safeguard: sensitive values block real provider/API execution, not local scaffold, dry-run, no-network, preflight, config-name checks, presence/non-empty checks without printing values, mock tests, or docs. Real calls, source mutation, Safe Apply, production/runtime/deploy, batch expansion, and schema/metric/formula/provider-routing/output-contract changes require explicit bounded approval. Local configuration presence is not approval.
 

@@ -30,10 +30,4 @@ inspect-only / docs-only / repo-hygiene / implementation / test-qa / release
 
 ## Final response format
 
-Summary:
-Files changed:
-Checks run:
-Assumptions:
-Risks / limitations:
-Acceptance status:
-Next step:
+Use the canonical Codex final report schema from `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`. Mode-specific reports may be shorter but must not conflict.

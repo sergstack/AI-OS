@@ -56,17 +56,22 @@ After finishing, report:
 
 ## Output Contract
 
-Codex should end every run with:
+Codex should end every run with the canonical Codex final report schema:
 
 ```text
 Summary:
 Issue:
 Branch:
-PR:
+Files inspected:
 Files changed:
-Checks run:
-Result:
+Commands run:
+Test results:
+Evidence / artifacts:
+Assumptions:
+Blockers:
 Risks:
-Human review needed:
-Do not merge automatically.
+Rollback:
+PR:
+Acceptance status:
+No auto-merge:
 ```

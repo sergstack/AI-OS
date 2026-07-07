@@ -28,16 +28,7 @@ Examples:
 
 ### hard_blocker
 
-Stop when the issue creates governance, safety, or validation risk.
-
-Examples:
-
-- secrets, tokens, credentials, or `.env` values are needed;
-- production deploy or runtime mutation is required;
-- schema, API, output contract, business logic, metric, formula, or column name may change;
-- governed KB content outside allowed scope would change;
-- destructive file operation is required;
-- no possible validation exists.
+Stop when the issue creates governance, safety, or validation risk. Use the canonical hard-blocker list in `AUTONOMY_POLICY.md`; do not maintain a competing list here.
 
 ## Common failures
 

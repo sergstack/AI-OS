@@ -129,16 +129,7 @@ Do not enter infinite test/fix loops.
 
 ## Hard stop conditions
 
-Stop and report blocker if any of these appear:
-
-- secrets, tokens, credentials, private keys, or `.env` values are needed;
-- destructive filesystem action is required;
-- production, runtime, deploy, migration, or remote mutation is required;
-- business logic, formulas, schemas, APIs, output contracts, column names, or metric definitions may change without approval;
-- governed KB content outside allowed scope would change;
-- dependencies, MCP/tools, background automation, or internet-enabled execution are required without explicit approval;
-- no meaningful validation is possible;
-- acceptance criteria conflict.
+Stop on the canonical Codex hard blockers in `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`. Ultra-long mode also stops when dependencies, MCP/tools, background automation, or internet-enabled execution are required without explicit approval.
 
 ## Multi-agent / parallel work
 
@@ -160,24 +151,7 @@ Not allowed by default:
 
 ## Final report
 
-Every ultra-long run must end with:
-
-```text
-Summary:
-Mode:
-Autonomy profile:
-Branch:
-Batches completed:
-Current checkpoint:
-Remaining batches:
-Files changed:
-Tests/checks run:
-Assumptions:
-Risks/limitations:
-Rollback:
-Acceptance status: pass / partial / fail / blocked
-Next safe action:
-```
+Every ultra-long run must use the canonical Codex final report schema from `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`. Add these ultra-long fields when relevant: Mode, Autonomy profile, Batches completed, Current checkpoint, Remaining batches, and Next safe action.
 
 Do not claim `pass` unless checks were actually run and observed.
 

@@ -96,19 +96,4 @@ git diff --check
 
 ## Final response format
 
-```text
-Summary:
-Mode:
-Autonomy profile:
-Branch:
-Batches completed:
-Current checkpoint:
-Remaining batches:
-Files changed:
-Tests/checks run:
-Assumptions:
-Risks/limitations:
-Rollback:
-Acceptance status: pass / partial / fail / blocked
-Next safe action:
-```
+Use the canonical Codex final report schema from `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`. Also include ultra-long fields when relevant: Mode, Autonomy profile, Batches completed, Current checkpoint, Remaining batches, and Next safe action.

@@ -42,13 +42,18 @@ Define when Codex should continue autonomously and when it must stop.
 - using the smallest docs-only smoke checks when no unit tests apply;
 - preserving existing wording and structure unless the task requires an addition.
 ## Stop conditions
-- secrets, tokens, credentials, or `.env` values are needed;
-- production, runtime, deploy, migration, or remote destructive action is involved;
-- business logic, formulas, schemas, APIs, output contracts, or column names may change;
-- a destructive file operation is required;
-- acceptance criteria conflict;
-- governed KB content outside the allowed scope would need to change;
-- no meaningful validation is possible.
+Canonical hard blockers. Stop and report a blocker when work requires or may cause:
+- missing required approval for real provider/API execution;
+- sensitive configuration value exposure risk;
+- source workbook mutation or Safe Apply without approval;
+- production/runtime/deploy/migration without explicit approval and rollback;
+- destructive operations;
+- schema, API, output contract, file format, or column order changes without approval;
+- business logic, metrics, formulas, or financial controls without approval;
+- governed KB change without required evidence/acceptance;
+- conflicting acceptance criteria;
+- no meaningful validation path;
+- governance boundary violation.
 ## Provider/API safeguards
 Sensitive configuration values are hard blockers for real provider/API execution, not for local implementation scaffolding.
 Allowed without additional approval:
@@ -77,7 +82,7 @@ If the same check still fails, stop changing files and report:
 - residual risk;
 - acceptance status.
 ## Final report requirement
-Every final report must list assumptions, checks run, residual risks, rollback path, and acceptance status. Assumptions must be marked as assumptions, not facts.
+Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`. Assumptions must be marked as assumptions, not facts.
 
 
 ## From: `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`
@@ -149,15 +154,24 @@ safe_next_step:
 files_inspected:
 ```
 ## Final response format
+Canonical final report schema:
 ```text
 Summary:
+Branch:
+Files inspected:
 Files changed:
-Tests/checks run:
+Commands run:
+Test results:
+Evidence / artifacts:
 Assumptions:
-Risks/limitations:
-Acceptance status: pass / fail / blocked
-Next step:
+Blockers:
+Risks:
+Rollback:
+PR:
+Acceptance status:
+No auto-merge:
 ```
+Mode-specific reports may be shorter, but they must not conflict with this schema.
 
 
 ## From: `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`
@@ -175,12 +189,7 @@ Next step:
 - changed task contract wording;
 - changed checklist acceptance language.
 ### hard_blocker
-- secrets, tokens, credentials, or `.env` values are needed;
-- production deploy or runtime mutation is required;
-- schema, API, output contract, business logic, metric, formula, or column name may change;
-- governed KB content outside allowed scope would change;
-- destructive file operation is required;
-- no possible validation exists.
+Stop when the issue creates governance, safety, or validation risk. Use the canonical hard-blocker list in `AUTONOMY_POLICY.md`; do not maintain a competing list here.
 ## Common failures
 - Scope creep.
 - Broad refactor instead of task.
