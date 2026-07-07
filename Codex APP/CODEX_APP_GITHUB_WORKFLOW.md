@@ -19,7 +19,7 @@ Define safe branch / PR workflow for Codex.
 
 - Never work directly on `main` unless explicitly instructed.
 - Prefer small branches.
-- One branch = one atomic task.
+- One branch = one bounded issue, task, or Goal Mode change.
 - PR must explain tests, risks and rollback.
 - Do not mix docs, code, data schema and business logic changes in one PR.
 
