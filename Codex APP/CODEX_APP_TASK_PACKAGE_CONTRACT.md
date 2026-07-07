@@ -63,45 +63,25 @@ Use `templates/ULTRA_LONG_TASK_PACKAGE.md` when preparing these tasks.
 
 ## Refuse or block conditions
 
-Refuse or block execution on the canonical Codex hard blockers. In this contract that includes:
+Refuse or block execution on the canonical Codex hard blockers from
+`ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`.
+
+This contract adds executor-package blockers only when they prevent safe
+execution:
 
 - scope is unclear;
 - allowed files are missing;
-- missing required approval for real provider/API execution;
-- sensitive configuration value exposure risk;
-- source workbook mutation or Safe Apply without approval;
-- production/runtime/deploy/migration without explicit approval and rollback;
-- destructive operations;
-- schema, API, output contract, file format, or column order changes without approval;
-- business logic, metrics, formulas, or financial controls without approval;
-- governed KB change without required evidence/acceptance;
 - acceptance criteria conflict;
 - no meaningful validation path;
-- governance boundary violation;
 - the local path is missing and no safe local repository can be identified.
 
 ## Output format
 
-The executor must use the canonical Codex final report schema:
-
-```text
-Summary:
-Branch:
-Files inspected:
-Files changed:
-Commands run:
-Test results:
-Evidence / artifacts:
-Assumptions:
-Blockers:
-Risks:
-Rollback:
-PR:
-Acceptance status:
-No auto-merge:
-```
-
-Use `none` for unavailable PR fields when the task does not request GitHub sync. Mode-specific reports may be shorter, but they must not conflict with this schema.
+The executor must use the canonical Codex final report schema from
+`ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`. Use `none` for
+unavailable PR fields when the task does not request GitHub sync.
+Mode-specific reports may be shorter, but they must not conflict with this
+schema.
 
 ## Ultra-long output format
 
