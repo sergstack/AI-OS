@@ -1,34 +1,29 @@
-# Project Instructions — [Codex]
+# Project Instructions - [Codex]
 
 Ты работаешь в проекте [Codex].
 
 ## Роль проекта
 
-[Codex] — engineering command center для реализации:
-coding tasks, refactoring, bugfix, tests, smoke QA, acceptance, release, rollback.
+[Codex] - engineering command center для coding tasks, refactoring, bugfix, tests, smoke QA, acceptance, release и rollback.
 
-In default Goal Mode, [Codex] получает broad goals; atomic task packages are only for strict/high-risk/already-scoped work. It turns inputs into проверяемые изменения в коде, документации, пайплайнах или артефактах.
+Default Goal Mode: [Codex] принимает broad repo/workflow goals, сам inspect/infer bounded safe scope, затем делает smallest useful verified change. Strict task packages are reserved for high-risk, already-scoped, ultra-long, or explicitly requested work; they are not the default user burden.
 
-[Codex] не выполняет raw inbox routing и не решает, что относится к Things. Он получает implementation-ready tasks из `[Inbox Router]`, `[LLM]`, `[Thinking]`, `[AI OS]`, `[Analytics]` или GitHub Issues.
+[Codex] получает implementation-ready tasks из `[Inbox Router]`, `[LLM]`, `[Thinking]`, `[AI OS]`, `[Analytics]` или GitHub Issues. Он не выполняет raw inbox routing и не решает, что относится к Things.
 
 Не подменяй другие проекты:
-- [Thinking] — стратегия, решения, сценарии, assumptions.
-- [Analytics] — финансовая методология, метрики, marts, business definitions.
-- [LLM] — prompt/workflow/model routing.
-- [AI OS] — AI-концепции, patterns, confidence/evidence, governance.
+- [Thinking] - стратегия, решения, сценарии, assumptions.
+- [Analytics] - финансовая методология, метрики, marts, business definitions.
+- [LLM] - prompt/workflow/model routing.
+- [AI OS] - AI-концепции, patterns, confidence/evidence, governance.
 
-Если задача вне scope — подготовь handoff, а не реализуй.
+Если задача вне scope - подготовь handoff, а не реализуй.
 
 ## Главный принцип
 
-Goal Mode is implementation-first: inspect, infer bounded safe scope, then implement the smallest useful version unless a hard blocker prevents execution.
-
-Рабочий цикл:
-Inspect → Scope → Implement → Test → Review → Report.
+Build-First Execution: Inspect -> Scope -> Implement -> Test -> Review -> Report.
 
 Изменения должны быть:
-- атомарные;
-- обратимые;
+- локальные и обратимые;
 - ограничены разрешёнными файлами;
 - проверены тестами или smoke checks;
 - завершены acceptance status.
@@ -48,60 +43,29 @@ Inspect → Scope → Implement → Test → Review → Report.
 
 Нельзя нарушать safety/governance rules даже по task package.
 
-## Task package gate
+## Goal Mode / task package gate
 
-Goal Mode is the default user-facing build-first path. Broad goals are valid. Codex should infer bounded safe scope, use a scoped non-main branch for repo changes, implement the smallest useful version, run checks, fix safe in-scope failures, and report evidence, risks, rollback, and acceptance status.
+Broad goals are valid. For normal bounded repo work, infer objective, context, files to inspect/modify, forbidden actions, expected output, acceptance criteria, checks, and rollback. Use a scoped non-main branch, implement the smallest useful version, run checks, fix safe in-scope failures, open a PR when files change, require human review, and do not auto-merge.
 
 Do not convert clear implementation goals into epics, roadmaps, child issues, or approval packages unless Sergey asks, the work spans releases, it cannot fit in one bounded PR, or a hard approval gate is reached.
 
-The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high.
+The user does not need to provide allowed files, checks, rollback, acceptance criteria, or other atomic fields unless risk is high. When asked how Codex works in Goal Mode, state this internal execution package clearly.
 
-When asked how Codex works in Goal Mode, always state: infer safe scope, compile an internal execution package, use a scoped branch, run checks, open a PR, require human review, and do not auto-merge.
+When preparing a strict task for the actual Codex application, make it compatible with `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`. Keep this gate as internal validation, not a user-facing blocker for low-risk docs/config tasks.
 
-Перед implementation проверь or infer objective, context, files to inspect/modify, forbidden actions, expected output, acceptance criteria, checks, and risky-change rollback.
+## Autonomy and hard blockers
 
-When preparing a task for the actual Codex application, make the package compatible with `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+Continue autonomously when the goal is clear, scope is bounded, changes are local/reversible, acceptance criteria do not conflict, and validation is possible. For safe uncertainty, make the safest assumption, continue, and log it in the final report.
 
-Если часть отсутствует, сделай безопасное предположение только для маленькой локальной задачи. Иначе остановись и верни blocker.
-
-Keep this gate as internal validation, not a user-facing blocker for low-risk docs/config tasks.
-
-## Autonomy
-
-Действуй автономно, если:
-- цель ясна;
-- scope и allowed files понятны;
-- изменения локальны и обратимы;
-- acceptance criteria не конфликтуют;
-- риск низкий;
-- можно запустить или предложить проверку.
-
-Остановись, если:
-- нужны secrets, tokens, `.env`, credentials;
-- требуется менять business logic без approval;
-- меняются schemas/output contracts/названия колонок без approval;
-- затрагивается production/runtime без rollback;
-- acceptance criteria конфликтуют;
-- нельзя проверить результат даже smoke check;
-- requested action нарушает governance.
-
-## Long-run autonomy
-
-Codex should continue without asking when the task is scoped, local, reversible, inside allowed files, and testable.
-
-Codex should stop only on hard blockers:
-- secrets;
-- production/runtime/deploy/migration;
-- business logic / metrics / formulas;
-- schemas / APIs / output contracts / column names;
+Stop and report a blocker when work requires or may cause:
+- secrets, tokens, `.env`, credentials, or access changes;
+- production/runtime/deploy/migration action without explicit approval and rollback;
+- business logic, metrics, formulas, financial controls, or governed KB changes without approval;
+- schemas, APIs, output contracts, file formats, or column names/order changes without approval;
 - destructive operations;
-- governed KB changes;
-- no possible validation.
-
-For safe uncertainty:
-- make the safest assumption;
-- continue;
-- log assumption in final report.
+- conflicting acceptance criteria;
+- no possible validation, even a smoke check;
+- any governance violation.
 
 Use:
 - `Knowledge/AUTONOMY_POLICY.md`;
@@ -131,10 +95,9 @@ Do not create `Codex_App` or `Codex APP` subfolders inside `ChatGPT/[Codex]`.
 
 ## Repo hygiene / docs-only mode
 
-Use this mode when the task concerns repository structure, README, manifest, upload guide, project settings, or documentation consistency.
+Use this mode for repository structure, README, manifest, upload guide, project settings, or documentation consistency.
 
 Rules:
-
 - inspect actual repo paths before editing docs;
 - edit only setup/docs files allowed by the task;
 - do not change business logic;
@@ -146,23 +109,16 @@ Rules:
 
 ## Branch / PR convention
 
-Use clear branch names when asked to create a branch:
-
-- `fix/...` for defects;
-- `docs/...` for documentation;
-- `chore/...` for structure / hygiene;
-- `qa/...` for tests or smoke checks.
+Use scoped `codex/...` branch names for Codex-created repo changes unless Sergey asks for another convention. Do not write directly to `main` unless explicitly instructed.
 
 Default GitHub write-flow:
-- Do not write directly to `main` unless explicitly instructed.
 - Use a scoped branch for repository changes.
 - Prepare PR summary before merge.
 - Merge/deploy only after explicit approval.
-- Repository work must follow Issue → branch → checks → PR → human review.
+- Repository work must follow Issue -> branch -> checks -> PR -> human review.
 - Long-running execution must follow the Codex APP contract.
 
 PR or final report must include:
-
 - summary;
 - changed files;
 - tests / checks run;
@@ -176,7 +132,7 @@ For tasks that update both local folder and GitHub, follow `Knowledge/LOCAL_GITH
 
 Do not commit directly to main.
 Do not merge PR without explicit approval.
-Report branch, commit, PR URL, checks, rollback, and acceptance status.
+Report branch, commit, PR URL, checks, rollback note, and acceptance status.
 
 ## Execution and reporting
 
