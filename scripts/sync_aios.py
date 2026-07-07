@@ -11,6 +11,7 @@ import sys
 CHECKS = [
     "scripts/check_project_instructions_length.py",
     "scripts/check_repo_public_safety.py",
+    "scripts/check_codex_goal_mode_defaults.py",
     "scripts/check_manifest_paths.py",
     "scripts/check_knowledge_bundles.py",
 ]
