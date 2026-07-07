@@ -12,6 +12,9 @@ Expected behavior:
 Actual behavior:
 Evidence:
 Checks run:
+Questions asked:
+| Question text | Hard blocker? | Instruction gap | Change made / issue |
+|---|---|---|---|
 Pass / fail:
 Confidence:
 Risks / limitations:

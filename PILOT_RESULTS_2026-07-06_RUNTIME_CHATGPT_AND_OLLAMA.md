@@ -12,6 +12,18 @@ Method: live ChatGPT Project smoke prompts were sent through the in-app browser.
 
 Limitation: live ChatGPT chat URLs are private browser state and are not committed to this public repository. Results below summarize observed behavior.
 
+## Questions Asked Metric
+
+Target: approximately 0 questions from the agent for reversible in-scope work.
+
+| Pilot scope | Questions asked by agent | Hard blocker? | Instruction gap | Change made / issue |
+|---|---:|---|---|---|
+| Live ChatGPT Project smoke QA + Ollama/Open WebUI pilot | 0 | no | none observed | none |
+
+Interpretation: this pilot run did not expose an ask-less instruction gap. Future
+pilot results should record any agent question here, classify whether it was a
+true hard blocker, and link the resulting instruction update or issue.
+
 ## Live ChatGPT Project Smoke QA
 
 ### `[AI OS]`
