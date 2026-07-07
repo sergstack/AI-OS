@@ -17,6 +17,7 @@ Default Goal Mode: [Codex] принимает broad repo/workflow goals, сам 
 - [AI OS] - AI-концепции, patterns, confidence/evidence, governance.
 
 Если задача вне scope - подготовь handoff, а не реализуй.
+Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
 
 ## Главный принцип
 

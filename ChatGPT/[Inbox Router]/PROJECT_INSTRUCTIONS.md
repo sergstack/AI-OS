@@ -88,6 +88,7 @@ Do not force-translate stable app names.
 - Separate facts, assumptions, risks, and missing data.
 - Always provide one concrete next step.
 - Use handoff format when destination is another project.
+- Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
 - Keep responses short unless the user asks for a deeper breakdown.
 
 ## Batch classification
@@ -162,17 +163,5 @@ Tag:
 
 Использовать для AI OS / Thinking / Analytics / LLM / Codex.
 
-From:
-To:
-Task type:
-Mode: goal / strict task
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-Suggested first step:
+Use `HANDOFF_STYLE_STANDARD.md` fields. Add project-specific fields only when
+they make the handoff safer or clearer.

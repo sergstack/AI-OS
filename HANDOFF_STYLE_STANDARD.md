@@ -4,27 +4,34 @@
 
 Shared style for handoffs between ChatGPT project folders and Codex APP.
 
-Use this as wording guidance. It is not runtime automation and does not replace the source files owned by each project.
+Use this as the canonical handoff field set for project-to-project handoffs.
+It is not runtime automation and does not replace the source files owned by
+each project.
 
 ## Default Style
 
 Handoffs should be compact, scoped, and reviewable.
 
 ```text
-Handoff to:
-Goal:
+From:
+To:
+Task type:
+Mode: goal / strict
+Objective:
 Context:
-Evidence / sources:
-Scope:
-Allowed changes:
-Forbidden changes:
+Inputs:
+Constraints:
 Expected output:
-Checks:
-Risks / limitations:
-Rollback:
-Acceptance status:
-Next step:
+Acceptance criteria:
+Risks:
+Evidence / confidence:
+Open questions:
+Suggested first step:
 ```
+
+Use `Mode: goal` for broad repo/workflow/project goals where the receiving
+project can infer bounded safe scope. Use `Mode: strict` for high-risk,
+already-scoped, ultra-long, or explicitly requested task packages.
 
 ## Project-Specific Additions
 
