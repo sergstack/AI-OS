@@ -23,11 +23,11 @@ Turn work from Thinking / Analytics / LLM into an implementation-ready task.
 ## Final response format
 ```
 
-For Codex App, Codex Web, Codex CLI, or IDE execution, align the package with `../../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
+For Codex App, Codex Web, Codex CLI, or IDE execution, align the package with the repo-root file `Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`.
 
 For local + GitHub tasks, include branch, PR, and cleanup expectations from `LOCAL_GITHUB_SYNC_WORKFLOW.md`.
 
-For real working repositories, start root agent instructions from `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md`.
+For real working repositories, start root agent instructions from the repo-root file `Codex APP/CODEX_APP_AGENTS_TEMPLATE.md`.
 
 ## Folder boundary
 

@@ -120,16 +120,14 @@ Do not claim `pass` unless checks were actually run and observed.
 
 ## Smoke test
 
-Before execution, verify:
+Before execution, inspect the task package and confirm:
 
-```bash
-test -n "$objective"
-test -n "$repo"
-test -n "$local_path"
-test -n "$branch"
-test -n "$acceptance_criteria"
-test -n "$rollback_plan"
-```
+- objective is present or safely inferable;
+- repository/local path is present or safely inferable;
+- branch expectation is clear when GitHub sync is required;
+- acceptance criteria are present or safely inferable;
+- rollback or safe restore path is present;
+- missing fields are logged when inferred.
 
 For markdown task packages, inspect the text and confirm the required field headings are present. If a field is absent, continue only for small, local, reversible tasks where the missing field can be safely inferred and logged.
 

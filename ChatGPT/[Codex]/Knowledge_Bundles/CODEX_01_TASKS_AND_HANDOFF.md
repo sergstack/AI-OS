@@ -87,7 +87,7 @@ Use the canonical final report schema from `EXECUTION_REPORTING_RULES.md`. Mode-
 ## Rollback plan
 ## Final response format
 ```
-For real working repositories, start root agent instructions from `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md`.
+For real working repositories, start root agent instructions from the repo-root file `Codex APP/CODEX_APP_AGENTS_TEMPLATE.md`.
 ## Folder boundary
 This file prepares handoff from ChatGPT `[Codex]` to the executor layer.
 Executor-layer assets must be referenced from the top-level `Codex APP/` folder, not stored inside `ChatGPT/[Codex]`.
