@@ -1,7 +1,7 @@
 # [LLM] Project Status
 
 status: minor fix
-last_reviewed: 2026-05-25
+last_reviewed: 2026-07-07
 current score: 8.6/10
 
 ## Files present
@@ -25,6 +25,14 @@ current score: 8.6/10
 - `Knowledge/CHART_COMMENTARY_STANDARD.md`
 - `Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`
 - `Knowledge/SLIDE_STORYLINE_TEMPLATE.md`
+- `Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`
+- `Knowledge/CONTEXT_INTAKE_CHECKLIST.md`
+- `Knowledge/CTC_PROMPT_STANDARD.md`
+- `Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
+- `Knowledge/LOCAL_AI_EXPERIMENT_PLAYBOOK.md`
+- `Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md`
+- `Knowledge/LOCAL_MODEL_EVAL_MATRIX.md`
+- `Knowledge/OLLAMA_OPENWEBUI_PILOT.md`
 - `Knowledge/MODEL_ROUTING.md`
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
