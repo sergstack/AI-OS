@@ -43,7 +43,7 @@ A good handoff is:
 - file-specific;
 - clear about forbidden actions;
 - clear about acceptance.
-- explicit about autonomy mode and hard blockers.
+- explicit about autonomy mode and canonical hard blockers from `AUTONOMY_POLICY.md`.
 
 ## Bad handoff
 

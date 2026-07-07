@@ -17,7 +17,7 @@ Sergey may start with a broad goal in ChatGPT. Goal Mode is build-first: the pro
 
 `Codex APP` must preserve execution safety. Before editing, it should confirm the objective, repo, branch, allowed scope, forbidden actions, checks, rollback, and final response format.
 
-For small, local, reversible tasks, `Codex APP` may safely infer missing fields and report what was inferred. Do not convert soft uncertainty into a roadmap, epic, child issue tree, or approval package. For unclear, high-risk, production, destructive, secret-related, schema/metric/formula/provider-routing/output-contract, or governed-KB tasks, stop and report a blocker.
+For small, local, reversible tasks, `Codex APP` may safely infer missing fields and report what was inferred. Do not convert soft uncertainty into a roadmap, epic, child issue tree, or approval package. For unclear or high-risk work, stop on the canonical Codex hard blockers from `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`.
 
 ## Required input fields
 
@@ -63,38 +63,45 @@ Use `templates/ULTRA_LONG_TASK_PACKAGE.md` when preparing these tasks.
 
 ## Refuse or block conditions
 
-Refuse or block execution when:
+Refuse or block execution on the canonical Codex hard blockers. In this contract that includes:
 
 - scope is unclear;
 - allowed files are missing;
-- secrets, tokens, credentials, or `.env` values are required;
-- production deploy, runtime mutation, migration, or destructive filesystem action is required without explicit approval;
-- business logic, formulas, schemas, APIs, output contracts, or column names may change without explicit approval;
-- governed KB content outside the allowed scope must change;
+- missing required approval for real provider/API execution;
+- sensitive configuration value exposure risk;
+- source workbook mutation or Safe Apply without approval;
+- production/runtime/deploy/migration without explicit approval and rollback;
+- destructive operations;
+- schema, API, output contract, file format, or column order changes without approval;
+- business logic, metrics, formulas, or financial controls without approval;
+- governed KB change without required evidence/acceptance;
 - acceptance criteria conflict;
-- no meaningful validation is possible;
+- no meaningful validation path;
+- governance boundary violation;
 - the local path is missing and no safe local repository can be identified.
 
 ## Output format
 
-The executor must report:
+The executor must use the canonical Codex final report schema:
 
 ```text
 Summary:
-Files changed:
-Local path:
 Branch:
-Commit:
-PR URL:
-Tests/checks run:
+Files inspected:
+Files changed:
+Commands run:
+Test results:
+Evidence / artifacts:
 Assumptions:
-Risks/limitations:
+Blockers:
+Risks:
 Rollback:
+PR:
 Acceptance status:
-Next step:
+No auto-merge:
 ```
 
-Use `none` for unavailable commit or PR fields when the task does not request GitHub sync.
+Use `none` for unavailable PR fields when the task does not request GitHub sync. Mode-specific reports may be shorter, but they must not conflict with this schema.
 
 ## Ultra-long output format
 

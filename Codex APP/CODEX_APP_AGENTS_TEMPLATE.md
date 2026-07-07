@@ -87,15 +87,7 @@ For ultra-long tasks, also verify:
 
 ## Hard blockers
 
-Stop and report blocker when:
-
-- secrets or credentials are needed;
-- production/runtime/deploy/migration is involved;
-- schema/API/output contract/business logic may change;
-- destructive action is required;
-- no meaningful validation is possible;
-- acceptance criteria conflict;
-- allowed file scope is missing or conflicts with requested work.
+Stop on the canonical Codex hard blockers in `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`. This template adds one repository-template blocker: allowed file scope is missing or conflicts with requested work.
 
 ## Checkpoint discipline
 
@@ -131,16 +123,4 @@ find . -name "*.md" -type f | sort
 
 ## Final report
 
-```text
-Summary:
-Mode:
-Branch:
-Batches completed:
-Files changed:
-Tests/checks run:
-Assumptions:
-Risks/limitations:
-Rollback:
-Acceptance status: pass / partial / fail / blocked
-Next safe action:
-```
+Use the canonical Codex final report schema from `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`. For ultra-long work, also include Mode, Batches completed, Current checkpoint, Remaining batches, and Next safe action.

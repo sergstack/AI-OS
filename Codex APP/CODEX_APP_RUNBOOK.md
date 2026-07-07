@@ -50,18 +50,6 @@ Stop if:
 
 ## Final Report
 
-```text
-Summary:
-Files changed:
-Branch:
-Commit:
-PR URL:
-Checks run:
-Assumptions:
-Risks/limitations:
-Rollback:
-Acceptance status:
-Next step:
-```
+Use the canonical Codex final report schema from `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`; include commit and PR URL when GitHub sync is part of the task.
 
 For task-package requirements, use `CODEX_APP_TASK_PACKAGE_CONTRACT.md`.

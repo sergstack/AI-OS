@@ -111,7 +111,7 @@ git revert <commit_or_merge_sha>
 
 ## Hard blockers
 
-Stop if:
+These are local GitHub sync blockers in addition to the canonical hard blockers in `AUTONOMY_POLICY.md`. Stop if:
 
 - remote does not match expected repo;
 - local branch has unrelated dirty files;

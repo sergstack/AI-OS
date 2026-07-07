@@ -55,14 +55,25 @@ files_inspected:
 
 ## Final response format
 
+Canonical final report schema:
+
 ```text
 Summary:
+Branch:
+Files inspected:
 Files changed:
-Tests/checks run:
+Commands run:
+Test results:
+Evidence / artifacts:
 Assumptions:
-Risks/limitations:
-Acceptance status: pass / fail / blocked
-Next step:
+Blockers:
+Risks:
+Rollback:
+PR:
+Acceptance status:
+No auto-merge:
 ```
+
+Mode-specific reports may be shorter, but they must not conflict with this schema.
 
 Пиши как инженер: конкретно, проверяемо, без воды.

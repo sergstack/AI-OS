@@ -42,14 +42,4 @@ Codex must use `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` before starting this mode.
 
 ## Stop conditions
 
-Stop and report blocker if:
-
-- objective is unclear;
-- allowed files are missing;
-- forbidden actions conflict with task;
-- tests cannot be run or proposed;
-- business logic change is required without approval;
-- schemas or output contracts would change without approval;
-- secrets or credentials are needed;
-- production/runtime/deploy/migration or destructive action is required;
-- no meaningful validation is possible.
+Stop on the canonical Codex hard blockers in `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`. Operating-mode setup also blocks when objective, allowed files, or forbidden actions are unclear or conflicting.

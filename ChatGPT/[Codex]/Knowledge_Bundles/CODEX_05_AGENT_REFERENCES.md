@@ -44,25 +44,12 @@ Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects 
 9. Report clearly.
 ## Autonomy
 Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
-- secrets are needed;
-- production/runtime/deploy/migration is involved;
-- schema/API/output contract/business logic may change;
-- destructive action is required;
-- no meaningful validation is possible;
-- acceptance criteria conflict.
+Stop only on the canonical hard blockers in `AUTONOMY_POLICY.md`.
 ## Repository template
 For real working repositories, use `../../../Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
 ## Assumptions
 ## Final report
-```text
-Summary:
-Files changed:
-Tests run:
-Assumptions:
-Risks:
-Acceptance status:
-Next step:
-```
+Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-specific reports may be shorter but must not conflict.
 
 
 ## From: `ChatGPT/[Codex]/Knowledge/CLAUDE.md`
