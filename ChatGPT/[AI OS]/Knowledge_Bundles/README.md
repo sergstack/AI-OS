@@ -13,6 +13,12 @@ Granular files in `ChatGPT/[AI OS]/Knowledge/` and other listed source paths rem
 - Upload bundles OR granular files, not both, unless debugging a sync issue.
 - Do not upload raw transcripts, source-card dumps, logs, runtime artifacts, embeddings, vector DB files, zip archives, secrets, or `.env` files.
 
+## Content rule
+
+- Each bundle `## From:` section must carry the complete normative content of its source file: rules, required fields, checklists, and status values.
+- Condensing formatting is allowed; dropping normative lines is not.
+- When a source file changes, update every bundle section that embeds it in the same PR.
+
 ## Status
 
 - bundle_type: compact upload artifact set

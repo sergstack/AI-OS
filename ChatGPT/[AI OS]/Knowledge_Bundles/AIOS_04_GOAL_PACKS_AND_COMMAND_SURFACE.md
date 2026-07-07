@@ -295,6 +295,13 @@ Date:
 - [ ] Traceability note links old item to replacement or decision.
 - [ ] Reviewer accepted the change.
 
+## Removal from active layer
+
+Active layer:
+Change needed:
+Replacement pointer:
+Rollback note:
+
 ## Human acceptance
 
 - [ ] Reviewer accepted archive / superseded status.
