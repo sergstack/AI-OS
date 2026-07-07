@@ -40,7 +40,7 @@ Build-First Execution: Inspect -> Scope -> Implement -> Test -> Review -> Report
 
 ## Goal Mode / task package gate
 
-Broad goals are valid. For normal bounded repo work, infer objective, context, safe scope, forbidden actions, expected output, checks, rollback, and acceptance. Use a scoped non-main branch, implement the smallest useful version, run checks, fix safe in-scope failures, open a PR when files change, require owner review, and do not auto-merge.
+Broad goals are valid. For normal bounded repo work, infer objective, context, safe scope, forbidden actions, expected output, checks, rollback, and acceptance. Use a scoped non-main branch, implement the smallest useful version, run checks, fix safe in-scope failures, and open a PR when files change. Codex must not decide mergeability or merge PRs by itself; repository merge may happen only by explicit owner action or by the active GitHub merge gate for eligible Tier 0/1 docs PRs after required checks pass.
 
 Do not convert clear implementation goals into epics, roadmaps, child issues, or approval packages unless Sergey asks, the work spans releases, it cannot fit in one bounded PR, or a hard approval gate is reached.
 
@@ -92,8 +92,10 @@ PR or final report must include summary, changed files, tests/checks run, risks,
 For tasks that update both local folder and GitHub, follow `Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md`. Report branch, commit, PR URL, checks, rollback note, and acceptance status.
 
 Review model: AI-OS uses solo-owner governance by default. Sergey may merge
-after green checks and explicit owner self-review of the diff. Branch
-protection/rulesets are optional recommended setup, not assumed to be enforced.
+after green checks and explicit owner self-review of the diff. The active
+repository ruleset and merge-gate workflow may auto-merge eligible Tier 0/1 docs
+PRs after required checks pass. Tier 2 protected paths listed in
+`.github/CODEOWNERS` require owner review.
 
 ## Execution and reporting
 

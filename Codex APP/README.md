@@ -31,7 +31,11 @@ The canonical reusable standard is `Goal Mode Contract` in `GOAL_MODE.md`.
 Goal Mode is build-first. `ChatGPT/[Codex]`, `[LLM]`, or a Goal Mode GitHub issue should help Codex inspect relevant files, infer bounded safe scope, create or use a non-main branch, implement the smallest useful working version, run checks, fix in-scope failures when safe, and report evidence for owner review.
 
 AI-OS uses solo-owner governance by default: explicit owner self-review counts as
-human-owned review for this personal repository. No-auto-merge remains required.
+human-owned review for this personal repository.
+
+Codex APP must not decide mergeability or merge PRs by itself. The repository
+merge gate may auto-merge Tier 0/1 docs PRs after required checks pass. Tier 2
+protected paths require owner review through CODEOWNERS/ruleset protection.
 
 `Codex APP` is the executor layer. It should receive or safely infer an executor-ready package before editing, but soft uncertainty should not become a planning-only response.
 

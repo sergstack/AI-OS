@@ -139,7 +139,9 @@ Allowed:
 
 - split task into independent branches or batches;
 - assign each batch a clear file scope;
-- merge only after checks and owner diff review.
+- merge only after checks and the applicable merge path: owner diff review for
+  protected/high-risk paths, or repository merge gate for eligible Tier 0/1 docs
+  PRs.
 
 Not allowed by default:
 

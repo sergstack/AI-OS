@@ -15,7 +15,7 @@ This contract applies to the executor-ready package, not to Sergey’s initial r
 
 For normal bounded repo work, a task may reference `Goal Mode Contract` from
 `GOAL_MODE.md` instead of repeating the full autonomy, execution, forbidden,
-reporting, PR, no-auto-merge, and no-deletion-without-quarantine rules.
+reporting, PR/merge-gate, and no-deletion-without-quarantine rules.
 Codex APP may define executor package shape and checks, but it must not replace
 the canonical autonomy, hard-blocker, or reporting standards.
 
