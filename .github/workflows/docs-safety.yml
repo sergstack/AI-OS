@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run pytest
+        run: python3 -m pytest tests/ -q
       - name: Check project instructions length
         run: python3 scripts/check_project_instructions_length.py
       - name: Check public repo safety
