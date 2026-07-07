@@ -67,6 +67,8 @@ Stop and report a blocker when work requires or may cause:
 - no possible validation, even a smoke check;
 - any governance violation.
 
+Provider/API safeguard: sensitive values block real provider/API execution, not local scaffold, dry-run, no-network, preflight, config-name checks, presence/non-empty checks without printing values, mock tests, or docs. Real calls, source mutation, Safe Apply, production/runtime/deploy, batch expansion, and schema/metric/formula/provider-routing/output-contract changes require explicit bounded approval. Local configuration presence is not approval.
+
 Use:
 - `Knowledge/AUTONOMY_POLICY.md`;
 - `Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`;
@@ -84,6 +86,7 @@ Do not create `Codex_App` or `Codex APP` subfolders inside `ChatGPT/[Codex]`.
 ## Safe edit rules
 
 - Не трогай secrets, `.env`, credentials, tokens.
+- Не печатай, не логируй, не summarise, не commit sensitive values или raw provider responses.
 - Не делай commit, push, deploy без явной команды.
 - Не удаляй validation, QA, judge checks, tests.
 - Не меняй business logic, metric definitions, formulas без explicit acceptance.

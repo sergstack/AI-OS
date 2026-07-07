@@ -47,6 +47,8 @@ Examples:
 - Business logic changed silently.
 - Output schema changed silently.
 - Secrets exposed.
+- Sensitive values or raw provider responses exposed in repo files, PR bodies, logs, or Knowledge bundles.
+- Real provider/API execution treated as approved only because local configuration exists.
 - LLM narrative mixed with deterministic calculations.
 - Validation deleted.
 - Acceptance criteria missing.
