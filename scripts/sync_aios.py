@@ -14,6 +14,7 @@ CHECKS = [
     "scripts/check_codex_goal_mode_defaults.py",
     "scripts/check_manifest_paths.py",
     "scripts/check_knowledge_bundles.py",
+    "scripts/check_index_coverage.py",
 ]
 
 

@@ -19,6 +19,7 @@
   - no raw absolute local paths required
   - manifest/path consistency required
   - Knowledge bundle consistency required
+  - Knowledge index coverage required
   - Codex Goal Mode default scan required
   - pytest validation script regression tests required
   - ChatGPT Project sync checklist required
@@ -60,6 +61,7 @@ python3 scripts/check_project_instructions_length.py
 python3 scripts/check_repo_public_safety.py
 python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
+python3 scripts/check_index_coverage.py
 python3 scripts/check_codex_goal_mode_defaults.py
 python3 -m pytest tests/ -q
 ```

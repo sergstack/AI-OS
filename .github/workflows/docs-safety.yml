@@ -24,3 +24,5 @@ jobs:
         run: python3 scripts/check_manifest_paths.py
       - name: Check knowledge bundles
         run: python3 scripts/check_knowledge_bundles.py
+      - name: Check index coverage
+        run: python3 scripts/check_index_coverage.py
