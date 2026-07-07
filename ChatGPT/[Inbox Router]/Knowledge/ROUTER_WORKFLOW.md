@@ -1,5 +1,9 @@
 # Router Workflow
 
+Reference material. Active routing behavior is defined by `ROUTING_RULES.md`,
+`THINGS_OUTPUT_SCHEMA.md`, `HANDOFF_PROTOCOL.md`, and
+`SMOKE_QA_FOR_INBOX_ROUTER.md`.
+
 Core boundary:
 
 Router routes.

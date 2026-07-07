@@ -45,7 +45,7 @@ Last smoke QA: 2026-05-25
 
 ## Current gaps
 
-- Scenario analysis template is being added in this fix.
+- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 

@@ -8,6 +8,7 @@ Compact upload artifact for [Thinking] covering routing and templates.
 
 - `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`
 - `ChatGPT/[Thinking]/Knowledge/AI_OS_REFERENCE.md`
+- `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`
 - `ChatGPT/[Thinking]/CURRENT_STATUS.md`
 - `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
 
@@ -120,6 +121,29 @@ Open questions:
 AI OS даёт evidence и patterns. Текущий проект применяет их в своей области, не смешивая роли.
 
 
+## From: `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`
+
+# Scenario Analysis Template
+## Question
+## Decision context
+## Scenarios
+| Scenario | What happens | Key assumptions | Trigger | Leading indicators | Downside | Reversibility | Decision implication |
+|---|---|---|---|---|---|---|---|
+| Base | | | | | | | |
+| Optimistic | | | | | | | |
+| Downside | | | | | | | |
+## Cross-scenario risks
+## What would change the decision
+## Handoff required?
+- Analytics:
+- LLM:
+- Codex:
+- AI OS:
+## Recommendation
+## Confidence
+## Next step
+
+
 ## From: `ChatGPT/[Thinking]/CURRENT_STATUS.md`
 
 # [Thinking] Current Status
@@ -144,7 +168,7 @@ Last smoke QA: 2026-05-25
 - Explicit status/revisit standard added in a standalone canonical file.
 - README now points to the canonical index file.
 ## Current gaps
-- Scenario analysis template is being added in this fix.
+- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 ## Next review trigger

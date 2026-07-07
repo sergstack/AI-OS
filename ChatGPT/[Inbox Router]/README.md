@@ -60,21 +60,16 @@ ChatGPT/[Inbox Router]/
 
 1. Create ChatGPT Project named `[Inbox / Router]`.
 2. Paste `ChatGPT/[Inbox Router]/PROJECT_INSTRUCTIONS.md` into Project Instructions.
-3. Upload Knowledge files from `ChatGPT/[Inbox Router]/Knowledge/`.
+3. Upload bundle files from `ChatGPT/[Inbox Router]/Knowledge_Bundles/UPLOAD_LIST.md`.
 4. Do not upload governed KB dumps or unrelated project folders.
 
 ## What to upload
 
-- `Knowledge/INBOX_ROUTER_FILES_INDEX.md`
-- `Knowledge/INDEX.md`
-- `Knowledge/ROUTING_RULES.md`
-- `Knowledge/THINGS_OUTPUT_SCHEMA.md`
-- `Knowledge/HANDOFF_PROTOCOL.md`
-- `Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`
-- `Knowledge/ROUTER_WORKFLOW.md`
-- `Knowledge/ROUTER_HANDOFF_PROTOCOL.md`
-- `Knowledge/ROUTER_SMOKE_QA.md`
-- `Knowledge/ROUTER_ANTI_PATTERNS.md`
+- `Knowledge_Bundles/INBOX_01_ROUTING_WORKFLOW.md`
+- `Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md`
+
+Granular `Knowledge/` files remain source material and may be uploaded only
+when debugging a bundle sync issue.
 
 ## What not to upload
 

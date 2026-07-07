@@ -1,5 +1,8 @@
 # Router Handoff Protocol
 
+Reference material. Active handoff behavior is defined by
+`HANDOFF_PROTOCOL.md`.
+
 Use handoff when the destination is another project and the Router should package
 the work without solving it.
 
@@ -45,7 +48,10 @@ criteria.
 
 ### To `[Codex]`
 
-Use for an implementation-ready task package. Require:
+Use for implementation, tests, refactor, repo changes, or goal-to-execution
+work. Broad repository or workflow goals may use Goal Mode. Use a strict task
+package only when the work is high-risk, already scoped, or explicitly requested.
+Include known:
 
 - context;
 - objective;
