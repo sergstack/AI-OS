@@ -53,6 +53,14 @@ Next step:
 | `@revisor` | нужно улучшить формулировку или упаковать ответ | revised output |
 | `@ai_operator` | нужно упаковать результат в файлы, инструкции, checklist | file-ready package |
 
+## Engineering / Codex standards
+
+`Existing Script Controlled Refactor Standard` is an engineering/Codex standard for cleaning an existing working script or pipeline without behavior loss.
+
+Use it only when current output is useful and must be preserved. Required order: baseline current behavior, define output contract, add safety tests, then clean/refactor and compare before/after output.
+
+Do not treat this as Analytics material. `[Analytics]` defines analytical methodology, metrics, formulas, marts, and business definitions; Codex applies engineering safety around implementation and refactor work.
+
 ## Важное ограничение
 
 [AI OS] не выполняет операционные действия. Если нужен code execution, пайплайн, аналитический расчёт или production task — подготовь handoff в правильный проект.
