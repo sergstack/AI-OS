@@ -28,6 +28,9 @@ Expected output:
 Constraints:
 Risks:
 Acceptance criteria:
+Business acceptance:
+Artifact/content checks:
+Non-acceptance examples:
 Suggested first step:
 ```
 
@@ -39,6 +42,8 @@ Suggested first step:
 4. `[Codex]` реализует через Goal Mode handoff или strict task package со scope, checks, rollback и acceptance.
 5. QA проверяет evidence, tests, artifacts, regression, smoke checks.
 6. Release фиксирует status, residual risks, rollback и changelog.
+
+Для user-facing artifact или business deliverable handoff должен явно отделять business acceptance и artifact/content checks от технических проверок. Технические checks, созданный файл или PR не означают acceptance, если deliverable не удовлетворяет business outcome.
 
 ## Что передавать из [AI OS]
 

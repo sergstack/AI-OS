@@ -36,12 +36,21 @@ Checks:
 - if a check cannot be run, explain why in the PR;
 - do not claim checks passed unless they were actually run.
 
+Acceptance:
+- distinguish business acceptance from technical checks;
+- verify artifact/content output when the Issue produces a user-facing deliverable;
+- do not report success if technical checks pass but the business artifact or user-facing deliverable is not verified;
+- include acceptance status and merge/gate status in the final report and PR.
+
 PR must include:
 - linked Issue;
 - summary;
 - files changed;
+- business acceptance;
+- artifact/content verification, if applicable;
 - checks run;
 - check results;
+- acceptance status;
 - risks / residual risks;
 - human review note;
 - explicit note: Do not merge automatically.
@@ -67,6 +76,9 @@ Files changed:
 Commands run:
 Test results:
 Evidence / artifacts:
+Business acceptance:
+Artifact/content verification:
+Technical checks:
 Assumptions:
 Blockers:
 Risks:
