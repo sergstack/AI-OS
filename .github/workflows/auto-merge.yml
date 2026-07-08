@@ -29,7 +29,7 @@ jobs:
           echo "Changed files:"
           echo "$files"
           # Tier 2 protected paths. Keep in sync with .github/CODEOWNERS.
-          protected='^(AGENTS\.md|CLAUDE\.md|GOAL_MODE\.md|MASTER_STATUS\.md|CURRENT_STATUS\.md|SYNC_CONTRACT\.md|scripts/|tests/|\.github/)|(^|/)PROJECT_INSTRUCTIONS\.md$'
+          protected='^(AGENTS\.md|CLAUDE\.md|GOAL_MODE\.md|GOAL_PACKS\.md|COMMAND_SURFACE\.md|CONTEXT_PACK_STANDARD\.md|MASTER_STATUS\.md|CURRENT_STATUS\.md|SYNC_CONTRACT\.md|README\.md|MANIFEST\.md|MANIFEST\.json|PROJECT_REGISTRY\.md|PARENT_CHILD_ISSUE_GATE_STANDARD\.md|EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD\.md|ARCHIVE_MAP\.md|UPLOAD_GUIDE\.md|REPO_PATHS\.md|docs/AI_DEVELOPMENT_WORKFLOW\.md|docs/MERGE_GATE_OWNER_CHECKLIST\.md|ChatGPT/\[AI OS\]/Knowledge/AI_OS_PROJECT_FILES_INDEX\.md|ChatGPT/\[AI OS\]/Knowledge/ARCHIVE_SUPERSEDED_RULE\.md|ChatGPT/\[AI OS\]/Knowledge/GOVERNANCE_RULES\.md|ChatGPT/\[AI OS\]/Knowledge/HANDOFF_PROTOCOL\.md|ChatGPT/\[AI OS\]/Knowledge/KB_USAGE_RULES\.md|ChatGPT/\[AI OS\]/Knowledge/PROJECT_ROUTING\.md|scripts/|tests/|\.github/)|(^|/)PROJECT_INSTRUCTIONS\.md$'
           if [ -z "$files" ] || echo "$files" | grep -Eq "$protected"; then
             echo "tier=owner" >> "$GITHUB_OUTPUT"
           else
