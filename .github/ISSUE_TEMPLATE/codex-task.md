@@ -25,7 +25,7 @@ What is included?
 
 ## Business acceptance
 
-- [ ] 
+- [ ]
 
 ## Artifact/content acceptance
 
