@@ -26,6 +26,27 @@
 
 If an issue references `Parent / Child Issue Gate Standard`, respect `Depends on` / child issue order, do not start a downstream child until its dependency is accepted or merged, normally use one PR per child issue, report blocked dependencies as gates, do not close the parent until final QA passes, and do not silently replace old contracts without a migration note or blocker.
 
+## Existing Script Controlled Refactor
+
+When using `Existing Script Controlled Refactor Standard`, report baseline, output contract, safety tests, before/after comparison, behavior changes, and acceptance status explicitly.
+
+```text
+Summary:
+Branch:
+Files inspected:
+Files changed:
+Baseline captured:
+Output contract:
+Safety tests:
+Before/after comparison:
+Behavior changes:
+Checks run:
+Risks:
+Rollback:
+PR:
+Acceptance status:
+```
+
 ## Testing
 
 После изменений запусти доступные проверки:

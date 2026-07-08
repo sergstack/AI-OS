@@ -12,6 +12,7 @@ Compact upload artifact for [Codex] covering implementation workflows.
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`
 - `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
+- `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
 
 ## Upload target
 
@@ -68,19 +69,56 @@ Residual risk:
 
 # Refactoring Workflow
 ## Goal
+Improve structure without changing behavior.
+## Existing working scripts
+When Sergey asks to clean, simplify, modularize, or refactor an existing working script or pipeline, use `Existing Script Controlled Refactor Standard` from the repo root.
+Preserve behavior first:
+```text
+baseline current behavior
+-> define output contract
+-> add safety tests
+-> cleanup/refactor
+-> compare before/after output
+-> acceptance
+```
+Do not remove code or restructure internals before baseline, output contract, and safety checks exist. Do not use this standard for all Codex tasks; use it for existing working scripts/pipelines where behavior preservation matters.
 ## Steps
 1. Identify current behavior.
 2. Identify files and scope.
-3. Add or locate regression tests.
-4. Refactor minimally.
-5. Run tests.
-6. Compare outputs.
-7. Report changed files and preservation evidence.
+3. Define the output contract.
+4. Add or locate regression/golden-output safety tests.
+5. Refactor minimally.
+6. Run tests.
+7. Compare before/after outputs.
+8. Report changed files and preservation evidence.
 ## Acceptance
 - behavior preserved;
+- baseline captured;
+- output contract explicit;
+- before/after output compared;
 - tests pass;
 - no output contract changes;
 - no broad unrelated edits.
+
+
+## From: `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+
+# Existing Script Controlled Refactor Standard
+Engineering / Codex standard for cleaning or refactoring an existing working script or pipeline without losing useful behavior.
+Use when an existing script, CLI, notebook-exported script, or pipeline already runs or has known useful output and Sergey asks for cleanup, controlled refactor, modularization, simplification, or removal of obsolete internal code.
+Do not use for greenfield implementation, bug recovery, Analytics methodology, business definition work, output-contract changes without acceptance, production deploys, migrations, source mutation, or real provider/API execution without separate approval.
+Core rule:
+```text
+baseline current behavior
+-> define output contract
+-> add safety tests
+-> remove dead/obsolete code
+-> refactor structure without behavior change
+-> compare before/after output
+-> acceptance
+```
+Codex must not start cleanup or restructuring until current behavior is captured, the output contract is explicit, and a safety test or comparison path exists.
+For large or risky refactors, use `Parent / Child Issue Gate Standard` from `PARENT_CHILD_ISSUE_GATE_STANDARD.md` by reference.
 
 
 ## From: `ChatGPT/[Codex]/Knowledge/DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`
