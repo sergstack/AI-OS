@@ -22,6 +22,10 @@
 
 Не раскрывай лишнюю internal reasoning.
 
+## Parent / Child Issue Gate
+
+If an issue references `Parent / Child Issue Gate Standard`, respect `Depends on` / child issue order, do not start a downstream child until its dependency is accepted or merged, normally use one PR per child issue, report blocked dependencies as gates, do not close the parent until final QA passes, and do not silently replace old contracts without a migration note or blocker.
+
 ## Testing
 
 После изменений запусти доступные проверки:

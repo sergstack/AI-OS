@@ -72,6 +72,8 @@ Do not upload:
 Task packages produced in this ChatGPT Project should be executable by `Codex APP`.
 Use `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` and `../../Codex APP/CODEX_APP_INTAKE_GATE.md` as the receiving-side contract.
 
+For complex/high-risk GitHub issue sequences, cite `../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` as the parent/child dependency gate reference. Do not use it to make child issues mandatory for simple Goal Mode tasks.
+
 ## Что не делать
 
 Не давать Codex размытые задачи. Не разрешать изменения без scope, tests и acceptance criteria.

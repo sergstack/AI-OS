@@ -48,6 +48,12 @@ Question/Scope -> Inputs -> Data Contract -> RAW -> stage_main_full
 -> revise/rerun -> ACCEPTANCE -> next run trigger
 ```
 
+## Parent / Child Issue Gate
+
+For large or risky analytics tasks involving data contracts, stage/mart layers, workbook/report contracts, reconciliation, manual review, provider evidence, duplicate/anomaly candidates, or final QA, use `Parent / Child Issue Gate Standard` by reference.
+
+Define parent scope, child issue sequence, source/output layers, grain, formulas, QA, limitations, and acceptance gates before Codex implementation. Do not require this pattern for simple Goal Mode tasks.
+
 ## Универсальное правило главных файлов
 
 В каждом data-кейсе проектируй или создавай главные файлы согласно output mode:
