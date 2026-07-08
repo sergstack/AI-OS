@@ -30,6 +30,5 @@ Result: Codex can classify mode, work type, allowed files, forbidden actions, ba
 
 ## Current merge posture
 
-Codex APP must not decide mergeability or merge PRs by itself. The repository
-merge gate may auto-merge eligible Tier 0/1 docs PRs after required checks pass.
-Tier 2 protected paths require owner review.
+Follow the canonical `Merge Policy` in `GOAL_MODE.md`. Codex APP must not decide
+final mergeability or manually merge PRs by itself.

@@ -39,16 +39,15 @@ already-scoped, ultra-long, or explicitly requested task packages.
 - `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.
 - `[Analytics]`: include question/scope, data status, grain/period/filters, method, QA, limitations, and decision or recommendation.
 - `[LLM]`: include context boundaries, prompt or model-routing goal, judge/revise gate, and forbidden raw inputs.
-- `[Codex]`: include branch expectation, allowed files/actions, checks, rollback, PR summary needs, and no-auto-merge rule.
+- `[Codex]`: include branch expectation, allowed files/actions, checks, rollback, PR summary needs, and merge/gate status.
 - `[Inbox Router]`: include classification, target project, urgency, confidence, and first safe action.
 
 ## Merge And Acceptance
 
 - GitHub remains the live source of truth.
 - Codex APP may create branches, commits, checks, and PRs when requested.
-- Pull requests require owner review and human-owned merge.
-- Codex / Codex APP must not auto-merge. A merge only occurs as a separate explicit human-owned action requested by Sergey after review.
-- For this personal repository, explicit owner self-review counts as human-owned review.
+- Use the canonical merge policy in `GOAL_MODE.md`.
+- Codex / Codex APP must not manually merge PRs or decide final mergeability by themselves.
 - Acceptance statuses should stay conservative: `candidate / ready for owner review` unless production promotion was explicitly completed.
 
 ## Forbidden As Handoff Inputs

@@ -2078,7 +2078,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and follow the canonical Merge Policy in GOAL_MODE.md.
 
 Return:
 Goal:
@@ -2119,7 +2119,7 @@ Default behavior:
 - run checks;
 - fix failures within scope;
 - open PR if repo files changed;
-- never auto-merge.
+- follow the canonical Merge Policy in GOAL_MODE.md.
 
 Stop only for hard blockers:
 - missing secrets required for real execution;
@@ -2141,7 +2141,7 @@ Risks:
 Rollback:
 PR:
 Acceptance status:
-No auto-merge:
+Merge / gate status:
 ```
 
 #### K4 - `PR Judge`
@@ -2166,7 +2166,7 @@ Verdict: pass / revise / blocked
 Required fixes:
 Missing checks:
 Risks:
-No auto-merge reminder:
+Merge policy reminder:
 ```
 
 #### K5 - `Sync Check`
@@ -2217,7 +2217,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and follow the canonical Merge Policy in GOAL_MODE.md.
 
 Return:
 Commands to run manually:
@@ -2244,7 +2244,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and follow the canonical Merge Policy in GOAL_MODE.md.
 
 Return:
 Mismatch:
@@ -2289,7 +2289,7 @@ Next step:
 - Setting: `System -> Text`
 
 ```text
-# CODEX - no auto-merge reminder
+# CODEX - merge policy reminder
 
 Use the last meaningful message above, selected text, or material pasted below.
 If no material is available, ask Sergey to paste it in one message.
@@ -2301,7 +2301,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and follow the canonical Merge Policy in GOAL_MODE.md.
 
 Return:
 Branch:
@@ -2309,7 +2309,7 @@ Commit:
 Checks:
 Draft PR:
 Human review required:
-Auto-merge: prohibited:
+Merge / gate status:
 ```
 
 #### K10 - `Branch Pack`
@@ -2330,7 +2330,7 @@ Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.
 
 Required constraints:
-Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and never auto-merge.
+Use Goal Mode Build-First: inspect relevant files first, infer bounded safe scope, create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make the smallest useful reversible change, run checks, fix failures within scope when safe, report blockers honestly, open a PR for human review when repository files changed and checks are meaningful, and follow the canonical Merge Policy in GOAL_MODE.md.
 
 Return:
 Objective:
@@ -2452,7 +2452,7 @@ Use the last meaningful message above, selected text, or material pasted below.
 If no material is available, ask Sergey to paste it in one message.
 
 Task:
-Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on PR scope, diff, checks, risks, and no auto-merge.
+Judge the pasted output. Verdict must be exactly pass, revise, or blocked. Deterministic checks and repository/source evidence override LLM preference. Focus on PR scope, diff, checks, risks, and merge policy in `GOAL_MODE.md`.
 
 Safety:
 Text insert only. Auto-send disabled. Manual execution only. No destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents. Terminal commands, when mentioned, are inserted as text only and run manually by Sergey.

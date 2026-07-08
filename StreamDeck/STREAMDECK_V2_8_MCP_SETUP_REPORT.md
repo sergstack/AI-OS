@@ -136,7 +136,7 @@ Source-map QA evidence available:
 | HOME JUDGE inserts text only | HOME K7 is `Text`, setting `System -> Text`. |
 | HOME REVISOR inserts text only | HOME K8 is `Text`, setting `System -> Text`. |
 | HOME AI TREND does not default to live web check | HOME AI TREND says volatile facts should be labeled `needs fresh check` and asks Sergey before live web check. |
-| CODEX / Issue -> PR keeps no-auto-merge | CODEX K3 is a text action; safety text prohibits merging/publishing automatically. |
+| CODEX / Issue -> PR keeps merge policy boundary | CODEX K3 is a text action; safety text prohibits merging/publishing automatically. |
 | REVISOR / Prompt QA is judge-only, not rewrite-first | Level 2 risk QA records the rename to `Prompt QA` and judge-only behavior. |
 | Icons match icon map for HOME and at least one Level 2 screen | File existence verified for all icon-map PNG paths; visual/device application not performed. |
 | v2.7 profile remains available | Not verified through MCP/device state; no Stream Deck profile operation was performed. |
@@ -168,7 +168,7 @@ Source-map QA evidence available:
     - HOME JUDGE inserts text only.
     - HOME REVISOR inserts text only.
     - HOME AI TREND asks before live web check.
-    - CODEX / Issue -> PR keeps no-auto-merge.
+    - CODEX / Issue -> PR keeps merge policy boundary.
     - REVISOR / Prompt QA is judge-only, not rewrite-first.
     - HOME icons and at least one Level 2 screen match the icon map.
     - v2.7 profile remains available.

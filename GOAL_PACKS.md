@@ -24,7 +24,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - context needed: `AGENTS.md`, relevant repo files, allowed scope inferred from goal
 - output: branch, minimal diff, checks, PR for owner review
 - quality gate: no atomic-task burden on Sergey; checks pass or blockers are reported
-- done when: PR exists with summary, risks, rollback, and "Do not merge automatically"
+- done when: PR exists with summary, risks, rollback, and merge/gate status
 
 ### `finance_memo_factory`
 

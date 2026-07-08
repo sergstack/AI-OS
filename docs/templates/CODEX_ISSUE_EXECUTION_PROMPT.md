@@ -17,7 +17,7 @@ Rules:
 - Commit changes.
 - Push branch.
 - Open a Pull Request.
-- Do not merge.
+- Follow `Merge Policy` in `GOAL_MODE.md`.
 
 Before starting:
 - inspect the Issue;
@@ -53,7 +53,7 @@ PR must include:
 - acceptance status;
 - risks / residual risks;
 - human review note;
-- explicit note: Do not merge automatically.
+- merge/gate status.
 
 After finishing, report:
 - branch name;
@@ -85,5 +85,5 @@ Risks:
 Rollback:
 PR:
 Acceptance status:
-No auto-merge:
+Merge / gate status:
 ```

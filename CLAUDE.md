@@ -13,6 +13,6 @@ Key defaults:
 - Goal Mode by default.
 - Make minimal, reversible, verifiable changes.
 - Do not commit to `main`.
-- Do not merge automatically.
+- Follow the canonical merge policy in `GOAL_MODE.md`.
 - Do not touch secrets, `.env`, runtime artifacts, production deploys, formulas, schemas, output contracts, metric definitions, or business logic without explicit approval.
 - Run the smallest meaningful checks and report real results.

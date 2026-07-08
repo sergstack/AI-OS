@@ -92,7 +92,7 @@ Suggested first step:
 ## Purpose
 ## Standard route
 ```text
-AI OS / LLM task framing -> GitHub Issue -> Codex branch -> checks -> Pull Request -> human review -> human-owned merge
+AI OS / LLM task framing -> GitHub Issue -> Codex branch -> checks -> Pull Request -> merge policy in GOAL_MODE.md
 ```
 ## When to use
 Use this handoff for:
@@ -113,7 +113,7 @@ Use this handoff for:
 - run required checks;
 - commit and push;
 - open a PR;
-- do not merge.
+- do not manually merge PRs.
 ## Required handoff fields
 - Goal
 - Scope
@@ -123,11 +123,11 @@ Use this handoff for:
 - Checks to run
 - Expected PR summary
 - Risks
-- Do not merge automatically
+- Merge/gate status
 ## Governance
 - The Issue is the task contract.
 - The PR is the review package.
-- The human owner is the release gate.
+- The canonical merge policy is `Merge Policy` in `GOAL_MODE.md`.
 - Weak or unsupported evidence must not become an implementation requirement.
 ## Related repository files
 - `docs/AI_DEVELOPMENT_WORKFLOW.md`
@@ -205,6 +205,6 @@ Suggested first step:
 ## Merge And Acceptance
 - GitHub remains the live source of truth.
 - Codex APP may create branches, commits, checks, and PRs when requested.
-- Pull requests require owner review and human-owned merge.
-- Codex / Codex APP must not auto-merge.
+- Use the canonical merge policy in `GOAL_MODE.md`.
+- Codex / Codex APP must not manually merge PRs or decide final mergeability by themselves.
 - Acceptance statuses should stay conservative: `candidate / ready for owner review` unless production promotion was explicitly completed.
