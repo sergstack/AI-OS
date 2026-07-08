@@ -18,6 +18,8 @@ Knowledge Bundles are upload baselines, not live sync.
 
 If source Knowledge changes, update or regenerate the matching bundle consistently before using it as a ChatGPT Project Knowledge upload artifact.
 
+Bundle freshness is validated by `source_fingerprint` metadata in each listed compact bundle. If a source file changes, update the matching bundle content and fingerprint in the same PR.
+
 ## Manual ChatGPT Sync
 
 Manual ChatGPT UI upload remains a periodic formal sync for stable baselines. It is not the default day-to-day synchronization method and should not be required for every small repository change.

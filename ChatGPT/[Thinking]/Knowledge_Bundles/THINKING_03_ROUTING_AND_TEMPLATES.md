@@ -21,6 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:3420e67bc116807dfae9ad7f129154857a42fc4994e4ac393716a258070805fc
 
 ---
 

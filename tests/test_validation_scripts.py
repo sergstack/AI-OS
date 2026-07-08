@@ -72,7 +72,15 @@ def write_valid_upload_list(project_dir: Path, bundle_name: str) -> None:
     )
 
 
-def write_bundle(project_dir: Path, bundle_name: str, source_path: str) -> None:
+def write_bundle(
+    project_dir: Path,
+    bundle_name: str,
+    source_path: str,
+    source_fingerprint: str | None = None,
+) -> None:
+    fingerprint_line = (
+        f"- source_fingerprint: {source_fingerprint}\n" if source_fingerprint else ""
+    )
     (project_dir / "Knowledge_Bundles" / bundle_name).write_text(
         textwrap.dedent(
             f"""\
@@ -93,6 +101,7 @@ def write_bundle(project_dir: Path, bundle_name: str, source_path: str) -> None:
             ## Status
 
             Test fixture only.
+            {fingerprint_line}
 
             # Content
 
@@ -231,13 +240,38 @@ def test_knowledge_bundles_passes_minimal_valid_fixture(tmp_path: Path) -> None:
     root, project_dir = make_bundle_project(tmp_path)
     source = "ChatGPT/[Test]/Knowledge/source.md"
     (root / source).write_text("Source content.\n", encoding="utf-8")
-    write_bundle(project_dir, "TEST_BUNDLE.md", source)
+    write_bundle(
+        project_dir,
+        "TEST_BUNDLE.md",
+        source,
+        module.source_fingerprint(root, [source]),
+    )
 
     report = module.check_project(root, "[Test]", Path("ChatGPT/[Test]"))
 
     assert report.failures == []
     assert report.total_upload_files == 1
     assert report.source_paths is True
+
+
+def test_knowledge_bundles_detects_stale_source_fingerprint(tmp_path: Path) -> None:
+    module = load_script_module("check_knowledge_bundles.py")
+    root, project_dir = make_bundle_project(tmp_path)
+    source = "ChatGPT/[Test]/Knowledge/source.md"
+    source_path = root / source
+    source_path.write_text("Source content.\n", encoding="utf-8")
+    write_bundle(
+        project_dir,
+        "TEST_BUNDLE.md",
+        source,
+        module.source_fingerprint(root, [source]),
+    )
+    source_path.write_text("Changed source content.\n", encoding="utf-8")
+
+    report = module.check_project(root, "[Test]", Path("ChatGPT/[Test]"))
+
+    assert any("source_fingerprint mismatch" in failure for failure in report.failures)
+    assert report.source_paths is False
 
 
 def test_index_coverage_passes_when_all_files_listed(tmp_path: Path) -> None:

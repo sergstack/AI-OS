@@ -18,6 +18,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:13494a501d31e38a4e747797cc0c50d49fb0677ea5a2fd6288c6852e4cf91194
 
 ---
 
