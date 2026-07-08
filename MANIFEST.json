@@ -32,8 +32,6 @@
     "UPLOAD_GUIDE.md",
     "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
     "ChatGPT/[AI OS]/README.md",
-    "ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md",
-    "ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md",
     ".github/ISSUE_TEMPLATE/goal.md",
     ".github/ISSUE_TEMPLATE/codex-task.md",
     "scripts/sync_aios.py"
