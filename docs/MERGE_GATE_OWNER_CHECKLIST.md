@@ -11,7 +11,7 @@ are owner-verified GitHub settings, not Codex-managed settings.
 ## Expected Merge Gate Behavior
 
 - Tier 0/1 docs-only PRs may auto-merge only through `.github/workflows/auto-merge.yml` after required checks pass.
-- Tier 2 protected-path PRs must fail the Merge Gate, disable auto-merge, and receive a bot `request changes` review.
+- Tier 2 protected-path PRs must fail the Merge Gate, disable auto-merge, and receive a bot comment explaining that owner review is required.
 - If a PR changes from Tier 0/1 to Tier 2, the Merge Gate must not continue trusting a previous bot approval or auto-merge state.
 - Codex and agents must not manually merge PRs.
 

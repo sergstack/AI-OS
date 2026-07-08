@@ -50,6 +50,6 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
           gh pr merge "$PR_URL" --disable-auto || true
-          gh pr review "$PR_URL" --request-changes --body "Merge gate: protected paths changed. Auto-merge is disabled and owner review is required via CODEOWNERS."
+          gh pr review "$PR_URL" --comment --body "Merge gate: protected paths changed. Auto-merge is disabled and owner review is required via CODEOWNERS."
           echo "::error::Protected paths changed; owner review required via CODEOWNERS."
           exit 1

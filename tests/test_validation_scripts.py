@@ -283,7 +283,8 @@ def test_merge_gate_owner_tier_fails_closed() -> None:
     )
 
     assert "gh pr merge \"$PR_URL\" --disable-auto" in workflow
-    assert "gh pr review \"$PR_URL\" --request-changes" in workflow
+    assert "gh pr review \"$PR_URL\" --comment" in workflow
+    assert "--request-changes" not in workflow
     assert "::error::Protected paths changed" in workflow
     assert "exit 1" in workflow
 
