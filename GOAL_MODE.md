@@ -59,6 +59,20 @@ For any task that produces a user-facing artifact or business deliverable, succe
 
 Technical checks passed, pipeline completed, files generated, or PR opened are not sufficient if the user-facing result does not satisfy the business outcome.
 
+## Existing working script refactors
+
+When Sergey asks to clean, simplify, modularize, or refactor an existing working script or pipeline, use `Existing Script Controlled Refactor Standard` from `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`.
+
+This standard is not mandatory for all tasks. It applies only when current behavior is useful and must be preserved.
+
+Required order:
+
+```text
+baseline current behavior -> define output contract -> add safety tests -> refactor -> compare before/after output -> acceptance
+```
+
+Do not remove code, split modules, or restructure internals before the baseline, output contract, and safety checks exist.
+
 ## User Interface
 
 In default Goal Mode, the user gives a broad goal, not an atomic task package.
