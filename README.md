@@ -20,7 +20,7 @@ python3 scripts/sync_aios.py
 
 This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
 
-See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, and `SYNC_CONTRACT.md`.
+See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, and `SYNC_CONTRACT.md`.
 
 ## Daily Use
 
@@ -30,6 +30,7 @@ See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, and `SYNC_CONTRACT.md
 - ChatGPT Project Knowledge is a baseline/cache for upload and bootstrapping.
 - Codex APP execution must report checks, risks, rollback, and acceptance status.
 - Use `HANDOFF_STYLE_STANDARD.md` for cross-project handoff wording and required fields.
+- Use `Existing Script Controlled Refactor Standard` only when an existing working script or pipeline must be cleaned or refactored without behavior loss.
 
 See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
 
@@ -48,6 +49,8 @@ are optional but recommended owner setup, not assumed to be enforced by docs.
 Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
 
 Use `PARENT_CHILD_ISSUE_GATE_STANDARD.md` only for complex or high-risk analytics / Codex work that needs sequenced child issues, dependency gates, PR gates, and final QA. Do not require parent/child issue decomposition for simple Goal Mode tasks.
+
+Use `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` only when an existing working script or pipeline needs cleanup/refactor while preserving behavior. The required order is baseline current behavior, define output contract, add safety tests, then clean/refactor and compare before/after output.
 
 ## Governance Rule
 
