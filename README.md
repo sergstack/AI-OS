@@ -38,7 +38,8 @@ See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP
 
 AI-OS uses solo-owner governance by default. The canonical active merge policy is
 `Merge Policy` in `GOAL_MODE.md`. PRs should include the checks run, risks or
-residual risks, rollback notes, and merge/gate status.
+residual risks, rollback notes, and merge/gate status. Owner-side Merge Gate
+settings are checked with `docs/MERGE_GATE_OWNER_CHECKLIST.md`.
 
 ## Goal Packs
 

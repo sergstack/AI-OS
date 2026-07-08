@@ -55,6 +55,9 @@ This is the canonical active merge-policy reference for AI-OS.
 - GitHub branch protection, rulesets, labels, and CODEOWNERS enforcement are owner-verified repository settings.
 - Passing smoke QA or documentation checks does not imply production readiness or `production_promotion=yes`.
 
+Owner-side Merge Gate settings are tracked in
+`docs/MERGE_GATE_OWNER_CHECKLIST.md`.
+
 ## Flow
 
 ```text

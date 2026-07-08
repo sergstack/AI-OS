@@ -275,3 +275,37 @@ def test_knowledge_bundles_detects_missing_referenced_source(tmp_path: Path) -> 
 
     assert any("source file missing" in failure for failure in report.failures)
     assert report.source_paths is False
+
+
+def test_merge_gate_owner_tier_fails_closed() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "auto-merge.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "gh pr merge \"$PR_URL\" --disable-auto" in workflow
+    assert "gh pr review \"$PR_URL\" --comment" in workflow
+    assert "--request-changes" not in workflow
+    assert "::error::Protected paths changed" in workflow
+    assert "exit 1" in workflow
+
+
+def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "auto-merge.yml").read_text(
+        encoding="utf-8"
+    )
+    codeowners = (REPO_ROOT / ".github" / "CODEOWNERS").read_text(encoding="utf-8")
+
+    for path in [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GOAL_MODE.md",
+        "MASTER_STATUS.md",
+        "CURRENT_STATUS.md",
+        "SYNC_CONTRACT.md",
+        "scripts/",
+        "tests/",
+        ".github/",
+        "PROJECT_INSTRUCTIONS.md",
+    ]:
+        assert path in codeowners
+        assert path.replace(".", r"\.") in workflow or path in workflow
