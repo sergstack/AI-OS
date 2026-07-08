@@ -39,4 +39,4 @@ Describe what could still be wrong.
 
 - [ ] Ready for owner review
 - [ ] Owner self-review completed before merge
-- [ ] Do not merge automatically
+- [ ] Merge/gate status reported according to `GOAL_MODE.md`

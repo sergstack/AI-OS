@@ -41,7 +41,7 @@ Recommendation: keep v2.7 active and keep v2.8 candidate until Sergey manually a
 | Button | Target project | Expected | Observed summary | Verdict | UX score | Fix applied | Retest result | Residual risk |
 |---|---|---|---|---|---:|---|---|---|
 | HOME JUDGE | `[LLM]` | Pass / revise / blocked verdict with unsupported claims and next action. | v0 returned `blocked` for unsafe production/auto-merge claim. Revised prompt then worked using last meaningful message above without manual editing. | pass | 9 | Replaced raw `Input: [paste]` with last-message/selected-text/pasted-material fallback. | Pass: returned blocked verdict from prior draft. | Browser runtime only; physical button timing not tested. |
-| HOME REVISOR | `[LLM]` | Revise from Judge notes with no new unsupported facts. | Revised unsafe draft into candidate-only/v2.7-active/no-auto-merge final text using Judge verdict above. | pass | 9 | Same no-raw-placeholder UX fix. | Pass: full Draft -> HOME JUDGE -> HOME REVISOR -> Final workflow completed with no folder hopping and no prompt editing. | Depends on enough prior context being visible in the chat. |
+| HOME REVISOR | `[LLM]` | Revise from Judge notes with no new unsupported facts. | Revised unsafe draft into candidate-only/v2.7-active/merge-policy-safe final text using Judge verdict above. | pass | 9 | Same no-raw-placeholder UX fix. | Pass: full Draft -> HOME JUDGE -> HOME REVISOR -> Final workflow completed with no folder hopping and no prompt editing. | Depends on enough prior context being visible in the chat. |
 | ROUTE / Raw -> Route | `INBOX Router` | Classify and hand off without solving owner-project work. | Routed confusing StreamDeck prompt work to `[LLM]` first, with Codex/AI OS only as downstream possibilities. | pass | 8 | Same no-raw-placeholder UX fix. | Not retested after fix; global prompt opening was mechanically updated and HOME workflow validated. | Project may still need one paste when no prior message exists. |
 | CODEX / Issue -> PR | `[Codex]` | Branch, scoped files, checks, PR/human review, no auto-merge. | v0 produced branch/checks/PR workflow, but branch example did not follow repo `codex/` convention. | revise -> pass | 8 -> 9 | Added repo branch prefix convention: use `codex/...` when present. | Pass: retest suggested `codex/streamdeck-candidate-docs-only` and kept checks/draft PR/human review/no auto-merge. | Output remains a task plan, not actual execution. |
 | HOME SYNC | `[Codex]` | Check repo/main/checks; avoid PR unless mismatch/change requires review. | Treated branch/check state as unknown until manual local checks and proposed manual commands; did not jump to PR creation. | pass | 8 | Same no-raw-placeholder UX fix. | Not retested after global UX fix; behavior was already aligned. | Commands are text guidance; physical StreamDeck cannot run them automatically. |
@@ -149,7 +149,7 @@ Final selected:
 create or use a non-main branch following repo branch prefix conventions such as `codex/...` when present, make minimal reversible changes
 ```
 
-Reason selected: aligns Codex prompts with repo branch convention while preserving branch/checks/PR/human review/no-auto-merge behavior.
+Reason selected: aligns Codex prompts with repo branch convention while preserving branch/checks/PR/human review/merge-policy behavior.
 
 ## Final selected prompts by tested button
 

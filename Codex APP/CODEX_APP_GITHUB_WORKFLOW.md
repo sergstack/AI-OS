@@ -44,12 +44,8 @@ pass / fail / blocked
 
 ## Merge rule
 
-Codex APP must not decide mergeability or merge PRs by itself.
-
-Repository merge is allowed only through:
-
-- explicit owner action; or
-- the active GitHub merge gate for Tier 0/1 docs PRs after required checks pass.
+Follow the canonical `Merge Policy` in `GOAL_MODE.md`. Codex APP must not decide
+final mergeability or manually merge PRs by itself.
 
 Before a PR is considered ready for either path:
 
@@ -57,5 +53,3 @@ Before a PR is considered ready for either path:
 - no forbidden files touched;
 - checks are reported;
 - acceptance status is clear.
-
-Tier 2 protected paths listed in `.github/CODEOWNERS` require owner review.

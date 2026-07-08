@@ -50,7 +50,5 @@ Checks reviewed:
 Merge readiness:
 ```
 
-Codex must not decide mergeability or merge PRs by itself. Merge is allowed
-only by explicit owner action or by the active GitHub merge gate for eligible
-Tier 0/1 docs PRs after required checks pass. Tier 2 protected paths listed in
-`.github/CODEOWNERS` require owner review.
+Codex must not decide final mergeability or manually merge PRs by itself. Follow
+the canonical `Merge Policy` in `GOAL_MODE.md`.
