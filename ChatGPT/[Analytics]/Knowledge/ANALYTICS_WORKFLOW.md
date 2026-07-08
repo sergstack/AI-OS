@@ -52,6 +52,12 @@ question / scope
 → next run trigger
 ```
 
+## Parent / Child Issue Gate
+
+For large or risky analytics tasks involving data contracts, stage/mart layers, workbook/report contracts, reconciliation, manual review, provider evidence, duplicate/anomaly candidates, or final QA, use `Parent / Child Issue Gate Standard` by reference.
+
+Analytics should define parent scope, child issue sequence, source/output layers, grain, formulas, QA, limitations, and acceptance gates before Codex implementation. Do not use this pattern for simple one-step Goal Mode tasks.
+
 ## `autoloop_analysis`
 
 `autoloop_analysis` is a supervised analytical loop, not an autonomous agent. Backward-compatible alias: `autoloop`.

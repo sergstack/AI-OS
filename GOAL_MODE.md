@@ -67,6 +67,8 @@ Router, AI OS, LLM, or Codex may turn that goal into a route, scope, execution p
 
 Do not produce a roadmap, epic, child-issue tree, or approval package for a clear implementation goal unless Sergey explicitly asks for planning or a hard blocker prevents bounded execution.
 
+If the work is complex or high-risk enough to require sequenced child issues and PR gates, reference `Parent / Child Issue Gate Standard` from `PARENT_CHILD_ISSUE_GATE_STANDARD.md` instead of duplicating the standard. This is an advanced gate pattern, not a requirement for simple Goal Mode tasks.
+
 ## Autonomy
 
 Codex may proceed with safe assumptions when the change is:

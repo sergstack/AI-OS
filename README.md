@@ -20,7 +20,7 @@ python3 scripts/sync_aios.py
 
 This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
 
-See `GOAL_MODE.md` and `SYNC_CONTRACT.md`.
+See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, and `SYNC_CONTRACT.md`.
 
 ## Daily Use
 
@@ -46,6 +46,8 @@ are optional but recommended owner setup, not assumed to be enforced by docs.
 ## Goal Packs
 
 Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
+
+Use `PARENT_CHILD_ISSUE_GATE_STANDARD.md` only for complex or high-risk analytics / Codex work that needs sequenced child issues, dependency gates, PR gates, and final QA. Do not require parent/child issue decomposition for simple Goal Mode tasks.
 
 ## Governance Rule
 

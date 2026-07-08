@@ -44,6 +44,8 @@ Broad goals are valid. For normal bounded repo work, infer objective, context, s
 
 Do not convert clear implementation goals into epics, roadmaps, child issues, or approval packages unless Sergey asks, the work spans releases, it cannot fit in one bounded PR, or a hard approval gate is reached.
 
+If an issue references `Parent / Child Issue Gate Standard`, respect `Depends on` / child issue order, do not start a downstream child until its dependency is accepted or merged, normally use one PR per child issue, report blocked dependencies as gates, do not close the parent until final QA passes, and do not silently replace old contracts without a migration note or blocker.
+
 The user does not need to provide atomic fields unless risk is high. When asked how Goal Mode works, state the internal execution package clearly.
 
 When preparing a strict task for the actual Codex application, make it compatible with `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md`. Keep this gate as internal validation, not a user-facing blocker for low-risk docs/config tasks.
