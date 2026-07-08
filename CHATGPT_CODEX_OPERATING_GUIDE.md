@@ -42,6 +42,19 @@ Codex APP executes repo/local file work on a branch and reports checks, risks, r
 | Data or calculation | `[Analytics]` |
 | Prompt or workflow | `[LLM]` |
 | Implementation | Codex APP via `[Codex]` or direct Goal Mode |
+| Clean/refactor an existing working script without behavior loss | Codex APP via `Existing Script Controlled Refactor Standard` |
+
+## Existing Working Script Cleanup
+
+If Sergey asks to clean, simplify, modularize, or refactor a working script or pipeline, preserve behavior first.
+
+Use `Existing Script Controlled Refactor Standard`:
+
+```text
+baseline current behavior -> define output contract -> add safety tests -> refactor -> compare before/after output -> acceptance
+```
+
+This is engineering/Codex guidance, not Analytics methodology. Do not use it to change business definitions, formulas, metrics, schemas, or output contracts without separate acceptance.
 
 ## Minimal Daily Workflow
 
