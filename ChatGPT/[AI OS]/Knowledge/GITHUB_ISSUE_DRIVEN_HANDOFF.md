@@ -7,7 +7,7 @@ Use a GitHub Issue as the task contract when `[AI OS]` needs to hand implementat
 ## Standard route
 
 ```text
-AI OS / LLM task framing -> GitHub Issue -> Codex branch -> checks -> Pull Request -> human review -> human-owned merge
+AI OS / LLM task framing -> GitHub Issue -> Codex branch -> checks -> Pull Request -> merge policy in GOAL_MODE.md
 ```
 
 ## When to use
@@ -36,7 +36,7 @@ Use this handoff for:
 - run required checks;
 - commit and push;
 - open a PR;
-- do not merge.
+- do not manually merge PRs.
 
 ## Required handoff fields
 
@@ -51,13 +51,13 @@ Use this handoff for:
 - Checks to run
 - Expected PR summary
 - Risks
-- Do not merge automatically
+- Merge/gate status
 
 ## Governance
 
 - The Issue is the task contract.
 - The PR is the review package.
-- The human owner is the release gate.
+- The canonical merge policy is `Merge Policy` in `GOAL_MODE.md`.
 - Passing technical checks is not acceptance when a user-facing artifact or business deliverable is incomplete, empty, or unusable.
 - Weak or unsupported evidence must not become an implementation requirement.
 

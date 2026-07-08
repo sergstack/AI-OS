@@ -21,7 +21,7 @@ What is included?
 
 - Do not modify unrelated files.
 - Do not change production logic unless explicitly allowed.
-- Do not merge the PR.
+- Follow `Merge Policy` in `GOAL_MODE.md`.
 
 ## Business acceptance
 
@@ -68,8 +68,8 @@ The PR must include:
 - result;
 - risks / residual risks;
 - owner review needed;
-- explicit note: Do not merge automatically.
+- merge/gate status.
 
 ## Notes for Codex
 
-Create a separate branch, make only allowed changes, run checks, commit, push, and open a PR. Do not merge.
+Create a separate branch, make only allowed changes, run checks, commit, push, and open a PR. Codex must not manually merge PRs.

@@ -4,7 +4,7 @@
 
 This repository uses an issue-driven AI development workflow.
 
-ChatGPT is used for task framing and review. Codex is used for controlled implementation. GitHub Issues are the task contract. Pull Requests are the review and acceptance gate. Human review is required before merge.
+ChatGPT is used for task framing and review. Codex is used for controlled implementation. GitHub Issues are the task contract. Pull Requests are the review and acceptance gate. Merge handling follows the canonical `Merge Policy` in `GOAL_MODE.md`.
 
 For raw or unclear inputs, use `[Inbox Router]` before creating a Codex task.
 Codex issues should already be implementation-ready.
@@ -19,8 +19,7 @@ Codex issues should already be implementation-ready.
 6. Codex runs required checks.
 7. Codex commits and pushes.
 8. Codex opens a Pull Request.
-9. Codex does not merge.
-10. Human owner reviews and merges only after acceptance.
+9. Codex reports merge/gate status.
 
 ## Roles
 
@@ -31,7 +30,7 @@ Codex issues should already be implementation-ready.
 | Codex | Implementation in a separate branch |
 | CI / checks | Automated verification |
 | Pull Request | Review package |
-| Human owner | Final review and merge |
+| Human owner | Owner-side review and repository settings |
 
 ## Issue Contract
 
@@ -46,7 +45,7 @@ Acceptance criteria:
 Checks to run:
 Expected PR summary:
 Risks:
-Do not merge.
+Merge/gate status:
 ```
 
 ## Project Instructions Length Gate
@@ -72,7 +71,7 @@ Each PR must include:
 ## Hard Rules
 
 - Do not work directly on `main`.
-- Do not merge automatically.
+- Follow the canonical `Merge Policy` in `GOAL_MODE.md`.
 - Do not change files outside allowed scope.
 - Do not skip checks.
 - Do not treat AI output as accepted without review.
@@ -82,7 +81,7 @@ Each PR must include:
 
 ## Acceptance
 
-A PR can be merged only when:
+A PR can be considered ready for its allowed merge path only when:
 
 - scope matches the Issue;
 - allowed files rule is respected;

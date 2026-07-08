@@ -21,9 +21,7 @@ Make smallest useful verified change.
 Run relevant checks.
 Fix safe in-scope failures once.
 Open PR for human review.
-Do not decide mergeability or merge PRs by yourself. Repository merge may happen
-only by explicit owner action or by the active GitHub merge gate for eligible
-Tier 0/1 docs PRs after required checks pass.
+Follow the canonical Merge Policy below.
 
 Forbidden:
 No sensitive/local config files.
@@ -46,6 +44,16 @@ Rollback
 Acceptance status
 Merge / gate status
 ```
+
+## Merge Policy
+
+This is the canonical active merge-policy reference for AI-OS.
+
+- Codex and agents must not manually merge pull requests or decide final mergeability by themselves.
+- Tier 0/1 docs pull requests may auto-merge only through the deterministic GitHub Merge Gate after required checks pass.
+- Tier 2 protected changes require owner review.
+- GitHub branch protection, rulesets, labels, and CODEOWNERS enforcement are owner-verified repository settings.
+- Passing smoke QA or documentation checks does not imply production readiness or `production_promotion=yes`.
 
 ## Flow
 

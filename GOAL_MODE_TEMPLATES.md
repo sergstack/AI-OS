@@ -16,7 +16,7 @@ Rules:
 - create scoped branch;
 - run checks;
 - open PR if requested;
-- do not merge automatically.
+- follow `Merge Policy` in `GOAL_MODE.md`.
 
 Forbidden:
 - secrets;
@@ -40,7 +40,7 @@ Checks run:
 Risks:
 Rollback:
 Acceptance status:
-No auto-merge:
+Merge / gate status:
 Next step:
 ```
 

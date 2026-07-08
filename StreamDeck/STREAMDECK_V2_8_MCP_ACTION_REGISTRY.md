@@ -102,7 +102,7 @@ Safe to execute means safe only under the constraints in this file: supervised, 
 - Owner project: `[Codex]`
 - Allowed input: GitHub issue URL, issue body, handoff package, selected text, or material pasted by Sergey.
 - Forbidden actions: destructive actions, deletion, sending, merging, publishing, secrets, credentials, private data, runtime artifacts, production automation, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, autonomous agents, auto-merge.
-- Expected output: branch, files inspected, files changed, checks, PR needed, human review, no-auto-merge status.
+- Expected output: branch, files inspected, files changed, checks, PR needed, human review, merge/gate status.
 - safe_to_execute: yes, if configured as text-only with auto-send disabled.
 - requires_confirmation: yes.
 - Smoke QA check: execute through MCP and confirm it inserts or returns the Codex Issue -> PR prompt only; no branch, commit, push, or PR should be created by the Stream Deck action itself.
