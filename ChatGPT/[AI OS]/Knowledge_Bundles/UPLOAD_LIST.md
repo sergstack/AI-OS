@@ -2,7 +2,7 @@
 
 ## Required upload files
 
-- `AIOS_01_ROUTING_AND_WORKFLOW.md`
+- `AIOS_01_ROUTING_AND_WORKFLOW.md` — includes routing, AI-OS workflow, and `Existing Script Controlled Refactor Standard` discoverability.
 - `AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
 - `AIOS_03_HANDOFF_AND_SMOKE_QA.md`
 - `AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
