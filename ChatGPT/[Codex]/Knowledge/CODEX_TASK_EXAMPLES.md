@@ -14,7 +14,7 @@ Constraints:
 - update bundles if source docs change;
 - run repo checks;
 - open PR;
-- do not merge automatically.
+- do not self-merge; report PR and merge/gate status.
 ```
 
 Why it is good:

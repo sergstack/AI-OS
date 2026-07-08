@@ -71,7 +71,7 @@ Risks:
 Rollback:
 PR:
 Acceptance status:
-No auto-merge:
+Merge / gate status:
 ```
 
 Mode-specific reports may be shorter, but they must not conflict with this schema.

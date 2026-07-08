@@ -2,7 +2,7 @@
 
 ## Status
 
-created / bridge-contract-added / ultra-long-protocol-added / smoke-qa-passed
+created / bridge-contract-added / ultra-long-protocol-added / smoke-qa-passed / merge-gate-aligned
 
 ## Location
 
@@ -20,7 +20,7 @@ This folder stores local app configuration and reusable templates.
 
 ## Last updated
 
-2026-06-15 (local pack content). For current repository-wide status see root `MASTER_STATUS.md`; this file only tracks the Codex APP pack itself.
+2026-07-08 (local pack settings aligned with active repository merge gate). For current repository-wide status see root `MASTER_STATUS.md`; this file only tracks the Codex APP pack itself.
 
 ## Smoke QA result
 
@@ -28,6 +28,8 @@ Docs-only ultra-long smoke task verified through `ChatGPT/[Codex]` → `Codex AP
 
 Result: Codex can classify mode, work type, allowed files, forbidden actions, batch plan, checkpoint policy, checks, rollback, and acceptance status before implementation.
 
-## Next step
+## Current merge posture
 
-Review and merge PR after approval.
+Codex APP must not decide mergeability or merge PRs by itself. The repository
+merge gate may auto-merge eligible Tier 0/1 docs PRs after required checks pass.
+Tier 2 protected paths require owner review.

@@ -21,7 +21,9 @@ Make smallest useful verified change.
 Run relevant checks.
 Fix safe in-scope failures once.
 Open PR for human review.
-Do not auto-merge.
+Do not decide mergeability or merge PRs by yourself. Repository merge may happen
+only by explicit owner action or by the active GitHub merge gate for eligible
+Tier 0/1 docs PRs after required checks pass.
 
 Forbidden:
 No sensitive/local config files.
@@ -42,7 +44,7 @@ Assumptions
 Risks
 Rollback
 Acceptance status
-No auto-merge
+Merge / gate status
 ```
 
 ## Flow

@@ -78,7 +78,7 @@ Checks reviewed:
 Merge readiness:
 ```
 
-Do not merge automatically. An owner merge decision is required. For this personal repository, explicit owner self-review counts as human-owned review.
+Codex must not decide mergeability or merge PRs by itself. Merge is allowed only by explicit owner action or by the active GitHub merge gate for eligible Tier 0/1 docs PRs after required checks pass. Tier 2 protected paths listed in `.github/CODEOWNERS` require owner review.
 
 ## From: `ChatGPT/[Codex]/Knowledge/WORKTREE_AND_PARALLEL_AGENT_POLICY.md`
 
@@ -90,7 +90,7 @@ Forbidden: uncontrolled edits to the same files, hidden background automation, a
 
 ## From: `ChatGPT/[Codex]/Knowledge/CODEX_TASK_EXAMPLES.md`
 
-Good Goal Mode tasks name the goal, constraints, checks, PR expectation, and no-auto-merge rule while allowing Codex to infer safe scope.
+Good Goal Mode tasks name the goal, constraints, checks, PR expectation, and merge/gate posture while allowing Codex to infer safe scope.
 
 Good strict tasks include objective, allowed files, forbidden changes, checks, and acceptance criteria.
 

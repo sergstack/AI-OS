@@ -18,7 +18,7 @@ long-run / normal / inspect-only
 Default:
 Codex may continue on safe reversible assumptions and must stop only on canonical hard blockers from `AUTONOMY_POLICY.md`.
 
-For normal bounded repo work, the task may say `Use Goal Mode Contract` instead of repeating the full autonomy, execution, forbidden-action, reporting, PR-review, no-auto-merge, and no-deletion-without-quarantine rules.
+For normal bounded repo work, the task may say `Use Goal Mode Contract` instead of repeating the full autonomy, execution, forbidden-action, reporting, PR/merge-gate posture, and no-deletion-without-quarantine rules.
 
 ## Inputs
 
@@ -62,5 +62,5 @@ For normal bounded repo work, the task may say `Use Goal Mode Contract` instead 
 
 ## Final response format
 
-Use the canonical final report schema from `EXECUTION_REPORTING_RULES.md`. Mode-specific reports may be shorter but must include status, evidence, risks, blockers, rollback/next step, and no-auto-merge/PR fields when GitHub is involved.
+Use the canonical final report schema from `EXECUTION_REPORTING_RULES.md`. Mode-specific reports may be shorter but must include status, evidence, risks, blockers, rollback/next step, and PR/merge-gate fields when GitHub is involved.
 ````
