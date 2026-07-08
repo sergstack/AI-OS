@@ -53,6 +53,12 @@ Merge / gate status
 GOAL -> inspect repo -> infer bounded safe scope -> branch -> implement smallest useful version -> check/fix in scope -> report/PR -> owner review
 ```
 
+## Outcome-First Acceptance
+
+For any task that produces a user-facing artifact or business deliverable, success requires business acceptance and artifact/content verification, not only passing tests or opening a PR.
+
+Technical checks passed, pipeline completed, files generated, or PR opened are not sufficient if the user-facing result does not satisfy the business outcome.
+
 ## User Interface
 
 In default Goal Mode, the user gives a broad goal, not an atomic task package.

@@ -87,9 +87,13 @@ A PR can be merged only when:
 - scope matches the Issue;
 - allowed files rule is respected;
 - required checks pass;
+- user-facing business acceptance is satisfied, when applicable;
+- artifact/content checks pass, when applicable;
 - PR summary is clear;
 - risks are documented;
 - human reviewer accepts the change.
+
+Passing checks alone is not enough for merge or acceptance when a user-facing artifact or business deliverable exists.
 
 ## Recommended Labels
 

@@ -25,6 +25,10 @@ What must not be broken?
 
 How will we know the goal is achieved?
 
+- Business outcome / Done when:
+- Artifact/content checks, if applicable:
+- Non-acceptance examples:
+
 ## AI should infer
 
 - route

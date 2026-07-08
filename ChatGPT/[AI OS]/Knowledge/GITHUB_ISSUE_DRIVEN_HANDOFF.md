@@ -44,7 +44,10 @@ Use this handoff for:
 - Scope
 - Allowed files
 - Forbidden changes
-- Acceptance criteria
+- Business acceptance
+- Artifact/content checks
+- Technical checks
+- Non-acceptance examples
 - Checks to run
 - Expected PR summary
 - Risks
@@ -55,6 +58,7 @@ Use this handoff for:
 - The Issue is the task contract.
 - The PR is the review package.
 - The human owner is the release gate.
+- Passing technical checks is not acceptance when a user-facing artifact or business deliverable is incomplete, empty, or unusable.
 - Weak or unsupported evidence must not become an implementation requirement.
 
 ## Related repository files
@@ -63,4 +67,3 @@ Use this handoff for:
 - `docs/templates/CODEX_ISSUE_EXECUTION_PROMPT.md`
 - `.github/ISSUE_TEMPLATE/codex-task.md`
 - `.github/pull_request_template.md`
-

@@ -23,10 +23,20 @@ What is included?
 - Do not change production logic unless explicitly allowed.
 - Do not merge the PR.
 
-## Acceptance criteria
+## Business acceptance
+
+- [ ]
+
+## Artifact/content acceptance
 
 - [ ] 
+
+## Technical checks
+
 - [ ] 
+
+## Non-acceptance examples
+
 - [ ] 
 
 ## Checks to run
@@ -52,6 +62,8 @@ The PR must include:
 
 - Issue reference;
 - files changed;
+- business acceptance status;
+- artifact/content verification, if applicable;
 - checks run;
 - result;
 - risks / residual risks;
