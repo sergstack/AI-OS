@@ -33,6 +33,7 @@
 | `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
 | `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |
 | `SKILLS_HOOKS_MCP_DECISION_MATRIX.md` | tooling governance | Decision matrix для skills, hooks, MCP tools и sub-agents как workflow aids | Когда нужно решить, добавлять или использовать workflow tooling |
+| `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` | engineering / Codex standard | Controlled cleanup/refactor of existing working scripts without behavior loss | Когда рабочий скрипт надо почистить: сначала baseline, output contract, safety tests, затем refactor |
 
 ## Существующие KB-файлы, которые должны остаться основой
 
