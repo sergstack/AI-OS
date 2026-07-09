@@ -299,6 +299,20 @@ def test_index_coverage_detects_unlisted_file(tmp_path: Path) -> None:
     assert failures == ["INDEX.md does not list Knowledge/MISSING.md"]
 
 
+def test_index_coverage_checks_all_chatgpt_project_knowledge_dirs() -> None:
+    module = load_script_module("check_index_coverage.py")
+    covered_dirs = {knowledge_dir for knowledge_dir, _indexes in module.CHECKS}
+
+    assert covered_dirs == {
+        "ChatGPT/[AI OS]/Knowledge",
+        "ChatGPT/[Analytics]/Knowledge",
+        "ChatGPT/[Codex]/Knowledge",
+        "ChatGPT/[Inbox Router]/Knowledge",
+        "ChatGPT/[LLM]/Knowledge",
+        "ChatGPT/[Thinking]/Knowledge",
+    }
+
+
 def test_knowledge_bundles_detects_missing_referenced_source(tmp_path: Path) -> None:
     module = load_script_module("check_knowledge_bundles.py")
     root, project_dir = make_bundle_project(tmp_path)

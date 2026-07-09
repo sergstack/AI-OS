@@ -12,11 +12,30 @@ CHECKS = [
         ["ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md"],
     ),
     (
+        "ChatGPT/[Analytics]/Knowledge",
+        ["ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md"],
+    ),
+    (
+        "ChatGPT/[Codex]/Knowledge",
+        ["ChatGPT/[Codex]/Knowledge/INDEX.md"],
+    ),
+    (
+        "ChatGPT/[Inbox Router]/Knowledge",
+        [
+            "ChatGPT/[Inbox Router]/Knowledge/INDEX.md",
+            "ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md",
+        ],
+    ),
+    (
         "ChatGPT/[LLM]/Knowledge",
         [
             "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
             "ChatGPT/[LLM]/README.md",
         ],
+    ),
+    (
+        "ChatGPT/[Thinking]/Knowledge",
+        ["ChatGPT/[Thinking]/Knowledge/INDEX.md"],
     ),
 ]
 
