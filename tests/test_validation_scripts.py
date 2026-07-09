@@ -185,6 +185,34 @@ def test_public_safety_allows_safe_markdown(tmp_path: Path) -> None:
     assert "Public safety check passed." in result.stdout
 
 
+def test_public_safety_flags_fake_token_in_python(tmp_path: Path) -> None:
+    init_git_repo(tmp_path)
+    fake_token = "ghp_" + "FAKEFAKEFAKEFAKEFAKE1234"
+    (tmp_path / "script.py").write_text(
+        f"TOKEN = '{fake_token}'\n", encoding="utf-8"
+    )
+    git_add(tmp_path, "script.py")
+
+    result = run_script("check_repo_public_safety.py", tmp_path)
+
+    assert result.returncode == 1
+    assert "Possible secret/token pattern: script.py" in result.stdout
+
+
+def test_public_safety_flags_fake_token_in_csv(tmp_path: Path) -> None:
+    init_git_repo(tmp_path)
+    fake_token = "sk-" + "FAKEFAKEFAKEFAKEFAKE1234"
+    (tmp_path / "data.csv").write_text(
+        f"name,token\nexample,{fake_token}\n", encoding="utf-8"
+    )
+    git_add(tmp_path, "data.csv")
+
+    result = run_script("check_repo_public_safety.py", tmp_path)
+
+    assert result.returncode == 1
+    assert "Possible secret/token pattern: data.csv" in result.stdout
+
+
 def test_codex_goal_mode_defaults_allows_scoped_strict_task_packages(tmp_path: Path) -> None:
     (tmp_path / "AGENTS.md").write_text(
         textwrap.dedent(
