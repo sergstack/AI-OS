@@ -23,6 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:2a75890e3f2ca8c3c0efa9e65c8a41a0f6b3d134c2d9114337bf748565fe245f
 
 ---
 

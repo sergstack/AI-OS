@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 from pathlib import Path
 import re
 import sys
@@ -41,6 +42,7 @@ SECRET_PATTERNS = [
     re.compile(r"\bgh[opsu]_[A-Za-z0-9_]{20,}\b"),
     re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
 ]
+SOURCE_FINGERPRINT_PATTERN = re.compile(r"source_fingerprint:\s*(sha256:[0-9a-f]{64})")
 
 
 @dataclass
@@ -87,6 +89,24 @@ def section_between(text: str, start: str, end: str) -> str:
 def source_files_from_bundle(text: str) -> list[str]:
     source_section = section_between(text, "## Source files", "## Upload target")
     return listed_files(source_section)
+
+
+def source_fingerprint(root: Path, sources: list[str]) -> str:
+    digest = hashlib.sha256()
+    for source in sources:
+        digest.update(source.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update((root / source).read_bytes())
+        digest.update(b"\0")
+    return f"sha256:{digest.hexdigest()}"
+
+
+def declared_source_fingerprint(text: str) -> str | None:
+    status_section = section_between(text, "## Status", "---")
+    match = SOURCE_FINGERPRINT_PATTERN.search(status_section)
+    if not match:
+        return None
+    return match.group(1)
 
 
 def validate_upload_list(root: Path, project_dir: Path, upload_text: str, failures: list[str]) -> tuple[list[str], list[str]]:
@@ -162,6 +182,18 @@ def validate_bundle(root: Path, project_dir: Path, bundle_name: str, failures: l
             source_ok = False
         if not (root / source).exists():
             failures.append(f"{rel} source file missing: {source}")
+            source_ok = False
+
+    declared_fingerprint = declared_source_fingerprint(text)
+    if not declared_fingerprint:
+        failures.append(f"{rel} missing source_fingerprint in Status")
+        source_ok = False
+    elif source_ok:
+        current_fingerprint = source_fingerprint(root, sources)
+        if declared_fingerprint != current_fingerprint:
+            failures.append(
+                f"{rel} source_fingerprint mismatch: expected {current_fingerprint}, found {declared_fingerprint}"
+            )
             source_ok = False
 
     before_failures = len(failures)

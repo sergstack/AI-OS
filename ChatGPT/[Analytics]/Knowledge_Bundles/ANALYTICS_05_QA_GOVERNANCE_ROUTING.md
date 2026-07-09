@@ -22,6 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:585dd80649e22d39563447f2968d9f13323c14156dcc7a27395a6b54622d66c5
 
 ---
 

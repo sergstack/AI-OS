@@ -18,6 +18,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:3fabfff0fd33f77c43bacb97d230ea06ee1fc7feda66b1329f2afe081b68a65c
 
 ---
 

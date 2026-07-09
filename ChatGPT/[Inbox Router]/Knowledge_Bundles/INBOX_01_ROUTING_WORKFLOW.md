@@ -21,6 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- source_fingerprint: sha256:b5e04ba10e0efb61f9a27efe1f2d63203be7705100ab218c6d084bd72800b10a
 
 ---
 
