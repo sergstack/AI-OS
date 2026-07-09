@@ -67,7 +67,7 @@ python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
 ```
 
-The public safety scan also checks for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
+The public safety scan also checks tracked text files, including scripts, CSVs, workflow YAML, and docs, for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
 
 The Codex Goal Mode scan reports every remaining atomic-task-package wording in Codex-facing files and fails if any wording implies atomic task packages are required by default.
 
