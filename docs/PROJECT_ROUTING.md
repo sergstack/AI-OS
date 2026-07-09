@@ -1,5 +1,9 @@
 # Project Routing
 
+Scope note: this file is a repo-level convenience overview. The canonical
+front-door routing rules live in `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`.
+If this overview and the Inbox Router rules diverge, use the Inbox Router file.
+
 Routing first, reasoning second.
 
 ## Routing table
