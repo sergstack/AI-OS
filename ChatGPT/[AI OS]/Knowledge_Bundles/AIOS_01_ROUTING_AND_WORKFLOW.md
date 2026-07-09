@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:b30cd2d23a4b8fb1646efbc2dc6881777d2679d3169cd5c89849426a60dec903
+- source_fingerprint: sha256:afde04972599895a898e93fd89ca405d8543329eec8ca038b6e0a4d0eee2a94a
 
 ---
 
@@ -81,6 +81,11 @@ README.md
 ## From: `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`
 
 # Project Routing
+Scope note: this file is the `[AI OS]` project routing and handoff reference.
+Canonical front-door routing lives in
+`ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`.
+If raw-input triage and AI OS scoped routing differ, use Inbox Router for
+triage and this file for AI OS evidence/governance scope.
 ## Главный принцип
 Сначала routing, потом reasoning.
 | Сравнить AI-подходы | `[AI OS]` | Здесь pattern/evidence слой |

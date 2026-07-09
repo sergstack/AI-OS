@@ -2,6 +2,12 @@
 
 Назначение: определить, в каком ChatGPT Project должна решаться задача.
 
+Scope note: this file is the `[AI OS]` project routing and handoff reference.
+Canonical front-door routing lives in
+`ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`. If raw-input triage and
+AI OS scoped routing differ, use Inbox Router for triage and this file for
+AI OS evidence/governance scope.
+
 ## Главный принцип
 
 Сначала routing, потом reasoning.
