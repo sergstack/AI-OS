@@ -41,6 +41,9 @@ AI-OS uses solo-owner governance by default. The canonical active merge policy i
 residual risks, rollback notes, and merge/gate status. Owner-side Merge Gate
 settings are checked with `docs/MERGE_GATE_OWNER_CHECKLIST.md`.
 
+Rights posture: this repository has no open-source license. See
+`docs/rights_posture.md`.
+
 ## Goal Packs
 
 Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
