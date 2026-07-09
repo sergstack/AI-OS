@@ -8,7 +8,17 @@ import sys
 
 
 SKIP_DIRS = {".git", ".claude", "__pycache__"}
-TEXT_SUFFIXES = {".md", ".json", ".yml", ".yaml", ".txt", ".toml", ".gitignore"}
+TEXT_SUFFIXES = {
+    ".csv",
+    ".gitignore",
+    ".json",
+    ".md",
+    ".py",
+    ".toml",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
 FORBIDDEN_DIR_NAMES = {
     "embeddings",
     "embedding",
