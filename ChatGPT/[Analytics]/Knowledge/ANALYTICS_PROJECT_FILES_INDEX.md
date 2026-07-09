@@ -12,10 +12,13 @@
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
+| `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |
 | `MARTS_DESIGN.md` | Проектирование marts | Нужны метрики, витрины, cuts, dashboard |
+| `MEMO_FACTORY_DESIGN_HANDOFF.md` | Memo factory design handoff | Когда memo workflow требует implementation handoff |
 | `ANALYTICAL_TECHNIQUES.md` | Методы анализа | Нужно выбрать variance/driver/bridge/etc. |
 | `CHART_SELECTION_STANDARD.md` | Подбор графиков | Нужны графики из mart |
 | `MEMO_PIPELINE.md` | Превращение анализа в memo | Нужна аналитическая записка |
+| `MEMO_RUBRIC.md` | Memo quality rubric | Нужно оценить качество аналитической записки |
 | `ANALYTICAL_MEMO_STRUCTURE.md` | Структура записки | Нужно оформить выводы |
 | `WORD_REPORT_STANDARD.md` | Word/DOCX стандарт | Нужна аналитическая записка в Word |
 | `TEXT_QA_AND_STYLE.md` | Редактура и стиль | Нужно отладить текст и оформление |
@@ -26,6 +29,7 @@
 | `AI_OS_REFERENCE.md` | Связь с AI OS | Нужны AI evidence/patterns |
 | `GOVERNANCE_AND_ANTI_PATTERNS.md` | Governance and blockers | Риск unsupported claims |
 | `SMOKE_QA_FOR_ANALYTICS.md` | Проверка проекта | После загрузки пакета |
+| `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
 | `../../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 
