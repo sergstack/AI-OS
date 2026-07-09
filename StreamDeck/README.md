@@ -4,9 +4,9 @@
 
 Current active version: v2.7
 
-Candidate version: v2.8 command-surface aligned operator panel.
+Candidate version: v2.9 review-confirmed operator panel (supersedes the v2.8 candidate).
 
-Status checked: 2026-07-07.
+Status checked: 2026-07-09.
 
 ## Files
 
@@ -47,6 +47,16 @@ Status checked: 2026-07-07.
 - MCP Actions status: registry/run-package artifacts exist, but manual Stream Deck
   `MCP Actions` profile setup and live MCP execution evidence remain required.
 - Migration path: duplicate or create a separate Stream Deck profile, build v2.8 side by side, then manually promote after pilot review.
+
+## v2.9 candidate (review-confirmed)
+
+- `AIOS_StreamDeck_Setup_Instruction_v2.9.md` — full setup instruction with per-button project, risk, MCP action, and next-button hints.
+- `AIOS_StreamDeck_Button_Map_v2.9.json` — enriched button map (195 cells, 13 screens).
+- `AIOS_StreamDeck_Button_Map_v2.9.xlsx` — spreadsheet button map (README, Button Map, MCP Registry, HOME Grid sheets).
+- Scope: consolidates the StreamDeck MCP command-surface issue tree (#184–#191) after its review pass. HOME layout is identical to v2.8; the prompt-first HOME proposal was rejected because it made the CODEX and LLM Level-2 screens unreachable.
+- Corrected metadata: 16 canonical commands, 12 active + 4 candidate goal packs, 195 button cells, 7 MCP registry actions (2 execution-verified: `AIOS_HOME_JUDGE`, `AIOS_HOME_REVISOR`).
+- Prompt texts are reused verbatim from v2.8; no Prompt QA run has been executed, so prompts remain candidate.
+- Status: candidate / ready for owner review. v2.7 remains active; v2.8 artifacts are preserved.
 
 ### v2.8 HOME
 
