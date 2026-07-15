@@ -870,6 +870,25 @@ def dump(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def preserve_executed_qa_results(qa_rows: list[dict], existing_matrix: dict) -> int:
+    existing_rows = {row["prompt_id"]: row for row in existing_matrix.get("rows", [])}
+    preserved_count = 0
+    for row in qa_rows:
+        existing = existing_rows.get(row["prompt_id"])
+        if not existing or existing.get("prompt_version") != row["prompt_version"]:
+            continue
+        existing_cases = {case["case"]: case for case in existing.get("test_cases", [])}
+        for index, case in enumerate(row["test_cases"]):
+            observed = existing_cases.get(case["case"])
+            if not observed or observed.get("status") != "EXECUTED":
+                continue
+            preserved = dict(observed)
+            preserved["expected"] = case["expected"]
+            row["test_cases"][index] = preserved
+            preserved_count += 1
+    return preserved_count
+
+
 def task_type(label: str) -> str:
     upper = label.upper()
     if any(token in upper for token in ("JUDGE", "QA", "CHECK", "TEST", "EVAL", "ACCEPTANCE")):
@@ -1076,7 +1095,17 @@ def make_package() -> None:
     dump(ACTIVE / "config" / "controller_map.json", {"version": VERSION, "device": "AIOS-CONTROL", "profile_id": "A00_CONTROL", "buttons": controllers, "count": len(controllers)})
     dump(ACTIVE / "config" / "action_profiles.json", {"version": VERSION, "device": "AIOS-ACTIONS", "profile_count": len(PROFILE_SPECS), "button_count": len(buttons), "buttons": buttons})
     dump(ACTIVE / "prompts" / "prompt_registry.json", {"version": VERSION, "status": "candidate / blocked pending observed Prompt QA and owner acceptance", "prompt_count": len(prompts), "prompts": prompts})
-    dump(ACTIVE / "qa" / "prompt_qa_matrix.json", {"version": VERSION, "status": "repo static QA complete; representative executions NOT RUN", "prompt_count": len(qa_rows), "rows": qa_rows})
+    qa_path = ACTIVE / "qa" / "prompt_qa_matrix.json"
+    preserved_count = 0
+    if qa_path.is_file():
+        existing_matrix = json.loads(qa_path.read_text(encoding="utf-8"))
+        preserved_count = preserve_executed_qa_results(qa_rows, existing_matrix)
+    qa_status = (
+        "repo static QA complete; model executions recorded; physical QA and owner acceptance pending"
+        if preserved_count
+        else "repo static QA complete; representative executions NOT RUN"
+    )
+    dump(qa_path, {"version": VERSION, "status": qa_status, "prompt_count": len(qa_rows), "rows": qa_rows})
     make_mcp_registry(buttons)
     make_icon_map(controllers, buttons)
     make_baseline_audit()
@@ -1161,8 +1190,16 @@ def make_manifests() -> None:
     dump(ACTIVE / "qa" / "cleanup_inventory.json", {"generated": SNAPSHOT, "items": inventory, "deletions": [], "blocked": ["Do not delete v2.7 archive before physical acceptance."]})
 
     active_roots = [ACTIVE / name for name in ("architecture", "assets", "config", "exports", "generated", "migration", "prompts", "qa", "tools")]
-    active_files = [ACTIVE / "README.md"]
-    active_files.extend(path for root in active_roots for path in root.rglob("*") if path.is_file() and path.name != "migration_manifest.json")
+    active_files = [ACTIVE / ".env.example", ACTIVE / "README.md"]
+    active_files.extend(
+        path
+        for root in active_roots
+        for path in root.rglob("*")
+        if path.is_file()
+        and path.name != "migration_manifest.json"
+        and path.suffix != ".pyc"
+        and "__pycache__" not in path.parts
+    )
     active_files = sorted(active_files)
     files = [{"path": str(path.relative_to(ROOT)), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for path in active_files]
     dump(ACTIVE / "migration" / "migration_manifest.json", {

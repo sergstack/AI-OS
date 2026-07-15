@@ -4,6 +4,8 @@ Status: every item is `NOT RUN — owner physical action required`.
 
 Record the Stream Deck app version, macOS version, both device models, role names and test date. Do not record serials, private paths, tokens or raw device dumps in the repository.
 
+Model QA is separate: `python3 StreamDeck/tools/run_prompt_qa.py --dry-run` validates all 420 synthetic cases, and an owner may run the API-backed cases with a key from environment. This checklist records only physical Stream Deck/app observations. Model-QA execution never changes a row below, substitutes for device evidence, grants owner acceptance, or makes the package selected/import-ready.
+
 | Gate | Procedure | Pass evidence | Status |
 |---|---|---|---|
 | Minimal POC TEST_A | On Deck A bind `Switch Profile` to Deck B / TEST_A and press it | Deck B shows TEST_A; Deck A stays on controller | NOT RUN |

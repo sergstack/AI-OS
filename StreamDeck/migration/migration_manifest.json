@@ -46,8 +46,12 @@
   "physical_switch": "NOT RUN - owner action required",
   "files": [
     {
+      "path": ".env.example",
+      "sha256": "8ed6f63b5a0fb59b481b78c3ac0ad8371da5d522b67a8225d624d3bd0a6ee5c2"
+    },
+    {
       "path": "README.md",
-      "sha256": "a8936f4ba884b95a8ace0e3536d8eadb9d1cf74d525b9815debd3801e83a8bbb"
+      "sha256": "ecdecaf4874ac0dc03d6ae61d920ec9a49a735c6648762443f1983a40a9e73ca"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
@@ -259,11 +263,11 @@
     },
     {
       "path": "qa/physical_qa_checklist.md",
-      "sha256": "b1aecc3f4a6045417372acf19b50b6e33763587ee5f34ad5944283cbfbb082a9"
+      "sha256": "0d3918f5327bd9a1fb050b96959f40719d83e9cee7312ec1803752fd972c44b9"
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "d6ce41cfa703d8ccc306072581150655ecf5503e6dd183a3092e3ceb0a73f040"
+      "sha256": "93ab3107107f977f6a9bd7fe5970fb34676af1cfc37db0149307236490274508"
     },
     {
       "path": "tools/export_profiles.py",
@@ -271,11 +275,15 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "fa22d974bdd84e606b3cfe019fc211a3381aff690731f724b3ea57f02adf343f"
+      "sha256": "692db7748a6d22746ae9a77dbe27a19c5c742c1fabf5b9bee55e45b4c61a6a07"
+    },
+    {
+      "path": "tools/run_prompt_qa.py",
+      "sha256": "a30fd808858e8bb8d972a20d50e703e76aecd40f0b53588e6df330f385779724"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "a2d031aa25fe2a3828677057e4a1b7e3640e7af09910af223962f7bbb617673b"
+      "sha256": "82744799ac4778415be7e87625df79f35c9dae0015708178e5b89684d7114adb"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

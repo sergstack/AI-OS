@@ -63,7 +63,32 @@ Clipboard-paste выбран для многоабзацных prompts: typed te
 
 Full bodies хранятся только в `prompts/prompt_registry.json`. Button maps хранят `prompt_id`, version и hash, а не дубли body. После ручной настройки сверьте inserted text с `prompt_hash` через `DECK QA / PROMPT HASH`.
 
-QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены, но normal, missing-context/evidence и unsafe/ambiguous model runs не выполнены. Поэтому каждый prompt имеет verdict `blocked`, UX `4/5`, owner acceptance `pending` и ни один не назван `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
+QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены; model QA запускается через `tools/run_prompt_qa.py`, а physical QA остаётся ручным owner checklist. Скрипт детерминированно проверяет обязательные секции и безопасное поведение, не использует второй LLM-judge и не сохраняет raw model responses. Независимо от model results каждый prompt сохраняет verdict `blocked`, UX `4/5`, owner acceptance `pending` и не становится `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
+
+Dry-run собирает все 140 × 3 = 420 входов без API-вызовов и записи:
+
+```bash
+python3 StreamDeck/tools/run_prompt_qa.py --dry-run
+python3 StreamDeck/tools/run_prompt_qa.py --dry-run --subset priority
+```
+
+`priority` — 15 unique prompt IDs / 45 cases: общие K11–K15 и весь `B00_DAILY` с дедупликацией. Live-run требует exact model и один ключ только из environment; доступны OpenAI Responses API, Anthropic Messages API и Google Gemini API. Кейсы выполняются ограниченными batch/concurrency с retry; успешные batch атомарно checkpoint-ятся, а `--resume` пропускает уже выполненные выбранным provider кейсы. По умолчанию наблюдаемые результаты записываются в QA matrix и её checksum в migration manifest; `--output` позволяет сохранить отдельную локальную матрицу. Ключ и raw response не записываются и не печатаются.
+
+```bash
+python3 StreamDeck/tools/run_prompt_qa.py \
+  --provider openai --model <model-id> --subset priority --concurrency 4 --batch-size 15
+
+python3 StreamDeck/tools/run_prompt_qa.py \
+  --provider anthropic --model <model-id> --subset priority --concurrency 4 --batch-size 15
+
+set -a
+source StreamDeck/.env
+set +a
+python3 StreamDeck/tools/run_prompt_qa.py \
+  --provider google --model "$GEMINI_MODEL" --subset priority --resume --concurrency 4 --batch-size 15
+```
+
+Для Google скопируйте `StreamDeck/.env.example` в `StreamDeck/.env` и заполните ключ локально. Не добавляйте ключ в shell history или repository. Реальные model results не обязательны для PR; если live-run не выполнялся, все case statuses остаются `NOT RUN`.
 
 ## MCP
 
@@ -124,4 +149,4 @@ Canonical sources:
 - migration, MCP и checksums: `migration/`;
 - legacy rollback: `archive/legacy_manifest.md` и `archive/checksums.json`.
 
-Repo checks проверяют JSON, counts, routing, references, hashes, embedded icons, deterministic exports, secrets/private paths и derived map. Physical switching, focus, text insertion, reconnect, import, MCP visibility и v2.7 rollback остаются `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.
+Repo checks проверяют JSON, counts, routing, references, hashes, embedded icons, deterministic exports, model-QA result schema, secrets/private paths и derived map. `run_prompt_qa.py` покрывает только model behavior; physical switching, focus, text insertion, reconnect, import, MCP visibility и v2.7 rollback остаются ручными `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.
