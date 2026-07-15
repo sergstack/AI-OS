@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run deterministic Prompt QA cases through OpenAI or Anthropic.
+"""Run deterministic Prompt QA cases through OpenAI, Anthropic, or Google Gemini.
 
 Raw model responses and API keys are never written to the repository. A successful
 case records only deterministic checks, a response hash/length, model metadata and
@@ -19,6 +19,7 @@ import sys
 import tempfile
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -237,20 +238,37 @@ def extract_anthropic_text(payload: dict[str, Any]) -> str:
     )
 
 
+def extract_google_text(payload: dict[str, Any]) -> str:
+    parts: list[str] = []
+    for candidate in payload.get("candidates", []):
+        for part in candidate.get("content", {}).get("parts", []):
+            if isinstance(part.get("text"), str):
+                parts.append(part["text"])
+    return "\n".join(parts)
+
+
 def normalized_usage(provider: str, payload: dict[str, Any]) -> dict[str, int]:
-    usage = payload.get("usage") or {}
     if provider == "openai":
+        usage = payload.get("usage") or {}
         mapping = {
             "input_tokens": usage.get("input_tokens"),
             "output_tokens": usage.get("output_tokens"),
             "total_tokens": usage.get("total_tokens"),
         }
-    else:
+    elif provider == "anthropic":
+        usage = payload.get("usage") or {}
         input_tokens = usage.get("input_tokens")
         output_tokens = usage.get("output_tokens")
         mapping = {"input_tokens": input_tokens, "output_tokens": output_tokens}
         if isinstance(input_tokens, int) and isinstance(output_tokens, int):
             mapping["total_tokens"] = input_tokens + output_tokens
+    else:
+        usage = payload.get("usageMetadata") or {}
+        mapping = {
+            "input_tokens": usage.get("promptTokenCount"),
+            "output_tokens": usage.get("candidatesTokenCount"),
+            "total_tokens": usage.get("totalTokenCount"),
+        }
     return {key: value for key, value in mapping.items() if isinstance(value, int)}
 
 
@@ -308,6 +326,27 @@ def call_anthropic(api_key: str, model: str, qa_input: QaInput, max_tokens: int,
     return ApiResult(text=text, model_id=str(payload.get("model") or model), usage=normalized_usage("anthropic", payload))
 
 
+def call_google(api_key: str, model: str, qa_input: QaInput, max_tokens: int, timeout: float) -> ApiResult:
+    model_path = urllib.parse.quote(model, safe="")
+    payload = post_json(
+        f"https://generativelanguage.googleapis.com/v1beta/models/{model_path}:generateContent",
+        {"x-goog-api-key": api_key, "Content-Type": "application/json"},
+        {
+            "contents": [{"role": "user", "parts": [{"text": qa_input.request_text}]}],
+            "generationConfig": {"maxOutputTokens": max_tokens},
+        },
+        timeout,
+    )
+    text = extract_google_text(payload)
+    if not text:
+        raise ApiCallError("empty text response; retryable=false")
+    return ApiResult(
+        text=text,
+        model_id=str(payload.get("modelVersion") or model),
+        usage=normalized_usage("google", payload),
+    )
+
+
 def is_retryable(exc: ApiCallError) -> bool:
     return "retryable=true" in str(exc)
 
@@ -322,7 +361,7 @@ def run_one(
     retries: int,
     retry_base_seconds: float,
 ) -> tuple[QaInput, dict[str, Any] | None, str | None]:
-    call = call_openai if provider == "openai" else call_anthropic
+    call = {"openai": call_openai, "anthropic": call_anthropic, "google": call_google}[provider]
     for attempt in range(retries + 1):
         try:
             api_result = call(api_key, model, qa_input, max_tokens, timeout)
@@ -409,19 +448,19 @@ def write_results(
 
 
 def choose_provider(requested: str) -> tuple[str, str]:
-    if requested == "openai":
-        key = os.environ.get("OPENAI_API_KEY")
+    key_names = {
+        "openai": "OPENAI_API_KEY",
+        "anthropic": "ANTHROPIC_API_KEY",
+        "google": "GEMINI_API_KEY",
+    }
+    if requested in key_names:
+        key_name = key_names[requested]
+        key = os.environ.get(key_name)
         if not key:
-            raise ValueError("OPENAI_API_KEY is not set")
-        return requested, key
-    if requested == "anthropic":
-        key = os.environ.get("ANTHROPIC_API_KEY")
-        if not key:
-            raise ValueError("ANTHROPIC_API_KEY is not set")
+            raise ValueError(f"{key_name} is not set")
         return requested, key
     available = [
-        ("openai", os.environ.get("OPENAI_API_KEY")),
-        ("anthropic", os.environ.get("ANTHROPIC_API_KEY")),
+        (provider, os.environ.get(key_name)) for provider, key_name in key_names.items()
     ]
     configured = [(provider, key) for provider, key in available if key]
     if len(configured) != 1:
@@ -433,7 +472,7 @@ def choose_provider(requested: str) -> tuple[str, str]:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="validate and assemble inputs without API calls or writes")
-    parser.add_argument("--provider", choices=("auto", "openai", "anthropic"), default="auto")
+    parser.add_argument("--provider", choices=("auto", "openai", "anthropic", "google"), default="auto")
     parser.add_argument("--model", help="provider model id; required for a live run")
     parser.add_argument(
         "--subset",

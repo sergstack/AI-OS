@@ -294,7 +294,7 @@ def main() -> int:
             require(not (forbidden_result_fields & set(case)), f"raw/private QA result field: {row['prompt_id']}/{case['case']}")
             if case["status"] == "EXECUTED":
                 executed_cases += 1
-                require(case.get("provider") in {"openai", "anthropic"}, f"invalid QA provider: {row['prompt_id']}/{case['case']}")
+                require(case.get("provider") in {"openai", "anthropic", "google"}, f"invalid QA provider: {row['prompt_id']}/{case['case']}")
                 require(isinstance(case.get("model_id"), str) and bool(case["model_id"]), f"missing QA model id: {row['prompt_id']}/{case['case']}")
                 require(bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", case.get("executed_at", ""))), f"invalid QA execution date: {row['prompt_id']}/{case['case']}")
                 require(case.get("observed_verdict") in {"pass", "revise"}, f"invalid QA verdict: {row['prompt_id']}/{case['case']}")

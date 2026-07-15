@@ -1161,7 +1161,7 @@ def make_manifests() -> None:
     dump(ACTIVE / "qa" / "cleanup_inventory.json", {"generated": SNAPSHOT, "items": inventory, "deletions": [], "blocked": ["Do not delete v2.7 archive before physical acceptance."]})
 
     active_roots = [ACTIVE / name for name in ("architecture", "assets", "config", "exports", "generated", "migration", "prompts", "qa", "tools")]
-    active_files = [ACTIVE / "README.md"]
+    active_files = [ACTIVE / ".env.example", ACTIVE / "README.md"]
     active_files.extend(
         path
         for root in active_roots

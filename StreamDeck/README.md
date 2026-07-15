@@ -72,7 +72,7 @@ python3 StreamDeck/tools/run_prompt_qa.py --dry-run
 python3 StreamDeck/tools/run_prompt_qa.py --dry-run --subset priority
 ```
 
-`priority` — 15 unique prompt IDs / 45 cases: общие K11–K15 и весь `B00_DAILY` с дедупликацией. Live-run требует exact model и один ключ только из environment; доступны OpenAI Responses API и Anthropic Messages API. Кейсы выполняются ограниченными batch/concurrency с retry. По умолчанию наблюдаемые результаты записываются в QA matrix и её checksum в migration manifest; `--output` позволяет сохранить отдельную локальную матрицу. Ключ и raw response не записываются и не печатаются.
+`priority` — 15 unique prompt IDs / 45 cases: общие K11–K15 и весь `B00_DAILY` с дедупликацией. Live-run требует exact model и один ключ только из environment; доступны OpenAI Responses API, Anthropic Messages API и Google Gemini API. Кейсы выполняются ограниченными batch/concurrency с retry. По умолчанию наблюдаемые результаты записываются в QA matrix и её checksum в migration manifest; `--output` позволяет сохранить отдельную локальную матрицу. Ключ и raw response не записываются и не печатаются.
 
 ```bash
 python3 StreamDeck/tools/run_prompt_qa.py \
@@ -80,9 +80,15 @@ python3 StreamDeck/tools/run_prompt_qa.py \
 
 python3 StreamDeck/tools/run_prompt_qa.py \
   --provider anthropic --model <model-id> --subset priority --concurrency 4 --batch-size 15
+
+set -a
+source StreamDeck/.env
+set +a
+python3 StreamDeck/tools/run_prompt_qa.py \
+  --provider google --model "$GEMINI_MODEL" --subset priority --concurrency 4 --batch-size 15
 ```
 
-Не добавляйте ключ в shell history или repository: безопаснее заранее экспортировать его в текущую owner-сессию. Реальные model results не обязательны для PR; если live-run не выполнялся, все case statuses остаются `NOT RUN`.
+Для Google скопируйте `StreamDeck/.env.example` в `StreamDeck/.env` и заполните ключ локально. Не добавляйте ключ в shell history или repository. Реальные model results не обязательны для PR; если live-run не выполнялся, все case statuses остаются `NOT RUN`.
 
 ## MCP
 

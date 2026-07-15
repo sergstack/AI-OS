@@ -118,9 +118,15 @@ def test_api_payload_extractors_and_usage_are_provider_specific():
         "content": [{"type": "text", "text": "hello"}],
         "usage": {"input_tokens": 11, "output_tokens": 5},
     }
+    google_payload = {
+        "modelVersion": "gemini-2.5-flash",
+        "candidates": [{"content": {"parts": [{"text": "hello"}]}}],
+        "usageMetadata": {"promptTokenCount": 12, "candidatesTokenCount": 6, "totalTokenCount": 18},
+    }
 
     assert runner.extract_openai_text(openai_payload) == "hello"
     assert runner.extract_anthropic_text(anthropic_payload) == "hello"
+    assert runner.extract_google_text(google_payload) == "hello"
     assert runner.normalized_usage("openai", openai_payload) == {
         "input_tokens": 10,
         "output_tokens": 4,
@@ -131,6 +137,55 @@ def test_api_payload_extractors_and_usage_are_provider_specific():
         "output_tokens": 5,
         "total_tokens": 16,
     }
+    assert runner.normalized_usage("google", google_payload) == {
+        "input_tokens": 12,
+        "output_tokens": 6,
+        "total_tokens": 18,
+    }
+
+
+def test_google_provider_uses_gemini_api_key(monkeypatch):
+    runner = load_runner()
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("GEMINI_API_KEY", "not-a-real-key")
+
+    assert runner.choose_provider("google") == ("google", "not-a-real-key")
+    assert runner.choose_provider("auto") == ("google", "not-a-real-key")
+
+
+def test_google_call_uses_generate_content_contract(monkeypatch):
+    runner = load_runner()
+    observed = {}
+    qa_input = runner.QaInput(
+        prompt_id="example",
+        prompt_version="1.0.0",
+        case_name="normal",
+        body="Return exactly these sections: Decision",
+        output_schema=("Decision",),
+        request_text="synthetic",
+    )
+
+    def fake_post(url, headers, body, timeout):
+        observed.update(url=url, headers=headers, body=body, timeout=timeout)
+        return {
+            "modelVersion": "gemini-2.5-flash",
+            "candidates": [{"content": {"parts": [{"text": "## Decision\nProceed."}]}}],
+            "usageMetadata": {"promptTokenCount": 7, "candidatesTokenCount": 3, "totalTokenCount": 10},
+        }
+
+    monkeypatch.setattr(runner, "post_json", fake_post)
+    result = runner.call_google("not-a-real-key", "gemini-2.5-flash", qa_input, 1200, 30.0)
+
+    assert observed["url"].endswith("/models/gemini-2.5-flash:generateContent")
+    assert observed["headers"]["x-goog-api-key"] == "not-a-real-key"
+    assert observed["body"] == {
+        "contents": [{"role": "user", "parts": [{"text": "synthetic"}]}],
+        "generationConfig": {"maxOutputTokens": 1200},
+    }
+    assert observed["timeout"] == 30.0
+    assert result.model_id == "gemini-2.5-flash"
+    assert result.text == "## Decision\nProceed."
 
 
 def test_retry_repeats_only_sanitized_retryable_failures(monkeypatch):
