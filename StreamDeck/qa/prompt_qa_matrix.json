@@ -8622,7 +8622,7 @@
     },
     {
       "prompt_id": "final_acceptance_gate",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K15",
         "B10_ROUTE/K15",
@@ -8663,7 +8663,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -8906,7 +8907,7 @@
     },
     {
       "prompt_id": "judge_analytics",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K6"
       ],
@@ -8933,7 +8934,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -8991,7 +8993,7 @@
     },
     {
       "prompt_id": "judge_evidence",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K2"
       ],
@@ -9018,7 +9020,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9076,7 +9079,7 @@
     },
     {
       "prompt_id": "judge_freshness",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K5"
       ],
@@ -9103,7 +9106,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9161,7 +9165,7 @@
     },
     {
       "prompt_id": "judge_local_ai",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K10"
       ],
@@ -9188,7 +9192,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9246,7 +9251,7 @@
     },
     {
       "prompt_id": "judge_memo",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K7"
       ],
@@ -9273,7 +9278,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9331,7 +9337,7 @@
     },
     {
       "prompt_id": "judge_pr",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K9"
       ],
@@ -9358,7 +9364,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9416,7 +9423,7 @@
     },
     {
       "prompt_id": "judge_prompt",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K8"
       ],
@@ -9443,7 +9450,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9501,7 +9509,7 @@
     },
     {
       "prompt_id": "judge_risk",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K4"
       ],
@@ -9528,7 +9536,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9586,7 +9595,7 @@
     },
     {
       "prompt_id": "judge_route",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B70_JUDGE/K3"
       ],
@@ -9613,7 +9622,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -9671,7 +9681,7 @@
     },
     {
       "prompt_id": "judge_universal",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K13",
         "B10_ROUTE/K13",
@@ -9714,7 +9724,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {

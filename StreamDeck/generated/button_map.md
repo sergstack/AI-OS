@@ -38,9 +38,9 @@
 | K10 | KB EVIDENCE | `b00_daily_kb_evidence` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## ROUTE (`B10_ROUTE`)
 
@@ -58,9 +58,9 @@
 | K10 | CODEX APP? | `b10_route_codex_app` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## AI OS (`B20_AI_OS`)
 
@@ -78,9 +78,9 @@
 | K10 | STREAMDECK | `b20_ai_os_streamdeck` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## THINKING (`B30_THINKING`)
 
@@ -98,9 +98,9 @@
 | K10 | NEXT STEP | `b30_thinking_next_step` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## ANALYTICS (`B40_ANALYTICS`)
 
@@ -118,9 +118,9 @@
 | K10 | MEMO FACTS | `b40_analytics_memo_facts` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## LLM (`B50_LLM`)
 
@@ -138,9 +138,9 @@
 | K10 | GOAL→CODEX PACK | `b50_llm_goal_to_codex_pack` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## CODEX (`B60_CODEX`)
 
@@ -158,29 +158,29 @@
 | K10 | RELEASE NOTES | `b60_codex_release_notes` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## JUDGE (`B70_JUDGE`)
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | UNIVERSAL | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | EVIDENCE | `judge_evidence` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | ROUTE | `judge_route` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | RISK | `judge_risk` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | FRESHNESS | `judge_freshness` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | ANALYTICS | `judge_analytics` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | MEMO | `judge_memo` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | PROMPT | `judge_prompt` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | PR | `judge_pr` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | LOCAL AI | `judge_local_ai` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | UNIVERSAL | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | EVIDENCE | `judge_evidence` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | ROUTE | `judge_route` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | RISK | `judge_risk` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | FRESHNESS | `judge_freshness` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | ANALYTICS | `judge_analytics` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | MEMO | `judge_memo` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | PROMPT | `judge_prompt` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | PR | `judge_pr` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | LOCAL AI | `judge_local_ai` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## REVISOR (`B80_REVISOR`)
 
@@ -198,9 +198,9 @@
 | K10 | SOURCE-PRESERVE | `revisor_source_preserve` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## MEMO (`B90_MEMO`)
 
@@ -218,9 +218,9 @@
 | K10 | FINAL MEMO | `memo_final_memo` | `1.0.0` | [LLM] / Memo | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## LOCAL AI (`BA0_LOCAL_AI`)
 
@@ -238,9 +238,9 @@
 | K10 | CANDIDATE? | `ba0_local_ai_candidate` | `1.0.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## PILOTS (`BB0_PILOTS`)
 
@@ -258,9 +258,9 @@
 | K10 | REVISIT | `bb0_pilots_revisit` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## KB (`BC0_KB`)
 
@@ -278,9 +278,9 @@
 | K10 | CONFLICT CHECK | `bc0_kb_conflict_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## MCP (`BD0_MCP`)
 
@@ -289,7 +289,7 @@
 | K1 | LIST ACTIONS | `bd0_mcp_list_actions` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | REGISTRY | `registry_review` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | VISIBILITY | `bd0_mcp_visibility` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | SYNC | `codex_sync` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
@@ -298,9 +298,9 @@
 | K10 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
 
 ## DECK QA (`BE0_DECK_QA`)
 
@@ -318,6 +318,6 @@
 | K10 | IMPORT TEST | `be0_deck_qa_import_test` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K13 | JUDGE | `judge_universal` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
+| K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K14 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K15 | FINAL GATE | `final_acceptance_gate` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |
+| K15 | FINAL GATE | `final_acceptance_gate` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `owner_acceptance` |

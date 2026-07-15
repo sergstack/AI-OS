@@ -66,6 +66,14 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in route_batch_ids)
+    judge_batch_ids = {
+        item["prompt_id"] for item in config["buttons"]
+        if item["profile_id"] == "B70_JUDGE" and int(item["button"][1:]) <= 10
+    } | {"final_acceptance_gate"}
+    assert len(judge_batch_ids) == 11
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

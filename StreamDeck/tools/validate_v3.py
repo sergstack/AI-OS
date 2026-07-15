@@ -191,6 +191,10 @@ def main() -> int:
     )
     boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
     require(len(boilerplate_only) == 61, f"expected 61 boilerplate-only prompts after ROUTE batch, found {len(boilerplate_only)}")
+    for prompt in prompts:
+        match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
+        if match:
+            require(300 <= len(match.group(1)) <= 800, f"subject logic must be 300-800 characters: {prompt['prompt_id']}")
     route_batch_ids = {
         row["prompt_id"] for row in rows
         if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 12
@@ -203,6 +207,13 @@ def main() -> int:
         if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 10
     }
     require(all(all(owner in prompt_by_id[prompt_id]["body"] for owner in owner_projects) for prompt_id in b10_router_ids), "B10 ROUTE prompts must list all allowed owner projects")
+    judge_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B70_JUDGE" and int(row["button"][1:]) <= 10
+    } | {"final_acceptance_gate"}
+    require(len(judge_batch_ids) == 11, "JUDGE / FINAL GATE batch must contain 11 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE subject logic missing")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")

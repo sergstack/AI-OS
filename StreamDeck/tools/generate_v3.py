@@ -74,11 +74,19 @@ MCP_IDS = {
 }
 MCP_VERIFIED = {"AIOS_HOME_JUDGE", "AIOS_HOME_REVISOR"}
 
-PROMPT_V1_1_IDS = {
+ROUTE_V1_1_IDS = {
     "b10_route_raw_to_route", "b10_route_things", "b10_route_calendar", "b10_route_notes",
     "b10_route_ai_os", "b10_route_thinking", "b10_route_analytics", "b10_route_llm",
     "b10_route_codex", "b10_route_codex_app", "blocker_review", "handoff_prepare",
 }
+
+JUDGE_V1_1_IDS = {
+    "judge_universal", "judge_evidence", "judge_route", "judge_risk", "judge_freshness",
+    "judge_analytics", "judge_memo", "judge_prompt", "judge_pr", "judge_local_ai",
+    "final_acceptance_gate",
+}
+
+PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS
 
 ROUTE_OWNER_PROJECTS = (
     "Owners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] "
@@ -185,7 +193,97 @@ def subject_logic(prompt_id: str) -> str:
             "analytics finding needing code automation -> [Codex] handoff with the calculation evidence attached."
         ),
     }
-    return route_rules.get(prompt_id, "")
+    judge_rules = {
+        "judge_universal": (
+            "Apply one rubric to the selected artifact: required schema is complete; material and owner are "
+            "unambiguous; each factual claim has provided or tool-observed evidence; execution labels match "
+            "observed commands; routing respects project boundaries; safety and permissions are intact; every "
+            "acceptance criterion has evidence. Return pass only when all apply, revise for a fixable artifact "
+            "defect, and blocked for a missing source, permission, deterministic result or owner gate. Example: "
+            "passing tests with an unmet acceptance item -> revise, not pass."
+        ),
+        "judge_evidence": (
+            "Build a claim-to-source check for the selected artifact. For each material claim, name the exact "
+            "provided source or observed tool result and classify support as direct, indirect, conflicting or "
+            "missing. Check whether changeable facts have dated current evidence and whether calculations cite "
+            "Python/SQL output. Do not treat repetition, plausible wording or model memory as evidence. Pass only "
+            "with direct support for every decision-driving claim; revise unsupported noncritical claims; block "
+            "when missing evidence prevents the decision."
+        ),
+        "judge_route": (
+            f"{ROUTE_OWNER_PROJECTS} Check the selected artifact's owner against the work: one "
+            "primary destination, boundary-respecting scope, and a complete handoff when ownership changes. "
+            "Things requires a concrete next action; Calendar a hard time; Notes durable reference context. "
+            "Pass when owner and next action are unambiguous, revise a fixable misroute, and block when the input "
+            "cannot be classified without one named clarification. Example: a repository change routed to "
+            "[Thinking] -> revise to [Codex]."
+        ),
+        "judge_risk": (
+            "Check that each material risk names the triggering condition, affected asset or decision, likely "
+            "consequence, existing control, residual exposure and owner action. Do not invent numeric probability "
+            "or impact scores without a supplied method and data. Verify that destructive, remote, production, "
+            "security and financial-control actions have explicit gates and rollback. Pass when critical risks "
+            "are controlled and residual risks are visible; revise missing mitigations; block an unsafe or "
+            "unapproved action."
+        ),
+        "judge_freshness": (
+            "Identify every claim that can change with time: versions, prices, laws, schedules, current roles, "
+            "availability and external status. Require a current official source or tool observation plus its "
+            "date; compare the source date with the decision period. If live verification was unavailable, the "
+            "claim must say UNVERIFIED rather than present memory as current. Pass when all decision-driving "
+            "changeable claims are current, revise stale noncritical claims, and block when freshness is required "
+            "to decide safely."
+        ),
+        "judge_analytics": (
+            "Require the selected analysis to state entity, grain, period, currency or unit, source layers, "
+            "filters, joins, formulas and exclusions. Numeric results must come from observed Python or SQL, with "
+            "reconciliation or exception evidence appropriate to the question; raw, stage, mart and report facts "
+            "must not be mixed implicitly. Pass only when calculations and conclusions trace to deterministic "
+            "evidence, revise a reproducible local defect, and block on missing source data, undefined metrics or "
+            "unresolved reconciliation."
+        ),
+        "judge_memo": (
+            "Check that the selected memo states audience, scope, period and currency or units; uses only "
+            "Analytics-approved facts; and separates facts, interpretation, assumptions, recommendations and "
+            "management confirmations. Every chart comment, variance explanation and root-cause statement must "
+            "trace to evidence; unsupported causality must be softened or removed. Pass when the narrative is "
+            "decision-ready and sourced, revise presentation or support gaps, and block when required facts or "
+            "approvals are absent."
+        ),
+        "judge_prompt": (
+            "Check the selected prompt for a defined role, material-selection rule, required inputs, concrete "
+            "decision criteria, output contract, safety boundaries, known failure modes and a useful example where "
+            "ambiguity is likely. Verify that metadata policies needed by the model also appear in the body and "
+            "that execution claims are not implied by expected output. Pass only with representative test evidence "
+            "or an explicit NOT RUN gate, revise a fixable instruction gap, and block when the source task cannot "
+            "be identified."
+        ),
+        "judge_pr": (
+            "Compare the selected PR with its issue or goal: intended scope, changed files, forbidden areas, every "
+            "acceptance criterion, observed tests, residual risks, rollback and merge policy. Inspect the actual "
+            "diff and check output; do not infer correctness from the PR description or green status alone. Pass "
+            "only when evidence covers the full requested behavior and no unrelated change remains, revise an "
+            "in-scope defect or missing check, and block on an unsafe change, missing authority or unavailable "
+            "required evidence."
+        ),
+        "judge_local_ai": (
+            "Check the selected local-AI artifact for data classification, sanitization, model/runtime identity, "
+            "observed versus proposed execution, evaluation criteria and candidate-only labeling. Secrets, private "
+            "paths, raw sensitive data and production actions must remain excluded; local execution is not proof "
+            "of quality or safety. Pass when the pilot is reproducible, sanitized and bounded, revise missing "
+            "evaluation or labeling, and block exposure risk, unapproved data use or a production-readiness claim "
+            "without evidence."
+        ),
+        "final_acceptance_gate": (
+            "Enumerate every acceptance criterion from the selected source and pair it with exact evidence: changed "
+            "file, observed command output, test result, owner decision or explicit NOT RUN gate. A criterion is "
+            "met only when evidence matches its full scope; partial implementation, proposed checks and unrelated "
+            "green tests do not count. Return pass only when all required criteria are met and residual risks are "
+            "accepted by the correct owner; return revise for fixable unmet criteria; return blocked for missing "
+            "authority, source, deterministic evidence or mandatory owner action."
+        ),
+    }
+    return route_rules.get(prompt_id, judge_rules.get(prompt_id, ""))
 
 
 def dump(path: Path, value: object) -> None:
