@@ -190,7 +190,11 @@ def main() -> int:
         "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
     )
     boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
-    require(len(boilerplate_only) == 61, f"expected 61 boilerplate-only prompts after ROUTE batch, found {len(boilerplate_only)}")
+    require(not boilerplate_only, f"expected zero boilerplate-only prompts, found {len(boilerplate_only)}: {boilerplate_only}")
+    for prompt in prompts:
+        match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
+        if match:
+            require(300 <= len(match.group(1)) <= 800, f"subject logic must be 300-800 characters: {prompt['prompt_id']}")
     route_batch_ids = {
         row["prompt_id"] for row in rows
         if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 12
@@ -203,6 +207,69 @@ def main() -> int:
         if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 10
     }
     require(all(all(owner in prompt_by_id[prompt_id]["body"] for owner in owner_projects) for prompt_id in b10_router_ids), "B10 ROUTE prompts must list all allowed owner projects")
+    judge_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B70_JUDGE" and int(row["button"][1:]) <= 10
+    } | {"final_acceptance_gate"}
+    require(len(judge_batch_ids) == 11, "JUDGE / FINAL GATE batch must contain 11 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE subject logic missing")
+    analytics_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B40_ANALYTICS" and int(row["button"][1:]) <= 10
+    }
+    require(len(analytics_batch_ids) == 10, "Analytics batch must contain 10 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids), "Analytics versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids), "Analytics subject logic missing")
+    deck_qa_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "BE0_DECK_QA" and row["prompt_id"] in {
+            "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
+            "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
+            "be0_deck_qa_export_backup",
+        }
+    }
+    require(len(deck_qa_batch_ids) == 7, "DECK QA batch must contain 7 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids), "DECK QA versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids), "DECK QA subject logic missing")
+    hash_body = prompt_by_id["be0_deck_qa_prompt_hash"]["body"]
+    require("Do not ask the model to calculate SHA-256" in hash_body and "deterministic Python/hash tool" in hash_body, "PROMPT HASH must require deterministic external calculation")
+    aios_kb_pilots_batch_ids = {
+        "b20_ai_os_governance", "b20_ai_os_loop_design", "b20_ai_os_pattern",
+        "b20_ai_os_streamdeck", "b20_ai_os_use_case",
+        "bb0_pilots_pilot_plan", "bb0_pilots_pilot_result", "bb0_pilots_residual_risk",
+        "bb0_pilots_rollback", "bb0_pilots_run_record", "bb0_pilots_status_note",
+        "bc0_kb_bundle_sync", "bc0_kb_evidence_label", "bc0_kb_kb_search",
+        "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
+    }
+    require(len(aios_kb_pilots_batch_ids) == 17, "AI OS / KB / Pilots batch must contain 17 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots subject logic missing")
+    daily_thinking_batch_ids = {
+        "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
+        "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
+        "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
+        "b30_thinking_scenario", "b30_thinking_trade_offs",
+    }
+    require(len(daily_thinking_batch_ids) == 11, "Daily / Thinking batch must contain 11 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids), "Daily / Thinking versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids), "Daily / Thinking subject logic missing")
+    final_batch_ids = {
+        "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
+        "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
+        "b60_codex_inspect", "b60_codex_review_comments",
+        "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
+        "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
+        "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
+        "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
+        "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
+    }
+    require(len(final_batch_ids) == 26, "Final batch must contain 26 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids), "Final batch versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in final_batch_ids), "Final batch subject logic missing")
+    v1_1_prompts = [prompt for prompt in prompts if prompt["prompt_version"] == "1.1.0"]
+    require(len(v1_1_prompts) == 94, f"expected 94 upgraded prompts, found {len(v1_1_prompts)}")
+    require(all("\n\nSubject logic:\n" in prompt["body"] for prompt in v1_1_prompts), "all upgraded prompts must contain subject logic")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")

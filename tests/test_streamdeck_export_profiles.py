@@ -66,6 +66,66 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in route_batch_ids)
+    judge_batch_ids = {
+        item["prompt_id"] for item in config["buttons"]
+        if item["profile_id"] == "B70_JUDGE" and int(item["button"][1:]) <= 10
+    } | {"final_acceptance_gate"}
+    assert len(judge_batch_ids) == 11
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids)
+    analytics_batch_ids = {
+        item["prompt_id"] for item in config["buttons"]
+        if item["profile_id"] == "B40_ANALYTICS" and int(item["button"][1:]) <= 10
+    }
+    assert len(analytics_batch_ids) == 10
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids)
+    deck_qa_batch_ids = {
+        "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
+        "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
+        "be0_deck_qa_export_backup",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids)
+    aios_kb_pilots_batch_ids = {
+        "b20_ai_os_governance", "b20_ai_os_loop_design", "b20_ai_os_pattern",
+        "b20_ai_os_streamdeck", "b20_ai_os_use_case",
+        "bb0_pilots_pilot_plan", "bb0_pilots_pilot_result", "bb0_pilots_residual_risk",
+        "bb0_pilots_rollback", "bb0_pilots_run_record", "bb0_pilots_status_note",
+        "bc0_kb_bundle_sync", "bc0_kb_evidence_label", "bc0_kb_kb_search",
+        "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids)
+    daily_thinking_batch_ids = {
+        "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
+        "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
+        "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
+        "b30_thinking_scenario", "b30_thinking_trade_offs",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids)
+    final_batch_ids = {
+        "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
+        "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
+        "b60_codex_inspect", "b60_codex_review_comments",
+        "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
+        "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
+        "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
+        "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
+        "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in final_batch_ids)
+    upgraded = [item for item in registry["prompts"] if item["prompt_version"] == "1.1.0"]
+    assert len(upgraded) == 94
+    assert all("\n\nSubject logic:\n" in item["body"] for item in upgraded)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):
