@@ -1,0 +1,17 @@
+{
+  "source": "archive/v2.9/AIOS_StreamDeck_Button_Map_v2.9.json",
+  "computed_at": "2026-07-15",
+  "counts": {
+    "cells": 195,
+    "screens": 13,
+    "text_actions": 118,
+    "empty_cells": 53,
+    "folder_actions": 12,
+    "back_actions": 12,
+    "texts_with_repeated_safety_boilerplate": 117,
+    "repeated_safety_boilerplate_chars_including_heading": 411,
+    "texts_with_generic_output_schema": 44,
+    "paste_goal_placeholders": 1
+  },
+  "physical_claims": "NOT RUN"
+}

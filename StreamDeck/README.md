@@ -1,85 +1,123 @@
-# AI OS Stream Deck Documentation
+# AI-OS StreamDeck v3.0 Dual Deck
 
-## Active version
+Status: `candidate / repo package`; physical acceptance: `NOT RUN — owner action required`.
 
-Current active version: v2.7
+## Назначение
 
-Candidate version: v2.9 review-confirmed operator panel (supersedes the v2.8 candidate).
+v3.0 разделяет навигацию и действия между двумя 15-кнопочными Stream Deck:
 
-Status checked: 2026-07-09.
+- `AIOS-CONTROL` всегда остаётся контроллером. Его 15 кнопок переключают профиль только на втором устройстве.
+- `AIOS-ACTIONS` показывает 15 действий выбранного project/workflow. Кнопка вставляет prompt, но не нажимает Send.
 
-## Files
+В repository есть переносимые source settings, prompts, icons, mapping, checksums и manual export procedure. Реальных `.streamDeckProfile` пока нет: Codex не имел доступа к Stream Deck app и двум физическим устройствам.
 
-- `ROUTING_FIXED_AIOS_StreamDeck_Setup_Instruction_v2.7_PROJECT_ALIGNED_EN_LABELS.md`
-- `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.json`
-- `ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.csv`
-- `STREAMDECK_LEARNING_CYCLE_PROMPTS_CANDIDATE.md`
-- `AIOS_StreamDeck_Setup_Instruction_v2.8_COMMAND_SURFACE_ALIGNED.md`
-- `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json`
-- `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.csv`
-- `STREAMDECK_V2_8_QA_NOTES.md`
-- `STREAMDECK_V2_8_LIVE_PROMPT_QA.md`
-- `STREAMDECK_V2_8_LEVEL2_RISK_QA.md`
+## Совместимость
 
-## v2.7 scope
+- Два Stream Deck с раскладкой 5×3. Device serials не хранятся; модели привязываются к ролям вручную.
+- Stream Deck app 4.4 или новее: Elgato добавила cross-device `Switch Profile` в 4.4. Используйте актуальную поддерживаемую версию; точная owner-версия ещё `NOT RUN`.
+- Controller switching и prompt insertion используют встроенные `Stream Deck > Switch Profile` и `System > Text`; dedicated switching plugin не нужен.
+- MCP plugin/server нужен только для MCP profile. Точная версия и v3 visibility ещё не проверены.
 
-- Project-aligned English labels.
-- Routing-fixed 15-screen layout.
-- Old Stream Deck version files were removed after v2.7 promotion.
+Официальная инструкция cross-device switching: <https://help.elgato.com/hc/en-us/articles/360059908112-Elgato-Stream-Deck-Switch-Profiles-On-One-Stream-Deck-using-Another-Stream-Deck>.
 
-## Learning Cycle candidate
+## Backup и установка
 
-- `STREAMDECK_LEARNING_CYCLE_PROMPTS_CANDIDATE.md` contains the candidate prompt set for the Learning Cycle screen: `Daily / Master / Hardcore / Judge / Revisor / QA / Save Mini / Save Full`.
-- Status: candidate / ready for Stream Deck pilot.
-- Promotion status: not permanent standard.
-- Evidence status: practical recommendation / needs 3–5 real runs.
-- The active v2.7 setup, JSON, and CSV files are not replaced by this candidate document.
+1. В Stream Deck app откройте Profiles и выполните `Back Up All`. Не перезаписывайте v2.7/v2.9.
+2. Переименуйте физические устройства в `AIOS-CONTROL` и `AIOS-ACTIONS` или запишите это ролевое соответствие.
+3. Создайте на Deck A профиль `AIOS-CONTROL` (`A00_CONTROL`). По `active/v3.0/config/controller_map.json` расставьте 15 `Switch Profile` actions.
+4. В property inspector каждой controller-кнопки выберите именно Deck B и target profile. На Deck A не создавайте prompt, send, GitHub или terminal actions.
+5. Снача создайте на Deck B два временных профиля TEST_A и TEST_B и выполните минимальный POC из `active/v3.0/qa/physical_qa_checklist.md`.
+6. Только после POC создайте на Deck B 15 профилей из таблицы ниже.
+7. Для каждой action-кнопки добавьте `System > Text`, найдите `prompt_id` в `active/v3.0/prompts/prompt_registry.json`, вставьте exact `body`, выключите Enter/Return и auto-send.
+8. Назначьте relative icon из `active/v3.0/config/icon_map.json`. Проверьте focus в одном несущественном text field до работы с реальными данными.
 
-## v2.8 candidate
+## Все профили и кнопки
 
-- `AIOS_StreamDeck_Setup_Instruction_v2.8_COMMAND_SURFACE_ALIGNED.md` defines the candidate two-level operator panel.
-- `AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json` and `.csv` contain the matching setup map.
-- `STREAMDECK_V2_8_QA_NOTES.md` records source alignment, acceptance mapping, and residual risks.
-- `STREAMDECK_V2_8_LIVE_PROMPT_QA.md` and `STREAMDECK_V2_8_LEVEL2_RISK_QA.md` record live prompt and risk QA context.
-- Status: candidate / ready for human review.
-- Active status: v2.7 remains active until Sergey manually migrates and accepts v2.8.
-- Promotion status: not promoted by repo files; manual migration and acceptance remain required.
-- MCP Actions status: registry/run-package artifacts exist, but manual Stream Deck
-  `MCP Actions` profile setup and live MCP execution evidence remain required.
-- Migration path: duplicate or create a separate Stream Deck profile, build v2.8 side by side, then manually promote after pilot review.
+| Deck A ID | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 | K9 | K10 | K11 | K12 | K13 | K14 | K15 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A00_CONTROL | DAILY | ROUTE | AI OS | THINKING | ANALYTICS | LLM | CODEX | JUDGE | REVISOR | MEMO | LOCAL AI | PILOTS | KB | MCP | DECK QA |
 
-## v2.9 candidate (review-confirmed)
+| ID | Profile | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 | K9 | K10 | K11 | K12 | K13 | K14 | K15 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B00_DAILY | DAILY | INBOX | AI TREND | DECISION | DATA CONTRACT | GOAL→PR | FIN MEMO | PROMPT | CONTEXT | SYNC | KB EVIDENCE | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B10_ROUTE | ROUTE | RAW→ROUTE | THINGS? | CALENDAR? | NOTES? | AI OS? | THINKING? | ANALYTICS? | LLM? | CODEX? | CODEX APP? | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B20_AI_OS | AI OS | AI TREND | PATTERN | USE CASE | EVIDENCE | GOVERNANCE | FRESH CHECK | SOURCE TRUTH | LOOP DESIGN | PROMPT QA | STREAMDECK | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B30_THINKING | THINKING | DECISION | OPTIONS | RISKS | ASSUMPTIONS | REVERSIBLE? | SCENARIO | PREMORTEM | CRITERIA | TRADE-OFFS | NEXT STEP | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B40_ANALYTICS | ANALYTICS | DATA CONTRACT | DATA QUALITY | VARIANCE | RECONCILE | ANOMALY | MART SPEC | FORMULA | QA CHECKS | ANALYTICS LOOP | MEMO FACTS | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B50_LLM | LLM | PROMPT BUILD | CONTEXT PACK | MODEL ROUTE | WORKFLOW | EVAL RUBRIC | SUMMARIZE | EXTRACT | SYNTHESIZE | LOCAL PROMPT | GOAL→CODEX PACK | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B60_CODEX | CODEX | GOAL→PR | BUILD FIRST | INSPECT | RUN CHECKS | FIX IN SCOPE | SYNC | PR JUDGE | FIX CI | REVIEW COMMENTS | RELEASE NOTES | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B70_JUDGE | JUDGE | UNIVERSAL | EVIDENCE | ROUTE | RISK | FRESHNESS | ANALYTICS | MEMO | PROMPT | PR | LOCAL AI | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B80_REVISOR | REVISOR | APPLY NOTES | SHORTEN | CLEARER | EXEC VERSION | FILE-READY | MEMO | DECISION | STRUCTURE | TONE | SOURCE-PRESERVE | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| B90_MEMO | MEMO | FINANCE | MANAGEMENT | EXEC SUMMARY | FINDINGS | RISKS | RECOMMEND | AUDIT FINDING | CHART COMMENT | APPENDIX | FINAL MEMO | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| BA0_LOCAL_AI | LOCAL AI | SAFETY | SANITIZE | DRAFT ONLY | OLLAMA SMOKE | OPEN WEBUI | MODEL COMPARE | EVAL MATRIX | JUDGE OUTPUT | RECORD PILOT | CANDIDATE? | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| BB0_PILOTS | PILOTS | PILOT PLAN | TEST CASES | RUN RECORD | PILOT RESULT | ACCEPTANCE | RESIDUAL RISK | ROLLBACK | REGISTRY | STATUS NOTE | REVISIT | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| BC0_KB | KB | KB SEARCH | EVIDENCE LABEL | REVIEW ITEM | SUPPORT MIX | SOURCE TRUTH | MANIFEST | BUNDLE SYNC | UPLOAD CHECK | FRESHNESS | CONFLICT CHECK | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| BD0_MCP | MCP | LIST ACTIONS | REGISTRY | VISIBILITY | JUDGE | REVISOR | SYNC | AI TREND | KB SOURCE | LOCAL SAFETY | GOAL→PR | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
+| BE0_DECK_QA | DECK QA | SWITCH TEST | DEVICE TARGET | FOCUS TEST | TEXT INSERT | AUTO-SEND OFF | PLACEHOLDER | DUPLICATES | PROMPT HASH | EXPORT BACKUP | IMPORT TEST | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
 
-- `AIOS_StreamDeck_Setup_Instruction_v2.9.md` — full setup instruction with per-button project, risk, MCP action, and next-button hints.
-- `AIOS_StreamDeck_Button_Map_v2.9.json` — enriched button map (195 cells, 13 screens).
-- `AIOS_StreamDeck_Button_Map_v2.9.xlsx` — spreadsheet button map (README, Button Map, MCP Registry, HOME Grid sheets).
-- Scope: consolidates the StreamDeck MCP command-surface issue tree (#184–#191) after its review pass. HOME layout is identical to v2.8; the prompt-first HOME proposal was rejected because it made the CODEX and LLM Level-2 screens unreachable.
-- Corrected metadata: 16 canonical commands, 12 active + 4 candidate goal packs, 195 button cells, 7 MCP registry actions (2 execution-verified: `AIOS_HOME_JUDGE`, `AIOS_HOME_REVISOR`).
-- Prompt texts are reused verbatim from v2.8; no Prompt QA run has been executed, so prompts remain candidate.
-- Status: candidate / ready for owner review. v2.7 remains active; v2.8 artifacts are preserved.
+Точные prompt IDs, risks, owner route, next action, stop condition и rollback на каждой кнопке находятся в `active/v3.0/config/action_profiles.json`; readable derived map — в `active/v3.0/generated/button_map.md`.
 
-### v2.8 HOME
+## Prompt registry и Prompt QA
 
-```text
-ROUTE      AI OS      THINKING   ANALYTICS  LLM
-CODEX      JUDGE      REVISOR    INBOX      MEMO
-AI TREND   SYNC       LOCAL AI   PILOTS     KB
-```
+Full bodies хранятся только в `active/v3.0/prompts/prompt_registry.json`. Button maps хранят `prompt_id`, version и hash, а не дубли body. После ручной настройки сверьте inserted text с `prompt_hash` через `DECK QA / PROMPT HASH`.
 
-### v2.8 migration notes
+QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены, но normal, missing-context/evidence и unsafe/ambiguous model runs не выполнены. Поэтому каждый prompt имеет verdict `blocked`, UX `4/5`, owner acceptance `pending` и ни один не назван `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
 
-- `QA` is replaced by `JUDGE` with pass / revise / blocked verdict prompts.
-- `REVISOR` is added to HOME.
-- `REPO` is replaced by `SYNC`; deeper repo work remains under `CODEX`.
-- `RESEARCH` is reframed as `AI TREND`.
-- `SYSTEM` is demoted from HOME because it has no clear daily command-surface role in current evidence.
-- `STOP` is removed from HOME because no safe text-only stop action is needed; use manual Stream Deck back/Esc behavior outside this map.
-- v2.7 files are preserved.
+## MCP
 
-## Safety
+`active/v3.0/migration/mcp_registry.json` сохраняет семь action IDs. `AIOS_HOME_JUDGE` и `AIOS_HOME_REVISOR` имеют legacy execution evidence в v2.8 pilot; остальные пять — `registered-only`. Это не равно v3 visibility и не доказывает настройку на текущих devices. После manual setup нужно получить visible action list, сверить exact IDs и выполнить только supervised safe smoke.
 
-- Text buttons only insert text.
-- Auto-send must remain disabled.
-- No destructive actions.
-- Terminal commands must be inserted as text and run manually.
-- v2.8 remains manual-only: no deletion, sending, merging, publishing, production automation, secrets, runtime artifacts, autonomous retrieval, vector DB, semantic search, embeddings, production web UI workflow, or autonomous agents.
+## Перенос на другой компьютер
+
+1. На исходном компьютере завершите physical checklist и сделайте real sanitized exports.
+2. На target computer установите ту же или новее поддерживаемую Stream Deck app и нужные MCP components.
+3. Импортируйте action profiles, затем controller. Заново привяжите все controller keys к физическому Deck B: device IDs не переносятся как universal settings.
+4. Повторите весь physical checklist, включая clean import, focus, longest prompt, reconnect и rollback.
+
+Подробный checklist: `active/v3.0/migration/transfer_export.md`.
+
+## Примеры
+
+1. Raw input → `ROUTE`: на Deck A нажать ROUTE; на Deck B — RAW→ROUTE; проверить owner route; отправить вручную.
+2. Broad goal → `CODEX`: нажать GOAL→PR или BUILD FIRST. Prompt берёт последнюю цель без placeholder, ограничивает scope, требует checks и PR, но не manual merge/deploy.
+3. AI release → `AI OS`: AI TREND проверяет изменяемые факты по current official sources; затем K13 JUDGE проверяет evidence и unsupported claims.
+4. Decision → `THINKING`: DECISION → OPTIONS/RISKS/PREMORTEM → K15 FINAL GATE. Недостающие assumptions должны остаться явными.
+5. Data question → `ANALYTICS`: DATA CONTRACT фиксирует entity, grain, period, currency/unit, sources, formulas и filters; QA CHECKS принимает numeric result только из Python/SQL evidence.
+6. Draft → JUDGE → REVISOR → FINAL GATE: Judge verdict используется только как notes; Revisor редактирует исходный artifact и не добавляет факты.
+7. Finance facts → `MEMO`: FINANCE или FINAL MEMO используют только Analytics-approved facts, отделяют interpretation/assumptions/recommendations и указывают period, scope, units и traceability.
+8. Local AI safe pilot: `LOCAL AI` → SANITIZE → OLLAMA SMOKE → JUDGE OUTPUT → RECORD PILOT. Только sanitized non-sensitive input; все results candidate.
+9. KB source conflict: `KB` → SOURCE TRUTH → CONFLICT CHECK → JUDGE. Исходный source и bundle не смешиваются без explicit sync rule.
+10. MCP visibility/action check: `MCP` → LIST ACTIONS → VISIBILITY. Если ID не виден, status `NOT RUN/blocked`; expected output не выдаётся за observed result.
+
+## Полный сценарий двух устройств
+
+1. На Deck A нажмите LLM; Deck A должен остаться на `AIOS-CONTROL`, Deck B — перейти на `B50_LLM`.
+2. На Deck B нажмите PROMPT BUILD.
+3. В focused text field проверьте вставленный prompt и убедитесь, что он не отправился.
+4. Нажмите Send вручную.
+5. После output нажмите K13 JUDGE; при `revise` нажмите K14 REVISOR; затем повторите JUDGE и завершите K15 FINAL GATE.
+
+## Troubleshooting
+
+- Deck A тоже сменил профиль: откройте controller key property inspector и повторно выберите физический Deck B.
+- Профиль не виден: сначала создайте/импортируйте target profile на Deck B, затем настраивайте controller.
+- Text вставился не туда: немедленно отмените, перейдите в disposable field и повторите focus test.
+- Prompt сразу отправился: в `System > Text` выключите Enter/Return after message. До исправления не используйте profile.
+- Prompt обрезан или искажён: сверьте exact body/hash, проверьте longest prompt и Unicode test; не исправляйте generated map вручную.
+- MCP action не виден: сверьте exact ID и local MCP setup; оставьте `NOT RUN`, если tool list его не возвращает.
+- Import потерял icons/bindings: восстановите relative icons и повторите manual target-device binding; serial-neutral package не может автоматически угадать target device.
+
+## Rollback и source of truth
+
+При failure отключите controller switching, верните Deck B на owner backup v2.7/v2.9 и сохраните v3 для диагностики. Legacy не удалён: он перенесён в `archive/` и защищён SHA-256 manifest.
+
+Canonical sources:
+
+- architecture: `active/v3.0/architecture/dual_deck_architecture.md`;
+- controller/action settings: `active/v3.0/config/*.json`;
+- prompt bodies: `active/v3.0/prompts/prompt_registry.json`;
+- QA: `active/v3.0/qa/`;
+- migration, MCP, checksums и exports status: `active/v3.0/migration/` и `active/v3.0/exports/`;
+- legacy rollback: `archive/legacy_manifest.md` и `archive/checksums.json`.
+
+Repo checks проверяют JSON, counts, routing, references, hashes, icons, secrets/private paths и derived map. Physical switching, focus, text insertion, reconnect, export/import, MCP visibility и v2.7 rollback остаются `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.

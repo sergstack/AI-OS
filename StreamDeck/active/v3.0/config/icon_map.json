@@ -1,0 +1,130 @@
+{
+  "version": "3.0.0",
+  "icons": [
+    {
+      "path": "assets/icons/action_analytics.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_blocked.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_draft.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_execution_request.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_handoff.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_judge.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_memo.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_narrative.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_revise.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/action_route.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_ai_os.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_analytics.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_codex.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_daily.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_deck_qa.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_judge.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_kb.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_llm.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_local_ai.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_mcp.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_memo.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_pilots.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_revisor.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_route.svg",
+      "status": "source_svg",
+      "relative": true
+    },
+    {
+      "path": "assets/icons/controller_thinking.svg",
+      "status": "source_svg",
+      "relative": true
+    }
+  ]
+}

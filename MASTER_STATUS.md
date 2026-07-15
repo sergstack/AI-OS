@@ -36,7 +36,7 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 - Goal Mode: default for broad repo/workflow goals; strict task packages remain
   available for high-risk, already-scoped, ultra-long, or explicitly requested work.
 - ChatGPT Project Knowledge upload: compact `Knowledge_Bundles` by default.
-- StreamDeck: v2.7 active; v2.8 candidate/manual-only until human migration and acceptance.
+- StreamDeck: v3.0 Dual Deck repo candidate; v2.7 remains the physical rollback baseline until owner migration, device QA, export/import, and acceptance.
 
 ## Evidence Pointers
 
