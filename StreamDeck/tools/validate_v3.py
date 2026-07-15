@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import sys
+import zipfile
 from collections import Counter
 from pathlib import Path
 
@@ -27,6 +28,101 @@ def load(relative: str):
 def require(condition: bool, message: str) -> None:
     if not condition:
         ERRORS.append(message)
+
+
+def validate_exports(controller_rows, rows, prompt_by_id) -> None:
+    export_dir = ACTIVE / "exports"
+    paths = sorted(export_dir.glob("*.streamDeckProfile"))
+    expected_ids = {"A00_CONTROL"} | {row["profile_id"] for row in rows}
+    require({path.stem for path in paths} == expected_ids, "exports must contain exactly the 16 expected profiles")
+    if {path.stem for path in paths} != expected_ids:
+        return
+
+    parsed = {}
+    for path in paths:
+        try:
+            with zipfile.ZipFile(path) as archive:
+                require(archive.testzip() is None, f"{path.name}: corrupt zip member")
+                require(
+                    all(info.date_time == (1980, 1, 1, 0, 0, 0) for info in archive.infolist()),
+                    f"{path.name}: zip timestamps are not deterministic",
+                )
+                root_names = [
+                    name for name in archive.namelist()
+                    if name.endswith(".sdProfile/manifest.json") and name.count("/") == 1
+                ]
+                require(len(root_names) == 1, f"{path.name}: expected one root manifest")
+                if len(root_names) != 1:
+                    continue
+                root_name = root_names[0]
+                root = json.loads(archive.read(root_name))
+                root_dir = root_name.removesuffix("/manifest.json")
+                pages = root.get("Pages", {}).get("Pages", [])
+                require(len(pages) == 1, f"{path.name}: expected one content page")
+                if len(pages) != 1:
+                    continue
+                page_name = f"{root_dir}/Profiles/{pages[0].upper()}/manifest.json"
+                default_name = f"{root_dir}/Profiles/{root['Pages']['Default'].upper()}/manifest.json"
+                require(page_name in archive.namelist(), f"{path.name}: content page manifest missing")
+                require(default_name in archive.namelist(), f"{path.name}: default page manifest missing")
+                if page_name not in archive.namelist() or default_name not in archive.namelist():
+                    continue
+                page = json.loads(archive.read(page_name))
+                actions = page["Controllers"][0]["Actions"]
+                parsed[path.stem] = (path, root_dir.removesuffix(".sdProfile"), root, page_name, actions)
+        except (OSError, KeyError, json.JSONDecodeError, zipfile.BadZipFile) as exc:
+            ERRORS.append(f"{path.name}: {exc}")
+
+    if set(parsed) != expected_ids:
+        return
+    profile_uuids = {profile_id: value[1] for profile_id, value in parsed.items()}
+    source_rows = {"A00_CONTROL": controller_rows}
+    for row in rows:
+        source_rows.setdefault(row["profile_id"], []).append(row)
+    secret = re.compile(r"(ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})")
+    private_path = re.compile(r"/(Users|home)/[^/\s]+/")
+
+    for profile_id, (path, _, root, page_name, actions) in parsed.items():
+        require(root.get("Version") == "3.0", f"{path.name}: profile format version must be 3.0")
+        require(root.get("Device", {}).get("UUID") == "", f"{path.name}: Device.UUID must be serial-neutral")
+        require(len(actions) == 15, f"{path.name}: expected 15 actions")
+        require(
+            set(actions) == {f"{index % 5},{index // 5}" for index in range(15)},
+            f"{path.name}: expected a complete 5x3 action grid",
+        )
+        rows_by_coordinate = {
+            f"{(int(row['button'][1:]) - 1) % 5},{(int(row['button'][1:]) - 1) // 5}": row
+            for row in source_rows[profile_id]
+        }
+        with zipfile.ZipFile(path) as archive:
+            for coordinate, action in actions.items():
+                row = rows_by_coordinate[coordinate]
+                image = action["States"][0]["Image"]
+                image_member = f"{page_name.removesuffix('manifest.json')}{image}"
+                require(image_member in archive.namelist(), f"{path.name}/{coordinate}: embedded icon missing")
+                if image_member in archive.namelist():
+                    require(
+                        archive.read(image_member) == (ACTIVE / row["icon"]).read_bytes(),
+                        f"{path.name}/{coordinate}: embedded icon differs from icon map source",
+                    )
+                if profile_id == "A00_CONTROL":
+                    require(action["UUID"] == "com.elgato.streamdeck.profile.rotate", f"{path.name}/{coordinate}: not Switch Profile")
+                    require(action["Settings"].get("DeviceUUID") == "", f"{path.name}/{coordinate}: controller binding is not serial-neutral")
+                    require(
+                        action["Settings"].get("ProfileUUID") == profile_uuids[row["target_profile_id"]],
+                        f"{path.name}/{coordinate}: target profile UUID mismatch",
+                    )
+                else:
+                    prompt = prompt_by_id[row["prompt_id"]]
+                    body = action["Settings"].get("pastedText")
+                    require(action["UUID"] == "com.elgato.streamdeck.system.text", f"{path.name}/{coordinate}: not System > Text")
+                    require(action["Settings"].get("isSendingEnter") is False, f"{path.name}/{coordinate}: auto-send is enabled")
+                    require(body == prompt["body"], f"{path.name}/{coordinate}: prompt body mismatch")
+                    if isinstance(body, str):
+                        require(hashlib.sha256(body.encode()).hexdigest() == prompt["prompt_hash"], f"{path.name}/{coordinate}: prompt hash mismatch")
+            manifest_text = json.dumps(root, ensure_ascii=False) + json.dumps(actions, ensure_ascii=False)
+            require(not secret.search(manifest_text), f"{path.name}: secret-like token in manifests")
+            require(not private_path.search(manifest_text), f"{path.name}: private path in manifests")
 
 
 def main() -> int:
@@ -120,8 +216,10 @@ def main() -> int:
         require(path.is_file(), f"manifest file missing: {item['path']}")
         if path.is_file():
             require(hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], f"manifest checksum mismatch: {item['path']}")
-    require(migration["binary_exports"].startswith("NOT RUN"), "binary exports must remain NOT RUN")
+    require("import NOT RUN" in migration["binary_exports"], "binary export import gate must remain NOT RUN")
     require(migration["physical_switch"].startswith("NOT RUN"), "physical switch must remain NOT RUN")
+
+    validate_exports(controller_rows, rows, prompt_by_id)
 
     archive_checksums = json.loads((ROOT / "archive" / "checksums.json").read_text(encoding="utf-8"))
     for item in archive_checksums["files"]:
@@ -143,7 +241,7 @@ def report(controller=None, rows=None, prompts=None, qa_rows=None) -> int:
         print(f"FAIL: {len(ERRORS)} validation error(s)")
         return 1
     print(f"PASS: controller_buttons={len(controller)} action_profiles=15 action_buttons={len(rows)} prompts={len(prompts)} qa_rows={len(qa_rows)}")
-    print("PASS: references, routing, hashes, assets, MCP counts, checksums, safety and NOT RUN gates")
+    print("PASS: references, routing, hashes, assets, exports, MCP counts, checksums, safety and NOT RUN gates")
     return 0
 
 

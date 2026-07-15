@@ -9,7 +9,7 @@ v3.0 разделяет навигацию и действия между дву
 - `AIOS-CONTROL` всегда остаётся контроллером. Его 15 кнопок переключают профиль только на втором устройстве.
 - `AIOS-ACTIONS` показывает 15 действий выбранного project/workflow. Кнопка вставляет prompt, но не нажимает Send.
 
-В repository есть переносимые source settings, prompts, icons, mapping, checksums и manual export procedure. Реальных `.streamDeckProfile` пока нет: Codex не имел доступа к Stream Deck app и двум физическим устройствам.
+В repository есть переносимые source settings, prompts, icons, mapping, checksums и 16 детерминированных candidate `.streamDeckProfile`. Физический import не выполнялся: Codex не имел доступа к Stream Deck app и двум устройствам, поэтому package не считается `import-ready`.
 
 ## Совместимость
 
@@ -24,12 +24,11 @@ v3.0 разделяет навигацию и действия между дву
 
 1. В Stream Deck app откройте Profiles и выполните `Back Up All`. Не перезаписывайте v2.7/v2.9.
 2. Переименуйте физические устройства в `AIOS-CONTROL` и `AIOS-ACTIONS` или запишите это ролевое соответствие.
-3. Создайте на Deck A профиль `AIOS-CONTROL` (`A00_CONTROL`). По `config/controller_map.json` расставьте 15 `Switch Profile` actions.
-4. В property inspector каждой controller-кнопки выберите именно Deck B и target profile. На Deck A не создавайте prompt, send, GitHub или terminal actions.
-5. Сначала создайте на Deck B два временных профиля TEST_A и TEST_B и выполните минимальный POC из `qa/physical_qa_checklist.md`.
-6. Только после POC создайте на Deck B 15 профилей из таблицы ниже.
-7. Для каждой action-кнопки добавьте `System > Text`, найдите `prompt_id` в `prompts/prompt_registry.json`, вставьте exact `body`, выключите Enter/Return и auto-send.
-8. Назначьте relative icon из `config/icon_map.json`. Проверьте focus в одном несущественном text field до работы с реальными данными.
+3. Выполните `python3 StreamDeck/tools/export_profiles.py`; команда создаёт 16 candidate-профилей в `StreamDeck/exports/`.
+4. Импортируйте 15 `B*.streamDeckProfile` на Deck B, затем `A00_CONTROL.streamDeckProfile` на Deck A.
+5. В property inspector каждой controller-кнопки выберите именно физический Deck B и target profile: архивы намеренно не содержат device serial. На Deck A не создавайте prompt, send, GitHub или terminal actions.
+6. Выполните минимальный POC и полный checklist из `qa/physical_qa_checklist.md`; до наблюдаемого результата import status остаётся `NOT RUN`.
+7. Если импорт не поддерживается или не проходит, используйте manual fallback: создайте профили по таблице ниже, добавьте `Switch Profile`/`System > Text`, вставьте exact `body`, выключите Enter/Return и назначьте relative icon из `config/icon_map.json`.
 
 ## Все профили и кнопки
 
@@ -69,7 +68,7 @@ QA matrix содержит отдельную строку для каждого
 
 ## Перенос на другой компьютер
 
-1. На исходном компьютере завершите physical checklist и сделайте real sanitized exports.
+1. На исходном компьютере повторно создайте candidate exports командой `python3 StreamDeck/tools/export_profiles.py` и завершите physical checklist.
 2. На target computer установите ту же или новее поддерживаемую Stream Deck app и нужные MCP components.
 3. Импортируйте action profiles, затем controller. Заново привяжите все controller keys к физическому Deck B: device IDs не переносятся как universal settings.
 4. Повторите весь physical checklist, включая clean import, focus, longest prompt, reconnect и rollback.
@@ -117,7 +116,8 @@ Canonical sources:
 - controller/action settings: `config/*.json`;
 - prompt bodies: `prompts/prompt_registry.json`;
 - QA: `qa/`;
-- migration, MCP, checksums и exports status: `migration/` и `exports/`;
+- deterministic exporter: `tools/export_profiles.py`; generated profiles и format notes: `exports/`;
+- migration, MCP и checksums: `migration/`;
 - legacy rollback: `archive/legacy_manifest.md` и `archive/checksums.json`.
 
-Repo checks проверяют JSON, counts, routing, references, hashes, icons, secrets/private paths и derived map. Physical switching, focus, text insertion, reconnect, export/import, MCP visibility и v2.7 rollback остаются `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.
+Repo checks проверяют JSON, counts, routing, references, hashes, embedded icons, deterministic exports, secrets/private paths и derived map. Physical switching, focus, text insertion, reconnect, import, MCP visibility и v2.7 rollback остаются `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.

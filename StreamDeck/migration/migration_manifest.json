@@ -35,22 +35,22 @@
   ],
   "controller_profile_id": "A00_CONTROL",
   "action_identifiers": {
-    "profile_switch": "Stream Deck > Switch Profile (built-in; UUID not published/verified)",
-    "prompt_insert": "System > Text (built-in)",
+    "profile_switch": "Stream Deck > Switch Profile (built-in; com.elgato.streamdeck.profile.rotate)",
+    "prompt_insert": "System > Text (built-in; com.elgato.streamdeck.system.text)",
     "mcp": "See migration/mcp_registry.json"
   },
   "auto_send": false,
   "target_device_binding": "manual_serial_neutral",
-  "binary_exports": "NOT RUN - owner action required",
+  "binary_exports": "candidate generated - import NOT RUN; owner action required",
   "physical_switch": "NOT RUN - owner action required",
   "files": [
     {
       "path": "README.md",
-      "sha256": "9c1cdc54630f907ff14b205f2e16a532e2bc01971f3e7e9b0a54770c828a6e2f"
+      "sha256": "b0317eaef78f18657c36106c58f0c01ebbc03853e93eca1cc41537e15ed9652e"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
-      "sha256": "5878dc889ac118c2986d379d3dcfe48a962838933eae60d8f16a8b900faed754"
+      "sha256": "fb13b3bd952ebff736443a4cfd6ab7a2eff03351de8b1bb745be61a301bb6b3d"
     },
     {
       "path": "assets/icons/action_analytics.svg",
@@ -166,7 +166,7 @@
     },
     {
       "path": "exports/README.md",
-      "sha256": "042c0abd1c6f0b1ea0426d4a301070935cd89595a3e6317310ceaf639f580148"
+      "sha256": "14a099b61822f3c7d7c3a4e04fac1f19458a871b662b93851af5478a18cd220a"
     },
     {
       "path": "generated/button_map.md",
@@ -178,7 +178,7 @@
     },
     {
       "path": "migration/transfer_export.md",
-      "sha256": "1a553f01db9979642e7998fd2972d257599ebe6883dc6e0bb9191c655dd9aebe"
+      "sha256": "ec5af5b2d666875240dca76a734b7479b2b77dad1082d42a8a39c8a08c883d35"
     },
     {
       "path": "prompts/prompt_registry.json",
@@ -201,12 +201,16 @@
       "sha256": "1966614adab66acbd497c6e9a3a5267d2390083120a9a1055579f716a75eb7e8"
     },
     {
+      "path": "tools/export_profiles.py",
+      "sha256": "36b2c40770e80cecd130ac796e2b3bac4573e2400e52f24d95daa4c1904c3286"
+    },
+    {
       "path": "tools/generate_v3.py",
       "sha256": "4679c0dcaa15c3e0fdebe1a8ed4d08abce9990da90e81a356d14c11eb83a4a5f"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "6de84b52e2bb88e99e0d06824a61a8dcc0de93a6e2b8ed1997b69fd82af415d7"
+      "sha256": "fe0948d51bd8bb795ac64be69ec8bd2aabedd33785f8f202a72c2dd0ba32db1b"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles."
