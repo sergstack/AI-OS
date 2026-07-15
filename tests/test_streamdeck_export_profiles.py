@@ -90,6 +90,17 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids)
+    aios_kb_pilots_batch_ids = {
+        "b20_ai_os_governance", "b20_ai_os_loop_design", "b20_ai_os_pattern",
+        "b20_ai_os_streamdeck", "b20_ai_os_use_case",
+        "bb0_pilots_pilot_plan", "bb0_pilots_pilot_result", "bb0_pilots_residual_risk",
+        "bb0_pilots_rollback", "bb0_pilots_run_record", "bb0_pilots_status_note",
+        "bc0_kb_bundle_sync", "bc0_kb_evidence_label", "bc0_kb_kb_search",
+        "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

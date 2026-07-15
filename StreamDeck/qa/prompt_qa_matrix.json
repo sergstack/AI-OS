@@ -1464,7 +1464,7 @@
     },
     {
       "prompt_id": "b20_ai_os_governance",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B20_AI_OS/K5"
       ],
@@ -1491,7 +1491,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -1549,7 +1550,7 @@
     },
     {
       "prompt_id": "b20_ai_os_loop_design",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B20_AI_OS/K8"
       ],
@@ -1576,7 +1577,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -1634,7 +1636,7 @@
     },
     {
       "prompt_id": "b20_ai_os_pattern",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B20_AI_OS/K2"
       ],
@@ -1661,7 +1663,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -1804,7 +1807,7 @@
     },
     {
       "prompt_id": "b20_ai_os_streamdeck",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B20_AI_OS/K10"
       ],
@@ -1831,7 +1834,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -1889,7 +1893,7 @@
     },
     {
       "prompt_id": "b20_ai_os_use_case",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B20_AI_OS/K3"
       ],
@@ -1916,7 +1920,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -5808,7 +5813,7 @@
     },
     {
       "prompt_id": "bb0_pilots_pilot_plan",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K1"
       ],
@@ -5835,7 +5840,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -5893,7 +5899,7 @@
     },
     {
       "prompt_id": "bb0_pilots_pilot_result",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K4"
       ],
@@ -5920,7 +5926,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -5978,7 +5985,7 @@
     },
     {
       "prompt_id": "bb0_pilots_residual_risk",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K6"
       ],
@@ -6005,7 +6012,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6148,7 +6156,7 @@
     },
     {
       "prompt_id": "bb0_pilots_rollback",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K7"
       ],
@@ -6175,7 +6183,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6233,7 +6242,7 @@
     },
     {
       "prompt_id": "bb0_pilots_run_record",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K3"
       ],
@@ -6260,7 +6269,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6318,7 +6328,7 @@
     },
     {
       "prompt_id": "bb0_pilots_status_note",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BB0_PILOTS/K9"
       ],
@@ -6345,7 +6355,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6488,7 +6499,7 @@
     },
     {
       "prompt_id": "bc0_kb_bundle_sync",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K7"
       ],
@@ -6515,7 +6526,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6658,7 +6670,7 @@
     },
     {
       "prompt_id": "bc0_kb_evidence_label",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K2"
       ],
@@ -6685,7 +6697,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6743,7 +6756,7 @@
     },
     {
       "prompt_id": "bc0_kb_kb_search",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K1"
       ],
@@ -6770,7 +6783,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6828,7 +6842,7 @@
     },
     {
       "prompt_id": "bc0_kb_manifest",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K6"
       ],
@@ -6855,7 +6869,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6913,7 +6928,7 @@
     },
     {
       "prompt_id": "bc0_kb_review_item",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K3"
       ],
@@ -6940,7 +6955,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -6998,7 +7014,7 @@
     },
     {
       "prompt_id": "bc0_kb_support_mix",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BC0_KB/K4"
       ],
@@ -7025,7 +7041,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {

@@ -155,7 +155,7 @@
     },
     {
       "path": "config/action_profiles.json",
-      "sha256": "d030df7923e3127a8c9dfa11ad77fa41f4233fdc6e12838fce497b44965b4481"
+      "sha256": "af825b571c8fcdca954580e8408adcfbdbb631a1fa84c72bf76c078e2de1e839"
     },
     {
       "path": "config/controller_map.json",
@@ -179,7 +179,7 @@
     },
     {
       "path": "exports/B20_AI_OS.streamDeckProfile",
-      "sha256": "912060400dc1e9bade2d1331d779fa27bdf0d2543880986b078d7a47462429a3"
+      "sha256": "ba321a7ab3ea93b5fda0dda4d5054e90cddc6694a86d0831ce70aa14f4878891"
     },
     {
       "path": "exports/B30_THINKING.streamDeckProfile",
@@ -215,11 +215,11 @@
     },
     {
       "path": "exports/BB0_PILOTS.streamDeckProfile",
-      "sha256": "7edaea570604dc03df750d799653a8737a4b127df2e49237fa68aa6da3cb5863"
+      "sha256": "20b9f9f27d57be8dc6a5a2aef614e75df1ca8dff3c49412dd8de9d4d4a2f9d57"
     },
     {
       "path": "exports/BC0_KB.streamDeckProfile",
-      "sha256": "af517f9af450d4260ef139381398dfaa71c106f1078f8b1b3ccd31173f7a6306"
+      "sha256": "2bd8390286dd6a5d555aa259cc5daac45feac53decacf1b35d538771e77ce42d"
     },
     {
       "path": "exports/BD0_MCP.streamDeckProfile",
@@ -235,7 +235,7 @@
     },
     {
       "path": "generated/button_map.md",
-      "sha256": "a5dc8f42f6d7114234cf3a9c201c214e7521d0e3b839f5cf8bdf094aaf8c1708"
+      "sha256": "9e878ff97323ec32d377ba250e4c51dad956d6c698f63b1fa34081bb608fa69e"
     },
     {
       "path": "migration/mcp_registry.json",
@@ -247,7 +247,7 @@
     },
     {
       "path": "prompts/prompt_registry.json",
-      "sha256": "2c57e8c55eaa2eeed8fb4b726d5236af63975665dc7284c3c3255f8b0da3535e"
+      "sha256": "56fa465a788ebb02d0f0072ac01f4c71da656c67144ba9ecc371dc7d8589fc77"
     },
     {
       "path": "qa/baseline_audit.json",
@@ -263,7 +263,7 @@
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "354a9268245a165f5f6919499f7bb1c8bb6779fb350b0a42cd1c8c7cff4aff7b"
+      "sha256": "3a3a35a54f752c7315d07e595dd2357fcbbf0df3c601eeeb5ada945e0ba6e465"
     },
     {
       "path": "tools/export_profiles.py",
@@ -271,11 +271,11 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "b171409d8627d783cb1ed79ce1193f9ddf608584c8a0329026e1972a4cfd63ff"
+      "sha256": "a72f74fdfb773b632f5c49ad4230ec8dd4a3f47180e62afce7b2f807d3aa3d94"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "0c88389951b8b7af485758a39daad8e6e12b2c1635be33eea26f5b4a4382abfc"
+      "sha256": "fe4b168a80ba9310ecd4b0b576dc8748e388d08880c9e163a7ea1e7ab29153e7"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

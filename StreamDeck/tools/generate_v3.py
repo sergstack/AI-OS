@@ -99,7 +99,19 @@ DECK_QA_V1_1_IDS = {
     "be0_deck_qa_export_backup",
 }
 
-PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS | DECK_QA_V1_1_IDS
+AIOS_KB_PILOTS_V1_1_IDS = {
+    "b20_ai_os_governance", "b20_ai_os_loop_design", "b20_ai_os_pattern",
+    "b20_ai_os_streamdeck", "b20_ai_os_use_case",
+    "bb0_pilots_pilot_plan", "bb0_pilots_pilot_result", "bb0_pilots_residual_risk",
+    "bb0_pilots_rollback", "bb0_pilots_run_record", "bb0_pilots_status_note",
+    "bc0_kb_bundle_sync", "bc0_kb_evidence_label", "bc0_kb_kb_search",
+    "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
+}
+
+PROMPT_V1_1_IDS = (
+    ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS | DECK_QA_V1_1_IDS
+    | AIOS_KB_PILOTS_V1_1_IDS
+)
 
 ROUTE_OWNER_PROJECTS = (
     "Owners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] "
@@ -437,9 +449,136 @@ def subject_logic(prompt_id: str) -> str:
             "gate, import gate and rollback location separately."
         ),
     }
+    aios_kb_pilot_rules = {
+        "b20_ai_os_governance": (
+            "Convert the selected policy need into a bounded governance rule. Name the governed artifact or action, "
+            "owner, allowed and forbidden behavior, approval gate, evidence required, exception path, rollback and "
+            "review trigger. Reconcile the rule with repository source-of-truth and stricter safety/data controls; "
+            "do not silently weaken an existing control or claim production promotion. Separate policy text from "
+            "observed compliance. Return blocked when authority, scope or the canonical rule is missing."
+        ),
+        "b20_ai_os_loop_design": (
+            "Design a supervised loop with a named input, owner, ordered stages, artifact passed between stages, "
+            "validation at each boundary, retry limit, stop conditions and final acceptance owner. Keep routing, "
+            "implementation and judging distinct; no stage may self-approve or turn proposed execution into observed "
+            "evidence. Identify the smallest reversible failure recovery and prevent autonomous retrieval, deployment "
+            "or unbounded retries. Block the design if a required source, permission or acceptance gate is undefined."
+        ),
+        "b20_ai_os_pattern": (
+            "Extract a reusable AI-OS pattern only from the selected observed example. State the recurring problem, "
+            "context, forces, minimal solution, participants, inputs/outputs, controls, failure modes, counterexample "
+            "and evidence level. Distinguish a one-off tactic from a repeatable pattern and label untested generalization "
+            "as an assumption. Map the pattern to current owners and repository artifacts without inventing a new "
+            "platform. Recommend adoption only when at least one bounded validation path is defined."
+        ),
+        "b20_ai_os_streamdeck": (
+            "Translate the selected workflow into a supervised Stream Deck contract: button intent, owner project, "
+            "prompt_id/version, target profile, insertion_method clipboard_paste, auto-send false, manual-send boundary, "
+            "next routes and rollback. Preserve exact registry text and serial-neutral exports. Separate static archive "
+            "validation from physical device evidence; app import, focus, multiline insertion and device targeting stay "
+            "NOT RUN until observed. Reject destructive, remote or production actions behind a single key press."
+        ),
+        "b20_ai_os_use_case": (
+            "Frame one bounded user use case with actor, trigger, source material, decision or job, current pain, "
+            "proposed AI-OS route, human checkpoints, expected artifact, success evidence, failure/stop condition and "
+            "owner. Separate user value from implementation features and do not invent adoption or time-saved figures. "
+            "Identify sensitive data and actions that remain manual. Prefer a reversible pilot with observable acceptance "
+            "criteria; return blocked if the user, decision or source of truth cannot be identified."
+        ),
+        "bb0_pilots_pilot_plan": (
+            "Define a candidate-only pilot with hypothesis, in-scope users/data/workflow, explicit exclusions, baseline, "
+            "test cases, deterministic measures, qualitative evidence, owner, duration, checkpoints and pass/revise/stop "
+            "thresholds supplied by the source. Include privacy, security, cost and operational guardrails plus rollback. "
+            "Do not invent targets or call the pilot production-ready. Missing baseline, authority, safe test data or a "
+            "measurable acceptance rule blocks execution and must be listed as an input gap."
+        ),
+        "bb0_pilots_pilot_result": (
+            "Report only observed pilot evidence against the approved plan. Pair every test case and acceptance rule "
+            "with source, run identifier/date, actual status and evidence; calculate any metrics with Python or SQL. "
+            "Separate successful, failed, partial and NOT RUN cases, participant feedback, data-quality limits and "
+            "deviations from protocol. Do not generalize beyond the tested population or convert absence of failures into "
+            "safety proof. Conclude pass, revise or stop with the owner decision still pending when unobserved."
+        ),
+        "bb0_pilots_residual_risk": (
+            "Start from observed pilot results and list risks that remain after current controls. For each, name trigger, "
+            "affected user/data/system, consequence, evidence, control effectiveness, remaining uncertainty, owner action "
+            "and decision gate. Do not invent numeric likelihood or severity scores without an approved method and data. "
+            "Separate accepted risk from merely identified risk and keep owner acceptance pending unless observed. Any "
+            "uncontrolled privacy, security, destructive-action or production-impact risk requires a stop verdict."
+        ),
+        "bb0_pilots_rollback": (
+            "Specify a tested-or-NOT-RUN rollback for the selected pilot: trigger, decision owner, artifacts/configuration "
+            "to restore, preserved backup, ordered reversible steps, validation after restore, data handling and user "
+            "communication. Do not propose destructive cleanup before preservation or claim recovery time without a run. "
+            "Separate repository rollback from remote/app/device rollback and require confirmation before state-changing "
+            "actions. Block continuation when no recoverable baseline, authority or post-rollback check exists."
+        ),
+        "bb0_pilots_run_record": (
+            "Create an audit record from commands, tool calls and observations actually available for the selected pilot "
+            "run. Capture run ID/date, approved plan/version, environment, sanitized inputs, steps attempted, observed "
+            "outputs, checks, deviations, failures, artifacts and rollback status. Mark every absent execution item NOT RUN; "
+            "expected behavior is not evidence. Exclude secrets, private paths and raw sensitive data. Do not rerun, publish, "
+            "deploy or mutate remote state unless separately authorized; identify the owner action needed next."
+        ),
+        "bb0_pilots_status_note": (
+            "Write a concise decision status from the latest approved plan and observed run record. State scope/version, "
+            "current phase, completed evidence, failed or NOT RUN cases, acceptance criteria state, blockers, residual risks, "
+            "owner decisions and next checkpoint. Keep facts, interpretation and proposed work separate; do not turn a green "
+            "repository check into physical or production validation. Use candidate/pilot language, preserve pending owner "
+            "acceptance and avoid invented dates, percentages or completion claims."
+        ),
+        "bc0_kb_bundle_sync": (
+            "Synchronize only from named canonical Knowledge sources into the corresponding bundle files and upload list. "
+            "Before writing, compare source and bundle paths, required/optional membership, ordering and project boundaries; "
+            "preserve canonical files and do not import runtime artifacts, secrets, private paths or unrelated content. Run "
+            "the deterministic bundle/manifest checks and report changed files plus observed results. Upload to ChatGPT or "
+            "other remote systems remains NOT RUN unless explicitly performed by an authorized owner."
+        ),
+        "bc0_kb_evidence_label": (
+            "Label each selected knowledge statement as repository fact, observed command/tool result, user-provided context, "
+            "assumption, risk, recommendation, superseded item or unverified external claim. Attach the exact source path and "
+            "review date where available; a citation must support the whole statement. Do not upgrade inference to fact or "
+            "use expected output as evidence. Flag time-sensitive claims for freshness verification and route contradictions "
+            "to the canonical owner instead of resolving them silently."
+        ),
+        "bc0_kb_kb_search": (
+            "Search the repository Knowledge and bundle sources deterministically for the selected question. State query, "
+            "paths included/excluded and exact matching files; prefer canonical source files over generated bundles and mark "
+            "archived/superseded material. Return relevant excerpts as concise paraphrases with paths, contradictions, gaps "
+            "and freshness limits. Do not claim semantic completeness, browse externally, expose private data or invent a "
+            "match. If no authoritative match exists, say not found and name the owner/source needed."
+        ),
+        "bc0_kb_manifest": (
+            "Build or review the knowledge manifest as an explicit inventory: project/package version, canonical source path, "
+            "bundle/upload path, required versus optional status, file existence, ordering, validation gates and promotion flag. "
+            "Use repository inspection for every listed path and reject missing, duplicate, legacy or cross-project entries. "
+            "Do not add runtime artifacts, private paths or production_promotion=yes. Regenerate only derived inventory fields "
+            "and report deterministic manifest and bundle-check results."
+        ),
+        "bc0_kb_review_item": (
+            "Review one selected knowledge item against its canonical source and current governance. Identify purpose, owner, "
+            "audience, factual claims, assumptions, freshness, duplicates, contradictions, superseded guidance, sensitive "
+            "content and required bundle placement. Recommend keep, revise, archive or block with path-level evidence; do not "
+            "rewrite unrelated material or delete history. Acceptance requires internal consistency and passing relevant "
+            "repository checks, while remote upload and owner approval remain pending unless observed."
+        ),
+        "bc0_kb_support_mix": (
+            "Assemble the smallest support set for the selected task: canonical instructions, domain knowledge, live source "
+            "evidence when required, and execution/test artifacts. Explain what each source supports, its freshness and whether "
+            "it is fact, assumption or unverified. Avoid redundant bundle copies, irrelevant context and mixing archived with "
+            "active rules. Never treat model memory as repository evidence or include secrets/private data. If sources conflict, "
+            "surface the conflict and route it to the owning project before action."
+        ),
+    }
     return route_rules.get(
         prompt_id,
-        judge_rules.get(prompt_id, analytics_rules.get(prompt_id, deck_qa_rules.get(prompt_id, ""))),
+        judge_rules.get(
+            prompt_id,
+            analytics_rules.get(
+                prompt_id,
+                deck_qa_rules.get(prompt_id, aios_kb_pilot_rules.get(prompt_id, "")),
+            ),
+        ),
     )
 
 

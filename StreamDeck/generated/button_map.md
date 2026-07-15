@@ -67,15 +67,15 @@
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
 | K1 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | PATTERN | `b20_ai_os_pattern` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | USE CASE | `b20_ai_os_use_case` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | PATTERN | `b20_ai_os_pattern` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | USE CASE | `b20_ai_os_use_case` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | EVIDENCE | `evidence_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | GOVERNANCE | `b20_ai_os_governance` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | GOVERNANCE | `b20_ai_os_governance` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | FRESH CHECK | `b20_ai_os_fresh_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | SOURCE TRUTH | `kb_source_truth` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | LOOP DESIGN | `b20_ai_os_loop_design` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | LOOP DESIGN | `b20_ai_os_loop_design` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K9 | PROMPT QA | `b20_ai_os_prompt_qa` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | STREAMDECK | `b20_ai_os_streamdeck` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | STREAMDECK | `b20_ai_os_streamdeck` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
@@ -246,15 +246,15 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | PILOT PLAN | `bb0_pilots_pilot_plan` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | PILOT PLAN | `bb0_pilots_pilot_plan` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | TEST CASES | `bb0_pilots_test_cases` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | RUN RECORD | `bb0_pilots_run_record` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | PILOT RESULT | `bb0_pilots_pilot_result` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | RUN RECORD | `bb0_pilots_run_record` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | PILOT RESULT | `bb0_pilots_pilot_result` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | ACCEPTANCE | `bb0_pilots_acceptance` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | RESIDUAL RISK | `bb0_pilots_residual_risk` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | ROLLBACK | `bb0_pilots_rollback` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | RESIDUAL RISK | `bb0_pilots_residual_risk` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | ROLLBACK | `bb0_pilots_rollback` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | REGISTRY | `registry_review` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | STATUS NOTE | `bb0_pilots_status_note` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | STATUS NOTE | `bb0_pilots_status_note` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | REVISIT | `bb0_pilots_revisit` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
@@ -266,13 +266,13 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | KB SEARCH | `bc0_kb_kb_search` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | EVIDENCE LABEL | `bc0_kb_evidence_label` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | REVIEW ITEM | `bc0_kb_review_item` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | SUPPORT MIX | `bc0_kb_support_mix` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | KB SEARCH | `bc0_kb_kb_search` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | EVIDENCE LABEL | `bc0_kb_evidence_label` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | REVIEW ITEM | `bc0_kb_review_item` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | SUPPORT MIX | `bc0_kb_support_mix` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | SOURCE TRUTH | `kb_source_truth` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | MANIFEST | `bc0_kb_manifest` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | BUNDLE SYNC | `bc0_kb_bundle_sync` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | MANIFEST | `bc0_kb_manifest` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | BUNDLE SYNC | `bc0_kb_bundle_sync` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | UPLOAD CHECK | `bc0_kb_upload_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K9 | FRESHNESS | `freshness_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | CONFLICT CHECK | `bc0_kb_conflict_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
