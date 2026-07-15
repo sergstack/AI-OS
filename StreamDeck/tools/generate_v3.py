@@ -108,9 +108,16 @@ AIOS_KB_PILOTS_V1_1_IDS = {
     "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
 }
 
+DAILY_THINKING_V1_1_IDS = {
+    "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
+    "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
+    "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
+    "b30_thinking_scenario", "b30_thinking_trade_offs",
+}
+
 PROMPT_V1_1_IDS = (
     ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS | DECK_QA_V1_1_IDS
-    | AIOS_KB_PILOTS_V1_1_IDS
+    | AIOS_KB_PILOTS_V1_1_IDS | DAILY_THINKING_V1_1_IDS
 )
 
 ROUTE_OWNER_PROJECTS = (
@@ -570,13 +577,95 @@ def subject_logic(prompt_id: str) -> str:
             "surface the conflict and route it to the owning project before action."
         ),
     }
+    daily_thinking_rules = {
+        "b00_daily_context": (
+            "Build a compact daily context from the latest meaningful goal, active repository/task state and dated "
+            "observations. Separate confirmed facts, assumptions, pending decisions, blockers, deadlines and owner actions; "
+            "do not infer completion from planned work or stale notes. Include only context needed for today's decisions and "
+            "link each material fact to its source. Flag time-sensitive external claims as UNVERIFIED unless checked. Exclude "
+            "secrets/private data and end with one bounded next action plus its stop condition."
+        ),
+        "b00_daily_inbox": (
+            "Triage the selected inbox items without executing them. For each item capture source/date, requested outcome, "
+            "urgency evidence, owner project, required context, sensitivity, dependency and route; distinguish actionable, "
+            "waiting, reference and ambiguous capture. Do not invent deadlines or treat message tone as business priority. "
+            "Deduplicate only when the same underlying request is evidenced, preserve unresolved items for [Inbox Router], "
+            "and return the smallest safe next action for the highest supported priority."
+        ),
+        "b00_daily_kb_evidence": (
+            "For today's selected decision, retrieve the smallest relevant set of canonical repository knowledge and observed "
+            "evidence. Label every item as current source fact, dated tool result, assumption, superseded guidance or gap; name "
+            "its path/date and what claim it supports. Prefer canonical Knowledge over generated bundle copies and surface "
+            "contradictions rather than merging them. Do not use model memory as evidence or expose private content. If freshness "
+            "or authority is missing, mark the decision blocked and route the exact source request."
+        ),
+        "b30_thinking_assumptions": (
+            "Extract assumptions that the selected decision depends on and rewrite each as a falsifiable statement. For every "
+            "assumption name its source or absence, why it matters, affected option, confidence basis without invented numeric "
+            "scores, cheapest safe test, owner and consequence if false. Separate facts, constraints and preferences from "
+            "assumptions. Rank only by decision sensitivity and reversibility, not intuition. Promote an assumption to fact only "
+            "with cited evidence; otherwise preserve uncertainty and identify the blocking ones."
+        ),
+        "b30_thinking_criteria": (
+            "Define decision criteria before comparing options. Tie each criterion to the stated goal, owner need or non-negotiable "
+            "constraint; specify observable evidence, direction of preference, minimum gate and conflicts with other criteria. Do "
+            "not invent weights or thresholds, and keep mandatory safety/legal/data controls separate from tradeable preferences. "
+            "Check criteria for overlap, proxy distortion and unavailable evidence. Return a comparison-ready set, unresolved owner "
+            "choices and the rule for pass, revise or blocked."
+        ),
+        "b30_thinking_next_step": (
+            "Choose the smallest next action that materially reduces the selected decision's uncertainty or advances an accepted "
+            "option. State prerequisite, owner, exact artifact/action, expected evidence, reversibility, effort class without invented "
+            "numbers, stop condition and what decision follows. Prefer an information-gaining or reversible step before commitment. "
+            "Do not disguise a roadmap, deployment or destructive action as a next step. If authority, source material or a required "
+            "safety gate is missing, return blocked with the exact unblock request."
+        ),
+        "b30_thinking_options": (
+            "Generate only feasible options for the selected decision, including the status quo when valid. For each state mechanism, "
+            "required inputs, owner, dependencies, reversibility, time/cost evidence if supplied, benefits, failure modes and criteria "
+            "it satisfies. Keep mutually distinct options at the same level and do not add a fashionable architecture or unsupported "
+            "hybrid. Separate known facts from assumptions and identify dominated or infeasible choices explicitly. End with missing "
+            "evidence needed for comparison, not an automatic recommendation."
+        ),
+        "b30_thinking_premortem": (
+            "Assume the selected plan failed at its stated decision horizon and identify plausible failure paths grounded in its "
+            "dependencies, assumptions and controls. For each path give trigger, early warning, affected outcome, existing control, "
+            "preventive action, contingency owner and stop/rollback point. Include data, human, operational, security and adoption "
+            "failure where relevant; do not invent probabilities or sensational edge cases. Distinguish preventable risks from accepted "
+            "residual risk and block plans with no observable warning or recovery path."
+        ),
+        "b30_thinking_reversible": (
+            "Classify the selected decision as reversible, partially reversible or effectively irreversible from concrete state changes, "
+            "not labels. Identify what can be restored, preserved baseline, switching cost evidence, affected data/users, authority, "
+            "rollback trigger and validation after reversal. Route reversible experiments to the owning project with bounded scope; "
+            "escalate destructive, remote, production, security or financial-control commitments for explicit approval. If no backup, "
+            "owner or recovery check exists, return blocked rather than recommending execution."
+        ),
+        "b30_thinking_scenario": (
+            "Construct a small set of decision-relevant scenarios from named uncertain drivers, using supplied ranges or qualitative "
+            "states only. Keep common facts constant, state assumptions per scenario, trace effects through the decision criteria and "
+            "identify leading indicators that reveal which scenario is emerging. Do not present scenarios as forecasts or invent numeric "
+            "likelihoods. Include a stress case when material, test option robustness, and separate no-regret actions from contingent "
+            "moves and decisions that remain blocked by missing evidence."
+        ),
+        "b30_thinking_trade_offs": (
+            "Compare the selected feasible options against the approved criteria and constraints. For every material trade-off state "
+            "what improves, what worsens, who bears the cost/risk, evidence source, reversibility and uncertainty; do not collapse unlike "
+            "units into an invented score. Identify hard gates, dominated choices and value conflicts requiring owner judgment. Separate "
+            "facts from preferences and avoid a recommendation until missing decision-critical evidence is visible. If one option is "
+            "recommended, show why it wins and the condition that would change the choice."
+        ),
+    }
     return route_rules.get(
         prompt_id,
         judge_rules.get(
             prompt_id,
             analytics_rules.get(
                 prompt_id,
-                deck_qa_rules.get(prompt_id, aios_kb_pilot_rules.get(prompt_id, "")),
+                deck_qa_rules.get(
+                    prompt_id,
+                    aios_kb_pilot_rules.get(prompt_id, daily_thinking_rules.get(prompt_id, "")),
+                ),
             ),
         ),
     )

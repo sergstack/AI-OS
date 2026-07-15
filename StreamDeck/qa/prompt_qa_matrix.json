@@ -179,7 +179,7 @@
     },
     {
       "prompt_id": "b00_daily_context",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K8"
       ],
@@ -206,7 +206,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -349,7 +350,7 @@
     },
     {
       "prompt_id": "b00_daily_inbox",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K1"
       ],
@@ -376,7 +377,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -434,7 +436,7 @@
     },
     {
       "prompt_id": "b00_daily_kb_evidence",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K10"
       ],
@@ -461,7 +463,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -1979,7 +1982,7 @@
     },
     {
       "prompt_id": "b30_thinking_assumptions",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K4"
       ],
@@ -2006,7 +2009,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2064,7 +2068,7 @@
     },
     {
       "prompt_id": "b30_thinking_criteria",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K8"
       ],
@@ -2091,7 +2095,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2149,7 +2154,7 @@
     },
     {
       "prompt_id": "b30_thinking_next_step",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K10"
       ],
@@ -2176,7 +2181,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2234,7 +2240,7 @@
     },
     {
       "prompt_id": "b30_thinking_options",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K2"
       ],
@@ -2261,7 +2267,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2319,7 +2326,7 @@
     },
     {
       "prompt_id": "b30_thinking_premortem",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K7"
       ],
@@ -2346,7 +2353,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2404,7 +2412,7 @@
     },
     {
       "prompt_id": "b30_thinking_reversible",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K5"
       ],
@@ -2431,7 +2439,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2489,7 +2498,7 @@
     },
     {
       "prompt_id": "b30_thinking_scenario",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K6"
       ],
@@ -2516,7 +2525,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2574,7 +2584,7 @@
     },
     {
       "prompt_id": "b30_thinking_trade_offs",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B30_THINKING/K9"
       ],
@@ -2601,7 +2611,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {

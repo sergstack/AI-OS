@@ -190,7 +190,7 @@ def main() -> int:
         "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
     )
     boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
-    require(len(boilerplate_only) == 37, f"expected 37 boilerplate-only prompts after AI OS / KB / Pilots batch, found {len(boilerplate_only)}")
+    require(len(boilerplate_only) == 26, f"expected 26 boilerplate-only prompts after Daily / Thinking batch, found {len(boilerplate_only)}")
     for prompt in prompts:
         match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
         if match:
@@ -245,6 +245,15 @@ def main() -> int:
     require(len(aios_kb_pilots_batch_ids) == 17, "AI OS / KB / Pilots batch must contain 17 unique prompts")
     require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots versions must be 1.1.0")
     require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots subject logic missing")
+    daily_thinking_batch_ids = {
+        "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
+        "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
+        "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
+        "b30_thinking_scenario", "b30_thinking_trade_offs",
+    }
+    require(len(daily_thinking_batch_ids) == 11, "Daily / Thinking batch must contain 11 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids), "Daily / Thinking versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids), "Daily / Thinking subject logic missing")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")

@@ -155,7 +155,7 @@
     },
     {
       "path": "config/action_profiles.json",
-      "sha256": "af825b571c8fcdca954580e8408adcfbdbb631a1fa84c72bf76c078e2de1e839"
+      "sha256": "2ae699ec2b8e0b73346c317d2b526b769c8d7fc2e5cea52525a1971d031e8cdb"
     },
     {
       "path": "config/controller_map.json",
@@ -171,7 +171,7 @@
     },
     {
       "path": "exports/B00_DAILY.streamDeckProfile",
-      "sha256": "f9b3ebe2ceb8dea12457bea22849831610d8e823a4467f840384f8dceeb7a371"
+      "sha256": "617edb7509f67262ecd9d4e0d08c6f40fbd1a1923f74e195a28a2b14b658e6ec"
     },
     {
       "path": "exports/B10_ROUTE.streamDeckProfile",
@@ -183,7 +183,7 @@
     },
     {
       "path": "exports/B30_THINKING.streamDeckProfile",
-      "sha256": "d1007569f124ed0aa04751d22c9d381dda357c3f43cc2b351eda8161e4860903"
+      "sha256": "1401301eb4c56bf1d6f172ff0d8ad0f369237c49aa746827e13724d9d168bce6"
     },
     {
       "path": "exports/B40_ANALYTICS.streamDeckProfile",
@@ -235,7 +235,7 @@
     },
     {
       "path": "generated/button_map.md",
-      "sha256": "9e878ff97323ec32d377ba250e4c51dad956d6c698f63b1fa34081bb608fa69e"
+      "sha256": "8e69dd093c675c45290f306c77d55c50c9782f42d808684a72033684e4dccabe"
     },
     {
       "path": "migration/mcp_registry.json",
@@ -247,7 +247,7 @@
     },
     {
       "path": "prompts/prompt_registry.json",
-      "sha256": "56fa465a788ebb02d0f0072ac01f4c71da656c67144ba9ecc371dc7d8589fc77"
+      "sha256": "c0ef77eafe02cb0be1f907f24daa86486f4331b4b31993eba0134f19475d317b"
     },
     {
       "path": "qa/baseline_audit.json",
@@ -263,7 +263,7 @@
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "3a3a35a54f752c7315d07e595dd2357fcbbf0df3c601eeeb5ada945e0ba6e465"
+      "sha256": "862f96092981e60a6e64e1f5759f27367086b8237bcc78be43eb7003a49c1ab7"
     },
     {
       "path": "tools/export_profiles.py",
@@ -271,11 +271,11 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "a72f74fdfb773b632f5c49ad4230ec8dd4a3f47180e62afce7b2f807d3aa3d94"
+      "sha256": "804deadaf6b0f88db80585d5c5db03ffddc7ec1c1d4a22d534f466d51fbd25e5"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "fe4b168a80ba9310ecd4b0b576dc8748e388d08880c9e163a7ea1e7ab29153e7"
+      "sha256": "0f9a2ad491fd1099452331e5bdc70bbf859226024f69821a5e354fa1bb9be688"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

@@ -106,7 +106,7 @@
     },
     {
       "prompt_id": "b00_daily_context",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the CONTEXT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[LLM]",
@@ -118,7 +118,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# CONTEXT — [LLM]\n\nPurpose:\nProduce the CONTEXT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Context deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# CONTEXT — [LLM]\n\nPurpose:\nProduce the CONTEXT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nBuild a compact daily context from the latest meaningful goal, active repository/task state and dated observations. Separate confirmed facts, assumptions, pending decisions, blockers, deadlines and owner actions; do not infer completion from planned work or stale notes. Include only context needed for today's decisions and link each material fact to its source. Flag time-sensitive external claims as UNVERIFIED unless checked. Exclude secrets/private data and end with one bounded next action plus its stop condition.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Context deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Context deliverable",
         "Source material used",
@@ -149,7 +149,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "dcf4c9af87aa3385703207e4bdf7a1560ea1737184ede172d9c773f8d32008b6"
+      "prompt_hash": "c958a25856096663b5f63c084ca372f8f1573403ca31d5eace209d03ad72cb99"
     },
     {
       "prompt_id": "b00_daily_fin_memo",
@@ -201,7 +201,7 @@
     },
     {
       "prompt_id": "b00_daily_inbox",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the INBOX workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Inbox Router]",
@@ -213,7 +213,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# INBOX — [Inbox Router]\n\nPurpose:\nProduce the INBOX workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Inbox deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# INBOX — [Inbox Router]\n\nPurpose:\nProduce the INBOX workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nTriage the selected inbox items without executing them. For each item capture source/date, requested outcome, urgency evidence, owner project, required context, sensitivity, dependency and route; distinguish actionable, waiting, reference and ambiguous capture. Do not invent deadlines or treat message tone as business priority. Deduplicate only when the same underlying request is evidenced, preserve unresolved items for [Inbox Router], and return the smallest safe next action for the highest supported priority.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Inbox deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Inbox deliverable",
         "Source material used",
@@ -244,11 +244,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "4c5cb8183ad38a9b4b4ecc3201108071efeb5330975e122712aa3203dc83fdda"
+      "prompt_hash": "4893cc6e220544442a059730c21ab5b3f6f7e8f2ef8274eed48e812ffdd928e4"
     },
     {
       "prompt_id": "b00_daily_kb_evidence",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the KB EVIDENCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[AI OS]",
@@ -260,7 +260,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# KB EVIDENCE — [AI OS]\n\nPurpose:\nProduce the KB EVIDENCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Kb Evidence deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# KB EVIDENCE — [AI OS]\n\nPurpose:\nProduce the KB EVIDENCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nFor today's selected decision, retrieve the smallest relevant set of canonical repository knowledge and observed evidence. Label every item as current source fact, dated tool result, assumption, superseded guidance or gap; name its path/date and what claim it supports. Prefer canonical Knowledge over generated bundle copies and surface contradictions rather than merging them. Do not use model memory as evidence or expose private content. If freshness or authority is missing, mark the decision blocked and route the exact source request.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Kb Evidence deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Kb Evidence deliverable",
         "Source material used",
@@ -291,7 +291,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "f7b3e1bc472b5fb46d9ab4df9d79f5a6983f1ed20d51463cdf794615d1a4e5bf"
+      "prompt_hash": "552afa2687096082c4e56b408f02b2a800110e40ece5be51425d9c67080078cd"
     },
     {
       "prompt_id": "b10_route_ai_os",
@@ -1083,7 +1083,7 @@
     },
     {
       "prompt_id": "b30_thinking_assumptions",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the ASSUMPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1095,7 +1095,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# ASSUMPTIONS — [Thinking]\n\nPurpose:\nProduce the ASSUMPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Assumptions deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# ASSUMPTIONS — [Thinking]\n\nPurpose:\nProduce the ASSUMPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nExtract assumptions that the selected decision depends on and rewrite each as a falsifiable statement. For every assumption name its source or absence, why it matters, affected option, confidence basis without invented numeric scores, cheapest safe test, owner and consequence if false. Separate facts, constraints and preferences from assumptions. Rank only by decision sensitivity and reversibility, not intuition. Promote an assumption to fact only with cited evidence; otherwise preserve uncertainty and identify the blocking ones.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Assumptions deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Assumptions deliverable",
         "Source material used",
@@ -1126,11 +1126,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "a46edb233c9ca8314393ea844d1e88c2148a790bcc1528179c5e4949729ffd4f"
+      "prompt_hash": "1b12ee58a3e15ffdb2e9b7c655864ae1f50cf5dc9818190eb81ac7a77d8d7cf6"
     },
     {
       "prompt_id": "b30_thinking_criteria",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the CRITERIA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1142,7 +1142,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# CRITERIA — [Thinking]\n\nPurpose:\nProduce the CRITERIA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Criteria deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# CRITERIA — [Thinking]\n\nPurpose:\nProduce the CRITERIA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nDefine decision criteria before comparing options. Tie each criterion to the stated goal, owner need or non-negotiable constraint; specify observable evidence, direction of preference, minimum gate and conflicts with other criteria. Do not invent weights or thresholds, and keep mandatory safety/legal/data controls separate from tradeable preferences. Check criteria for overlap, proxy distortion and unavailable evidence. Return a comparison-ready set, unresolved owner choices and the rule for pass, revise or blocked.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Criteria deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Criteria deliverable",
         "Source material used",
@@ -1173,11 +1173,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "9438e1a9c880ea79bf016f1b17925fc38276b11fbb071dede4ff487252d972cf"
+      "prompt_hash": "f3804df26aa1ceadb1dbfb0229d146d19ad2d4b7a5ba3c2458d8c063b6c44c0d"
     },
     {
       "prompt_id": "b30_thinking_next_step",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the NEXT STEP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1189,7 +1189,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# NEXT STEP — [Thinking]\n\nPurpose:\nProduce the NEXT STEP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Next Step deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# NEXT STEP — [Thinking]\n\nPurpose:\nProduce the NEXT STEP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nChoose the smallest next action that materially reduces the selected decision's uncertainty or advances an accepted option. State prerequisite, owner, exact artifact/action, expected evidence, reversibility, effort class without invented numbers, stop condition and what decision follows. Prefer an information-gaining or reversible step before commitment. Do not disguise a roadmap, deployment or destructive action as a next step. If authority, source material or a required safety gate is missing, return blocked with the exact unblock request.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Next Step deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Next Step deliverable",
         "Source material used",
@@ -1220,11 +1220,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "a584116b6c060aabb5df349c799ab90896fa4be8ae284cdd3373ff4ab5a094f7"
+      "prompt_hash": "7830be331dd8e7a04a032cde2758789beac2076a977870c435311fce57db8f37"
     },
     {
       "prompt_id": "b30_thinking_options",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the OPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1236,7 +1236,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# OPTIONS — [Thinking]\n\nPurpose:\nProduce the OPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Options deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# OPTIONS — [Thinking]\n\nPurpose:\nProduce the OPTIONS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nGenerate only feasible options for the selected decision, including the status quo when valid. For each state mechanism, required inputs, owner, dependencies, reversibility, time/cost evidence if supplied, benefits, failure modes and criteria it satisfies. Keep mutually distinct options at the same level and do not add a fashionable architecture or unsupported hybrid. Separate known facts from assumptions and identify dominated or infeasible choices explicitly. End with missing evidence needed for comparison, not an automatic recommendation.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Options deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Options deliverable",
         "Source material used",
@@ -1267,11 +1267,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "0cf8e4a6e83429d2e636fbd44de7341870ee725f98f7afdee6e98852f3ddded8"
+      "prompt_hash": "8f6a9a162efca9750e31e3595c3f9227bddb87ed3dd0c0c9b7d1f0afc4e17dae"
     },
     {
       "prompt_id": "b30_thinking_premortem",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the PREMORTEM workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1283,7 +1283,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# PREMORTEM — [Thinking]\n\nPurpose:\nProduce the PREMORTEM workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Premortem deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PREMORTEM — [Thinking]\n\nPurpose:\nProduce the PREMORTEM workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nAssume the selected plan failed at its stated decision horizon and identify plausible failure paths grounded in its dependencies, assumptions and controls. For each path give trigger, early warning, affected outcome, existing control, preventive action, contingency owner and stop/rollback point. Include data, human, operational, security and adoption failure where relevant; do not invent probabilities or sensational edge cases. Distinguish preventable risks from accepted residual risk and block plans with no observable warning or recovery path.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Premortem deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Premortem deliverable",
         "Source material used",
@@ -1314,11 +1314,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "be96ff7780af19b81895e31776f934071888384814caaf82727f3cd0afe92921"
+      "prompt_hash": "735f29008449089c259752bc79b10d737e8096ed24aabf7dcc63b308b5a819c4"
     },
     {
       "prompt_id": "b30_thinking_reversible",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "route",
       "purpose": "Produce the REVERSIBLE? workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Inbox Router]",
@@ -1330,7 +1330,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# REVERSIBLE? — [Inbox Router]\n\nPurpose:\nProduce the REVERSIBLE? workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Input classification\n- Chosen owner project\n- Reason\n- Required context\n- Forbidden data\n- Handoff target\n- Stop condition",
+      "body": "# REVERSIBLE? — [Inbox Router]\n\nPurpose:\nProduce the REVERSIBLE? workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nClassify the selected decision as reversible, partially reversible or effectively irreversible from concrete state changes, not labels. Identify what can be restored, preserved baseline, switching cost evidence, affected data/users, authority, rollback trigger and validation after reversal. Route reversible experiments to the owning project with bounded scope; escalate destructive, remote, production, security or financial-control commitments for explicit approval. If no backup, owner or recovery check exists, return blocked rather than recommending execution.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Input classification\n- Chosen owner project\n- Reason\n- Required context\n- Forbidden data\n- Handoff target\n- Stop condition",
       "output_schema": [
         "Input classification",
         "Chosen owner project",
@@ -1360,11 +1360,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "036e6c0d6044b06a420077c102d668588e974af4cc29fa510f5e4f729560a624"
+      "prompt_hash": "c59ce76f4279dc2255d44caa5d044b5cda0f6cf1c96358c6c23dc52333e0f10a"
     },
     {
       "prompt_id": "b30_thinking_scenario",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the SCENARIO workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1376,7 +1376,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# SCENARIO — [Thinking]\n\nPurpose:\nProduce the SCENARIO workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Scenario deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# SCENARIO — [Thinking]\n\nPurpose:\nProduce the SCENARIO workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nConstruct a small set of decision-relevant scenarios from named uncertain drivers, using supplied ranges or qualitative states only. Keep common facts constant, state assumptions per scenario, trace effects through the decision criteria and identify leading indicators that reveal which scenario is emerging. Do not present scenarios as forecasts or invent numeric likelihoods. Include a stress case when material, test option robustness, and separate no-regret actions from contingent moves and decisions that remain blocked by missing evidence.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Scenario deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Scenario deliverable",
         "Source material used",
@@ -1407,11 +1407,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "812d080c02b6d61ebc072b2c644d74a251b38c730ba1b62ee4d21047be74129d"
+      "prompt_hash": "2b2c1fc7eba90e952e3d88963aede5af30e9a26ea3ea8eb26f24df4c6cb187c4"
     },
     {
       "prompt_id": "b30_thinking_trade_offs",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the TRADE-OFFS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Thinking]",
@@ -1423,7 +1423,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# TRADE-OFFS — [Thinking]\n\nPurpose:\nProduce the TRADE-OFFS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Trade-Offs deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# TRADE-OFFS — [Thinking]\n\nPurpose:\nProduce the TRADE-OFFS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nCompare the selected feasible options against the approved criteria and constraints. For every material trade-off state what improves, what worsens, who bears the cost/risk, evidence source, reversibility and uncertainty; do not collapse unlike units into an invented score. Identify hard gates, dominated choices and value conflicts requiring owner judgment. Separate facts from preferences and avoid a recommendation until missing decision-critical evidence is visible. If one option is recommended, show why it wins and the condition that would change the choice.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Trade-Offs deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Trade-Offs deliverable",
         "Source material used",
@@ -1454,7 +1454,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "31340c7115266fc8be81c6f3bcbea61e272cf1fc9ccfcc13a7f782ca78ace4b8"
+      "prompt_hash": "eb9f8eed60b7c71369f6ebc377c08fc5be1bf6de515b249168e02a635fb0774b"
     },
     {
       "prompt_id": "b40_analytics_analytics_loop",

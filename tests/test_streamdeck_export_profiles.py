@@ -101,6 +101,15 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids)
+    daily_thinking_batch_ids = {
+        "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
+        "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
+        "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
+        "b30_thinking_scenario", "b30_thinking_trade_offs",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

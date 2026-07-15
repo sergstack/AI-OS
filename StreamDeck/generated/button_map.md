@@ -26,16 +26,16 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | INBOX | `b00_daily_inbox` | `1.0.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | INBOX | `b00_daily_inbox` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | DECISION | `thinking_decision` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | DATA CONTRACT | `analytics_data_contract` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | FIN MEMO | `b00_daily_fin_memo` | `1.0.0` | [LLM] / Memo | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | PROMPT | `llm_prompt_review` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | CONTEXT | `b00_daily_context` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | CONTEXT | `b00_daily_context` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K9 | SYNC | `codex_sync` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | KB EVIDENCE | `b00_daily_kb_evidence` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | KB EVIDENCE | `b00_daily_kb_evidence` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
@@ -87,15 +87,15 @@
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
 | K1 | DECISION | `thinking_decision` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | OPTIONS | `b30_thinking_options` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | OPTIONS | `b30_thinking_options` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | RISKS | `thinking_risks` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | ASSUMPTIONS | `b30_thinking_assumptions` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | REVERSIBLE? | `b30_thinking_reversible` | `1.0.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | SCENARIO | `b30_thinking_scenario` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | PREMORTEM | `b30_thinking_premortem` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | CRITERIA | `b30_thinking_criteria` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | TRADE-OFFS | `b30_thinking_trade_offs` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | NEXT STEP | `b30_thinking_next_step` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | ASSUMPTIONS | `b30_thinking_assumptions` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | REVERSIBLE? | `b30_thinking_reversible` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | SCENARIO | `b30_thinking_scenario` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | PREMORTEM | `b30_thinking_premortem` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | CRITERIA | `b30_thinking_criteria` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | TRADE-OFFS | `b30_thinking_trade_offs` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | NEXT STEP | `b30_thinking_next_step` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
