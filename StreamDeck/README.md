@@ -72,7 +72,7 @@ python3 StreamDeck/tools/run_prompt_qa.py --dry-run
 python3 StreamDeck/tools/run_prompt_qa.py --dry-run --subset priority
 ```
 
-`priority` — 15 unique prompt IDs / 45 cases: общие K11–K15 и весь `B00_DAILY` с дедупликацией. Live-run требует exact model и один ключ только из environment; доступны OpenAI Responses API, Anthropic Messages API и Google Gemini API. Кейсы выполняются ограниченными batch/concurrency с retry. По умолчанию наблюдаемые результаты записываются в QA matrix и её checksum в migration manifest; `--output` позволяет сохранить отдельную локальную матрицу. Ключ и raw response не записываются и не печатаются.
+`priority` — 15 unique prompt IDs / 45 cases: общие K11–K15 и весь `B00_DAILY` с дедупликацией. Live-run требует exact model и один ключ только из environment; доступны OpenAI Responses API, Anthropic Messages API и Google Gemini API. Кейсы выполняются ограниченными batch/concurrency с retry; успешные batch атомарно checkpoint-ятся, а `--resume` пропускает уже выполненные выбранным provider кейсы. По умолчанию наблюдаемые результаты записываются в QA matrix и её checksum в migration manifest; `--output` позволяет сохранить отдельную локальную матрицу. Ключ и raw response не записываются и не печатаются.
 
 ```bash
 python3 StreamDeck/tools/run_prompt_qa.py \
@@ -85,7 +85,7 @@ set -a
 source StreamDeck/.env
 set +a
 python3 StreamDeck/tools/run_prompt_qa.py \
-  --provider google --model "$GEMINI_MODEL" --subset priority --concurrency 4 --batch-size 15
+  --provider google --model "$GEMINI_MODEL" --subset priority --resume --concurrency 4 --batch-size 15
 ```
 
 Для Google скопируйте `StreamDeck/.env.example` в `StreamDeck/.env` и заполните ключ локально. Не добавляйте ключ в shell history или repository. Реальные model results не обязательны для PR; если live-run не выполнялся, все case statuses остаются `NOT RUN`.

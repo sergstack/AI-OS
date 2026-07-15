@@ -51,7 +51,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "34cee15058634dde80c453376aec7f23b82477b45859aa4f8652856d8a4df5fe"
+      "sha256": "ecdecaf4874ac0dc03d6ae61d920ec9a49a735c6648762443f1983a40a9e73ca"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
@@ -275,11 +275,11 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "87ded540c04e27f4452d0a367e07ed35724dec9766ab91ecd01e9b29efe38717"
+      "sha256": "692db7748a6d22746ae9a77dbe27a19c5c742c1fabf5b9bee55e45b4c61a6a07"
     },
     {
       "path": "tools/run_prompt_qa.py",
-      "sha256": "d0123a5bc4c9b5928896aa3bb74c35796e828daa3e37de6529518a8617ff42af"
+      "sha256": "a30fd808858e8bb8d972a20d50e703e76aecd40f0b53588e6df330f385779724"
     },
     {
       "path": "tools/validate_v3.py",

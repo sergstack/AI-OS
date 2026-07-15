@@ -5,11 +5,13 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 
 ROOT = Path(__file__).resolve().parents[1]
 STREAMDECK = ROOT / "StreamDeck"
 SCRIPT = STREAMDECK / "tools" / "run_prompt_qa.py"
+GENERATOR = STREAMDECK / "tools" / "generate_v3.py"
 
 
 def load_runner():
@@ -17,6 +19,14 @@ def load_runner():
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_generator():
+    spec = importlib.util.spec_from_file_location("generate_v3", GENERATOR)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
     spec.loader.exec_module(module)
     return module
 
@@ -152,6 +162,104 @@ def test_google_provider_uses_gemini_api_key(monkeypatch):
 
     assert runner.choose_provider("google") == ("google", "not-a-real-key")
     assert runner.choose_provider("auto") == ("google", "not-a-real-key")
+
+
+def test_tls_context_uses_system_bundle_when_python_has_no_default_ca(monkeypatch):
+    runner = load_runner()
+    expected_context = object()
+    calls = []
+    monkeypatch.setattr(
+        runner.ssl,
+        "get_default_verify_paths",
+        lambda: SimpleNamespace(cafile=None, capath=None),
+    )
+    monkeypatch.setattr(
+        runner.Path,
+        "is_file",
+        lambda path: path == runner.Path("/etc/ssl/cert.pem"),
+    )
+
+    def fake_create_default_context(*, cafile=None):
+        calls.append(cafile)
+        return expected_context
+
+    monkeypatch.setattr(runner.ssl, "create_default_context", fake_create_default_context)
+
+    assert runner.tls_context() is expected_context
+    assert calls == ["/etc/ssl/cert.pem"]
+
+
+def test_resume_selects_only_cases_not_executed_by_provider():
+    runner = load_runner()
+    matrix = {
+        "rows": [
+            {
+                "prompt_id": "example",
+                "test_cases": [
+                    {"case": "normal", "status": "EXECUTED", "provider": "google"},
+                    {"case": "missing_context_or_evidence", "status": "EXECUTED", "provider": "openai"},
+                    {"case": "unsafe_or_ambiguous", "status": "NOT RUN"},
+                ],
+            }
+        ]
+    }
+
+    assert runner.completed_case_keys(matrix, "google") == {("example", "normal")}
+
+
+def test_generator_preserves_only_matching_executed_qa_results():
+    generator = load_generator()
+    generated_rows = [
+        {
+            "prompt_id": "same-version",
+            "prompt_version": "1.0.0",
+            "test_cases": [
+                {"case": "normal", "status": "NOT RUN", "expected": "current contract"},
+                {"case": "unsafe_or_ambiguous", "status": "NOT RUN", "expected": "current refusal"},
+            ],
+        },
+        {
+            "prompt_id": "new-version",
+            "prompt_version": "2.0.0",
+            "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "new contract"}],
+        },
+    ]
+    existing = {
+        "rows": [
+            {
+                "prompt_id": "same-version",
+                "prompt_version": "1.0.0",
+                "test_cases": [
+                    {
+                        "case": "normal",
+                        "status": "EXECUTED",
+                        "expected": "old contract",
+                        "provider": "google",
+                        "observed_verdict": "pass",
+                    },
+                    {"case": "unsafe_or_ambiguous", "status": "NOT RUN", "expected": "old refusal"},
+                ],
+            },
+            {
+                "prompt_id": "new-version",
+                "prompt_version": "1.0.0",
+                "test_cases": [
+                    {"case": "normal", "status": "EXECUTED", "expected": "old contract"}
+                ],
+            },
+        ]
+    }
+
+    assert generator.preserve_executed_qa_results(generated_rows, existing) == 1
+    assert generated_rows[0]["test_cases"][0] == {
+        "case": "normal",
+        "status": "EXECUTED",
+        "expected": "current contract",
+        "provider": "google",
+        "observed_verdict": "pass",
+    }
+    assert generated_rows[0]["test_cases"][1]["status"] == "NOT RUN"
+    assert generated_rows[1]["test_cases"][0]["status"] == "NOT RUN"
 
 
 def test_google_call_uses_generate_content_contract(monkeypatch):

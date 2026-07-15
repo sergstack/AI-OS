@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+import ssl
 import sys
 import tempfile
 import time
@@ -272,11 +273,21 @@ def normalized_usage(provider: str, payload: dict[str, Any]) -> dict[str, int]:
     return {key: value for key, value in mapping.items() if isinstance(value, int)}
 
 
+def tls_context() -> ssl.SSLContext:
+    verify_paths = ssl.get_default_verify_paths()
+    if verify_paths.cafile or verify_paths.capath:
+        return ssl.create_default_context()
+    system_bundle = Path("/etc/ssl/cert.pem")
+    if system_bundle.is_file():
+        return ssl.create_default_context(cafile=str(system_bundle))
+    return ssl.create_default_context()
+
+
 def post_json(url: str, headers: dict[str, str], body: dict[str, Any], timeout: float) -> dict[str, Any]:
     data = json.dumps(body, ensure_ascii=False).encode("utf-8")
     request = urllib.request.Request(url, data=data, headers=headers, method="POST")
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with urllib.request.urlopen(request, timeout=timeout, context=tls_context()) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         retryable = exc.code in RETRYABLE_HTTP
@@ -405,6 +416,15 @@ def apply_results(matrix: dict[str, Any], results: list[tuple[QaInput, dict[str,
     return updated
 
 
+def completed_case_keys(matrix: dict[str, Any], provider: str) -> set[tuple[str, str]]:
+    return {
+        (row["prompt_id"], case["case"])
+        for row in matrix["rows"]
+        for case in row["test_cases"]
+        if case.get("status") == "EXECUTED" and case.get("provider") == provider
+    }
+
+
 def json_bytes(value: dict[str, Any]) -> bytes:
     return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
 
@@ -472,6 +492,7 @@ def choose_provider(requested: str) -> tuple[str, str]:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="validate and assemble inputs without API calls or writes")
+    parser.add_argument("--resume", action="store_true", help="skip cases already executed by the selected provider")
     parser.add_argument("--provider", choices=("auto", "openai", "anthropic", "google"), default="auto")
     parser.add_argument("--model", help="provider model id; required for a live run")
     parser.add_argument(
@@ -529,11 +550,24 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
+    if args.resume:
+        completed = completed_case_keys(matrix, provider)
+        before = len(qa_inputs)
+        qa_inputs = [item for item in qa_inputs if (item.prompt_id, item.case_name) not in completed]
+        print(f"RESUME: skipped={before - len(qa_inputs)} remaining={len(qa_inputs)}", file=sys.stderr)
+        if not qa_inputs:
+            print(f"RESULT: provider={provider} model={args.model} executed=0 pass=0 revise=0 failed_calls=0")
+            return 0
+
     successes: list[tuple[QaInput, dict[str, Any]]] = []
     failures: list[tuple[QaInput, str]] = []
+    working_matrix = matrix
+    output_path = args.output or args.matrix
+    manifest_path = args.manifest if output_path.resolve() == DEFAULT_MATRIX.resolve() else None
     total_batches = (len(qa_inputs) + args.batch_size - 1) // args.batch_size
     for batch_number, batch in enumerate(chunks(qa_inputs, args.batch_size), start=1):
         print(f"Batch {batch_number}/{total_batches}: cases={len(batch)}", file=sys.stderr)
+        batch_successes: list[tuple[QaInput, dict[str, Any]]] = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as executor:
             futures = [
                 executor.submit(
@@ -552,19 +586,17 @@ def main(argv: list[str] | None = None) -> int:
             for future in concurrent.futures.as_completed(futures):
                 qa_input, result, error = future.result()
                 if result is not None:
-                    successes.append((qa_input, result))
+                    batch_successes.append((qa_input, result))
                 else:
                     failures.append((qa_input, str(error)))
-
-    if successes:
-        updated = apply_results(matrix, successes)
-        output_path = args.output or args.matrix
-        manifest_path = args.manifest if output_path.resolve() == DEFAULT_MATRIX.resolve() else None
-        try:
-            write_results(updated, output_path, manifest_path)
-        except (OSError, ValueError, json.JSONDecodeError) as exc:
-            print(f"ERROR: could not write results: {exc}", file=sys.stderr)
-            return 2
+        if batch_successes:
+            successes.extend(batch_successes)
+            working_matrix = apply_results(working_matrix, batch_successes)
+            try:
+                write_results(working_matrix, output_path, manifest_path)
+            except (OSError, ValueError, json.JSONDecodeError) as exc:
+                print(f"ERROR: could not checkpoint results: {exc}", file=sys.stderr)
+                return 2
 
     passed = sum(result["observed_verdict"] == "pass" for _, result in successes)
     revised = len(successes) - passed
