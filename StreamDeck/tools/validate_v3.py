@@ -11,8 +11,8 @@ from collections import Counter
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
-ACTIVE = ROOT / "active" / "v3.0"
+ROOT = Path(__file__).resolve().parents[1]
+ACTIVE = ROOT
 ERRORS: list[str] = []
 
 

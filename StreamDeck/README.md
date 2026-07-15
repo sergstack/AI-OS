@@ -24,12 +24,12 @@ v3.0 разделяет навигацию и действия между дву
 
 1. В Stream Deck app откройте Profiles и выполните `Back Up All`. Не перезаписывайте v2.7/v2.9.
 2. Переименуйте физические устройства в `AIOS-CONTROL` и `AIOS-ACTIONS` или запишите это ролевое соответствие.
-3. Создайте на Deck A профиль `AIOS-CONTROL` (`A00_CONTROL`). По `active/v3.0/config/controller_map.json` расставьте 15 `Switch Profile` actions.
+3. Создайте на Deck A профиль `AIOS-CONTROL` (`A00_CONTROL`). По `config/controller_map.json` расставьте 15 `Switch Profile` actions.
 4. В property inspector каждой controller-кнопки выберите именно Deck B и target profile. На Deck A не создавайте prompt, send, GitHub или terminal actions.
-5. Снача создайте на Deck B два временных профиля TEST_A и TEST_B и выполните минимальный POC из `active/v3.0/qa/physical_qa_checklist.md`.
+5. Сначала создайте на Deck B два временных профиля TEST_A и TEST_B и выполните минимальный POC из `qa/physical_qa_checklist.md`.
 6. Только после POC создайте на Deck B 15 профилей из таблицы ниже.
-7. Для каждой action-кнопки добавьте `System > Text`, найдите `prompt_id` в `active/v3.0/prompts/prompt_registry.json`, вставьте exact `body`, выключите Enter/Return и auto-send.
-8. Назначьте relative icon из `active/v3.0/config/icon_map.json`. Проверьте focus в одном несущественном text field до работы с реальными данными.
+7. Для каждой action-кнопки добавьте `System > Text`, найдите `prompt_id` в `prompts/prompt_registry.json`, вставьте exact `body`, выключите Enter/Return и auto-send.
+8. Назначьте relative icon из `config/icon_map.json`. Проверьте focus в одном несущественном text field до работы с реальными данными.
 
 ## Все профили и кнопки
 
@@ -55,17 +55,17 @@ v3.0 разделяет навигацию и действия между дву
 | BD0_MCP | MCP | LIST ACTIONS | REGISTRY | VISIBILITY | JUDGE | REVISOR | SYNC | AI TREND | KB SOURCE | LOCAL SAFETY | GOAL→PR | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
 | BE0_DECK_QA | DECK QA | SWITCH TEST | DEVICE TARGET | FOCUS TEST | TEXT INSERT | AUTO-SEND OFF | PLACEHOLDER | DUPLICATES | PROMPT HASH | EXPORT BACKUP | IMPORT TEST | BLOCKER | HANDOFF | JUDGE | REVISOR | FINAL GATE |
 
-Точные prompt IDs, risks, owner route, next action, stop condition и rollback на каждой кнопке находятся в `active/v3.0/config/action_profiles.json`; readable derived map — в `active/v3.0/generated/button_map.md`.
+Точные prompt IDs, risks, owner route, next action, stop condition и rollback на каждой кнопке находятся в `config/action_profiles.json`; readable derived map — в `generated/button_map.md`.
 
 ## Prompt registry и Prompt QA
 
-Full bodies хранятся только в `active/v3.0/prompts/prompt_registry.json`. Button maps хранят `prompt_id`, version и hash, а не дубли body. После ручной настройки сверьте inserted text с `prompt_hash` через `DECK QA / PROMPT HASH`.
+Full bodies хранятся только в `prompts/prompt_registry.json`. Button maps хранят `prompt_id`, version и hash, а не дубли body. После ручной настройки сверьте inserted text с `prompt_hash` через `DECK QA / PROMPT HASH`.
 
 QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены, но normal, missing-context/evidence и unsafe/ambiguous model runs не выполнены. Поэтому каждый prompt имеет verdict `blocked`, UX `4/5`, owner acceptance `pending` и ни один не назван `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
 
 ## MCP
 
-`active/v3.0/migration/mcp_registry.json` сохраняет семь action IDs. `AIOS_HOME_JUDGE` и `AIOS_HOME_REVISOR` имеют legacy execution evidence в v2.8 pilot; остальные пять — `registered-only`. Это не равно v3 visibility и не доказывает настройку на текущих devices. После manual setup нужно получить visible action list, сверить exact IDs и выполнить только supervised safe smoke.
+`migration/mcp_registry.json` сохраняет семь action IDs. `AIOS_HOME_JUDGE` и `AIOS_HOME_REVISOR` имеют legacy execution evidence в v2.8 pilot; остальные пять — `registered-only`. Это не равно v3 visibility и не доказывает настройку на текущих devices. После manual setup нужно получить visible action list, сверить exact IDs и выполнить только supervised safe smoke.
 
 ## Перенос на другой компьютер
 
@@ -74,7 +74,7 @@ QA matrix содержит отдельную строку для каждого
 3. Импортируйте action profiles, затем controller. Заново привяжите все controller keys к физическому Deck B: device IDs не переносятся как universal settings.
 4. Повторите весь physical checklist, включая clean import, focus, longest prompt, reconnect и rollback.
 
-Подробный checklist: `active/v3.0/migration/transfer_export.md`.
+Подробный checklist: `migration/transfer_export.md`.
 
 ## Примеры
 
@@ -113,11 +113,11 @@ QA matrix содержит отдельную строку для каждого
 
 Canonical sources:
 
-- architecture: `active/v3.0/architecture/dual_deck_architecture.md`;
-- controller/action settings: `active/v3.0/config/*.json`;
-- prompt bodies: `active/v3.0/prompts/prompt_registry.json`;
-- QA: `active/v3.0/qa/`;
-- migration, MCP, checksums и exports status: `active/v3.0/migration/` и `active/v3.0/exports/`;
+- architecture: `architecture/dual_deck_architecture.md`;
+- controller/action settings: `config/*.json`;
+- prompt bodies: `prompts/prompt_registry.json`;
+- QA: `qa/`;
+- migration, MCP, checksums и exports status: `migration/` и `exports/`;
 - legacy rollback: `archive/legacy_manifest.md` и `archive/checksums.json`.
 
 Repo checks проверяют JSON, counts, routing, references, hashes, icons, secrets/private paths и derived map. Physical switching, focus, text insertion, reconnect, export/import, MCP visibility и v2.7 rollback остаются `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.

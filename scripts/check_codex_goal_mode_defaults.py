@@ -56,8 +56,8 @@ CODEX_FACING_PATHS = [
     "ChatGPT/[LLM]/Knowledge_Bundles",
     "Codex APP",
     "StreamDeck/README.md",
-    "StreamDeck/active/v3.0/config/action_profiles.json",
-    "StreamDeck/active/v3.0/prompts/prompt_registry.json",
+    "StreamDeck/config/action_profiles.json",
+    "StreamDeck/prompts/prompt_registry.json",
 ]
 
 TEXT_SUFFIXES = {".md", ".json", ".csv", ".txt"}

@@ -1,6 +1,6 @@
 # StreamDeck legacy archive
 
-The archive preserves the explicit rollback and evidence baseline. File integrity is recorded in `checksums.json`, generated with SHA-256 by `active/v3.0/tools/generate_v3.py`.
+The archive preserves the explicit rollback and evidence baseline. File integrity is recorded in `checksums.json`, generated with SHA-256 by `../tools/generate_v3.py`.
 
 - `v2.7/`: last documented active physical baseline. Do not delete before v3 export/import, dual-deck smoke and owner acceptance.
 - `v2.8/`: candidate maps, icons, Prompt QA notes and MCP pilot evidence.

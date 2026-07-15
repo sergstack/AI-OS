@@ -9,8 +9,8 @@ import re
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
-ACTIVE = ROOT / "active" / "v3.0"
+ROOT = Path(__file__).resolve().parents[1]
+ACTIVE = ROOT
 ARCHIVE = ROOT / "archive"
 VERSION = "3.0.0"
 SNAPSHOT = "2026-07-15"
@@ -362,11 +362,14 @@ def make_manifests() -> None:
         inventory.append({"path": item["path"], "disposition": "ARCHIVE_SUPERSEDED", "rollback_role": "active baseline" if version == "v2.7" else "candidate/evidence baseline"})
     inventory.extend([
         {"path": "StreamDeck/README.md", "disposition": "REWRITE"},
-        {"path": "StreamDeck/active/v3.0/**", "disposition": "KEEP_ACTIVE"},
+        {"path": "StreamDeck/{architecture,assets,config,exports,generated,migration,prompts,qa,tools}/**", "disposition": "KEEP_ACTIVE"},
     ])
     dump(ACTIVE / "qa" / "cleanup_inventory.json", {"generated": SNAPSHOT, "items": inventory, "deletions": [], "blocked": ["Do not delete v2.7 archive before physical acceptance."]})
 
-    active_files = sorted(path for path in ACTIVE.rglob("*") if path.is_file() and path.name != "migration_manifest.json")
+    active_roots = [ACTIVE / name for name in ("architecture", "assets", "config", "exports", "generated", "migration", "prompts", "qa", "tools")]
+    active_files = [ACTIVE / "README.md"]
+    active_files.extend(path for root in active_roots for path in root.rglob("*") if path.is_file() and path.name != "migration_manifest.json")
+    active_files = sorted(active_files)
     files = [{"path": str(path.relative_to(ROOT)), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for path in active_files]
     dump(ACTIVE / "migration" / "migration_manifest.json", {
         "version": VERSION, "status": "candidate / ready for owner review after repo checks", "generated": SNAPSHOT,
