@@ -54,7 +54,7 @@
     },
     {
       "prompt_id": "analytics_data_contract",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the DATA CONTRACT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -67,7 +67,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# DATA CONTRACT — [Analytics]\n\nPurpose:\nProduce the DATA CONTRACT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Decision\n- Entity\n- Grain\n- Period\n- Currency / unit\n- Sources and layers\n- Fields\n- Formulas\n- Filters\n- Deterministic checks\n- Missing inputs\n- Execution status",
+      "body": "# DATA CONTRACT — [Analytics]\n\nPurpose:\nProduce the DATA CONTRACT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nDefine the decision the analysis must support, then fix entity, grain, period, currency or unit, source systems and raw/stage/mart/report layers. List required fields, keys, dimensions, measures, filters, formulas, exclusions and update cadence. Separate supplied definitions from assumptions; do not infer a business rule from column names. Specify Python/SQL checks for uniqueness, completeness and reconciliation. If grain, period, currency/unit, formula ownership or a required source is missing, return NOT RUN with the exact input needed.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Decision\n- Entity\n- Grain\n- Period\n- Currency / unit\n- Sources and layers\n- Fields\n- Formulas\n- Filters\n- Deterministic checks\n- Missing inputs\n- Execution status",
       "output_schema": [
         "Decision",
         "Entity",
@@ -102,7 +102,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "e26cea1ddc595e80ba8d781186a19a7831d7b8b76e82c01955e48c5709c895ab"
+      "prompt_hash": "217efe7cc23462099f6b3639f7b9dc89d92a4c42feba289eef9905be6b430190"
     },
     {
       "prompt_id": "b00_daily_context",
@@ -1458,7 +1458,7 @@
     },
     {
       "prompt_id": "b40_analytics_analytics_loop",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the ANALYTICS LOOP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1470,7 +1470,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# ANALYTICS LOOP — [Analytics]\n\nPurpose:\nProduce the ANALYTICS LOOP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Analytics Loop question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# ANALYTICS LOOP — [Analytics]\n\nPurpose:\nProduce the ANALYTICS LOOP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nRun the supervised sequence: clarify decision -> data contract -> data-quality checks -> explicit stage/mart transformations -> Python/SQL calculation -> reconciliation -> findings -> memo-ready facts -> QA verdict. At every step record inputs, layer, period, currency/unit, filters, joins, exclusions and observed command status. Stop and return NOT RUN or blocked when a prerequisite, business definition, permission or deterministic check fails; do not skip forward or self-approve. A revise verdict may rerun only the bounded failed step and its downstream checks.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Analytics Loop question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Analytics Loop question",
         "Entity and grain",
@@ -1503,11 +1503,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "6a1f01cd3bb14428485a488e0df88d24891bb2646e60382df3ca23d7df425b3a"
+      "prompt_hash": "0898267f374b96281597dac333d01315979335e8d0cc293e9b9c32b122134e00"
     },
     {
       "prompt_id": "b40_analytics_anomaly",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the ANOMALY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1519,7 +1519,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# ANOMALY — [Analytics]\n\nPurpose:\nProduce the ANOMALY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Anomaly question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# ANOMALY — [Analytics]\n\nPurpose:\nProduce the ANOMALY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nDefine the population, expected behavior, comparison period and anomaly rule before inspecting rows. The threshold must come from a supplied policy or a documented Python/SQL method; do not invent one. Return flagged entities with deterministic evidence, baseline, deviation, source layer and data-quality status. Separate true business anomalies, data defects and insufficient-context cases; sampling and correlation do not prove cause or fraud. Include false-positive risks, the unflagged control population and the next evidence needed for investigation.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Anomaly question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Anomaly question",
         "Entity and grain",
@@ -1552,11 +1552,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "6af9d7ec359f3aa8bc4bb73d5eea5681d6d98789d28071543030d7b9fe291ae9"
+      "prompt_hash": "fe2be70845c0054d7fefff810e4d1ec8badcaf2c6f321a805f6f2c39a8377119"
     },
     {
       "prompt_id": "b40_analytics_data_quality",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the DATA QUALITY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1568,7 +1568,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# DATA QUALITY — [Analytics]\n\nPurpose:\nProduce the DATA QUALITY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Data Quality question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# DATA QUALITY — [Analytics]\n\nPurpose:\nProduce the DATA QUALITY workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nEvaluate the selected dataset at its declared entity and grain. Use Python or SQL to profile row counts, schema/types, key uniqueness, duplicates, nulls, valid ranges, referential integrity, date coverage and category domains; compare each result with an explicit rule or source expectation. Separate blocking defects from warnings and quantify affected rows through tool output only. Do not clean or overwrite raw data implicitly. Return a reproducible check, observed result, affected layer, risk and the safe next transformation or source-owner question.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Data Quality question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Data Quality question",
         "Entity and grain",
@@ -1601,11 +1601,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "3a58dbfc1339ac3c993ffd01d9c599c258af0319a7ce37c7cc5f1ba76176a6f7"
+      "prompt_hash": "be80fc4c664d97c2388acd164f851cd82a1417e8590cec8e892cb0ab15a5841b"
     },
     {
       "prompt_id": "b40_analytics_formula",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the FORMULA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1617,7 +1617,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# FORMULA — [Analytics]\n\nPurpose:\nProduce the FORMULA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Formula question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# FORMULA — [Analytics]\n\nPurpose:\nProduce the FORMULA workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nSpecify the metric name, business meaning, numerator, denominator, aggregation, grain, period, currency/unit, sign convention, filters and exclusions. Define zero, null, missing-period, duplicate and restatement behavior explicitly, plus the authoritative owner/source for each rule. Implement or demonstrate the calculation only in Python or SQL and show a small tool-computed test case with expected units. Reconcile the result to source totals where applicable. If a business rule is absent or conflicting, return NOT RUN and list the exact confirmation needed.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Formula question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Formula question",
         "Entity and grain",
@@ -1650,11 +1650,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "045c4c3de12ca2b4242f5d535cc278bbe29c510c41646acc6a7cee06fece7657"
+      "prompt_hash": "4a41034cff9c6d664d903e1856b30f46bee37324750b3dc7e7d6ecea239c2f72"
     },
     {
       "prompt_id": "b40_analytics_mart_spec",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the MART SPEC workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1666,7 +1666,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# MART SPEC — [Analytics]\n\nPurpose:\nProduce the MART SPEC workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Mart Spec question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# MART SPEC — [Analytics]\n\nPurpose:\nProduce the MART SPEC workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nTranslate the approved business question and data contract into a mart specification: target grain, facts, dimensions, keys, source-to-target mappings, period and currency/unit treatment, filters, derived fields, formulas and refresh expectations. Keep raw, stage and mart responsibilities explicit; do not introduce a new business definition or source. Define deterministic tests for uniqueness, completeness, referential integrity, reconciliation and incremental behavior. Mark unresolved ownership, history or late-arriving-data choices as blocked rather than selecting an architecture silently.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Mart Spec question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Mart Spec question",
         "Entity and grain",
@@ -1699,11 +1699,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "d886b39cf4523fdecc6533f083135939ac308d461accce00ac5ec0961887a725"
+      "prompt_hash": "b0dc107acef74f2da7e565001fce86732215a68139bce4b5a88835024f2fd4a6"
     },
     {
       "prompt_id": "b40_analytics_memo_facts",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the MEMO FACTS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1715,7 +1715,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# MEMO FACTS — [Analytics]\n\nPurpose:\nProduce the MEMO FACTS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Memo Facts question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# MEMO FACTS — [Analytics]\n\nPurpose:\nProduce the MEMO FACTS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nPrepare a fact pack, not narrative. Include only figures and comparisons reproduced by observed Python/SQL, with entity, grain, period, currency/unit, source layer, formula, filters and reconciliation status for each item. Separate actual, plan and forecast; label assumptions, exceptions and management confirmations. Rank facts by decision relevance without inventing causality, recommendations or root causes. Each bullet must trace to a dataset/check reference and state whether it is approved, provisional or blocked for memo use.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Memo Facts question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Memo Facts question",
         "Entity and grain",
@@ -1748,11 +1748,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "dccff4b9afc49712236132acda6769620027dc19db63428840b910eccee9dfee"
+      "prompt_hash": "6f886c333eaf9cc34a34d3e2e59387171c03bdba38be9620383489ac3aeaa386"
     },
     {
       "prompt_id": "b40_analytics_qa_checks",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "judge",
       "purpose": "Produce the QA CHECKS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1764,7 +1764,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# QA CHECKS — [Analytics]\n\nPurpose:\nProduce the QA CHECKS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Qa Checks verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
+      "body": "# QA CHECKS — [Analytics]\n\nPurpose:\nProduce the QA CHECKS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSubject logic:\nJudge the selected analytics artifact against its data contract. Require observed Python/SQL evidence for schema, key uniqueness, duplicates, nulls, ranges, join cardinality, period/currency alignment, formula edge cases and source-to-output reconciliation. Check that raw/stage/mart/report layers and fact/plan/forecast are not mixed implicitly. Return pass only when all required checks meet stated tolerances; revise a reproducible logic or mapping defect; block missing source data, undefined business rules, unresolved reconciliation or unobserved execution.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Qa Checks verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
       "output_schema": [
         "Qa Checks verdict: pass / revise / blocked",
         "Criteria checked",
@@ -1794,11 +1794,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "a4c63e32ee00f264c1eb4bf1d343ca66b30088302615e3dd2a79568db7528d1c"
+      "prompt_hash": "a75b2e775502ba196711d92cb76a4a55936e41b9053189d239382f18e9cb718c"
     },
     {
       "prompt_id": "b40_analytics_reconcile",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the RECONCILE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1810,7 +1810,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# RECONCILE — [Analytics]\n\nPurpose:\nProduce the RECONCILE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Reconcile question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# RECONCILE — [Analytics]\n\nPurpose:\nProduce the RECONCILE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nName the two values or layers to reconcile and state their entity, grain, period, currency/unit and metric definition. Use Python or SQL to create a bridge for source coverage, filters, joins, duplicate keys, timing/cut-off, sign, mapping and currency differences. The bridge must reproduce both endpoints and show any unresolved remainder; never plug a balancing value without labeling it. Preserve raw input and record every exclusion or transformation. Pass only at the stated tolerance; otherwise return the exact unmatched population and source-owner action.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Reconcile question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Reconcile question",
         "Entity and grain",
@@ -1843,11 +1843,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "b8434ec1ab7de986646379d5bb12a58164978d76273d6f6ec55f98c014e43f6c"
+      "prompt_hash": "60450edd79144050eef5446980e21a0bfa49e6e034aa8138f85de11d9e4d5822"
     },
     {
       "prompt_id": "b40_analytics_variance",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "analytics",
       "purpose": "Produce the VARIANCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Analytics]",
@@ -1859,7 +1859,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# VARIANCE — [Analytics]\n\nPurpose:\nProduce the VARIANCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Variance question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
+      "body": "# VARIANCE — [Analytics]\n\nPurpose:\nProduce the VARIANCE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN.\n\nSubject logic:\nCompare fact with plan or forecast only after aligning entity, grain, period, currency/unit, metric definition, scope and filters. Calculate absolute and percentage variance in Python or SQL, including an explicit zero/null denominator rule and sign convention. Build driver contributions only from available dimensions and reconcile them to the total variance; do not state causality from correlation or magnitude alone. Return the deterministic calculation, reconciliation gap, supported drivers, unexplained remainder and required management confirmation.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Variance question\n- Entity and grain\n- Period\n- Currency / unit\n- Source layers\n- Formula / method\n- Deterministic evidence\n- Result or NOT RUN\n- Exceptions\n- Next action",
       "output_schema": [
         "Variance question",
         "Entity and grain",
@@ -1892,7 +1892,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "69624335e2c002f0a6c9f29cd9b0545aa4adaf36948b0bf05121aeb677245ec1"
+      "prompt_hash": "5cd42df02d63be72104049834f6c180a78317e8cf2876f98998e4c161cc19eeb"
     },
     {
       "prompt_id": "b50_llm_context_pack",

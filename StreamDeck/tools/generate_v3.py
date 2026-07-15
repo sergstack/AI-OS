@@ -86,7 +86,14 @@ JUDGE_V1_1_IDS = {
     "final_acceptance_gate",
 }
 
-PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS
+ANALYTICS_V1_1_IDS = {
+    "analytics_data_contract", "b40_analytics_data_quality", "b40_analytics_variance",
+    "b40_analytics_reconcile", "b40_analytics_anomaly", "b40_analytics_mart_spec",
+    "b40_analytics_formula", "b40_analytics_qa_checks", "b40_analytics_analytics_loop",
+    "b40_analytics_memo_facts",
+}
+
+PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS
 
 ROUTE_OWNER_PROJECTS = (
     "Owners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] "
@@ -283,7 +290,89 @@ def subject_logic(prompt_id: str) -> str:
             "authority, source, deterministic evidence or mandatory owner action."
         ),
     }
-    return route_rules.get(prompt_id, judge_rules.get(prompt_id, ""))
+    analytics_rules = {
+        "analytics_data_contract": (
+            "Define the decision the analysis must support, then fix entity, grain, period, currency or unit, "
+            "source systems and raw/stage/mart/report layers. List required fields, keys, dimensions, measures, "
+            "filters, formulas, exclusions and update cadence. Separate supplied definitions from assumptions; "
+            "do not infer a business rule from column names. Specify Python/SQL checks for uniqueness, completeness "
+            "and reconciliation. If grain, period, currency/unit, formula ownership or a required source is "
+            "missing, return NOT RUN with the exact input needed."
+        ),
+        "b40_analytics_data_quality": (
+            "Evaluate the selected dataset at its declared entity and grain. Use Python or SQL to profile row "
+            "counts, schema/types, key uniqueness, duplicates, nulls, valid ranges, referential integrity, date "
+            "coverage and category domains; compare each result with an explicit rule or source expectation. "
+            "Separate blocking defects from warnings and quantify affected rows through tool output only. Do not "
+            "clean or overwrite raw data implicitly. Return a reproducible check, observed result, affected layer, "
+            "risk and the safe next transformation or source-owner question."
+        ),
+        "b40_analytics_variance": (
+            "Compare fact with plan or forecast only after aligning entity, grain, period, currency/unit, metric "
+            "definition, scope and filters. Calculate absolute and percentage variance in Python or SQL, including "
+            "an explicit zero/null denominator rule and sign convention. Build driver contributions only from "
+            "available dimensions and reconcile them to the total variance; do not state causality from correlation "
+            "or magnitude alone. Return the deterministic calculation, reconciliation gap, supported drivers, "
+            "unexplained remainder and required management confirmation."
+        ),
+        "b40_analytics_reconcile": (
+            "Name the two values or layers to reconcile and state their entity, grain, period, currency/unit and "
+            "metric definition. Use Python or SQL to create a bridge for source coverage, filters, joins, duplicate "
+            "keys, timing/cut-off, sign, mapping and currency differences. The bridge must reproduce both endpoints "
+            "and show any unresolved remainder; never plug a balancing value without labeling it. Preserve raw input "
+            "and record every exclusion or transformation. Pass only at the stated tolerance; otherwise return the "
+            "exact unmatched population and source-owner action."
+        ),
+        "b40_analytics_anomaly": (
+            "Define the population, expected behavior, comparison period and anomaly rule before inspecting rows. "
+            "The threshold must come from a supplied policy or a documented Python/SQL method; do not invent one. "
+            "Return flagged entities with deterministic evidence, baseline, deviation, source layer and data-quality "
+            "status. Separate true business anomalies, data defects and insufficient-context cases; sampling and "
+            "correlation do not prove cause or fraud. Include false-positive risks, the unflagged control population "
+            "and the next evidence needed for investigation."
+        ),
+        "b40_analytics_mart_spec": (
+            "Translate the approved business question and data contract into a mart specification: target grain, "
+            "facts, dimensions, keys, source-to-target mappings, period and currency/unit treatment, filters, "
+            "derived fields, formulas and refresh expectations. Keep raw, stage and mart responsibilities explicit; "
+            "do not introduce a new business definition or source. Define deterministic tests for uniqueness, "
+            "completeness, referential integrity, reconciliation and incremental behavior. Mark unresolved ownership, "
+            "history or late-arriving-data choices as blocked rather than selecting an architecture silently."
+        ),
+        "b40_analytics_formula": (
+            "Specify the metric name, business meaning, numerator, denominator, aggregation, grain, period, "
+            "currency/unit, sign convention, filters and exclusions. Define zero, null, missing-period, duplicate "
+            "and restatement behavior explicitly, plus the authoritative owner/source for each rule. Implement or "
+            "demonstrate the calculation only in Python or SQL and show a small tool-computed test case with expected "
+            "units. Reconcile the result to source totals where applicable. If a business rule is absent or conflicting, "
+            "return NOT RUN and list the exact confirmation needed."
+        ),
+        "b40_analytics_qa_checks": (
+            "Judge the selected analytics artifact against its data contract. Require observed Python/SQL evidence "
+            "for schema, key uniqueness, duplicates, nulls, ranges, join cardinality, period/currency alignment, "
+            "formula edge cases and source-to-output reconciliation. Check that raw/stage/mart/report layers and "
+            "fact/plan/forecast are not mixed implicitly. Return pass only when all required checks meet stated "
+            "tolerances; revise a reproducible logic or mapping defect; block missing source data, undefined business "
+            "rules, unresolved reconciliation or unobserved execution."
+        ),
+        "b40_analytics_analytics_loop": (
+            "Run the supervised sequence: clarify decision -> data contract -> data-quality checks -> explicit "
+            "stage/mart transformations -> Python/SQL calculation -> reconciliation -> findings -> memo-ready facts "
+            "-> QA verdict. At every step record inputs, layer, period, currency/unit, filters, joins, exclusions and "
+            "observed command status. Stop and return NOT RUN or blocked when a prerequisite, business definition, "
+            "permission or deterministic check fails; do not skip forward or self-approve. A revise verdict may rerun "
+            "only the bounded failed step and its downstream checks."
+        ),
+        "b40_analytics_memo_facts": (
+            "Prepare a fact pack, not narrative. Include only figures and comparisons reproduced by observed "
+            "Python/SQL, with entity, grain, period, currency/unit, source layer, formula, filters and reconciliation "
+            "status for each item. Separate actual, plan and forecast; label assumptions, exceptions and management "
+            "confirmations. Rank facts by decision relevance without inventing causality, recommendations or root "
+            "causes. Each bullet must trace to a dataset/check reference and state whether it is approved, provisional "
+            "or blocked for memo use."
+        ),
+    }
+    return route_rules.get(prompt_id, judge_rules.get(prompt_id, analytics_rules.get(prompt_id, "")))
 
 
 def dump(path: Path, value: object) -> None:

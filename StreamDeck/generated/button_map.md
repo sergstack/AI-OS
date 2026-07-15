@@ -29,7 +29,7 @@
 | K1 | INBOX | `b00_daily_inbox` | `1.0.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | DECISION | `thinking_decision` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | DATA CONTRACT | `analytics_data_contract` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | DATA CONTRACT | `analytics_data_contract` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | FIN MEMO | `b00_daily_fin_memo` | `1.0.0` | [LLM] / Memo | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | PROMPT | `llm_prompt_review` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
@@ -106,16 +106,16 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | DATA CONTRACT | `analytics_data_contract` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | DATA QUALITY | `b40_analytics_data_quality` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | VARIANCE | `b40_analytics_variance` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | RECONCILE | `b40_analytics_reconcile` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | ANOMALY | `b40_analytics_anomaly` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | MART SPEC | `b40_analytics_mart_spec` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | FORMULA | `b40_analytics_formula` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | QA CHECKS | `b40_analytics_qa_checks` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | ANALYTICS LOOP | `b40_analytics_analytics_loop` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | MEMO FACTS | `b40_analytics_memo_facts` | `1.0.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | DATA CONTRACT | `analytics_data_contract` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | DATA QUALITY | `b40_analytics_data_quality` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | VARIANCE | `b40_analytics_variance` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | RECONCILE | `b40_analytics_reconcile` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | ANOMALY | `b40_analytics_anomaly` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | MART SPEC | `b40_analytics_mart_spec` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | FORMULA | `b40_analytics_formula` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | QA CHECKS | `b40_analytics_qa_checks` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | ANALYTICS LOOP | `b40_analytics_analytics_loop` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | MEMO FACTS | `b40_analytics_memo_facts` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |

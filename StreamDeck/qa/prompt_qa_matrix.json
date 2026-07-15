@@ -92,7 +92,7 @@
     },
     {
       "prompt_id": "analytics_data_contract",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B00_DAILY/K4",
         "B40_ANALYTICS/K1"
@@ -120,7 +120,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2653,7 +2654,7 @@
     },
     {
       "prompt_id": "b40_analytics_analytics_loop",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K9"
       ],
@@ -2680,7 +2681,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2738,7 +2740,7 @@
     },
     {
       "prompt_id": "b40_analytics_anomaly",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K5"
       ],
@@ -2765,7 +2767,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2823,7 +2826,7 @@
     },
     {
       "prompt_id": "b40_analytics_data_quality",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K2"
       ],
@@ -2850,7 +2853,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2908,7 +2912,7 @@
     },
     {
       "prompt_id": "b40_analytics_formula",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K7"
       ],
@@ -2935,7 +2939,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -2993,7 +2998,7 @@
     },
     {
       "prompt_id": "b40_analytics_mart_spec",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K6"
       ],
@@ -3020,7 +3025,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -3078,7 +3084,7 @@
     },
     {
       "prompt_id": "b40_analytics_memo_facts",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K10"
       ],
@@ -3105,7 +3111,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -3163,7 +3170,7 @@
     },
     {
       "prompt_id": "b40_analytics_qa_checks",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K8"
       ],
@@ -3190,7 +3197,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -3248,7 +3256,7 @@
     },
     {
       "prompt_id": "b40_analytics_reconcile",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K4"
       ],
@@ -3275,7 +3283,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -3333,7 +3342,7 @@
     },
     {
       "prompt_id": "b40_analytics_variance",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "B40_ANALYTICS/K3"
       ],
@@ -3360,7 +3369,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {

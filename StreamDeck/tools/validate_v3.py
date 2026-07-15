@@ -214,6 +214,13 @@ def main() -> int:
     require(len(judge_batch_ids) == 11, "JUDGE / FINAL GATE batch must contain 11 unique prompts")
     require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE versions must be 1.1.0")
     require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE subject logic missing")
+    analytics_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B40_ANALYTICS" and int(row["button"][1:]) <= 10
+    }
+    require(len(analytics_batch_ids) == 10, "Analytics batch must contain 10 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids), "Analytics versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids), "Analytics subject logic missing")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")
