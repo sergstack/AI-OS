@@ -188,15 +188,24 @@ def run_live_qa(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dry-run", action="store_true", help="assemble browser work without opening ChatGPT")
+    action = parser.add_mutually_exclusive_group(required=True)
+    action.add_argument("--dry-run", action="store_true", help="assemble browser work without opening ChatGPT")
+    action.add_argument("--next", action="store_true", help="emit the next resumable browser work item as JSON")
+    action.add_argument("--record", action="store_true", help="read one raw response from stdin and persist only derived metadata")
     parser.add_argument("--resume", action="store_true", help="skip cases with an existing chatgpt_web live run")
     parser.add_argument("--subset", action="append")
     parser.add_argument("--case", action="append", choices=CASE_NAMES)
+    parser.add_argument("--record-prompt-id")
+    parser.add_argument("--record-case", choices=CASE_NAMES)
+    parser.add_argument("--model-id", help="model id observed in the ChatGPT UI")
+    parser.add_argument("--executed-at", help="optional observed UTC timestamp")
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--matrix", type=Path, default=DEFAULT_MATRIX)
+    parser.add_argument("--manifest", type=Path, default=STREAMDECK / "migration" / "migration_manifest.json")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
-    if not args.dry_run:
-        parser.error("run this driver from Codex with a BrowserAdapter; standalone live browser execution is unavailable")
+    if args.record and not all((args.record_prompt_id, args.record_case, args.model_id)):
+        parser.error("--record requires --record-prompt-id, --record-case, and --model-id")
     return args
 
 
@@ -209,12 +218,60 @@ def main(argv: list[str] | None = None) -> int:
         prompt_ids = {item["prompt_id"] for item in registry["prompts"]}
         selected_ids = resolve_subset(args.subset, prompt_ids, actions)
         qa_inputs = build_inputs(registry, matrix, selected_ids, set(args.case or CASE_NAMES))
-        if args.resume:
+        if args.resume or args.next:
             completed = completed_live_case_keys(matrix)
             qa_inputs = [item for item in qa_inputs if (item.prompt_id, item.case_name) not in completed]
     except (OSError, KeyError, json.JSONDecodeError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
+    if args.next:
+        if not qa_inputs:
+            print(json.dumps({"done": True}))
+            return 0
+        qa_input = with_live_request(qa_inputs[0])
+        prompt = next(item for item in registry["prompts"] if item["prompt_id"] == qa_input.prompt_id)
+        print(json.dumps({
+            "done": False,
+            "prompt_id": qa_input.prompt_id,
+            "prompt_version": qa_input.prompt_version,
+            "case": qa_input.case_name,
+            "owner_project": browser_project(prompt["owner_project"]),
+            "use_project_knowledge": qa_input.case_name == "normal",
+            "insertion_method": INSERTION_METHOD,
+            "request_text": qa_input.request_text,
+        }, ensure_ascii=False))
+        return 0
+    if args.record:
+        matches = [
+            item for item in qa_inputs
+            if item.prompt_id == args.record_prompt_id and item.case_name == args.record_case
+        ]
+        if len(matches) != 1:
+            print("ERROR: record target is not selected exactly once", file=sys.stderr)
+            return 2
+        response_text = sys.stdin.read()
+        try:
+            result = live_result(
+                with_live_request(matches[0]),
+                BrowserResult(response_text=response_text, model_id=args.model_id),
+                executed_at=args.executed_at,
+            )
+            updated = apply_live_result(matrix, matches[0], result)
+            output = args.output or args.matrix
+            manifest = args.manifest if output.resolve() == DEFAULT_MATRIX.resolve() else None
+            write_results(updated, output, manifest)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({
+            "recorded": True,
+            "prompt_id": matches[0].prompt_id,
+            "case": matches[0].case_name,
+            "model_id": result["model_id"],
+            "observed_verdict": result["observed_verdict"],
+            "live_run_count": updated["live_run_count"],
+        }))
+        return 0
     print(
         f"DRY RUN: prompts={len({item.prompt_id for item in qa_inputs})} cases={len(qa_inputs)}; "
         f"provider={PROVIDER} insertion={INSERTION_METHOD} browser calls=0 writes=0"

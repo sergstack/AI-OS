@@ -287,7 +287,7 @@
     },
     {
       "path": "tools/run_prompt_qa_live.py",
-      "sha256": "f66c47debd4bba294cd0bca803a7069a35f84dd6d268387385683d097cc80ca0"
+      "sha256": "079fcde234a62203e4c74365914fc47eb89c30c5b3f59aad4d6ffd1757224f57"
     },
     {
       "path": "tools/validate_v3.py",

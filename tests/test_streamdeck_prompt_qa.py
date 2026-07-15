@@ -345,6 +345,57 @@ def test_live_resume_uses_prompt_and_case_key():
     assert live.browser_project("[Analytics]") == "[Analytics]"
 
 
+def test_live_cli_next_and_record_use_stdin_without_persisting_raw(tmp_path: Path):
+    registry, matrix, _ = load_sources()
+    matrix_path = tmp_path / "matrix.json"
+    matrix_path.write_text(json.dumps(matrix, ensure_ascii=False), encoding="utf-8")
+
+    next_result = subprocess.run(
+        [sys.executable, str(LIVE_SCRIPT), "--next", "--matrix", str(matrix_path)],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert next_result.returncode == 0, next_result.stderr
+    work = json.loads(next_result.stdout)
+    assert work["prompt_id"] == registry["prompts"][0]["prompt_id"]
+    assert work["case"] == "normal"
+    assert work["insertion_method"] == "clipboard_paste"
+
+    response = "\n".join(
+        f"## {label.split(':', 1)[0]}\nblocked / NOT RUN"
+        for label in registry["prompts"][0]["output_schema"]
+    )
+    record_result = subprocess.run(
+        [
+            sys.executable,
+            str(LIVE_SCRIPT),
+            "--record",
+            "--record-prompt-id",
+            work["prompt_id"],
+            "--record-case",
+            work["case"],
+            "--model-id",
+            "GPT UI test model",
+            "--matrix",
+            str(matrix_path),
+        ],
+        cwd=ROOT,
+        input=response,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert record_result.returncode == 0, record_result.stderr
+    stored_text = matrix_path.read_text(encoding="utf-8")
+    stored = json.loads(stored_text)
+    assert response not in stored_text
+    assert stored["live_run_count"] == 1
+    row = next(item for item in stored["rows"] if item["prompt_id"] == work["prompt_id"])
+    assert row["test_cases"][0]["live_runs"][0]["model_id"] == "GPT UI test model"
+
+
 def test_google_call_uses_generate_content_contract(monkeypatch):
     runner = load_runner()
     observed = {}
