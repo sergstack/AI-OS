@@ -47,7 +47,7 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "a8936f4ba884b95a8ace0e3536d8eadb9d1cf74d525b9815debd3801e83a8bbb"
+      "sha256": "e9acabca677cad3e67104cdde0c0e524ff0c8c94840a2cf4e603472e269fd712"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
@@ -259,7 +259,7 @@
     },
     {
       "path": "qa/physical_qa_checklist.md",
-      "sha256": "b1aecc3f4a6045417372acf19b50b6e33763587ee5f34ad5944283cbfbb082a9"
+      "sha256": "0d3918f5327bd9a1fb050b96959f40719d83e9cee7312ec1803752fd972c44b9"
     },
     {
       "path": "qa/prompt_qa_matrix.json",
@@ -271,11 +271,15 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "fa22d974bdd84e606b3cfe019fc211a3381aff690731f724b3ea57f02adf343f"
+      "sha256": "1a671bef1a8a8af9a8ca417ed26b6c75abddf6f94c486c689b047d895bb92529"
+    },
+    {
+      "path": "tools/run_prompt_qa.py",
+      "sha256": "dd99956f9c1f71e1b800e9cbea9cbe46cf0e4cc8b12467a654be469c1e359948"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "a2d031aa25fe2a3828677057e4a1b7e3640e7af09910af223962f7bbb617673b"
+      "sha256": "4f3c48ae0e91f6016dc91f2c40e24caac6c805002d85b892a32d6f10c5c49d9c"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

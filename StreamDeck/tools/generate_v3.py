@@ -1162,7 +1162,15 @@ def make_manifests() -> None:
 
     active_roots = [ACTIVE / name for name in ("architecture", "assets", "config", "exports", "generated", "migration", "prompts", "qa", "tools")]
     active_files = [ACTIVE / "README.md"]
-    active_files.extend(path for root in active_roots for path in root.rglob("*") if path.is_file() and path.name != "migration_manifest.json")
+    active_files.extend(
+        path
+        for root in active_roots
+        for path in root.rglob("*")
+        if path.is_file()
+        and path.name != "migration_manifest.json"
+        and path.suffix != ".pyc"
+        and "__pycache__" not in path.parts
+    )
     active_files = sorted(active_files)
     files = [{"path": str(path.relative_to(ROOT)), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for path in active_files]
     dump(ACTIVE / "migration" / "migration_manifest.json", {
