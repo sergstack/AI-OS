@@ -167,6 +167,7 @@ def main() -> int:
         for field in ("next_on_pass", "next_on_revise", "next_on_blocked"):
             require(row[field] in valid_next, f"{row['profile_id']}/{row['button']}: invalid {field}")
         require(row["owner_project"] == prompt_by_id[row["prompt_id"]]["owner_project"], f"route mismatch: {row['prompt_id']}")
+        require(row["prompt_version"] == prompt_by_id[row["prompt_id"]]["prompt_version"], f"button/registry version mismatch: {row['prompt_id']}")
         require(not Path(row["icon"]).is_absolute() and (ACTIVE / row["icon"]).is_file(), f"missing/absolute icon: {row['icon']}")
 
     bodies = Counter(p["body"] for p in prompts)
@@ -184,6 +185,25 @@ def main() -> int:
         require(prompt["prompt_gate_10_of_10"] is None and prompt["owner_acceptance"] == "pending", f"unearned prompt gate: {prompt['prompt_id']}")
         require(prompt["output_schema"] and prompt["output_schema"] != ["Summary", "Facts used", "Assumptions", "Risks", "Next step"], f"generic output schema: {prompt['prompt_id']}")
 
+    specialized_markers = (
+        "\n\nSubject logic:\n", "\n\nFreshness:\n", "\n\nNumeric boundary:\n",
+        "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
+    )
+    boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
+    require(len(boilerplate_only) == 61, f"expected 61 boilerplate-only prompts after ROUTE batch, found {len(boilerplate_only)}")
+    route_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 12
+    }
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids), "ROUTE batch versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in route_batch_ids), "ROUTE batch subject logic missing")
+    owner_projects = ("[Inbox Router]", "[AI OS]", "[Thinking]", "[Analytics]", "[LLM]", "[Codex]")
+    b10_router_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 10
+    }
+    require(all(all(owner in prompt_by_id[prompt_id]["body"] for owner in owner_projects) for prompt_id in b10_router_ids), "B10 ROUTE prompts must list all allowed owner projects")
+
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")
     require("there is no paste placeholder" in prompt_by_id["codex_goal_to_pr"]["body"], "GOAL→PR latest-goal contract missing")
@@ -198,6 +218,7 @@ def main() -> int:
     require(len(qa_rows) == qa["prompt_count"] == len(prompts), "QA matrix must have one row per unique prompt")
     require({r["prompt_id"] for r in qa_rows} == set(prompt_by_id), "QA matrix prompt set mismatch")
     for row in qa_rows:
+        require(row["prompt_version"] == prompt_by_id[row["prompt_id"]]["prompt_version"], f"QA/registry version mismatch: {row['prompt_id']}")
         require({case["case"] for case in row["test_cases"]} == {"normal", "missing_context_or_evidence", "unsafe_or_ambiguous"}, f"representative cases missing: {row['prompt_id']}")
         require(len(row["gate_criteria"]) == 10 and row["criteria_passed"] == 9, f"gate accounting mismatch: {row['prompt_id']}")
         require(row["judge_verdict"] == "blocked", f"unearned Prompt QA pass: {row['prompt_id']}")
@@ -234,6 +255,11 @@ def main() -> int:
     generated = (ACTIVE / "generated" / "button_map.md").read_text(encoding="utf-8")
     for row in controller_rows + rows:
         require(row["label"] in generated, f"generated map missing label: {row['label']}")
+    for row in rows:
+        require(
+            f"| `{row['prompt_id']}` | `{row['prompt_version']}` |" in generated,
+            f"generated map missing prompt/version: {row['prompt_id']} {row['prompt_version']}",
+        )
     return report(controller_rows, rows, prompts, qa_rows)
 
 

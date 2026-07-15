@@ -53,8 +53,19 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
 
     registry = json.loads((STREAMDECK / "prompts" / "prompt_registry.json").read_text(encoding="utf-8"))
     config = json.loads((STREAMDECK / "config" / "action_profiles.json").read_text(encoding="utf-8"))
+    qa = json.loads((STREAMDECK / "qa" / "prompt_qa_matrix.json").read_text(encoding="utf-8"))
     assert len(config["buttons"]) == 225
     assert all(item.get("insertion_method") == "clipboard_paste" for item in config["buttons"])
+    registry_by_id = {item["prompt_id"]: item for item in registry["prompts"]}
+    qa_by_id = {item["prompt_id"]: item for item in qa["rows"]}
+    route_batch_ids = {
+        item["prompt_id"] for item in config["buttons"]
+        if item["profile_id"] == "B10_ROUTE" and int(item["button"][1:]) <= 12
+    }
+    assert len(route_batch_ids) == 12
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in route_batch_ids)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

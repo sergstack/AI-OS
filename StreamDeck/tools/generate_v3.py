@@ -74,10 +74,118 @@ MCP_IDS = {
 }
 MCP_VERIFIED = {"AIOS_HOME_JUDGE", "AIOS_HOME_REVISOR"}
 
+PROMPT_V1_1_IDS = {
+    "b10_route_raw_to_route", "b10_route_things", "b10_route_calendar", "b10_route_notes",
+    "b10_route_ai_os", "b10_route_thinking", "b10_route_analytics", "b10_route_llm",
+    "b10_route_codex", "b10_route_codex_app", "blocker_review", "handoff_prepare",
+}
+
+ROUTE_OWNER_PROJECTS = (
+    "Owners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] "
+    "decisions/strategy/risks; [Analytics] data/metrics/calculations/marts; [LLM] prompts/models/workflows/evals; "
+    "[Codex] code/tests/repo implementation. LLM roles stay under [LLM]; Codex APP is a [Codex] surface, "
+    "not an owner."
+)
+
 
 def slug(value: str) -> str:
     value = value.lower().replace("→", "_to_").replace("?", "")
     return re.sub(r"[^a-z0-9]+", "_", value).strip("_")
+
+
+def prompt_version(prompt_id: str) -> str:
+    return "1.1.0" if prompt_id in PROMPT_V1_1_IDS else "1.0.0"
+
+
+def subject_logic(prompt_id: str) -> str:
+    route_rules = {
+        "b10_route_raw_to_route": (
+            f"{ROUTE_OWNER_PROJECTS} First classify the input as actionable, time-bound, reference, or "
+            "project work. Route concrete next actions to Things, hard date/time commitments to Calendar, "
+            "and durable context without an immediate action to Notes / Obsidian. Choose exactly one owner; "
+            "if two remain plausible, return clarify and name the deciding question. Example: 'compare plan "
+            "versus actual revenue' -> [Analytics], not [Thinking]."
+        ),
+        "b10_route_things": (
+            f"{ROUTE_OWNER_PROJECTS} Choose Things only when the input can be rewritten as one concrete "
+            "physical or digital next action and has no mandatory time slot. Do not use Things for reference "
+            "material, broad projects, decisions, calculations, or implementation without a bounded next step. "
+            "Return the action as a verb-led task; if owner/project work is needed first, route there instead. "
+            "Example: 'send the approved memo to Anna' -> Things; 'decide the memo position' -> [Thinking]."
+        ),
+        "b10_route_calendar": (
+            f"{ROUTE_OWNER_PROJECTS} Choose Calendar only for a meeting, deadline, appointment, or other "
+            "commitment with a hard date or time. Extract the exact date, time, timezone, duration and attendees "
+            "only when supplied; missing required scheduling facts produce clarify, never invented values. A "
+            "preferred day without a fixed commitment remains Things. Example: 'review at 15:00 MSK Friday' "
+            "-> Calendar; 'review on Friday if possible' -> Things or clarify."
+        ),
+        "b10_route_notes": (
+            f"{ROUTE_OWNER_PROJECTS} Choose Notes / Obsidian for durable context, ideas, source excerpts, "
+            "meeting notes or reference material that has no immediate next action or hard time. Preserve a "
+            "clear title, source and useful links; do not turn a decision, calculation, prompt design or code "
+            "request into a passive note. If the material also implies work, separate the note from the routed "
+            "action. Example: 'keep this vendor comparison for later' -> Notes / Obsidian."
+        ),
+        "b10_route_ai_os": (
+            f"{ROUTE_OWNER_PROJECTS} Choose [AI OS] for an AI concept, use case, reusable pattern, evidence "
+            "assessment, governance rule or knowledge-base question. Route prompt wording, model selection and "
+            "LLM workflow design to [LLM]; strategy choices to [Thinking]; implementation to [Codex]. Require "
+            "a named AI topic and the evidence or governance decision sought. Example: 'is agent memory a "
+            "supported pattern for us?' -> [AI OS]."
+        ),
+        "b10_route_thinking": (
+            f"{ROUTE_OWNER_PROJECTS} Choose [Thinking] for a decision, strategy, alternatives, scenarios, "
+            "trade-offs, assumptions, risks or premortem before execution. Do not route deterministic numeric "
+            "analysis to [Thinking], prompt engineering to [LLM], or code changes to [Codex]. State the decision "
+            "to make and at least one constraint; otherwise clarify. Example: 'choose build versus buy under a "
+            "six-month constraint' -> [Thinking]."
+        ),
+        "b10_route_analytics": (
+            f"{ROUTE_OWNER_PROJECTS} Choose [Analytics] when the answer depends on data, metrics, formulas, "
+            "periods, currencies or units, reconciliation, variance, anomaly review, mart design or deterministic "
+            "calculation. Require the business question and identify missing source, grain, period or unit fields; "
+            "do not calculate mentally. Example: 'why did gross margin differ from plan in June?' -> [Analytics]; "
+            "'which strategic option should we prefer?' -> [Thinking]."
+        ),
+        "b10_route_llm": (
+            f"{ROUTE_OWNER_PROJECTS} Choose [LLM] for prompt design or review, model routing, context packs, "
+            "orchestration, eval rubrics, judge/revise workflows, local-model experiments or memo generation "
+            "from already approved facts. Route implementation code to [Codex], deterministic calculations to "
+            "[Analytics], and AI evidence/governance to [AI OS]. Example: 'design an eval rubric for this prompt' "
+            "-> [LLM]."
+        ),
+        "b10_route_codex": (
+            f"{ROUTE_OWNER_PROJECTS} Choose [Codex] for repository inspection, code or configuration changes, "
+            "tests, bug fixes, refactors, generators, CI diagnosis or a bounded goal-to-PR workflow. The request "
+            "must name an implementation outcome or repository artifact; raw inbox capture stays in [Inbox "
+            "Router], and unresolved product strategy goes to [Thinking]. Example: 'add validation and tests for "
+            "the exporter' -> [Codex]."
+        ),
+        "b10_route_codex_app": (
+            f"{ROUTE_OWNER_PROJECTS} Use Codex APP only as the execution surface for an owner route of [Codex]: "
+            "a bounded repository/workflow goal that may require local files, commands, checks and a PR. Do not "
+            "treat Codex APP as a seventh owner project or send raw capture directly to it. The handoff must name "
+            "goal, repository/path, constraints, expected output, checks and stop conditions. Example: 'implement "
+            "issue #198 in AI-OS' -> owner [Codex], surface Codex APP."
+        ),
+        "blocker_review": (
+            "Classify the stop reason as missing source, ambiguous owner, failed deterministic check, unsafe or "
+            "unapproved action, missing permission, or unmet acceptance criterion. A blocker must cite the exact "
+            "prerequisite and evidence already checked, distinguish owner action from work the current project "
+            "can still do, and offer only reversible safe options. Do not label inconvenience or uncertainty as "
+            "blocked. Example: a required physical device test with no device access -> blocked / owner action; "
+            "a fixable local test failure -> revise, not blocked."
+        ),
+        "handoff_prepare": (
+            f"{ROUTE_OWNER_PROJECTS} Create a handoff only when the current owner cannot complete the next "
+            "bounded outcome. Name exactly one receiving owner project, the source artifact, verified facts, "
+            "assumptions, constraints, forbidden actions, expected output, acceptance criteria and stop condition. "
+            "Do not copy unsupported conclusions or route to Codex APP without owner [Codex]. Example: a verified "
+            "analytics finding needing code automation -> [Codex] handoff with the calculation evidence attached."
+        ),
+    }
+    return route_rules.get(prompt_id, "")
 
 
 def dump(path: Path, value: object) -> None:
@@ -139,13 +247,15 @@ def output_schema(label: str, kind: str) -> list[str]:
     return [f"{label.title()} deliverable", "Source material used", "Decision or artifact", "Evidence and freshness", "Constraints", "Known limitations", "Stop condition", "Next action"]
 
 
-def prompt_body(label: str, purpose: str, owner: str, schema: list[str], kind: str) -> str:
+def prompt_body(label: str, purpose: str, owner: str, schema: list[str], kind: str, subject: str) -> str:
     analytics = "\n\nNumeric boundary:\nAll calculations and numeric QA must be performed by Python or SQL. Require entity, grain, period, currency/unit, formulas, filters and deterministic evidence; otherwise return NOT RUN." if kind == "analytics" or owner == "[Analytics]" else ""
     freshness = "\n\nFreshness:\nCheck changeable facts through current official sources when read-only web/tool access exists. If current verification is unavailable, mark UNVERIFIED; never present model memory as fresh verification." if any(x in label for x in ("TREND", "FRESH", "MODEL", "RELEASE")) else ""
     revision = "\n\nRevision boundary:\nUse the last Judge verdict only as revision notes. Edit the source artifact the Judge reviewed, never the verdict itself. If the source is ambiguous, return blocked. Add no facts or evidence." if kind == "revise" or "REVIS" in label else ""
     goal = "\n\nGoal Mode boundary:\nUse the latest meaningful user goal; there is no paste placeholder. Keep work bounded and build-first. The Stream Deck inserts text only and never presses Send. Codex may inspect, branch, change scoped files, check and open a PR after manual send, but must not manually merge, deploy, or perform destructive/production actions." if label in {"GOAL→PR", "BUILD FIRST", "GOAL→CODEX PACK"} else ""
     judge = "\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference." if kind == "judge" else ""
     memo = "\n\nMemo boundary:\nWrite narrative only from Analytics-approved facts. Separate facts, interpretation, assumptions, and recommendations. A root cause without evidence requires management confirmation. State period, scope, currency/units, and source traceability." if kind == "memo" else ""
+    subject_block = f"\n\nSubject logic:\n{subject}\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`." if subject else ""
+    return_intro = "After that first line, return exactly these sections:" if subject else "Return exactly these sections:"
     return f"""# {label} — {owner}
 
 Purpose:
@@ -155,12 +265,12 @@ Material selection:
 Use the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.
 
 Execution truth:
-Report Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.{freshness}{analytics}{revision}{goal}{judge}{memo}
+Report Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.{freshness}{analytics}{revision}{goal}{judge}{memo}{subject_block}
 
 Safety and interaction:
 Text insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.
 
-Return exactly these sections:
+{return_intro}
 """ + "\n".join(f"- {item}" for item in schema)
 
 
@@ -223,10 +333,11 @@ def make_package() -> None:
         for key, label, prompt_id, owner, kind in profile_buttons:
             mcp_id = MCP_IDS.get(prompt_id)
             ref = f"{profile_id}/{key}"
+            version = prompt_version(prompt_id)
             row = {
                 "device": "AIOS-ACTIONS", "profile_id": profile_id, "profile_name": f"AIOS-ACTIONS / {profile_name}",
                 "button": key, "label": label, "action_type": "prompt", "prompt_id": prompt_id,
-                "prompt_version": "1.0.0", "owner_project": owner, "interaction_risk": "low",
+                "prompt_version": version, "owner_project": owner, "interaction_risk": "low",
                 "workflow_risk": "medium" if kind in {"analytics", "execution_request"} else "low",
                 "data_sensitivity": "none", "insertion_method": "clipboard_paste",
                 "requires_confirmation": True, "auto_send": False,
@@ -249,10 +360,12 @@ def make_package() -> None:
         label, owner, kind, refs = record["label"], record["owner"], record["kind"], record["refs"]
         schema = output_schema(label, kind)
         purpose = f"Produce the {label} workflow artifact for the cited source material while preserving routing, evidence, and execution truth."
-        body = prompt_body(label, purpose, owner, schema, kind)
+        subject = subject_logic(prompt_id)
+        version = prompt_version(prompt_id)
+        body = prompt_body(label, purpose, owner, schema, kind, subject)
         prompt_hash = hashlib.sha256(body.encode()).hexdigest()
         prompts.append({
-            "prompt_id": prompt_id, "prompt_version": "1.0.0", "task_type": kind, "purpose": purpose,
+            "prompt_id": prompt_id, "prompt_version": version, "task_type": kind, "purpose": purpose,
             "owner_project": owner, "button_refs": refs, "input_requirements": ["latest meaningful goal or source artifact"],
             "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
             "execution_mode": "generate", "body": body, "output_schema": schema,
@@ -266,14 +379,17 @@ def make_package() -> None:
         })
         criteria = [{"criterion": n, "status": "pass"} for n in range(1, 10)]
         criteria.append({"criterion": 10, "status": "blocked", "reason": "Representative model/device runs and owner acceptance are not observed."})
+        static_checks = {"material_selection": "pass", "specialized_schema": "pass", "route": "pass", "execution_truth": "pass", "freshness": "pass", "no_new_claims": "pass"}
+        if subject:
+            static_checks["subject_logic"] = "pass"
         qa_rows.append({
-            "prompt_id": prompt_id, "prompt_version": "1.0.0", "button_refs": refs,
+            "prompt_id": prompt_id, "prompt_version": version, "button_refs": refs,
             "test_cases": [
                 {"case": "normal", "status": "NOT RUN", "expected": "specialized output schema with sourced content"},
                 {"case": "missing_context_or_evidence", "status": "NOT RUN", "expected": "blocked or NOT RUN without invented content"},
                 {"case": "unsafe_or_ambiguous", "status": "NOT RUN", "expected": "blocked without write, send, UI automation, or source substitution"},
             ],
-            "static_contract_checks": {"material_selection": "pass", "specialized_schema": "pass", "route": "pass", "execution_truth": "pass", "freshness": "pass", "no_new_claims": "pass"},
+            "static_contract_checks": static_checks,
             "gate_criteria": criteria, "criteria_passed": 9, "ux_score_1_5": 4,
             "judge_verdict": "blocked", "required_revision": "Run the three representative cases, record observed outputs, repeat Prompt QA, and obtain owner acceptance.",
             "residual_risks": ["No live model-output evidence", "No physical insertion/focus evidence"],
@@ -389,9 +505,9 @@ def make_human_map(controllers: list[dict], buttons: list[dict]) -> None:
     for row in controllers:
         lines.append(f"| {row['button']} | {row['label']} | `{row['target_profile_id']}` | `{row['target_device_binding']}` |")
     for profile_id, profile_name, _, _ in PROFILE_SPECS:
-        lines.extend(["", f"## {profile_name} (`{profile_id}`)", "", "| Key | Label | Prompt ID | Owner | Insertion method | Next pass |", "|---|---|---|---|---|---|"])
+        lines.extend(["", f"## {profile_name} (`{profile_id}`)", "", "| Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |", "|---|---|---|---|---|---|---|"])
         for row in (r for r in buttons if r["profile_id"] == profile_id):
-            lines.append(f"| {row['button']} | {row['label']} | `{row['prompt_id']}` | {row['owner_project']} | `{row['insertion_method']}` | `{row['next_on_pass']}` |")
+            lines.append(f"| {row['button']} | {row['label']} | `{row['prompt_id']}` | `{row['prompt_version']}` | {row['owner_project']} | `{row['insertion_method']}` | `{row['next_on_pass']}` |")
     (ACTIVE / "generated" / "button_map.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
