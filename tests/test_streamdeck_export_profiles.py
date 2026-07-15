@@ -110,6 +110,22 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids)
+    final_batch_ids = {
+        "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
+        "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
+        "b60_codex_inspect", "b60_codex_review_comments",
+        "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
+        "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
+        "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
+        "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
+        "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in final_batch_ids)
+    upgraded = [item for item in registry["prompts"] if item["prompt_version"] == "1.1.0"]
+    assert len(upgraded) == 94
+    assert all("\n\nSubject logic:\n" in item["body"] for item in upgraded)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

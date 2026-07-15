@@ -115,9 +115,20 @@ DAILY_THINKING_V1_1_IDS = {
     "b30_thinking_scenario", "b30_thinking_trade_offs",
 }
 
+FINAL_V1_1_IDS = {
+    "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
+    "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
+    "b60_codex_inspect", "b60_codex_review_comments",
+    "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
+    "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
+    "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
+    "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
+    "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
+}
+
 PROMPT_V1_1_IDS = (
     ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS | DECK_QA_V1_1_IDS
-    | AIOS_KB_PILOTS_V1_1_IDS | DAILY_THINKING_V1_1_IDS
+    | AIOS_KB_PILOTS_V1_1_IDS | DAILY_THINKING_V1_1_IDS | FINAL_V1_1_IDS
 )
 
 ROUTE_OWNER_PROJECTS = (
@@ -656,6 +667,186 @@ def subject_logic(prompt_id: str) -> str:
             "recommended, show why it wins and the condition that would change the choice."
         ),
     }
+    final_rules = {
+        "b50_llm_context_pack": (
+            "Package only the context needed for the selected downstream decision. Fix the goal, decision owner, canonical "
+            "files/sources, dated facts, assumptions, constraints, forbidden actions, open questions, expected artifact and "
+            "acceptance check. Preserve source paths and distinguish observed evidence from proposed work; do not paste secrets, "
+            "private data or unrelated history. Resolve neither contradictions nor missing business rules silently. The receiving "
+            "owner must be able to act without guessing, or the pack returns blocked with the exact missing input."
+        ),
+        "b50_llm_extract": (
+            "Extract only fields requested by the selected source and retain their source location or quoted identifier. Define the "
+            "target schema, inclusion/exclusion rules, normalization allowed, duplicate handling and missing-value representation "
+            "before extraction. Do not summarize, infer unstated values or merge conflicting records. Report unmatched and ambiguous "
+            "items separately, preserve original order when meaningful, and label any OCR/model uncertainty. If the source or schema "
+            "is incomplete, return a partial result plus the exact blocker rather than filling gaps."
+        ),
+        "b50_llm_local_prompt": (
+            "Draft a prompt for a named local model/runtime and bounded task using sanitized inputs only. State model/runtime identity "
+            "if supplied, context limit assumptions, required input format, output schema, refusal/NOT RUN behavior, deterministic "
+            "settings where available and an evaluation set. Exclude secrets, private paths, raw sensitive data, autonomous tools and "
+            "production claims. Local execution is not evidence of quality or privacy. Label the prompt candidate-only and require an "
+            "observed smoke/evaluation before reuse or promotion."
+        ),
+        "b50_llm_prompt_build": (
+            "Build the prompt from the selected task contract: role, source-selection rule, goal, required inputs, explicit decision "
+            "logic, output schema, safety limits, execution-truth wording, failure modes and representative tests. Policies needed by "
+            "the model must appear in the body, not metadata alone. Avoid vague quality adjectives and hidden defaults. Recommend a "
+            "model class only from task needs, not current popularity. Mark all tests NOT RUN until observed and hand the candidate to "
+            "Prompt QA/Judge before owner acceptance."
+        ),
+        "b50_llm_summarize": (
+            "Summarize the selected artifact for its named audience and decision while preserving material scope, dates, units, owners, "
+            "qualifications and unresolved contradictions. Separate source facts from interpretation and do not add causes, recommendations "
+            "or completion claims absent from the source. Keep traceability to sections or paths and explicitly list omissions caused by "
+            "length. Do not collapse PASS, FAIL and NOT RUN or active and superseded guidance. If no audience, purpose or authoritative "
+            "source is identifiable, return blocked."
+        ),
+        "b50_llm_synthesize": (
+            "Combine the selected sources around one question using an evidence matrix: claim, supporting source, conflicting source, "
+            "freshness, scope and confidence basis. Normalize terminology only when equivalence is supported; preserve disagreements, "
+            "missing evidence and source hierarchy. Do not average incompatible metrics, merge fact with forecast, or invent consensus. "
+            "Produce integrated findings, implications explicitly marked as interpretation, and decisions still requiring an owner. If "
+            "sources cannot be reconciled safely, return competing views and a verification plan."
+        ),
+        "b50_llm_workflow": (
+            "Define a supervised LLM workflow with named input, preprocessing, prompt/version, model role, output contract, validation, "
+            "human decision, retry bound, logging and stop conditions. Separate generation, deterministic calculation, judging and "
+            "execution; the model must not self-certify or perform numeric/financial calculations. Identify sensitive-data handling, "
+            "fallback and rollback. No autonomous retrieval, UI action, deploy or publish may be implied. Return a candidate workflow "
+            "plus representative tests and keep execution NOT RUN until observed."
+        ),
+        "b60_codex_inspect": (
+            "Inspect the selected repository task read-only before proposing changes. Confirm current branch/status, relevant instructions, "
+            "source-of-truth files, existing patterns, affected tests and nearby user changes; search narrowly with repository tools. Report "
+            "observed paths/symbols and distinguish facts from hypotheses. Do not edit, stage, commit, push or broaden scope under INSPECT. "
+            "Identify the smallest reversible file set, validation command and any approval gate. If the repository, goal or required file "
+            "cannot be located, return blocked rather than inventing structure."
+        ),
+        "b60_codex_review_comments": (
+            "Review the selected PR comments against the actual diff and current code. Group duplicates, mark each comment actionable, "
+            "already resolved, question, stale or out of scope, and cite file/line plus the governing requirement. Separate reviewer claims "
+            "from verified defects and identify tests needed for each accepted fix. Do not implement, resolve threads or push under this "
+            "review-only prompt. Highlight conflicting feedback and changes requiring owner approval, then return the smallest ordered fix "
+            "set with residual risks."
+        ),
+        "ba0_local_ai_candidate": (
+            "Classify the selected local-AI request by data sensitivity, task type, model/runtime need, offline constraint and evidence "
+            "required. Route only sanitized, candidate-only drafting or bounded evaluation to the Local AI pilot; route prompt design to "
+            "[LLM], repository work to [Codex], and unclear ownership to [Inbox Router]. Secrets, credentials, raw private data, production "
+            "workloads and autonomous actions are forbidden. Local availability is not a quality or privacy guarantee. Block when safe "
+            "sanitization, owner approval or an evaluation rule is absent."
+        ),
+        "ba0_local_ai_draft_only": (
+            "Use the selected sanitized material to create a candidate draft only. State the local model/runtime if observed, input redactions, "
+            "prompt/version, output purpose and unverified areas. Do not send, publish, execute actions, modify source systems or claim the "
+            "draft is approved. Preserve facts and label model-added wording as interpretation; omit secrets, private paths and identifying "
+            "details. Require human review against the canonical source and a named acceptance check before reuse. If safe source material "
+            "is unavailable, return NOT RUN with a sanitization request."
+        ),
+        "ba0_local_ai_ollama_smoke": (
+            "Run only a bounded local Ollama smoke check when the runtime and model are actually available. Record observed version/model, "
+            "sanitized test prompt, command, exit status, latency from tool output, response shape and resource/error notes; do not download a "
+            "model, change services or expose private data without separate authority. A successful response proves connectivity only, not "
+            "quality, safety or production readiness. Otherwise return NOT RUN. Preserve cleanup/rollback steps and hand results to the pilot "
+            "evaluation owner."
+        ),
+        "ba0_local_ai_open_webui": (
+            "Check Open WebUI only as a local candidate interface with sanitized disposable content. Record the observed URL scope, version if "
+            "visible, selected model, login/data-retention assumptions, exact safe action attempted and result. Do not upload private files, "
+            "change accounts/settings, install components or infer backend isolation from the UI. Separate interface reachability from model "
+            "quality and privacy evidence. If browser/runtime access or authorization is absent, return NOT RUN with the owner procedure and "
+            "rollback."
+        ),
+        "ba0_local_ai_record_pilot": (
+            "Record one local-AI pilot from observed artifacts: pilot ID/date, candidate model/runtime, sanitized dataset/task, prompt/version, "
+            "environment, test cases, deterministic metrics where applicable, qualitative review, failures, resource notes and owner verdict. "
+            "Keep missing cases NOT RUN and separate connectivity from quality/safety. Do not store raw sensitive inputs, secrets or private "
+            "paths, and do not claim production readiness. Link evidence and preserve residual risks, rollback and the next bounded experiment."
+        ),
+        "ba0_local_ai_sanitize": (
+            "Sanitize the selected material before any local-model use. Inventory direct identifiers, secrets, credentials, private paths, "
+            "business-sensitive values, free text and re-identification combinations; apply the minimum transformation needed while preserving "
+            "task utility. Record fields removed, masked, generalized or replaced and validate deterministically that forbidden patterns are "
+            "absent. Never overwrite the raw source; produce a scoped derivative. If utility and confidentiality cannot both be maintained, "
+            "block model use and request approved synthetic data."
+        ),
+        "bd0_mcp_list_actions": (
+            "Inventory the selected MCP server's actually exposed tools/actions from observed metadata. For each list name, read/write class, "
+            "target system, required arguments, authentication boundary, side effects, confirmation need and evidence source; do not invoke the "
+            "actions. Distinguish unavailable, unverified and read-only capabilities, and never infer permissions from a tool name. Exclude "
+            "credentials and private payloads. Route state-changing, destructive, remote or production actions through explicit owner approval "
+            "before any later execution."
+        ),
+        "bd0_mcp_local_safety": (
+            "Assess the selected MCP/local connector boundary before use: server origin, transport, credentials handling, filesystem/network "
+            "scope, read/write actions, user confirmation, logging, sensitive-data exposure and rollback. Base findings on inspected configuration "
+            "or tool metadata, not assumptions. Do not reveal secrets or widen permissions. Mark unknown controls UNVERIFIED and block actions "
+            "that can delete, publish, deploy, alter production/security or transmit private data without explicit authority and a reversible "
+            "procedure."
+        ),
+        "bd0_mcp_visibility": (
+            "Report only MCP servers, resources and tools visible in the current observed session. Separate configured, reachable, authenticated "
+            "and successfully invoked states; tool presence does not prove access or correctness. Include source/time of observation, read/write "
+            "classification and material gaps without exposing endpoints containing secrets or private identifiers. Do not probe by executing "
+            "state-changing actions. If visibility cannot be inspected, return NOT RUN and provide the exact safe discovery step for the owner."
+        ),
+        "codex_sync": (
+            "Synchronize the selected canonical repository sources and their declared mirrors/Knowledge bundles only after comparing paths, "
+            "versions and current diffs. Preserve user changes, use the existing deterministic sync/generation path and list every derived file. "
+            "Run relevant manifest, bundle and safety checks; report commands actually observed and keep remote upload/deploy NOT RUN. Do not "
+            "overwrite canonical sources from generated copies, commit to main, merge or broaden the sync set. Stop on contradictions, dirty "
+            "overlap or missing ownership."
+        ),
+        "evidence_check": (
+            "Audit each material claim in the selected artifact against an inspected source or observed command result. Record claim, evidence "
+            "path/date, coverage, freshness and verdict supported, partial, contradicted or unverified. Expected behavior, plans and green unrelated "
+            "tests are not evidence; inference must be labeled. Check that citations support the full claim and that execution status matches actual "
+            "observation. Do not invent sources or calculate numeric evidence mentally. Block the decision when a critical claim lacks authoritative "
+            "or current support."
+        ),
+        "kb_source_truth": (
+            "Identify the canonical source for the selected knowledge claim using repository governance, manifests and archive/superseded rules. "
+            "Compare active source, generated bundle and any duplicate copies by path/version/date; do not decide authority from recency alone. "
+            "Return the authoritative path, supported claim, conflicts, stale mirrors and required sync owner. Preserve history and do not edit or "
+            "upload under this check. If ownership or precedence is ambiguous, label source truth unresolved and block downstream use rather than "
+            "merging content silently."
+        ),
+        "llm_prompt_review": (
+            "Review the selected prompt against its task: source selection, role, inputs, decision rules, output schema, safety, execution truth, "
+            "failure modes, ambiguity and representative tests. Verify that critical metadata policies appear in the body and that no placeholder, "
+            "secret, auto-action or unsupported calculation remains. Trace each finding to exact prompt text and classify blocking versus optional. "
+            "Do not rewrite the prompt or claim tests passed; return a bounded revision list and keep model/physical cases NOT RUN until observed."
+        ),
+        "local_ai_safety": (
+            "Gate the selected local-AI activity on sanitized inputs, approved purpose, model/runtime identity, bounded filesystem/network access, "
+            "retention behavior, tool permissions, evaluation and rollback. Secrets, credentials, raw private data, production workloads and autonomous "
+            "actions are forbidden. Inspect actual configuration or mark controls UNVERIFIED; local hosting alone does not prove privacy, security or "
+            "quality. Return pass only for a candidate pilot within the stated controls, revise fixable gaps, and block material exposure or missing "
+            "authority."
+        ),
+        "registry_review": (
+            "Review the selected registry and its references deterministically. Check schema/version, unique IDs, exact body/hash consistency, owner "
+            "routes, button_refs, output contracts, status gates, canonical paths and generated/export alignment. Use Python for counts, duplicates and "
+            "SHA-256; do not sample visually or ask the model to calculate hashes. Distinguish source registry defects from stale derived artifacts and "
+            "do not edit under review. Return exact failing IDs/fields, observed checks and the minimal regeneration or source fix."
+        ),
+        "thinking_decision": (
+            "Frame the selected decision with owner, deadline if supplied, objective, current state, constraints, feasible options, criteria, evidence, "
+            "assumptions, risks and reversibility. Compare options without invented weights or metrics and separate facts from preferences. State the "
+            "recommended choice only when decision-critical evidence supports it, including why alternatives lose and what new evidence would change "
+            "the choice. Otherwise return the unresolved decision and smallest next test. Execution, approval and commitment remain separate owner "
+            "actions."
+        ),
+        "thinking_risks": (
+            "Build a risk register for the selected decision from observed dependencies and assumptions. For each risk name trigger, affected objective "
+            "or asset, consequence, evidence, existing control, residual uncertainty, early warning, mitigation, contingency, owner and stop gate. Do "
+            "not invent probability/impact scores or confuse issues already occurring with future risks. Separate accepted, mitigated and unaccepted "
+            "exposure. Escalate destructive, security, privacy, financial-control and production risks; block action when a critical risk lacks authority, "
+            "control or rollback."
+        ),
+    }
     return route_rules.get(
         prompt_id,
         judge_rules.get(
@@ -664,7 +855,10 @@ def subject_logic(prompt_id: str) -> str:
                 prompt_id,
                 deck_qa_rules.get(
                     prompt_id,
-                    aios_kb_pilot_rules.get(prompt_id, daily_thinking_rules.get(prompt_id, "")),
+                    aios_kb_pilot_rules.get(
+                        prompt_id,
+                        daily_thinking_rules.get(prompt_id, final_rules.get(prompt_id, "")),
+                    ),
                 ),
             ),
         ),

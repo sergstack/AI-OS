@@ -190,7 +190,7 @@ def main() -> int:
         "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
     )
     boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
-    require(len(boilerplate_only) == 26, f"expected 26 boilerplate-only prompts after Daily / Thinking batch, found {len(boilerplate_only)}")
+    require(not boilerplate_only, f"expected zero boilerplate-only prompts, found {len(boilerplate_only)}: {boilerplate_only}")
     for prompt in prompts:
         match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
         if match:
@@ -254,6 +254,22 @@ def main() -> int:
     require(len(daily_thinking_batch_ids) == 11, "Daily / Thinking batch must contain 11 unique prompts")
     require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids), "Daily / Thinking versions must be 1.1.0")
     require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids), "Daily / Thinking subject logic missing")
+    final_batch_ids = {
+        "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
+        "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
+        "b60_codex_inspect", "b60_codex_review_comments",
+        "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
+        "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
+        "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
+        "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
+        "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
+    }
+    require(len(final_batch_ids) == 26, "Final batch must contain 26 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids), "Final batch versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in final_batch_ids), "Final batch subject logic missing")
+    v1_1_prompts = [prompt for prompt in prompts if prompt["prompt_version"] == "1.1.0"]
+    require(len(v1_1_prompts) == 94, f"expected 94 upgraded prompts, found {len(v1_1_prompts)}")
+    require(all("\n\nSubject logic:\n" in prompt["body"] for prompt in v1_1_prompts), "all upgraded prompts must contain subject logic")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")

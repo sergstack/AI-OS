@@ -28,13 +28,13 @@
 |---|---|---|---|---|---|---|
 | K1 | INBOX | `b00_daily_inbox` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | DECISION | `thinking_decision` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | DECISION | `thinking_decision` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | DATA CONTRACT | `analytics_data_contract` | `1.1.0` | [Analytics] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | FIN MEMO | `b00_daily_fin_memo` | `1.0.0` | [LLM] / Memo | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | PROMPT | `llm_prompt_review` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | PROMPT | `llm_prompt_review` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | CONTEXT | `b00_daily_context` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | SYNC | `codex_sync` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | SYNC | `codex_sync` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | KB EVIDENCE | `b00_daily_kb_evidence` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
@@ -69,10 +69,10 @@
 | K1 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | PATTERN | `b20_ai_os_pattern` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | USE CASE | `b20_ai_os_use_case` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | EVIDENCE | `evidence_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | EVIDENCE | `evidence_check` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | GOVERNANCE | `b20_ai_os_governance` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | FRESH CHECK | `b20_ai_os_fresh_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | SOURCE TRUTH | `kb_source_truth` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | SOURCE TRUTH | `kb_source_truth` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | LOOP DESIGN | `b20_ai_os_loop_design` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K9 | PROMPT QA | `b20_ai_os_prompt_qa` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | STREAMDECK | `b20_ai_os_streamdeck` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
@@ -86,9 +86,9 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | DECISION | `thinking_decision` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | DECISION | `thinking_decision` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | OPTIONS | `b30_thinking_options` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | RISKS | `thinking_risks` | `1.0.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | RISKS | `thinking_risks` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | ASSUMPTIONS | `b30_thinking_assumptions` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | REVERSIBLE? | `b30_thinking_reversible` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | SCENARIO | `b30_thinking_scenario` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
@@ -126,15 +126,15 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | PROMPT BUILD | `b50_llm_prompt_build` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | CONTEXT PACK | `b50_llm_context_pack` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | PROMPT BUILD | `b50_llm_prompt_build` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | CONTEXT PACK | `b50_llm_context_pack` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | MODEL ROUTE | `b50_llm_model_route` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | WORKFLOW | `b50_llm_workflow` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | WORKFLOW | `b50_llm_workflow` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | EVAL RUBRIC | `b50_llm_eval_rubric` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | SUMMARIZE | `b50_llm_summarize` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | EXTRACT | `b50_llm_extract` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | SYNTHESIZE | `b50_llm_synthesize` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | LOCAL PROMPT | `b50_llm_local_prompt` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | SUMMARIZE | `b50_llm_summarize` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | EXTRACT | `b50_llm_extract` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | SYNTHESIZE | `b50_llm_synthesize` | `1.1.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | LOCAL PROMPT | `b50_llm_local_prompt` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | GOAL→CODEX PACK | `b50_llm_goal_to_codex_pack` | `1.0.0` | [LLM] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
@@ -148,13 +148,13 @@
 |---|---|---|---|---|---|---|
 | K1 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K2 | BUILD FIRST | `b60_codex_build_first` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | INSPECT | `b60_codex_inspect` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | INSPECT | `b60_codex_inspect` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | RUN CHECKS | `b60_codex_run_checks` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | FIX IN SCOPE | `b60_codex_fix_in_scope` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | SYNC | `codex_sync` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | SYNC | `codex_sync` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | PR JUDGE | `b60_codex_pr_judge` | `1.0.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | FIX CI | `b60_codex_fix_ci` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | REVIEW COMMENTS | `b60_codex_review_comments` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | REVIEW COMMENTS | `b60_codex_review_comments` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | RELEASE NOTES | `b60_codex_release_notes` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
@@ -226,16 +226,16 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | SAFETY | `local_ai_safety` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | SANITIZE | `ba0_local_ai_sanitize` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | DRAFT ONLY | `ba0_local_ai_draft_only` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | OLLAMA SMOKE | `ba0_local_ai_ollama_smoke` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | OPEN WEBUI | `ba0_local_ai_open_webui` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | SAFETY | `local_ai_safety` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | SANITIZE | `ba0_local_ai_sanitize` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | DRAFT ONLY | `ba0_local_ai_draft_only` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | OLLAMA SMOKE | `ba0_local_ai_ollama_smoke` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | OPEN WEBUI | `ba0_local_ai_open_webui` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | MODEL COMPARE | `ba0_local_ai_model_compare` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | EVAL MATRIX | `ba0_local_ai_eval_matrix` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | JUDGE OUTPUT | `ba0_local_ai_judge_output` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | RECORD PILOT | `ba0_local_ai_record_pilot` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
-| K10 | CANDIDATE? | `ba0_local_ai_candidate` | `1.0.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | RECORD PILOT | `ba0_local_ai_record_pilot` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K10 | CANDIDATE? | `ba0_local_ai_candidate` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
 | K13 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
@@ -253,7 +253,7 @@
 | K5 | ACCEPTANCE | `bb0_pilots_acceptance` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | RESIDUAL RISK | `bb0_pilots_residual_risk` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | ROLLBACK | `bb0_pilots_rollback` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | REGISTRY | `registry_review` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | REGISTRY | `registry_review` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K9 | STATUS NOTE | `bb0_pilots_status_note` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | REVISIT | `bb0_pilots_revisit` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
@@ -270,7 +270,7 @@
 | K2 | EVIDENCE LABEL | `bc0_kb_evidence_label` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | REVIEW ITEM | `bc0_kb_review_item` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | SUPPORT MIX | `bc0_kb_support_mix` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | SOURCE TRUTH | `kb_source_truth` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | SOURCE TRUTH | `kb_source_truth` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K6 | MANIFEST | `bc0_kb_manifest` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | BUNDLE SYNC | `bc0_kb_bundle_sync` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K8 | UPLOAD CHECK | `bc0_kb_upload_check` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
@@ -286,15 +286,15 @@
 
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
-| K1 | LIST ACTIONS | `bd0_mcp_list_actions` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | REGISTRY | `registry_review` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K3 | VISIBILITY | `bd0_mcp_visibility` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K1 | LIST ACTIONS | `bd0_mcp_list_actions` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | REGISTRY | `registry_review` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K3 | VISIBILITY | `bd0_mcp_visibility` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
 | K4 | JUDGE | `judge_universal` | `1.1.0` | [LLM] / Judge | `clipboard_paste` | `final_acceptance_gate` |
 | K5 | REVISOR | `revisor_apply_notes` | `1.0.0` | [LLM] / Revisor | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | SYNC | `codex_sync` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | SYNC | `codex_sync` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K7 | AI TREND | `ai_trend` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | KB SOURCE | `kb_source_truth` | `1.0.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | LOCAL SAFETY | `bd0_mcp_local_safety` | `1.0.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | KB SOURCE | `kb_source_truth` | `1.1.0` | [AI OS] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | LOCAL SAFETY | `bd0_mcp_local_safety` | `1.1.0` | [LLM] / Local AI | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | GOAL→PR | `codex_goal_to_pr` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |
