@@ -1,0 +1,87 @@
+{
+  "version": "3.0.0",
+  "actions": [
+    {
+      "action_id": "AIOS_HOME_JUDGE",
+      "prompt_id": "judge_universal",
+      "owner_project": "[LLM] / Judge",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "execution-verified",
+      "evidence": "archive/v2.8/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md",
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_HOME_REVISOR",
+      "prompt_id": "revisor_apply_notes",
+      "owner_project": "[LLM] / Revisor",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "execution-verified",
+      "evidence": "archive/v2.8/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md",
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_HOME_SYNC",
+      "prompt_id": "codex_sync",
+      "owner_project": "[Codex]",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "registered-only",
+      "evidence": null,
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_KB_SOURCE_TRUTH",
+      "prompt_id": "kb_source_truth",
+      "owner_project": "[AI OS]",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "registered-only",
+      "evidence": null,
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_LOCAL_AI_SAFETY",
+      "prompt_id": "local_ai_safety",
+      "owner_project": "[LLM] / Local AI",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "registered-only",
+      "evidence": null,
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_CODEX_ISSUE_TO_PR",
+      "prompt_id": "codex_goal_to_pr",
+      "owner_project": "[Codex]",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "registered-only",
+      "evidence": null,
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    },
+    {
+      "action_id": "AIOS_AI_TREND",
+      "prompt_id": "ai_trend",
+      "owner_project": "[AI OS]",
+      "action_type": "supervised_prompt_insertion",
+      "requires_confirmation": true,
+      "auto_send": false,
+      "registry_status": "registered-only",
+      "evidence": null,
+      "v3_visibility_status": "NOT RUN - owner MCP action required"
+    }
+  ],
+  "counts": {
+    "total": 7,
+    "execution_verified_legacy": 2,
+    "v3_visibility_verified": 0
+  }
+}

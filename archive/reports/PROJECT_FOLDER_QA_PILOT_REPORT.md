@@ -61,7 +61,7 @@ repository-file QA pass, not a fresh live ChatGPT Project pilot run.
 | `[Codex]` | pilot-related Markdown | not found | not applicable | pass | No project-local pilot file found. |
 | `[Inbox Router]` | pilot-related Markdown | not found | not applicable | pass | No project-local pilot file found. |
 | Codex APP | pilot-related Markdown | not found | not applicable | pass | Pilot definition is in root `PILOT_CASES.md`. |
-| StreamDeck | `StreamDeck/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md` | pilot passed / candidate-only | StreamDeck operational evidence; not a ChatGPT Project Knowledge upload bundle. | pass | Records supervised MCP execution of `AIOS_HOME_JUDGE` and `AIOS_HOME_REVISOR`; v2.8 remains candidate-only. |
+| StreamDeck | `StreamDeck/archive/v2.8/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md` | pilot passed / candidate-only | StreamDeck operational evidence; not a ChatGPT Project Knowledge upload bundle. | pass | Records supervised MCP execution of `AIOS_HOME_JUDGE` and `AIOS_HOME_REVISOR`; v2.8 remains candidate-only. |
 
 ## Pilot file QA matrix
 
@@ -72,7 +72,7 @@ repository-file QA pass, not a fresh live ChatGPT Project pilot run.
 | `ChatGPT/[LLM]/Knowledge/OLLAMA_OPENWEBUI_PILOT.md` | `[LLM]` after fix | implicit pilot | `candidate` | Owner project, pilot status, manifest/upload status, and residual risk were not explicit in source file. | Added metadata to source and `LLM_06_LOCAL_AI_EXPERIMENTS.md` bundle excerpt. | Actual Ollama/Open WebUI behavior not tested. |
 | `PILOT_RESULTS_2026-07-06_RUNTIME_CHATGPT_AND_OLLAMA.md` | `[AI OS]`, `[Thinking]`, `[Analytics]`, `[LLM]`, `[Codex]`, `[Inbox Router]`, `[LLM]` local AI | candidate evidence | runtime/smoke evidence, not production promotion | none found in this refresh | none | ChatGPT URLs are private browser state; future sync can drift. |
 | `PILOT_RESULTS_2026-07-07_PROJECT_FOLDER_PILOTS.md` | All six ChatGPT projects | partial / not_run | honest fresh-pilot blocker report | none found | none | Live realistic pilots still need execution and captured output. |
-| `StreamDeck/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md` | StreamDeck / command surface | pilot passed / candidate-only | candidate-only MCP action evidence | none found | none | Confirms only two MCP actions; full action set and physical device behavior still need broader QA. |
+| `StreamDeck/archive/v2.8/STREAMDECK_V2_8_MCP_ACTIONS_PILOT.md` | StreamDeck / command surface | pilot passed / candidate-only | candidate-only MCP action evidence | none found | none | Confirms only two MCP actions; full action set and physical device behavior still need broader QA. |
 
 ## Cross-project routing checks
 

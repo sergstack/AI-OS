@@ -55,9 +55,9 @@ CODEX_FACING_PATHS = [
     "ChatGPT/[LLM]/Knowledge",
     "ChatGPT/[LLM]/Knowledge_Bundles",
     "Codex APP",
-    "StreamDeck/AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.csv",
-    "StreamDeck/AIOS_StreamDeck_Button_Map_v2.8_COMMAND_SURFACE_ALIGNED.json",
-    "StreamDeck/AIOS_StreamDeck_Setup_Instruction_v2.8_COMMAND_SURFACE_ALIGNED.md",
+    "StreamDeck/README.md",
+    "StreamDeck/config/action_profiles.json",
+    "StreamDeck/prompts/prompt_registry.json",
 ]
 
 TEXT_SUFFIXES = {".md", ".json", ".csv", ".txt"}

@@ -1,0 +1,213 @@
+{
+  "version": "3.0.0",
+  "status": "candidate / ready for owner review after repo checks",
+  "generated": "2026-07-15",
+  "os": "macOS (exact owner version NOT RUN)",
+  "stream_deck_app_version": "owner-installed version NOT RUN; built-in cross-device switch documented since 4.4",
+  "devices": {
+    "controller": {
+      "role": "AIOS-CONTROL",
+      "model": "15-key Stream Deck",
+      "serial": null
+    },
+    "actions": {
+      "role": "AIOS-ACTIONS",
+      "model": "15-key Stream Deck",
+      "serial": null
+    }
+  },
+  "profile_ids": [
+    "B00_DAILY",
+    "B10_ROUTE",
+    "B20_AI_OS",
+    "B30_THINKING",
+    "B40_ANALYTICS",
+    "B50_LLM",
+    "B60_CODEX",
+    "B70_JUDGE",
+    "B80_REVISOR",
+    "B90_MEMO",
+    "BA0_LOCAL_AI",
+    "BB0_PILOTS",
+    "BC0_KB",
+    "BD0_MCP",
+    "BE0_DECK_QA"
+  ],
+  "controller_profile_id": "A00_CONTROL",
+  "action_identifiers": {
+    "profile_switch": "Stream Deck > Switch Profile (built-in; UUID not published/verified)",
+    "prompt_insert": "System > Text (built-in)",
+    "mcp": "See migration/mcp_registry.json"
+  },
+  "auto_send": false,
+  "target_device_binding": "manual_serial_neutral",
+  "binary_exports": "NOT RUN - owner action required",
+  "physical_switch": "NOT RUN - owner action required",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "9c1cdc54630f907ff14b205f2e16a532e2bc01971f3e7e9b0a54770c828a6e2f"
+    },
+    {
+      "path": "architecture/dual_deck_architecture.md",
+      "sha256": "5878dc889ac118c2986d379d3dcfe48a962838933eae60d8f16a8b900faed754"
+    },
+    {
+      "path": "assets/icons/action_analytics.svg",
+      "sha256": "7bf54a17fe0bbe04acd98ccde9a7cba96f48274cda89402433b58857cf933db7"
+    },
+    {
+      "path": "assets/icons/action_blocked.svg",
+      "sha256": "230d1e3f0c9169a2a75751c57aea91dff8bb41ac5e8c7a32d53ce732a71701cb"
+    },
+    {
+      "path": "assets/icons/action_draft.svg",
+      "sha256": "c5c26bd4b017f07c4399553f34e8d0211cd91e084dfb326a072e3344189b06d7"
+    },
+    {
+      "path": "assets/icons/action_execution_request.svg",
+      "sha256": "2135bab5d751ec010b830c03b13c7e80e68f4fa46220b712f278a10cf89b80ca"
+    },
+    {
+      "path": "assets/icons/action_handoff.svg",
+      "sha256": "30ef381e6a949d2c29c833ac119aa11d959bfcf0744726cba2c1d4df1fd1148f"
+    },
+    {
+      "path": "assets/icons/action_judge.svg",
+      "sha256": "c0ec6728f18d61a604798718139d3c1e1b38aeeee5c5a9ff35469fc43154536d"
+    },
+    {
+      "path": "assets/icons/action_memo.svg",
+      "sha256": "aa306c6eabe8dd178af97bc25f47df822aaa872b069e87db6e2aa928cd4b16e5"
+    },
+    {
+      "path": "assets/icons/action_narrative.svg",
+      "sha256": "c49f992fb76feaa83218d6b4710fc57dc3d4d11d56448602257e4970f1ddcf2b"
+    },
+    {
+      "path": "assets/icons/action_revise.svg",
+      "sha256": "5b4c2675030e5d9c30bc7271754745270881b23153c57d6cedd9295b87ac304c"
+    },
+    {
+      "path": "assets/icons/action_route.svg",
+      "sha256": "05b09534d774c8ec5d3a50071b92906555b201d8de68c7d93f909497a41fa450"
+    },
+    {
+      "path": "assets/icons/controller_ai_os.svg",
+      "sha256": "5cf0a195ffadf5b5bb722e648bf1ff4fdb925b8c537b72fea48815bfb40e777f"
+    },
+    {
+      "path": "assets/icons/controller_analytics.svg",
+      "sha256": "7bf54a17fe0bbe04acd98ccde9a7cba96f48274cda89402433b58857cf933db7"
+    },
+    {
+      "path": "assets/icons/controller_codex.svg",
+      "sha256": "b164ce063a09dd4151151016e8be0b92ed95d5ed3b1956d2082fa9706da4eba1"
+    },
+    {
+      "path": "assets/icons/controller_daily.svg",
+      "sha256": "ba2e564cc34007efce238253bf2e72aaf26e2d67ec4d70c73ed8bef24d28502c"
+    },
+    {
+      "path": "assets/icons/controller_deck_qa.svg",
+      "sha256": "83dc99afbee875f31f6751d0fd0498381f45543a8c3aecb903be40b82e33eece"
+    },
+    {
+      "path": "assets/icons/controller_judge.svg",
+      "sha256": "c0ec6728f18d61a604798718139d3c1e1b38aeeee5c5a9ff35469fc43154536d"
+    },
+    {
+      "path": "assets/icons/controller_kb.svg",
+      "sha256": "5345aa9d3893d1f80278604a49945e3111034c2bdc0c27f3529182fe4c4c15d2"
+    },
+    {
+      "path": "assets/icons/controller_llm.svg",
+      "sha256": "526fba7a56575cf0531eba5da661b3d59a8ef3a404b1f52b512aadcc352e2eca"
+    },
+    {
+      "path": "assets/icons/controller_local_ai.svg",
+      "sha256": "5448f2cd890773035d04eacaa3e45057d040a07b8e3967ee7bd1f4615e7ac063"
+    },
+    {
+      "path": "assets/icons/controller_mcp.svg",
+      "sha256": "9a1090342f90c03bfa181f9d4ebc84853bc0201783334e61925317234c042ab7"
+    },
+    {
+      "path": "assets/icons/controller_memo.svg",
+      "sha256": "aa306c6eabe8dd178af97bc25f47df822aaa872b069e87db6e2aa928cd4b16e5"
+    },
+    {
+      "path": "assets/icons/controller_pilots.svg",
+      "sha256": "dc0acb5a842bc13edb7f91c0acee058f7aec12129285ad432e43df6862d2814f"
+    },
+    {
+      "path": "assets/icons/controller_revisor.svg",
+      "sha256": "94876104de60b27b0ee4c8baff3e06b71cf2261af9860d37223b7ae3ce353bb9"
+    },
+    {
+      "path": "assets/icons/controller_route.svg",
+      "sha256": "05b09534d774c8ec5d3a50071b92906555b201d8de68c7d93f909497a41fa450"
+    },
+    {
+      "path": "assets/icons/controller_thinking.svg",
+      "sha256": "203332db33c9a0a8f9a29d8415006bfbbf1172e35caff6872a9bd7ccd781b070"
+    },
+    {
+      "path": "config/action_profiles.json",
+      "sha256": "81961a9cc4651be9a08f124ce1ff326811d434df51842c2dffb5bc9bff260efc"
+    },
+    {
+      "path": "config/controller_map.json",
+      "sha256": "c941b3caa02c87e661e9f5156ac1e0dd94ba6b8052452eab4f8d21098e4b1178"
+    },
+    {
+      "path": "config/icon_map.json",
+      "sha256": "20cbcbecfa1057797fbfae804e89929839491cd5eac0acc97e3ece640825ad2e"
+    },
+    {
+      "path": "exports/README.md",
+      "sha256": "042c0abd1c6f0b1ea0426d4a301070935cd89595a3e6317310ceaf639f580148"
+    },
+    {
+      "path": "generated/button_map.md",
+      "sha256": "26d662dd5101d116dbb9c1c29b639a05f7e15326491625f9f95185656eb534b5"
+    },
+    {
+      "path": "migration/mcp_registry.json",
+      "sha256": "c628ae36ace698fa2563e613fa1dd3c71e825535299e1a2a4c432ea1a310fc5f"
+    },
+    {
+      "path": "migration/transfer_export.md",
+      "sha256": "1a553f01db9979642e7998fd2972d257599ebe6883dc6e0bb9191c655dd9aebe"
+    },
+    {
+      "path": "prompts/prompt_registry.json",
+      "sha256": "23066c31a181bbfdbcedb0e424390d651a48db49e49ff1e0f2d8322e68d58802"
+    },
+    {
+      "path": "qa/baseline_audit.json",
+      "sha256": "a00207363e89c237ca17721ce9ff23076fbf6024778a6f30858941439ed73047"
+    },
+    {
+      "path": "qa/cleanup_inventory.json",
+      "sha256": "6ee5f3ec5cd0c22f4f987467b8b0a477433169e681038ed8edf9e90e2b21db47"
+    },
+    {
+      "path": "qa/physical_qa_checklist.md",
+      "sha256": "c4e327793219063899655cb41d52eadfce19134a5bb6f643ab7ba9183b5edb71"
+    },
+    {
+      "path": "qa/prompt_qa_matrix.json",
+      "sha256": "1966614adab66acbd497c6e9a3a5267d2390083120a9a1055579f716a75eb7e8"
+    },
+    {
+      "path": "tools/generate_v3.py",
+      "sha256": "4679c0dcaa15c3e0fdebe1a8ed4d08abce9990da90e81a356d14c11eb83a4a5f"
+    },
+    {
+      "path": "tools/validate_v3.py",
+      "sha256": "6de84b52e2bb88e99e0d06824a61a8dcc0de93a6e2b8ed1997b69fd82af415d7"
+    }
+  ],
+  "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles."
+}
