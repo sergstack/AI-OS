@@ -228,12 +228,13 @@ def make_package() -> None:
                 "button": key, "label": label, "action_type": "prompt", "prompt_id": prompt_id,
                 "prompt_version": "1.0.0", "owner_project": owner, "interaction_risk": "low",
                 "workflow_risk": "medium" if kind in {"analytics", "execution_request"} else "low",
-                "data_sensitivity": "none", "requires_confirmation": True, "auto_send": False,
+                "data_sensitivity": "none", "insertion_method": "clipboard_paste",
+                "requires_confirmation": True, "auto_send": False,
                 "mcp_action_id": mcp_id, "mcp_verified": (mcp_id in MCP_VERIFIED) if mcp_id else None,
                 "next_on_pass": "final_acceptance_gate" if key != "K15" else "owner_acceptance",
                 "next_on_revise": "revisor_apply_notes", "next_on_blocked": "blocker_review",
                 "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-                "rollback": "Discard inserted text; no action is sent automatically.",
+                "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
                 "icon": f"assets/icons/action_{kind}.svg",
             }
             buttons.append(row)
@@ -376,10 +377,10 @@ def make_manifests() -> None:
         "os": "macOS (exact owner version NOT RUN)", "stream_deck_app_version": "owner-installed version NOT RUN; built-in cross-device switch documented since 4.4",
         "devices": {"controller": {"role": "AIOS-CONTROL", "model": "15-key Stream Deck", "serial": None}, "actions": {"role": "AIOS-ACTIONS", "model": "15-key Stream Deck", "serial": None}},
         "profile_ids": [spec[0] for spec in PROFILE_SPECS], "controller_profile_id": "A00_CONTROL",
-        "action_identifiers": {"profile_switch": "Stream Deck > Switch Profile (built-in; UUID not published/verified)", "prompt_insert": "System > Text (built-in)", "mcp": "See migration/mcp_registry.json"},
-        "auto_send": False, "target_device_binding": "manual_serial_neutral", "binary_exports": "NOT RUN - owner action required",
+        "action_identifiers": {"profile_switch": "Stream Deck > Switch Profile (built-in; com.elgato.streamdeck.profile.rotate)", "prompt_insert": "System > Text (built-in; com.elgato.streamdeck.system.text)", "mcp": "See migration/mcp_registry.json"},
+        "insertion_method": "clipboard_paste", "auto_send": False, "target_device_binding": "manual_serial_neutral", "binary_exports": "candidate generated - import NOT RUN; owner action required",
         "physical_switch": "NOT RUN - owner action required", "files": files,
-        "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles.",
+        "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history.",
     })
 
 
@@ -388,9 +389,9 @@ def make_human_map(controllers: list[dict], buttons: list[dict]) -> None:
     for row in controllers:
         lines.append(f"| {row['button']} | {row['label']} | `{row['target_profile_id']}` | `{row['target_device_binding']}` |")
     for profile_id, profile_name, _, _ in PROFILE_SPECS:
-        lines.extend(["", f"## {profile_name} (`{profile_id}`)", "", "| Key | Label | Prompt ID | Owner | Next pass |", "|---|---|---|---|---|"])
+        lines.extend(["", f"## {profile_name} (`{profile_id}`)", "", "| Key | Label | Prompt ID | Owner | Insertion method | Next pass |", "|---|---|---|---|---|---|"])
         for row in (r for r in buttons if r["profile_id"] == profile_id):
-            lines.append(f"| {row['button']} | {row['label']} | `{row['prompt_id']}` | {row['owner_project']} | `{row['next_on_pass']}` |")
+            lines.append(f"| {row['button']} | {row['label']} | `{row['prompt_id']}` | {row['owner_project']} | `{row['insertion_method']}` | `{row['next_on_pass']}` |")
     (ACTIVE / "generated" / "button_map.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

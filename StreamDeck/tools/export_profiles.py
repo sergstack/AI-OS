@@ -54,6 +54,8 @@ def state(label: str, image_name: str) -> dict:
 
 
 def text_action(row: dict, prompt: dict, image_name: str) -> dict:
+    if row.get("insertion_method") != "clipboard_paste":
+        raise ValueError(f"unsupported insertion_method: {row.get('insertion_method')!r}")
     action_uuid = "com.elgato.streamdeck.system.text"
     return {
         "ActionID": str(stable_uuid("action", f"{row['profile_id']}/{row['button']}")),
@@ -64,7 +66,7 @@ def text_action(row: dict, prompt: dict, image_name: str) -> dict:
         "Settings": {
             "Hotkey": {"KeyModifiers": 0, "QTKeyCode": 33554431, "VKeyCode": -1},
             "isSendingEnter": False,
-            "isTypingMode": True,
+            "isTypingMode": False,
             "pastedText": prompt["body"],
         },
         "State": 0,

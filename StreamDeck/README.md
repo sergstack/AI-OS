@@ -7,7 +7,9 @@ Status: `candidate / repo package`; physical acceptance: `NOT RUN — owner acti
 v3.0 разделяет навигацию и действия между двумя 15-кнопочными Stream Deck:
 
 - `AIOS-CONTROL` всегда остаётся контроллером. Его 15 кнопок переключают профиль только на втором устройстве.
-- `AIOS-ACTIONS` показывает 15 действий выбранного project/workflow. Кнопка вставляет prompt, но не нажимает Send.
+- `AIOS-ACTIONS` показывает 15 действий выбранного project/workflow. Кнопка вставляет prompt через clipboard-paste, но не нажимает Send.
+
+Clipboard-paste выбран для многоабзацных prompts: typed text может превратить перевод строки в Enter внутри chat-input. Физическая безопасность на owner devices ещё `NOT RUN`. Каждое действие перезаписывает текущий clipboard; при необходимости сохраните его заранее или используйте owner clipboard history.
 
 В repository есть переносимые source settings, prompts, icons, mapping, checksums и 16 детерминированных candidate `.streamDeckProfile`. Физический import не выполнялся: Codex не имел доступа к Stream Deck app и двум устройствам, поэтому package не считается `import-ready`.
 
@@ -28,7 +30,8 @@ v3.0 разделяет навигацию и действия между дву
 4. Импортируйте 15 `B*.streamDeckProfile` на Deck B, затем `A00_CONTROL.streamDeckProfile` на Deck A.
 5. В property inspector каждой controller-кнопки выберите именно физический Deck B и target profile: архивы намеренно не содержат device serial. На Deck A не создавайте prompt, send, GitHub или terminal actions.
 6. Выполните минимальный POC и полный checklist из `qa/physical_qa_checklist.md`; до наблюдаемого результата import status остаётся `NOT RUN`.
-7. Если импорт не поддерживается или не проходит, используйте manual fallback: создайте профили по таблице ниже, добавьте `Switch Profile`/`System > Text`, вставьте exact `body`, выключите Enter/Return и назначьте relative icon из `config/icon_map.json`.
+7. Если импорт не поддерживается или не проходит, используйте manual fallback: создайте профили по таблице ниже, добавьте `Switch Profile`/`System > Text`, вставьте exact `body`, выберите clipboard/paste mode (не typed text), выключите Enter/Return и назначьте relative icon из `config/icon_map.json`.
+8. В disposable chat-input выполните отдельные multiline и Enter/newline tests из checklist. Не используйте action с реальными данными до observed pass; учитывайте, что prompt заменит текущее содержимое clipboard.
 
 ## Все профили и кнопки
 
@@ -101,14 +104,15 @@ QA matrix содержит отдельную строку для каждого
 - Deck A тоже сменил профиль: откройте controller key property inspector и повторно выберите физический Deck B.
 - Профиль не виден: сначала создайте/импортируйте target profile на Deck B, затем настраивайте controller.
 - Text вставился не туда: немедленно отмените, перейдите в disposable field и повторите focus test.
-- Prompt сразу отправился: в `System > Text` выключите Enter/Return after message. До исправления не используйте profile.
+- Prompt сразу отправился: немедленно прекратите использование profile. Проверьте `insertion_method: clipboard_paste`, clipboard/paste mode (`isTypingMode: false`) и выключенный Enter/Return; одного выключенного Enter after message недостаточно. Повторите оба multiline tests в disposable chat-input.
 - Prompt обрезан или искажён: сверьте exact body/hash, проверьте longest prompt и Unicode test; не исправляйте generated map вручную.
+- Нужный clipboard исчез: clipboard-paste заменяет его prompt body. Восстановите значение из owner clipboard history, если оно доступно; repository и rollback profile не восстанавливают clipboard.
 - MCP action не виден: сверьте exact ID и local MCP setup; оставьте `NOT RUN`, если tool list его не возвращает.
 - Import потерял icons/bindings: восстановите relative icons и повторите manual target-device binding; serial-neutral package не может автоматически угадать target device.
 
 ## Rollback и source of truth
 
-При failure отключите controller switching, верните Deck B на owner backup v2.7/v2.9 и сохраните v3 для диагностики. Legacy не удалён: он перенесён в `archive/` и защищён SHA-256 manifest.
+При failure отключите controller switching, верните Deck B на owner backup v2.7/v2.9 и сохраните v3 для диагностики. Legacy не удалён: он перенесён в `archive/` и защищён SHA-256 manifest. Уже перезаписанный clipboard восстанавливается только из owner clipboard history, если она была включена.
 
 Canonical sources:
 
