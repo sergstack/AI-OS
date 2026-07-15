@@ -52,6 +52,9 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert hashes(tmp_path) == first_hashes
 
     registry = json.loads((STREAMDECK / "prompts" / "prompt_registry.json").read_text(encoding="utf-8"))
+    config = json.loads((STREAMDECK / "config" / "action_profiles.json").read_text(encoding="utf-8"))
+    assert len(config["buttons"]) == 225
+    assert all(item.get("insertion_method") == "clipboard_paste" for item in config["buttons"])
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):
@@ -59,6 +62,7 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
             assert all(info.date_time == (1980, 1, 1, 0, 0, 0) for info in archive.infolist())
             for action in page_actions(archive).values():
                 assert action["Settings"]["isSendingEnter"] is False
+                assert action["Settings"]["isTypingMode"] is False
                 exported_bodies.append(action["Settings"]["pastedText"])
     assert len(exported_bodies) == 225
     assert set(exported_bodies) == expected_bodies

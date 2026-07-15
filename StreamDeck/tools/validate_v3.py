@@ -117,6 +117,8 @@ def validate_exports(controller_rows, rows, prompt_by_id) -> None:
                     body = action["Settings"].get("pastedText")
                     require(action["UUID"] == "com.elgato.streamdeck.system.text", f"{path.name}/{coordinate}: not System > Text")
                     require(action["Settings"].get("isSendingEnter") is False, f"{path.name}/{coordinate}: auto-send is enabled")
+                    require(row.get("insertion_method") == "clipboard_paste", f"{path.name}/{coordinate}: source insertion method is not clipboard_paste")
+                    require(action["Settings"].get("isTypingMode") is False, f"{path.name}/{coordinate}: typed-text mode is enabled")
                     require(body == prompt["body"], f"{path.name}/{coordinate}: prompt body mismatch")
                     if isinstance(body, str):
                         require(hashlib.sha256(body.encode()).hexdigest() == prompt["prompt_hash"], f"{path.name}/{coordinate}: prompt hash mismatch")
@@ -152,6 +154,7 @@ def main() -> int:
         require(keys == {f"K{i}" for i in range(1, 16)}, f"{profile}: expected exactly K1-K15")
     require(len({(r["device"], r["profile_id"], r["button"]) for r in rows}) == len(rows), "duplicate device/profile/button")
     require(all(r["auto_send"] is False and r["requires_confirmation"] is True for r in rows), "all action buttons must be supervised and auto_send=false")
+    require(all(r.get("insertion_method") == "clipboard_paste" for r in rows), "all 225 action buttons must use insertion_method=clipboard_paste")
 
     prompt_keys = [(p["prompt_id"], p["prompt_version"]) for p in prompts]
     require(len(prompt_keys) == len(set(prompt_keys)), "prompt_id + prompt_version must be unique")

@@ -17,6 +17,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -25,7 +26,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -41,6 +42,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_AI_TREND",
@@ -49,7 +51,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -65,6 +67,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -73,7 +76,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -89,6 +92,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -97,7 +101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -113,6 +117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_CODEX_ISSUE_TO_PR",
@@ -121,7 +126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -137,6 +142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -145,7 +151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -161,6 +167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -169,7 +176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -185,6 +192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -193,7 +201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -209,6 +217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_SYNC",
@@ -217,7 +226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -233,6 +242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -241,7 +251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -257,6 +267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -265,7 +276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -281,6 +292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -289,7 +301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -305,6 +317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -313,7 +326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -329,6 +342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -337,7 +351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -353,6 +367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -361,7 +376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -377,6 +392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -385,7 +401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -401,6 +417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -409,7 +426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -425,6 +442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -433,7 +451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -449,6 +467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -457,7 +476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -473,6 +492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -481,7 +501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -497,6 +517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -505,7 +526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -521,6 +542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -529,7 +551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -545,6 +567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -553,7 +576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -569,6 +592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -577,7 +601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -593,6 +617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -601,7 +626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -617,6 +642,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -625,7 +651,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -641,6 +667,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -649,7 +676,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -665,6 +692,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -673,7 +701,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -689,6 +717,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -697,7 +726,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -713,6 +742,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -721,7 +751,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -737,6 +767,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_AI_TREND",
@@ -745,7 +776,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -761,6 +792,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -769,7 +801,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -785,6 +817,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -793,7 +826,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -809,6 +842,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -817,7 +851,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -833,6 +867,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -841,7 +876,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -857,6 +892,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -865,7 +901,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -881,6 +917,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_KB_SOURCE_TRUTH",
@@ -889,7 +926,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -905,6 +942,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -913,7 +951,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -929,6 +967,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -937,7 +976,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -953,6 +992,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -961,7 +1001,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -977,6 +1017,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -985,7 +1026,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -1001,6 +1042,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1009,7 +1051,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -1025,6 +1067,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -1033,7 +1076,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1049,6 +1092,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -1057,7 +1101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -1073,6 +1117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1081,7 +1126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1097,6 +1142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1105,7 +1151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1121,6 +1167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1129,7 +1176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1145,6 +1192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1153,7 +1201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1169,6 +1217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1177,7 +1226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1193,6 +1242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1201,7 +1251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -1217,6 +1267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1225,7 +1276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1241,6 +1292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1249,7 +1301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1265,6 +1317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1273,7 +1326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1289,6 +1342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1297,7 +1351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1313,6 +1367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1321,7 +1376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1337,6 +1392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1345,7 +1401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -1361,6 +1417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1369,7 +1426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -1385,6 +1442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -1393,7 +1451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1409,6 +1467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -1417,7 +1476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -1433,6 +1492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1441,7 +1501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1457,6 +1517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1465,7 +1526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1481,6 +1542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1489,7 +1551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1505,6 +1567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1513,7 +1576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1529,6 +1592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1537,7 +1601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1553,6 +1617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1561,7 +1626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1577,6 +1642,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1585,7 +1651,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1601,6 +1667,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1609,7 +1676,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1625,6 +1692,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1633,7 +1701,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1649,6 +1717,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1657,7 +1726,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1673,6 +1742,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1681,7 +1751,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_analytics.svg"
     },
     {
@@ -1697,6 +1767,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1705,7 +1776,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -1721,6 +1792,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1729,7 +1801,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -1745,6 +1817,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -1753,7 +1826,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1769,6 +1842,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -1777,7 +1851,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -1793,6 +1867,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1801,7 +1876,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1817,6 +1892,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1825,7 +1901,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1841,6 +1917,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1849,7 +1926,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1865,6 +1942,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1873,7 +1951,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -1889,6 +1967,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1897,7 +1976,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1913,6 +1992,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1921,7 +2001,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -1937,6 +2017,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1945,7 +2026,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1961,6 +2042,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1969,7 +2051,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -1985,6 +2067,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -1993,7 +2076,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -2009,6 +2092,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2017,7 +2101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -2033,6 +2117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2041,7 +2126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -2057,6 +2142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2065,7 +2151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -2081,6 +2167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2089,7 +2176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -2105,6 +2192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -2113,7 +2201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2129,6 +2217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -2137,7 +2226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2153,6 +2242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2161,7 +2251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2177,6 +2267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_CODEX_ISSUE_TO_PR",
@@ -2185,7 +2276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -2201,6 +2292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2209,7 +2301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -2225,6 +2317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2233,7 +2326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -2249,6 +2342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2257,7 +2351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2273,6 +2367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2281,7 +2376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2297,6 +2392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_SYNC",
@@ -2305,7 +2401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -2321,6 +2417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2329,7 +2426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2345,6 +2442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2353,7 +2451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2369,6 +2467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2377,7 +2476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_narrative.svg"
     },
     {
@@ -2393,6 +2492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2401,7 +2501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_narrative.svg"
     },
     {
@@ -2417,6 +2517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2425,7 +2526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -2441,6 +2542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2449,7 +2551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -2465,6 +2567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -2473,7 +2576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2489,6 +2592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -2497,7 +2601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2513,6 +2617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2521,7 +2626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2537,6 +2642,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -2545,7 +2651,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2561,6 +2667,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2569,7 +2676,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2585,6 +2692,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2593,7 +2701,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2609,6 +2717,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2617,7 +2726,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2633,6 +2742,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2641,7 +2751,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2657,6 +2767,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2665,7 +2776,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2681,6 +2792,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2689,7 +2801,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2705,6 +2817,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2713,7 +2826,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2729,6 +2842,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2737,7 +2851,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2753,6 +2867,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2761,7 +2876,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2777,6 +2892,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2785,7 +2901,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -2801,6 +2917,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2809,7 +2926,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -2825,6 +2942,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -2833,7 +2951,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2849,6 +2967,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -2857,7 +2976,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2873,6 +2992,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2881,7 +3001,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -2897,6 +3017,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -2905,7 +3026,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2921,6 +3042,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2929,7 +3051,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2945,6 +3067,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2953,7 +3076,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2969,6 +3092,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -2977,7 +3101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -2993,6 +3117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3001,7 +3126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3017,6 +3142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3025,7 +3151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3041,6 +3167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3049,7 +3176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3065,6 +3192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3073,7 +3201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3089,6 +3217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3097,7 +3226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3113,6 +3242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3121,7 +3251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3137,6 +3267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3145,7 +3276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -3161,6 +3292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3169,7 +3301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -3185,6 +3317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -3193,7 +3326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3209,6 +3342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -3217,7 +3351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3233,6 +3367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3241,7 +3376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3257,6 +3392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3265,7 +3401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3281,6 +3417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3289,7 +3426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3305,6 +3442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3313,7 +3451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3329,6 +3467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3337,7 +3476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3353,6 +3492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3361,7 +3501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3377,6 +3517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3385,7 +3526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3401,6 +3542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3409,7 +3551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3425,6 +3567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3433,7 +3576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3449,6 +3592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3457,7 +3601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3473,6 +3617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3481,7 +3626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_memo.svg"
     },
     {
@@ -3497,6 +3642,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3505,7 +3651,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -3521,6 +3667,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3529,7 +3676,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -3545,6 +3692,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -3553,7 +3701,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3569,6 +3717,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -3577,7 +3726,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3593,6 +3742,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3601,7 +3751,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3617,6 +3767,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_LOCAL_AI_SAFETY",
@@ -3625,7 +3776,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -3641,6 +3792,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3649,7 +3801,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -3665,6 +3817,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3673,7 +3826,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -3689,6 +3842,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3697,7 +3851,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -3713,6 +3867,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3721,7 +3876,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -3737,6 +3892,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3745,7 +3901,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -3761,6 +3917,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3769,7 +3926,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3785,6 +3942,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3793,7 +3951,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3809,6 +3967,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3817,7 +3976,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -3833,6 +3992,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3841,7 +4001,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -3857,6 +4017,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3865,7 +4026,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -3881,6 +4042,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3889,7 +4051,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -3905,6 +4067,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -3913,7 +4076,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3929,6 +4092,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -3937,7 +4101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -3953,6 +4117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3961,7 +4126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -3977,6 +4142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -3985,7 +4151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4001,6 +4167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4009,7 +4176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4025,6 +4192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4033,7 +4201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -4049,6 +4217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4057,7 +4226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4073,6 +4242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4081,7 +4251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4097,6 +4267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4105,7 +4276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4121,6 +4292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4129,7 +4301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4145,6 +4317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4153,7 +4326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4169,6 +4342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4177,7 +4351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4193,6 +4367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4201,7 +4376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -4217,6 +4392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4225,7 +4401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -4241,6 +4417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4249,7 +4426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -4265,6 +4442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -4273,7 +4451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4289,6 +4467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -4297,7 +4476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -4313,6 +4492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4321,7 +4501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4337,6 +4517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4345,7 +4526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4361,6 +4542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4369,7 +4551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4385,6 +4567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4393,7 +4576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4409,6 +4592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4417,7 +4601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4433,6 +4617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_KB_SOURCE_TRUTH",
@@ -4441,7 +4626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4457,6 +4642,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4465,7 +4651,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4481,6 +4667,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4489,7 +4676,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -4505,6 +4692,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4513,7 +4701,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4529,6 +4717,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4537,7 +4726,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4553,6 +4742,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4561,7 +4751,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4577,6 +4767,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4585,7 +4776,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -4601,6 +4792,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4609,7 +4801,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -4625,6 +4817,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -4633,7 +4826,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4649,6 +4842,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -4657,7 +4851,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -4673,6 +4867,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4681,7 +4876,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4697,6 +4892,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4705,7 +4901,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4721,6 +4917,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4729,7 +4926,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4745,6 +4942,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4753,7 +4951,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4769,6 +4967,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -4777,7 +4976,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -4793,6 +4992,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -4801,7 +5001,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -4817,6 +5017,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_SYNC",
@@ -4825,7 +5026,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -4841,6 +5042,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_AI_TREND",
@@ -4849,7 +5051,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4865,6 +5067,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_KB_SOURCE_TRUTH",
@@ -4873,7 +5076,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4889,6 +5092,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4897,7 +5101,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -4913,6 +5117,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_CODEX_ISSUE_TO_PR",
@@ -4921,7 +5126,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -4937,6 +5142,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4945,7 +5151,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -4961,6 +5167,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -4969,7 +5176,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -4985,6 +5192,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -4993,7 +5201,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5009,6 +5217,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -5017,7 +5226,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -5033,6 +5242,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5041,7 +5251,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5057,6 +5267,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5065,7 +5276,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5081,6 +5292,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5089,7 +5301,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_route.svg"
     },
     {
@@ -5105,6 +5317,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5113,7 +5326,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5129,6 +5342,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5137,7 +5351,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -5153,6 +5367,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5161,7 +5376,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -5177,6 +5392,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5185,7 +5401,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -5201,6 +5417,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5209,7 +5426,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -5225,6 +5442,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5233,7 +5451,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_draft.svg"
     },
     {
@@ -5249,6 +5467,7 @@
       "interaction_risk": "low",
       "workflow_risk": "medium",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5257,7 +5476,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_execution_request.svg"
     },
     {
@@ -5273,6 +5492,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5281,7 +5501,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5297,6 +5517,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5305,7 +5526,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_blocked.svg"
     },
     {
@@ -5321,6 +5542,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5329,7 +5551,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_handoff.svg"
     },
     {
@@ -5345,6 +5567,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_JUDGE",
@@ -5353,7 +5576,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     },
     {
@@ -5369,6 +5592,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": "AIOS_HOME_REVISOR",
@@ -5377,7 +5601,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_revise.svg"
     },
     {
@@ -5393,6 +5617,7 @@
       "interaction_risk": "low",
       "workflow_risk": "low",
       "data_sensitivity": "none",
+      "insertion_method": "clipboard_paste",
       "requires_confirmation": true,
       "auto_send": false,
       "mcp_action_id": null,
@@ -5401,7 +5626,7 @@
       "next_on_revise": "revisor_apply_notes",
       "next_on_blocked": "blocker_review",
       "stop_condition": "Stop when required source, deterministic evidence, permission, or owner gate is missing.",
-      "rollback": "Discard inserted text; no action is sent automatically.",
+      "rollback": "Discard inserted text; no action is sent automatically. The previous clipboard value may already be overwritten.",
       "icon": "assets/icons/action_judge.svg"
     }
   ]

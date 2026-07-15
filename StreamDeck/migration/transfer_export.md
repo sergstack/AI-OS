@@ -11,12 +11,12 @@
 1. Запустите `python3 StreamDeck/tools/export_profiles.py`, затем `python3 StreamDeck/tools/validate_v3.py`.
 2. Импортируйте 15 `B*.streamDeckProfile` на Deck B, затем `A00_CONTROL.streamDeckProfile` на Deck A.
 3. На каждой controller-кнопке вручную выберите физический Deck B и target profile. Export serial-neutral: пустой `DeviceUUID` не заменяет owner binding. Не задавайте Smart Profile.
-4. Проверьте на Deck B `System > Text`, exact prompt body/hash, embedded icon и отключённый Enter/Return/auto-send.
+4. Проверьте на Deck B `System > Text`, `insertion_method: clipboard_paste` (`isTypingMode: false`), exact prompt body/hash, embedded icon и отключённый Enter/Return/auto-send.
 5. Для MCP сверьте exact action IDs с `migration/mcp_registry.json`. `execution-verified` означает только legacy pilot evidence для двух actions, не v3 visibility.
 
 ## Manual fallback
 
-Если candidate import не проходит, создайте `AIOS-CONTROL` и 15 `AIOS-ACTIONS / <NAME>` вручную по config-файлам. Используйте только built-in `Switch Profile` и `System > Text`, body из `prompts/prompt_registry.json`, relative icons из `config/icon_map.json`; auto-send должен оставаться off.
+Если candidate import не проходит, создайте `AIOS-CONTROL` и 15 `AIOS-ACTIONS / <NAME>` вручную по config-файлам. Используйте только built-in `Switch Profile` и clipboard/paste mode `System > Text`, body из `prompts/prompt_registry.json`, relative icons из `config/icon_map.json`; typed text не используйте, auto-send должен оставаться off.
 
 ## Owner acceptance
 
@@ -31,3 +31,4 @@
 2. Верните Deck B на профиль v2.7/v2.9 из owner backup.
 3. Сохраните v3 profiles для диагностики; не удаляйте единственные evidence files.
 4. Repo rollback: revert v3 change; legacy checksums и исходные файлы остаются в `StreamDeck/archive/`.
+5. Уже перезаписанный clipboard не восстанавливается сменой profile; используйте owner clipboard history, если она была включена.

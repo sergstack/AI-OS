@@ -11,9 +11,11 @@ Record the Stream Deck app version, macOS version, both device models, role name
 | 15 profiles | Press every Deck A key once | Exact mapped B profile appears for all 15 | NOT RUN |
 | Device target | Disconnect/reconnect and inspect bindings | All controller keys still target AIOS-ACTIONS | NOT RUN |
 | Focus | Focus a disposable text field; press a safe action | Text lands only in intended field | NOT RUN |
-| Text insertion | Compare inserted text with prompt registry | Exact prompt and Unicode preserved | NOT RUN |
+| Text insertion | Confirm `clipboard_paste` mode, focus a disposable field and compare inserted text with prompt registry | Exact prompt and Unicode preserved; typed-text mode is not used | NOT RUN |
 | Auto-send | Press action without touching keyboard | Prompt is inserted but not sent | NOT RUN |
-| Longest prompt | Insert the longest registry body | No truncation | NOT RUN |
+| Longest multiline chat-input | In a disposable chat-input, insert the longest registry body containing multiple paragraphs | Entire prompt appears in the input with no truncation and no message is sent | NOT RUN |
+| Enter/newline safety | In a disposable chat-input, use a test body with line 1, newline, blank line and line 2 | Newlines remain inside one draft; no partial message is sent on either newline | NOT RUN |
+| Clipboard side effect | Put a disposable marker in clipboard, then press a safe action | Prompt replaces the marker; owner confirms this expected side effect and restoration method | NOT RUN |
 | Characters | Check Cyrillic, brackets and arrows | Characters preserved | NOT RUN |
 | Reconnect/sleep | Sleep/wake and reconnect both decks | Roles and profile switching remain correct | NOT RUN |
 | Export | Export controller and all action profiles | Real sanitized `.streamDeckProfile` files produced | NOT RUN |
@@ -22,4 +24,4 @@ Record the Stream Deck app version, macOS version, both device models, role name
 | MCP safe smoke | Run only approved Judge/Revisor insertion actions | Prompt only; no auto-send or write | NOT RUN |
 | v2.7 rollback | Disable v3 switching and restore archived baseline export | Previous working layout restored | NOT RUN |
 
-If TEST_A or TEST_B fails, stop before building profiles in the app. Do not use UI automation, focus-driven Smart Profiles, hotkey workarounds or a plugin unless a new reviewed issue explicitly authorizes that change.
+If TEST_A or TEST_B, Longest multiline chat-input or Enter/newline safety fails, stop before using action profiles. Do not use UI automation, focus-driven Smart Profiles, hotkey workarounds or a plugin unless a new reviewed issue explicitly authorizes that change. Rollback can disable profiles but cannot recover overwritten clipboard content without owner clipboard history.
