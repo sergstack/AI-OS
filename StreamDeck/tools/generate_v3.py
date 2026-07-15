@@ -93,7 +93,13 @@ ANALYTICS_V1_1_IDS = {
     "b40_analytics_memo_facts",
 }
 
-PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS
+DECK_QA_V1_1_IDS = {
+    "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
+    "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
+    "be0_deck_qa_export_backup",
+}
+
+PROMPT_V1_1_IDS = ROUTE_V1_1_IDS | JUDGE_V1_1_IDS | ANALYTICS_V1_1_IDS | DECK_QA_V1_1_IDS
 
 ROUTE_OWNER_PROJECTS = (
     "Owners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] "
@@ -372,7 +378,69 @@ def subject_logic(prompt_id: str) -> str:
             "or blocked for memo use."
         ),
     }
-    return route_rules.get(prompt_id, judge_rules.get(prompt_id, analytics_rules.get(prompt_id, "")))
+    deck_qa_rules = {
+        "be0_deck_qa_device_target": (
+            "Inspect the selected controller mapping and require target device role AIOS-ACTIONS, the expected "
+            "target profile, and serial-neutral source settings. Repository evidence may verify blank DeviceUUID "
+            "and profile UUID mapping only; it cannot prove the physical binding. In the Stream Deck app, the owner "
+            "must select the physical Deck B, press the controller key, and record whether Deck B changes while Deck "
+            "A stays on control. Report repo check and physical check separately as PASS/FAIL/NOT RUN. Never record "
+            "serial numbers or claim a binding was observed without the device test."
+        ),
+        "be0_deck_qa_text_insert": (
+            "Select one prompt_id and its exact UTF-8 body from the registry, focus a disposable text field, then "
+            "press the matching action once. Compare the complete inserted draft with the registry body, including "
+            "paragraph breaks, Cyrillic and symbols; record truncation or substitution precisely. Confirm source "
+            "settings use clipboard_paste / isTypingMode false and keep the repository check separate from the "
+            "physical observation. The expected result is not evidence: without app/device access return physical "
+            "status NOT RUN and provide the owner procedure."
+        ),
+        "be0_deck_qa_auto_send_off": (
+            "Use a disposable chat-input and a safe multiline prompt. Inspect the exported action for "
+            "isSendingEnter false and isTypingMode false, then physically press the key without touching the "
+            "keyboard. Pass only if the full prompt remains as one unsent draft after all embedded newlines; any "
+            "partial or complete submission is FAIL and blocks use of the profiles. Record archive inspection and "
+            "physical result separately. If devices are unavailable, say NOT RUN. Also warn that clipboard_paste "
+            "overwrites the current clipboard."
+        ),
+        "be0_deck_qa_placeholder": (
+            "Check canonical prompt bodies and exported pastedText with a deterministic search for prohibited "
+            "placeholders such as bracketed PASTE markers, unfinished-work markers, unresolved template markers and generic "
+            "fallback schemas. Name "
+            "the files/fields searched, exact patterns and observed match count; use repository tools rather than "
+            "visual sampling. Distinguish instructional literal examples from unresolved placeholders by the "
+            "validator's documented rule. Pass only with zero prohibited matches, revise exact prompt sources that "
+            "match, and regenerate exports/map/manifests after any fix."
+        ),
+        "be0_deck_qa_duplicates": (
+            "Use Python to check uniqueness of prompt_id + prompt_version, exact body text, action device/profile/"
+            "button coordinates and registry button_refs. Report duplicate groups and counts from tool output; do "
+            "not call similar labels or intentional shared prompt references duplicates. Verify every action prompt_id "
+            "resolves once and every registry prompt has at least one button reference. Pass only when forbidden "
+            "duplicates are absent and shared IDs map to identical version/body; otherwise fix the canonical "
+            "generator and regenerate all derived files."
+        ),
+        "be0_deck_qa_prompt_hash": (
+            "Do not ask the model to calculate SHA-256. Select the prompt_id/version in prompt_registry.json, "
+            "extract the exact UTF-8 body without normalization, and have the user or a deterministic Python/hash "
+            "tool compute SHA-256; compare it with prompt_hash. Separately compare the exported pastedText and the "
+            "physically inserted draft with that same body. Report each comparison as PASS/FAIL/NOT RUN and include "
+            "only the hash, prompt_id/version and command evidence, not private text. A physical comparison stays "
+            "NOT RUN without app/device access."
+        ),
+        "be0_deck_qa_export_backup": (
+            "Run the deterministic exporter to a scoped output directory, validate all expected profile archives, "
+            "and compare repeated-run SHA-256 hashes. Before physical import, require the owner to create a Stream "
+            "Deck app Back Up All backup and retain the archived v2.7/v2.9 rollback baseline. Repository generation "
+            "does not prove app export/import or backup success; record those as NOT RUN until observed. Do not store "
+            "serials, private paths, raw device dumps or credentials. Return generated files/checksums, owner backup "
+            "gate, import gate and rollback location separately."
+        ),
+    }
+    return route_rules.get(
+        prompt_id,
+        judge_rules.get(prompt_id, analytics_rules.get(prompt_id, deck_qa_rules.get(prompt_id, ""))),
+    )
 
 
 def dump(path: Path, value: object) -> None:

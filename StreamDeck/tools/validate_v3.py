@@ -190,7 +190,7 @@ def main() -> int:
         "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
     )
     boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
-    require(len(boilerplate_only) == 61, f"expected 61 boilerplate-only prompts after ROUTE batch, found {len(boilerplate_only)}")
+    require(len(boilerplate_only) == 54, f"expected 54 boilerplate-only prompts after DECK QA batch, found {len(boilerplate_only)}")
     for prompt in prompts:
         match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
         if match:
@@ -221,6 +221,19 @@ def main() -> int:
     require(len(analytics_batch_ids) == 10, "Analytics batch must contain 10 unique prompts")
     require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids), "Analytics versions must be 1.1.0")
     require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids), "Analytics subject logic missing")
+    deck_qa_batch_ids = {
+        row["prompt_id"] for row in rows
+        if row["profile_id"] == "BE0_DECK_QA" and row["prompt_id"] in {
+            "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
+            "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
+            "be0_deck_qa_export_backup",
+        }
+    }
+    require(len(deck_qa_batch_ids) == 7, "DECK QA batch must contain 7 unique prompts")
+    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids), "DECK QA versions must be 1.1.0")
+    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids), "DECK QA subject logic missing")
+    hash_body = prompt_by_id["be0_deck_qa_prompt_hash"]["body"]
+    require("Do not ask the model to calculate SHA-256" in hash_body and "deterministic Python/hash tool" in hash_body, "PROMPT HASH must require deterministic external calculation")
 
     require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
     require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")

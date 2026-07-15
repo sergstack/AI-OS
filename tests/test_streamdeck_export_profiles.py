@@ -82,6 +82,14 @@ def test_export_is_deterministic_and_prompt_bodies_are_exact(tmp_path: Path) -> 
     assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids)
     assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids)
     assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids)
+    deck_qa_batch_ids = {
+        "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
+        "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
+        "be0_deck_qa_export_backup",
+    }
+    assert all(registry_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
+    assert all(qa_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids)
+    assert all("\n\nSubject logic:\n" in registry_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids)
     expected_bodies = {item["body"] for item in registry["prompts"]}
     exported_bodies = []
     for path in sorted(tmp_path.glob("B*.streamDeckProfile")):

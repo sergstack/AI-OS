@@ -155,7 +155,7 @@
     },
     {
       "path": "config/action_profiles.json",
-      "sha256": "d8650b8b4101f269d19403318772d70fbf6792e64fa1ac62029bac98f412c8e9"
+      "sha256": "d030df7923e3127a8c9dfa11ad77fa41f4233fdc6e12838fce497b44965b4481"
     },
     {
       "path": "config/controller_map.json",
@@ -227,7 +227,7 @@
     },
     {
       "path": "exports/BE0_DECK_QA.streamDeckProfile",
-      "sha256": "e1b297f942c7c689b30e9488b7a4154c05e831178b95e7e22cb28661e1124db2"
+      "sha256": "aacecc66ca31a3e3726b278bd8b813d794eebd8ebaea83aa6057aee39f06b18f"
     },
     {
       "path": "exports/README.md",
@@ -235,7 +235,7 @@
     },
     {
       "path": "generated/button_map.md",
-      "sha256": "47f7c2d1347d6b9f7457f4ac7ae59220c3b250ad2879d73065f01988cab69f08"
+      "sha256": "a5dc8f42f6d7114234cf3a9c201c214e7521d0e3b839f5cf8bdf094aaf8c1708"
     },
     {
       "path": "migration/mcp_registry.json",
@@ -247,7 +247,7 @@
     },
     {
       "path": "prompts/prompt_registry.json",
-      "sha256": "37373d6d227680cfac8100d4b7eba2b59291bd4926f2c584a595f1f23a62ee43"
+      "sha256": "2c57e8c55eaa2eeed8fb4b726d5236af63975665dc7284c3c3255f8b0da3535e"
     },
     {
       "path": "qa/baseline_audit.json",
@@ -263,7 +263,7 @@
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "05f49b90bd7665a0ba557b77a525c5c972ada09b1457cd9a0f54787377f44298"
+      "sha256": "354a9268245a165f5f6919499f7bb1c8bb6779fb350b0a42cd1c8c7cff4aff7b"
     },
     {
       "path": "tools/export_profiles.py",
@@ -271,11 +271,11 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "26dde5d17aa2126a4f8ecbf9a57507f767f2735dfc5f4e5438479403918214b8"
+      "sha256": "b171409d8627d783cb1ed79ce1193f9ddf608584c8a0329026e1972a4cfd63ff"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "400a3d66956ac01a2ce30f51cc36c37836ffb2d59f11667ddb6fb7d8c6320f07"
+      "sha256": "0c88389951b8b7af485758a39daad8e6e12b2c1635be33eea26f5b4a4382abfc"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

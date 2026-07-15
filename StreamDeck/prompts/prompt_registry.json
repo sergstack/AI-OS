@@ -4090,7 +4090,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_auto_send_off",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the AUTO-SEND OFF workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4102,7 +4102,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# AUTO-SEND OFF — [Codex]\n\nPurpose:\nProduce the AUTO-SEND OFF workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Auto-Send Off deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# AUTO-SEND OFF — [Codex]\n\nPurpose:\nProduce the AUTO-SEND OFF workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nUse a disposable chat-input and a safe multiline prompt. Inspect the exported action for isSendingEnter false and isTypingMode false, then physically press the key without touching the keyboard. Pass only if the full prompt remains as one unsent draft after all embedded newlines; any partial or complete submission is FAIL and blocks use of the profiles. Record archive inspection and physical result separately. If devices are unavailable, say NOT RUN. Also warn that clipboard_paste overwrites the current clipboard.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Auto-Send Off deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Auto-Send Off deliverable",
         "Source material used",
@@ -4133,11 +4133,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "5c8552c87f78013a8d2327076c886fecdc7b97ff4d8e152fea419d3197b71c4a"
+      "prompt_hash": "da6fc59bbe25afac10ef0c92702031de0a46cdb93af9550bab31f3591445ac37"
     },
     {
       "prompt_id": "be0_deck_qa_device_target",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "route",
       "purpose": "Produce the DEVICE TARGET workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4149,7 +4149,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# DEVICE TARGET — [Codex]\n\nPurpose:\nProduce the DEVICE TARGET workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Input classification\n- Chosen owner project\n- Reason\n- Required context\n- Forbidden data\n- Handoff target\n- Stop condition",
+      "body": "# DEVICE TARGET — [Codex]\n\nPurpose:\nProduce the DEVICE TARGET workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nInspect the selected controller mapping and require target device role AIOS-ACTIONS, the expected target profile, and serial-neutral source settings. Repository evidence may verify blank DeviceUUID and profile UUID mapping only; it cannot prove the physical binding. In the Stream Deck app, the owner must select the physical Deck B, press the controller key, and record whether Deck B changes while Deck A stays on control. Report repo check and physical check separately as PASS/FAIL/NOT RUN. Never record serial numbers or claim a binding was observed without the device test.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Input classification\n- Chosen owner project\n- Reason\n- Required context\n- Forbidden data\n- Handoff target\n- Stop condition",
       "output_schema": [
         "Input classification",
         "Chosen owner project",
@@ -4179,11 +4179,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "0a9e66e1b939587f25bfff88e89d96e692c0f2609f5549732452b6ca5c8b490b"
+      "prompt_hash": "b2aa571562d5a7698a7e8371183fa615b23970ce0e23adc8c3d9e7504a0b6995"
     },
     {
       "prompt_id": "be0_deck_qa_duplicates",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the DUPLICATES workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4195,7 +4195,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# DUPLICATES — [Codex]\n\nPurpose:\nProduce the DUPLICATES workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Duplicates deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# DUPLICATES — [Codex]\n\nPurpose:\nProduce the DUPLICATES workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nUse Python to check uniqueness of prompt_id + prompt_version, exact body text, action device/profile/button coordinates and registry button_refs. Report duplicate groups and counts from tool output; do not call similar labels or intentional shared prompt references duplicates. Verify every action prompt_id resolves once and every registry prompt has at least one button reference. Pass only when forbidden duplicates are absent and shared IDs map to identical version/body; otherwise fix the canonical generator and regenerate all derived files.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Duplicates deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Duplicates deliverable",
         "Source material used",
@@ -4226,11 +4226,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "38c1e49af2a4d928faf6de49fb41163acbe9ee9ae7bd1b4e4901072597884c35"
+      "prompt_hash": "601ba47beb549baec9f0a36144e549c3e8ea59beee703b26c5caa83a14b62cc7"
     },
     {
       "prompt_id": "be0_deck_qa_export_backup",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "execution_request",
       "purpose": "Produce the EXPORT BACKUP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4242,7 +4242,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# EXPORT BACKUP — [Codex]\n\nPurpose:\nProduce the EXPORT BACKUP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Export Backup objective\n- Commands / tool calls actually observed\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Observed result\n- Proposed actions not run\n- Blockers\n- Rollback\n- Next action",
+      "body": "# EXPORT BACKUP — [Codex]\n\nPurpose:\nProduce the EXPORT BACKUP workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nRun the deterministic exporter to a scoped output directory, validate all expected profile archives, and compare repeated-run SHA-256 hashes. Before physical import, require the owner to create a Stream Deck app Back Up All backup and retain the archived v2.7/v2.9 rollback baseline. Repository generation does not prove app export/import or backup success; record those as NOT RUN until observed. Do not store serials, private paths, raw device dumps or credentials. Return generated files/checksums, owner backup gate, import gate and rollback location separately.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Export Backup objective\n- Commands / tool calls actually observed\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Observed result\n- Proposed actions not run\n- Blockers\n- Rollback\n- Next action",
       "output_schema": [
         "Export Backup objective",
         "Commands / tool calls actually observed",
@@ -4273,7 +4273,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "426a09cb8697df7c9543f9f52b1d598d49f07aecaa0e882db86d9c2907b48fa0"
+      "prompt_hash": "f46fa44519918a7a59425f7553e2ea96422f40206a8f797fe68701f0c44b7207"
     },
     {
       "prompt_id": "be0_deck_qa_focus_test",
@@ -4369,7 +4369,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_placeholder",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the PLACEHOLDER workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4381,7 +4381,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# PLACEHOLDER — [Codex]\n\nPurpose:\nProduce the PLACEHOLDER workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Placeholder deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PLACEHOLDER — [Codex]\n\nPurpose:\nProduce the PLACEHOLDER workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nCheck canonical prompt bodies and exported pastedText with a deterministic search for prohibited placeholders such as bracketed PASTE markers, unfinished-work markers, unresolved template markers and generic fallback schemas. Name the files/fields searched, exact patterns and observed match count; use repository tools rather than visual sampling. Distinguish instructional literal examples from unresolved placeholders by the validator's documented rule. Pass only with zero prohibited matches, revise exact prompt sources that match, and regenerate exports/map/manifests after any fix.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Placeholder deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Placeholder deliverable",
         "Source material used",
@@ -4412,11 +4412,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "b436264c928920b5e520231d1fb1a00aebc0d8c7e835c8a30930b26ac20be3cc"
+      "prompt_hash": "fb5ead165a1be8f7d4191a6478b6222d7cc4814f015cee82bcf62df9edd677ff"
     },
     {
       "prompt_id": "be0_deck_qa_prompt_hash",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the PROMPT HASH workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4428,7 +4428,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# PROMPT HASH — [Codex]\n\nPurpose:\nProduce the PROMPT HASH workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Prompt Hash deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PROMPT HASH — [Codex]\n\nPurpose:\nProduce the PROMPT HASH workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nDo not ask the model to calculate SHA-256. Select the prompt_id/version in prompt_registry.json, extract the exact UTF-8 body without normalization, and have the user or a deterministic Python/hash tool compute SHA-256; compare it with prompt_hash. Separately compare the exported pastedText and the physically inserted draft with that same body. Report each comparison as PASS/FAIL/NOT RUN and include only the hash, prompt_id/version and command evidence, not private text. A physical comparison stays NOT RUN without app/device access.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Prompt Hash deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Prompt Hash deliverable",
         "Source material used",
@@ -4459,7 +4459,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "f999b0bcc167c790c0e2d4dfd8cbddfea83ef7d4b63a870d08609458ea1fde78"
+      "prompt_hash": "122e4c1347675c74ecc4a5574a651da15073c1bb002e71c3cf98c2b620e9f94d"
     },
     {
       "prompt_id": "be0_deck_qa_switch_test",
@@ -4509,7 +4509,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_text_insert",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "task_type": "draft",
       "purpose": "Produce the TEXT INSERT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
       "owner_project": "[Codex]",
@@ -4521,7 +4521,7 @@
       ],
       "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
       "execution_mode": "generate",
-      "body": "# TEXT INSERT — [Codex]\n\nPurpose:\nProduce the TEXT INSERT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Text Insert deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# TEXT INSERT — [Codex]\n\nPurpose:\nProduce the TEXT INSERT workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nSelect one prompt_id and its exact UTF-8 body from the registry, focus a disposable text field, then press the matching action once. Compare the complete inserted draft with the registry body, including paragraph breaks, Cyrillic and symbols; record truncation or substitution precisely. Confirm source settings use clipboard_paste / isTypingMode false and keep the repository check separate from the physical observation. The expected result is not evidence: without app/device access return physical status NOT RUN and provide the owner procedure.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Text Insert deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
       "output_schema": [
         "Text Insert deliverable",
         "Source material used",
@@ -4552,7 +4552,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-15",
       "owner_acceptance": "pending",
-      "prompt_hash": "01104f7c4f027361b72ef2113e76f89d5e02b08aef7db1b800f64be7db277d69"
+      "prompt_hash": "91ecb38623ee881e45d05b99c7d34e9e2842a0a2598a97069024ef38b733d61d"
     },
     {
       "prompt_id": "blocker_review",

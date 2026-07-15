@@ -307,14 +307,14 @@
 | Key | Label | Prompt ID | Version | Owner | Insertion method | Next pass |
 |---|---|---|---|---|---|---|
 | K1 | SWITCH TEST | `be0_deck_qa_switch_test` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K2 | DEVICE TARGET | `be0_deck_qa_device_target` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K2 | DEVICE TARGET | `be0_deck_qa_device_target` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K3 | FOCUS TEST | `be0_deck_qa_focus_test` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K4 | TEXT INSERT | `be0_deck_qa_text_insert` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K5 | AUTO-SEND OFF | `be0_deck_qa_auto_send_off` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K6 | PLACEHOLDER | `be0_deck_qa_placeholder` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K7 | DUPLICATES | `be0_deck_qa_duplicates` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K8 | PROMPT HASH | `be0_deck_qa_prompt_hash` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
-| K9 | EXPORT BACKUP | `be0_deck_qa_export_backup` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K4 | TEXT INSERT | `be0_deck_qa_text_insert` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K5 | AUTO-SEND OFF | `be0_deck_qa_auto_send_off` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K6 | PLACEHOLDER | `be0_deck_qa_placeholder` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K7 | DUPLICATES | `be0_deck_qa_duplicates` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K8 | PROMPT HASH | `be0_deck_qa_prompt_hash` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
+| K9 | EXPORT BACKUP | `be0_deck_qa_export_backup` | `1.1.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K10 | IMPORT TEST | `be0_deck_qa_import_test` | `1.0.0` | [Codex] | `clipboard_paste` | `final_acceptance_gate` |
 | K11 | BLOCKER | `blocker_review` | `1.1.0` | [Thinking] | `clipboard_paste` | `final_acceptance_gate` |
 | K12 | HANDOFF | `handoff_prepare` | `1.1.0` | [Inbox Router] | `clipboard_paste` | `final_acceptance_gate` |

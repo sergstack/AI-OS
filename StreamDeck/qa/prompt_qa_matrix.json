@@ -7423,7 +7423,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_auto_send_off",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K5"
       ],
@@ -7450,7 +7450,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -7508,7 +7509,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_device_target",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K2"
       ],
@@ -7535,7 +7536,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -7593,7 +7595,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_duplicates",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K7"
       ],
@@ -7620,7 +7622,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -7678,7 +7681,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_export_backup",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K9"
       ],
@@ -7705,7 +7708,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -7933,7 +7937,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_placeholder",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K6"
       ],
@@ -7960,7 +7964,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -8018,7 +8023,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_prompt_hash",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K8"
       ],
@@ -8045,7 +8050,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
@@ -8188,7 +8194,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_text_insert",
-      "prompt_version": "1.0.0",
+      "prompt_version": "1.1.0",
       "button_refs": [
         "BE0_DECK_QA/K4"
       ],
@@ -8215,7 +8221,8 @@
         "route": "pass",
         "execution_truth": "pass",
         "freshness": "pass",
-        "no_new_claims": "pass"
+        "no_new_claims": "pass",
+        "subject_logic": "pass"
       },
       "gate_criteria": [
         {
