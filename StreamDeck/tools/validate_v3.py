@@ -285,6 +285,7 @@ def main() -> int:
     require(len(qa_rows) == qa["prompt_count"] == len(prompts), "QA matrix must have one row per unique prompt")
     require({r["prompt_id"] for r in qa_rows} == set(prompt_by_id), "QA matrix prompt set mismatch")
     executed_cases = 0
+    live_run_count = 0
     for row in qa_rows:
         require(row["prompt_version"] == prompt_by_id[row["prompt_id"]]["prompt_version"], f"QA/registry version mismatch: {row['prompt_id']}")
         require({case["case"] for case in row["test_cases"]} == {"normal", "missing_context_or_evidence", "unsafe_or_ambiguous"}, f"representative cases missing: {row['prompt_id']}")
@@ -292,6 +293,22 @@ def main() -> int:
             require(case["status"] in {"NOT RUN", "EXECUTED"}, f"invalid QA execution status: {row['prompt_id']}/{case['case']}")
             forbidden_result_fields = {"response", "raw_response", "request", "request_text", "api_key"}
             require(not (forbidden_result_fields & set(case)), f"raw/private QA result field: {row['prompt_id']}/{case['case']}")
+            live_runs = case.get("live_runs", [])
+            require(isinstance(live_runs, list), f"invalid live_runs: {row['prompt_id']}/{case['case']}")
+            live_run_count += len(live_runs)
+            for live_run in live_runs:
+                require(not (forbidden_result_fields & set(live_run)), f"raw/private live QA field: {row['prompt_id']}/{case['case']}")
+                required_live_fields = {"provider", "model_id", "executed_at", "response_sha256", "response_chars", "deterministic_checks", "observed_verdict"}
+                require(set(live_run) == required_live_fields, f"invalid live QA fields: {row['prompt_id']}/{case['case']}")
+                require(live_run.get("provider") == "chatgpt_web", f"invalid live QA provider: {row['prompt_id']}/{case['case']}")
+                require(isinstance(live_run.get("model_id"), str) and bool(live_run["model_id"]), f"missing live QA model id: {row['prompt_id']}/{case['case']}")
+                require(bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", live_run.get("executed_at", ""))), f"invalid live QA execution date: {row['prompt_id']}/{case['case']}")
+                require(live_run.get("observed_verdict") in {"pass", "revise"}, f"invalid live QA verdict: {row['prompt_id']}/{case['case']}")
+                checks = live_run.get("deterministic_checks", {})
+                required_checks = {"schema_fit", "missing_sections", "material_selection", "blocked_or_not_run", "unsafe_action_claim_free", "expected_behavior"}
+                require(set(checks) == required_checks, f"invalid live deterministic checks: {row['prompt_id']}/{case['case']}")
+                require(bool(re.fullmatch(r"[0-9a-f]{64}", live_run.get("response_sha256", ""))), f"invalid live response hash: {row['prompt_id']}/{case['case']}")
+                require(isinstance(live_run.get("response_chars"), int) and live_run["response_chars"] > 0, f"invalid live response length: {row['prompt_id']}/{case['case']}")
             if case["status"] == "EXECUTED":
                 executed_cases += 1
                 require(case.get("provider") in {"openai", "anthropic", "google"}, f"invalid QA provider: {row['prompt_id']}/{case['case']}")
@@ -312,6 +329,7 @@ def main() -> int:
         require(row["owner_acceptance"] == "pending" and row["formal_gate_status"] == "blocked - not 10/10", f"unearned QA acceptance: {row['prompt_id']}")
     if executed_cases:
         require(qa["status"] == "repo static QA complete; model executions recorded; physical QA and owner acceptance pending", "executed QA matrix status mismatch")
+    require(qa.get("live_run_count") == live_run_count, "live QA run count mismatch")
 
     icon_paths = {item["path"] for item in icons["icons"]}
     require(icon_paths == {r["icon"] for r in controller_rows + rows}, "icon map does not match button maps")

@@ -2,6 +2,7 @@
   "version": "3.0.0",
   "status": "repo static QA complete; model executions recorded; physical QA and owner acceptance pending",
   "prompt_count": 140,
+  "live_run_count": 0,
   "rows": [
     {
       "prompt_id": "ai_trend",

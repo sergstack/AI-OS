@@ -11,7 +11,9 @@ from types import SimpleNamespace
 ROOT = Path(__file__).resolve().parents[1]
 STREAMDECK = ROOT / "StreamDeck"
 SCRIPT = STREAMDECK / "tools" / "run_prompt_qa.py"
+LIVE_SCRIPT = STREAMDECK / "tools" / "run_prompt_qa_live.py"
 GENERATOR = STREAMDECK / "tools" / "generate_v3.py"
+sys.path.insert(0, str(SCRIPT.parent))
 
 
 def load_runner():
@@ -27,6 +29,15 @@ def load_generator():
     spec = importlib.util.spec_from_file_location("generate_v3", GENERATOR)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_live_runner():
+    spec = importlib.util.spec_from_file_location("run_prompt_qa_live", LIVE_SCRIPT)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
 
@@ -114,6 +125,14 @@ EXECUTED
     assert failed["schema_fit"] == "fail"
     assert failed["unsafe_action_claim_free"] == "fail"
     assert failed["expected_behavior"] == "fail"
+
+
+def test_api_and_live_runners_share_deterministic_checks():
+    runner = load_runner()
+    live = load_live_runner()
+
+    assert runner.evaluate_response is live.evaluate_response
+    assert runner.QaInput is live.QaInput
 
 
 def test_api_payload_extractors_and_usage_are_provider_specific():
@@ -260,6 +279,70 @@ def test_generator_preserves_only_matching_executed_qa_results():
     }
     assert generated_rows[0]["test_cases"][1]["status"] == "NOT RUN"
     assert generated_rows[1]["test_cases"][0]["status"] == "NOT RUN"
+
+
+def test_generator_preserves_live_runs_without_replacing_api_fields():
+    generator = load_generator()
+    live_run = {
+        "provider": "chatgpt_web",
+        "model_id": "UI model",
+        "executed_at": "2026-07-15T00:00:00Z",
+    }
+    generated = [{"prompt_id": "example", "prompt_version": "1.0.0", "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "current"}]}]
+    existing = {"rows": [{"prompt_id": "example", "prompt_version": "1.0.0", "test_cases": [{"case": "normal", "status": "EXECUTED", "expected": "old", "provider": "google", "live_runs": [live_run]}]}]}
+
+    assert generator.preserve_executed_qa_results(generated, existing) == 1
+    assert generated[0]["test_cases"][0]["provider"] == "google"
+    assert generated[0]["test_cases"][0]["expected"] == "current"
+    assert generated[0]["test_cases"][0]["live_runs"] == [live_run]
+
+
+def test_live_runner_uses_project_knowledge_only_for_normal_and_persists_no_raw(tmp_path: Path):
+    live = load_live_runner()
+    registry, matrix, _ = load_sources()
+    prompt = registry["prompts"][0]
+    inputs = [
+        live.QaInput(prompt["prompt_id"], prompt["prompt_version"], case, prompt["body"], tuple(prompt["output_schema"]), "unused")
+        for case in live.CASE_NAMES
+    ]
+
+    class MockBrowser:
+        def __init__(self):
+            self.calls = []
+
+        def run_project_prompt(self, **kwargs):
+            self.calls.append(kwargs)
+            headings = "\n".join(f"## {label.split(':', 1)[0]}\nblocked / NOT RUN" for label in prompt["output_schema"])
+            return live.BrowserResult(headings, "GPT UI test model")
+
+    browser = MockBrowser()
+    output = tmp_path / "matrix.json"
+    updated, failures = live.run_live_qa(
+        browser, registry, matrix, inputs, matrix_path=output, manifest_path=None,
+        checkpoint_every=2, retries=0, retry_base_seconds=0,
+    )
+
+    assert failures == []
+    assert [call["use_project_knowledge"] for call in browser.calls] == [True, False, False]
+    assert all(call["insertion_method"] == "clipboard_paste" for call in browser.calls)
+    assert "SYNTHETIC QA CONTEXT" not in browser.calls[0]["request_text"]
+    assert all("SYNTHETIC QA CONTEXT" in call["request_text"] for call in browser.calls[1:])
+    assert all("do not use Project Knowledge" in call["request_text"] for call in browser.calls[1:])
+    row = next(item for item in updated["rows"] if item["prompt_id"] == prompt["prompt_id"])
+    assert updated["live_run_count"] == 3
+    for case in row["test_cases"]:
+        run = case["live_runs"][0]
+        assert set(run) == {"provider", "model_id", "executed_at", "response_sha256", "response_chars", "deterministic_checks", "observed_verdict"}
+        assert not ({"response", "raw_response", "request", "request_text", "api_key"} & set(run))
+
+
+def test_live_resume_uses_prompt_and_case_key():
+    live = load_live_runner()
+    matrix = {"rows": [{"prompt_id": "example", "test_cases": [{"case": "normal", "live_runs": [{"provider": "chatgpt_web"}]}, {"case": "unsafe_or_ambiguous"}]}]}
+
+    assert live.completed_live_case_keys(matrix) == {("example", "normal")}
+    assert live.browser_project("[LLM] / Judge") == "[LLM]"
+    assert live.browser_project("[Analytics]") == "[Analytics]"
 
 
 def test_google_call_uses_generate_content_contract(monkeypatch):

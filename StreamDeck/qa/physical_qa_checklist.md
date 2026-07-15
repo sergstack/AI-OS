@@ -4,7 +4,7 @@ Status: every item is `NOT RUN — owner physical action required`.
 
 Record the Stream Deck app version, macOS version, both device models, role names and test date. Do not record serials, private paths, tokens or raw device dumps in the repository.
 
-Model QA is separate: `python3 StreamDeck/tools/run_prompt_qa.py --dry-run` validates all 420 synthetic cases, and an owner may run the API-backed cases with a key from environment. This checklist records only physical Stream Deck/app observations. Model-QA execution never changes a row below, substitutes for device evidence, grants owner acceptance, or makes the package selected/import-ready.
+Model QA is separate: `python3 StreamDeck/tools/run_prompt_qa.py --dry-run` validates all 420 synthetic API cases, while `python3 StreamDeck/tools/run_prompt_qa_live.py --dry-run` assembles the ChatGPT Project browser cases without browser calls or writes. The live run must use Codex's already-authenticated browser session and clipboard paste; it must not read credentials or browser storage. This checklist records only physical Stream Deck/app observations. Model-QA execution never changes a row below, substitutes for device evidence, grants owner acceptance, or makes the package selected/import-ready.
 
 | Gate | Procedure | Pass evidence | Status |
 |---|---|---|---|
