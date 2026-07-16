@@ -64,8 +64,9 @@ class BrowserAdapter(Protocol):
 
 def build_live_request_text(body: str, case_name: str) -> str:
     prefix = (
-        "Run this Prompt QA case in the current ChatGPT Project. Follow the exact Stream Deck prompt body "
-        "below; do not claim unobserved execution.\n\n--- PROMPT BODY ---\n"
+        "Run this independent Prompt QA case in the current ChatGPT Project. Ignore earlier chat turns "
+        "and outputs; use only this message plus explicitly allowed Project Knowledge. Follow the exact "
+        "Stream Deck prompt body below; do not claim unobserved execution.\n\n--- PROMPT BODY ---\n"
         f"{body}"
     )
     if case_name == "normal":

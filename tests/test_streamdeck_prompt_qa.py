@@ -49,6 +49,15 @@ def load_sources():
     return registry, matrix, actions
 
 
+def without_live_runs(matrix):
+    cleaned = json.loads(json.dumps(matrix))
+    for row in cleaned["rows"]:
+        for case in row["test_cases"]:
+            case.pop("live_runs", None)
+    cleaned["live_run_count"] = 0
+    return cleaned
+
+
 def test_builds_all_and_priority_inputs():
     runner = load_runner()
     registry, matrix, actions = load_sources()
@@ -300,6 +309,7 @@ def test_generator_preserves_live_runs_without_replacing_api_fields():
 def test_live_runner_uses_project_knowledge_only_for_normal_and_persists_no_raw(tmp_path: Path):
     live = load_live_runner()
     registry, matrix, _ = load_sources()
+    matrix = without_live_runs(matrix)
     prompt = registry["prompts"][0]
     inputs = [
         live.QaInput(prompt["prompt_id"], prompt["prompt_version"], case, prompt["body"], tuple(prompt["output_schema"]), "unused")
@@ -325,6 +335,7 @@ def test_live_runner_uses_project_knowledge_only_for_normal_and_persists_no_raw(
     assert failures == []
     assert [call["use_project_knowledge"] for call in browser.calls] == [True, False, False]
     assert all(call["insertion_method"] == "clipboard_paste" for call in browser.calls)
+    assert all("Ignore earlier chat turns and outputs" in call["request_text"] for call in browser.calls)
     assert "SYNTHETIC QA CONTEXT" not in browser.calls[0]["request_text"]
     assert all("SYNTHETIC QA CONTEXT" in call["request_text"] for call in browser.calls[1:])
     assert all("do not use Project Knowledge" in call["request_text"] for call in browser.calls[1:])
@@ -347,6 +358,7 @@ def test_live_resume_uses_prompt_and_case_key():
 
 def test_live_cli_next_and_record_use_stdin_without_persisting_raw(tmp_path: Path):
     registry, matrix, _ = load_sources()
+    matrix = without_live_runs(matrix)
     matrix_path = tmp_path / "matrix.json"
     matrix_path.write_text(json.dumps(matrix, ensure_ascii=False), encoding="utf-8")
 
@@ -464,6 +476,7 @@ def test_retry_repeats_only_sanitized_retryable_failures(monkeypatch):
 def test_result_write_preserves_gates_and_updates_manifest_checksum(tmp_path: Path):
     runner = load_runner()
     registry, matrix, _ = load_sources()
+    matrix = without_live_runs(matrix)
     prompt = registry["prompts"][0]
     qa_input = runner.QaInput(
         prompt_id=prompt["prompt_id"],

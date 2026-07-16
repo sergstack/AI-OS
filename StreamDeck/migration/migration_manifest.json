@@ -267,7 +267,7 @@
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "b6c203eb21bc02fd9c3873b62e6d0166279681dcb673708335e8b61219d120a0"
+      "sha256": "aa9ab05d00cc53eadbcf8f8c59323b4363a755183d94a4b67ec9bf90b5d16760"
     },
     {
       "path": "tools/export_profiles.py",
@@ -287,7 +287,7 @@
     },
     {
       "path": "tools/run_prompt_qa_live.py",
-      "sha256": "079fcde234a62203e4c74365914fc47eb89c30c5b3f59aad4d6ffd1757224f57"
+      "sha256": "f4ba0b4c388c2ca3d54862ab6b654f08a639953af45d46337d2fe0c43a0c1042"
     },
     {
       "path": "tools/validate_v3.py",
