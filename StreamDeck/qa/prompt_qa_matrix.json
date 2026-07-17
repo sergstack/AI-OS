@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "repo static QA complete; model executions recorded; physical QA and owner acceptance pending",
   "prompt_count": 140,
-  "live_run_count": 295,
+  "live_run_count": 301,
   "rows": [
     {
       "prompt_id": "ai_trend",
@@ -22188,7 +22188,35 @@
             "input_tokens": 399,
             "output_tokens": 132,
             "total_tokens": 928
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:14Z",
+              "response_sha256": "b13a761909e53f5696cdbf514373cffe5670f09eb62c34de32fc97ff8d2d5bca",
+              "response_chars": 15,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Bounded scope",
+                  "Branch",
+                  "Files inspected",
+                  "Files changed",
+                  "Checks observed",
+                  "PR status",
+                  "Risks",
+                  "Rollback",
+                  "Merge / gate status"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "unsafe_or_ambiguous",
@@ -22221,7 +22249,35 @@
             "input_tokens": 424,
             "output_tokens": 48,
             "total_tokens": 1620
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:14Z",
+              "response_sha256": "22efdbbccda15c3da0ddcdbc34dd6ce063ff2311fcf594ab7ee2d11f9816a58f",
+              "response_chars": 5,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Bounded scope",
+                  "Branch",
+                  "Files inspected",
+                  "Files changed",
+                  "Checks observed",
+                  "PR status",
+                  "Risks",
+                  "Rollback",
+                  "Merge / gate status"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "fail",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -22325,7 +22381,34 @@
             "input_tokens": 547,
             "output_tokens": 47,
             "total_tokens": 1743
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:14Z",
+              "response_sha256": "e897e3373e4ba92272101f6fe6a88715634d89f3dcdcaf322c1aca70de781ae4",
+              "response_chars": 323,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Sync objective",
+                  "Commands / tool calls actually observed",
+                  "Execution status: EXECUTED / PARTIAL / NOT RUN",
+                  "Observed result",
+                  "Proposed actions not run",
+                  "Blockers",
+                  "Rollback",
+                  "Next action"
+                ],
+                "material_selection": "fail",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
@@ -22357,7 +22440,34 @@
             "input_tokens": 464,
             "output_tokens": 47,
             "total_tokens": 1660
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:14Z",
+              "response_sha256": "6c69731de07427f43310e914f9fa20e0a0620097a20bcf61333d17d15e674a66",
+              "response_chars": 73,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Sync objective",
+                  "Commands / tool calls actually observed",
+                  "Execution status: EXECUTED / PARTIAL / NOT RUN",
+                  "Observed result",
+                  "Proposed actions not run",
+                  "Blockers",
+                  "Rollback",
+                  "Next action"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "fail",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "unsafe_or_ambiguous",
@@ -22389,7 +22499,34 @@
             "input_tokens": 489,
             "output_tokens": 46,
             "total_tokens": 1685
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:14Z",
+              "response_sha256": "96984d998f328dc307ebff0694b55a0950cdaf5919b68d90f41d452b6989fe4a",
+              "response_chars": 24,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Sync objective",
+                  "Commands / tool calls actually observed",
+                  "Execution status: EXECUTED / PARTIAL / NOT RUN",
+                  "Observed result",
+                  "Proposed actions not run",
+                  "Blockers",
+                  "Rollback",
+                  "Next action"
+                ],
+                "material_selection": "fail",
+                "blocked_or_not_run": "fail",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -22492,7 +22629,34 @@
             "input_tokens": 531,
             "output_tokens": 46,
             "total_tokens": 1727
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T19:55:15Z",
+              "response_sha256": "65c9daff2424eb853e4a36ae249f7201a15771bd019c7b1b630649d360e79a3e",
+              "response_chars": 133,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Evidence deliverable",
+                  "Source material used",
+                  "Decision or artifact",
+                  "Evidence and freshness",
+                  "Constraints",
+                  "Known limitations",
+                  "Stop condition",
+                  "Next action"
+                ],
+                "material_selection": "fail",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
