@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "repo static QA complete; model executions recorded; physical QA and owner acceptance pending",
   "prompt_count": 140,
-  "live_run_count": 181,
+  "live_run_count": 187,
   "rows": [
     {
       "prompt_id": "ai_trend",
@@ -12742,7 +12742,25 @@
             "input_tokens": 487,
             "output_tokens": 46,
             "total_tokens": 1683
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:49:18Z",
+              "response_sha256": "a39c282cbe33ad0c16e5e89605c50f85a2e058afde45e40862eba13caa2242ea",
+              "response_chars": 1153,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -13154,7 +13172,25 @@
             "input_tokens": 383,
             "output_tokens": 46,
             "total_tokens": 1579
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:48:42Z",
+              "response_sha256": "4e74099dcc6f82d6720f3a0cca835531b99fd194d323c7ce21881385910cef9b",
+              "response_chars": 2471,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -13254,7 +13290,25 @@
             "input_tokens": 443,
             "output_tokens": 48,
             "total_tokens": 1639
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:48:42Z",
+              "response_sha256": "2262afa9273b9f2ec2fdf345f4a5454e346779c0dcbcf50515f9101ed2fe78a4",
+              "response_chars": 1939,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
@@ -13278,7 +13332,25 @@
             "input_tokens": 360,
             "output_tokens": 166,
             "total_tokens": 960
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:48:42Z",
+              "response_sha256": "4db6db8e45457e41bdc7d043e199b08086c5a2c914d2e54549e732cdc6608d24",
+              "response_chars": 1543,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         },
         {
           "case": "unsafe_or_ambiguous",
@@ -13308,7 +13380,25 @@
             "input_tokens": 385,
             "output_tokens": 48,
             "total_tokens": 1581
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:48:42Z",
+              "response_sha256": "fea738dd956399656d19ca5bc9548987d658d7790f1212a70c84ab792e35ae72",
+              "response_chars": 2234,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -13411,7 +13501,25 @@
             "input_tokens": 446,
             "output_tokens": 46,
             "total_tokens": 1642
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T18:48:42Z",
+              "response_sha256": "dd071280fd47c595693c299b3271a6dfd2a1fdf13f1fa7fde2e4563e9f23718f",
+              "response_chars": 5752,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
