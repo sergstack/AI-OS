@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "repo static QA complete; model executions recorded; physical QA and owner acceptance pending",
   "prompt_count": 140,
-  "live_run_count": 128,
+  "live_run_count": 130,
   "rows": [
     {
       "prompt_id": "ai_trend",
@@ -9411,7 +9411,25 @@
             "input_tokens": 485,
             "output_tokens": 47,
             "total_tokens": 1681
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T15:34:47Z",
+              "response_sha256": "fffb7e4b5c20bc52652eff5e31f04f1e676d1caf23fe9823fdc2c405f0845b9c",
+              "response_chars": 10794,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
@@ -9564,7 +9582,25 @@
             "input_tokens": 542,
             "output_tokens": 47,
             "total_tokens": 1738
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-17T15:34:47Z",
+              "response_sha256": "f6d7f412c772aa5a22b87df5929329a67e4eb0f5167062edb5672c0267062618",
+              "response_chars": 4520,
+              "deterministic_checks": {
+                "schema_fit": "pass",
+                "missing_sections": [],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "pass"
+              },
+              "observed_verdict": "pass"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
