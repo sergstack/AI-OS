@@ -267,7 +267,7 @@
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "8beaddc0422af0164d865d110a537b5f2623e7035089e575dace4a048220eb37"
+      "sha256": "c3ad535dd14bc5e34e50a95e23dc64e9af6ad51b501e8e49430af9bcfeff04c4"
     },
     {
       "path": "tools/export_profiles.py",
