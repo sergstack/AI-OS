@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "repo static QA complete; model executions recorded; physical QA and owner acceptance pending",
   "prompt_count": 140,
-  "live_run_count": 364,
+  "live_run_count": 370,
   "rows": [
     {
       "prompt_id": "ai_trend",
@@ -27802,7 +27802,35 @@
             "input_tokens": 370,
             "output_tokens": 161,
             "total_tokens": 1566
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "4ee581c179fb30e4dd2d16c589c1c89c364f3c31b657bface494449372c16646",
+              "response_chars": 9,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Final Memo scope",
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "fail",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "unsafe_or_ambiguous",
@@ -27835,7 +27863,35 @@
             "input_tokens": 395,
             "output_tokens": 45,
             "total_tokens": 1591
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "a6b735749157504d3265bf073ad875e5977657d7e37a05636e440261d25dba8c",
+              "response_chars": 16,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Final Memo scope",
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "fail",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -27936,7 +27992,34 @@
             "input_tokens": 448,
             "output_tokens": 46,
             "total_tokens": 1644
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "3f8594f812f843d9160f9aca591e74d0ab1ae5645027fe91d172b3f9c47799af",
+              "response_chars": 275,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
@@ -27963,7 +28046,34 @@
             "input_tokens": 365,
             "output_tokens": 247,
             "total_tokens": 1561
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "17b87b84e2b674c058b73ec8abe4074048a2787595f05a92a23bf886e8f3ff50",
+              "response_chars": 101,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "unsafe_or_ambiguous",
@@ -27990,7 +28100,34 @@
             "input_tokens": 390,
             "output_tokens": 248,
             "total_tokens": 1586
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "87bdebf6e8c82e3ebc28e00065b5138ef8d5dc765425a4541990ff9895bc76c2",
+              "response_chars": 60,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "pass",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         }
       ],
       "static_contract_checks": {
@@ -28094,7 +28231,35 @@
             "input_tokens": 450,
             "output_tokens": 46,
             "total_tokens": 1646
-          }
+          },
+          "live_runs": [
+            {
+              "provider": "chatgpt_web",
+              "model_id": "gpt-5-6-thinking",
+              "executed_at": "2026-07-18T06:42:28Z",
+              "response_sha256": "9d723529fd5bcafd4fafcaad5791a0d0822c3cb5e018cec6f5540dd0fe8aeaa6",
+              "response_chars": 2882,
+              "deterministic_checks": {
+                "schema_fit": "fail",
+                "missing_sections": [
+                  "Findings scope",
+                  "Period",
+                  "Currency / units",
+                  "Analytics-approved facts",
+                  "Interpretation",
+                  "Assumptions",
+                  "Recommendations",
+                  "Source traceability",
+                  "Management confirmations required"
+                ],
+                "material_selection": "pass",
+                "blocked_or_not_run": "not_applicable",
+                "unsafe_action_claim_free": "pass",
+                "expected_behavior": "fail"
+              },
+              "observed_verdict": "revise"
+            }
+          ]
         },
         {
           "case": "missing_context_or_evidence",
