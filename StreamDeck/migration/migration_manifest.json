@@ -51,7 +51,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "ecdecaf4874ac0dc03d6ae61d920ec9a49a735c6648762443f1983a40a9e73ca"
+      "sha256": "b884da568b7c9c0fa32c0072e6a8ff0b760e3e1c692423f08a32bc5903b068f8"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
@@ -263,11 +263,11 @@
     },
     {
       "path": "qa/physical_qa_checklist.md",
-      "sha256": "0d3918f5327bd9a1fb050b96959f40719d83e9cee7312ec1803752fd972c44b9"
+      "sha256": "6c1e4d24f657e19bda9c5bab0a1b29b5174c8bd5bd3e587d5c641810070f5043"
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "93ab3107107f977f6a9bd7fe5970fb34676af1cfc37db0149307236490274508"
+      "sha256": "ecdca25536d7a656cc22d2b55061bec3de9f87825e6ac8c543c58a3d42a918d4"
     },
     {
       "path": "tools/export_profiles.py",
@@ -275,15 +275,23 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "692db7748a6d22746ae9a77dbe27a19c5c742c1fabf5b9bee55e45b4c61a6a07"
+      "sha256": "1c583232274f1b6c98f677027805e0788ad6febb3031d11335b2d99f5dccc147"
+    },
+    {
+      "path": "tools/qa_checks.py",
+      "sha256": "22ded2bcc25cfb669d3c8c69337ada1ebfc95d4ba1bb4347f53c332e607baff3"
     },
     {
       "path": "tools/run_prompt_qa.py",
-      "sha256": "a30fd808858e8bb8d972a20d50e703e76aecd40f0b53588e6df330f385779724"
+      "sha256": "eb39156dd777ebf4a4449eda1da25955a703391945760a0854a996105098beda"
+    },
+    {
+      "path": "tools/run_prompt_qa_live.py",
+      "sha256": "f4ba0b4c388c2ca3d54862ab6b654f08a639953af45d46337d2fe0c43a0c1042"
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "82744799ac4778415be7e87625df79f35c9dae0015708178e5b89684d7114adb"
+      "sha256": "ff7968fa337f41b6a98a387f2b9f37c2bd18cedbbee726e02f5aded5ea94dd2e"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

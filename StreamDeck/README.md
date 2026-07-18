@@ -63,7 +63,7 @@ Clipboard-paste выбран для многоабзацных prompts: typed te
 
 Full bodies хранятся только в `prompts/prompt_registry.json`. Button maps хранят `prompt_id`, version и hash, а не дубли body. После ручной настройки сверьте inserted text с `prompt_hash` через `DECK QA / PROMPT HASH`.
 
-QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены; model QA запускается через `tools/run_prompt_qa.py`, а physical QA остаётся ручным owner checklist. Скрипт детерминированно проверяет обязательные секции и безопасное поведение, не использует второй LLM-judge и не сохраняет raw model responses. Независимо от model results каждый prompt сохраняет verdict `blocked`, UX `4/5`, owner acceptance `pending` и не становится `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
+QA matrix содержит отдельную строку для каждого unique prompt. Static contract checks выполнены; API model QA запускается через `tools/run_prompt_qa.py`, а ChatGPT Project QA координируется из Codex через `tools/run_prompt_qa_live.py` и уже аутентифицированную браузерную сессию. Live-драйвер использует Project Knowledge только для normal-case, вставляет многострочный текст через clipboard paste и не читает credentials, tokens или browser storage. Оба раннера используют общие детерминированные проверки и не сохраняют raw model responses; live-результаты добавляются в `live_runs`, не заменяя Gemini/API-поля. Physical QA остаётся ручным owner checklist. Независимо от model results каждый prompt сохраняет verdict `blocked`, UX `4/5`, owner acceptance `pending` и не становится `10/10`. `PROMPT QA` только судит; rewrite выполняет отдельный `REVISOR`.
 
 Dry-run собирает все 140 × 3 = 420 входов без API-вызовов и записи:
 

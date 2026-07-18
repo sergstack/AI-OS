@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import re
@@ -880,12 +881,16 @@ def preserve_executed_qa_results(qa_rows: list[dict], existing_matrix: dict) -> 
         existing_cases = {case["case"]: case for case in existing.get("test_cases", [])}
         for index, case in enumerate(row["test_cases"]):
             observed = existing_cases.get(case["case"])
-            if not observed or observed.get("status") != "EXECUTED":
+            if not observed:
                 continue
-            preserved = dict(observed)
-            preserved["expected"] = case["expected"]
+            preserved = dict(case)
+            if observed.get("status") == "EXECUTED":
+                preserved = dict(observed)
+                preserved["expected"] = case["expected"]
+                preserved_count += 1
+            if isinstance(observed.get("live_runs"), list):
+                preserved["live_runs"] = copy.deepcopy(observed["live_runs"])
             row["test_cases"][index] = preserved
-            preserved_count += 1
     return preserved_count
 
 
@@ -1105,7 +1110,10 @@ def make_package() -> None:
         if preserved_count
         else "repo static QA complete; representative executions NOT RUN"
     )
-    dump(qa_path, {"version": VERSION, "status": qa_status, "prompt_count": len(qa_rows), "rows": qa_rows})
+    live_run_count = sum(
+        len(case.get("live_runs", [])) for row in qa_rows for case in row["test_cases"]
+    )
+    dump(qa_path, {"version": VERSION, "status": qa_status, "prompt_count": len(qa_rows), "live_run_count": live_run_count, "rows": qa_rows})
     make_mcp_registry(buttons)
     make_icon_map(controllers, buttons)
     make_baseline_audit()
