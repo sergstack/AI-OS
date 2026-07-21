@@ -241,6 +241,7 @@ def test_generator_preserves_only_matching_executed_qa_results():
         {
             "prompt_id": "same-version",
             "prompt_version": "1.0.0",
+            "prompt_hash": "a" * 64,
             "test_cases": [
                 {"case": "normal", "status": "NOT RUN", "expected": "current contract"},
                 {"case": "unsafe_or_ambiguous", "status": "NOT RUN", "expected": "current refusal"},
@@ -249,6 +250,7 @@ def test_generator_preserves_only_matching_executed_qa_results():
         {
             "prompt_id": "new-version",
             "prompt_version": "2.0.0",
+            "prompt_hash": "b" * 64,
             "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "new contract"}],
         },
     ]
@@ -257,6 +259,7 @@ def test_generator_preserves_only_matching_executed_qa_results():
             {
                 "prompt_id": "same-version",
                 "prompt_version": "1.0.0",
+                "prompt_hash": "a" * 64,
                 "test_cases": [
                     {
                         "case": "normal",
@@ -271,6 +274,7 @@ def test_generator_preserves_only_matching_executed_qa_results():
             {
                 "prompt_id": "new-version",
                 "prompt_version": "1.0.0",
+                "prompt_hash": "b" * 64,
                 "test_cases": [
                     {"case": "normal", "status": "EXECUTED", "expected": "old contract"}
                 ],
@@ -297,13 +301,32 @@ def test_generator_preserves_live_runs_without_replacing_api_fields():
         "model_id": "UI model",
         "executed_at": "2026-07-15T00:00:00Z",
     }
-    generated = [{"prompt_id": "example", "prompt_version": "1.0.0", "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "current"}]}]
-    existing = {"rows": [{"prompt_id": "example", "prompt_version": "1.0.0", "test_cases": [{"case": "normal", "status": "EXECUTED", "expected": "old", "provider": "google", "live_runs": [live_run]}]}]}
+    generated = [{"prompt_id": "example", "prompt_version": "1.0.0", "prompt_hash": "a" * 64, "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "current"}]}]
+    existing = {"rows": [{"prompt_id": "example", "prompt_version": "1.0.0", "prompt_hash": "a" * 64, "test_cases": [{"case": "normal", "status": "EXECUTED", "expected": "old", "provider": "google", "live_runs": [live_run]}]}]}
 
     assert generator.preserve_executed_qa_results(generated, existing) == 1
     assert generated[0]["test_cases"][0]["provider"] == "google"
     assert generated[0]["test_cases"][0]["expected"] == "current"
     assert generated[0]["test_cases"][0]["live_runs"] == [live_run]
+
+
+def test_generator_does_not_preserve_results_for_changed_prompt_body():
+    generator = load_generator()
+    generated = [{
+        "prompt_id": "example",
+        "prompt_version": "1.0.0",
+        "prompt_hash": "b" * 64,
+        "test_cases": [{"case": "normal", "status": "NOT RUN", "expected": "current"}],
+    }]
+    existing = {"rows": [{
+        "prompt_id": "example",
+        "prompt_version": "1.0.0",
+        "prompt_hash": "a" * 64,
+        "test_cases": [{"case": "normal", "status": "EXECUTED", "expected": "old"}],
+    }]}
+
+    assert generator.preserve_executed_qa_results(generated, existing) == 0
+    assert generated[0]["test_cases"][0]["status"] == "NOT RUN"
 
 
 def test_live_runner_uses_project_knowledge_only_for_normal_and_persists_no_raw(tmp_path: Path):

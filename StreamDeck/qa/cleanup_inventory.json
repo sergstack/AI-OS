@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-15",
+  "generated": "2026-07-21",
   "items": [
     {
       "path": "archive/legacy_manifest.md",
@@ -1083,6 +1083,91 @@
     },
     {
       "path": "archive/v2.9/AIOS_StreamDeck_Setup_Instruction_v2.9.md",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/README.md",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },

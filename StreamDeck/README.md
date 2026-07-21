@@ -1,17 +1,17 @@
-# AI-OS StreamDeck v3.0 Dual Deck
+# AI-OS StreamDeck v3.1.2 Dual Deck
 
 Status: `candidate / repo package`; physical acceptance: `NOT RUN — owner action required`.
 
 ## Назначение
 
-v3.0 разделяет навигацию и действия между двумя 15-кнопочными Stream Deck:
+v3.1.2 разделяет навигацию и действия между двумя 15-кнопочными Stream Deck:
 
 - `AIOS-CONTROL` всегда остаётся контроллером. Его 15 кнопок переключают профиль только на втором устройстве.
 - `AIOS-ACTIONS` показывает 15 действий выбранного project/workflow. Кнопка вставляет prompt через clipboard-paste, но не нажимает Send.
 
 Clipboard-paste выбран для многоабзацных prompts: typed text может превратить перевод строки в Enter внутри chat-input. Физическая безопасность на owner devices ещё `NOT RUN`. Каждое действие перезаписывает текущий clipboard; при необходимости сохраните его заранее или используйте owner clipboard history.
 
-В repository есть переносимые source settings, prompts, icons, mapping, checksums и 16 детерминированных candidate `.streamDeckProfile`. Физический import не выполнялся: Codex не имел доступа к Stream Deck app и двум устройствам, поэтому package не считается `import-ready`.
+В repository есть переносимые source settings, approved prompts v3.1.2, icons, mapping, checksums и 16 детерминированных `.streamDeckProfile`, прошедших repository validation и готовых к ручному импорту владельцем. Физический import и QA не выполнялись, поэтому production readiness остаётся `no`.
 
 ## Совместимость
 
@@ -149,4 +149,4 @@ Canonical sources:
 - migration, MCP и checksums: `migration/`;
 - legacy rollback: `archive/legacy_manifest.md` и `archive/checksums.json`.
 
-Repo checks проверяют JSON, counts, routing, references, hashes, embedded icons, deterministic exports, model-QA result schema, secrets/private paths и derived map. `run_prompt_qa.py` покрывает только model behavior; physical switching, focus, text insertion, reconnect, import, MCP visibility и v2.7 rollback остаются ручными `NOT RUN` до заполнения owner checklist. До этого v3.0 не является `selected`, `import-ready` или `production-ready`.
+Repo checks проверяют JSON, counts, routing, references, hashes, embedded icons, deterministic exports, model-QA result schema, secrets/private paths и derived map. `run_prompt_qa.py` покрывает только model behavior; physical switching, focus, text insertion, reconnect, import, MCP visibility и rollback остаются ручными `NOT RUN` до заполнения owner checklist. До этого v3.1.2 не является `selected` или `production-ready`, хотя repository packages готовы к ручному импорту.
