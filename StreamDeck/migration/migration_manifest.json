@@ -1,7 +1,7 @@
 {
-  "version": "3.0.0",
-  "status": "candidate / ready for owner review after repo checks",
-  "generated": "2026-07-15",
+  "version": "3.1.2",
+  "status": "repository candidate / ready for owner manual import after repo checks",
+  "generated": "2026-07-21",
   "os": "macOS (exact owner version NOT RUN)",
   "stream_deck_app_version": "owner-installed version NOT RUN; built-in cross-device switch documented since 4.4",
   "devices": {
@@ -42,7 +42,7 @@
   "insertion_method": "clipboard_paste",
   "auto_send": false,
   "target_device_binding": "manual_serial_neutral",
-  "binary_exports": "candidate generated - import NOT RUN; owner action required",
+  "binary_exports": "repository-validated packages ready for manual import; import NOT RUN; owner action required",
   "physical_switch": "NOT RUN - owner action required",
   "files": [
     {
@@ -51,11 +51,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "b884da568b7c9c0fa32c0072e6a8ff0b760e3e1c692423f08a32bc5903b068f8"
+      "sha256": "3611648aad8ffc083173c234b5c489df996b7cfd17543b86e39b5637feb76a2b"
     },
     {
       "path": "architecture/dual_deck_architecture.md",
-      "sha256": "9225f0b02e542a97ddb4722cbb381a485c5557ee0ebafef8f478ebaeb67631b3"
+      "sha256": "6c03e96500d7d03265b7ff52291f0632c5d4dd09a4f8500f7a3abf0f008ccb8d"
     },
     {
       "path": "assets/icons/action_analytics.svg",
@@ -159,15 +159,15 @@
     },
     {
       "path": "config/action_profiles.json",
-      "sha256": "e2631c7bccb6a7d84c434f3bf69c17fc69b7f5295aa31e8c9b650922c9dd6bb5"
+      "sha256": "b2c84e5f2da8e82dcd685bb73d391ff9e44b294afec5e32254fa91d966cece66"
     },
     {
       "path": "config/controller_map.json",
-      "sha256": "c941b3caa02c87e661e9f5156ac1e0dd94ba6b8052452eab4f8d21098e4b1178"
+      "sha256": "54b22547f8d485eb1ae516e31b11f164d53805366d6b20fa385484202c120990"
     },
     {
       "path": "config/icon_map.json",
-      "sha256": "20cbcbecfa1057797fbfae804e89929839491cd5eac0acc97e3ece640825ad2e"
+      "sha256": "7b2d515c4ff76ad8e082d4ceaa9cd4fb245be24bbe5f3e0776f6b3cddfc1f990"
     },
     {
       "path": "exports/A00_CONTROL.streamDeckProfile",
@@ -175,99 +175,99 @@
     },
     {
       "path": "exports/B00_DAILY.streamDeckProfile",
-      "sha256": "37c76a8d85aef08b744a391df3e59a275c72c96c4dc793660c21d8dfbf7a8fcc"
+      "sha256": "3856c62a6e949b416e4b8e9cb52a5bb508555a6a521453f7b4947ef1501e7c14"
     },
     {
       "path": "exports/B10_ROUTE.streamDeckProfile",
-      "sha256": "83d091b1904cda5fcba1810a831d10ee805737e261bc260732c08c2994a0e2b1"
+      "sha256": "903b0d95779acdc36537212839efeb200ae71c667ba23f79787713fdd63fd369"
     },
     {
       "path": "exports/B20_AI_OS.streamDeckProfile",
-      "sha256": "b7b8d671438c5df2c42c31894165f1343e2ce50ecc89ab75f4d22594de7f42a6"
+      "sha256": "c14e1594016c04e6883b6518da7baa96024458b48caeac5fddba55d26384db02"
     },
     {
       "path": "exports/B30_THINKING.streamDeckProfile",
-      "sha256": "2ec744248389002ba6d2e0782f9f5431dfa060c2e30b455cb82065e44cc47515"
+      "sha256": "a712d6d5bd08a43b844bd7bfc402b8f61068b399e55c230f0cd487e86098317a"
     },
     {
       "path": "exports/B40_ANALYTICS.streamDeckProfile",
-      "sha256": "0249a29356ac2383ab9faeca5324b659c541c14c7103a761bd7ee4f776879b9a"
+      "sha256": "74ba1180f992274dbfae1de203b96f102999a4fa2dd832eaa404ad645a1ccfd6"
     },
     {
       "path": "exports/B50_LLM.streamDeckProfile",
-      "sha256": "75f33d4e594f8f6a79f4650588687bcc793f20ff33ffd220d822bfd8cff6ccef"
+      "sha256": "bc442777b22f3e457ec028bc23364266436d954686e9894a3e55e8c27c6e3941"
     },
     {
       "path": "exports/B60_CODEX.streamDeckProfile",
-      "sha256": "e4d015ca6fec544e4793480f866e949fb4fa81c6366fb7050a2e4390de5cae1a"
+      "sha256": "482c2475b8a724043f01060f47f7662b91edb766f80de1af57456aedfd77d4fc"
     },
     {
       "path": "exports/B70_JUDGE.streamDeckProfile",
-      "sha256": "f6398805a0b01e1bedae1c9d514b0b4698aad7ab148db30968eabbefe72e00b0"
+      "sha256": "a65278a46108d1f29b4d7b7cff148fca24b7e17065d578265e925758ae9be66a"
     },
     {
       "path": "exports/B80_REVISOR.streamDeckProfile",
-      "sha256": "cb0e36c8a1475b5aae5ec8e20bf0f75360fe9dfcf1ad77306e61466eb5fb168a"
+      "sha256": "972546dbf5279abfb0369fb15401279df607d8ec7506ede5a4bcb3f3459151f1"
     },
     {
       "path": "exports/B90_MEMO.streamDeckProfile",
-      "sha256": "c580eab8d0cf4ecd63962f9826a24c4c12bbf1942ff05c5b4039a755f4330438"
+      "sha256": "34389c990c8cf933a688f5fe9d5397830051c71fca3210e986e9088692acb421"
     },
     {
       "path": "exports/BA0_LOCAL_AI.streamDeckProfile",
-      "sha256": "4a09701dcbaf3847edc523b7da4a8ed152c68caecf29eb454d5dee9f70e71cbc"
+      "sha256": "82f9fe2807b361e50b4bb6af3fa3669ba1a782f96289887d6d2636b2a41d1328"
     },
     {
       "path": "exports/BB0_PILOTS.streamDeckProfile",
-      "sha256": "a64401d2e9c37fc0f283e73a76e9629907e477cdeb1cdb054b4b4bcdbf53c9af"
+      "sha256": "df6e7946b9d18f94157eb4c107f4e4fab694bd20ce17cbc844efd7d6d6deac88"
     },
     {
       "path": "exports/BC0_KB.streamDeckProfile",
-      "sha256": "bcb03a47bc1a9f21c1954a54f781fe792a05be3adcf8e93dd53a8097537f453f"
+      "sha256": "e9e33a6046a972cb5a71f8afe5482bdace07fd0b42b9a541f1bd68ac6d1ce968"
     },
     {
       "path": "exports/BD0_MCP.streamDeckProfile",
-      "sha256": "9800f91b7b8b3fa07498e87f30b1fcb54f6713a5747cb2db815bdccf31aab184"
+      "sha256": "b7e9641cac34ac824da200784cc2710a97154a1d56a120adf373e26613a4889d"
     },
     {
       "path": "exports/BE0_DECK_QA.streamDeckProfile",
-      "sha256": "aacecc66ca31a3e3726b278bd8b813d794eebd8ebaea83aa6057aee39f06b18f"
+      "sha256": "078a0124244e27ddbd31f1e0ef72b8c1ce47955985f7a459696a4d2391e230aa"
     },
     {
       "path": "exports/README.md",
-      "sha256": "2afde6f86470c1cf02246bec903ba0ed042f464103506b934558994034769df9"
+      "sha256": "df0cdfd11bbafaeb4fbc64f6b61625e8f67de36532cb9117473a44855da08570"
     },
     {
       "path": "generated/button_map.md",
-      "sha256": "fee3f170cc6b69b145a61188caf839a15425d88984a9d3300860efed9a0bc509"
+      "sha256": "4c2b4e34751e44251ead7503209e9080a3ae1fef3439b74208b0d1bda27a9779"
     },
     {
       "path": "migration/mcp_registry.json",
-      "sha256": "c628ae36ace698fa2563e613fa1dd3c71e825535299e1a2a4c432ea1a310fc5f"
+      "sha256": "8d8c226bc1c72fce94f1d0f33da8172dcb72337f5a10c8acfba689b4bb86ec17"
     },
     {
       "path": "migration/transfer_export.md",
-      "sha256": "3191a31cea757c5a971925a5a1205881f031341814013c8dafaf249f1934c7a4"
+      "sha256": "3eec93feebe339a620c06b523a5e5a9f72c7dac2a865ac03c67d135123f76815"
     },
     {
       "path": "prompts/prompt_registry.json",
-      "sha256": "ea1ac874a6cb6c23de8409610e63d339f46a624fc05c132946c1c486cce4459c"
+      "sha256": "d85df305d8a537df3b15eeeec0510607c8b1d84c28f47560ab9ce888fa22da82"
     },
     {
       "path": "qa/baseline_audit.json",
-      "sha256": "a00207363e89c237ca17721ce9ff23076fbf6024778a6f30858941439ed73047"
+      "sha256": "8c2b9bf9900eba001d19bcfa9604f27f5050ca85574e63a8c3c6601ec9cb1566"
     },
     {
       "path": "qa/cleanup_inventory.json",
-      "sha256": "6ee5f3ec5cd0c22f4f987467b8b0a477433169e681038ed8edf9e90e2b21db47"
+      "sha256": "77ca20b20323f9bf301d7a2b576e619d25d2af79eb98a88d46b09bb2ce45f975"
     },
     {
       "path": "qa/physical_qa_checklist.md",
-      "sha256": "6c1e4d24f657e19bda9c5bab0a1b29b5174c8bd5bd3e587d5c641810070f5043"
+      "sha256": "78f1400d6d699eea4b215edc1a09dbfe0be15eec14a706ed6f729fa7bbbc49ea"
     },
     {
       "path": "qa/prompt_qa_matrix.json",
-      "sha256": "ecdca25536d7a656cc22d2b55061bec3de9f87825e6ac8c543c58a3d42a918d4"
+      "sha256": "2ff7aa7a8ade53b409328a57efe4aabc0c21b85b48e5925c5afc7ea183bd7467"
     },
     {
       "path": "tools/export_profiles.py",
@@ -275,7 +275,7 @@
     },
     {
       "path": "tools/generate_v3.py",
-      "sha256": "1c583232274f1b6c98f677027805e0788ad6febb3031d11335b2d99f5dccc147"
+      "sha256": "acccc84018d656cc5688d396c5bc126805b7d9be25eecc7e6ca9e787ac5a0008"
     },
     {
       "path": "tools/qa_checks.py",
@@ -291,7 +291,7 @@
     },
     {
       "path": "tools/validate_v3.py",
-      "sha256": "ff7968fa337f41b6a98a387f2b9f37c2bd18cedbbee726e02f5aded5ea94dd2e"
+      "sha256": "e16e190630951b8f171bc63d4c484893b276deaf882999c4174bf35e81b46447"
     }
   ],
   "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history."

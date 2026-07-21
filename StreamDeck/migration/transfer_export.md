@@ -1,4 +1,4 @@
-# StreamDeck v3.0 — перенос, export и rollback
+# StreamDeck v3.1.2 — перенос, export и rollback
 
 ## До изменений
 
@@ -23,7 +23,7 @@
 1. Импортируйте profiles на чистом target computer и повторите physical checklist.
 2. Проверьте, что profiles не содержат machine-specific paths, secrets, credentials и private content.
 3. Зафиксируйте app/device versions и observed result вне repository; serials не коммитьте.
-4. Пока этот шаг не выполнен, status остаётся `candidate / import NOT RUN`, не `import-ready`.
+4. Пока этот шаг не выполнен, repository packages остаются `ready for manual import / physical QA NOT RUN`, а production readiness — `no`.
 
 ## Rollback
 

@@ -1,6 +1,6 @@
 {
-  "version": "3.1.1",
-  "status": "candidate / semantic correction pass; generator integration, downstream sync, physical QA and owner acceptance pending",
+  "version": "3.1.2",
+  "status": "candidate / final execution-policy correction; generator integration, downstream sync, physical QA and owner acceptance pending",
   "prompt_count": 140,
   "prompts": [
     {
@@ -3526,7 +3526,7 @@
     },
     {
       "prompt_id": "bb0_pilots_pilot_result",
-      "prompt_version": "3.0.0",
+      "prompt_version": "3.1.0",
       "task_type": "draft",
       "purpose": "Draft the PILOT RESULT artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3539,7 +3539,7 @@
       ],
       "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# PILOT RESULT — [AI OS]\n\nPurpose:\nDraft the PILOT RESULT artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nReport observed pilot evidence against the approved plan. For every case distinguish PASS, FAIL, PARTIAL, and NOT RUN; include deviations and limits, and calculate metrics only with Python or SQL. Do not generalize beyond tested scope or convert absence of failures into safety proof. Keep the owner gate pending unless observed.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nUse EXECUTED only when the required workflow and evidence were observed, PARTIAL when some required cases ran, and NOT RUN when none ran. Expected results are not evidence.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot ID / version\n- Scope tested\n- Test case\n- Execution status\n- Observed evidence\n- Result\n- Deviation\n- Limitations\n- Residual risk\n- Verdict: pass / revise / stop\n- Owner gate",
+      "body": "# PILOT RESULT — [AI OS]\n\nPurpose:\nDraft the PILOT RESULT artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nReport observed pilot evidence against the approved plan; this prompt does not execute the pilot. Preserve each case as PASS, FAIL, PARTIAL, or NOT RUN, with evidence, deviations, and limitations visible. Expected behavior is not evidence. Calculate numeric metrics only with Python or SQL, avoid generalizing beyond tested scope, and keep the owner gate pending unless observed.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nEXECUTED when all required pilot cases and their evidence were observed. PARTIAL when at least one required case ran but coverage remains incomplete. NOT RUN when no pilot execution was observed. Preserve PASS, FAIL, PARTIAL, and NOT RUN separately for each test case.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot ID / version\n- Scope tested\n- Test case\n- Execution status\n- Observed evidence\n- Result\n- Deviation\n- Limitations\n- Residual risk\n- Verdict: pass / revise / stop\n- Owner gate",
       "output_schema": [
         "Pilot ID / version",
         "Scope tested",
@@ -3555,13 +3555,13 @@
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
-      "execution_truth_policy": "No execution status is required for content drafting. Preserve observed execution facts and label any mentioned unobserved action NOT RUN.",
+      "execution_truth_policy": "EXECUTED when all required pilot cases and their evidence were observed. PARTIAL when at least one required case ran but coverage remains incomplete. NOT RUN when no pilot execution was observed. Preserve PASS, FAIL, PARTIAL, and NOT RUN separately for each test case.",
       "quality_gate": [
-        "target fits task",
-        "domain logic applied",
-        "schema complete",
-        "facts and limitations preserved",
-        "output concise and usable"
+        "approved plan or baseline identified",
+        "per-case execution status preserved",
+        "observed evidence supports result",
+        "failures and NOT RUN cases visible",
+        "owner gate separated from artifact verdict"
       ],
       "known_failure_modes": [
         "wrong source",
@@ -3575,7 +3575,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "ac7cd1ce362c057f0d434421cd3ae562230caca385e5046de7c6a622a936c8b3"
+      "prompt_hash": "528904e6010423850b60fff3656d12e7d5c62d24f66711e7d9e68ed25c8a153b"
     },
     {
       "prompt_id": "bb0_pilots_residual_risk",
@@ -3680,7 +3680,7 @@
     },
     {
       "prompt_id": "bb0_pilots_rollback",
-      "prompt_version": "3.0.0",
+      "prompt_version": "3.1.0",
       "task_type": "draft",
       "purpose": "Draft the ROLLBACK artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3693,7 +3693,7 @@
       ],
       "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# ROLLBACK — [AI OS]\n\nPurpose:\nDraft the ROLLBACK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nSpecify a recoverable rollback for the selected pilot, preserving backups before cleanup. Separate repository rollback from remote, app, or device rollback; require confirmation before state changes. Block continuation without a baseline, authority, or post-restore check.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nLabel rollback EXECUTED only when observed, PARTIAL when some steps were observed, and NOT RUN when it is only a procedure. Do not invent recovery time.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Rollback trigger\n- Decision owner\n- Baseline\n- Artifacts to restore\n- Ordered steps\n- Validation after restore\n- Data handling\n- Communication\n- Execution status\n- Stop condition",
+      "body": "# ROLLBACK — [AI OS]\n\nPurpose:\nDraft the ROLLBACK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nCreate a recoverable rollback procedure and report its execution separately. Identify the baseline, owner authorization, ordered reversible steps, data handling, communication, and post-restore validation. Separate repository rollback from remote, app, and device actions; preserve backups before cleanup and require confirmation before state changes. Do not claim recovery time unless observed.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nReport rollback-plan quality separately from rollback execution. EXECUTED only when the complete rollback and post-restore validation were observed. PARTIAL when some rollback steps ran. NOT RUN when the artifact is only a rollback procedure.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Rollback trigger\n- Decision owner\n- Baseline\n- Artifacts to restore\n- Ordered steps\n- Validation after restore\n- Data handling\n- Communication\n- Execution status\n- Stop condition",
       "output_schema": [
         "Rollback trigger",
         "Decision owner",
@@ -3708,13 +3708,13 @@
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
-      "execution_truth_policy": "No execution status is required for content drafting. Preserve observed execution facts and label any mentioned unobserved action NOT RUN.",
+      "execution_truth_policy": "Report rollback-plan quality separately from rollback execution. EXECUTED only when the complete rollback and post-restore validation were observed. PARTIAL when some rollback steps ran. NOT RUN when the artifact is only a rollback procedure.",
       "quality_gate": [
-        "target fits task",
-        "domain logic applied",
-        "schema complete",
-        "facts and limitations preserved",
-        "output concise and usable"
+        "recoverable baseline identified",
+        "ordered reversible steps present",
+        "post-restore validation defined",
+        "execution status truthful",
+        "remote/app/device actions separated from repository rollback"
       ],
       "known_failure_modes": [
         "wrong source",
@@ -3728,7 +3728,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "aab7074104129f0060cce906e33b1b063d3f300b738b97aee9c52b2ca7cefd82"
+      "prompt_hash": "6086a6aa084df7dbca8857a3a369051ab71ff44154ab81986a32bde8a5da7840"
     },
     {
       "prompt_id": "bb0_pilots_run_record",
@@ -4506,7 +4506,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_device_target",
-      "prompt_version": "3.0.0",
+      "prompt_version": "3.1.0",
       "task_type": "execution_request",
       "purpose": "Verify repository controller targeting and observed Deck A/Deck B physical behavior.",
       "owner_project": "[Codex]",
@@ -4514,8 +4514,9 @@
         "BE0_DECK_QA/K2"
       ],
       "input_requirements": [
-        "item to classify",
-        "available context and constraints"
+        "controller mapping or target-profile evidence",
+        "expected Deck A and Deck B roles",
+        "repository and physical verification context"
       ],
       "material_selection_rule": "Use the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
@@ -4559,7 +4560,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_duplicates",
-      "prompt_version": "3.0.0",
+      "prompt_version": "3.1.0",
       "task_type": "execution_request",
       "purpose": "Verify registry duplicate and shared-reference integrity with observed deterministic commands.",
       "owner_project": "[Codex]",
@@ -4572,7 +4573,7 @@
       ],
       "material_selection_rule": "Use the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# DUPLICATES — [Codex]\n\nPurpose:\nVerify registry duplicate and shared-reference integrity with observed deterministic commands.\n\nTarget selection:\nUse the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nUse deterministic commands to check prompt ID/version, exact body, button coordinates, and shared references. Report observed groups and counts; similar labels and intentional shared IDs are not duplicates when version/body are identical. Do not instruct generator runs in this registry-only candidate; list required canonical fixes without executing them.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nUse EXECUTED only when the full required repository and physical/app workflow was observed, PARTIAL when only some required checks ran, and NOT RUN when none ran. Repository pass does not prove physical behavior; physical pass does not prove registry/hash integrity. A missing device may remain NOT RUN and is blocked only when physical acceptance is mandatory now.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Commands observed\n- Prompt ID/version duplicates\n- Body duplicates\n- Button-coordinate duplicates\n- Shared-reference validation\n- Execution status\n- Observed result\n- Required fixes\n- Next action",
+      "body": "# DUPLICATES — [Codex]\n\nPurpose:\nVerify registry duplicate and shared-reference integrity with observed deterministic commands.\n\nTarget selection:\nUse the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nUse deterministic commands across the declared registry scope to check prompt ID/version, exact bodies, button coordinates, and shared references. Report observed groups and counts; intentional shared IDs are not forbidden duplicates when version and body match. Incomplete repository coverage is PARTIAL. Do not run downstream generation.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nEXECUTED when all required deterministic duplicate and shared-reference checks were observed. PARTIAL when only some required repository checks ran. NOT RUN when no deterministic command was observed. Physical device or app evidence is not required for this check.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Commands observed\n- Prompt ID/version duplicates\n- Body duplicates\n- Button-coordinate duplicates\n- Shared-reference validation\n- Execution status\n- Observed result\n- Required fixes\n- Next action",
       "output_schema": [
         "Objective",
         "Commands observed",
@@ -4587,27 +4588,27 @@
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
-      "execution_truth_policy": "Use EXECUTED only when the full required repository and physical/app workflow was observed, PARTIAL when only some required checks ran, and NOT RUN when none ran. Repository pass does not prove physical behavior; physical pass does not prove registry/hash integrity. A missing device may remain NOT RUN and is blocked only when physical acceptance is mandatory now.",
+      "execution_truth_policy": "EXECUTED when all required deterministic duplicate and shared-reference checks were observed. PARTIAL when only some required repository checks ran. NOT RUN when no deterministic command was observed. Physical device or app evidence is not required for this check.",
       "quality_gate": [
-        "required repository evidence observed",
-        "physical/app status reported separately",
-        "execution status truthful",
-        "expected behavior not treated as evidence",
-        "rollback or owner procedure present"
+        "declared registry scope checked",
+        "deterministic commands observed",
+        "duplicate groups and counts reported",
+        "intentional shared references distinguished from forbidden duplicates",
+        "execution status matches repository coverage"
       ],
       "known_failure_modes": [
-        "repository pass reported as physical pass",
-        "expected result reported as observed",
-        "missing device marked pass",
-        "PARTIAL collapsed into EXECUTED",
-        "downstream generation run in registry-only scope"
+        "visual sampling reported as deterministic check",
+        "intentional shared prompt references classified as duplicates",
+        "duplicate count invented",
+        "incomplete repository coverage reported as EXECUTED",
+        "downstream generation performed outside scope"
       ],
       "qa_status": "not_run",
       "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "0881015e6960628cb461e60a0c9af9df176fff9682e8f0b2adc2273d61e5cdf7"
+      "prompt_hash": "d28b0abeee2d577f29dbde264c8ba31559eda8af47ef00bd6c6630b9adcd6deb"
     },
     {
       "prompt_id": "be0_deck_qa_export_backup",
@@ -4766,7 +4767,7 @@
     },
     {
       "prompt_id": "be0_deck_qa_placeholder",
-      "prompt_version": "3.0.0",
+      "prompt_version": "3.1.0",
       "task_type": "execution_request",
       "purpose": "Verify prohibited-placeholder absence with deterministic repository evidence.",
       "owner_project": "[Codex]",
@@ -4779,7 +4780,7 @@
       ],
       "material_selection_rule": "Use the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# PLACEHOLDER — [Codex]\n\nPurpose:\nVerify prohibited-placeholder absence with deterministic repository evidence.\n\nTarget selection:\nUse the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nUse deterministic search for prohibited placeholders in named files and fields. Report exact patterns, commands, observed match count, matches, and validator-approved literal examples; do not infer a zero count from visual sampling. List source fixes without running downstream generation.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nUse EXECUTED only when the full required repository and physical/app workflow was observed, PARTIAL when only some required checks ran, and NOT RUN when none ran. Repository pass does not prove physical behavior; physical pass does not prove registry/hash integrity. A missing device may remain NOT RUN and is blocked only when physical acceptance is mandatory now.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Patterns searched\n- Files/fields searched\n- Commands observed\n- Match count\n- Matches\n- Allowed literal examples\n- Execution status\n- Observed result\n- Required fixes\n- Next action",
+      "body": "# PLACEHOLDER — [Codex]\n\nPurpose:\nVerify prohibited-placeholder absence with deterministic repository evidence.\n\nTarget selection:\nUse the user-named source or objective; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nSearch the declared files and fields deterministically for exact prohibited patterns. Report commands, coverage, match count, exact matches, and allowed instructional literals separately. Visual sampling cannot prove zero matches; incomplete search coverage is PARTIAL. Do not run downstream generation.\n\nEvidence:\nUse only provided/observed facts. Preserve exact numbers, dates, currencies, units, execution statuses, residual risks, and evidence gaps. Separate fact from assumption. Mark unsupported or unchecked claims UNVERIFIED; expected behavior is not evidence.\n\nExecution truth:\nEXECUTED when the required deterministic placeholder search was observed across the declared files and fields. PARTIAL when search coverage was incomplete. NOT RUN when no search command was observed. Physical device or app evidence is not required.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets/private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Patterns searched\n- Files/fields searched\n- Commands observed\n- Match count\n- Matches\n- Allowed literal examples\n- Execution status\n- Observed result\n- Required fixes\n- Next action",
       "output_schema": [
         "Objective",
         "Patterns searched",
@@ -4795,27 +4796,27 @@
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
-      "execution_truth_policy": "Use EXECUTED only when the full required repository and physical/app workflow was observed, PARTIAL when only some required checks ran, and NOT RUN when none ran. Repository pass does not prove physical behavior; physical pass does not prove registry/hash integrity. A missing device may remain NOT RUN and is blocked only when physical acceptance is mandatory now.",
+      "execution_truth_policy": "EXECUTED when the required deterministic placeholder search was observed across the declared files and fields. PARTIAL when search coverage was incomplete. NOT RUN when no search command was observed. Physical device or app evidence is not required.",
       "quality_gate": [
-        "required repository evidence observed",
-        "physical/app status reported separately",
-        "execution status truthful",
-        "expected behavior not treated as evidence",
-        "rollback or owner procedure present"
+        "exact prohibited patterns declared",
+        "files and fields searched are explicit",
+        "deterministic commands observed",
+        "match count and exact matches reported",
+        "allowed literal examples separated from unresolved placeholders"
       ],
       "known_failure_modes": [
-        "repository pass reported as physical pass",
-        "expected result reported as observed",
-        "missing device marked pass",
-        "PARTIAL collapsed into EXECUTED",
-        "downstream generation run in registry-only scope"
+        "visual sampling reported as complete search",
+        "zero matches claimed without command evidence",
+        "allowed instructional examples treated as defects",
+        "incomplete file coverage reported as EXECUTED",
+        "downstream generation performed outside scope"
       ],
       "qa_status": "not_run",
       "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "47ca7fa2fded24968ba1fd64a953a0329542137432995b9529d356c8e62a8e31"
+      "prompt_hash": "5f6ca0bcdc99044d865a0ad024e77dbf106707344c6cb2677aefd312d200d16a"
     },
     {
       "prompt_id": "be0_deck_qa_prompt_hash",
@@ -6587,54 +6588,59 @@
     },
     {
       "prompt_id": "registry_review",
-      "prompt_version": "2.0.0",
-      "task_type": "draft",
-      "purpose": "Draft the REGISTRY artifact from the selected source while preserving evidence and scope.",
+      "prompt_version": "3.0.0",
+      "task_type": "execution_request",
+      "purpose": "Run or report deterministic registry integrity checks using observed commands and return exact failing IDs and fields.",
       "owner_project": "[AI OS]",
       "button_refs": [
         "BB0_PILOTS/K8",
         "BD0_MCP/K2"
       ],
       "input_requirements": [
-        "task objective or source artifact",
-        "relevant evidence and constraints"
+        "registry file or repository path",
+        "validation scope and expected version",
+        "authorization for deterministic read-only checks"
       ],
       "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
       "execution_mode": "generate",
-      "body": "# REGISTRY — [AI OS]\n\nPurpose:\nDraft the REGISTRY artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nReview the selected registry and its references deterministically. Check schema/version, unique IDs, exact body/hash consistency, owner routes, button_refs, output contracts, status gates, canonical paths and generated/export alignment. Use Python for counts, duplicates and SHA-256; do not sample visually or ask the model to calculate hashes. Distinguish source registry defects from stale derived artifacts and do not edit under review. Return exact failing IDs/fields, observed checks and the minimal regeneration or source fix.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Registry deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# REGISTRY — [AI OS]\n\nPurpose:\nRun or report deterministic registry integrity checks using observed commands and return exact failing IDs and fields.\n\nTarget selection:\nUse the user-named registry file or repository path and declared validation scope; otherwise use the immediately preceding substantive registry artifact. Do not use a verdict or report as the registry source.\n\nTask logic:\nValidate JSON parse, root version, prompt count, unique prompt_id values, button_refs, body/output-schema consistency, exact SHA-256 body hashes, task type and owner consistency, and status fields. Check alignment with derived artifacts when they are available. Distinguish a source registry defect from a stale downstream artifact and keep physical QA NOT RUN unless observed. Do not run the generator or mutate files under this review.\n\nEvidence:\nUse only observed command or tool output. Report exact failing IDs and fields; expected integrity and visual inspection are not evidence.\n\nExecution truth:\nEXECUTED when all declared deterministic registry checks were observed. PARTIAL when only part of the required validation ran. NOT RUN when no command or tool call was observed. Do not infer integrity from visual inspection.\n\nSafety:\nRead-only supervised mode. Do not generate, edit, publish, deploy, delete, or mutate files or external state. Do not expose secrets or private data.\n\nReturn exactly these sections, in this order:\n- Objective\n- Registry version / scope\n- Commands observed\n- JSON integrity\n- ID and reference integrity\n- Body / schema consistency\n- Hash validation\n- Metadata consistency\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Findings\n- Required fixes\n- Next action",
       "output_schema": [
-        "Registry deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
+        "Objective",
+        "Registry version / scope",
+        "Commands observed",
+        "JSON integrity",
+        "ID and reference integrity",
+        "Body / schema consistency",
+        "Hash validation",
+        "Metadata consistency",
+        "Execution status: EXECUTED / PARTIAL / NOT RUN",
+        "Findings",
+        "Required fixes",
         "Next action"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
-      "execution_truth_policy": "No execution status is required for content drafting. Preserve observed execution facts and label any mentioned unobserved action NOT RUN.",
+      "execution_truth_policy": "EXECUTED when all declared deterministic registry checks were observed. PARTIAL when only part of the required validation ran. NOT RUN when no command or tool call was observed. Do not infer integrity from visual inspection.",
       "quality_gate": [
-        "target fits task",
-        "domain logic applied",
-        "schema complete",
-        "facts and limitations preserved",
-        "output concise and usable"
+        "declared registry scope checked",
+        "deterministic commands observed",
+        "required integrity checks reported",
+        "exact failing IDs and fields returned",
+        "source downstream and physical statuses separated"
       ],
       "known_failure_modes": [
-        "wrong source",
-        "generic output",
-        "unsupported fact",
-        "lost limitation",
-        "unnecessary execution boilerplate"
+        "visual inspection reported as integrity pass",
+        "unobserved command reported as executed",
+        "source defect and stale downstream artifact conflated",
+        "physical QA inferred from registry checks",
+        "generator run or file mutation performed under review"
       ],
       "qa_status": "not_run",
       "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "95ab0e4a018af9d6122f35d97ffb538f1621d8d3d9eec1e500b406e7d93103f3"
+      "prompt_hash": "1bcf84bbea1905cb99fdfc5c59b43d2ae134713510863f245795d45de927d8f4"
     },
     {
       "prompt_id": "revisor_apply_notes",

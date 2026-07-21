@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the canonical AI-OS StreamDeck v3.0 source package."""
+"""Generate the canonical AI-OS StreamDeck package from the approved registry."""
 
 from __future__ import annotations
 
@@ -7,14 +7,17 @@ import copy
 import hashlib
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVE = ROOT
 ARCHIVE = ROOT / "archive"
-VERSION = "3.0.0"
-SNAPSHOT = "2026-07-15"
+VERSION = "3.1.2"
+SNAPSHOT = "2026-07-21"
+APPROVED_REGISTRY_SHA256 = "d85df305d8a537df3b15eeeec0510607c8b1d84c28f47560ab9ce888fa22da82"
 
 PROFILE_SPECS = [
     ("B00_DAILY", "DAILY", "[AI OS]", ["INBOX", "AI TREND", "DECISION", "DATA CONTRACT", "GOAL→PR", "FIN MEMO", "PROMPT", "CONTEXT", "SYNC", "KB EVIDENCE"]),
@@ -871,12 +874,41 @@ def dump(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def load_approved_registry() -> dict:
+    path = ACTIVE / "prompts" / "prompt_registry.json"
+    raw = path.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != APPROVED_REGISTRY_SHA256:
+        raise ValueError(
+            "approved prompt registry checksum mismatch: "
+            f"expected {APPROVED_REGISTRY_SHA256}, found {digest}"
+        )
+    registry = json.loads(raw)
+    prompts = registry.get("prompts", [])
+    prompt_ids = [prompt.get("prompt_id") for prompt in prompts]
+    if registry.get("version") != VERSION:
+        raise ValueError(f"approved prompt registry version must be {VERSION}")
+    if registry.get("prompt_count") != 140 or len(prompts) != 140:
+        raise ValueError("approved prompt registry must contain exactly 140 prompts")
+    if len(prompt_ids) != len(set(prompt_ids)):
+        raise ValueError("approved prompt registry contains duplicate prompt IDs")
+    for prompt in prompts:
+        observed = hashlib.sha256(prompt["body"].encode()).hexdigest()
+        if prompt.get("prompt_hash") != observed:
+            raise ValueError(f"approved prompt hash mismatch: {prompt['prompt_id']}")
+    return registry
+
+
 def preserve_executed_qa_results(qa_rows: list[dict], existing_matrix: dict) -> int:
     existing_rows = {row["prompt_id"]: row for row in existing_matrix.get("rows", [])}
     preserved_count = 0
     for row in qa_rows:
         existing = existing_rows.get(row["prompt_id"])
-        if not existing or existing.get("prompt_version") != row["prompt_version"]:
+        if (
+            not existing
+            or existing.get("prompt_version") != row["prompt_version"]
+            or existing.get("prompt_hash") != row["prompt_hash"]
+        ):
             continue
         existing_cases = {case["case"]: case for case in existing.get("test_cases", [])}
         for index, case in enumerate(row["test_cases"]):
@@ -1002,6 +1034,10 @@ def owner_for(label: str, default: str) -> str:
 
 
 def make_package() -> None:
+    approved_registry = load_approved_registry()
+    approved_prompts = {
+        prompt["prompt_id"]: prompt for prompt in approved_registry["prompts"]
+    }
     make_icons()
     controllers = []
     for index, ((profile_id, profile_name, _, _), label) in enumerate(zip(PROFILE_SPECS, CONTROLLER_LABELS), 1):
@@ -1017,24 +1053,21 @@ def make_package() -> None:
 
     buttons = []
     prompt_refs: dict[str, dict] = {}
-    for profile_id, profile_name, default_owner, labels in PROFILE_SPECS:
+    for profile_id, profile_name, _default_owner, labels in PROFILE_SPECS:
         profile_buttons = []
         for index, label in enumerate(labels, 1):
-            owner = owner_for(label, default_owner)
-            kind = task_type(label)
-            if profile_name == "JUDGE":
-                owner, kind = "[LLM] / Judge", "judge"
-            elif profile_name == "REVISOR":
-                owner, kind = "[LLM] / Revisor", "revise"
-            elif profile_name == "MEMO":
-                owner, kind = "[LLM] / Memo", "memo"
             prompt_id = prompt_key(profile_id, profile_name, label)
-            profile_buttons.append((f"K{index}", label, prompt_id, owner, kind))
-        profile_buttons.extend(COMMON)
-        for key, label, prompt_id, owner, kind in profile_buttons:
+            profile_buttons.append((f"K{index}", label, prompt_id))
+        profile_buttons.extend((key, label, prompt_id) for key, label, prompt_id, _, _ in COMMON)
+        for key, label, prompt_id in profile_buttons:
+            if prompt_id not in approved_prompts:
+                raise ValueError(f"generated button references unknown approved prompt: {prompt_id}")
+            approved_prompt = approved_prompts[prompt_id]
+            owner = approved_prompt["owner_project"]
+            kind = approved_prompt["task_type"]
             mcp_id = MCP_IDS.get(prompt_id)
             ref = f"{profile_id}/{key}"
-            version = prompt_version(prompt_id)
+            version = approved_prompt["prompt_version"]
             row = {
                 "device": "AIOS-ACTIONS", "profile_id": profile_id, "profile_name": f"AIOS-ACTIONS / {profile_name}",
                 "button": key, "label": label, "action_type": "prompt", "prompt_id": prompt_id,
@@ -1055,36 +1088,34 @@ def make_package() -> None:
                 raise ValueError(f"route mismatch for {prompt_id}: {record['owner']} != {owner}")
             record["refs"].append(ref)
 
-    prompts = []
+    if set(prompt_refs) != set(approved_prompts):
+        missing = sorted(set(approved_prompts) - set(prompt_refs))
+        extra = sorted(set(prompt_refs) - set(approved_prompts))
+        raise ValueError(f"button/prompt set mismatch: missing={missing}, extra={extra}")
+
+    prompts = copy.deepcopy(approved_registry["prompts"])
     qa_rows = []
-    for prompt_id, record in sorted(prompt_refs.items()):
-        label, owner, kind, refs = record["label"], record["owner"], record["kind"], record["refs"]
-        schema = output_schema(label, kind)
-        purpose = f"Produce the {label} workflow artifact for the cited source material while preserving routing, evidence, and execution truth."
-        subject = subject_logic(prompt_id)
-        version = prompt_version(prompt_id)
-        body = prompt_body(label, purpose, owner, schema, kind, subject)
-        prompt_hash = hashlib.sha256(body.encode()).hexdigest()
-        prompts.append({
-            "prompt_id": prompt_id, "prompt_version": version, "task_type": kind, "purpose": purpose,
-            "owner_project": owner, "button_refs": refs, "input_requirements": ["latest meaningful goal or source artifact"],
-            "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
-            "execution_mode": "generate", "body": body, "output_schema": schema,
-            "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-            "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-            "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
-            "quality_gate": ["schema fit", "route fit", "source discipline", "execution truth", "no new claims"],
-            "known_failure_modes": ["ambiguous source", "missing evidence", "unsafe or unapproved action"],
-            "qa_status": "blocked", "ux_score_1_5": 4, "prompt_gate_10_of_10": None,
-            "last_reviewed": SNAPSHOT, "owner_acceptance": "pending", "prompt_hash": prompt_hash,
-        })
+    for prompt in prompts:
+        prompt_id = prompt["prompt_id"]
+        record = prompt_refs[prompt_id]
+        refs = record["refs"]
+        if prompt["button_refs"] != refs:
+            raise ValueError(
+                f"approved button_refs mismatch for {prompt_id}: "
+                f"approved={prompt['button_refs']}, generated={refs}"
+            )
+        if prompt["owner_project"] != record["owner"]:
+            raise ValueError(f"approved owner route mismatch for {prompt_id}")
+        if prompt["task_type"] != record["kind"]:
+            raise ValueError(f"approved task type mismatch for {prompt_id}")
         criteria = [{"criterion": n, "status": "pass"} for n in range(1, 10)]
         criteria.append({"criterion": 10, "status": "blocked", "reason": "Representative model/device runs and owner acceptance are not observed."})
         static_checks = {"material_selection": "pass", "specialized_schema": "pass", "route": "pass", "execution_truth": "pass", "freshness": "pass", "no_new_claims": "pass"}
-        if subject:
+        if "\n\nSubject logic:\n" in prompt["body"]:
             static_checks["subject_logic"] = "pass"
         qa_rows.append({
-            "prompt_id": prompt_id, "prompt_version": version, "button_refs": refs,
+            "prompt_id": prompt_id, "prompt_version": prompt["prompt_version"],
+            "prompt_hash": prompt["prompt_hash"], "button_refs": refs,
             "test_cases": [
                 {"case": "normal", "status": "NOT RUN", "expected": "specialized output schema with sourced content"},
                 {"case": "missing_context_or_evidence", "status": "NOT RUN", "expected": "blocked or NOT RUN without invented content"},
@@ -1099,7 +1130,12 @@ def make_package() -> None:
 
     dump(ACTIVE / "config" / "controller_map.json", {"version": VERSION, "device": "AIOS-CONTROL", "profile_id": "A00_CONTROL", "buttons": controllers, "count": len(controllers)})
     dump(ACTIVE / "config" / "action_profiles.json", {"version": VERSION, "device": "AIOS-ACTIONS", "profile_count": len(PROFILE_SPECS), "button_count": len(buttons), "buttons": buttons})
-    dump(ACTIVE / "prompts" / "prompt_registry.json", {"version": VERSION, "status": "candidate / blocked pending observed Prompt QA and owner acceptance", "prompt_count": len(prompts), "prompts": prompts})
+    dump(ACTIVE / "prompts" / "prompt_registry.json", approved_registry)
+    observed_registry_hash = hashlib.sha256(
+        (ACTIVE / "prompts" / "prompt_registry.json").read_bytes()
+    ).hexdigest()
+    if observed_registry_hash != APPROVED_REGISTRY_SHA256:
+        raise ValueError("generator changed the approved prompt registry bytes")
     qa_path = ACTIVE / "qa" / "prompt_qa_matrix.json"
     preserved_count = 0
     if qa_path.is_file():
@@ -1118,6 +1154,11 @@ def make_package() -> None:
     make_icon_map(controllers, buttons)
     make_baseline_audit()
     make_human_map(controllers, buttons)
+    subprocess.run(
+        [sys.executable, str(ACTIVE / "tools" / "export_profiles.py")],
+        cwd=ROOT.parent,
+        check=True,
+    )
     make_manifests()
 
 
@@ -1211,19 +1252,19 @@ def make_manifests() -> None:
     active_files = sorted(active_files)
     files = [{"path": str(path.relative_to(ROOT)), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for path in active_files]
     dump(ACTIVE / "migration" / "migration_manifest.json", {
-        "version": VERSION, "status": "candidate / ready for owner review after repo checks", "generated": SNAPSHOT,
+        "version": VERSION, "status": "repository candidate / ready for owner manual import after repo checks", "generated": SNAPSHOT,
         "os": "macOS (exact owner version NOT RUN)", "stream_deck_app_version": "owner-installed version NOT RUN; built-in cross-device switch documented since 4.4",
         "devices": {"controller": {"role": "AIOS-CONTROL", "model": "15-key Stream Deck", "serial": None}, "actions": {"role": "AIOS-ACTIONS", "model": "15-key Stream Deck", "serial": None}},
         "profile_ids": [spec[0] for spec in PROFILE_SPECS], "controller_profile_id": "A00_CONTROL",
         "action_identifiers": {"profile_switch": "Stream Deck > Switch Profile (built-in; com.elgato.streamdeck.profile.rotate)", "prompt_insert": "System > Text (built-in; com.elgato.streamdeck.system.text)", "mcp": "See migration/mcp_registry.json"},
-        "insertion_method": "clipboard_paste", "auto_send": False, "target_device_binding": "manual_serial_neutral", "binary_exports": "candidate generated - import NOT RUN; owner action required",
+        "insertion_method": "clipboard_paste", "auto_send": False, "target_device_binding": "manual_serial_neutral", "binary_exports": "repository-validated packages ready for manual import; import NOT RUN; owner action required",
         "physical_switch": "NOT RUN - owner action required", "files": files,
         "rollback": "Import or retain the archived v2.7/v2.9 baseline, disable controller switching, and remove only the side-by-side v3 profiles. Clipboard content overwritten by an action is not recoverable unless the owner has clipboard history.",
     })
 
 
 def make_human_map(controllers: list[dict], buttons: list[dict]) -> None:
-    lines = ["# AI-OS StreamDeck v3.0 — generated button map", "", "> Generated from canonical JSON by `tools/generate_v3.py`; do not edit manually.", "", "## AIOS-CONTROL", "", "| Key | Label | Target profile | Device binding |", "|---|---|---|---|"]
+    lines = [f"# AI-OS StreamDeck v{VERSION} — generated button map", "", "> Generated from canonical JSON by `tools/generate_v3.py`; do not edit manually.", "", "## AIOS-CONTROL", "", "| Key | Label | Target profile | Device binding |", "|---|---|---|---|"]
     for row in controllers:
         lines.append(f"| {row['button']} | {row['label']} | `{row['target_profile_id']}` | `{row['target_device_binding']}` |")
     for profile_id, profile_name, _, _ in PROFILE_SPECS:
@@ -1235,4 +1276,4 @@ def make_human_map(controllers: list[dict], buttons: list[dict]) -> None:
 
 if __name__ == "__main__":
     make_package()
-    print("generated StreamDeck v3.0 package")
+    print(f"generated StreamDeck v{VERSION} package")

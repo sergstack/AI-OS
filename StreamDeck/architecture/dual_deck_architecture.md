@@ -1,4 +1,4 @@
-# AI-OS StreamDeck v3.0 Dual Deck — архитектура
+# AI-OS StreamDeck v3.1.2 Dual Deck — архитектура
 
 Status: `candidate / ready for repo review`; physical acceptance: `NOT RUN`.
 
@@ -58,4 +58,4 @@ Canonical prompt bodies многоабзацные. В режиме typed text �
 
 ## Acceptance boundary
 
-Repo checks могут проверить schema, `insertion_method`, references, hashes, assets, archive determinism, counts и safety metadata. Cross-device switching, clipboard-paste behavior, focus, text insertion, truncation, reconnect, import, MCP visibility и rollback требуют два физических устройства и owner action. До этого status остаётся `candidate`, не `selected`, `import-ready` или `production-ready`.
+Repo checks могут проверить schema, `insertion_method`, references, hashes, assets, archive determinism, counts и safety metadata. После их прохождения packages готовы к ручному импорту. Cross-device switching, clipboard-paste behavior, focus, text insertion, truncation, reconnect, import, MCP visibility и rollback требуют два физических устройства и owner action; до observed owner QA package не является `selected` или `production-ready`.

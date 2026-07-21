@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "generated": "2026-07-15",
+  "generated": "2026-07-21",
   "files": [
     {
       "path": "archive/legacy_manifest.md",
@@ -869,6 +869,74 @@
     {
       "path": "archive/v2.9/AIOS_StreamDeck_Setup_Instruction_v2.9.md",
       "sha256": "3becafb5eea1a32d9587f9a719905ad4eb1815b2f2917e956a4a5cef1118548a"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/README.md",
+      "sha256": "0795e4e85ac1c396796e8aa177adbb16372c5a31b0b678eba40c8ec5fba3ecbf"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
+      "sha256": "32eb472de893de38c38c879d35d1a4b3ae9ba0eb2dfbc323cd547582335e2800"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
+      "sha256": "37c76a8d85aef08b744a391df3e59a275c72c96c4dc793660c21d8dfbf7a8fcc"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
+      "sha256": "83d091b1904cda5fcba1810a831d10ee805737e261bc260732c08c2994a0e2b1"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
+      "sha256": "b7b8d671438c5df2c42c31894165f1343e2ce50ecc89ab75f4d22594de7f42a6"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
+      "sha256": "2ec744248389002ba6d2e0782f9f5431dfa060c2e30b455cb82065e44cc47515"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
+      "sha256": "0249a29356ac2383ab9faeca5324b659c541c14c7103a761bd7ee4f776879b9a"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
+      "sha256": "75f33d4e594f8f6a79f4650588687bcc793f20ff33ffd220d822bfd8cff6ccef"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
+      "sha256": "e4d015ca6fec544e4793480f866e949fb4fa81c6366fb7050a2e4390de5cae1a"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
+      "sha256": "f6398805a0b01e1bedae1c9d514b0b4698aad7ab148db30968eabbefe72e00b0"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
+      "sha256": "cb0e36c8a1475b5aae5ec8e20bf0f75360fe9dfcf1ad77306e61466eb5fb168a"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
+      "sha256": "c580eab8d0cf4ecd63962f9826a24c4c12bbf1942ff05c5b4039a755f4330438"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
+      "sha256": "4a09701dcbaf3847edc523b7da4a8ed152c68caecf29eb454d5dee9f70e71cbc"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
+      "sha256": "a64401d2e9c37fc0f283e73a76e9629907e477cdeb1cdb054b4b4bcdbf53c9af"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
+      "sha256": "bcb03a47bc1a9f21c1954a54f781fe792a05be3adcf8e93dd53a8097537f453f"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
+      "sha256": "9800f91b7b8b3fa07498e87f30b1fcb54f6713a5747cb2db815bdccf31aab184"
+    },
+    {
+      "path": "archive/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
+      "sha256": "aacecc66ca31a3e3726b278bd8b813d794eebd8ebaea83aa6057aee39f06b18f"
     }
   ]
 }

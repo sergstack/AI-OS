@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the canonical AI-OS StreamDeck v3.0 package."""
+"""Validate the canonical AI-OS StreamDeck v3.1.2 package."""
 
 from __future__ import annotations
 
@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVE = ROOT
 ERRORS: list[str] = []
+VERSION = "3.1.2"
+APPROVED_REGISTRY_SHA256 = "d85df305d8a537df3b15eeeec0510607c8b1d84c28f47560ab9ce888fa22da82"
 
 
 def load(relative: str):
@@ -139,6 +141,22 @@ def main() -> int:
     if ERRORS:
         return report()
 
+    require(
+        hashlib.sha256((ACTIVE / "prompts" / "prompt_registry.json").read_bytes()).hexdigest()
+        == APPROVED_REGISTRY_SHA256,
+        "prompt registry differs from the approved PR #216 v3.1.2 source",
+    )
+    for name, value in (
+        ("controller map", controller),
+        ("action profiles", actions),
+        ("prompt registry", registry),
+        ("QA matrix", qa),
+        ("icon map", icons),
+        ("migration manifest", migration),
+        ("MCP registry", mcp),
+    ):
+        require(value.get("version") == VERSION, f"{name} version must be {VERSION}")
+
     controller_rows = controller["buttons"]
     rows = actions["buttons"]
     prompts = registry["prompts"]
@@ -156,8 +174,8 @@ def main() -> int:
     require(all(r["auto_send"] is False and r["requires_confirmation"] is True for r in rows), "all action buttons must be supervised and auto_send=false")
     require(all(r.get("insertion_method") == "clipboard_paste" for r in rows), "all 225 action buttons must use insertion_method=clipboard_paste")
 
-    prompt_keys = [(p["prompt_id"], p["prompt_version"]) for p in prompts]
-    require(len(prompt_keys) == len(set(prompt_keys)), "prompt_id + prompt_version must be unique")
+    prompt_ids = [p["prompt_id"] for p in prompts]
+    require(len(prompt_ids) == len(set(prompt_ids)) == 140, "registry must contain 140 unique prompt IDs")
     prompt_by_id = {p["prompt_id"]: p for p in prompts}
     require(registry["prompt_count"] == len(prompts), "prompt registry count mismatch")
     require({r["prompt_id"] for r in rows} == set(prompt_by_id), "button and registry prompt sets differ")
@@ -168,7 +186,12 @@ def main() -> int:
             require(row[field] in valid_next, f"{row['profile_id']}/{row['button']}: invalid {field}")
         require(row["owner_project"] == prompt_by_id[row["prompt_id"]]["owner_project"], f"route mismatch: {row['prompt_id']}")
         require(row["prompt_version"] == prompt_by_id[row["prompt_id"]]["prompt_version"], f"button/registry version mismatch: {row['prompt_id']}")
+        require(row["icon"] == f"assets/icons/action_{prompt_by_id[row['prompt_id']]['task_type']}.svg", f"task type/icon mismatch: {row['prompt_id']}")
         require(not Path(row["icon"]).is_absolute() and (ACTIVE / row["icon"]).is_file(), f"missing/absolute icon: {row['icon']}")
+
+    refs_by_prompt: dict[str, list[str]] = {prompt_id: [] for prompt_id in prompt_by_id}
+    for row in rows:
+        refs_by_prompt[row["prompt_id"]].append(f"{row['profile_id']}/{row['button']}")
 
     bodies = Counter(p["body"] for p in prompts)
     require(not [body for body, count in bodies.items() if count > 1], "duplicate prompt bodies found")
@@ -185,101 +208,34 @@ def main() -> int:
         require(prompt["prompt_gate_10_of_10"] is None and prompt["owner_acceptance"] == "pending", f"unearned prompt gate: {prompt['prompt_id']}")
         require(prompt["output_schema"] and prompt["output_schema"] != ["Summary", "Facts used", "Assumptions", "Risks", "Next step"], f"generic output schema: {prompt['prompt_id']}")
 
-    specialized_markers = (
-        "\n\nSubject logic:\n", "\n\nFreshness:\n", "\n\nNumeric boundary:\n",
-        "\n\nRevision boundary:\n", "\n\nGoal Mode boundary:\n", "\n\nJudge rule:\n", "\n\nMemo boundary:\n",
-    )
-    boilerplate_only = [p["prompt_id"] for p in prompts if not any(marker in p["body"] for marker in specialized_markers)]
-    require(not boilerplate_only, f"expected zero boilerplate-only prompts, found {len(boilerplate_only)}: {boilerplate_only}")
+    required_prompt_fields = {
+        "prompt_id", "prompt_version", "task_type", "purpose", "owner_project",
+        "button_refs", "input_requirements", "material_selection_rule", "execution_mode",
+        "body", "output_schema", "evidence_policy", "freshness_policy",
+        "execution_truth_policy", "quality_gate", "known_failure_modes", "qa_status",
+        "ux_score_1_5", "prompt_gate_10_of_10", "last_reviewed",
+        "owner_acceptance", "prompt_hash",
+    }
+    valid_task_types = {
+        "analytics", "blocked", "draft", "execution_request", "handoff",
+        "judge", "memo", "narrative", "revise", "route",
+    }
+    valid_owners = {
+        "[AI OS]", "[Analytics]", "[Codex]", "[Inbox Router]", "[LLM]",
+        "[LLM] / Judge", "[LLM] / Local AI", "[LLM] / Memo",
+        "[LLM] / Revisor", "[Thinking]",
+    }
     for prompt in prompts:
-        match = re.search(r"\n\nSubject logic:\n(.*?)\n\nSelection check:\n", prompt["body"], re.S)
-        if match:
-            require(300 <= len(match.group(1)) <= 800, f"subject logic must be 300-800 characters: {prompt['prompt_id']}")
-    route_batch_ids = {
-        row["prompt_id"] for row in rows
-        if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 12
-    }
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in route_batch_ids), "ROUTE batch versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in route_batch_ids), "ROUTE batch subject logic missing")
-    owner_projects = ("[Inbox Router]", "[AI OS]", "[Thinking]", "[Analytics]", "[LLM]", "[Codex]")
-    b10_router_ids = {
-        row["prompt_id"] for row in rows
-        if row["profile_id"] == "B10_ROUTE" and int(row["button"][1:]) <= 10
-    }
-    require(all(all(owner in prompt_by_id[prompt_id]["body"] for owner in owner_projects) for prompt_id in b10_router_ids), "B10 ROUTE prompts must list all allowed owner projects")
-    judge_batch_ids = {
-        row["prompt_id"] for row in rows
-        if row["profile_id"] == "B70_JUDGE" and int(row["button"][1:]) <= 10
-    } | {"final_acceptance_gate"}
-    require(len(judge_batch_ids) == 11, "JUDGE / FINAL GATE batch must contain 11 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in judge_batch_ids), "JUDGE / FINAL GATE subject logic missing")
-    analytics_batch_ids = {
-        row["prompt_id"] for row in rows
-        if row["profile_id"] == "B40_ANALYTICS" and int(row["button"][1:]) <= 10
-    }
-    require(len(analytics_batch_ids) == 10, "Analytics batch must contain 10 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in analytics_batch_ids), "Analytics versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in analytics_batch_ids), "Analytics subject logic missing")
-    deck_qa_batch_ids = {
-        row["prompt_id"] for row in rows
-        if row["profile_id"] == "BE0_DECK_QA" and row["prompt_id"] in {
-            "be0_deck_qa_device_target", "be0_deck_qa_text_insert", "be0_deck_qa_auto_send_off",
-            "be0_deck_qa_placeholder", "be0_deck_qa_duplicates", "be0_deck_qa_prompt_hash",
-            "be0_deck_qa_export_backup",
-        }
-    }
-    require(len(deck_qa_batch_ids) == 7, "DECK QA batch must contain 7 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in deck_qa_batch_ids), "DECK QA versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in deck_qa_batch_ids), "DECK QA subject logic missing")
-    hash_body = prompt_by_id["be0_deck_qa_prompt_hash"]["body"]
-    require("Do not ask the model to calculate SHA-256" in hash_body and "deterministic Python/hash tool" in hash_body, "PROMPT HASH must require deterministic external calculation")
-    aios_kb_pilots_batch_ids = {
-        "b20_ai_os_governance", "b20_ai_os_loop_design", "b20_ai_os_pattern",
-        "b20_ai_os_streamdeck", "b20_ai_os_use_case",
-        "bb0_pilots_pilot_plan", "bb0_pilots_pilot_result", "bb0_pilots_residual_risk",
-        "bb0_pilots_rollback", "bb0_pilots_run_record", "bb0_pilots_status_note",
-        "bc0_kb_bundle_sync", "bc0_kb_evidence_label", "bc0_kb_kb_search",
-        "bc0_kb_manifest", "bc0_kb_review_item", "bc0_kb_support_mix",
-    }
-    require(len(aios_kb_pilots_batch_ids) == 17, "AI OS / KB / Pilots batch must contain 17 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in aios_kb_pilots_batch_ids), "AI OS / KB / Pilots subject logic missing")
-    daily_thinking_batch_ids = {
-        "b00_daily_context", "b00_daily_inbox", "b00_daily_kb_evidence",
-        "b30_thinking_assumptions", "b30_thinking_criteria", "b30_thinking_next_step",
-        "b30_thinking_options", "b30_thinking_premortem", "b30_thinking_reversible",
-        "b30_thinking_scenario", "b30_thinking_trade_offs",
-    }
-    require(len(daily_thinking_batch_ids) == 11, "Daily / Thinking batch must contain 11 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in daily_thinking_batch_ids), "Daily / Thinking versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in daily_thinking_batch_ids), "Daily / Thinking subject logic missing")
-    final_batch_ids = {
-        "b50_llm_context_pack", "b50_llm_extract", "b50_llm_local_prompt",
-        "b50_llm_prompt_build", "b50_llm_summarize", "b50_llm_synthesize", "b50_llm_workflow",
-        "b60_codex_inspect", "b60_codex_review_comments",
-        "ba0_local_ai_candidate", "ba0_local_ai_draft_only", "ba0_local_ai_ollama_smoke",
-        "ba0_local_ai_open_webui", "ba0_local_ai_record_pilot", "ba0_local_ai_sanitize",
-        "bd0_mcp_list_actions", "bd0_mcp_local_safety", "bd0_mcp_visibility",
-        "codex_sync", "evidence_check", "kb_source_truth", "llm_prompt_review",
-        "local_ai_safety", "registry_review", "thinking_decision", "thinking_risks",
-    }
-    require(len(final_batch_ids) == 26, "Final batch must contain 26 unique prompts")
-    require(all(prompt_by_id[prompt_id]["prompt_version"] == "1.1.0" for prompt_id in final_batch_ids), "Final batch versions must be 1.1.0")
-    require(all("\n\nSubject logic:\n" in prompt_by_id[prompt_id]["body"] for prompt_id in final_batch_ids), "Final batch subject logic missing")
-    v1_1_prompts = [prompt for prompt in prompts if prompt["prompt_version"] == "1.1.0"]
-    require(len(v1_1_prompts) == 94, f"expected 94 upgraded prompts, found {len(v1_1_prompts)}")
-    require(all("\n\nSubject logic:\n" in prompt["body"] for prompt in v1_1_prompts), "all upgraded prompts must contain subject logic")
-
-    require(prompt_by_id["b50_llm_prompt_build"]["output_schema"] == ["Recommended workflow", "Prompt / template", "Input requirements", "Output schema", "Model class", "Quality gate", "Known failure modes", "Handoff / next action"], "PROMPT BUILD schema mismatch")
-    require(prompt_by_id["b50_llm_context_pack"]["output_schema"] == ["Goal", "Decision needed", "Relevant files / sources", "Facts", "Assumptions", "Constraints", "Forbidden", "Open questions", "Expected output", "Quality gate", "Owner project", "Handoff target"], "CONTEXT PACK schema mismatch")
-    require("there is no paste placeholder" in prompt_by_id["codex_goal_to_pr"]["body"], "GOAL→PR latest-goal contract missing")
-    require("never the verdict itself" in prompt_by_id["revisor_apply_notes"]["body"], "REVISOR source-artifact contract missing")
-    require("current official sources" in prompt_by_id["ai_trend"]["body"], "AI TREND freshness contract missing")
-    require(all("All calculations and numeric QA must be performed by Python or SQL" in p["body"] for p in prompts if p["task_type"] == "analytics"), "Analytics deterministic boundary missing")
-    require(all("Analytics-approved facts" in p["output_schema"] and "requires management confirmation" in p["body"] for p in prompts if p["task_type"] == "memo"), "Memo narrative boundary missing")
-    require(all("Return only pass, revise, or blocked" in p["body"] for p in prompts if p["task_type"] == "judge"), "Judge verdict contract missing")
-    require(prompt_by_id["b20_ai_os_prompt_qa"]["task_type"] == "judge", "PROMPT QA must be judge-only")
+        prompt_id = prompt["prompt_id"]
+        require(set(prompt) == required_prompt_fields, f"prompt contract fields mismatch: {prompt_id}")
+        require(bool(re.fullmatch(r"\d+\.\d+\.\d+", prompt["prompt_version"])), f"invalid prompt version: {prompt_id}")
+        require(prompt["task_type"] in valid_task_types, f"invalid task type: {prompt_id}")
+        require(prompt["owner_project"] in valid_owners, f"invalid owner route: {prompt_id}")
+        require(prompt["button_refs"] == refs_by_prompt[prompt_id], f"button_refs mismatch: {prompt_id}")
+        require(prompt["execution_mode"] == "generate", f"invalid execution mode: {prompt_id}")
+        require(prompt["qa_status"] == "not_run", f"unearned prompt QA status: {prompt_id}")
+        require(prompt["body"].startswith("# ") and prompt["owner_project"] in prompt["body"].splitlines()[0], f"prompt header/owner mismatch: {prompt_id}")
+        require(all(f"- {field}" in prompt["body"] for field in prompt["output_schema"]), f"body/output schema mismatch: {prompt_id}")
 
     qa_rows = qa["rows"]
     require(len(qa_rows) == qa["prompt_count"] == len(prompts), "QA matrix must have one row per unique prompt")
@@ -287,7 +243,10 @@ def main() -> int:
     executed_cases = 0
     live_run_count = 0
     for row in qa_rows:
-        require(row["prompt_version"] == prompt_by_id[row["prompt_id"]]["prompt_version"], f"QA/registry version mismatch: {row['prompt_id']}")
+        prompt = prompt_by_id[row["prompt_id"]]
+        require(row["prompt_version"] == prompt["prompt_version"], f"QA/registry version mismatch: {row['prompt_id']}")
+        require(row.get("prompt_hash") == prompt["prompt_hash"], f"QA/registry hash mismatch: {row['prompt_id']}")
+        require(row["button_refs"] == prompt["button_refs"], f"QA/registry button_refs mismatch: {row['prompt_id']}")
         require({case["case"] for case in row["test_cases"]} == {"normal", "missing_context_or_evidence", "unsafe_or_ambiguous"}, f"representative cases missing: {row['prompt_id']}")
         for case in row["test_cases"]:
             require(case["status"] in {"NOT RUN", "EXECUTED"}, f"invalid QA execution status: {row['prompt_id']}/{case['case']}")
