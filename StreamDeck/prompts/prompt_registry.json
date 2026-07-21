@@ -1140,7 +1140,7 @@
     },
     {
       "prompt_id": "b30_thinking_assumptions",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the ASSUMPTIONS artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1151,17 +1151,18 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# ASSUMPTIONS — [Thinking]\n\nPurpose:\nDraft the ASSUMPTIONS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nExtract assumptions that the selected decision depends on and rewrite each as a falsifiable statement. For every assumption name its source or absence, why it matters, affected option, confidence basis without invented numeric scores, cheapest safe test, owner and consequence if false. Separate facts, constraints and preferences from assumptions. Rank only by decision sensitivity and reversibility, not intuition. Promote an assumption to fact only with cited evidence; otherwise preserve uncertainty and identify the blocking ones.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Assumptions deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# ASSUMPTIONS — [Thinking]\n\nPurpose:\nDraft the ASSUMPTIONS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nExtract only decision-relevant assumptions and make each falsifiable. Separate facts, constraints, and preferences. Rank by decision sensitivity and reversibility, not invented scores; promote an assumption to fact only with evidence and name the cheapest safe test.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Assumption\n- Supporting evidence or gap\n- Decision affected\n- Why it matters\n- Confidence basis\n- Cheapest safe test\n- Owner\n- Consequence if false\n- Next action",
       "output_schema": [
-        "Assumptions deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
+        "Assumption",
+        "Supporting evidence or gap",
+        "Decision affected",
+        "Why it matters",
+        "Confidence basis",
+        "Cheapest safe test",
+        "Owner",
+        "Consequence if false",
         "Next action"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
@@ -1186,11 +1187,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "f95e477de951310f04fd808bb5918f390aa2326e45a94ef6d1380e2eb368d3a3"
+      "prompt_hash": "4c674723b079be1b6d80f2229240df234c177acf3ffd924d517677b5150c8e37"
     },
     {
       "prompt_id": "b30_thinking_criteria",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the CRITERIA artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1201,18 +1202,19 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# CRITERIA — [Thinking]\n\nPurpose:\nDraft the CRITERIA artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nDefine decision criteria before comparing options. Tie each criterion to the stated goal, owner need or non-negotiable constraint; specify observable evidence, direction of preference, minimum gate and conflicts with other criteria. Do not invent weights or thresholds, and keep mandatory safety/legal/data controls separate from tradeable preferences. Check criteria for overlap, proxy distortion and unavailable evidence. Return a comparison-ready set, unresolved owner choices and the rule for pass, revise or blocked.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Criteria deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# CRITERIA — [Thinking]\n\nPurpose:\nDraft the CRITERIA artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nDefine comparison-ready criteria before evaluating options. Tie each criterion to the objective or owner need, separate hard constraints from preferences, and state observable evidence, direction, gate, overlaps, conflicts, and the pass rule. Do not invent weights or thresholds.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Decision objective\n- Criterion\n- Evidence required\n- Direction of preference\n- Minimum gate\n- Hard constraint or preference\n- Conflict / overlap\n- Owner decision required\n- Pass rule",
       "output_schema": [
-        "Criteria deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Decision objective",
+        "Criterion",
+        "Evidence required",
+        "Direction of preference",
+        "Minimum gate",
+        "Hard constraint or preference",
+        "Conflict / overlap",
+        "Owner decision required",
+        "Pass rule"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -1236,11 +1238,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "1ebec7ac07a77eebd149ad84cbeb0d8dd4223f7f86fa673d5e6b7cf18ae98c9d"
+      "prompt_hash": "a9694c53ad2df7669961c8ae9321e8135af607e4f8c092b8f13d0a78ce349fbf"
     },
     {
       "prompt_id": "b30_thinking_next_step",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the NEXT STEP artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1251,18 +1253,19 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# NEXT STEP — [Thinking]\n\nPurpose:\nDraft the NEXT STEP artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nChoose the smallest next action that materially reduces the selected decision's uncertainty or advances an accepted option. State prerequisite, owner, exact artifact/action, expected evidence, reversibility, effort class without invented numbers, stop condition and what decision follows. Prefer an information-gaining or reversible step before commitment. Do not disguise a roadmap, deployment or destructive action as a next step. If authority, source material or a required safety gate is missing, return blocked with the exact unblock request.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Next Step deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# NEXT STEP — [Thinking]\n\nPurpose:\nDraft the NEXT STEP artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nChoose the smallest reversible action that reduces decision uncertainty or advances an accepted option. Do not disguise a roadmap, deployment, or destructive action as a next step. If authority, source, or safety gate is missing, state the exact blocker.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Decision\n- Prerequisite\n- Next action\n- Owner\n- Expected evidence\n- Reversibility\n- Effort class\n- Stop condition\n- Decision after completion",
       "output_schema": [
-        "Next Step deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
+        "Decision",
+        "Prerequisite",
+        "Next action",
+        "Owner",
+        "Expected evidence",
+        "Reversibility",
+        "Effort class",
         "Stop condition",
-        "Next action"
+        "Decision after completion"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -1286,11 +1289,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "7d475d7503eb4f6ef112c773ac9093216d5dd5cac0a076262fb45bc39d0b593d"
+      "prompt_hash": "b44b0742812941d2890bba02664eacd5c093c57ad9fb2965f891c052d07820d3"
     },
     {
       "prompt_id": "b30_thinking_options",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the OPTIONS artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1301,17 +1304,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# OPTIONS — [Thinking]\n\nPurpose:\nDraft the OPTIONS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nGenerate only feasible options for the selected decision, including the status quo when valid. For each state mechanism, required inputs, owner, dependencies, reversibility, time/cost evidence if supplied, benefits, failure modes and criteria it satisfies. Keep mutually distinct options at the same level and do not add a fashionable architecture or unsupported hybrid. Separate known facts from assumptions and identify dominated or infeasible choices explicitly. End with missing evidence needed for comparison, not an automatic recommendation.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Options deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# OPTIONS — [Thinking]\n\nPurpose:\nDraft the OPTIONS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nGenerate feasible, mutually distinct options at one level, including status quo when valid. Do not invent architectures, costs, timelines, or hybrid options. Identify infeasible choices and end with evidence needed for comparison, not an automatic recommendation.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Decision\n- Option\n- Mechanism\n- Required inputs\n- Dependencies\n- Benefits\n- Costs / risks\n- Reversibility\n- Criteria satisfied\n- Missing evidence\n- Next action",
       "output_schema": [
-        "Options deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
+        "Decision",
+        "Option",
+        "Mechanism",
+        "Required inputs",
+        "Dependencies",
+        "Benefits",
+        "Costs / risks",
+        "Reversibility",
+        "Criteria satisfied",
+        "Missing evidence",
         "Next action"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
@@ -1336,11 +1342,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "829ddc8c3c8561ea56b946d6760f6d3cc9ffac1928a20961bc1c8639bf09cdf0"
+      "prompt_hash": "0b27d94162bfb5f3c7c7d8a4bf17a3ab766f64c291eb2e2f5231289ec28d98b3"
     },
     {
       "prompt_id": "b30_thinking_premortem",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the PREMORTEM artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1351,18 +1357,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# PREMORTEM — [Thinking]\n\nPurpose:\nDraft the PREMORTEM artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nAssume the selected plan failed at its stated decision horizon and identify plausible failure paths grounded in its dependencies, assumptions and controls. For each path give trigger, early warning, affected outcome, existing control, preventive action, contingency owner and stop/rollback point. Include data, human, operational, security and adoption failure where relevant; do not invent probabilities or sensational edge cases. Distinguish preventable risks from accepted residual risk and block plans with no observable warning or recovery path.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Premortem deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PREMORTEM — [Thinking]\n\nPurpose:\nDraft the PREMORTEM artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nAssume the plan failed and trace plausible paths through dependencies and controls. Cover data, human, operational, security, and adoption risks when relevant; do not invent probabilities. Separate preventive controls, contingencies, residual risks, and observable rollback points.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Plan / decision\n- Failure path\n- Trigger\n- Early warning\n- Affected outcome\n- Existing control\n- Preventive action\n- Contingency\n- Owner\n- Rollback / stop point",
       "output_schema": [
-        "Premortem deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Plan / decision",
+        "Failure path",
+        "Trigger",
+        "Early warning",
+        "Affected outcome",
+        "Existing control",
+        "Preventive action",
+        "Contingency",
+        "Owner",
+        "Rollback / stop point"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -1386,7 +1394,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "e88a6bc4743a2f2e61b57b53b69d45ab72e509e6c01bc357319bc2ff096420f2"
+      "prompt_hash": "9ca4cfa3fe95b3011db38b80ed3555e398e51c6cf78def477c3df05dfe4cc5b0"
     },
     {
       "prompt_id": "b30_thinking_reversible",
@@ -1440,7 +1448,7 @@
     },
     {
       "prompt_id": "b30_thinking_scenario",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the SCENARIO artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1451,18 +1459,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# SCENARIO — [Thinking]\n\nPurpose:\nDraft the SCENARIO artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nConstruct a small set of decision-relevant scenarios from named uncertain drivers, using supplied ranges or qualitative states only. Keep common facts constant, state assumptions per scenario, trace effects through the decision criteria and identify leading indicators that reveal which scenario is emerging. Do not present scenarios as forecasts or invent numeric likelihoods. Include a stress case when material, test option robustness, and separate no-regret actions from contingent moves and decisions that remain blocked by missing evidence.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Scenario deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# SCENARIO — [Thinking]\n\nPurpose:\nDraft the SCENARIO artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nBuild a small set of decision-relevant scenarios from named drivers and supplied ranges or qualitative states. Keep common facts constant, do not present scenarios as forecasts or invent likelihoods, and distinguish robust options, no-regret actions, contingent moves, and missing evidence.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Decision\n- Uncertain drivers\n- Scenario\n- Assumptions\n- Effects on criteria\n- Leading indicators\n- Robust options\n- No-regret actions\n- Contingent moves\n- Evidence gaps",
       "output_schema": [
-        "Scenario deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Decision",
+        "Uncertain drivers",
+        "Scenario",
+        "Assumptions",
+        "Effects on criteria",
+        "Leading indicators",
+        "Robust options",
+        "No-regret actions",
+        "Contingent moves",
+        "Evidence gaps"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -1486,11 +1496,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "d2262e8e4fdb9a7f1f64b7df0eb3b5272a3fa0acb528ab96c7a109ce74161a76"
+      "prompt_hash": "46b4ac44dc88c6042d7b6f216166099e055eae4aceb8018d1afe11c2e1025dce"
     },
     {
       "prompt_id": "b30_thinking_trade_offs",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the TRADE-OFFS artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[Thinking]",
@@ -1501,18 +1511,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# TRADE-OFFS — [Thinking]\n\nPurpose:\nDraft the TRADE-OFFS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nCompare the selected feasible options against the approved criteria and constraints. For every material trade-off state what improves, what worsens, who bears the cost/risk, evidence source, reversibility and uncertainty; do not collapse unlike units into an invented score. Identify hard gates, dominated choices and value conflicts requiring owner judgment. Separate facts from preferences and avoid a recommendation until missing decision-critical evidence is visible. If one option is recommended, show why it wins and the condition that would change the choice.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Trade-Offs deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# TRADE-OFFS — [Thinking]\n\nPurpose:\nDraft the TRADE-OFFS artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nCompare feasible options against approved criteria and constraints. Show who gains or bears each cost or risk, evidence, reversibility, and uncertainty. Do not collapse unlike units into an invented score; surface hard gates and owner value conflicts before recommending.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Decision\n- Options compared\n- Criterion\n- What improves\n- What worsens\n- Affected owner\n- Evidence\n- Reversibility\n- Uncertainty\n- Decision condition",
       "output_schema": [
-        "Trade-Offs deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Decision",
+        "Options compared",
+        "Criterion",
+        "What improves",
+        "What worsens",
+        "Affected owner",
+        "Evidence",
+        "Reversibility",
+        "Uncertainty",
+        "Decision condition"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -1536,7 +1548,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "695824b27c35688f3d467a7969866fced358a5a6f75518cc08f06bc94508f403"
+      "prompt_hash": "60324722086883ab24566c57bcc2b1bfa8319eae7cc9e752a1a3cb9352731415"
     },
     {
       "prompt_id": "b40_analytics_analytics_loop",
@@ -3446,7 +3458,7 @@
     },
     {
       "prompt_id": "bb0_pilots_pilot_plan",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the PILOT PLAN artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3457,18 +3469,23 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# PILOT PLAN — [AI OS]\n\nPurpose:\nDraft the PILOT PLAN artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nDefine a candidate-only pilot with hypothesis, in-scope users/data/workflow, explicit exclusions, baseline, test cases, deterministic measures, qualitative evidence, owner, duration, checkpoints and pass/revise/stop thresholds supplied by the source. Include privacy, security, cost and operational guardrails plus rollback. Do not invent targets or call the pilot production-ready. Missing baseline, authority, safe test data or a measurable acceptance rule blocks execution and must be listed as an input gap.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot Plan deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PILOT PLAN — [AI OS]\n\nPurpose:\nDraft the PILOT PLAN artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nDefine a candidate-only pilot with explicit scope, exclusions, safe data, baseline, representative cases, deterministic measures, qualitative evidence, supplied thresholds, guardrails, owner, rollback, and stop condition. Missing authority, safe data, baseline, or measurable acceptance rule blocks execution; never claim production readiness.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Hypothesis\n- Scope\n- Exclusions\n- Users / workflow\n- Data\n- Baseline\n- Test cases\n- Measures\n- Acceptance thresholds\n- Guardrails\n- Owner\n- Rollback\n- Stop condition",
       "output_schema": [
-        "Pilot Plan deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Hypothesis",
+        "Scope",
+        "Exclusions",
+        "Users / workflow",
+        "Data",
+        "Baseline",
+        "Test cases",
+        "Measures",
+        "Acceptance thresholds",
+        "Guardrails",
+        "Owner",
+        "Rollback",
+        "Stop condition"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -3492,11 +3509,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "0c605acf055373fd85eb2b672880baed4a50f61d1578e4fb353880100ccd8417"
+      "prompt_hash": "dd080a2f67cc1c802575f1b881be302375b72164d7d413a2a1c217600a8193b8"
     },
     {
       "prompt_id": "bb0_pilots_pilot_result",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the PILOT RESULT artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3507,18 +3524,21 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# PILOT RESULT — [AI OS]\n\nPurpose:\nDraft the PILOT RESULT artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nReport only observed pilot evidence against the approved plan. Pair every test case and acceptance rule with source, run identifier/date, actual status and evidence; calculate any metrics with Python or SQL. Separate successful, failed, partial and NOT RUN cases, participant feedback, data-quality limits and deviations from protocol. Do not generalize beyond the tested population or convert absence of failures into safety proof. Conclude pass, revise or stop with the owner decision still pending when unobserved.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot Result deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# PILOT RESULT — [AI OS]\n\nPurpose:\nDraft the PILOT RESULT artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nReport observed pilot evidence against the approved plan. For every case distinguish PASS, FAIL, PARTIAL, and NOT RUN; include deviations and limits, and calculate metrics only with Python or SQL. Do not generalize beyond tested scope or convert absence of failures into safety proof. Keep the owner gate pending unless observed.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nExecution truth:\nUse EXECUTED only when the required workflow and evidence were observed, PARTIAL when some required cases ran, and NOT RUN when none ran. Expected results are not evidence.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot ID / version\n- Scope tested\n- Test case\n- Execution status\n- Observed evidence\n- Result\n- Deviation\n- Limitations\n- Residual risk\n- Verdict: pass / revise / stop\n- Owner gate",
       "output_schema": [
-        "Pilot Result deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Pilot ID / version",
+        "Scope tested",
+        "Test case",
+        "Execution status",
+        "Observed evidence",
+        "Result",
+        "Deviation",
+        "Limitations",
+        "Residual risk",
+        "Verdict: pass / revise / stop",
+        "Owner gate"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -3542,11 +3562,11 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "20b0d9c19ebc89c935759595f39986db2b7cc468702ee073c5a28bdd10bead7e"
+      "prompt_hash": "d8a1859617d1360cf183cdf76582915e319168e7062380a4b669334b406729ab"
     },
     {
       "prompt_id": "bb0_pilots_residual_risk",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the RESIDUAL RISK artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3557,18 +3577,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# RESIDUAL RISK — [AI OS]\n\nPurpose:\nDraft the RESIDUAL RISK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nStart from observed pilot results and list risks that remain after current controls. For each, name trigger, affected user/data/system, consequence, evidence, control effectiveness, remaining uncertainty, owner action and decision gate. Do not invent numeric likelihood or severity scores without an approved method and data. Separate accepted risk from merely identified risk and keep owner acceptance pending unless observed. Any uncontrolled privacy, security, destructive-action or production-impact risk requires a stop verdict.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Residual Risk deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# RESIDUAL RISK — [AI OS]\n\nPurpose:\nDraft the RESIDUAL RISK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nStart from observed pilot results and list risks remaining after controls. Do not invent likelihood or severity scores. Separate accepted risk from identified risk, preserve uncertainty, and require a stop gate for uncontrolled privacy, security, destructive-action, or production-impact exposure.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Risk\n- Trigger\n- Affected user/data/system\n- Evidence\n- Existing control\n- Control effectiveness\n- Residual exposure\n- Uncertainty\n- Owner action\n- Decision gate",
       "output_schema": [
-        "Residual Risk deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Risk",
+        "Trigger",
+        "Affected user/data/system",
+        "Evidence",
+        "Existing control",
+        "Control effectiveness",
+        "Residual exposure",
+        "Uncertainty",
+        "Owner action",
+        "Decision gate"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -3592,7 +3614,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "ef43a843cfeafd3b2ae0b0a72e6f4b4814fadea218859781a8131abd9fa3df2a"
+      "prompt_hash": "d2af484e1e29b32cf4fca337048e3361445583d129ae6323fbdb9abd7b94b2ef"
     },
     {
       "prompt_id": "bb0_pilots_revisit",
@@ -3645,7 +3667,7 @@
     },
     {
       "prompt_id": "bb0_pilots_rollback",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the ROLLBACK artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3656,18 +3678,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# ROLLBACK — [AI OS]\n\nPurpose:\nDraft the ROLLBACK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nSpecify a tested-or-NOT-RUN rollback for the selected pilot: trigger, decision owner, artifacts/configuration to restore, preserved backup, ordered reversible steps, validation after restore, data handling and user communication. Do not propose destructive cleanup before preservation or claim recovery time without a run. Separate repository rollback from remote/app/device rollback and require confirmation before state-changing actions. Block continuation when no recoverable baseline, authority or post-rollback check exists.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Rollback deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# ROLLBACK — [AI OS]\n\nPurpose:\nDraft the ROLLBACK artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nSpecify a recoverable rollback for the selected pilot, preserving backups before cleanup. Separate repository rollback from remote, app, or device rollback; require confirmation before state changes. Block continuation without a baseline, authority, or post-restore check.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nExecution truth:\nLabel rollback EXECUTED only when observed, PARTIAL when some steps were observed, and NOT RUN when it is only a procedure. Do not invent recovery time.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Rollback trigger\n- Decision owner\n- Baseline\n- Artifacts to restore\n- Ordered steps\n- Validation after restore\n- Data handling\n- Communication\n- Execution status\n- Stop condition",
       "output_schema": [
-        "Rollback deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Rollback trigger",
+        "Decision owner",
+        "Baseline",
+        "Artifacts to restore",
+        "Ordered steps",
+        "Validation after restore",
+        "Data handling",
+        "Communication",
+        "Execution status",
+        "Stop condition"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -3691,7 +3715,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "6b3c79a841e8f107c13c12c05c35ce4567c080570b3ea50b0933e7c5b9da864e"
+      "prompt_hash": "f63e55362960f4d1f2b7bd6cac67d859de7c9b124b6d3da5d2bde6cbbb40229c"
     },
     {
       "prompt_id": "bb0_pilots_run_record",
@@ -3746,7 +3770,7 @@
     },
     {
       "prompt_id": "bb0_pilots_status_note",
-      "prompt_version": "2.0.0",
+      "prompt_version": "3.0.0",
       "task_type": "draft",
       "purpose": "Draft the STATUS NOTE artifact from the selected source while preserving evidence and scope.",
       "owner_project": "[AI OS]",
@@ -3757,18 +3781,20 @@
         "task objective or source artifact",
         "relevant evidence and constraints"
       ],
-      "material_selection_rule": "User-named source, immediately preceding substantive artifact, then latest relevant non-verdict source.",
+      "material_selection_rule": "Use the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.",
       "execution_mode": "generate",
-      "body": "# STATUS NOTE — [AI OS]\n\nPurpose:\nDraft the STATUS NOTE artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the source or objective explicitly named by the user; otherwise use the immediately preceding substantive artifact, then the latest relevant non-verdict source. Do not use a Judge, Revisor report, Final Gate, Blocker, or Handoff as the factual source unless the user explicitly names it.\n\nSubject logic:\nWrite a concise decision status from the latest approved plan and observed run record. State scope/version, current phase, completed evidence, failed or NOT RUN cases, acceptance criteria state, blockers, residual risks, owner decisions and next checkpoint. Keep facts, interpretation and proposed work separate; do not turn a green repository check into physical or production validation. Use candidate/pilot language, preserve pending owner acceptance and avoid invented dates, percentages or completion claims.\n\nEvidence limits:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and unchecked changeable external facts as UNVERIFIED. Do not treat expected behavior as an observed result.\n\nLanguage:\nFollow the user language, then the selected source language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Status Note deliverable\n- Source material used\n- Decision or artifact\n- Evidence and freshness\n- Constraints\n- Known limitations\n- Stop condition\n- Next action",
+      "body": "# STATUS NOTE — [AI OS]\n\nPurpose:\nDraft the STATUS NOTE artifact from the selected source while preserving evidence and scope.\n\nTarget selection:\nUse the user-named decision, plan, pilot, or source; otherwise use the immediately preceding substantive non-verdict artifact, then the latest relevant substantive source.\n\nTask logic:\nSummarize the latest approved plan and observed run record. Keep completed, failed, and NOT RUN cases distinct; do not turn repository checks into physical or production validation. Preserve candidate language, pending owner decisions, residual risks, and the next evidence checkpoint.\n\nEvidence:\nUse only user-provided or tool-observed facts. Preserve exact numbers, dates, currencies, units, execution status, residual risks, and evidence gaps. Separate facts, assumptions, interpretation, and recommendations; mark unsupported or unchecked claims UNVERIFIED.\n\nSafety:\nText-only supervised mode. Do not send, publish, deploy, delete, or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot / version\n- Current phase\n- Completed evidence\n- Failed cases\n- NOT RUN cases\n- Acceptance state\n- Blockers\n- Residual risks\n- Owner decisions\n- Next checkpoint",
       "output_schema": [
-        "Status Note deliverable",
-        "Source material used",
-        "Decision or artifact",
-        "Evidence and freshness",
-        "Constraints",
-        "Known limitations",
-        "Stop condition",
-        "Next action"
+        "Pilot / version",
+        "Current phase",
+        "Completed evidence",
+        "Failed cases",
+        "NOT RUN cases",
+        "Acceptance state",
+        "Blockers",
+        "Residual risks",
+        "Owner decisions",
+        "Next checkpoint"
       ],
       "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
       "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
@@ -3792,7 +3818,7 @@
       "prompt_gate_10_of_10": null,
       "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "fc4f774f4fa272b11c00503c5681e24fa620a2f424dcad646439b8bdc8c2ca1a"
+      "prompt_hash": "35cc0e64e513b5307811630b7dfa507cab121b5328a89f1658b6ad0e4e26d5df"
     },
     {
       "prompt_id": "bb0_pilots_test_cases",
