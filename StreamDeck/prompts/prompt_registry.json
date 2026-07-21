@@ -1318,49 +1318,53 @@
     },
     {
       "prompt_id": "b30_thinking_reversible",
-      "prompt_version": "1.1.0",
-      "task_type": "route",
-      "purpose": "Produce the REVERSIBLE? workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
-      "owner_project": "[Inbox Router]",
+      "prompt_version": "2.0.0",
+      "task_type": "judge",
+      "purpose": "Assess whether the selected decision is reversible and identify the smallest safe commitment.",
+      "owner_project": "[Thinking]",
       "button_refs": [
         "B30_THINKING/K5"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "decision or option to assess",
+        "known costs, dependencies, and recovery constraints"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the decision explicitly named by the user, otherwise the latest substantive decision artifact. Do not treat routing text or a prior verdict as the decision.",
       "execution_mode": "generate",
-      "body": "# REVERSIBLE? — [Inbox Router]\n\nPurpose:\nProduce the REVERSIBLE? workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nClassify the selected decision as reversible, partially reversible or effectively irreversible from concrete state changes, not labels. Identify what can be restored, preserved baseline, switching cost evidence, affected data/users, authority, rollback trigger and validation after reversal. Route reversible experiments to the owning project with bounded scope; escalate destructive, remote, production, security or financial-control commitments for explicit approval. If no backup, owner or recovery check exists, return blocked rather than recommending execution.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Input classification\n- Chosen owner project\n- Reason\n- Required context\n- Forbidden data\n- Handoff target\n- Stop condition",
+      "body": "# REVERSIBLE? — [Inbox Router]\n\nPurpose:\nAssess whether the selected decision is reversible and identify the smallest safe commitment.\n\nTarget selection:\nUse the decision explicitly named by the user, otherwise the latest substantive decision artifact. Do not treat routing text or a prior verdict as the decision.\n\nTarget protocol:\nStart with Target artifact and Target anchor. The anchor must be the exact first line or first 8–12 words of the selected artifact. If two candidates are equal, name them and ask one deciding question.\n\nSubject logic:\nClassify reversibility by recoverability, switching cost, time to recover, data or reputation loss, contractual or regulatory lock-in, dependency depth, and available rollback. Return pass when the claimed reversibility is supported, revise when mitigations or evidence can be added in scope, and blocked only when the decision source or mandatory constraint evidence is unavailable. Pending approval does not by itself make the assessment blocked.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Target artifact\n- Target anchor\n- Reversibility verdict: pass / revise / blocked\n- Reversible elements\n- Irreversible elements\n- Evidence and assumptions\n- Rollback or exit path\n- Required safeguards\n- Next decision",
       "output_schema": [
-        "Input classification",
-        "Chosen owner project",
-        "Reason",
-        "Required context",
-        "Forbidden data",
-        "Handoff target",
-        "Stop condition"
+        "Target artifact",
+        "Target anchor",
+        "Reversibility verdict: pass / revise / blocked",
+        "Reversible elements",
+        "Irreversible elements",
+        "Evidence and assumptions",
+        "Rollback or exit path",
+        "Required safeguards",
+        "Next decision"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required for a decision-quality assessment. Preserve any observed implementation facts without inventing tests.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "decision target is explicit",
+        "reversibility dimensions checked",
+        "assumptions separated from facts",
+        "rollback is concrete",
+        "verdict threshold is correct"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "routing instead of assessing",
+        "equating expensive with irreversible",
+        "inventing rollback evidence",
+        "blocking on ordinary uncertainty"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "c59ce76f4279dc2255d44caa5d044b5cda0f6cf1c96358c6c23dc52333e0f10a"
+      "prompt_hash": "3a20fa87c7650630f52d935a4e4f9912afefbe9e4141f91cf5219722092a4ce2"
     },
     {
       "prompt_id": "b30_thinking_scenario",
@@ -1947,49 +1951,54 @@
     },
     {
       "prompt_id": "b50_llm_eval_rubric",
-      "prompt_version": "1.0.0",
-      "task_type": "judge",
-      "purpose": "Produce the EVAL RUBRIC workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "draft",
+      "purpose": "Design a task-specific evaluation rubric for an LLM artifact before judging any output.",
       "owner_project": "[LLM]",
       "button_refs": [
         "B50_LLM/K5"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "artifact class and objective",
+        "desired behavior",
+        "known failure modes and evidence constraints"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the evaluation objective and artifact class named by the user; otherwise use the latest prompt or workflow specification. Do not score an artifact in this step.",
       "execution_mode": "generate",
-      "body": "# EVAL RUBRIC — [LLM]\n\nPurpose:\nProduce the EVAL RUBRIC workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Eval Rubric verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
+      "body": "# EVAL RUBRIC — [LLM]\n\nPurpose:\nDesign a task-specific evaluation rubric for an LLM artifact before judging any output.\n\nTarget selection:\nUse the evaluation objective and artifact class named by the user; otherwise use the latest prompt or workflow specification. Do not score an artifact in this step.\n\nSubject logic:\nDefine observable criteria, weights only if the user supplies or requests them, pass/revise/blocked thresholds, representative normal and adverse cases, evidence expectations, and disqualifying failures. Keep quality, execution, safety, and owner acceptance as separate dimensions. A rubric must be usable by another Judge without relying on generic approval language or hidden assumptions.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Evaluation objective\n- Artifact class\n- Criteria\n- Scoring or decision rules\n- Test cases\n- Evidence requirements\n- Disqualifying failures\n- Quality gate\n- Limitations",
       "output_schema": [
-        "Eval Rubric verdict: pass / revise / blocked",
-        "Criteria checked",
-        "Evidence observed",
-        "Unsupported claims",
-        "Required fixes",
-        "Residual risks",
-        "Next action"
+        "Evaluation objective",
+        "Artifact class",
+        "Criteria",
+        "Scoring or decision rules",
+        "Test cases",
+        "Evidence requirements",
+        "Disqualifying failures",
+        "Quality gate",
+        "Limitations"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required because this prompt designs a rubric; test execution remains a separate task.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "criteria are observable",
+        "thresholds distinguish pass revise blocked",
+        "normal and adverse cases included",
+        "evidence requirements explicit",
+        "no artifact is prematurely judged"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "judging instead of designing",
+        "subjective criteria",
+        "missing thresholds",
+        "mixing owner acceptance with content quality"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "1be452e720b5cf84835f1d98c2fded4575f06068e0e352739caeb21014710f30"
+      "prompt_hash": "ebecd1dd7c12229a75c16e2dfa5d522496225334b07ab9209b1e7ec0eb83ae50"
     },
     {
       "prompt_id": "b50_llm_extract",
@@ -2415,93 +2424,103 @@
     },
     {
       "prompt_id": "b60_codex_fix_ci",
-      "prompt_version": "1.0.0",
-      "task_type": "revise",
-      "purpose": "Produce the FIX CI workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "execution_request",
+      "purpose": "Diagnose an observed CI failure and apply the smallest in-scope repository fix when authorized.",
       "owner_project": "[Codex]",
       "button_refs": [
         "B60_CODEX/K8"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "repository and branch context",
+        "observed failing check or log",
+        "allowed files and actions"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the named CI run or latest observed failing check. If no log or check result is available, keep execution NOT RUN and request the minimum evidence.",
       "execution_mode": "generate",
-      "body": "# FIX CI — [Codex]\n\nPurpose:\nProduce the FIX CI workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nRevision boundary:\nUse the last Judge verdict only as revision notes. Edit the source artifact the Judge reviewed, never the verdict itself. If the source is ambiguous, return blocked. Add no facts or evidence.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Revised fix ci artifact\n- Revision notes applied\n- Source facts preserved\n- Unsupported content removed\n- Blocked items\n- Next review",
+      "body": "# FIX CI — [Codex]\n\nPurpose:\nDiagnose an observed CI failure and apply the smallest in-scope repository fix when authorized.\n\nTarget selection:\nUse the named CI run or latest observed failing check. If no log or check result is available, keep execution NOT RUN and request the minimum evidence.\n\nSubject logic:\nInspect the failing job, reproduce locally when feasible, identify the evidence-backed cause, change only the smallest allowed surface, rerun the narrow failed check, and report the observed outcome. Do not modify CI configuration, dependencies, secrets, protected branches, or unrelated tests without explicit authority. Separate diagnosis, proposed actions, and commands actually run.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Commands / tool calls observed\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Observed result\n- Proposed actions not run\n- Blockers\n- Rollback\n- Next action",
       "output_schema": [
-        "Revised fix ci artifact",
-        "Revision notes applied",
-        "Source facts preserved",
-        "Unsupported content removed",
-        "Blocked items",
-        "Next review"
+        "Objective",
+        "Commands / tool calls observed",
+        "Execution status: EXECUTED / PARTIAL / NOT RUN",
+        "Observed result",
+        "Proposed actions not run",
+        "Blockers",
+        "Rollback",
+        "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "EXECUTED only when commands or tool calls and their results were observed; PARTIAL for an incomplete observed attempt; otherwise NOT RUN.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "failure evidence identified",
+        "scope and authority respected",
+        "smallest fix used",
+        "relevant check observed",
+        "rollback stated"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "inventing CI output",
+        "fixing unrelated failures",
+        "changing workflow configuration without authority",
+        "claiming success without rerun"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "0263d192c687ea1315aa0be730b5682097a52ff3305786d37e7ed0b1f5bfc5fa"
+      "prompt_hash": "278cfaad31b5060cfdf5e83f56f646cd248227bf672543979ca9c142e562b8f1"
     },
     {
       "prompt_id": "b60_codex_fix_in_scope",
-      "prompt_version": "1.0.0",
-      "task_type": "revise",
-      "purpose": "Produce the FIX IN SCOPE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "execution_request",
+      "purpose": "Apply the smallest repository change that resolves a confirmed defect within the allowed scope.",
       "owner_project": "[Codex]",
       "button_refs": [
         "B60_CODEX/K5"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "confirmed defect and evidence",
+        "allowed files and forbidden actions",
+        "acceptance criteria"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the user-named defect or the latest evidence-backed review finding. Do not act on speculative or out-of-scope findings.",
       "execution_mode": "generate",
-      "body": "# FIX IN SCOPE — [Codex]\n\nPurpose:\nProduce the FIX IN SCOPE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nRevision boundary:\nUse the last Judge verdict only as revision notes. Edit the source artifact the Judge reviewed, never the verdict itself. If the source is ambiguous, return blocked. Add no facts or evidence.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Revised fix in scope artifact\n- Revision notes applied\n- Source facts preserved\n- Unsupported content removed\n- Blocked items\n- Next review",
+      "body": "# FIX IN SCOPE — [Codex]\n\nPurpose:\nApply the smallest repository change that resolves a confirmed defect within the allowed scope.\n\nTarget selection:\nUse the user-named defect or the latest evidence-backed review finding. Do not act on speculative or out-of-scope findings.\n\nSubject logic:\nReproduce or confirm the defect, inspect only relevant files, implement the smallest reversible correction, and run the narrowest meaningful check. Preserve unrelated behavior and existing user changes. If the required fix crosses the allowed files, changes a protected contract, or needs missing authority, stop and report the blocker rather than widening scope.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Commands / tool calls observed\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Observed result\n- Proposed actions not run\n- Blockers\n- Rollback\n- Next action",
       "output_schema": [
-        "Revised fix in scope artifact",
-        "Revision notes applied",
-        "Source facts preserved",
-        "Unsupported content removed",
-        "Blocked items",
-        "Next review"
+        "Objective",
+        "Commands / tool calls observed",
+        "Execution status: EXECUTED / PARTIAL / NOT RUN",
+        "Observed result",
+        "Proposed actions not run",
+        "Blockers",
+        "Rollback",
+        "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "EXECUTED only for observed edits and checks; PARTIAL when some authorized steps ran but acceptance is unmet; otherwise NOT RUN.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "defect confirmed",
+        "allowed scope preserved",
+        "minimal change made",
+        "observed check matches change",
+        "rollback available"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "scope expansion",
+        "drive-by refactor",
+        "invented reproduction",
+        "claiming unrun tests passed"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "0146ae89ba6d978203d722663227affde051fd2f3bbb6cf42b8b3a3b9a09c021"
+      "prompt_hash": "1cc1ccfa39ffc597cbb77d8a58064055b828783bf0af43a0fa2046a820c19bc0"
     },
     {
       "prompt_id": "b60_codex_inspect",
@@ -2690,49 +2709,53 @@
     },
     {
       "prompt_id": "b60_codex_run_checks",
-      "prompt_version": "1.0.0",
-      "task_type": "judge",
-      "purpose": "Produce the RUN CHECKS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "execution_request",
+      "purpose": "Run the smallest relevant repository checks and report only observed commands and results.",
       "owner_project": "[Codex]",
       "button_refs": [
         "B60_CODEX/K4"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "repository context",
+        "change scope or check target",
+        "authorization for local checks"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the named checks; otherwise infer the narrowest checks from the changed files and repository instructions. Do not run generators, deploys, remote mutations, or destructive commands unless explicitly authorized.",
       "execution_mode": "generate",
-      "body": "# RUN CHECKS — [Codex]\n\nPurpose:\nProduce the RUN CHECKS workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Run Checks verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
+      "body": "# RUN CHECKS — [Codex]\n\nPurpose:\nRun the smallest relevant repository checks and report only observed commands and results.\n\nTarget selection:\nUse the named checks; otherwise infer the narrowest checks from the changed files and repository instructions. Do not run generators, deploys, remote mutations, or destructive commands unless explicitly authorized.\n\nSubject logic:\nList the exact commands selected, execute only authorized checks, preserve their actual exit status and relevant output, distinguish test failure from inability to run, and leave proposed follow-up commands under not run. A failing check is an observed result, not automatically a hard blocker; classify the blocker only when a required prerequisite prevents execution.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Objective\n- Commands / tool calls observed\n- Execution status: EXECUTED / PARTIAL / NOT RUN\n- Observed result\n- Proposed actions not run\n- Blockers\n- Rollback\n- Next action",
       "output_schema": [
-        "Run Checks verdict: pass / revise / blocked",
-        "Criteria checked",
-        "Evidence observed",
-        "Unsupported claims",
-        "Required fixes",
-        "Residual risks",
+        "Objective",
+        "Commands / tool calls observed",
+        "Execution status: EXECUTED / PARTIAL / NOT RUN",
+        "Observed result",
+        "Proposed actions not run",
+        "Blockers",
+        "Rollback",
         "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "EXECUTED when all selected checks ran; PARTIAL when at least one ran and at least one required check did not; NOT RUN when no command or tool call was observed.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "commands are exact",
+        "results are observed",
+        "status matches coverage",
+        "failures not hidden",
+        "proposed checks separated"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "reporting expected output",
+        "calling a failed check blocked without cause",
+        "running broad unrelated suites",
+        "claiming all checks passed after partial execution"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "c5af7791ed168d1206ee06e9031fa9c8e4eac51dccf7528572e5c865e310a2d8"
+      "prompt_hash": "6c1f57d1278242bf86f66fca1331d1807b675a3ce4c5d962d27f4fbb007ecd13"
     },
     {
       "prompt_id": "ba0_local_ai_candidate",
@@ -2829,49 +2852,54 @@
     },
     {
       "prompt_id": "ba0_local_ai_eval_matrix",
-      "prompt_version": "1.0.0",
-      "task_type": "judge",
-      "purpose": "Produce the EVAL MATRIX workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "draft",
+      "purpose": "Create a comparable evaluation matrix for local AI candidates without running or scoring unobserved models.",
       "owner_project": "[LLM] / Local AI",
       "button_refs": [
         "BA0_LOCAL_AI/K7"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "use cases and candidate classes",
+        "hardware or privacy constraints",
+        "evaluation priorities"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the named candidates and use cases; otherwise use the latest local-AI candidate specification. Mark unavailable model, hardware, or benchmark facts UNVERIFIED.",
       "execution_mode": "generate",
-      "body": "# EVAL MATRIX — [LLM] / Local AI\n\nPurpose:\nProduce the EVAL MATRIX workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Eval Matrix verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
+      "body": "# EVAL MATRIX — [LLM] / Local AI\n\nPurpose:\nCreate a comparable evaluation matrix for local AI candidates without running or scoring unobserved models.\n\nTarget selection:\nUse the named candidates and use cases; otherwise use the latest local-AI candidate specification. Mark unavailable model, hardware, or benchmark facts UNVERIFIED.\n\nSubject logic:\nDefine rows for representative tasks and columns for quality, factuality, instruction following, latency, resource use, privacy boundary, failure behavior, and operational fit. Specify measurement method, evidence source, pass threshold, and missing-data handling. Keep planned tests separate from observed results and do not rank candidates until evidence exists.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Evaluation scope\n- Candidates\n- Use cases\n- Criteria and measures\n- Test matrix\n- Evidence requirements\n- Decision thresholds\n- Missing data\n- Next action",
       "output_schema": [
-        "Eval Matrix verdict: pass / revise / blocked",
-        "Criteria checked",
-        "Evidence observed",
-        "Unsupported claims",
-        "Required fixes",
-        "Residual risks",
+        "Evaluation scope",
+        "Candidates",
+        "Use cases",
+        "Criteria and measures",
+        "Test matrix",
+        "Evidence requirements",
+        "Decision thresholds",
+        "Missing data",
         "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required because this prompt designs the matrix; actual model runs and measurements are separate execution tasks.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "candidates and use cases comparable",
+        "criteria measurable",
+        "evidence sources explicit",
+        "thresholds defined",
+        "no unobserved ranking"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "scoring without runs",
+        "mixing unlike workloads",
+        "inventing hardware results",
+        "generic criteria without measures"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "75541ac2d2d0d440af4e4491025d7e61c7ab174a00883707446dbf035388f0b9"
+      "prompt_hash": "0bdae76d55244d8b71e2a7a4ae775af13f434c95b348c92e2aba143412708da3"
     },
     {
       "prompt_id": "ba0_local_ai_judge_output",
@@ -3529,49 +3557,54 @@
     },
     {
       "prompt_id": "bb0_pilots_test_cases",
-      "prompt_version": "1.0.0",
-      "task_type": "judge",
-      "purpose": "Produce the TEST CASES workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "prompt_version": "2.0.0",
+      "task_type": "draft",
+      "purpose": "Design representative pilot test cases and acceptance evidence before any pilot execution.",
       "owner_project": "[AI OS]",
       "button_refs": [
         "BB0_PILOTS/K2"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "pilot objective and scope",
+        "candidate behavior",
+        "risks and acceptance criteria"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the named pilot plan or latest candidate specification. Do not treat a prior pilot result as the test design unless the user asks to extend it.",
       "execution_mode": "generate",
-      "body": "# TEST CASES — [AI OS]\n\nPurpose:\nProduce the TEST CASES workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Test Cases verdict: pass / revise / blocked\n- Criteria checked\n- Evidence observed\n- Unsupported claims\n- Required fixes\n- Residual risks\n- Next action",
+      "body": "# TEST CASES — [AI OS]\n\nPurpose:\nDesign representative pilot test cases and acceptance evidence before any pilot execution.\n\nTarget selection:\nUse the named pilot plan or latest candidate specification. Do not treat a prior pilot result as the test design unless the user asks to extend it.\n\nSubject logic:\nCover the normal path, missing input, ambiguous source, unsafe request, rollback, and the highest-risk domain edge cases. For each case define setup, input, expected behavior, observable evidence, pass condition, and stop condition. Do not claim cases were run; physical or runtime execution remains pending until observed.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark missing evidence and changing external facts that were not checked as UNVERIFIED.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- Pilot objective\n- Test cases\n- Inputs and setup\n- Expected behavior\n- Evidence to capture\n- Pass criteria\n- Stop conditions\n- Coverage gaps\n- Next action",
       "output_schema": [
-        "Test Cases verdict: pass / revise / blocked",
-        "Criteria checked",
-        "Evidence observed",
-        "Unsupported claims",
-        "Required fixes",
-        "Residual risks",
+        "Pilot objective",
+        "Test cases",
+        "Inputs and setup",
+        "Expected behavior",
+        "Evidence to capture",
+        "Pass criteria",
+        "Stop conditions",
+        "Coverage gaps",
         "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required for test design. State that execution is pending only when useful; never present expected behavior as observed.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "normal and adverse cases covered",
+        "expected behavior is testable",
+        "evidence capture specified",
+        "pass and stop conditions distinct",
+        "execution not implied"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "judging a pilot instead of designing cases",
+        "missing adverse cases",
+        "unobservable pass criteria",
+        "invented execution"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "5e50b6dd348d31e5fcff3d3ec6f9e7eaa6f4d52e04a5087a1707189c519bfb42"
+      "prompt_hash": "aba30b5e789cb794be6738d8df39d57cd7e4b3408a0e2e36164def66486d7f0b"
     },
     {
       "prompt_id": "bc0_kb_bundle_sync",
