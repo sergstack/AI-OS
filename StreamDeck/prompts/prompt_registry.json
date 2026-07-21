@@ -4556,9 +4556,9 @@
     },
     {
       "prompt_id": "blocker_review",
-      "prompt_version": "1.1.0",
+      "prompt_version": "2.0.0",
       "task_type": "blocked",
-      "purpose": "Produce the BLOCKER workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "purpose": "Distinguish a hard blocker from a defect that can be corrected within the current scope.",
       "owner_project": "[Thinking]",
       "button_refs": [
         "B00_DAILY/K11",
@@ -4578,41 +4578,45 @@
         "BE0_DECK_QA/K11"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "candidate source artifact or goal",
+        "available evidence and permissions"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Prefer the user-named artifact, then the artifact identified by the latest Judge anchor, then the immediately preceding substantive artifact. Block only for a missing, ambiguous, or mismatched source that would materially change the result.",
       "execution_mode": "generate",
-      "body": "# BLOCKER — [Thinking]\n\nPurpose:\nProduce the BLOCKER workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nClassify the stop reason as missing source, ambiguous owner, failed deterministic check, unsafe or unapproved action, missing permission, or unmet acceptance criterion. A blocker must cite the exact prerequisite and evidence already checked, distinguish owner action from work the current project can still do, and offer only reversible safe options. Do not label inconvenience or uncertainty as blocked. Example: a required physical device test with no device access -> blocked / owner action; a fixable local test failure -> revise, not blocked.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Blocked decision\n- Missing prerequisite\n- Evidence checked\n- Safe options\n- Stop condition\n- Owner action\n- Rollback",
+      "body": "# BLOCKER — [Thinking]\n\nPurpose:\nDistinguish a true stop condition from a defect that can be handled through revise. Check whether bounded work can continue before returning blocked.\n\nTarget selection:\nUse the artifact named by the user; otherwise use the latest Judge Target artifact and Target anchor; otherwise use the immediately preceding substantive artifact. Do not select a Judge verdict, Revisor report, Final Gate verdict, Blocker report, or Handoff as the source. If two candidates are equally valid, name them and ask one deciding question.\n\nBlocker rule:\nReturn revise for missing sections, formatting or schema defects, unsupported noncritical claims, ordinary uncertainty, fixable local test failures, or pending owner/physical acceptance that does not prevent current work. Return blocked only for a missing or genuinely ambiguous source, required permission or authority, unavailable mandatory deterministic result, unsafe action, conflicting canonical sources, or an unavoidable owner action.\n\nSource discipline:\nUse only provided or tool-observed evidence. Separate facts from assumptions and recommendations. Mark changing external facts UNVERIFIED when they were not checked. Do not treat expected behavior as an observed result.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nStart the response with the first two fields below and return exactly these sections, in this order:\n- Target artifact\n- Target anchor\n- Verdict: revise / blocked\n- Blocking prerequisite\n- Evidence checked\n- Work still possible\n- Required owner action\n- Safe next action\n- Stop condition",
       "output_schema": [
-        "Blocked decision",
-        "Missing prerequisite",
+        "Target artifact",
+        "Target anchor",
+        "Verdict: revise / blocked",
+        "Blocking prerequisite",
         "Evidence checked",
-        "Safe options",
-        "Stop condition",
-        "Owner action",
-        "Rollback"
+        "Work still possible",
+        "Required owner action",
+        "Safe next action",
+        "Stop condition"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "Do not use execution status as the quality verdict. Mention NOT RUN only for an action or deterministic check that was actually required but not observed.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "target is unambiguous",
+        "hard-blocker threshold applied",
+        "evidence is traceable",
+        "work still possible is identified",
+        "safe next action is bounded"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "treating a fixable defect as blocked",
+        "blocking on pending content acceptance",
+        "choosing among equal source candidates",
+        "claiming an unobserved check"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "467df4971c2c95ed4451fce9b071636b454e9387662385765b3a4f6ecfe0638e"
+      "prompt_hash": "8851588924793a7821808ddbea55f757868de338e38f73bc86893e4a700ac3c2"
     },
     {
       "prompt_id": "codex_goal_to_pr",
@@ -4763,9 +4767,9 @@
     },
     {
       "prompt_id": "final_acceptance_gate",
-      "prompt_version": "1.1.0",
+      "prompt_version": "2.0.0",
       "task_type": "judge",
-      "purpose": "Produce the FINAL GATE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "purpose": "Evaluate the final revised artifact under the correct gate mode while keeping quality, execution, and owner acceptance distinct.",
       "owner_project": "[LLM] / Judge",
       "button_refs": [
         "B00_DAILY/K15",
@@ -4785,12 +4789,16 @@
         "BE0_DECK_QA/K15"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "latest Revised artifact or latest substantive non-Judge artifact",
+        "acceptance criteria and available evidence"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the latest Revised artifact; if no Revisor was used, use the latest substantive non-Judge assistant artifact. Never use a Judge verdict as the target.",
       "execution_mode": "generate",
-      "body": "# FINAL GATE — [LLM] / Judge\n\nPurpose:\nProduce the FINAL GATE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSubject logic:\nEnumerate every acceptance criterion from the selected source and pair it with exact evidence: changed file, observed command output, test result, owner decision or explicit NOT RUN gate. A criterion is met only when evidence matches its full scope; partial implementation, proposed checks and unrelated green tests do not count. Return pass only when all required criteria are met and residual risks are accepted by the correct owner; return revise for fixable unmet criteria; return blocked for missing authority, source, deterministic evidence or mandatory owner action.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Verdict: pass / revise / blocked\n- Acceptance criteria\n- Evidence observed\n- Unmet criteria\n- Unsupported claims\n- Residual risks\n- Owner gate\n- Next action",
+      "body": "# FINAL GATE — [LLM] / Judge\n\nPurpose:\nRun the final gate on the latest revised artifact, or on the latest substantive non-Judge artifact when no Revisor was used.\n\nTarget resolution:\nPrefer the latest Revised artifact and preserve its Target artifact and Target anchor. Otherwise use the latest substantive assistant artifact that is not a Judge, Revisor report, Final Gate, Blocker, or Handoff. Never use a Judge verdict as the target. If the target is materially ambiguous, name the candidates and ask one deciding question.\n\nGate rule:\nChoose content, analysis, implementation, or production mode. Return pass when the artifact meets the criteria for that mode; revise for a defect fixable in scope; blocked only for a hard missing prerequisite, authority, unsafe action, unavailable mandatory evidence, or conflicting canonical sources. Pending owner acceptance does not prevent content pass.\n\nMode checks:\nFor content, verify task completion, fact preservation, applied Judge notes, absence of unsupported claims, and usability. For analysis, also require entity, grain, period, currency or unit, formulas, filters, Python or SQL evidence, and reconciliation. For implementation, also require bounded scope, changed files, observed checks, acceptance criteria, and rollback. For production, also require authority, owner approval, deployment evidence, production rollback, and residual-risk acceptance.\n\nExecution truth:\nUse EXECUTED, PARTIAL, or NOT RUN only where analysis, implementation, production, tool, runtime, physical, or external-state evidence is required. Do not use NOT RUN as a quality verdict.\n\nSource discipline:\nUse only provided or tool-observed facts. Mark unsupported claims and unverified changing facts. Do not treat planned or expected behavior as observed evidence.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nStart the response with the first two fields below and return exactly these sections, in this order:\n- Target artifact\n- Target anchor\n- Gate mode: content / analysis / implementation / production\n- Verdict: pass / revise / blocked\n- Acceptance criteria\n- Evidence observed\n- Unmet criteria\n- Unsupported claims\n- Residual risks\n- Owner gate\n- Next action",
       "output_schema": [
+        "Target artifact",
+        "Target anchor",
+        "Gate mode: content / analysis / implementation / production",
         "Verdict: pass / revise / blocked",
         "Acceptance criteria",
         "Evidence observed",
@@ -4800,27 +4808,29 @@
         "Owner gate",
         "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "Use EXECUTED / PARTIAL / NOT RUN only for gate modes that require observed execution or deterministic verification; content execution is not applicable.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "latest revised artifact selected",
+        "gate mode is explicit",
+        "mode-specific criteria checked",
+        "quality separated from execution and owner gate",
+        "residual risks retained"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "using a Judge verdict as target",
+        "blocking content on pending owner acceptance",
+        "requiring physical QA for content",
+        "accepting analysis without deterministic evidence",
+        "claiming unobserved production readiness"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "4454f3e1c413083ac118edee6bbd357a697297c06c8b3636a3c6ac9790a55f98"
+      "prompt_hash": "2c063d345f39f66de866ee3c416fff303c2af0d074f60fad8a50e1f7624f9bc1"
     },
     {
       "prompt_id": "freshness_check",
@@ -4871,9 +4881,9 @@
     },
     {
       "prompt_id": "handoff_prepare",
-      "prompt_version": "1.1.0",
+      "prompt_version": "2.0.0",
       "task_type": "handoff",
-      "purpose": "Produce the HANDOFF workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "purpose": "Create a neutral orchestration contract for exactly one receiving owner when the current owner cannot complete the next bounded outcome.",
       "owner_project": "[Inbox Router]",
       "button_refs": [
         "B00_DAILY/K12",
@@ -4893,43 +4903,50 @@
         "BE0_DECK_QA/K12"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "bounded objective",
+        "source artifact",
+        "verified facts",
+        "constraints and acceptance criteria"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the user-named or latest substantive source artifact. Create no handoff when the current owner can complete the bounded outcome.",
       "execution_mode": "generate",
-      "body": "# HANDOFF — [Inbox Router]\n\nPurpose:\nProduce the HANDOFF workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nSubject logic:\nOwners: [Inbox Router] unresolved capture; [AI OS] AI concepts/evidence/governance; [Thinking] decisions/strategy/risks; [Analytics] data/metrics/calculations/marts; [LLM] prompts/models/workflows/evals; [Codex] code/tests/repo implementation. LLM roles stay under [LLM]; Codex APP is a [Codex] surface, not an owner. Create a handoff only when the current owner cannot complete the next bounded outcome. Name exactly one receiving owner project, the source artifact, verified facts, assumptions, constraints, forbidden actions, expected output, acceptance criteria and stop condition. Do not copy unsupported conclusions or route to Codex APP without owner [Codex]. Example: a verified analytics finding needing code automation -> [Codex] handoff with the calculation evidence attached.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Goal\n- Source artifact\n- Facts\n- Constraints\n- Forbidden actions\n- Owner project\n- Expected output\n- Acceptance criteria\n- Stop condition",
+      "body": "# HANDOFF — [Inbox Router]\n\nPurpose:\nPrepare one bounded handoff only when the current owner cannot complete the next outcome. Keep the contract neutral even though this registry entry retains its existing metadata owner.\n\nRouting rule:\nRoute AI concepts, KB evidence, and governance to [AI OS]; strategy, decisions, and risks to [Thinking]; calculations, data, and marts to [Analytics]; prompts, workflows, context, and evals to [LLM]; repository implementation and tests to [Codex]; unresolved capture to [Inbox Router]. Name exactly one receiving owner. If the current owner can finish the outcome, state that no handoff is needed instead of manufacturing one.\n\nSource discipline:\nCarry forward only supplied or tool-observed facts. Label assumptions. Preserve constraints, forbidden actions, acceptance criteria, and the stop condition without adding conclusions.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nReturn exactly these sections, in this order:\n- From\n- To\n- Objective\n- Source artifact\n- Facts\n- Assumptions\n- Constraints\n- Forbidden actions\n- Expected output\n- Acceptance criteria\n- Stop condition",
       "output_schema": [
-        "Goal",
+        "From",
+        "To",
+        "Objective",
         "Source artifact",
         "Facts",
+        "Assumptions",
         "Constraints",
         "Forbidden actions",
-        "Owner project",
         "Expected output",
         "Acceptance criteria",
         "Stop condition"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required for a handoff. Preserve any observed execution facts and label proposed actions as not run.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "one receiving owner",
+        "bounded objective",
+        "facts separated from assumptions",
+        "constraints and forbidden actions preserved",
+        "acceptance and stop conditions are testable"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "multiple receiving owners",
+        "handoff created unnecessarily",
+        "unsupported facts copied forward",
+        "missing forbidden actions",
+        "vague acceptance criteria"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "c4eaa69d339c1c74e07ab25c24becc2e345ed734679af8b279daff9a9c50f910"
+      "prompt_hash": "890d8d65dcbc4ca88572324bf3cac04605f677c21459d765097ee5eb853a7553"
     },
     {
       "prompt_id": "judge_analytics",
@@ -5347,9 +5364,9 @@
     },
     {
       "prompt_id": "judge_universal",
-      "prompt_version": "1.1.0",
+      "prompt_version": "2.0.0",
       "task_type": "judge",
-      "purpose": "Produce the JUDGE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "purpose": "Evaluate the selected artifact with a class-specific rubric without conflating content quality, execution evidence, production readiness, or owner acceptance.",
       "owner_project": "[LLM] / Judge",
       "button_refs": [
         "B00_DAILY/K13",
@@ -5371,42 +5388,48 @@
         "BE0_DECK_QA/K13"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "artifact to evaluate",
+        "its requirements or acceptance criteria",
+        "available evidence"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Use the user-named artifact, then the artifact named by the latest Judge anchor, then the assistant artifact immediately before this Judge command, then the latest substantive non-verdict artifact. Block only when source resolution is genuinely missing or ambiguous.",
       "execution_mode": "generate",
-      "body": "# JUDGE — [LLM] / Judge\n\nPurpose:\nProduce the JUDGE workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nJudge rule:\nReturn only pass, revise, or blocked. Check schema fit, evidence, execution truth, routing, unsupported claims and acceptance. Deterministic evidence overrides model preference.\n\nSubject logic:\nApply one rubric to the selected artifact: required schema is complete; material and owner are unambiguous; each factual claim has provided or tool-observed evidence; execution labels match observed commands; routing respects project boundaries; safety and permissions are intact; every acceptance criterion has evidence. Return pass only when all apply, revise for a fixable artifact defect, and blocked for a missing source, permission, deterministic result or owner gate. Example: passing tests with an unmet acceptance item -> revise, not pass.\n\nSelection check:\nThe first response line must be `Selected material: \"<first about 10 words of the chosen source>\"`.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nAfter that first line, return exactly these sections:\n- Verdict: pass / revise / blocked\n- Schema fit\n- Evidence\n- Execution truth\n- Routing\n- Unsupported claims\n- Required fixes\n- Acceptance status",
+      "body": "# JUDGE — [LLM] / Judge\n\nPurpose:\nJudge one selected artifact and classify it as content, analysis, implementation, or production before applying the corresponding rubric.\n\nTarget selection:\nUse, in order: the user-named artifact; the artifact identified by the latest Judge Target artifact and Target anchor; the assistant artifact immediately before this command; the latest substantive assistant artifact that is not a Judge, Revisor, Final Gate, Blocker, or Handoff; then user text or an attached file when it is the operation target. If two candidates are equal, name both and ask one deciding question. Do not choose arbitrarily.\n\nJudge rule:\nUse pass when the artifact meets its class requirements; revise for a defect fixable in the current scope; blocked only for a hard prerequisite such as missing source, authority, required deterministic data, unsafe action, or conflicting canonical evidence. Unsupported noncritical claims and missing sections are revise. Pending owner or physical acceptance does not block content quality.\n\nClass rubric:\nFor content, check task fit, required structure, factual preservation, clarity, unsupported claims, and usability; execution and physical QA are not required. For analysis, require entity, grain, period, currency or unit, formulas, filters, source layers, Python or SQL evidence, and reconciliation. For implementation, require bounded scope, changed files, and observed checks; a feasible omitted check is revise. For production, require authority, observed deployment checks, rollback, and the owner gate.\n\nExecution truth:\nReport execution or verification status only when the artifact class requires it. Use EXECUTED, PARTIAL, or NOT RUN only for observed or required execution; for content use not applicable. Never turn NOT RUN into the quality verdict.\n\nSource discipline:\nUse only provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations. Mark unsupported or stale external claims explicitly.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nStart the response with the first two fields below and return exactly these sections, in this order:\n- Target artifact\n- Target anchor\n- Artifact class\n- Verdict: pass / revise / blocked\n- Criteria checked\n- Critical findings\n- Unsupported claims\n- Required revisions\n- Execution / verification status\n- Next action",
       "output_schema": [
+        "Target artifact",
+        "Target anchor",
+        "Artifact class",
         "Verdict: pass / revise / blocked",
-        "Schema fit",
-        "Evidence",
-        "Execution truth",
-        "Routing",
+        "Criteria checked",
+        "Critical findings",
         "Unsupported claims",
-        "Required fixes",
-        "Acceptance status"
+        "Required revisions",
+        "Execution / verification status",
+        "Next action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "Use EXECUTED / PARTIAL / NOT RUN only for analysis, implementation, production, tool-backed, runtime, physical, or external-state claims. Use not applicable for content quality.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "target and anchor identify one source",
+        "artifact class is explicit",
+        "class rubric is applied",
+        "quality is separate from execution and acceptance",
+        "required revisions are concrete"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "judging the verdict instead of the artifact",
+        "blocking on pending content acceptance",
+        "requiring execution for content",
+        "accepting unsupported numeric claims",
+        "generic approval wording"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "3e2e2f46d608db58000ab161592826428d9ecfdd99e07846ad5392b863caef5a"
+      "prompt_hash": "86dcc4c34fa1a253460621b44465e6f83c2b7c795b8f4af7dd1bc8011f6de52c"
     },
     {
       "prompt_id": "kb_source_truth",
@@ -6081,9 +6104,9 @@
     },
     {
       "prompt_id": "revisor_apply_notes",
-      "prompt_version": "1.0.0",
+      "prompt_version": "2.0.0",
       "task_type": "revise",
-      "purpose": "Produce the REVISOR workflow artifact for the cited source material while preserving routing, evidence, and execution truth.",
+      "purpose": "Apply the latest Judge notes to the exact artifact the Judge evaluated and return the full revised artifact.",
       "owner_project": "[LLM] / Revisor",
       "button_refs": [
         "B00_DAILY/K14",
@@ -6105,40 +6128,43 @@
         "BE0_DECK_QA/K14"
       ],
       "input_requirements": [
-        "latest meaningful goal or source artifact"
+        "latest Judge verdict with Target artifact and Target anchor",
+        "the anchored source artifact"
       ],
-      "material_selection_rule": "Latest meaningful user goal/source; Judge verdict is notes only; ambiguous source => blocked.",
+      "material_selection_rule": "Resolve the source from the latest Judge Target artifact and Target anchor. Treat the verdict only as revision notes; never edit the verdict, Blocker, Handoff, or Final Gate. Block only when the source is absent or genuinely ambiguous.",
       "execution_mode": "generate",
-      "body": "# REVISOR — [LLM] / Revisor\n\nPurpose:\nProduce the REVISOR workflow artifact for the cited source material while preserving routing, evidence, and execution truth.\n\nMaterial selection:\nUse the latest meaningful user goal or source material. A Judge verdict is revision notes, not the editable source artifact. If the source artifact cannot be identified unambiguously, return blocked. Do not guess or substitute the source.\n\nExecution truth:\nReport Execution status as EXECUTED / PARTIAL / NOT RUN. EXECUTED is allowed only for tool calls, commands, or checks actually observed. List proposed actions separately. Expected results are not observed results.\n\nRevision boundary:\nUse the last Judge verdict only as revision notes. Edit the source artifact the Judge reviewed, never the verdict itself. If the source is ambiguous, return blocked. Add no facts or evidence.\n\nSafety and interaction:\nText insertion only; auto-send is off and the user sends manually. Do not expose secrets or private data. Do not delete, merge, deploy, publish, mutate production, automate UI, or claim unobserved execution.\n\nReturn exactly these sections:\n- Revised source artifact\n- Judge notes applied\n- Facts preserved\n- Claims removed or softened\n- Blocked items\n- Next judge action",
+      "body": "# REVISOR — [LLM] / Revisor\n\nPurpose:\nRevise the exact source artifact identified by the latest Judge and return a complete ready-to-use replacement.\n\nTarget resolution:\nRead Target artifact and Target anchor from the latest Judge, then find that exact source artifact. Use the Judge verdict only as revision notes. Never revise the Judge verdict itself, and never choose a Blocker, Handoff, or Final Gate as the source. Return blocked only when the anchored artifact is missing, the anchor does not match, or two candidates remain materially equal.\n\nRevision boundary:\nApply every feasible Judge note while preserving supported facts, numbers, dates, currencies, periods, wording traceability, constraints, and execution truth. Add no new facts, sources, calculations, root causes, or execution claims. Keep unresolved evidence gaps visible. The Revised artifact field must contain the full result, not a patch or summary.\n\nLanguage:\nFollow the user language, then the source artifact language, then project context. Do not switch language without need.\n\nSafety:\nSupervised text-only mode. Do not send, publish, deploy or mutate external state. Do not expose secrets or private data. Mark unobserved actions NOT RUN.\n\nStart the response with the first two fields below and return exactly these sections, in this order:\n- Target artifact\n- Target anchor\n- Revised artifact\n- Judge notes applied\n- Unresolved evidence gaps\n- Next judge action",
       "output_schema": [
-        "Revised source artifact",
+        "Target artifact",
+        "Target anchor",
+        "Revised artifact",
         "Judge notes applied",
-        "Facts preserved",
-        "Claims removed or softened",
-        "Blocked items",
+        "Unresolved evidence gaps",
         "Next judge action"
       ],
-      "evidence_policy": "Use only provided or tool-observed evidence; unsupported claims must be marked.",
-      "freshness_policy": "Verify changeable facts with current official sources when access exists; otherwise UNVERIFIED.",
-      "execution_truth_policy": "EXECUTED / PARTIAL / NOT RUN; proposed is never observed.",
+      "evidence_policy": "Use only user-provided or tool-observed facts. Separate facts, interpretation, assumptions, and recommendations; mark missing evidence and unsupported claims explicitly.",
+      "freshness_policy": "Verify changeable external facts when an authorized source is available; otherwise label them UNVERIFIED.",
+      "execution_truth_policy": "No execution status is required for revision. Preserve source execution labels exactly unless a Judge note removes an unsupported claim.",
       "quality_gate": [
-        "schema fit",
-        "route fit",
-        "source discipline",
-        "execution truth",
-        "no new claims"
+        "Judge target and anchor resolved",
+        "source artifact—not verdict—was revised",
+        "full revised artifact returned",
+        "all feasible notes applied",
+        "facts and execution truth preserved"
       ],
       "known_failure_modes": [
-        "ambiguous source",
-        "missing evidence",
-        "unsafe or unapproved action"
+        "editing the Judge verdict",
+        "selecting the nearest report instead of the anchor",
+        "returning only change notes",
+        "adding facts or calculations",
+        "hiding evidence gaps"
       ],
-      "qa_status": "blocked",
-      "ux_score_1_5": 4,
+      "qa_status": "not_run",
+      "ux_score_1_5": null,
       "prompt_gate_10_of_10": null,
-      "last_reviewed": "2026-07-15",
+      "last_reviewed": "2026-07-21",
       "owner_acceptance": "pending",
-      "prompt_hash": "3691288d6a32e0012c0de2cf1a2c0e03f9aae8644627a6bc707ebe208125350a"
+      "prompt_hash": "96bae13335778de18554f9beaa5e282f23f8b357378651ffbaaa1ea1fb89079c"
     },
     {
       "prompt_id": "revisor_clearer",
