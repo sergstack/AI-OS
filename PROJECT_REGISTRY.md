@@ -10,6 +10,7 @@
 | `[LLM]` | `ChatGPT/[LLM]` | `PROJECT_INSTRUCTIONS.md` <= 8000 chars |
 | `[Codex]` | `ChatGPT/[Codex]` | `PROJECT_INSTRUCTIONS.md` <= 8000 chars |
 | `[Inbox Router]` | `ChatGPT/[Inbox Router]` | `PROJECT_INSTRUCTIONS.md` <= 8000 chars |
+| `[Thinkers OS]` | `ChatGPT/[Thinkers OS]` | `PROJECT_INSTRUCTIONS.md` <= 8000 chars |
 
 ## Executor Layer
 

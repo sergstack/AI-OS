@@ -18,6 +18,8 @@ AI OS evidence/governance scope.
 | Найти AI-use case | `[AI OS]` | Здесь use cases и связь с работой Сергея |
 | Сравнить AI-подходы | `[AI OS]` | Здесь pattern/evidence слой |
 | Найти supported/weak evidence | `[AI OS]` | Здесь confidence/governance слой |
+| Управлять thinker corpus, source requests, author artifacts и cross-author synthesis | `[Thinkers OS]` | Там source-backed author pipeline и portfolio state |
+| Применить thinker patterns к реальному решению | `[Thinking]` | Thinker artifacts — evidence input; decision ownership остаётся в `[Thinking]` |
 | Принять стратегическое решение | `[Thinking]` | Там сценарии, риски, decision memo, judge/revisor |
 | Посчитать финансовую модель или метрики | `[Analytics]` | Там deterministic расчёты, marts, QA |
 | Спроектировать prompt/workflow/model routing | `[LLM]` | Там prompt library и orchestration |
@@ -43,11 +45,12 @@ AI OS evidence/governance scope.
 - Не делает production execution.
 - Не принимает стратегическое решение вместо `[Thinking]`.
 - Не заменяет `[LLM]` как операционный оркестратор.
+- Не заменяет `[Thinkers OS]` как владельца author corpus, source provenance и thinker artifacts.
 
 ## Routing response pattern
 
 ```text
-Маршрут: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
+Маршрут: [AI OS] / [Thinkers OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
 Почему: ...
 Что можно сделать здесь: ...
 Что нужно передать дальше: ...

@@ -17,6 +17,7 @@ EXPECTED_PROJECTS = {
     "[LLM]": "ChatGPT/[LLM]",
     "[Codex]": "ChatGPT/[Codex]",
     "[Inbox Router]": "ChatGPT/[Inbox Router]",
+    "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
 }
 EXPECTED_PROJECT_INSTRUCTIONS = {
     f"{path}/PROJECT_INSTRUCTIONS.md" for path in EXPECTED_PROJECTS.values()

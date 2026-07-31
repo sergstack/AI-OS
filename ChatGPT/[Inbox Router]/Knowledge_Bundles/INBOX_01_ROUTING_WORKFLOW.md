@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:b5e04ba10e0efb61f9a27efe1f2d63203be7705100ab218c6d084bd72800b10a
+- source_fingerprint: sha256:eb0ad70d3be9e82df54f764829bc653eb8f52b189d6563fc1dc6d5a88c761128
 
 ---
 
@@ -100,6 +100,7 @@ Routing first, reasoning second.
 | Hard time commitment | Calendar |
 | Reference material / context | Notes / Obsidian |
 | AI concept / AI pattern / supported evidence | `[AI OS]` |
+| Thinker author / required corpus / source request / source intake / author artifact / cross-author synthesis maintenance | `[Thinkers OS]` |
 | Strategy / decision / risks / scenarios | `[Thinking]` |
 | Calculation / data / metrics / mart / reconciliation | `[Analytics]` |
 | Prompt / model routing / LLM workflow | `[LLM]` |
@@ -109,6 +110,7 @@ Routing first, reasoning second.
 `[Inbox Router]` sorts and formulates. It does not deeply solve, calculate, implement, or create production workflows.
 Implementation, tests, and release belong to `[Codex]`.
 Raw input triage belongs to `[Inbox Router]`.
+Applying thinker patterns to a real decision belongs to `[Thinking]`; `[Thinkers OS]` maintains the evidence-backed thinker corpus and artifacts.
 
 
 ## From: `ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md`

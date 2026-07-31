@@ -338,6 +338,7 @@ def test_index_coverage_checks_all_chatgpt_project_knowledge_dirs() -> None:
         "ChatGPT/[Inbox Router]/Knowledge",
         "ChatGPT/[LLM]/Knowledge",
         "ChatGPT/[Thinking]/Knowledge",
+        "ChatGPT/[Thinkers OS]/Knowledge",
     }
 
 

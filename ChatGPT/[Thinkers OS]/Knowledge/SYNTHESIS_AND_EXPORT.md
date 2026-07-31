@@ -1,0 +1,72 @@
+# Synthesis and Export
+
+## Portfolio snapshot — 2026-07-31
+
+| Author | Coverage | Artifact/Judge state | Cross-author state |
+|---|---|---|---|
+| Peter Drucker | complete | Judge pass, export ready | isolated author pattern |
+| W. Edwards Deming | complete | Judge pass, export ready | active synthesis lens |
+| Daniel Kahneman | complete | Judge pass, export ready | active synthesis lens |
+| Vladimir Lenin | complete | Judge pass, export ready | active synthesis lens |
+| John Boyd | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Elinor Ostrom | partial — two P1 gaps | bounded Judge pass, export ready | active synthesis lens with partial evidence |
+| Taiichi Ohno | partial — one P1 gap | bounded Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Jay Forrester | complete | Judge pass, export ready | active synthesis lens |
+| Carl von Clausewitz | complete | Judge pass, export ready | active synthesis lens |
+| Charlie Munger | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
+
+Owner acceptance remains pending. Production status is `NOT AUTHORIZED`.
+
+## Active provisional synthesis
+
+MVP limits: 5 active patterns, preferably 2–3 lenses per case, maximum 4. Current patterns:
+
+| Pattern | When to use | Key boundary |
+|---|---|---|
+| `SYN-001-REPEATED-FAILURE-DIAGNOSIS` | recurring failure after local fixes | do not erase direct accountability or present qualitative loops as proof |
+| `SYN-002-DECISION-UNDER-FRICTION` | consequential decision with uncertainty, framing, dependencies, or delay | do not militarize routine work or add modeling without decision value |
+| `SYN-003-OWNERSHIP-AND-SYSTEM-CHECK` | ambiguous ownership, rules, permissions, or multiple decision centers | do not centralize away local fit or hide coercive transfer |
+| `SYN-004-BIAS-AWARE-DECISION-REVIEW` | prospective high-impact judgment sensitive to baseline/frame | do not label people retrospectively or replace domain evidence |
+| `SYN-005-REVERSIBLE-INTERVENTION-GATE` | structural intervention with feedback, multiple owners, or costly reversal | quantitative claims require `[Analytics]`; pilot needs stop and rollback owners |
+
+All are `active_provisional`, not validated/canonical. Application count does not promote them.
+
+## Lens Router
+
+| Problem type | Primary lenses | Optional lens | Route |
+|---|---|---|---|
+| repeated process failure | Deming; Forrester | Clausewitz for material dependency | `[Thinking]`; `[Analytics]` for model claims |
+| consequential decision under uncertainty | Clausewitz; Kahneman | Forrester for delayed/nonlinear effects | `[Thinking]` |
+| unclear ownership or governance | Ostrom; Deming | Lenin for rules/concentrated permissions | `[Thinking]`; reusable rule candidate to `[AI OS]` |
+| structural change or concentration | Lenin; Ostrom | Deming for unresolved cause class | `[Thinking]` |
+| policy with feedback or delay | Forrester; Deming | Ostrom for multiple owners | `[Analytics]` plus bounded `[Thinking]` record |
+| bias-aware decision review | Kahneman; Clausewitz | none | `[Thinking]` |
+
+Boyd, Munger, and Ohno remain isolated Judge-pass patterns until a separate synthesis refresh explicitly merges, replaces, or rejects them under duplicate/conflict rules.
+
+## Conflict Map
+
+- Central redesign vs polycentric fit: change evidenced constraints while preserving bounded local autonomy and conflict paths.
+- Act under friction vs model first: match modeling depth to reversibility, impact, and feedback risk.
+- System cause vs direct accountability: separate causal classification from accountability design and immediate containment.
+- Deliberate review vs decision friction: trigger framing review only above a declared impact, irreversibility, or sensitivity threshold.
+
+Each conflict requires Position A, Position B, synthesis, when each dominates, failure mode, evidence status, and source artifact IDs in the source registry.
+
+## Export routing
+
+- `[Thinking]`: decision/risk/scenario patterns, Lens Router, Conflict Map, synthesis patterns, precedence.
+- `[AI OS]`: supported general governance/evidence/confidence/QA candidates only.
+- `[LLM]`: prompts, extraction workflows, model routing, Judge/Revisor logic, eval contracts.
+- `[Analytics]`: formalizable methods, data requirements, metrics, quantitative checks, limitations.
+- `[Codex]`: schemas, validators, tests, bundle generation, rollback requirements.
+
+Never export raw source payloads, normalized books, source manifests, logs, local paths, or non-pass artifacts.
+
+## Rollback
+
+1. Disable the two `[Thinkers OS]` bundles in external Project Sources.
+2. Remove only the bounded `[Thinkers OS]` routing and registry entries.
+3. Restore previous upload guidance and validator project sets.
+4. Preserve the source repository, books, manifests, artifacts, application history, and Judge results.
+5. Rerun repository validation before re-enabling a corrected bounded subset.

@@ -8,6 +8,7 @@
 - `ChatGPT/[LLM]`
 - `ChatGPT/[Codex]`
 - `ChatGPT/[Inbox Router]`
+- `ChatGPT/[Thinkers OS]`
 
 ## Executor Layer
 
@@ -37,6 +38,7 @@
 - `ChatGPT/[LLM]/Knowledge_Bundles`
 - `ChatGPT/[Codex]/Knowledge_Bundles`
 - `ChatGPT/[Inbox Router]/Knowledge_Bundles`
+- `ChatGPT/[Thinkers OS]/Knowledge_Bundles`
 
 ## Project Instructions Rule
 

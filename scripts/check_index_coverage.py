@@ -37,6 +37,10 @@ CHECKS = [
         "ChatGPT/[Thinking]/Knowledge",
         ["ChatGPT/[Thinking]/Knowledge/INDEX.md"],
     ),
+    (
+        "ChatGPT/[Thinkers OS]/Knowledge",
+        ["ChatGPT/[Thinkers OS]/Knowledge/INDEX.md"],
+    ),
 ]
 
 
