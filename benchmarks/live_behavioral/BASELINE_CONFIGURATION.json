@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-07-31",
+  "source_commit": "8d15f5a0f6c06a14bb4098d8d6dcbe7632457dcf",
+  "benchmark_version": "1.0.1",
+  "thinking_effort": "Medium",
+  "exact_model_identifier": "UNAVAILABLE",
+  "project_memory": "Default; not configurable in the observed UI",
+  "instructions_status": "PASS_7_OF_7_NORMALIZED",
+  "instructions_normalization": "Remove at most one trailing newline from both the UI and repository values.",
+  "instructions": {
+    "[AI OS]": {"ui_sha256": "9e262da88063e6569ad2084dcdf1fca11cd5d075d4b0d36841a581fdea2ab926", "repo_sha256": "4dcf4b2dbb7d14f1f52f7778dce87c0ad4310666624282058d4c5925ed60bbd8", "normalized_sha256": "9e262da88063e6569ad2084dcdf1fca11cd5d075d4b0d36841a581fdea2ab926", "match": true},
+    "[Thinking]": {"ui_sha256": "491c601da609fb2f0dc770d96f52d89aa8d5a536c5729e2eef50f661673b63fe", "repo_sha256": "5dde30d7c0364e3eec10a38e0c3a34a39e768d9a1968d493c265da3d38549dab", "normalized_sha256": "491c601da609fb2f0dc770d96f52d89aa8d5a536c5729e2eef50f661673b63fe", "match": true},
+    "[Analytics]": {"ui_sha256": "cd977b8eaeaeb8ed93ef4a5365fa8a2017177b9177a21fc18518a3f1405f74b7", "repo_sha256": "b51574737afb37fb001d860908aae78f3856f0c2e6915e7509c71984852be7fd", "normalized_sha256": "cd977b8eaeaeb8ed93ef4a5365fa8a2017177b9177a21fc18518a3f1405f74b7", "match": true},
+    "[LLM]": {"ui_sha256": "443c323f2ac751f0dc17cc9ce4d59bdf389444e96a49771dca56b63c16b17307", "repo_sha256": "e7165b25650406f64b61a2ac40de2b871e3157dceb1ead37fe86ed1196552db2", "normalized_sha256": "443c323f2ac751f0dc17cc9ce4d59bdf389444e96a49771dca56b63c16b17307", "match": true},
+    "[Codex]": {"ui_sha256": "17789e9da1ba27a91ae3536e651374541f54f3db46678e198cb50bedb79ec86e", "repo_sha256": "793d49ef0f9ac74770efe221f9205d7af51bf3a2aa22829b23a673acf5dd6593", "normalized_sha256": "17789e9da1ba27a91ae3536e651374541f54f3db46678e198cb50bedb79ec86e", "match": true},
+    "[Inbox Router]": {"ui_sha256": "d60e8776fff384e6256aa07a715f539ecdd44baf646c41816c613766c543210b", "repo_sha256": "1ab0ebcc0681e50b28a775be824b66abe76fc56b6b9903ccbaad804a6580c6ca", "normalized_sha256": "d60e8776fff384e6256aa07a715f539ecdd44baf646c41816c613766c543210b", "match": true},
+    "[Thinkers OS]": {"ui_sha256": "3582a058bb74726266e8d4d4f7827e9d775b8b77ffb79fb642e34f02dd1aca7a", "repo_sha256": "5e419ca1be9b3c89ceb90e5d89d316a431f679d16bfbe92ea8729da876ab946d", "normalized_sha256": "3582a058bb74726266e8d4d4f7827e9d775b8b77ffb79fb642e34f02dd1aca7a", "match": true}
+  },
+  "knowledge_status": "FILENAMES_PASS_SERVER_BYTES_UNVERIFIED",
+  "knowledge_files": {
+    "[AI OS]": {
+      "AIOS_01_ROUTING_AND_WORKFLOW.md": "95ea21d47d645e961ae081bdd8c81467d865d85901bb77d478bee0db16ed2e6d",
+      "AIOS_02_GOVERNANCE_AND_EVIDENCE.md": "dbb3bae0c8b2e63aa73220e68f0c9bcc668ab79e7945c3af39f89b5a2144f975",
+      "AIOS_03_HANDOFF_AND_SMOKE_QA.md": "58eb37b5e3a7c17a6ece68f051b8ccd6cac85823623b0f39a29a6f80a8001b3c",
+      "AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md": "96884282ae082960f0a5fc40a5b5d1083a07c6e168b47ea9c4972b37e61b021c",
+      "AIOS_05_SUPERVISED_AGENT_LOOPS.md": "a0b48541de20ca000a341cdf50819908317447b6ab80ed21009c83748516fea6",
+      "AIOS_06_CROSS_PROJECT_AI_EVALS.md": "43834bac395123909bbff82f9108df079ad0b7413cee895c50c4dae674d616b9"
+    },
+    "[Thinking]": {
+      "THINKING_01_WORKFLOW_AND_DECISIONS.md": "53e78a4b08701b0f838033c798218806d20eb4334bcb8d42fb8f5373191049c7",
+      "THINKING_02_JUDGE_REVISOR_RISK.md": "3bd89fd3437b5a7b346e0ae2569fea41c9dc6e4059e64a1371628b98d13e438f",
+      "THINKING_03_ROUTING_AND_TEMPLATES.md": "a44abc11da9e88eae95fda8fb543b7fbfe2e18d4c6d157003020c0adae422315",
+      "THINKING_04_THINKERS_SYNTHESIS.md": "834476e2b2ecda044540b80ec5a5fe2a49b3e43d8f94c6cffb84c4595ffa3e36"
+    },
+    "[Analytics]": {
+      "ANALYTICS_01_CORE_WORKFLOW.md": "4a1ca3fe212d595a700ccfaee58e1e3486d18b4fca52fd57860b43f7fb438ee6",
+      "ANALYTICS_02_DATA_CONTRACTS_AND_MARTS.md": "b11d4db7cdd4c72cec7564dc9adcf81787f2b8b1bce81f8957bb3b68b7efd7ee",
+      "ANALYTICS_03_TECHNIQUES_AND_CHARTS.md": "7ca4449e5fcb9822c3c945289f4e2b7834c5d86c275180e28cb481457df05af0",
+      "ANALYTICS_04_MEMO_AND_TEXT_STANDARDS.md": "3f305574d51fdac5c6d42e131235f7adba3476f0d99219c6e2b6746e72bb805d",
+      "ANALYTICS_05_QA_GOVERNANCE_ROUTING.md": "b3a5f78e13454e72cc5cba07b297fea035d12f484bbf8069f2b762f6475ab914",
+      "ANALYTICS_06_TEMPLATES.md": "d2815aa82f1164c100aca4706ee3f8eab707fd64f77e61b3feb622d953409dff",
+      "ANALYTICS_07_CODEX_HANDOFF_OPTIONAL.md": "8f23c9690e92f72a1a8a6f4fc097541603118026de99a0059da0d52b4da7397e"
+    },
+    "[LLM]": {
+      "LLM_01_ROUTING_AND_MODEL_SELECTION.md": "92c8fa2dcdc12686b92b01308c183a34f2b2e5e8bfb017810c99c23f443a0b49",
+      "LLM_02_PROMPT_LIBRARY_AND_REGISTRY.md": "d55e95ab252c0eae2671f5c58161937b5a4c979c68abe6c1a49544016406b669",
+      "LLM_03_QUALITY_GATES_AND_EVAL.md": "030120ac3a62e0b9abb270cf4c91b0e4a4dc4a1dfde06d8a28adbd0c4cf17201",
+      "LLM_04_WORKFLOWS_AND_HANDOFF.md": "0df3d23c84ad25513da027e7a89c2ed6e3d0856cef01867e011f53aae2481c67",
+      "LLM_05_CONTEXT_ENGINEERING.md": "901fd59eab0945bc4d02ba160f7f568001b816e945bc32093da4deb84bed0d87",
+      "LLM_06_LOCAL_AI_EXPERIMENTS.md": "0c3365042946e299e3284dc72789496327f106b4541051af841b192657b041e1"
+    },
+    "[Codex]": {
+      "CODEX_01_TASKS_AND_HANDOFF.md": "fb04e5bed524b6b12d534a0d59302d3bdf0962cd2620393ac814eaa1ec2c05b8",
+      "CODEX_02_EXECUTION_AUTONOMY_REPORTING.md": "15ca9f00bc54209932c5e87bbbd9106f8e7c27795b6c21306c12e75d8f656f39",
+      "CODEX_03_TESTING_ACCEPTANCE_RELEASE.md": "8665957970d11a205c42001f27721af056f987800a05fd20032eec2527da26d3",
+      "CODEX_04_IMPLEMENTATION_WORKFLOWS.md": "bd382efb19903893f4bbed2ad473a8f754a4e7a135fee18b8540e108d39c31b9",
+      "CODEX_05_AGENT_REFERENCES.md": "65bd1d7b94cf7eee852531574a70e239840f2f288f6e00d677ad03b196894fe7",
+      "CODEX_06_AI_CODING_DISCIPLINE.md": "280c295e9a4ed84f36cc313d6055b93e2f0802b83061c2103215f3874bb2bbfe"
+    },
+    "[Inbox Router]": {
+      "INBOX_01_ROUTING_WORKFLOW.md": "b0240b47893a7b69232ffbde12e7613e0d599fb791ad1c2f024674aa11c90290",
+      "INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md": "c52028a14f310ee8ef5631303498a9a03657b484653a63a3e3b62440f49e8050"
+    },
+    "[Thinkers OS]": {
+      "THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md": "2727b5a9236a241b498b2011999312f20a19ccc74dcadcf71efce60063fad13b",
+      "THINKERS_OS_02_ARTIFACTS_AND_SYNTHESIS.md": "92b2f3ec21a39f5c43426ab8e935b92602cbe96d89c314bf3b37993ebce2f339"
+    }
+  },
+  "knowledge_ui_evidence": "All 33 declared bundle filenames were observed in their target Project. AI OS also retains the governed KB__ files documented as intentional external Knowledge.",
+  "knowledge_server_byte_equivalence": "UNVERIFIED",
+  "duplicate_policy": "Existing matching filenames were preserved. Duplicate upload prompts were skipped; no Project source was deleted and no duplicate was added.",
+  "configuration_comparability": "PASS_WITH_DOCUMENTED_EXTERNAL_RUNTIME_LIMITATIONS"
+}
