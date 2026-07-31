@@ -1,5 +1,5 @@
 {
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.0.1",
   "evidence_level": "A",
   "source_baseline_commit": "8d45a4653012dbb5dbc0c85647d835d59886ee17",
   "score_scale": [0, 100],

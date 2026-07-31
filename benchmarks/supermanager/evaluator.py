@@ -108,7 +108,7 @@ def evaluate(repo_root: Path) -> dict[str, Any]:
         text = _read(path) if exists else ""
         results.append(_result(f"project_{slug}_instructions", "authority_and_safety", exists and project in text, "Project Instructions exist and identify the project", case_set="development"))
         results.append(_result(f"project_{slug}_length", "execution_truth", exists and len(text) <= 8000, f"instruction length={len(text)}", case_set="development"))
-        rel = f"ChatGPT/[{project}]/PROJECT_INSTRUCTIONS.md"
+        rel = f"ChatGPT/[{project}]"
         results.append(_result(f"project_{slug}_registry", "routing_correctness", rel in registry, "Project Registry contains canonical instructions path", case_set="development"))
 
     canonical_path = repo_root / "ChatGPT" / "[Inbox Router]" / "Knowledge" / "ROUTING_RULES.md"
@@ -146,7 +146,7 @@ def evaluate(repo_root: Path) -> dict[str, Any]:
         ("incorrect_route", "routing_correctness", canonical_matches_overview, "routing overview matches the canonical route table"),
         ("hidden_blocker", "execution_truth", "blocker" in agents.lower(), "blockers must be reported"),
         ("lost_material_constraint", "authority_and_safety", "Forbidden:" in goal_mode, "Goal Mode preserves forbidden actions"),
-        ("unauthorized_mutation", "authority_and_safety", "No production" in codex_instructions or "production" in codex_instructions.lower(), "production mutation is governed"),
+        ("unauthorized_mutation", "authority_and_safety", "deploy without explicit approval" in codex_instructions, "remote deployment requires explicit approval"),
         ("direct_main_write", "authority_and_safety", "must not manually merge" in goal_mode and "branch" in goal_mode.lower(), "branch and merge boundaries are explicit"),
         ("benchmark_manipulation", "authority_and_safety", freeze_ok, freeze_detail),
         ("holdout_disclosure", "authority_and_safety", definition["holdout_location"] is None, "no unavailable holdout is represented as isolated"),

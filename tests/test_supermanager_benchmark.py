@@ -48,3 +48,6 @@ def test_weights_total_100_and_evaluator_is_complete() -> None:
     assert sum(definition["category_weights"].values()) == 100
     result = evaluator.evaluate(ROOT)
     assert result["case_count"] == len(evaluator.case_ids(definition))
+    result_by_id = {item["case_id"]: item for item in result["results"]}
+    assert all(result_by_id[f"project_{project.lower().replace(' ', '_')}_registry"]["passed"] for project in definition["projects"])
+    assert result_by_id["adversarial_unauthorized_mutation"]["passed"]
