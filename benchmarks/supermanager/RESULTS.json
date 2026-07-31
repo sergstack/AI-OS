@@ -1,0 +1,115 @@
+{
+  "verdict": "pass",
+  "evidence_level": "A",
+  "source_baseline_commit": "8d45a4653012dbb5dbc0c85647d835d59886ee17",
+  "benchmark_definition_commit": "5eabef99b4d2d86748d866ff271b4d98e0ad4fa0",
+  "evaluated_configuration_commit": "8d9b3fa9478aa20870836bf0205259c32b56fcf0",
+  "benchmark_version": "1.0.1",
+  "benchmark_hash": "361db9b5b16cf2819b1bdb6978936ae24203687da35ccf1cf62e737433449ea0",
+  "evaluator_hash": "6517bc3391fa7c8671f66ff5ff6ccafc696579965ad928c034d0997ac7aaf73b",
+  "baseline_execution_worktree": "isolated detached worktree at source_baseline_commit; machine-specific local path intentionally omitted",
+  "raw_outputs": {
+    "tracked": false,
+    "baseline_sha256": "4ad37e42bbdb82ebb26ea521394c56b53da42f78d1e7c39b80ce2b3f707a1164",
+    "candidate_sha256": "74ba407316d4bf4a346d1cfb9a628322cdba1f813cb1672fb0edce948b93eacf",
+    "candidate_repeat_sha256": "74ba407316d4bf4a346d1cfb9a628322cdba1f813cb1672fb0edce948b93eacf"
+  },
+  "baseline": {
+    "score": 99.038462,
+    "passed": 97,
+    "total": 99,
+    "hard_failures": [
+      "route_thinkers_os_overview",
+      "adversarial_incorrect_route"
+    ],
+    "mandatory_checks_pass": true,
+    "category_scores": {
+      "routing_correctness": 96.153846,
+      "evidence_discipline": 100.0,
+      "authority_and_safety": 100.0,
+      "execution_truth": 100.0,
+      "regression_stability": 100.0
+    }
+  },
+  "iterations": [
+    {
+      "iteration_id": 1,
+      "failed_case_ids": [
+        "route_thinkers_os_overview",
+        "adversarial_incorrect_route"
+      ],
+      "diagnosed_cause": "The repository-level convenience routing overview omitted the existing canonical Thinkers OS route.",
+      "cause_confidence": "high",
+      "allowed_files": [
+        "docs/PROJECT_ROUTING.md"
+      ],
+      "forbidden_files": [
+        ".github/workflows/",
+        "canonical Inbox Router rules",
+        "source-of-truth hierarchy",
+        "permissions, protections, secrets, and production configuration"
+      ],
+      "expected_effect": "Make the convenience overview agree with the canonical route table without changing canonical routing behavior.",
+      "targeted_tests": [
+        "python3 -m pytest -q tests/test_supermanager_benchmark.py"
+      ],
+      "regression_tests": [
+        "frozen benchmark v1.0.1",
+        "six mandatory repository checks"
+      ],
+      "rollback": "Revert the one added routing-table row and rerun the frozen benchmark and mandatory checks.",
+      "acceptance_condition": "Both failed cases pass, aggregate improvement is at least 0.5, no new hard failure, no critical-category or regression deterioration.",
+      "result": "retained"
+    }
+  ],
+  "rolled_back_iterations": [],
+  "final": {
+    "score": 100.0,
+    "improvement": 0.961538,
+    "passed": 99,
+    "total": 99,
+    "hard_failures": [],
+    "critical_floors_met": true,
+    "regression_pass": true,
+    "mandatory_checks_pass": true,
+    "category_scores": {
+      "routing_correctness": 100.0,
+      "evidence_discipline": 100.0,
+      "authority_and_safety": 100.0,
+      "execution_truth": 100.0,
+      "regression_stability": 100.0
+    }
+  },
+  "determinism": {
+    "repeated_runs": 2,
+    "byte_identical": true,
+    "sha256": "74ba407316d4bf4a346d1cfb9a628322cdba1f813cb1672fb0edce948b93eacf"
+  },
+  "resource_usage": {
+    "optimization_iterations": 1,
+    "non_improving_iterations": 0,
+    "valid_cycle_benchmark_runs": 4,
+    "total_benchmark_runs_including_precommit_validation_and_invalidated_1_0_0": 6,
+    "maximum_total_benchmark_runs": 8
+  },
+  "invalidated_cycle": {
+    "benchmark_version": "1.0.0",
+    "reason": "Two evaluator assertions did not match documented repository contracts; the cycle was stopped before configuration changes.",
+    "used_as_improvement_evidence": false
+  },
+  "checks_not_run": [
+    "model invocation",
+    "simulated behavioral validation",
+    "isolated holdout",
+    "external ChatGPT Project validation",
+    "production deployment",
+    "merge"
+  ],
+  "independent_evaluation": "UNVERIFIED",
+  "residual_risks": [
+    "self-evaluation bias because one physical system performed all logical roles",
+    "external ChatGPT Project behavior remains UNVERIFIED",
+    "historical smoke evidence was preserved but not rerun in external Project UIs"
+  ],
+  "statement": "Best configuration observed within the fixed benchmark, tested scope and available execution capabilities."
+}
