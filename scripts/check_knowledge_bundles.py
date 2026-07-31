@@ -17,6 +17,7 @@ PROJECTS = {
     "[LLM]": Path("ChatGPT/[LLM]"),
     "[Codex]": Path("ChatGPT/[Codex]"),
     "[Inbox Router]": Path("ChatGPT/[Inbox Router]"),
+    "[Thinkers OS]": Path("ChatGPT/[Thinkers OS]"),
 }
 REQUIRED_UPLOAD_SECTIONS = [
     "## Required upload files",

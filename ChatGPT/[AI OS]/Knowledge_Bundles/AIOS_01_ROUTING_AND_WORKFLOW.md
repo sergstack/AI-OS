@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:afde04972599895a898e93fd89ca405d8543329eec8ca038b6e0a4d0eee2a94a
+- source_fingerprint: sha256:86fe9f112b67461a043a51a7d310b50a27b86ef11ae7191a7b0f9217fe05da77
 
 ---
 
@@ -90,6 +90,8 @@ triage and this file for AI OS evidence/governance scope.
 Сначала routing, потом reasoning.
 | Сравнить AI-подходы | `[AI OS]` | Здесь pattern/evidence слой |
 | Найти supported/weak evidence | `[AI OS]` | Здесь confidence/governance слой |
+| Управлять thinker corpus, source requests, author artifacts и cross-author synthesis | `[Thinkers OS]` | Там source-backed author pipeline и portfolio state |
+| Применить thinker patterns к реальному решению | `[Thinking]` | Thinker artifacts — evidence input; decision ownership остаётся в `[Thinking]` |
 | Посчитать финансовую модель или метрики | `[Analytics]` | Там deterministic расчёты, marts, QA |
 | Спроектировать prompt/workflow/model routing | `[LLM]` | Там prompt library и orchestration |
 | Проверить production readiness | `[Codex]` / `[LLM]` / `[AI OS]` | Зависит от типа evidence и реализации |
@@ -106,9 +108,10 @@ triage and this file for AI OS evidence/governance scope.
 - Не делает production execution.
 - Не принимает стратегическое решение вместо `[Thinking]`.
 - Не заменяет `[LLM]` как операционный оркестратор.
+- Не заменяет `[Thinkers OS]` как владельца author corpus, source provenance и thinker artifacts.
 ## Routing response pattern
 ```text
-Маршрут: [AI OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
+Маршрут: [AI OS] / [Thinkers OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
 Почему: ...
 Что можно сделать здесь: ...
 Что нужно передать дальше: ...
