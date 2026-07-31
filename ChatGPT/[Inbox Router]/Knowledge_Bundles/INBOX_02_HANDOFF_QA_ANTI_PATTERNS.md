@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:0aa0bb3c4f636d00a83a4650f0c7ec7219bb7a85b4e257a26b4c340b1e180dc0
+- source_fingerprint: sha256:2f83772cbdb1d7ec8b33a5d99b5c403983525691752a9530d839132febcfec7e
 
 ---
 
@@ -47,6 +47,7 @@ Suggested first step:
 ```
 ## Destination notes
 - `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
+- `[Thinkers OS]` — thinker portfolio, required corpus, source requests/intake, provenance, author artifacts, Judge/Revisor, and synthesis maintenance.
 - `[Thinking]` — strategy, decisions, assumptions, risks, options.
 - `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
 - `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
@@ -70,6 +71,7 @@ Run these tests after updating the ChatGPT Project.
 | 3 | Стоит ли мне покупать mini PC или Raspberry Pi для self-hosted app? | Handoff to `[Thinking]` or decision framing, not Codex. |
 | 4 | Нужно посчитать экономию от автоматизации отчёта | Handoff to `[Analytics]` with metrics, period, and inputs. |
 | 5 | Нужно поправить скрипт и добавить тесты | Handoff to `[Codex]` with objective, allowed files, checks, and acceptance criteria. |
+| 6 | Хочу добавить новую книгу Деминга и обновить межавторский synthesis | Handoff to `[Thinkers OS]`, not `[Thinking]` or `[AI OS]`. |
 ## Pass condition
 - Raw or unclear input routes to `[Inbox Router]` first.
 - Things outputs use the Things schema.
