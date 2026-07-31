@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:bb7057383bbfb283573b748072db239f021d3787363caefc26b7177a4a7acbe7
+- source_fingerprint: sha256:a2ce1b42f50f5770ea86aec7ce0c45ea7642c978715886eff8d63deeee693493
 
 ---
 
@@ -150,7 +150,7 @@ AI OS даёт evidence и patterns. Текущий проект применя�
 # [Thinking] Current Status
 Status: active
 Owner: Sergey / Thinking Lead
-Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RUN
+Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
 ## Active canonical files
 | File | Status | Purpose |
 | `CURRENT_STATUS.md` | active | live status tracking |
@@ -176,10 +176,11 @@ Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RU
 - Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
-- External ChatGPT sync and behavioral smoke for the thinkers synthesis bundle are `NOT RUN`.
+- External ChatGPT sync is complete for Project Instructions and all four authoritative bundles.
+- External behavioral smoke initially found two missing explicit fields; the Project Instructions gate was clarified and both targeted reruns passed.
 - No prospective `[Thinking]` application entry exists; application effectiveness is unverified.
 ## Thinkers synthesis status
-- repository bundle: candidate ready for manual sync
+- repository bundle: synchronized to external `[Thinking]`; follow-up instruction fix verified
 - pattern count: 5 active provisional read-only mirrors
 - isolated patterns excluded: Boyd, Drucker, Munger, Ohno
 - pilot candidate revisions: excluded pending separate Judge authorization
@@ -197,7 +198,8 @@ Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RU
 ## From: `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
 
 # [Thinking] Smoke QA Results
-Verdict: pass
+Repository contract verdict: pass
+External behavioral verdict: pass after targeted remediation
 | Test | Prompt / Input | Expected behavior | Actual behavior | Status | Fix required |
 | Routing calculation to [Analytics] | Ask for deterministic calculation or metric math | Route to `[Analytics]`, not `[Thinking]` | Route rules and evidence guidance point to `[Analytics]` | pass | no |
 | Routing code implementation to [Codex] | Ask for code changes, tests, or repo edits | Route to `[Codex]` | Handoff guidance points code work to `[Codex]` | pass | no |
@@ -218,4 +220,22 @@ Verdict: pass
 ## Required fixes
 - none
 ## Acceptance status
+pass
+
+## External behavioral smoke
+| Case | Observed behavior | Status | Fix required |
+| Primary problem classification | Bounded pilot recommendation; missing `primary_problem_type` | revise | require explicit complex-case field |
+| Lens anti-bloat | Exactly two lenses; additional lenses explicitly excluded | pass | no |
+| Conflict Map review | Contained pilot resolved the tension; missing `conflict_map_check` | revise | require explicit complex-case field |
+| Case evidence precedence | Direct 4-of-5 pilot failures overrode the general automation pattern | pass | no |
+| Irrelevant authors excluded | Narrow recommendation without author enumeration | pass | no |
+| Simple task remains simple | Only the requested short title | pass | no |
+| Analytics / LLM / Codex routing preserved | Correct three-way routing without task execution | pass | no |
+External result: 5 pass, 2 revise.
+## External remediation and targeted rerun
+- Require `primary_problem_type`, `selected_lenses`, `conflict_map_check`, and `precedence_check` for material complex cases.
+- Clarify the material-complex gate for competing objectives, recurring defects, material downside, weak or conflicting evidence, cross-functional conflict, and low reversibility.
+- Primary problem classification rerun: pass.
+- Conflict Map review rerun: pass.
+## External acceptance status
 pass
