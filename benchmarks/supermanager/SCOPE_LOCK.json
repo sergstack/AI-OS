@@ -1,0 +1,21 @@
+{
+  "initial_allowed_roots": [
+    "ChatGPT/",
+    "Knowledge_Bundles/",
+    "scripts/",
+    "tests/",
+    "benchmarks/"
+  ],
+  "specific_file_allowlist": [
+    "benchmarks/supermanager/",
+    "tests/test_supermanager_benchmark.py",
+    "docs/PROJECT_ROUTING.md"
+  ],
+  "forbidden_files": [
+    ".github/workflows/",
+    "files containing secrets or credentials",
+    "repository permission, protection, visibility, deployment, and production configuration"
+  ],
+  "expected_blast_radius": "New deterministic benchmark files and tests, plus at most one bounded correction to the existing repository routing overview if the frozen baseline proves it diverges from the canonical Inbox Router table.",
+  "scope_expansion": []
+}
