@@ -12,6 +12,6 @@
 | 13–14 manual external creation/upload | `README.md`, `CURRENT_STATUS.md`, bundle README/upload list | pass |
 | 15 observed vs expected execution | repository smoke pass; external smoke `NOT RUN` | pass |
 | 16 production status | `NOT AUTHORIZED` throughout package | pass |
-| 17 commit and remote push | pending final Git step | pending |
+| 17 commit and remote push | commit `4674ef6a2608afdd47f13ec4bc9a089be06c3ce9`; remote branch `agent/thinkers-os-integration` verified | pass |
 
-Repository-side acceptance is complete except commit/push verification. External owner acceptance remains pending.
+Repository-side acceptance is complete. External owner acceptance remains pending.

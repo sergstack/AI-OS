@@ -26,8 +26,8 @@
 - [x] Run targeted Thinkers OS integration tests.
 - [x] Run the complete repository pytest suite.
 - [x] Run sync readiness without external upload or remote mutation.
-- [ ] Inspect the final scoped diff and confirm no unrelated files are staged.
-- [ ] Commit and push the passing non-main branch to `sergstack/AI-OS` without merge.
+- [x] Inspect the final scoped diff and confirm no unrelated files are staged.
+- [x] Commit and push the passing non-main branch to `sergstack/AI-OS` without merge.
 
 ## Acceptance mapping
 
