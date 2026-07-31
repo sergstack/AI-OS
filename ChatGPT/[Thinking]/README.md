@@ -10,7 +10,7 @@ GitHub path: `ChatGPT/[Thinking]`
 
 ## What to load
 
-Load the canonical files listed in `Knowledge/INDEX.md`.
+Repository source of truth is listed in `Knowledge/INDEX.md`. For standard manual ChatGPT sync, upload only files listed in `Knowledge_Bundles/UPLOAD_LIST.md`.
 
 ## Canonical files
 
@@ -21,6 +21,10 @@ Load the canonical files listed in `Knowledge/INDEX.md`.
 - `Knowledge/INDEX.md` - canonical knowledge index.
 - `Knowledge/REVISOR_REWRITE.md` - revisor standard.
 - `Knowledge/DECISION_STATUS_AND_REVISIT.md` - decision status standard.
+- `Knowledge/THINKERS_LENS_ROUTER.md` - bounded lens selection and precedence.
+- `Knowledge/THINKERS_CONFLICT_MAP.md` - provisional cross-author conflict boundaries.
+- `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` - five active provisional synthesis patterns.
+- `Knowledge/THINKERS_APPLICATION_LOG.md` - empty append-only real-case logging schema.
 
 ## Optional support files
 
@@ -38,3 +42,5 @@ Load the canonical files listed in `Knowledge/INDEX.md`.
 Do not use this project for deterministic calculations, production code, or loading the full AI OS KB.
 
 Do not absorb the responsibilities of `[Analytics]`, `[LLM]`, `[Codex]`, or `[AI OS]`.
+
+Do not manage thinker corpus, source intake, provenance, or synthesis status here; those remain in `[Thinkers OS]`.

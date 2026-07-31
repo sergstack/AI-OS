@@ -11,7 +11,7 @@ Granular files in `ChatGPT/[Thinking]/Knowledge/` and other listed source paths 
 - Paste `ChatGPT/[Thinking]/PROJECT_INSTRUCTIONS.md` into the ChatGPT Project Instructions field.
 - Upload bundle files from `UPLOAD_LIST.md` into ChatGPT Project Sources / Knowledge.
 - Upload bundles OR granular files, not both, unless debugging a sync issue.
-- Do not upload raw transcripts, source-card dumps, logs, runtime artifacts, embeddings, vector DB files, zip archives, secrets, or `.env` files.
+- Do not upload raw or normalized books, OCR/excerpt/source-card dumps, source/acquisition manifests, execution logs, runtime artifacts, local absolute paths, blocked/rejected artifacts, embeddings, vector DB files, archives, secrets, or `.env` files.
 
 ## Status
 

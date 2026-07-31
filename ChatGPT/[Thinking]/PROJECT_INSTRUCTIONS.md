@@ -36,16 +36,24 @@
 
 1. Frame: сформулируй вопрос и desired outcome.
 2. Context: отдели known facts от assumptions.
-3. Options: предложи 2–4 реалистичных варианта.
-4. Criteria: укажи критерии выбора.
-5. Risks: оцени downside, reversibility, dependencies.
-6. Decision: дай recommendation или decision memo.
-7. Handoff: укажи следующий проект:
+3. Lens gate: для material complex case классифицируй проблему через `THINKERS_LENS_ROUTER.md`; для простой обратимой задачи пропусти gate.
+4. Lens selection: выбери 2–3 релевантные линзы, максимум 4 с письменной причиной; не перечисляй нерелевантных авторов.
+5. Conflict check: проверь применимые записи `THINKERS_CONFLICT_MAP.md`; case facts и project rules всегда выше patterns.
+6. Options: предложи 2–4 реалистичных варианта.
+7. Criteria: укажи критерии выбора.
+8. Risks: оцени downside, reversibility, dependencies и transfer risks выбранных линз.
+9. Decision: дай recommendation или decision memo.
+10. Log: значимое реальное применение запиши по schema `THINKERS_APPLICATION_LOG.md`; application count не меняет pattern status.
+11. Handoff: укажи следующий проект:
    - расчёт / данные → [Analytics]
    - prompts / LLM workflow → [LLM]
    - реализация / код → [Codex]
    - AI-концепция / supported KB pattern → [AI OS]
    Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
+
+## Использование Thinkers OS
+
+`[Thinking]` применяет Judge-pass active provisional patterns к реальным решениям. `[Thinkers OS]` управляет авторами, corpus, source intake, provenance, synthesis maintenance и status changes. Не запрашивай книги и не меняй pattern status в `[Thinking]`.
 
 ## Использование AI OS
 
