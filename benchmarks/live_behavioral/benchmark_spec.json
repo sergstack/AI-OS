@@ -1,5 +1,5 @@
 {
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.0.1",
   "evidence_target": "Level C — Actual external ChatGPT Project validation",
   "source_baseline_commit": "8d15f5a0f6c06a14bb4098d8d6dcbe7632457dcf",
   "runs_per_case": 3,
@@ -57,7 +57,7 @@
   "thinking_effort": "Medium",
   "context_rule": "Each run starts in a new Project chat with no preceding case messages.",
   "knowledge_rule": "Use the exact repository upload set for the frozen configuration version; record uploaded filenames and source SHA-256 values.",
-  "instructions_rule": "Project Instructions must match the repository file modulo the single trailing newline stripped by the UI; record both hashes.",
+  "instructions_rule": "Project Instructions must match the repository file after removing at most one trailing newline from both UI and repository values; record raw and normalized hashes.",
   "raw_output_rule": "Prompts, full raw responses, Project chat URLs and hashes are captured locally. Repository artifacts contain anonymized prompts/responses and no private data.",
   "holdout_rule": "Holdout is generated and sealed before baseline, is not disclosed to the Optimizer, and is opened only by Runner/Evaluator after candidate selection.",
   "role_separation": {

@@ -3,7 +3,7 @@
   "source_commit": "8d15f5a0f6c06a14bb4098d8d6dcbe7632457dcf",
   "instructions": {
     "[AI OS]": {"ui_sha256": "9e262da88063e6569ad2084dcdf1fca11cd5d075d4b0d36841a581fdea2ab926", "repo_ui_normalized_sha256": "9e262da88063e6569ad2084dcdf1fca11cd5d075d4b0d36841a581fdea2ab926", "match": true},
-    "[Thinking]": {"ui_sha256": "5dde30d7c0364e3eec10a38e0c3a34a39e768d9a1968d493c265da3d38549dab", "repo_ui_normalized_sha256": "491c601da609fb2f0dc770d96f52d89aa8d5a536c5729e2eef50f661673b63fe", "match": false},
+    "[Thinking]": {"ui_sha256": "5dde30d7c0364e3eec10a38e0c3a34a39e768d9a1968d493c265da3d38549dab", "ui_normalized_sha256": "491c601da609fb2f0dc770d96f52d89aa8d5a536c5729e2eef50f661673b63fe", "repo_ui_normalized_sha256": "491c601da609fb2f0dc770d96f52d89aa8d5a536c5729e2eef50f661673b63fe", "match": true},
     "[Analytics]": {"ui_sha256": "cd977b8eaeaeb8ed93ef4a5365fa8a2017177b9177a21fc18518a3f1405f74b7", "repo_ui_normalized_sha256": "cd977b8eaeaeb8ed93ef4a5365fa8a2017177b9177a21fc18518a3f1405f74b7", "match": true},
     "[LLM]": {"ui_sha256": "443c323f2ac751f0dc17cc9ce4d59bdf389444e96a49771dca56b63c16b17307", "repo_ui_normalized_sha256": "443c323f2ac751f0dc17cc9ce4d59bdf389444e96a49771dca56b63c16b17307", "match": true},
     "[Codex]": {"ui_sha256": "17789e9da1ba27a91ae3536e651374541f54f3db46678e198cb50bedb79ec86e", "repo_ui_normalized_sha256": "17789e9da1ba27a91ae3536e651374541f54f3db46678e198cb50bedb79ec86e", "match": true},
