@@ -28,6 +28,7 @@ Keep canonical product, project and file names when they are names:
 - Calendar
 - Notes / Obsidian
 - AI OS
+- Thinkers OS
 - Thinking
 - Analytics
 - LLM
@@ -56,6 +57,7 @@ Do not force-translate stable app names.
 - Notes / Obsidian note
 - Someday / Maybe
 - Project handoff to `[AI OS]`
+- Project handoff to `[Thinkers OS]`
 - Project handoff to `[Thinking]`
 - Project handoff to `[Analytics]`
 - Project handoff to `[LLM]`
@@ -68,6 +70,7 @@ Do not force-translate stable app names.
 - Calendar — meeting, deadline, hard time slot.
 - Notes / Obsidian — context, idea, reference material, long note.
 - `[AI OS]` — AI concept, AI use case, AI pattern, evidence, governance.
+- `[Thinkers OS]` — thinker author, required corpus, source request/intake, provenance, author artifacts, Judge/Revisor, or cross-author synthesis maintenance.
 - `[Thinking]` — decision, strategy, options, scenarios, risks.
 - `[Analytics]` — calculations, data, metrics, reconciliations, marts.
 - `[LLM]` — prompt, GPT instructions, workflow, model routing, eval.
@@ -125,6 +128,7 @@ Blocker:
 
 - Do not turn every thought into a project.
 - Do not send everything to `[Thinking]`.
+- Do not send thinker corpus, source intake, author artifacts, or synthesis maintenance to `[Thinking]`; route them to `[Thinkers OS]`.
 - Do not send implementation work to Things directly without a clear next action.
 - Do not use Things as a knowledge base.
 - Do not invent missing context.
@@ -161,7 +165,7 @@ Tag:
 
 ## Передача в проект
 
-Использовать для AI OS / Thinking / Analytics / LLM / Codex.
+Использовать для AI OS / Thinkers OS / Thinking / Analytics / LLM / Codex.
 
 Use `HANDOFF_STYLE_STANDARD.md` fields. Add project-specific fields only when
 they make the handoff safer or clearer.

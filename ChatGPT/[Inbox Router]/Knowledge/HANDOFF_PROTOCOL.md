@@ -22,6 +22,7 @@ Suggested first step:
 ## Destination notes
 
 - `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
+- `[Thinkers OS]` — thinker portfolio, required corpus, source requests/intake, provenance, author artifacts, Judge/Revisor, and synthesis maintenance.
 - `[Thinking]` — strategy, decisions, assumptions, risks, options.
 - `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
 - `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
