@@ -2,8 +2,8 @@
 
 Status: active
 Owner: Sergey / Thinking Lead
-Last updated: 2026-05-25
-Last smoke QA: 2026-05-25
+Last updated: 2026-07-31
+Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RUN
 
 ## Active canonical files
 
@@ -17,6 +17,10 @@ Last smoke QA: 2026-05-25
 | `Knowledge/INDEX.md` | active | canonical file index |
 | `Knowledge/REVISOR_REWRITE.md` | active | rewrite standard |
 | `Knowledge/DECISION_STATUS_AND_REVISIT.md` | active | decision status standard |
+| `Knowledge/THINKERS_LENS_ROUTER.md` | active | bounded lens selection for real decisions |
+| `Knowledge/THINKERS_CONFLICT_MAP.md` | active | provisional cross-author conflict boundaries |
+| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional synthesis patterns mirrored from Thinkers OS |
+| `Knowledge/THINKERS_APPLICATION_LOG.md` | active | empty append-only real-case logging schema |
 
 ## Candidate files
 
@@ -48,6 +52,17 @@ Last smoke QA: 2026-05-25
 - Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
+- External ChatGPT sync and behavioral smoke for the thinkers synthesis bundle are `NOT RUN`.
+- No prospective `[Thinking]` application entry exists; application effectiveness is unverified.
+
+## Thinkers synthesis status
+
+- repository bundle: candidate ready for manual sync
+- pattern count: 5 active provisional read-only mirrors
+- isolated patterns excluded: Boyd, Drucker, Munger, Ohno
+- pilot candidate revisions: excluded pending separate Judge authorization
+- owner acceptance: pending
+- production status: NOT AUTHORIZED
 
 ## Next review trigger
 

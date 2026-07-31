@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:3420e67bc116807dfae9ad7f129154857a42fc4994e4ac393716a258070805fc
+- source_fingerprint: sha256:bb7057383bbfb283573b748072db239f021d3787363caefc26b7177a4a7acbe7
 
 ---
 
@@ -150,12 +150,16 @@ AI OS даёт evidence и patterns. Текущий проект применя�
 # [Thinking] Current Status
 Status: active
 Owner: Sergey / Thinking Lead
-Last smoke QA: 2026-05-25
+Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RUN
 ## Active canonical files
 | File | Status | Purpose |
 | `CURRENT_STATUS.md` | active | live status tracking |
 | `SMOKE_QA_RESULTS.md` | active | smoke QA record |
 | `Knowledge/DECISION_STATUS_AND_REVISIT.md` | active | decision status standard |
+| `Knowledge/THINKERS_LENS_ROUTER.md` | active | bounded lens selection for real decisions |
+| `Knowledge/THINKERS_CONFLICT_MAP.md` | active | provisional cross-author conflict boundaries |
+| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional patterns mirrored from Thinkers OS |
+| `Knowledge/THINKERS_APPLICATION_LOG.md` | active | empty append-only real-case logging schema |
 ## Candidate files
 | File | Status | Why candidate |
 | `Knowledge/THINKING_WORKFLOW.md` | candidate | workflow reference, not status source |
@@ -172,6 +176,15 @@ Last smoke QA: 2026-05-25
 - Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
+- External ChatGPT sync and behavioral smoke for the thinkers synthesis bundle are `NOT RUN`.
+- No prospective `[Thinking]` application entry exists; application effectiveness is unverified.
+## Thinkers synthesis status
+- repository bundle: candidate ready for manual sync
+- pattern count: 5 active provisional read-only mirrors
+- isolated patterns excluded: Boyd, Drucker, Munger, Ohno
+- pilot candidate revisions: excluded pending separate Judge authorization
+- owner acceptance: pending
+- production status: NOT AUTHORIZED
 ## Next review trigger
 - new project instructions change;
 - routing conflict;
@@ -193,6 +206,13 @@ Verdict: pass
 | Scenario analysis uses 3 scenarios and does not invent numbers | Provide scenario template use case | Use base / optimistic / downside and avoid fabricated values | Scenario template added with empty numeric slots | pass | no |
 | Decision memo includes status and revisit trigger | Create reusable decision record | Include status and revisit trigger | Decision status standard requires both | pass | no |
 | AI OS evidence request is handed off, not copied into [Thinking] | Ask for KB-backed evidence | Hand off to `[AI OS]` instead of duplicating KB | Routing / handoff rules point to `[AI OS]` | pass | no |
+| Thinker problem classification | Present a material complex decision | Classify one primary problem type before lens selection | `THINKERS_LENS_ROUTER.md` requires one primary problem type | pass | no |
+| Thinker lens anti-bloat | Present a case with several plausible authors | Prefer 2–3 lenses and never exceed 4 | Router sets two primaries, optional third, and written reason for fourth | pass | no |
+| Thinker conflict review | Select lenses that have a mapped tension | Check the applicable Conflict Map boundary | Router output requires `conflict_map_check`; Conflict Map defines the check rule | pass | no |
+| Case evidence precedence | Present a pattern that conflicts with direct case evidence | Case evidence wins | Precedence ranks case facts and direct evidence first | pass | no |
+| Irrelevant authors excluded | Present a narrow problem | Do not enumerate unrelated authors | Anti-bloat rule requires only selected and materially plausible excluded lenses | pass | no |
+| Simple task remains simple | Present routine reversible work | Skip synthesis activation | Router explicitly skips conceptual activation for simple routine reversible tasks | pass | no |
+| Analytics / LLM / Codex routing preserved | Request calculation, prompt workflow, or repository implementation | Route to the owning project | Router output and bundle preserve all three routes | pass | no |
 ## Issues found
 - none
 ## Required fixes

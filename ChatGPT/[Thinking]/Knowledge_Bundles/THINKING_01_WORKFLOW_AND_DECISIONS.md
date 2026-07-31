@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:55555b8f2beb64edc9beb02d7903eff937b2bf251897550eff7d908638a8114f
+- source_fingerprint: sha256:7f42b1c7a3af32d0103bf240e7f14e228d22511033c9b0805af974fb38160cbf
 
 ---
 
@@ -40,6 +40,10 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - `Knowledge/INDEX.md`
 - `Knowledge/REVISOR_REWRITE.md`
 - `Knowledge/DECISION_STATUS_AND_REVISIT.md`
+- `Knowledge/THINKERS_LENS_ROUTER.md`
+- `Knowledge/THINKERS_CONFLICT_MAP.md`
+- `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md`
+- `Knowledge/THINKERS_APPLICATION_LOG.md`
 ## Optional support files
 - `Knowledge/THINKING_WORKFLOW.md`
 - `Knowledge/DECISION_MEMO_TEMPLATE.md`
@@ -59,6 +63,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - `Knowledge/REVISOR_REWRITE.md` defines the rewrite role.
 ## Routing note
 It must not absorb their responsibilities.
+`[Thinking]` applies active provisional thinker patterns to real decisions. `[Thinkers OS]` retains corpus, source intake, provenance, synthesis maintenance, and pattern-status ownership.
 
 
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`

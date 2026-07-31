@@ -14,6 +14,10 @@ GitHub path: `ChatGPT/[Thinking]`
 - `Knowledge/INDEX.md`
 - `Knowledge/REVISOR_REWRITE.md`
 - `Knowledge/DECISION_STATUS_AND_REVISIT.md`
+- `Knowledge/THINKERS_LENS_ROUTER.md`
+- `Knowledge/THINKERS_CONFLICT_MAP.md`
+- `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md`
+- `Knowledge/THINKERS_APPLICATION_LOG.md`
 
 ## Optional support files
 
@@ -46,3 +50,5 @@ GitHub path: `ChatGPT/[Thinking]`
 
 `[Thinking]` may hand off to `[Analytics]`, `[LLM]`, `[Codex]`, and `[AI OS]`.
 It must not absorb their responsibilities.
+
+`[Thinking]` applies active provisional thinker patterns to real decisions. `[Thinkers OS]` retains corpus, source intake, provenance, synthesis maintenance, and pattern-status ownership.
