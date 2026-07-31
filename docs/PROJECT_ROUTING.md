@@ -15,6 +15,7 @@ Routing first, reasoning second.
 | Hard time commitment | Calendar |
 | Reference material / context | Notes / Obsidian |
 | AI concept / AI pattern / supported evidence | `ChatGPT/[AI OS]` |
+| Thinker author / required corpus / source request / source intake / author artifact / cross-author synthesis maintenance | `ChatGPT/[Thinkers OS]` |
 | Strategy / decision / risks / scenarios | `ChatGPT/[Thinking]` |
 | Calculation / data / metrics / mart / reconciliation | `ChatGPT/[Analytics]` |
 | Prompt / model routing / LLM workflow | `ChatGPT/[LLM]` |
