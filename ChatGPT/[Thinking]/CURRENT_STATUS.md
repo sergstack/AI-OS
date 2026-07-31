@@ -3,7 +3,7 @@
 Status: active
 Owner: Sergey / Thinking Lead
 Last updated: 2026-07-31
-Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RUN
+Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
 
 ## Active canonical files
 
@@ -52,12 +52,13 @@ Last smoke QA: 2026-07-31 — repository contract pass; external behavior NOT RU
 - Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
-- External ChatGPT sync and behavioral smoke for the thinkers synthesis bundle are `NOT RUN`.
+- External ChatGPT sync is complete for Project Instructions and all four authoritative bundles.
+- External behavioral smoke initially found two missing explicit fields; the Project Instructions gate was clarified and both targeted reruns passed.
 - No prospective `[Thinking]` application entry exists; application effectiveness is unverified.
 
 ## Thinkers synthesis status
 
-- repository bundle: candidate ready for manual sync
+- repository bundle: synchronized to external `[Thinking]`; follow-up instruction fix verified
 - pattern count: 5 active provisional read-only mirrors
 - isolated patterns excluded: Boyd, Drucker, Munger, Ohno
 - pilot candidate revisions: excluded pending separate Judge authorization

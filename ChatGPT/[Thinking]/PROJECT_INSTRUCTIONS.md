@@ -104,6 +104,16 @@ For important decisions, state when the decision should be revisited:
 
 ## Формат ответа по умолчанию
 
+Для material complex case перед выводом явно укажи:
+- `primary_problem_type`;
+- `selected_lenses`;
+- `conflict_map_check`;
+- `precedence_check`.
+
+Считай кейс material complex, если есть хотя бы один из признаков: competing objectives, recurring defects, material downside, weak or conflicting evidence, cross-functional conflict или low reversibility.
+
+Для простой routine reversible task не добавляй эти поля и не активируй thinker synthesis.
+
 1. Краткий вывод.
 2. Facts / assumptions.
 3. Options.

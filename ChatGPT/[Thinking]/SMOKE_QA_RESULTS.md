@@ -1,7 +1,8 @@
 # [Thinking] Smoke QA Results
 
 Date: 2026-07-31
-Verdict: pass
+Repository contract verdict: pass
+External behavioral verdict: pass after targeted remediation
 
 | Test | Prompt / Input | Expected behavior | Actual behavior | Status | Fix required |
 |---|---|---|---|---|---|
@@ -31,4 +32,41 @@ Verdict: pass
 ## Acceptance status
 pass
 
-Repository evidence: `python3 -m pytest -q tests/test_thinking_thinkers_integration.py tests/test_validation_scripts.py tests/test_thinkers_os_integration.py` — 52 passed. This is static repository-contract evidence only; external `[Thinking]` Project sync and behavioral smoke are `NOT RUN`.
+Repository evidence: `python3 -m pytest -q tests/test_thinking_thinkers_integration.py tests/test_validation_scripts.py tests/test_thinkers_os_integration.py` — 52 passed. This command is static repository-contract evidence only; external behavior is recorded separately below.
+
+## External behavioral smoke
+
+Environment: cloud ChatGPT Project `[Thinking]` after Project Instructions refresh and upload of the four authoritative bundles from `Knowledge_Bundles/UPLOAD_LIST.md`.
+
+| Case | Observed behavior | Status | Fix required |
+|---|---|---|---|
+| Primary problem classification | Produced a bounded pilot recommendation but did not output `primary_problem_type` | revise | require the explicit complex-case field in Project Instructions |
+| Lens anti-bloat | Selected exactly two lenses (Clausewitz and Kahneman), explained why additional lenses were unnecessary | pass | no |
+| Conflict Map review | Reconciled speed versus recurring-defect diagnosis through a contained pilot, QA gate, and rollback, but did not output `conflict_map_check` | revise | require the explicit complex-case field in Project Instructions |
+| Case evidence precedence | Explicitly stated that direct 4-of-5 pilot failures override the general automation pattern and blocked scaling | pass | no |
+| Irrelevant authors excluded | Returned a narrow second-reviewer recommendation without enumerating authors | pass | no |
+| Simple task remains simple | Returned only the requested short title; no synthesis activation | pass | no |
+| Analytics / LLM / Codex routing preserved | Routed calculation to `[Analytics]`, prompt workflow to `[LLM]`, and repository code/tests to `[Codex]` without doing the tasks | pass | no |
+
+External result: 5 pass, 2 revise. The two revisions concern missing explicit observability fields, not the substantive recommendations.
+
+## External issues found
+
+- `primary_problem_type` was not emitted for a material complex case.
+- `conflict_map_check` was not emitted for a mapped speed-versus-quality tension.
+
+## External remediation and targeted rerun
+
+- Project Instructions now require `primary_problem_type`, `selected_lenses`, `conflict_map_check`, and `precedence_check` in material complex outputs.
+- The material-complex gate now explicitly includes competing objectives, recurring defects, material downside, weak or conflicting evidence, cross-functional conflict, and low reversibility.
+
+| Rerun | Observed behavior | Status |
+|---|---|---|
+| Primary problem classification | Emitted all four required fields and a bounded pilot recommendation | pass |
+| Conflict Map review | Emitted all four required fields and reconciled speed versus quality through an explicit boundary | pass |
+
+Targeted rerun result: 2 pass, 0 revise.
+
+## External acceptance status
+
+pass
