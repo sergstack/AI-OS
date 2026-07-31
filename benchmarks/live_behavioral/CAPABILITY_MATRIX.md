@@ -6,7 +6,7 @@ Assessment date: 2026-07-31. Browser evidence was observed in the authenticated 
 |---|---|---|---|
 | Actual ChatGPT Project access | supported | Authenticated Project home/chat pages opened for all seven target Projects. | Session authentication is user-owned. |
 | Project selection | supported | Stable Project URLs and visible Project names were observed. | Project IDs are external runtime identifiers. |
-| Exact Instructions loading | supported | Settings textarea can be read and updated; hashes can be compared with repository Instructions after UI trailing-newline normalization. | `[Thinking]` and `[Inbox Router]` were stale and `[Thinkers OS]` was empty at discovery; they must be synchronized before the valid baseline. |
+| Exact Instructions loading | supported | Settings textarea can be read and updated; hashes can be compared with repository Instructions after removing at most one trailing newline on both sides. | `[Inbox Router]` was stale and `[Thinkers OS]` was empty at discovery; they must be synchronized before the valid baseline. |
 | Exact Knowledge loading | supported | Required repository files can be uploaded through the Project Sources UI and filenames can be enumerated afterward. | The UI does not expose post-ingestion bytes, so server-side byte equivalence remains UNVERIFIED; source file hashes and observed filenames provide provenance. |
 | Raw response capture | supported | Full visible assistant response, prompt, chat URL and hashes can be captured from each saved Project chat. | Raw captures remain local; repository copies must be anonymized. |
 | Repeated identical prompts | supported | Fresh Project chats can be created repeatedly with the same prompt. | Product-side sampling is not controllable. |
