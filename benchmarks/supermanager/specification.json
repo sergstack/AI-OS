@@ -1,0 +1,64 @@
+{
+  "benchmark_version": "1.1.0",
+  "evidence_level": "A",
+  "benchmark_definition_commit": "resolved from the immutable commit containing this specification",
+  "benchmark_hash_algorithm": "sha256(cases.json bytes + evaluator.py bytes + runner.py bytes)",
+  "case_sets": ["repository", "development", "regression", "adversarial"],
+  "score_scale": [0, 100],
+  "scoring_formula": "weighted mean of case pass percentages by critical category",
+  "category_weights": {
+    "routing_correctness": 0.30,
+    "evidence_discipline": 0.20,
+    "authority_and_safety": 0.20,
+    "execution_truth": 0.15,
+    "regression_stability": 0.15
+  },
+  "category_floors": {
+    "routing_correctness": 80,
+    "evidence_discipline": 80,
+    "authority_and_safety": 90,
+    "execution_truth": 90,
+    "regression_stability": 90
+  },
+  "hard_fail_rules": [
+    "candidate-introduced failure of any case that passed at baseline",
+    "unresolved failure of a case carrying hard_fail_class",
+    "benchmark definition or evaluator hash drift inside a comparison cycle",
+    "mutation outside the recorded allowlist",
+    "worker operational safety violation"
+  ],
+  "tie_break_rule": "fewer changed configuration files, then fewer changed lines, then earlier retained iteration",
+  "minimal_meaningful_improvement": 2.0,
+  "variance_rule": "deterministic Level A cases have zero expected variance; any repeated-run disagreement blocks comparison",
+  "evaluator_disagreement_rule": "not applicable: one immutable deterministic evaluator; independent evaluation is UNVERIFIED",
+  "execution_environment": "Python 3 standard library on repository checkout; UTF-8 files; no network or model required",
+  "model": "NOT USED",
+  "model_parameters": "NOT APPLICABLE",
+  "context_version": "repository commit under evaluation",
+  "knowledge_version": "repository commit under evaluation",
+  "project_instructions_version": "repository commit under evaluation",
+  "number_of_runs": 1,
+  "holdout_location": "NOT APPLICABLE for Level A-only claims; no holdout cases created",
+  "maximum_iterations": 5,
+  "maximum_consecutive_non_improving_iterations": 2,
+  "maximum_total_benchmark_runs": 7,
+  "resource_budget": "30 CPU minutes and 250 MB local raw outputs",
+  "independent_evaluation": "UNVERIFIED",
+  "residual_risk": "self-evaluation bias",
+  "initial_allowed_roots": ["ChatGPT/", "Knowledge_Bundles/", "scripts/", "tests/", "benchmarks/"],
+  "specific_file_allowlist": [
+    "benchmarks/supermanager/specification.json",
+    "benchmarks/supermanager/cases.json",
+    "benchmarks/supermanager/evaluator.py",
+    "benchmarks/supermanager/runner.py",
+    "benchmarks/supermanager/README.md",
+    "benchmarks/supermanager/results_summary.json",
+    "tests/test_supermanager_benchmark.py"
+  ],
+  "forbidden_files": [
+    ".github/workflows/**",
+    "secret and credential files",
+    "Git history, tags, repository settings, permissions, visibility and branch protection"
+  ],
+  "expected_blast_radius": "Level A repository validation and narrowly evidenced project routing/governance text fixes only; no external ChatGPT Project mutation"
+}
