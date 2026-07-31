@@ -24,7 +24,7 @@
 - [x] Run all six repository validators.
 - [x] Run the complete pytest suite and sync readiness.
 - [x] Inspect the final diff and staged scope.
-- [ ] Commit and push the feature branch without merge.
+- [x] Commit and push the feature branch without merge.
 
 ## Acceptance mapping
 
