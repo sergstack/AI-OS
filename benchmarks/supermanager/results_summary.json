@@ -1,0 +1,73 @@
+{
+  "run_date": "2026-07-31",
+  "verdict": "revise",
+  "evidence_level": "A",
+  "claim": "Benchmark infrastructure delivered; configuration improvement not demonstrated.",
+  "source_baseline_commit": "8d45a4653012dbb5dbc0c85647d835d59886ee17",
+  "benchmark_definition_commit": "e8af77bf9f116d7a79f5fb5a6c498553a6d5a999",
+  "benchmark_version": "1.1.0",
+  "benchmark_hash": "98d7d80ccb9f0185b8cf3537095ed8d1465cc1fc236ffad2f0577a0d4fae57b2",
+  "evaluator_hash": "d292daf6a760997f2730c94132819b6c530a1d15cabefaf0b5b6c8ed33df4564",
+  "baseline_execution_worktree": "detached worktree at source_baseline_commit; machine-specific path intentionally omitted",
+  "baseline": {
+    "aggregate_score": 100.0,
+    "category_scores": {
+      "routing_correctness": 100.0,
+      "evidence_discipline": 100.0,
+      "authority_and_safety": 100.0,
+      "execution_truth": 100.0,
+      "regression_stability": 100.0
+    },
+    "passed": 42,
+    "failed": 0,
+    "hard_failures": []
+  },
+  "final": {
+    "configuration_commit": "8d45a4653012dbb5dbc0c85647d835d59886ee17",
+    "aggregate_score": 100.0,
+    "category_scores": {
+      "routing_correctness": 100.0,
+      "evidence_discipline": 100.0,
+      "authority_and_safety": 100.0,
+      "execution_truth": 100.0,
+      "regression_stability": 100.0
+    },
+    "passed": 42,
+    "failed": 0,
+    "hard_failures": []
+  },
+  "optimization_iterations": [],
+  "retained_changes": [
+    "Level A benchmark specification, cases, evaluator, runner and tests"
+  ],
+  "rolled_back_changes": [],
+  "invalidated_cycle": {
+    "benchmark_version": "1.0.0",
+    "reason": "benchmark-integrity case incorrectly required overlay infrastructure inside the source baseline",
+    "configuration_changes_before_invalidation": 0,
+    "results_used_as_improvement_evidence": false
+  },
+  "holdout": "NOT APPLICABLE for Level A-only claim",
+  "external_behavioral_validation": "NOT RUN",
+  "independent_evaluation": "UNVERIFIED",
+  "residual_risks": [
+    "self-evaluation bias",
+    "external ChatGPT Project behavior remains UNVERIFIED",
+    "static contract assertions do not establish model behavior"
+  ],
+  "test_summary": {
+    "benchmark": "42 passed, 0 failed",
+    "pytest": "74 passed",
+    "mandatory_repository_checks": "passed",
+    "raw_outputs_committed": false
+  },
+  "rollback": [
+    "return the branch to source_baseline_commit",
+    "remove benchmark infrastructure commits from the branch",
+    "verify a clean working tree",
+    "rerun mandatory repository checks",
+    "record the observed result"
+  ],
+  "statement": "Executable contract benchmark delivered; repository-level configuration was retained because the fixed baseline passed every case. External ChatGPT Project behavior remains UNVERIFIED.",
+  "merge_gate": "Merge requires owner approval."
+}
