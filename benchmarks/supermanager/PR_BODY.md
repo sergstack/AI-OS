@@ -3,7 +3,7 @@
 Create a frozen executable Level A repository benchmark, measure the original `main` configuration in isolation, correct only proven defects, and retain the best configuration observed within the fixed benchmark.
 
 - Base: `main`
-- Head: `supermanager/ai-os-benchmark-optimization`
+- Head: `supermanager/ai-os-benchmark-optimization-v101`
 - Evidence level: A — deterministic repository validation
 - Source baseline: `8d45a4653012dbb5dbc0c85647d835d59886ee17`
 - Benchmark definition commit: `5eabef99b4d2d86748d866ff271b4d98e0ad4fa0`
