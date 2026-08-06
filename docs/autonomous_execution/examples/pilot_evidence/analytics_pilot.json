@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "standard_version": "1.0.0",
   "execution_id": "exec-aes-phase4-analytics-pilot-001",
-  "parent_execution_id": null,
+  "parent_execution_id": "exec-aes-crossproject-pilot-001",
   "project": "[Analytics]",
   "project_extension": {
     "extension_id": "aes-analytics-pilot-defect-subtypes-v0",
@@ -333,6 +333,7 @@
   "handoffs": [],
   "final_report": {
     "summary": "AES Phase 4 Analytics pilot executed end to end against a synthetic 16-row fixture: data contract -> RAW/STAGE/MART -> reconciliation FAIL (def-001, cancelled-order revenue leaking into MART totals) -> fix -> reconciliation PASS -> memo -> execution record. Repo baseline (pytest + 6 governance scripts) unaffected.",
-    "note": "No real Analytics data infrastructure exists in this repository; this pilot used an explicitly synthetic fixture instead of a real governed dataset, per the Phase 4 task's documented scope deviation from docs/pilots/AES_ANALYTICS_PILOT.md's 'use a real or realistic dataset' constraint. See docs/pilots/AES_ANALYTICS_PILOT_RESULTS.md for the full deviation rationale."
+    "note": "No real Analytics data infrastructure exists in this repository; this pilot used an explicitly synthetic fixture instead of a real governed dataset, per the Phase 4 task's documented scope deviation from docs/pilots/AES_ANALYTICS_PILOT.md's 'use a real or realistic dataset' constraint. See docs/pilots/AES_ANALYTICS_PILOT_RESULTS.md for the full deviation rationale.",
+    "lineage_note": "parent_execution_id was added retroactively during pre-merge adoption cleanup of the AES PR stack (#225-#230), pointing to exec-aes-crossproject-pilot-001 (the Phase 5 cross-project handoff pilot's root execution, docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json), to close the one-directional lineage gap the Phase 5 pilot report identified. This is an additive linkage fix only; no test result, defect description, hash, or command in this record was altered. None of the PRs in this stack are merged yet."
   }
 }

@@ -197,6 +197,15 @@ scripts), all seven mandatory acceptance scopes (all `pass`),
 `source_revision.final_revision` is set to the actual git commit SHA
 that lands this pilot (see PR).
 
+**Lineage update (adoption cleanup):** `parent_execution_id` was added
+retroactively during pre-merge adoption cleanup of the AES PR stack
+(#225-#230), pointing to `exec-aes-crossproject-pilot-001` (the Phase 5
+cross-project handoff pilot's root execution). The Phase 5 pilot report
+had flagged that this record's parent link only existed in the Phase 5
+handoff record, not reciprocally here. Since no PR in the stack is
+merged yet, this is an additive field change to unfrozen evidence, not a
+rewrite of any test result, defect description, hash, or command output.
+
 ## 8. Baseline checks (nothing else broke)
 
 ```text
