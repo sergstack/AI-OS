@@ -11,6 +11,7 @@ Compact upload artifact for [Thinking] covering workflow and decisions.
 - `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`
 - `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`
 - `ChatGPT/[Thinking]/DECISION_LOG.md`
+- `AUTONOMOUS_EXECUTION_STANDARD.md`
 
 ## Upload target
 
@@ -21,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:7f42b1c7a3af32d0103bf240e7f14e228d22511033c9b0805af974fb38160cbf
+- source_fingerprint: sha256:465a141927ca10f70315cc643c2d5d973e1cff69cfe7a1dc355e07163a5081c1
 
 ---
 
@@ -184,6 +185,16 @@ Require status plus revisit trigger for:
 
 ```
 
+
+## Autonomous Execution Standard
+
+Execution in `[Thinking]` now also follows the canonical Autonomous
+Execution Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
+root (canonical owner: `[AI OS]`). It connects the frame -> facts -> options
+-> decision -> handoff workflow above into the shared execution/validation/
+defect/acceptance loop without replacing decision status tracking or the
+merge policy in `GOAL_MODE.md`. No `[Thinking]`-specific AES extension exists
+yet; only the canonical standard is in scope here.
 
 ## From: `ChatGPT/[Thinking]/DECISION_LOG.md`
 

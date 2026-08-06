@@ -8,6 +8,8 @@ Compact upload artifact for [AI OS] covering governance and evidence.
 
 - `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`
 - `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
+- `AUTONOMOUS_EXECUTION_STANDARD.md`
+- `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
 
 ## Upload target
 
@@ -18,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:13494a501d31e38a4e747797cc0c50d49fb0677ea5a2fd6288c6852e4cf91194
+- source_fingerprint: sha256:4f795fdd3682f3c89c4a67680f215095985bb780968ac1f77368728cfa422174
 
 ---
 
@@ -120,6 +122,20 @@ Review item:
 4. Затем рабочие настройки этого пакета.
 ## 8. Status of this package
 
+
+## Autonomous Execution Standard
+
+`[AI OS]` is the canonical owner of the Autonomous Execution Standard (AES).
+Execution across all projects now also follows the canonical loop defined in
+`AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root: requirements -> execution
+-> validation -> defect registration -> corrective action -> affected-scope
+rerun -> revalidation -> scope acceptance -> final evidence. It does not
+replace Goal Mode, routing, autonomy policy, or the merge policy in
+`GOAL_MODE.md`; it connects them into one closed loop, and the stricter rule
+wins on any conflict. `[AI OS]` also owns the generic project-extension
+interface in `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
+implements to add domain-specific defect subtypes, evidence, and acceptance
+scopes without restating the canonical state machine or schema.
 
 ## From: `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
 
