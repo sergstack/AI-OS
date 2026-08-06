@@ -1,0 +1,19 @@
+# SYNTHETIC PILOT FIXTURE - fictional data, not a real company or dataset.
+# Generated for AES Phase 4 Analytics pilot. See DATA_CONTRACT.md.
+order_id,quarter,region,product,units,unit_price_usd,status
+ORD-1001,Q1,North,Widget A,10,20.00,completed
+ORD-1002,Q1,North,Widget A,5,20.00,completed
+ORD-1003,Q1,North,Widget A,8,20.00,cancelled
+ORD-1004,Q1,South,Widget B,6,30.00,completed
+ORD-1005,Q1,South,Widget B,4,30.00,completed
+ORD-1006,Q1,North,Widget C,3,50.00,completed
+ORD-1007,Q1,North,Widget C,2,50.00,completed
+ORD-1008,Q1,South,Widget A,5,20.00,completed
+ORD-2001,Q2,North,Widget A,12,20.00,completed
+ORD-2002,Q2,North,Widget A,6,20.00,completed
+ORD-2003,Q2,South,Widget B,8,30.00,completed
+ORD-2004,Q2,South,Widget B,5,30.00,cancelled
+ORD-2005,Q2,North,Widget C,4,50.00,completed
+ORD-2006,Q2,North,Widget C,3,50.00,completed
+ORD-2007,Q2,South,Widget A,7,20.00,completed
+ORD-2008,Q2,South,Widget B,3,30.00,completed
