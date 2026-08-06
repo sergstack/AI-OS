@@ -1,0 +1,317 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-aes-phase3-artifact-pilot-001",
+  "parent_execution_id": null,
+  "project": "[AI OS]",
+  "project_extension": null,
+  "execution_mode": "docs_and_schema",
+  "risk_mode": "lightweight",
+  "source_revision": {
+    "revision_type": "git_commit",
+    "baseline_revision": "6fb1780",
+    "final_revision": "03793fc",
+    "content_manifest": null,
+    "final_iteration_id": "iter-003"
+  },
+  "created_at": "2026-08-06T14:03:54Z",
+  "updated_at": "2026-08-06T14:04:11Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-001",
+      "requirement": "The derived pilot fixture (aes_artifact_pilot_derived.md) must accurately reflect the current content of the source pilot fixture (aes_artifact_pilot_source.md), demonstrating the artifact-freshness contract end to end.",
+      "source": "docs/pilots/AES_ARTIFACT_PILOT.md",
+      "mandatory": true,
+      "implementation_locations": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md",
+        "scripts/pilot_generate_artifact_fixture.py"
+      ],
+      "evidence_refs": ["ev-003"],
+      "validation_refs": ["val-003"],
+      "status": "passed",
+      "status_history": [
+        { "status": "implemented", "iteration_id": "iter-001", "recorded_at": "2026-08-06T14:03:54Z", "evidence_refs": ["ev-001"] },
+        { "status": "failed", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:04:04Z", "evidence_refs": ["ev-002"] },
+        { "status": "passed", "iteration_id": "iter-003", "recorded_at": "2026-08-06T14:04:11Z", "evidence_refs": ["ev-003"] }
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-003"]
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "def-001",
+      "requirement_id": "req-001",
+      "detected_in_iteration": "iter-002",
+      "detected_by": "val-002",
+      "classification": "artifact",
+      "subtype": "stale_artifact",
+      "severity": "recoverable",
+      "description": "Source fixture was edited (retry_limit 3->5, timeout_seconds 30->45, status draft->reviewed) at commit 3384d23 without regenerating the derived fixture. `scripts/pilot_generate_artifact_fixture.py check` correctly reported STALE: recorded generated_from_revision (sha256:351f3761f47f66aa0000196e56712bd95dcdd1f7733b9984539ffb444534986a) no longer matched the source's current content hash (sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee).",
+      "evidence_refs": ["ev-002"],
+      "correction_eligible": true,
+      "required_authority": null,
+      "remediation_owner": "[AI OS]",
+      "corrective_action_refs": ["iter-003"],
+      "affected_scope": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md"
+      ],
+      "required_validation_refs": ["val-003"],
+      "status": "resolved",
+      "status_history": [
+        { "status": "open", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:04:04Z", "evidence_refs": ["ev-002"] },
+        { "status": "correcting", "iteration_id": "iter-003", "recorded_at": "2026-08-06T14:04:08Z", "evidence_refs": [] },
+        { "status": "resolved", "iteration_id": "iter-003", "recorded_at": "2026-08-06T14:04:11Z", "evidence_refs": ["ev-003"] }
+      ],
+      "resolved_in_iteration": "iter-003",
+      "resolution_evidence_refs": ["ev-003"],
+      "accepted_by": null,
+      "authority_evidence_ref": null,
+      "acceptance_reason": null,
+      "accepted_at": null
+    }
+  ],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:03:40Z",
+      "completed_at": "2026-08-06T14:03:54Z",
+      "trigger": "initial generation of derived fixture from source revision A (commit 6fb1780)",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": [],
+      "changes": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md: created (revision A)",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md: generated via `python3 scripts/pilot_generate_artifact_fixture.py generate`",
+        "scripts/pilot_generate_artifact_fixture.py: created (generate/check tool)"
+      ],
+      "validation_refs": ["val-001"],
+      "result": "pass"
+    },
+    {
+      "iteration_id": "iter-002",
+      "iteration_number": 2,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:04:00Z",
+      "completed_at": "2026-08-06T14:04:04Z",
+      "trigger": "seeded defect: edited source fixture (commit 3384d23) without regenerating the derived fixture",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": [],
+      "changes": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md: retry_limit 3->5, timeout_seconds 30->45, status draft->reviewed"
+      ],
+      "validation_refs": ["val-002"],
+      "result": "fail"
+    },
+    {
+      "iteration_id": "iter-003",
+      "iteration_number": 3,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:04:08Z",
+      "completed_at": "2026-08-06T14:04:11Z",
+      "trigger": "fix: regenerate derived fixture from source revision B (commit 03793fc) via `python3 scripts/pilot_generate_artifact_fixture.py generate`",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": ["def-001"],
+      "changes": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md: regenerated; generated_from_revision updated to sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee"
+      ],
+      "validation_refs": ["val-003"],
+      "result": "pass"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-001",
+      "validation_type": "artifact",
+      "command_or_method": "python3 scripts/pilot_generate_artifact_fixture.py check",
+      "validated_revision": "6fb1780",
+      "covered_paths": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md"
+      ],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-08-06T14:03:55Z",
+      "completed_at": "2026-08-06T14:03:56Z",
+      "result": "pass",
+      "evidence_refs": ["ev-001"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    },
+    {
+      "validation_id": "val-002",
+      "validation_type": "artifact",
+      "command_or_method": "python3 scripts/pilot_generate_artifact_fixture.py check",
+      "validated_revision": "3384d23",
+      "covered_paths": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md"
+      ],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-08-06T14:04:05Z",
+      "completed_at": "2026-08-06T14:04:05Z",
+      "result": "fail",
+      "evidence_refs": ["ev-002"],
+      "freshness_status": "stale",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    },
+    {
+      "validation_id": "val-003",
+      "validation_type": "artifact",
+      "command_or_method": "python3 scripts/pilot_generate_artifact_fixture.py check",
+      "validated_revision": "03793fc",
+      "covered_paths": [
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+        "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md"
+      ],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-08-06T14:04:12Z",
+      "completed_at": "2026-08-06T14:04:12Z",
+      "result": "pass",
+      "evidence_refs": ["ev-003"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "art-001",
+      "path": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md",
+      "artifact_type": "markdown_derived_fixture",
+      "mandatory": true,
+      "source_inputs": [
+        {
+          "path": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+          "content_hash": "sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee",
+          "last_changed_iteration": "iter-002"
+        }
+      ],
+      "generation_method": "python3 scripts/pilot_generate_artifact_fixture.py generate (deterministic markdown table render of source `## Facts` key/value lines, stamped with a manifest recording generated_from_revision = sha256 content hash of the source file)",
+      "generated_from_revision": "sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee",
+      "generated_in_iteration": "iter-003",
+      "generated_at": "2026-08-06T14:04:08Z",
+      "validation_refs": ["val-003"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-003"]
+    },
+    {
+      "artifact_id": "art-000-stale-snapshot",
+      "path": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md",
+      "artifact_type": "markdown_derived_fixture",
+      "mandatory": true,
+      "source_inputs": [
+        {
+          "path": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md",
+          "content_hash": "sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee",
+          "last_changed_iteration": "iter-002"
+        }
+      ],
+      "generation_method": "python3 scripts/pilot_generate_artifact_fixture.py generate",
+      "generated_from_revision": "sha256:351f3761f47f66aa0000196e56712bd95dcdd1f7733b9984539ffb444534986a",
+      "generated_in_iteration": "iter-001",
+      "generated_at": "2026-08-06T14:03:52Z",
+      "validation_refs": ["val-002"],
+      "freshness_status": "stale",
+      "freshness_evidence_refs": ["ev-002"]
+    }
+  ],
+  "acceptance_scopes": {
+    "requirements_traceability": {
+      "status": "pass",
+      "required_checks": ["requirement links to defect, iterations, and final artifact"],
+      "checks_run": ["requirement links to defect, iterations, and final artifact"],
+      "evidence_refs": ["ev-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "implementation": {
+      "status": "pass",
+      "required_checks": ["derived fixture table matches source `## Facts` key/value lines"],
+      "checks_run": ["derived fixture table matches source `## Facts` key/value lines"],
+      "evidence_refs": ["ev-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "tests": {
+      "status": "not_applicable",
+      "required_checks": [],
+      "checks_run": [],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": ["pilot uses a purpose-built generate/check script, not an existing test suite"]
+    },
+    "validation": {
+      "status": "pass",
+      "required_checks": ["val-003 current against final_revision 03793fc"],
+      "checks_run": ["val-003 current against final_revision 03793fc"],
+      "evidence_refs": ["ev-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "output_artifacts": {
+      "status": "pass",
+      "required_checks": [
+        "art-001 generated_from_revision == current source content_hash",
+        "art-001 source_inputs[0].content_hash matches actual final source content"
+      ],
+      "checks_run": [
+        "art-001 generated_from_revision == current source content_hash",
+        "art-001 source_inputs[0].content_hash matches actual final source content"
+      ],
+      "evidence_refs": ["ev-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "corrective_loop": {
+      "status": "pass",
+      "required_checks": ["stale-artifact defect (def-001) registered before regeneration", "resolution evidence present (ev-003)"],
+      "checks_run": ["stale-artifact defect (def-001) registered before regeneration", "resolution evidence present (ev-003)"],
+      "evidence_refs": ["ev-002", "ev-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "rollback_readiness": {
+      "status": "pass",
+      "required_checks": ["prior (stale) derived fixture version retrievable via git history at commit 3384d23"],
+      "checks_run": ["prior (stale) derived fixture version retrievable via git history at commit 3384d23"],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": []
+    }
+  },
+  "overall_delivery": "pass",
+  "qa_status": "not_run",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "not_opened",
+  "production_status": "not_applicable",
+  "rollback": {
+    "strategy": "git_revert",
+    "scope": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md, docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md",
+    "command_or_procedure": "git revert 03793fc 3384d23 (or git checkout 6fb1780 -- docs/autonomous_execution/pilot_fixtures/)",
+    "prerequisites": "none",
+    "data_loss_risk": "none; pilot fixtures only, no production data involved",
+    "validation_after_rollback": "python3 scripts/pilot_generate_artifact_fixture.py check",
+    "status": "ready"
+  },
+  "external_actions": [],
+  "handoffs": [],
+  "final_report": {
+    "summary": "Phase 3 artifact-freshness pilot, executed for real (not illustrative). Ran generate -> validate -> detect defect -> fix source -> regenerate -> validate final artifact -> compare source revision using a purpose-built pilot fixture pair, because this repository has no DOCX/XLSX/PDF/PPTX generation tooling (per docs/pilots/AES_ARTIFACT_PILOT.md constraints and the Phase 3 task's explicit allowance for 'another deterministic artifact').",
+    "artifact_pair": "docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md (source) -> docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_derived.md (derived)",
+    "generation_method": "python3 scripts/pilot_generate_artifact_fixture.py generate|check",
+    "defect_detected": "def-001: derived fixture stale after source edited at commit 3384d23 without regeneration; detected by val-002 (check exited 1, printed STALE)",
+    "fix_applied": "regenerated derived fixture at commit 03793fc; val-003 confirmed CURRENT (check exited 0)",
+    "note": "This record is produced by a human/agent-run pilot exercise, not by automated instrumentation of the standard itself; Phase 1 tooling does not auto-generate execution records."
+  }
+}
