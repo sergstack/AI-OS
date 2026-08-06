@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-example-artifact-001",
+  "parent_execution_id": null,
+  "project": "[Analytics]",
+  "project_extension": null,
+  "execution_mode": "data_pipeline",
+  "risk_mode": "full",
+  "source_revision": {
+    "revision_type": "git_commit",
+    "baseline_revision": "rev-a",
+    "final_revision": "rev-b",
+    "content_manifest": null,
+    "final_iteration_id": "iter-002"
+  },
+  "created_at": "2026-01-07T08:00:00Z",
+  "updated_at": "2026-01-07T09:30:00Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-001",
+      "requirement": "The quarterly variance memo must reflect the corrected reconciliation formula.",
+      "source": "illustrative Analytics pilot spec, not an executed pilot",
+      "mandatory": true,
+      "implementation_locations": ["marts/example_variance_mart.sql"],
+      "evidence_refs": ["ev-002"],
+      "validation_refs": ["val-002"],
+      "status": "passed",
+      "status_history": [
+        { "status": "implemented", "iteration_id": "iter-001", "recorded_at": "2026-01-07T08:20:00Z", "evidence_refs": ["ev-001"] },
+        { "status": "failed", "iteration_id": "iter-001", "recorded_at": "2026-01-07T08:30:00Z", "evidence_refs": ["ev-001"] },
+        { "status": "passed", "iteration_id": "iter-002", "recorded_at": "2026-01-07T09:20:00Z", "evidence_refs": ["ev-002"] }
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-002"]
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "def-001",
+      "requirement_id": "req-001",
+      "detected_in_iteration": "iter-001",
+      "detected_by": "val-001",
+      "classification": "artifact",
+      "subtype": "stale_artifact",
+      "severity": "recoverable",
+      "description": "Memo artifact (art-001) was generated from source revision rev-a, before the reconciliation formula fix landed in rev-b.",
+      "evidence_refs": ["ev-001"],
+      "correction_eligible": true,
+      "required_authority": null,
+      "remediation_owner": "[Analytics]",
+      "corrective_action_refs": ["iter-002"],
+      "affected_scope": ["marts/example_variance_mart.sql", "reports/example_variance_memo.docx"],
+      "required_validation_refs": ["val-002"],
+      "status": "resolved",
+      "status_history": [
+        { "status": "open", "iteration_id": "iter-001", "recorded_at": "2026-01-07T08:30:00Z", "evidence_refs": ["ev-001"] },
+        { "status": "correcting", "iteration_id": "iter-002", "recorded_at": "2026-01-07T08:40:00Z", "evidence_refs": [] },
+        { "status": "resolved", "iteration_id": "iter-002", "recorded_at": "2026-01-07T09:20:00Z", "evidence_refs": ["ev-002"] }
+      ],
+      "resolved_in_iteration": "iter-002",
+      "resolution_evidence_refs": ["ev-002"],
+      "accepted_by": null,
+      "authority_evidence_ref": null,
+      "acceptance_reason": null,
+      "accepted_at": null
+    }
+  ],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-01-07T08:00:00Z",
+      "completed_at": "2026-01-07T08:30:00Z",
+      "trigger": "initial artifact generation from source revision rev-a",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": [],
+      "changes": ["reports/example_variance_memo.docx: generated from rev-a mart"],
+      "validation_refs": ["val-001"],
+      "result": "fail"
+    },
+    {
+      "iteration_id": "iter-002",
+      "iteration_number": 2,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-01-07T08:40:00Z",
+      "completed_at": "2026-01-07T09:20:00Z",
+      "trigger": "source fix in rev-b (reconciliation formula) plus artifact regeneration",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": ["def-001"],
+      "changes": ["marts/example_variance_mart.sql: corrected reconciliation formula", "reports/example_variance_memo.docx: regenerated from rev-b mart"],
+      "validation_refs": ["val-002"],
+      "result": "pass"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-001",
+      "validation_type": "artifact",
+      "command_or_method": "manual reconciliation check against source mart",
+      "validated_revision": "rev-a",
+      "covered_paths": ["reports/example_variance_memo.docx"],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-01-07T08:25:00Z",
+      "completed_at": "2026-01-07T08:30:00Z",
+      "result": "fail",
+      "evidence_refs": ["ev-001"],
+      "freshness_status": "stale",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    },
+    {
+      "validation_id": "val-002",
+      "validation_type": "artifact",
+      "command_or_method": "manual reconciliation check against source mart",
+      "validated_revision": "rev-b",
+      "covered_paths": ["reports/example_variance_memo.docx"],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-01-07T09:15:00Z",
+      "completed_at": "2026-01-07T09:20:00Z",
+      "result": "pass",
+      "evidence_refs": ["ev-002"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "art-001",
+      "path": "reports/example_variance_memo.docx",
+      "artifact_type": "docx_memo",
+      "mandatory": true,
+      "source_inputs": [
+        { "path": "marts/example_variance_mart.sql", "content_hash": "hash-rev-b-mart", "last_changed_iteration": "iter-002" }
+      ],
+      "generation_method": "memo pipeline template render from mart output",
+      "generated_from_revision": "rev-b",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-01-07T09:18:00Z",
+      "validation_refs": ["val-002"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-002"]
+    }
+  ],
+  "acceptance_scopes": {
+    "requirements_traceability": {
+      "status": "pass",
+      "required_checks": ["requirement links to defect, iteration, and final artifact"],
+      "checks_run": ["requirement links to defect, iteration, and final artifact"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "implementation": {
+      "status": "pass",
+      "required_checks": ["mart formula matches corrected reconciliation rule"],
+      "checks_run": ["mart formula matches corrected reconciliation rule"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "tests": {
+      "status": "not_applicable",
+      "required_checks": [],
+      "checks_run": [],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": ["illustrative example; no executable test suite attached"]
+    },
+    "validation": {
+      "status": "pass",
+      "required_checks": ["val-002 current against final_revision rev-b"],
+      "checks_run": ["val-002 current against final_revision rev-b"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "output_artifacts": {
+      "status": "pass",
+      "required_checks": ["art-001 generated_from_revision == rev-b", "art-001 source_inputs hash matches final mart"],
+      "checks_run": ["art-001 generated_from_revision == rev-b", "art-001 source_inputs hash matches final mart"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "corrective_loop": {
+      "status": "pass",
+      "required_checks": ["stale-artifact defect registered before regeneration", "resolution evidence present"],
+      "checks_run": ["stale-artifact defect registered before regeneration", "resolution evidence present"],
+      "evidence_refs": ["ev-001", "ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "rollback_readiness": {
+      "status": "pass",
+      "required_checks": ["prior artifact version retrievable via git history"],
+      "checks_run": ["prior artifact version retrievable via git history"],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": []
+    }
+  },
+  "overall_delivery": "pass",
+  "qa_status": "not_run",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "owner_review_pending",
+  "production_status": "not_authorized",
+  "rollback": {
+    "strategy": "git_revert",
+    "scope": "marts/example_variance_mart.sql, reports/example_variance_memo.docx",
+    "command_or_procedure": "git revert <iter-002 commit>",
+    "prerequisites": "none",
+    "data_loss_risk": "none",
+    "validation_after_rollback": "re-run val-001-equivalent reconciliation check",
+    "status": "ready"
+  },
+  "external_actions": [],
+  "handoffs": [],
+  "final_report": {
+    "summary": "Illustrative Phase 1 example only; not an executed pilot.",
+    "note": "Demonstrates artifact-freshness contract: generate from rev-a -> stale defect -> fix source to rev-b -> regenerate -> artifact current against final_revision."
+  }
+}
