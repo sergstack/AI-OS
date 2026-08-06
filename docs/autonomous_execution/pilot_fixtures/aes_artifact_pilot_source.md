@@ -10,6 +10,6 @@ ChatGPT project.
 
 - component: AES Artifact Pilot
 - owner: [AI OS]
-- retry_limit: 3
-- timeout_seconds: 30
-- status: draft
+- retry_limit: 5
+- timeout_seconds: 45
+- status: reviewed
