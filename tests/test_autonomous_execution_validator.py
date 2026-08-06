@@ -54,8 +54,52 @@ def test_all_phase1_examples_are_clean():
 
 
 def test_main_exits_zero_on_default_scan():
+    """`main([])` scans only the canonical top-level examples (`DEFAULT_GLOB`
+    = docs/autonomous_execution/examples/*.json, non-recursive), which are
+    expected to always be fully clean — same scope as `example_paths()`
+    above. It deliberately does not recurse into examples/pilot_evidence/:
+    pilot evidence may legitimately encode scenario-specific states (e.g. an
+    intentionally stale artifact, which is the Phase 3 pilot's actual
+    subject matter) that a blanket "must be clean" default-scan assumption
+    would wrongly flag as a defect. See the module docstring's "Default-scan
+    scope" section in validate_autonomous_execution_record.py. Pilot
+    evidence is still fully covered by the SEM rules on request — see
+    test_include_pilot_evidence_flag_adds_pilot_evidence_records below,
+    and --include-pilot-evidence / explicit paths for opt-in scanning."""
     exit_code = validator.main([])
     assert exit_code == 0
+
+
+def test_default_scan_does_not_include_pilot_evidence():
+    targets = validator.collect_targets([], ROOT)
+    assert all(p.parent.name != "pilot_evidence" for p in targets), (
+        "default scan must not sweep in pilot_evidence/ records, which may "
+        "legitimately contain scenario-specific (non-clean) states"
+    )
+
+
+def test_include_pilot_evidence_flag_adds_pilot_evidence_records(tmp_path):
+    # Independent of whether this branch happens to carry any pilot_evidence
+    # fixtures itself: build a minimal fake repo layout to prove the flag's
+    # mechanism (PILOT_EVIDENCE_GLOB is included only when requested).
+    examples_dir = tmp_path / "docs" / "autonomous_execution" / "examples"
+    pilot_dir = examples_dir / "pilot_evidence"
+    pilot_dir.mkdir(parents=True)
+    (examples_dir / "top_level_example.json").write_text("{}", encoding="utf-8")
+    (pilot_dir / "some_pilot.json").write_text("{}", encoding="utf-8")
+
+    # Check the parent directory name, not a substring of the full path —
+    # pytest's own tmp_path can itself contain "pilot_evidence" as a
+    # substring (derived from this test's name), which would make a naive
+    # substring check on str(p) unreliable.
+    default_targets = validator.collect_targets([], tmp_path)
+    assert all(p.parent.name != "pilot_evidence" for p in default_targets)
+
+    with_pilot_targets = validator.collect_targets([], tmp_path, include_pilot_evidence=True)
+    assert any(p.parent.name == "pilot_evidence" for p in with_pilot_targets), (
+        "--include-pilot-evidence must still make pilot evidence records "
+        "reachable via the default-scan code path"
+    )
 
 
 # ---------------------------------------------------------------------------
