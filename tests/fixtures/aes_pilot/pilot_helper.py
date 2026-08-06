@@ -14,4 +14,4 @@ def clamp_percentage(value: float) -> float:
     confidence score before display) so the pilot's corrective loop has a
     real, minimal defect to demonstrate.
     """
-    return min(value, 100)
+    return max(0, min(value, 100))
