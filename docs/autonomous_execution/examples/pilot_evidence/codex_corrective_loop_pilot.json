@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-aes-codex-pilot-001",
+  "parent_execution_id": "exec-aes-crossproject-pilot-001",
+  "project": "[Codex]",
+  "project_extension": null,
+  "execution_mode": "bugfix",
+  "risk_mode": "standard",
+  "source_revision": {
+    "revision_type": "git_commit",
+    "baseline_revision": "76b64561cff3737b7e708b38a7e12cf2b2d0f3b0",
+    "final_revision": "cba47c4b32f6fafd51c1f43af7d1386f482249a4",
+    "content_manifest": null,
+    "final_iteration_id": "iter-002"
+  },
+  "created_at": "2026-08-06T14:05:09Z",
+  "updated_at": "2026-08-06T14:06:00Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-pilot-001",
+      "requirement": "docs/pilots/AES_CODEX_PILOT.md: run the Codex corrective-loop pilot for real on an isolated fixture and produce genuine defect-registration -> bounded-fix -> rerun -> regression -> revalidation evidence.",
+      "source": "docs/pilots/AES_CODEX_PILOT.md",
+      "mandatory": true,
+      "implementation_locations": [
+        "tests/fixtures/aes_pilot/pilot_helper.py",
+        "tests/fixtures/aes_pilot/test_pilot_helper.py"
+      ],
+      "evidence_refs": ["ev-pilot-002"],
+      "validation_refs": ["val-pilot-002", "val-pilot-003"],
+      "status": "passed",
+      "status_history": [
+        {
+          "status": "implemented",
+          "iteration_id": "iter-001",
+          "recorded_at": "2026-08-06T14:05:09Z",
+          "evidence_refs": ["ev-pilot-001"]
+        },
+        {
+          "status": "failed",
+          "iteration_id": "iter-001",
+          "recorded_at": "2026-08-06T14:05:20Z",
+          "evidence_refs": ["ev-pilot-001"]
+        },
+        {
+          "status": "passed",
+          "iteration_id": "iter-002",
+          "recorded_at": "2026-08-06T14:05:50Z",
+          "evidence_refs": ["ev-pilot-002"]
+        }
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-002"]
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "def-pilot-001",
+      "requirement_id": "req-pilot-001",
+      "detected_in_iteration": "iter-001",
+      "detected_by": "val-pilot-001",
+      "classification": "implementation",
+      "subtype": "missing_bound_check",
+      "severity": "recoverable",
+      "description": "tests/fixtures/aes_pilot/pilot_helper.py::clamp_percentage clamped the upper bound (min(value, 100)) but not the lower bound, so clamp_percentage(-10) returned -10 instead of 0. Caught by the focused regression test test_clamp_percentage_clamps_lower_bound before any fix was applied (commit 76b64561, iter-001).",
+      "evidence_refs": ["ev-pilot-001"],
+      "correction_eligible": true,
+      "required_authority": null,
+      "remediation_owner": "[Codex]",
+      "corrective_action_refs": ["iter-002"],
+      "affected_scope": [
+        "tests/fixtures/aes_pilot/pilot_helper.py",
+        "tests/fixtures/aes_pilot/test_pilot_helper.py"
+      ],
+      "required_validation_refs": ["val-pilot-002", "val-pilot-003"],
+      "status": "resolved",
+      "status_history": [
+        { "status": "open", "iteration_id": "iter-001", "recorded_at": "2026-08-06T14:05:20Z", "evidence_refs": ["ev-pilot-001"] },
+        { "status": "correcting", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:05:37Z", "evidence_refs": [] },
+        { "status": "resolved", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:05:50Z", "evidence_refs": ["ev-pilot-002"] }
+      ],
+      "resolved_in_iteration": "iter-002",
+      "resolution_evidence_refs": ["ev-pilot-002"],
+      "accepted_by": null,
+      "authority_evidence_ref": null,
+      "acceptance_reason": null,
+      "accepted_at": null
+    }
+  ],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:04:00Z",
+      "completed_at": "2026-08-06T14:05:20Z",
+      "trigger": "seed isolated pilot fixture (tests/fixtures/aes_pilot/) with one intentional defect and one focused test, per docs/pilots/AES_CODEX_PILOT.md",
+      "requirements_affected": ["req-pilot-001"],
+      "defects_addressed": [],
+      "changes": [
+        "tests/fixtures/aes_pilot/README.md: new, marks fixture as pilot evidence only",
+        "tests/fixtures/aes_pilot/pilot_helper.py: new, clamp_percentage() with seeded lower-bound defect",
+        "tests/fixtures/aes_pilot/test_pilot_helper.py: new, 3 focused tests including the one that catches the defect",
+        "commit 76b64561cff3737b7e708b38a7e12cf2b2d0f3b0"
+      ],
+      "validation_refs": ["val-pilot-001"],
+      "result": "fail"
+    },
+    {
+      "iteration_id": "iter-002",
+      "iteration_number": 2,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:05:25Z",
+      "completed_at": "2026-08-06T14:05:50Z",
+      "trigger": "bounded correction for def-pilot-001, one attempt per Codex max_corrective_fixes_per_failed_check: 1 policy (AUTONOMOUS_EXECUTION_STANDARD.md Section 9.7)",
+      "requirements_affected": ["req-pilot-001"],
+      "defects_addressed": ["def-pilot-001"],
+      "changes": [
+        "tests/fixtures/aes_pilot/pilot_helper.py: return max(0, min(value, 100)) instead of min(value, 100)",
+        "commit cba47c4b32f6fafd51c1f43af7d1386f482249a4"
+      ],
+      "validation_refs": ["val-pilot-002", "val-pilot-003"],
+      "result": "pass"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-pilot-001",
+      "validation_type": "unit",
+      "command_or_method": "python3 -m pytest tests/fixtures/aes_pilot/test_pilot_helper.py -q",
+      "validated_revision": "76b64561cff3737b7e708b38a7e12cf2b2d0f3b0",
+      "covered_paths": ["tests/fixtures/aes_pilot/pilot_helper.py", "tests/fixtures/aes_pilot/test_pilot_helper.py"],
+      "covered_requirement_ids": ["req-pilot-001"],
+      "started_at": "2026-08-06T14:05:15Z",
+      "completed_at": "2026-08-06T14:05:20Z",
+      "result": "fail",
+      "evidence_refs": ["ev-pilot-001"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": ["1 failed, 2 passed -- test_clamp_percentage_clamps_lower_bound: assert -10 == 0"]
+    },
+    {
+      "validation_id": "val-pilot-002",
+      "validation_type": "unit",
+      "command_or_method": "python3 -m pytest tests/fixtures/aes_pilot/test_pilot_helper.py -q",
+      "validated_revision": "cba47c4b32f6fafd51c1f43af7d1386f482249a4",
+      "covered_paths": ["tests/fixtures/aes_pilot/pilot_helper.py", "tests/fixtures/aes_pilot/test_pilot_helper.py"],
+      "covered_requirement_ids": ["req-pilot-001"],
+      "started_at": "2026-08-06T14:05:45Z",
+      "completed_at": "2026-08-06T14:05:50Z",
+      "result": "pass",
+      "evidence_refs": ["ev-pilot-002"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    },
+    {
+      "validation_id": "val-pilot-003",
+      "validation_type": "unit",
+      "command_or_method": "python3 -m pytest tests/ -q",
+      "validated_revision": "cba47c4b32f6fafd51c1f43af7d1386f482249a4",
+      "covered_paths": ["tests/"],
+      "covered_requirement_ids": ["req-pilot-001"],
+      "started_at": "2026-08-06T14:05:55Z",
+      "completed_at": "2026-08-06T14:05:58Z",
+      "result": "pass",
+      "evidence_refs": ["ev-pilot-003"],
+      "freshness_status": "current",
+      "freshness_justification": "Full repository pytest suite (77 tests, including the 3 pilot fixture tests) run against the final pilot revision to prove no collateral damage.",
+      "unaffected_paths_evidence": "77 passed in 1.30s; all 74 pre-existing tests plus the 3 new fixture tests passed.",
+      "limitations": []
+    },
+    {
+      "validation_id": "val-pilot-004",
+      "validation_type": "contract",
+      "command_or_method": "python3 scripts/check_project_instructions_length.py && python3 scripts/check_repo_public_safety.py && python3 scripts/check_codex_goal_mode_defaults.py && python3 scripts/check_manifest_paths.py && python3 scripts/check_knowledge_bundles.py && python3 scripts/check_index_coverage.py",
+      "validated_revision": "cba47c4b32f6fafd51c1f43af7d1386f482249a4",
+      "covered_paths": ["scripts/"],
+      "covered_requirement_ids": ["req-pilot-001"],
+      "started_at": "2026-08-06T14:06:00Z",
+      "completed_at": "2026-08-06T14:06:10Z",
+      "result": "pass",
+      "evidence_refs": ["ev-pilot-004"],
+      "freshness_status": "current",
+      "freshness_justification": "All six existing repo governance/validation scripts run individually against the final pilot revision; each exited 0.",
+      "unaffected_paths_evidence": "check_project_instructions_length: PASS (7/7); check_repo_public_safety: PASS; check_codex_goal_mode_defaults: PASS (21 occurrences, 0 failed); check_manifest_paths: PASS (122/122); check_knowledge_bundles: PASS (0 failed); check_index_coverage: PASS (9 pairs, 0 failed).",
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "art-pilot-001",
+      "path": "docs/pilots/AES_CODEX_PILOT_RESULTS.md",
+      "artifact_type": "pilot_report",
+      "mandatory": true,
+      "source_inputs": [
+        { "path": "tests/fixtures/aes_pilot/pilot_helper.py", "content_hash": null, "last_changed_iteration": "iter-002" },
+        { "path": "tests/fixtures/aes_pilot/test_pilot_helper.py", "content_hash": null, "last_changed_iteration": "iter-001" }
+      ],
+      "generation_method": "manual",
+      "generated_from_revision": "cba47c4b32f6fafd51c1f43af7d1386f482249a4",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-08-06T14:06:20Z",
+      "validation_refs": ["val-pilot-002", "val-pilot-003", "val-pilot-004"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-pilot-002", "ev-pilot-003", "ev-pilot-004"]
+    }
+  ],
+  "acceptance_scopes": {
+    "requirements_traceability": {
+      "status": "pass",
+      "required_checks": ["req-pilot-001 links to def-pilot-001 and both iterations"],
+      "checks_run": ["req-pilot-001 links to def-pilot-001 and both iterations"],
+      "evidence_refs": ["ev-pilot-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "implementation": {
+      "status": "pass",
+      "required_checks": ["clamp_percentage clamps both bounds"],
+      "checks_run": ["clamp_percentage clamps both bounds"],
+      "evidence_refs": ["ev-pilot-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "tests": {
+      "status": "pass",
+      "required_checks": ["pytest tests/fixtures/aes_pilot/test_pilot_helper.py -q", "pytest tests/ -q"],
+      "checks_run": ["pytest tests/fixtures/aes_pilot/test_pilot_helper.py -q", "pytest tests/ -q"],
+      "evidence_refs": ["ev-pilot-002", "ev-pilot-003"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "validation": {
+      "status": "pass",
+      "required_checks": ["val-pilot-002, val-pilot-003, val-pilot-004 all current against final_revision"],
+      "checks_run": ["val-pilot-002, val-pilot-003, val-pilot-004 all current against final_revision"],
+      "evidence_refs": ["ev-pilot-002", "ev-pilot-003", "ev-pilot-004"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "output_artifacts": {
+      "status": "pass",
+      "required_checks": ["docs/pilots/AES_CODEX_PILOT_RESULTS.md present and reflects final_revision"],
+      "checks_run": ["docs/pilots/AES_CODEX_PILOT_RESULTS.md present and reflects final_revision"],
+      "evidence_refs": ["ev-pilot-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "corrective_loop": {
+      "status": "pass",
+      "required_checks": [
+        "defect registered before fix (def-pilot-001 opened at iter-001, before any correction)",
+        "defect not closed without resolution evidence (resolution_evidence_refs: ev-pilot-002)",
+        "affected checks rerun after fix, not assumed (val-pilot-002)",
+        "one-fix policy respected (single corrective iteration, iter-002)"
+      ],
+      "checks_run": [
+        "defect registered before fix (def-pilot-001 opened at iter-001, before any correction)",
+        "defect not closed without resolution evidence (resolution_evidence_refs: ev-pilot-002)",
+        "affected checks rerun after fix, not assumed (val-pilot-002)",
+        "one-fix policy respected (single corrective iteration, iter-002)"
+      ],
+      "evidence_refs": ["ev-pilot-001", "ev-pilot-002"],
+      "open_defect_ids": [],
+      "limitations": ["one corrective attempt, per Codex one-fix policy; the attempt succeeded on the first try so no residual risk had to be reported"]
+    },
+    "rollback_readiness": {
+      "status": "pass",
+      "required_checks": ["git revert available for both iterations; no production code path touched"],
+      "checks_run": ["git revert available for both iterations; no production code path touched"],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": []
+    }
+  },
+  "overall_delivery": "pass",
+  "qa_status": "not_run",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "owner_review_pending",
+  "production_status": "not_applicable",
+  "rollback": {
+    "strategy": "git_revert",
+    "scope": "tests/fixtures/aes_pilot/ (isolated pilot fixture only; no production code path)",
+    "command_or_procedure": "git revert cba47c4b32f6fafd51c1f43af7d1386f482249a4 76b64561cff3737b7e708b38a7e12cf2b2d0f3b0",
+    "prerequisites": "none",
+    "data_loss_risk": "none",
+    "validation_after_rollback": "python3 -m pytest tests/ -q",
+    "status": "ready"
+  },
+  "external_actions": [
+    {
+      "action_id": "action-pilot-001",
+      "action_type": "merge",
+      "required_for_objective": false,
+      "requested": true,
+      "required_authority": "owner_review",
+      "authority_evidence_ref": null,
+      "status": "PR opened, not merged; owner review pending",
+      "executed_at": null,
+      "result_evidence_ref": null
+    }
+  ],
+  "handoffs": [],
+  "final_report": {
+    "summary": "Real, observed execution of the Codex corrective-loop pilot specified in docs/pilots/AES_CODEX_PILOT.md, on an isolated fixture only. def-pilot-001 (missing lower-bound clamp) was registered before any fix, corrected in a single minimal iteration per the Codex one-fix policy, and revalidated with both the focused test and the full repo test/scripts baseline with zero collateral damage.",
+    "note": "See docs/pilots/AES_CODEX_PILOT_RESULTS.md for the full narrative report, commands, and output.",
+    "phase": "Phase 2 pilot, governed by AUTONOMOUS_EXECUTION_STANDARD.md Sections 19-20 (adoption phases / next owner); does not authorize semantic enforcement or CI blocking.",
+    "lineage_note": "parent_execution_id was added retroactively during pre-merge adoption cleanup of the AES PR stack (#225-#230), pointing to exec-aes-crossproject-pilot-001 (the Phase 5 cross-project handoff pilot's root execution, docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json), to close the one-directional lineage gap the Phase 5 pilot report identified. This is an additive linkage fix only; no test result, defect description, hash, or command in this record was altered. None of the PRs in this stack are merged yet."
+  }
+}
