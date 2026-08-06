@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-example-crossproject-002",
+  "parent_execution_id": "exec-example-crossproject-001",
+  "project": "[Codex]",
+  "project_extension": null,
+  "execution_mode": "implement",
+  "risk_mode": "full",
+  "source_revision": {
+    "revision_type": "git_commit",
+    "baseline_revision": "cp-2",
+    "final_revision": "cp-3",
+    "content_manifest": null,
+    "final_iteration_id": "iter-001"
+  },
+  "created_at": "2026-01-09T09:00:00Z",
+  "updated_at": "2026-01-09T10:00:00Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-001",
+      "requirement": "Implement the scoped change recommended by [Thinking] and specified by [Analytics] in the parent execution.",
+      "source": "handoff-002 from exec-example-crossproject-001",
+      "mandatory": true,
+      "implementation_locations": ["example_pipeline/step.py"],
+      "evidence_refs": ["ev-002"],
+      "validation_refs": ["val-002"],
+      "status": "passed",
+      "status_history": [
+        { "status": "not_started", "iteration_id": null, "recorded_at": "2026-01-09T09:00:00Z", "evidence_refs": [] },
+        { "status": "passed", "iteration_id": "iter-001", "recorded_at": "2026-01-09T09:50:00Z", "evidence_refs": ["ev-002"] }
+      ],
+      "gap": null,
+      "corrective_action_refs": []
+    }
+  ],
+  "defects": [],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-01-09T09:00:00Z",
+      "completed_at": "2026-01-09T09:50:00Z",
+      "trigger": "implementation of req-001 carried over from parent execution handoff",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": [],
+      "changes": ["example_pipeline/step.py: implemented the scoped change"],
+      "validation_refs": ["val-002"],
+      "result": "pass"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-002",
+      "validation_type": "integration",
+      "command_or_method": "pytest example_pipeline/tests -q",
+      "validated_revision": "cp-3",
+      "covered_paths": ["example_pipeline/step.py"],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-01-09T09:45:00Z",
+      "completed_at": "2026-01-09T09:50:00Z",
+      "result": "pass",
+      "evidence_refs": ["ev-002"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    }
+  ],
+  "artifacts": [],
+  "acceptance_scopes": {
+    "requirements_traceability": {
+      "status": "pass",
+      "required_checks": ["req-001 traces to handoff-002 and parent execution"],
+      "checks_run": ["req-001 traces to handoff-002 and parent execution"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "implementation": {
+      "status": "pass",
+      "required_checks": ["change matches handoff scope"],
+      "checks_run": ["change matches handoff scope"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "tests": {
+      "status": "pass",
+      "required_checks": ["pytest example_pipeline/tests -q"],
+      "checks_run": ["pytest example_pipeline/tests -q"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "validation": {
+      "status": "pass",
+      "required_checks": ["val-002 current against final_revision"],
+      "checks_run": ["val-002 current against final_revision"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "output_artifacts": {
+      "status": "not_applicable",
+      "required_checks": [],
+      "checks_run": [],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": ["no generated artifact in this leg of the pipeline"]
+    },
+    "corrective_loop": {
+      "status": "not_applicable",
+      "required_checks": [],
+      "checks_run": [],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": ["no defect was raised in this execution"]
+    },
+    "rollback_readiness": {
+      "status": "pass",
+      "required_checks": ["git revert available"],
+      "checks_run": ["git revert available"],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": []
+    }
+  },
+  "overall_delivery": "pass",
+  "qa_status": "not_run",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "owner_review_pending",
+  "production_status": "not_authorized",
+  "rollback": {
+    "strategy": "git_revert",
+    "scope": "example_pipeline/step.py",
+    "command_or_procedure": "git revert <commit>",
+    "prerequisites": "none",
+    "data_loss_risk": "none",
+    "validation_after_rollback": "re-run pytest example_pipeline/tests -q",
+    "status": "ready"
+  },
+  "external_actions": [],
+  "handoffs": [
+    {
+      "handoff_id": "handoff-002",
+      "execution_id": "exec-example-crossproject-001",
+      "parent_execution_id": null,
+      "from": "[Analytics]",
+      "to": "[Codex]",
+      "requirement_ids": ["req-001"],
+      "open_defect_ids": [],
+      "current_iteration_id": "iter-003",
+      "evidence_refs": ["ev-001"],
+      "acceptance_snapshot": { "overall_delivery": "partial", "reason": "analytics leg complete, implementation leg pending" },
+      "qa_status": "not_run",
+      "judge_verdict": "not_run",
+      "authority_status": "not_required",
+      "next_owner": "[Codex]"
+    },
+    {
+      "handoff_id": "handoff-003",
+      "execution_id": "exec-example-crossproject-002",
+      "parent_execution_id": "exec-example-crossproject-001",
+      "from": "[Codex]",
+      "to": "[Thinking]/Judge",
+      "requirement_ids": ["req-001"],
+      "open_defect_ids": [],
+      "current_iteration_id": "iter-001",
+      "evidence_refs": ["ev-002"],
+      "acceptance_snapshot": { "overall_delivery": "pass" },
+      "qa_status": "not_run",
+      "judge_verdict": "not_run",
+      "authority_status": "owner_review_pending",
+      "next_owner": "[Thinking]/Judge"
+    }
+  ],
+  "final_report": {
+    "summary": "Illustrative Phase 1 example only; not an executed pilot.",
+    "note": "Demonstrates cross-project handoff persistence across [Thinking] -> [Analytics] -> [Codex] -> Judge: execution ID, parent_execution_id, requirement IDs (req-001), and authority_status are preserved end to end via handoff-002 and handoff-003."
+  }
+}

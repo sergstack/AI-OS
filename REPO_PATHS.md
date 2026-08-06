@@ -14,6 +14,15 @@
 
 - `Codex APP`
 
+## Autonomous Execution Standard
+
+- `AUTONOMOUS_EXECUTION_STANDARD.md` (canonical, `[AI OS]`-owned)
+- `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
+- `schemas/autonomous_execution_record.schema.json`
+- `docs/AUTONOMOUS_EXECUTION_STATUS_MAPPING.md`
+- `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md`
+- `docs/autonomous_execution/`
+
 ## Governance Checks
 
 - `scripts/check_project_instructions_length.py`

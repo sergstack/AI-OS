@@ -1,0 +1,514 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/sergstack/AI-OS/schemas/autonomous_execution_record.schema.json",
+  "title": "Autonomous Execution Standard v1 - execution record",
+  "description": "Phase 1 declarative structural contract only. Validates JSON syntax, required fields, field types, enum values, nested object shape, and ID format patterns. Does not implement cross-field semantic invariants (see AUTONOMOUS_EXECUTION_STANDARD.md Section 12 and docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "standard_version",
+    "execution_id",
+    "parent_execution_id",
+    "project",
+    "execution_mode",
+    "risk_mode",
+    "source_revision",
+    "created_at",
+    "updated_at",
+    "execution_state",
+    "requirements",
+    "defects",
+    "iterations",
+    "validation_runs",
+    "artifacts",
+    "acceptance_scopes",
+    "overall_delivery",
+    "qa_status",
+    "judge_verdict",
+    "authority_status",
+    "merge_status",
+    "production_status",
+    "rollback",
+    "external_actions",
+    "handoffs"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "standard_version": { "type": "string", "const": "1.0.0" },
+    "execution_id": { "type": "string", "pattern": "^exec-[a-z0-9][a-z0-9-]*$" },
+    "parent_execution_id": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^exec-[a-z0-9][a-z0-9-]*$" }
+      ]
+    },
+    "project": { "type": "string", "minLength": 1 },
+    "project_extension": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    },
+    "execution_mode": {
+      "type": "string",
+      "enum": ["inspect_only", "implement", "bugfix", "refactor", "test_qa", "data_pipeline", "release", "docs_and_schema"]
+    },
+    "risk_mode": {
+      "type": "string",
+      "enum": ["lightweight", "standard", "full"]
+    },
+    "source_revision": { "$ref": "#/definitions/source_revision" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "execution_state": {
+      "type": "string",
+      "enum": ["initialized", "scoped", "executing", "validating", "correcting", "revalidating", "completed", "stopped"]
+    },
+    "terminal_reason": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "hard_blocker",
+        "iteration_limit_reached",
+        "repeated_defect_limit_reached",
+        "conflicting_acceptance",
+        "validation_unavailable",
+        "scope_boundary_violation",
+        "required_external_action_not_authorized"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/requirement" }
+    },
+    "defects": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/defect" }
+    },
+    "iterations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/iteration" }
+    },
+    "validation_runs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/validation_run" }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/artifact" }
+    },
+    "acceptance_scopes": { "$ref": "#/definitions/acceptance_scopes" },
+    "overall_delivery": {
+      "type": "string",
+      "enum": ["not_evaluated", "pass", "partial", "fail", "blocked"]
+    },
+    "qa_status": {
+      "type": "string",
+      "enum": ["not_run", "pass", "fail", "blocked", "not_applicable"]
+    },
+    "judge_verdict": {
+      "type": "string",
+      "enum": ["not_run", "pass", "revise", "blocked"]
+    },
+    "authority_status": {
+      "type": "string",
+      "enum": ["not_required", "owner_review_pending", "approved", "rejected"]
+    },
+    "merge_status": {
+      "type": "string",
+      "enum": ["not_applicable", "not_opened", "open", "checks_pending", "owner_review_pending", "merge_ready", "merged", "closed_without_merge"]
+    },
+    "production_status": {
+      "type": "string",
+      "enum": ["not_applicable", "not_authorized", "authorized", "deployed", "rolled_back"]
+    },
+    "rollback": { "$ref": "#/definitions/rollback" },
+    "external_actions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/external_action" }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/handoff" }
+    },
+    "final_report": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "source_revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision_type", "final_revision"],
+      "properties": {
+        "revision_type": {
+          "type": "string",
+          "enum": ["git_commit", "git_tree", "content_manifest", "iteration_reference"]
+        },
+        "baseline_revision": { "type": ["string", "null"] },
+        "final_revision": { "type": "string", "minLength": 1 },
+        "content_manifest": { "type": ["string", "null"] },
+        "final_iteration_id": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement_id", "requirement", "mandatory", "status"],
+      "properties": {
+        "requirement_id": { "type": "string", "pattern": "^req-[a-z0-9-]+$" },
+        "requirement": { "type": "string", "minLength": 1 },
+        "source": { "type": ["string", "null"] },
+        "mandatory": { "type": "boolean" },
+        "implementation_locations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^val-[a-z0-9-]+$" }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["not_started", "implemented", "validation_pending", "passed", "failed", "blocked", "not_applicable"]
+        },
+        "status_history": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/status_history_entry" }
+        },
+        "gap": { "type": ["string", "null"] },
+        "corrective_action_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^iter-[a-z0-9-]+$" }
+        }
+      }
+    },
+    "status_history_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "recorded_at"],
+      "properties": {
+        "status": { "type": "string" },
+        "iteration_id": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "defect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["defect_id", "requirement_id", "classification", "severity", "description", "correction_eligible", "status"],
+      "properties": {
+        "defect_id": { "type": "string", "pattern": "^def-[a-z0-9-]+$" },
+        "requirement_id": { "type": "string", "pattern": "^req-[a-z0-9-]+$" },
+        "detected_in_iteration": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" },
+        "detected_by": { "type": ["string", "null"] },
+        "classification": {
+          "type": "string",
+          "enum": ["implementation", "validation", "test", "artifact", "traceability", "contract", "governance", "authority", "external_dependency"]
+        },
+        "subtype": { "type": ["string", "null"] },
+        "severity": {
+          "type": "string",
+          "enum": ["recoverable", "needs_check", "hard_blocker"]
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "correction_eligible": { "type": "boolean" },
+        "required_authority": { "type": ["string", "null"] },
+        "remediation_owner": { "type": ["string", "null"] },
+        "corrective_action_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^iter-[a-z0-9-]+$" }
+        },
+        "affected_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "required_validation_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^val-[a-z0-9-]+$" }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "correcting", "resolved", "accepted_risk", "blocked"]
+        },
+        "status_history": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/status_history_entry" }
+        },
+        "resolved_in_iteration": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" },
+        "resolution_evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "accepted_by": { "type": ["string", "null"] },
+        "authority_evidence_ref": { "type": ["string", "null"] },
+        "acceptance_reason": { "type": ["string", "null"] },
+        "accepted_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "iteration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["iteration_id", "iteration_number", "iteration_type", "trigger", "result"],
+      "properties": {
+        "iteration_id": { "type": "string", "pattern": "^iter-[a-z0-9-]+$" },
+        "iteration_number": { "type": "integer", "minimum": 1 },
+        "iteration_type": {
+          "type": "string",
+          "enum": ["full_iteration", "operation_retry"]
+        },
+        "started_at": { "type": ["string", "null"], "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" },
+        "trigger": { "type": "string", "minLength": 1 },
+        "requirements_affected": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^req-[a-z0-9-]+$" }
+        },
+        "defects_addressed": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" }
+        },
+        "changes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^val-[a-z0-9-]+$" }
+        },
+        "result": { "type": "string", "minLength": 1 }
+      }
+    },
+    "validation_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validation_id", "validation_type", "validated_revision", "result", "freshness_status"],
+      "properties": {
+        "validation_id": { "type": "string", "pattern": "^val-[a-z0-9-]+$" },
+        "validation_type": {
+          "type": "string",
+          "enum": ["unit", "integration", "contract", "smoke", "golden", "data_quality", "artifact", "schema", "docs_consistency", "judge", "manual_review"]
+        },
+        "command_or_method": { "type": ["string", "null"] },
+        "validated_revision": { "type": "string", "minLength": 1 },
+        "covered_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "covered_requirement_ids": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^req-[a-z0-9-]+$" }
+        },
+        "started_at": { "type": ["string", "null"], "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" },
+        "result": { "type": "string", "enum": ["pass", "fail", "blocked", "not_run"] },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "freshness_status": {
+          "type": "string",
+          "enum": ["current", "stale", "unverifiable", "not_applicable"]
+        },
+        "freshness_justification": { "type": ["string", "null"] },
+        "unaffected_paths_evidence": { "type": ["string", "null"] },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "path", "artifact_type", "mandatory", "freshness_status"],
+      "properties": {
+        "artifact_id": { "type": "string", "pattern": "^art-[a-z0-9-]+$" },
+        "path": { "type": "string", "minLength": 1 },
+        "artifact_type": { "type": "string", "minLength": 1 },
+        "mandatory": { "type": "boolean" },
+        "source_inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path"],
+            "properties": {
+              "path": { "type": "string" },
+              "content_hash": { "type": ["string", "null"] },
+              "last_changed_iteration": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" }
+            }
+          }
+        },
+        "generation_method": { "type": ["string", "null"] },
+        "generated_from_revision": { "type": ["string", "null"] },
+        "generated_in_iteration": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" },
+        "generated_at": { "type": ["string", "null"], "format": "date-time" },
+        "validation_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^val-[a-z0-9-]+$" }
+        },
+        "freshness_status": {
+          "type": "string",
+          "enum": ["current", "stale", "unverifiable", "not_applicable"]
+        },
+        "freshness_evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "acceptance_scope_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_evaluated", "pass", "partial", "fail", "blocked", "not_applicable"]
+        },
+        "required_checks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "checks_run": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "open_defect_ids": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" }
+        },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "acceptance_scopes": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/acceptance_scope_entry" },
+      "required": [
+        "requirements_traceability",
+        "implementation",
+        "tests",
+        "validation",
+        "output_artifacts",
+        "corrective_loop",
+        "rollback_readiness"
+      ],
+      "properties": {
+        "requirements_traceability": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "implementation": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "tests": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "validation": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "output_artifacts": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "corrective_loop": { "$ref": "#/definitions/acceptance_scope_entry" },
+        "rollback_readiness": { "$ref": "#/definitions/acceptance_scope_entry" }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "status"],
+      "properties": {
+        "strategy": { "type": "string", "minLength": 1 },
+        "scope": { "type": ["string", "null"] },
+        "command_or_procedure": { "type": ["string", "null"] },
+        "prerequisites": { "type": ["string", "null"] },
+        "data_loss_risk": { "type": ["string", "null"] },
+        "validation_after_rollback": { "type": ["string", "null"] },
+        "status": {
+          "type": "string",
+          "enum": ["ready", "partial", "unavailable", "not_applicable"]
+        }
+      }
+    },
+    "external_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "action_type", "required_for_objective", "requested", "status"],
+      "properties": {
+        "action_id": { "type": "string", "pattern": "^action-[a-z0-9-]+$" },
+        "action_type": {
+          "type": "string",
+          "enum": ["provider_api_call", "source_mutation", "merge", "deploy", "production_promotion", "migration", "destructive_operation"]
+        },
+        "required_for_objective": { "type": "boolean" },
+        "requested": { "type": "boolean" },
+        "required_authority": { "type": ["string", "null"] },
+        "authority_evidence_ref": { "type": ["string", "null"] },
+        "status": { "type": "string", "minLength": 1 },
+        "executed_at": { "type": ["string", "null"], "format": "date-time" },
+        "result_evidence_ref": { "type": ["string", "null"] }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handoff_id", "execution_id", "from", "to"],
+      "properties": {
+        "handoff_id": { "type": "string", "pattern": "^handoff-[a-z0-9-]+$" },
+        "execution_id": { "type": "string", "pattern": "^exec-[a-z0-9-]+$" },
+        "parent_execution_id": { "type": ["string", "null"], "pattern": "^exec-[a-z0-9-]*$" },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "requirement_ids": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^req-[a-z0-9-]+$" }
+        },
+        "open_defect_ids": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" }
+        },
+        "current_iteration_id": { "type": ["string", "null"], "pattern": "^iter-[a-z0-9-]*$" },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "acceptance_snapshot": { "type": ["object", "null"], "additionalProperties": true },
+        "qa_status": {
+          "type": ["string", "null"],
+          "enum": [null, "not_run", "pass", "fail", "blocked", "not_applicable"]
+        },
+        "judge_verdict": {
+          "type": ["string", "null"],
+          "enum": [null, "not_run", "pass", "revise", "blocked"]
+        },
+        "authority_status": {
+          "type": ["string", "null"],
+          "enum": [null, "not_required", "owner_review_pending", "approved", "rejected"]
+        },
+        "next_owner": { "type": ["string", "null"] },
+        "defects_added": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" }
+        },
+        "requirements_affected": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^req-[a-z0-9-]+$" }
+        },
+        "required_corrections": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

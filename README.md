@@ -22,6 +22,17 @@ This helper validates repo settings and prints sync guidance. It does not perfor
 
 See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, and `SYNC_CONTRACT.md`.
 
+## Autonomous Execution Standard
+
+`AUTONOMOUS_EXECUTION_STANDARD.md` is the canonical cross-project execution
+layer that connects requirements, validation, defect handling, corrective
+iterations, and terminal reporting into one closed loop, without replacing
+Goal Mode, routing, Codex autonomy, testing, reporting, Judge/Revisor,
+handoffs, Analytics methodology, or the merge/production gates above. See
+`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` for the project-extension
+interface and `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md` for phased
+adoption status.
+
 ## Daily Use
 
 - Use ChatGPT Projects for reasoning, routing, analytics framing, prompts, and evidence.

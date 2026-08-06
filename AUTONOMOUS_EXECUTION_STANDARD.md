@@ -1,0 +1,763 @@
+# Autonomous Execution Standard (AES) v1.0.0
+
+Status: Phase 1 — normative package and declarative contract.
+Canonical owner: `[AI OS]`.
+Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
+Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Schema: `schemas/autonomous_execution_record.schema.json`.
+
+This document is the single canonical source for the Autonomous Execution
+Standard. Knowledge Bundles, upload packages, and any future generated
+indexes that mention AES are derived artifacts: they may summarize or link
+to this file, but they must not restate the state machine, defect model, or
+schema and must not become an independent semantic owner. If a derived
+summary and this file ever disagree, this file wins.
+
+## 0. What this is, and what it is not
+
+AES does not replace or weaken any existing AI-OS component:
+
+- Goal Mode (`GOAL_MODE.md`);
+- routing;
+- Codex autonomy policy (`ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`);
+- testing workflows;
+- execution reporting (`ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`);
+- Judge/Revisor;
+- project handoffs (`ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`);
+- Analytics methodology;
+- the GitHub merge policy in `GOAL_MODE.md`;
+- owner, deploy, and production gates.
+
+AES is a shared execution layer that connects these existing components into
+one closed loop:
+
+```text
+requirements
+-> execution
+-> validation
+-> defect registration
+-> corrective action
+-> affected-scope rerun
+-> revalidation
+-> scope acceptance
+-> final evidence
+```
+
+Where AES and an existing project rule set different limits for the same
+situation, the stricter rule wins (see Section 3).
+
+### 0.1 Phase 1 boundary
+
+Phase 1 (this package) delivers only:
+
+- this canonical standard;
+- the state model and status namespaces;
+- the declarative execution-record JSON Schema;
+- requirement, defect, iteration, and artifact structures;
+- the project-extension contract;
+- the status migration map;
+- the acceptance-case specification;
+- example execution records;
+- pilot specifications;
+- the adoption plan;
+- thin references from existing canonical entry documents.
+
+Phase 1 explicitly does **not** include: a semantic execution validator,
+blocking CI enforcement, an automatic stale-artifact gate, automatic
+handoff-ID enforcement, an automatic scope-creep detector, an automatic
+authority evaluator, a runtime execution service, an orchestration platform,
+or any production enforcement. Only advisory structural validation of the
+declarative JSON Schema is in scope: JSON syntax, required fields, field
+types, enum values, nested object structure, and ID format patterns.
+Cross-field semantic invariants are deferred to Phase 6 (Section 12).
+
+## 1. Precedence model
+
+```text
+1. system, safety and non-overridable governance constraints
+2. explicit user instruction
+3. approved task package
+4. project instructions
+5. applicable project-specific execution extension
+6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+7. supporting playbooks, templates and examples
+```
+
+General rule: when two applicable rules conflict, the stricter constraint on
+authority, safety, scope, validation, retry, or external side effect wins.
+
+Consequences:
+
+- user instruction does not override safety;
+- an extension does not expand authority;
+- an extension may only shrink an iteration limit, never grow it;
+- a task package may narrow allowed scope, never widen it;
+- this standard does not lift the stricter Codex one-fix policy (Section 9.5);
+- `overall_delivery: pass` does not imply owner approval;
+- Judge `pass` does not imply merge approval;
+- `merged` does not imply production authorization.
+
+## 2. Canonical ownership
+
+```yaml
+canonical_owner: "[AI OS]"
+canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+derived_artifacts: []   # none registered in Phase 1
+supersedes: []
+superseded_by: []
+```
+
+`[AI OS]` owns: execution-state semantics, authority separation, status
+namespaces, the canonical governance mapping, adoption status, and the
+source-versus-derived distinction. Project extensions (Section 10) own only
+domain-specific detail and never become an alternate semantic owner.
+
+## 3. Target architecture
+
+### 3.1 User entry layer
+
+`GOAL_MODE.md` remains the user-facing entry contract:
+
+```text
+user outcome -> route -> bounded scope -> applicable Autonomous Execution Standard
+```
+
+Goal Mode carries only a thin reference to this document; it does not
+duplicate the state machine, defect model, or schema.
+
+### 3.2 Canonical execution layer (this document)
+
+Owns only universal mechanics: execution identity, requirements, states,
+validation records, defects, iterations, corrective actions, reruns,
+acceptance scopes, freshness, handoff persistence, rollback readiness,
+external authority separation, and terminal reporting.
+
+### 3.3 Project-extension layer
+
+Owns only domain-specific detail: defect subtypes, domain checks, domain
+evidence, risk overrides, stricter retry limits, acceptance scopes,
+project-specific blockers, and project-specific authority gates. An
+extension must not copy the canonical standard wholesale (Section 10).
+
+## 4. Canonical status namespaces
+
+All machine-readable values use lowercase `snake_case`. Uppercase aliases in
+canonical records are not permitted.
+
+### 4.1 `execution_state`
+
+`initialized`, `scoped`, `executing`, `validating`, `correcting`,
+`revalidating`, `completed`, `stopped`.
+
+### 4.2 `requirement.status`
+
+`not_started`, `implemented`, `validation_pending`, `passed`, `failed`,
+`blocked`, `not_applicable`.
+
+### 4.3 Acceptance-scope `status`
+
+`not_evaluated`, `pass`, `partial`, `fail`, `blocked`, `not_applicable`.
+
+### 4.4 `overall_delivery`
+
+`not_evaluated`, `pass`, `partial`, `fail`, `blocked`.
+
+### 4.5 `qa_status`
+
+`not_run`, `pass`, `fail`, `blocked`, `not_applicable`.
+
+### 4.6 `judge_verdict`
+
+`not_run`, `pass`, `revise`, `blocked`.
+
+### 4.7 `authority_status`
+
+`not_required`, `owner_review_pending`, `approved`, `rejected`.
+
+### 4.8 `merge_status`
+
+`not_applicable`, `not_opened`, `open`, `checks_pending`,
+`owner_review_pending`, `merge_ready`, `merged`, `closed_without_merge`.
+
+### 4.9 `production_status`
+
+`not_applicable`, `not_authorized`, `authorized`, `deployed`, `rolled_back`.
+
+### 4.10 `artifact_freshness_status` / `validation_freshness_status`
+
+`current`, `stale`, `unverifiable`, `not_applicable`.
+
+There is no combined `judge_or_qa_status` field. `judge_verdict` and
+`qa_status` are always separate fields (Section 8).
+
+## 5. Execution-record identity and versioning
+
+Minimal top-level structure (full contract: `schemas/autonomous_execution_record.schema.json`):
+
+```yaml
+schema_version: "1.0.0"
+standard_version: "1.0.0"
+execution_id:
+parent_execution_id:
+project:
+project_extension:
+execution_mode:
+risk_mode:
+source_revision:
+created_at:
+updated_at:
+execution_state:
+requirements:
+defects:
+iterations:
+validation_runs:
+artifacts:
+acceptance_scopes:
+overall_delivery:
+qa_status:
+judge_verdict:
+authority_status:
+merge_status:
+production_status:
+rollback:
+external_actions:
+handoffs:
+final_report:
+```
+
+### 5.1 Required identity fields
+
+`schema_version`, `standard_version`, `execution_id`, `project`,
+`execution_mode`, `risk_mode`, `execution_state`, `created_at`, `updated_at`.
+
+### 5.2 Parent execution
+
+Root execution: `parent_execution_id: null`.
+Child or continued execution: `parent_execution_id: "exec-..."`.
+
+### 5.3 ID format
+
+Recommended prefixes: `exec-`, `req-`, `def-`, `iter-`, `val-`, `art-`,
+`ev-`, `handoff-`, `action-`.
+
+Minimum requirements: lowercase; stable within the execution; unique within
+its namespace; never reused after a record is deleted. A global UUID
+infrastructure is not required for v1.
+
+Example: `execution_id: "exec-aios-aes-v1-001"`, `requirement_id: "req-001"`,
+`defect_id: "def-001"`, `iteration_id: "iter-001"`, `artifact_id: "art-001"`,
+`evidence_id: "ev-001"`.
+
+## 6. Source-revision contract
+
+```yaml
+source_revision:
+  revision_type:        # git_commit | git_tree | content_manifest | iteration_reference
+  baseline_revision:
+  final_revision:
+  content_manifest:
+  final_iteration_id:
+```
+
+For uncommitted working state, prefer a git tree reference, a content hash
+manifest, or a deterministic iteration reference over a bare timestamp. A
+timestamp alone is never sufficient freshness evidence.
+
+## 7. State machine
+
+```text
+initialized -> scoped -> executing -> validating
+```
+
+If mandatory checks pass: `validating -> completed`.
+If a correctable defect is found: `validating -> correcting -> revalidating`.
+After a successful re-check: `revalidating -> completed`.
+On a hard blocker or inability to continue, from any non-terminal state:
+`any non-terminal state -> stopped`.
+
+Terminal reasons (when `execution_state: stopped`): `hard_blocker`,
+`iteration_limit_reached`, `repeated_defect_limit_reached`,
+`conflicting_acceptance`, `validation_unavailable`,
+`scope_boundary_violation`, `required_external_action_not_authorized`.
+
+`required_external_action_not_authorized` applies only when a specific
+external action is part of the mandatory objective and the objective cannot
+be completed without it. Waiting for owner review after a successfully
+completed local implementation does **not** move execution to `stopped`.
+The correct terminal shape for that case is:
+
+```yaml
+execution_state: completed
+overall_delivery: pass
+authority_status: owner_review_pending
+merge_status: owner_review_pending
+production_status: not_authorized
+```
+
+## 8. Requirements traceability
+
+Each mandatory requirement is a record:
+
+```yaml
+requirement_id:
+requirement:
+source:
+mandatory:
+implementation_locations:
+evidence_refs:
+validation_refs:
+status:            # current status only, see 8.1
+status_history:
+gap:
+corrective_action_refs:
+```
+
+### 8.1 Status model
+
+One current field, `status`. History is kept separately:
+
+```yaml
+status_history:
+  - status:
+    iteration_id:
+    recorded_at:
+    evidence_refs:
+```
+
+There is no separate duplicating `final_status` field. At terminal
+execution, the current `status` value is the final one.
+
+### 8.2 Rules
+
+1. `requirement_id` is unique within the execution.
+2. Every mandatory requirement must end in `passed`, `blocked`, or
+   `not_applicable` with a stated reason.
+3. `not_applicable` requires a reason.
+4. `passed` requires evidence, or an explanation of why no change was
+   required.
+5. A mandatory requirement with `status: failed` forbids
+   `overall_delivery: pass`.
+6. A requirement that went through correction must reference the iteration
+   and the repeated validation.
+7. A handoff must not drop requirement IDs.
+8. Requirement scope may not be widened inside a corrective loop without a
+   new, explicit scope decision.
+
+## 9. Defects and the corrective loop
+
+### 9.1 Defect record
+
+```yaml
+defect_id:
+requirement_id:
+detected_in_iteration:
+detected_by:
+classification:
+subtype:
+severity:
+description:
+evidence_refs:
+correction_eligible:
+required_authority:
+remediation_owner:
+corrective_action_refs:
+affected_scope:
+required_validation_refs:
+status:
+status_history:
+resolved_in_iteration:
+resolution_evidence_refs:
+```
+
+### 9.2 Classification
+
+`implementation`, `validation`, `test`, `artifact`, `traceability`,
+`contract`, `governance`, `authority`, `external_dependency`. An extension
+may add a `subtype`, but must not change the classification semantics.
+
+### 9.3 Severity
+
+`recoverable`, `needs_check`, `hard_blocker` — compatible with the existing
+Codex failure-classification model in
+`ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`.
+
+### 9.4 Defect status
+
+`open`, `correcting`, `resolved`, `accepted_risk`, `blocked`.
+
+`accepted_risk` requires `accepted_by`, `authority_evidence_ref`,
+`acceptance_reason`, `accepted_at`. An executor may not self-accept as
+`accepted_risk`: a security defect, a business-rule defect, a formula or
+metric defect, a schema incompatibility, a public-API incompatibility, a
+failed mandatory check, a production risk, or a source-mutation risk.
+
+### 9.5 Corrective-loop contract
+
+Mandatory sequence:
+
+```text
+validate -> register defect -> classify defect
+-> determine correction eligibility and authority
+-> apply minimal correction -> rerun affected checks
+-> run required regression scope -> update defect evidence
+-> update requirement evidence -> re-evaluate affected acceptance scopes
+```
+
+The executor must not: fix a defect without registering it; close a defect
+without resolution evidence; reuse a stale test result after changing the
+affected scope; widen scope for convenience of the fix; delete or weaken
+validation; change business logic to obtain a `pass`; or use `blocked`
+instead of an available, permitted local correction.
+
+### 9.6 Iteration model
+
+```yaml
+iteration_id:
+iteration_number:
+iteration_type:      # full_iteration | operation_retry
+started_at:
+completed_at:
+trigger:
+requirements_affected:
+defects_addressed:
+changes:
+validation_refs:
+result:
+```
+
+A **full iteration** starts when a substantive change to source,
+configuration, contract, generated-source input, an analytical source
+layer, or a prompt/workflow contract has been made after validation and a
+new acceptance evaluation is required.
+
+An **operation retry** repeats a single operation without changing
+requirement scope or source state — e.g. a transient file lock, a transient
+local command failure, a repeated parsing operation, or a repeated check
+after a recoverable environment issue.
+
+Default canonical envelope (a ceiling, not a standing permission):
+
+```yaml
+max_full_iterations: 5
+max_retries_per_operation: 3
+max_same_defect_recurrence: 2
+```
+
+Effective limit = `minimum(canonical limit, project-extension limit,
+task-package limit, applicable safety limit)`.
+
+### 9.7 Codex compatibility (hard constraint)
+
+Until a separate owner decision changes it, `[Codex]` keeps its stricter
+existing policy:
+
+```yaml
+max_corrective_fixes_per_failed_check: 1
+```
+
+If the same check fails again after one minimal correction attempt: stop
+changing files, record the evidence, report the residual risk, and set an
+honest acceptance status. This standard's canonical envelope (Section 9.6)
+never widens this policy.
+
+## 10. Acceptance model
+
+```yaml
+acceptance_scopes: {}   # object, keyed by scope name
+overall_delivery: pass  # scalar
+```
+
+Example:
+
+```yaml
+acceptance_scopes:
+  requirements_traceability:
+    status: pass
+    required_checks: []
+    checks_run: []
+    evidence_refs: []
+    open_defect_ids: []
+    limitations: []
+  implementation:
+    status: pass
+    required_checks: []
+    checks_run: []
+    evidence_refs: []
+    open_defect_ids: []
+    limitations: []
+overall_delivery: pass
+```
+
+### 10.1 Mandatory acceptance scopes
+
+`requirements_traceability`, `implementation`, `tests`, `validation`,
+`output_artifacts`, `corrective_loop`, `rollback_readiness`. Each scope
+carries `status`, `required_checks`, `checks_run`, `evidence_refs`,
+`open_defect_ids`, `limitations`.
+
+### 10.2 Overall-delivery rule
+
+`overall_delivery: pass` is permitted only when: all mandatory requirements
+are resolved; mandatory scopes are `pass` or a justified `not_applicable`;
+no open `recoverable` or `needs_check` defects remain; no hard blockers
+remain; validation evidence matches the final source state; mandatory
+artifacts are current; rollback readiness has been evaluated; and external
+authority statuses are reported separately. Waiting for owner review does
+not pull `overall_delivery` down to `fail`.
+
+## 11. Validation runs and freshness
+
+### 11.1 Validation-run record
+
+```yaml
+validation_id:
+validation_type:   # unit | integration | contract | smoke | golden | data_quality | artifact | schema | docs_consistency | judge | manual_review
+command_or_method:
+validated_revision:
+covered_paths:
+covered_requirement_ids:
+started_at:
+completed_at:
+result:
+evidence_refs:
+freshness_status:
+limitations:
+```
+
+### 11.2 Validation freshness
+
+`freshness_status: current` is permitted when
+`validation.validated_revision == source_revision.final_revision`, or when a
+documented affected-scope analysis proves that changes made after the
+validation run did not touch the covered paths and requirements. In the
+latter case the record must also carry `freshness_justification` and
+`unaffected_paths_evidence`. A check run before the last relevant change is
+`stale`.
+
+### 11.3 Artifact-freshness record
+
+```yaml
+artifact_id:
+path:
+artifact_type:
+mandatory:
+source_inputs:
+  - path:
+    content_hash:
+    last_changed_iteration:
+generation_method:
+generated_from_revision:
+generated_in_iteration:
+generated_at:
+validation_refs:
+freshness_status:
+freshness_evidence_refs:
+```
+
+A mandatory artifact is `current` when `generated_from_revision` matches the
+final relevant source state, the hashes of all mandatory source inputs
+match, artifact validation ran on the final version, and no relevant source
+change occurred after generation. Timestamp is auxiliary evidence only. An
+artifact is `stale` when a source input changed after generation, a content
+hash mismatches, the artifact predates the last corrective iteration, or its
+final validation belongs to a previous version. `overall_delivery: pass` is
+forbidden while a mandatory artifact is stale — this matters most for XLSX,
+DOCX, PDF, PPTX, marts, charts, memos, and other generated bundles.
+
+## 12. Validation responsibility matrix
+
+Phase 1 explicitly separates deterministic structural checks (available now)
+from semantic checks (documented, deferred to Phase 6):
+
+| Property checked | Phase 1 mechanism | Future mechanism |
+| --- | --- | --- |
+| JSON syntax | JSON parser | unchanged |
+| Required fields | JSON Schema | unchanged |
+| Field types | JSON Schema | unchanged |
+| Enum values | JSON Schema | unchanged |
+| ID string format | JSON Schema pattern | unchanged |
+| Nested record shape | JSON Schema | unchanged |
+| Duplicate IDs by property | acceptance-case specification only | semantic validator |
+| Mandatory failed requirement with overall pass | normative rule and case specification | semantic validator |
+| Open defect with overall pass | normative rule and case specification | semantic validator |
+| Artifact revision mismatch | normative rule and pilot | semantic validator |
+| Test revision mismatch | normative rule and pilot | semantic validator |
+| Iteration-limit enforcement | normative rule and pilot | semantic validator |
+| Allowed-file scope | exact scope manifest and git diff review | repository validator |
+| Extension authority expansion | contract and Judge review | deterministic policy validator where feasible |
+| Canonical-content duplication | docs consistency and Judge review | optional repository consistency check |
+| Business-rule preservation | project-specific checks | project-specific enforcement |
+| Merge/deploy authority | explicit fields and owner review | external platform gates |
+
+Phase 1 must not claim any semantic check as automated or passed when it is
+only documented normatively. See
+`docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the
+full structural and semantic case list.
+
+## 13. External authority separation
+
+An execution record always reports these fields separately, and never
+collapses one into another:
+
+```yaml
+overall_delivery:
+qa_status:
+judge_verdict:
+authority_status:
+merge_status:
+production_status:
+```
+
+Forbidden implicit conversions: judge `pass` -> owner approved;
+implementation `pass` -> merge ready; merge ready -> merged; merged ->
+production authorized; not merged -> failed; owner review pending ->
+blocked.
+
+### 13.1 External-action record
+
+```yaml
+action_id:
+action_type:   # provider_api_call | source_mutation | merge | deploy | production_promotion | migration | destructive_operation
+required_for_objective:
+requested:
+required_authority:
+authority_evidence_ref:
+status:
+executed_at:
+result_evidence_ref:
+```
+
+An external action without explicit authority is not executed, is not
+retried automatically, is not treated as authorized just because local
+configuration exists, and does not turn a successful local implementation
+into `fail` when the action was not part of the mandatory objective.
+
+## 14. Rollback readiness
+
+```yaml
+rollback:
+  strategy:
+  scope:
+  command_or_procedure:
+  prerequisites:
+  data_loss_risk:
+  validation_after_rollback:
+  status:   # ready | partial | unavailable | not_applicable
+```
+
+For docs/schema Phase 1 work, acceptable strategies are a scoped
+`git restore`, closing the PR without merging, or reverting a single commit
+after merge. `git reset --hard` is never a default rollback strategy.
+
+## 15. Cross-project handoff persistence
+
+```yaml
+handoff_id:
+execution_id:
+parent_execution_id:
+from:
+to:
+requirement_ids:
+open_defect_ids:
+current_iteration_id:
+evidence_refs:
+acceptance_snapshot:
+qa_status:
+judge_verdict:
+authority_status:
+next_owner:
+```
+
+A new execution ID is permitted only with an explicit parent/child link.
+
+### 15.1 Reverse handoff (Judge/QA back to executor)
+
+```yaml
+handoff_id:
+execution_id:
+from:
+to:
+judge_verdict:
+qa_status:
+defects_added:
+requirements_affected:
+required_corrections:
+evidence_refs:
+next_owner:
+```
+
+A handoff must never drop: execution ID, requirement IDs, defect IDs,
+iteration ID, evidence references, or authority status.
+
+## 16. Risk-scaled modes
+
+One standard; only evidence depth changes.
+
+### 16.1 Lightweight
+
+For simple docs-only changes, local reversible config changes, a single
+scope, low risk. Minimum: execution ID, requirements, relevant checks, a
+minimal defect record, acceptance scopes, rollback, authority statuses.
+
+### 16.2 Standard
+
+For ordinary repository tasks, code/config changes, generated artifacts,
+multiple requirements. Minimum: full execution record, requirements,
+defects, iterations, validation runs, artifact manifest, acceptance scopes,
+rollback.
+
+This Phase 1 package itself was executed at Standard risk mode (docs and
+schema, several requirements, no runtime execution record required as a
+bookkeeping artifact — see `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md`).
+
+### 16.3 Full
+
+For Analytics, high-risk tasks, production-adjacent work, cross-project
+workflows, multiple artifact layers. Minimum: full traceability, several QA
+layers, detailed defects, partial scope acceptance, cross-project handoff
+preservation, an explicit authority map, full artifact lineage.
+
+## 17. Non-goals (Phase 1)
+
+Forbidden in this task: a runtime service; an execution database; a
+semantic validator; a blocking CI gate; changes to `.github/workflows/*`; a
+web UI; a vector DB; embeddings; an agent orchestration platform; automatic
+project invocation; automatic issue creation or closing; automatic PR
+creation as a runtime behavior of the standard; automatic PR approval or
+merge; automatic deploy; routing-architecture changes; merging projects;
+rewriting all Project Instructions; moving project methodology into the
+canonical standard; a separate file per runtime defect; changes to business
+formulas, metrics, financial controls, or provider/API routing; real
+external API calls; source-data mutation; or changes to existing product
+schemas or public APIs.
+
+## 18. PR semantics
+
+The implementation PR for adopting AES (or any AES-tracked change) is only a
+delivery mechanism for a repository change.
+
+```text
+The implementation PR is a delivery mechanism.
+The Autonomous Execution Standard does not automatically create,
+approve, merge or deploy pull requests.
+```
+
+## 19. Adoption phases
+
+See `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md` for the full phase list.
+Summary: Phase 1 (this package, normative) -> Phase 2 (Codex pilot,
+separate issue/PR) -> Phase 3 (artifact pilot) -> Phase 4 (Analytics pilot)
+-> Phase 5 (cross-project pilot) -> Phase 6 (semantic enforcement, requires
+a separate owner decision).
+
+## 20. Next owner
+
+```text
+[Codex] Phase 1 implementation
+-> [Thinking]/Judge architecture review
+-> owner acceptance
+-> separate Codex pilot task
+```
+
+Completion of this Phase 1 package does not authorize: pilot execution,
+semantic enforcement, CI blocking, merge, deploy, or production adoption.
