@@ -47,14 +47,20 @@ records.
 
 **Preserved:** execution_id, requirement_ids (req-001, real, verified
 present verbatim in `analytics_pilot.json`), evidence_refs (ev-002,
-real). **Gap found:** `analytics_pilot.json`'s own `parent_execution_id`
-field is `null`, not `exec-aes-crossproject-pilot-001` — it was authored
-in Phase 4 before this root execution existed and is frozen evidence that
-this pilot must not rewrite. The link is asserted only in this pilot's
-own `fulfilled_by_execution_id` field, not on the child record itself.
-This is a real, reported gap between the canonical contract (parent link
-lives on the child) and current practice (link exists only in the
-tracking pilot artifact).
+real).
+
+**Lineage update (adoption cleanup, resolved):** at the time this pilot
+was originally run, `analytics_pilot.json`'s own `parent_execution_id`
+field was `null`, since it was authored in Phase 4 before this root
+execution existed. Since none of the PRs in this stack (#225-#230) are
+merged, that "frozen" evidence was not actually immutable pre-merge:
+during pre-merge adoption cleanup, `analytics_pilot.json` (PR #229) had
+`parent_execution_id: "exec-aes-crossproject-pilot-001"` added as an
+additive field, and this branch's own merged-in copy of that file was
+updated to match. Lineage for this hop is now bidirectional (asserted
+here in the handoff record, and present on the child record itself) —
+see the Cross-check summary and Gap report below, which previously
+described this as an open, one-directional gap.
 
 ### Hop 2: `[Analytics] -> [Codex]` (`handoff-crossproject-pilot-002`)
 
@@ -81,9 +87,13 @@ from `def-001` (Analytics, MART revenue leakage) — they are two
 independently-fixtured pilot defects on unrelated branches. This handoff
 links them only to exercise the identity-preservation mechanics Section
 15 requires, as instructed by the Phase 5 task; the record says this
-explicitly rather than implying a fabricated causal chain. Same
-parent-link gap as Hop 1 applies to `exec-aes-codex-pilot-001` (its own
-`parent_execution_id` is frozen at `null`).
+explicitly rather than implying a fabricated causal chain. **Lineage
+update (adoption cleanup, resolved):** the same parent-link gap
+originally noted for Hop 1 applied here too (`exec-aes-codex-pilot-001`'s
+own `parent_execution_id` was `null`). It has been closed the same way:
+`codex_corrective_loop_pilot.json` (PR #228) now carries
+`parent_execution_id: "exec-aes-crossproject-pilot-001"`, additively,
+and this branch's merged-in copy matches.
 
 ### Hop 3 (reverse): `[Codex] -> Judge` (`handoff-crossproject-pilot-003`)
 
@@ -112,7 +122,7 @@ drop ... authority status").
 | Item | Hop 1 | Hop 2 | Hop 3 |
 |---|---|---|---|
 | execution_id | preserved | preserved | preserved |
-| parent_execution_id | preserved (root) | asserted; gap noted on child's frozen record | asserted; same gap noted |
+| parent_execution_id | preserved (root) | bidirectional (asserted here; also now present on child record) | bidirectional (asserted here; also now present on child record) |
 | requirement_ids | preserved (req-001 carried forward) | preserved (req-001, verbatim) | preserved (req-pilot-001, verbatim) |
 | defect_ids | n/a (none yet) | preserved (def-001, verbatim) | preserved (def-pilot-001, verbatim, status resolved) |
 | iteration references | n/a (none yet) | preserved (iter-002) | preserved (iter-002) |
@@ -127,18 +137,28 @@ verified by direct text match against the frozen Phase 2/4 JSON files
 
 ## Gap report (deliverable 3 of the pilot spec)
 
-1. **Parent-link direction.** The canonical contract (Section 15) puts
-   `parent_execution_id` on the child execution record. In practice here,
-   the "child" executions (Phase 2 Codex, Phase 4 Analytics) were authored
-   and frozen *before* this Phase 5 root execution existed, so their own
-   `parent_execution_id` fields are `null`. The link can only be asserted
-   forward, from the pilot's own handoff array (`fulfilled_by_execution_id`),
-   not backward on the frozen child records. A real cross-project workflow
-   that wants Section 15's parent link to be discoverable *from the child
-   record itself* would need to either (a) create child executions after
-   the parent handoff is issued (the ordering Section 15 implicitly
-   assumes), or (b) amend the child record post hoc — which conflicts with
-   treating execution records as append-only evidence.
+1. **Parent-link direction — RESOLVED during pre-merge adoption cleanup.**
+   The canonical contract (Section 15) puts `parent_execution_id` on the
+   child execution record. The "child" executions (Phase 2 Codex, Phase 4
+   Analytics) were originally authored and evidenced *before* this Phase 5
+   root execution existed, so their own `parent_execution_id` fields were
+   `null` at that time, and the link could only be asserted forward, from
+   this pilot's own handoff array (`fulfilled_by_execution_id`).
+   Since none of PRs #225-#230 are merged yet, that evidence was not
+   actually append-only/frozen in the sense that would make option (b)
+   below unsafe: during pre-merge adoption cleanup, `parent_execution_id`
+   was added to both `codex_corrective_loop_pilot.json` (PR #228) and
+   `analytics_pilot.json` (PR #229) as an additive field only — no test
+   result, defect description, hash, or command output in either record
+   was altered — and this branch's merged-in copies of both files were
+   updated to match. Lineage is now bidirectional: discoverable from the
+   handoff record (as before) and from each child record directly.
+   The general caution below (option (a) vs. (b)) still applies to any
+   *post-merge* case, where amending a frozen, already-merged record would
+   indeed conflict with append-only evidence: (a) create child executions
+   after the parent handoff is issued (the ordering Section 15 implicitly
+   assumes), or (b) amend the child record post hoc, which is only safe
+   pre-merge, as an additive field, as done here.
 2. **No single existing handoff mechanism natively carries all eight
    items.** `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`,
    `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, and
