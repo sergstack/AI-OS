@@ -132,6 +132,18 @@ defect registration (iter-001, commit 76b64561, red test)
 completed — `pass_no_corrective_iteration_required` does not apply here,
 per the pilot spec).
 
+## Lineage update (adoption cleanup)
+
+`parent_execution_id` in
+`docs/autonomous_execution/examples/pilot_evidence/codex_corrective_loop_pilot.json`
+was added retroactively during pre-merge adoption cleanup of the AES PR
+stack (#225-#230), pointing to `exec-aes-crossproject-pilot-001` (the
+Phase 5 cross-project handoff pilot's root execution). The Phase 5 pilot
+report had flagged that this record's parent link only existed in the
+Phase 5 handoff record, not reciprocally here. Since no PR in the stack is
+merged yet, this is an additive field change to unfrozen evidence, not a
+rewrite of any test result, defect description, hash, or command output.
+
 ## Gaps / notes for the canonical standard
 
 - No gaps found in the corrective-loop contract itself; the acceptance

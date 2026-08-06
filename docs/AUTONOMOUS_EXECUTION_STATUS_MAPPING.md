@@ -60,13 +60,37 @@ Maps into `qa_status`:
 
 This is **not** mapped mechanically. `accepted: yes` on an Analytics
 deliverable is a business/content acceptance decision, not automatically
-equivalent to `overall_delivery: pass`. A future `[Analytics]` execution
-extension (Phase 4, `docs/pilots/AES_ANALYTICS_PILOT.md`) must define which
-domain conditions (claim/evidence mapping complete, reconciliation passed,
-management conclusion supported) are required before `accepted: yes` may be
-reflected as `overall_delivery: pass`. Until that extension exists, treat
-`accepted: yes` as informative only, not as an automatic `overall_delivery`
-input.
+equivalent to `overall_delivery: pass`.
+
+The `[Analytics]` execution extension now exists:
+`docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md`. This section
+is the single normative source for the mapping rule; the extension
+document references this section rather than restating it.
+
+### 4.1 Normative rule
+
+`accepted: yes` MAY be reflected as `overall_delivery: pass` only when it
+coincides with satisfying every mandatory `acceptance_scope` already
+required by the canonical standard (`AUTONOMOUS_EXECUTION_STANDARD.md`
+Section 10.1: `requirements_traceability`, `implementation`, `tests`,
+`validation`, `output_artifacts`, `corrective_loop`,
+`rollback_readiness`) **and** the domain-specific
+`acceptance_scope_additions` defined in the `[Analytics]` extension
+(`analytics_data_contract`, `analytics_lineage`,
+`analytics_reconciliation`, `analytics_claim_evidence`). Accepted status
+alone, without those, is not sufficient — an executor or extension may not
+treat `accepted: yes` as a shortcut around any mandatory or
+domain-specific acceptance scope.
+
+`accepted: no` always blocks `overall_delivery: pass`, regardless of the
+state of any other acceptance scope.
+
+This rule does not invent new Analytics acceptance criteria; it only
+states the conditions under which the existing Analytics `accepted:
+yes/no` field (`ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`) may
+or may not be reflected in the canonical `overall_delivery` field. It does
+not convert `accepted` into `overall_delivery` mechanically in either
+direction.
 
 ## 5. Supervised-loop status
 

@@ -20,6 +20,32 @@ Section 17):
   case referenced in
   `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md`.
 
+Default-scan scope (deliberate, documented — not a rule weakening):
+
+- With no `paths` argument, this script scans only the canonical top-level
+  illustrative example records directly under
+  `docs/autonomous_execution/examples/*.json` (the five Phase 1 examples).
+  Every record in that default scope is expected to be fully clean.
+- It does NOT recurse into `docs/autonomous_execution/examples/pilot_evidence/`
+  by default. Pilot evidence records legitimately encode scenario-specific
+  states as their actual subject matter — e.g. the Phase 3 artifact-freshness
+  pilot's evidence intentionally records a *stale* mandatory artifact,
+  because demonstrating staleness detection is the point of that pilot, not
+  a defect in the record. Treating "every pilot_evidence record is clean"
+  as a default-scan invariant would be a false assumption, not a stronger
+  guarantee.
+- The rules themselves (SEM-001 .. SEM-008) are unchanged and still apply in
+  full to pilot evidence records — this only changes what gets swept in by
+  default when no explicit paths are given. To validate pilot evidence
+  explicitly (recommended when reviewing a specific pilot's evidence), pass
+  its path(s) directly, e.g.:
+      python3 scripts/validate_autonomous_execution_record.py \\
+          docs/autonomous_execution/examples/pilot_evidence/*.json
+  A caller may still get the historical "everything under examples/,
+  recursively" behavior by passing that glob's expansion explicitly; this
+  script does not remove that capability, it just no longer assumes it by
+  default.
+
 Exit code: 0 when every scanned record has zero violations, 1 otherwise (or
 when a record cannot be parsed as JSON).
 """
@@ -33,7 +59,14 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-DEFAULT_GLOB = "docs/autonomous_execution/examples/**/*.json"
+DEFAULT_GLOB = "docs/autonomous_execution/examples/*.json"
+
+# Not scanned by default (see module docstring "Default-scan scope"):
+# pilot evidence records may legitimately encode scenario-specific states
+# (e.g. an intentionally stale artifact) that are the pilot's subject
+# matter, not a defect. Validate this glob explicitly when reviewing pilot
+# evidence.
+PILOT_EVIDENCE_GLOB = "docs/autonomous_execution/examples/pilot_evidence/*.json"
 
 EXEC_ID_PATTERN = re.compile(r"^exec-[a-z0-9][a-z0-9-]*$")
 
@@ -385,10 +418,15 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def collect_targets(explicit_paths: list[str], root: Path) -> list[Path]:
+def collect_targets(
+    explicit_paths: list[str], root: Path, include_pilot_evidence: bool = False
+) -> list[Path]:
     if explicit_paths:
         return [Path(p) for p in explicit_paths]
-    return sorted(root.glob(DEFAULT_GLOB))
+    targets = sorted(root.glob(DEFAULT_GLOB))
+    if include_pilot_evidence:
+        targets += sorted(root.glob(PILOT_EVIDENCE_GLOB))
+    return targets
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -399,13 +437,27 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "paths",
         nargs="*",
-        help="One or more execution-record JSON files. Defaults to "
-        f"{DEFAULT_GLOB} relative to the repository root.",
+        help="One or more execution-record JSON files. Defaults to the "
+        f"canonical top-level examples ({DEFAULT_GLOB}); pilot evidence "
+        f"under {PILOT_EVIDENCE_GLOB} is not included by default because it "
+        "may legitimately contain scenario-specific states (see "
+        "--include-pilot-evidence).",
+    )
+    parser.add_argument(
+        "--include-pilot-evidence",
+        action="store_true",
+        help="Also scan docs/autonomous_execution/examples/pilot_evidence/*.json "
+        "when no explicit paths are given. Off by default: pilot evidence may "
+        "legitimately encode scenario-specific states (e.g. an intentionally "
+        "stale artifact) that are a pilot's subject matter, not a defect, so "
+        "it is not swept into the 'default scan must be clean' expectation. "
+        "The SEM rules themselves are unchanged and still apply in full when "
+        "this flag is used or when a pilot evidence path is passed explicitly.",
     )
     args = parser.parse_args(argv)
 
     root = repo_root()
-    targets = collect_targets(args.paths, root)
+    targets = collect_targets(args.paths, root, include_pilot_evidence=args.include_pilot_evidence)
 
     if not targets:
         print(f"No execution records found (looked for {DEFAULT_GLOB}).")
