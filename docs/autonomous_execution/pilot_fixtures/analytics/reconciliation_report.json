@@ -1,0 +1,18 @@
+{
+  "raw_row_count": 16,
+  "stage_row_count": 16,
+  "raw_completed_order_count": 14,
+  "contract_expected_revenue_usd": 2130.0,
+  "stage_completed_revenue_usd": 2130.0,
+  "mart_total_revenue_usd": 2130.0,
+  "raw_completed_units": 78,
+  "mart_total_units": 78,
+  "checks": {
+    "raw_row_count_equals_stage_row_count": true,
+    "contract_expected_revenue_equals_stage_completed_revenue": true,
+    "stage_completed_revenue_equals_mart_total_revenue": true,
+    "contract_expected_revenue_equals_mart_total_revenue": true,
+    "mart_units_equal_raw_completed_units_no_double_counting": true
+  },
+  "overall_pass": true
+}

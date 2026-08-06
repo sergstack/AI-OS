@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-aes-phase4-analytics-pilot-001",
+  "parent_execution_id": "exec-aes-crossproject-pilot-001",
+  "project": "[Analytics]",
+  "project_extension": {
+    "extension_id": "aes-analytics-pilot-defect-subtypes-v0",
+    "note": "Illustrative subtypes only, demonstrated by this pilot; not a ratified [Analytics] extension. Formal extension authoring (AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md Section 5.2, deliverable 1 of docs/pilots/AES_ANALYTICS_PILOT.md) is out of scope for this concrete pilot run and remains a follow-up.",
+    "domain_defect_subtypes_observed": [
+      "data_or_mapping_fix",
+      "calculation_or_logic_fix"
+    ]
+  },
+  "execution_mode": "data_pipeline",
+  "risk_mode": "standard",
+  "source_revision": {
+    "revision_type": "git_commit",
+    "baseline_revision": "b01cfd21049e9c42061f29f39685023a0e917a10",
+    "final_revision": "db19e56636373e92855b4b7434d087dac63f2011",
+    "content_manifest": null,
+    "final_iteration_id": "iter-002"
+  },
+  "created_at": "2026-08-06T14:00:00Z",
+  "updated_at": "2026-08-06T14:20:00Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-001",
+      "requirement": "The synthetic RAW -> STAGE -> MART pipeline must produce a QoQ revenue growth number whose MART total reconciles exactly against the contract-defined RAW completed-order revenue total (no cancelled-order leakage, no double counting), per docs/autonomous_execution/pilot_fixtures/analytics/DATA_CONTRACT.md metric_rules and validation_checks.",
+      "source": "docs/pilots/AES_ANALYTICS_PILOT.md (Phase 4 task) + orchestrator task instructions for this pilot run",
+      "mandatory": true,
+      "implementation_locations": [
+        "scripts/pilot_analytics_build_mart.py",
+        "docs/autonomous_execution/pilot_fixtures/analytics/raw_sales.csv",
+        "docs/autonomous_execution/pilot_fixtures/analytics/DATA_CONTRACT.md"
+      ],
+      "evidence_refs": ["ev-001", "ev-002"],
+      "validation_refs": ["val-001", "val-002"],
+      "status": "passed",
+      "status_history": [
+        {
+          "status": "implemented",
+          "iteration_id": "iter-001",
+          "recorded_at": "2026-08-06T14:05:00Z",
+          "evidence_refs": ["ev-001"]
+        },
+        {
+          "status": "failed",
+          "iteration_id": "iter-001",
+          "recorded_at": "2026-08-06T14:12:00Z",
+          "evidence_refs": ["ev-001"]
+        },
+        {
+          "status": "passed",
+          "iteration_id": "iter-002",
+          "recorded_at": "2026-08-06T14:16:00Z",
+          "evidence_refs": ["ev-002"]
+        }
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-002"]
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "def-001",
+      "requirement_id": "req-001",
+      "detected_in_iteration": "iter-001",
+      "detected_by": "val-001",
+      "classification": "contract",
+      "subtype": "data_or_mapping_fix",
+      "severity": "recoverable",
+      "description": "build_mart() in scripts/pilot_analytics_build_mart.py omitted the status == 'completed' filter required by DATA_CONTRACT.md metric_rules, so cancelled-order revenue_usd leaked into the MART aggregation. Observed: mart_total_revenue_usd = 2440.00 vs. contract_expected_revenue_usd (RAW, completed-only) = 2130.00; QoQ growth_pct reported as 19.82 instead of the correct 24.21. Reconciliation checks stage_completed_revenue_equals_mart_total_revenue, contract_expected_revenue_equals_mart_total_revenue, and mart_units_equal_raw_completed_units_no_double_counting all failed.",
+      "evidence_refs": ["ev-001"],
+      "correction_eligible": true,
+      "required_authority": null,
+      "remediation_owner": "[Analytics] pilot executor",
+      "corrective_action_refs": ["iter-002"],
+      "affected_scope": [
+        "scripts/pilot_analytics_build_mart.py",
+        "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.csv",
+        "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.json",
+        "docs/autonomous_execution/pilot_fixtures/analytics/reconciliation_report.json"
+      ],
+      "required_validation_refs": ["val-002"],
+      "status": "resolved",
+      "status_history": [
+        { "status": "open", "iteration_id": "iter-001", "recorded_at": "2026-08-06T14:12:00Z", "evidence_refs": ["ev-001"] },
+        { "status": "correcting", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:14:00Z", "evidence_refs": [] },
+        { "status": "resolved", "iteration_id": "iter-002", "recorded_at": "2026-08-06T14:16:00Z", "evidence_refs": ["ev-002"] }
+      ],
+      "resolved_in_iteration": "iter-002",
+      "resolution_evidence_refs": ["ev-002"],
+      "accepted_by": null,
+      "authority_evidence_ref": null,
+      "acceptance_reason": null,
+      "accepted_at": null
+    }
+  ],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:00:00Z",
+      "completed_at": "2026-08-06T14:12:00Z",
+      "trigger": "initial RAW -> STAGE -> MART build for req-001, including first reconciliation run",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": [],
+      "changes": [
+        "docs/autonomous_execution/pilot_fixtures/analytics/DATA_CONTRACT.md: created",
+        "docs/autonomous_execution/pilot_fixtures/analytics/raw_sales.csv: created (16-row synthetic fixture)",
+        "scripts/pilot_analytics_build_mart.py: created; build_mart() aggregates all STAGE rows regardless of status (missing completed-only filter)"
+      ],
+      "validation_refs": ["val-001"],
+      "result": "fail"
+    },
+    {
+      "iteration_id": "iter-002",
+      "iteration_number": 2,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-06T14:14:00Z",
+      "completed_at": "2026-08-06T14:16:00Z",
+      "trigger": "correction for def-001: add status == 'completed' filter to build_mart(), per DATA_CONTRACT.md metric_rules",
+      "requirements_affected": ["req-001"],
+      "defects_addressed": ["def-001"],
+      "changes": [
+        "scripts/pilot_analytics_build_mart.py: build_mart() now skips rows where status != 'completed' before aggregating",
+        "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.csv: regenerated",
+        "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.json: regenerated",
+        "docs/autonomous_execution/pilot_fixtures/analytics/reconciliation_report.json: regenerated (overall_pass: true)",
+        "docs/autonomous_execution/pilot_fixtures/analytics/stage_sales.csv: regenerated"
+      ],
+      "validation_refs": ["val-002"],
+      "result": "pass"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-001",
+      "validation_type": "data_quality",
+      "command_or_method": "python3 scripts/pilot_analytics_build_mart.py",
+      "validated_revision": "working-tree iter-001 (pre-fix; build_mart missing status=='completed' filter)",
+      "covered_paths": [
+        "scripts/pilot_analytics_build_mart.py",
+        "docs/autonomous_execution/pilot_fixtures/analytics/raw_sales.csv"
+      ],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-08-06T14:11:00Z",
+      "completed_at": "2026-08-06T14:12:00Z",
+      "result": "fail",
+      "evidence_refs": ["ev-001"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": ["synthetic 16-row fixture only, not a real dataset"]
+    },
+    {
+      "validation_id": "val-002",
+      "validation_type": "data_quality",
+      "command_or_method": "python3 scripts/pilot_analytics_build_mart.py",
+      "validated_revision": "working-tree iter-002 (post-fix; completed-only filter applied)",
+      "covered_paths": [
+        "scripts/pilot_analytics_build_mart.py",
+        "docs/autonomous_execution/pilot_fixtures/analytics/raw_sales.csv"
+      ],
+      "covered_requirement_ids": ["req-001"],
+      "started_at": "2026-08-06T14:15:00Z",
+      "completed_at": "2026-08-06T14:16:00Z",
+      "result": "pass",
+      "evidence_refs": ["ev-002"],
+      "freshness_status": "current",
+      "freshness_justification": null,
+      "unaffected_paths_evidence": null,
+      "limitations": ["synthetic 16-row fixture only, not a real dataset"]
+    },
+    {
+      "validation_id": "val-003",
+      "validation_type": "unit",
+      "command_or_method": "python3 -m pytest tests/ -q",
+      "validated_revision": "working-tree iter-002 (post-fix)",
+      "covered_paths": ["tests/"],
+      "covered_requirement_ids": [],
+      "started_at": "2026-08-06T14:18:00Z",
+      "completed_at": "2026-08-06T14:18:02Z",
+      "result": "pass",
+      "evidence_refs": ["ev-003"],
+      "freshness_status": "current",
+      "freshness_justification": "existing repo-wide baseline test suite, run to confirm the pilot introduced no regression outside its own fixture scope",
+      "unaffected_paths_evidence": "74 passed in 1.35s, no failures or errors",
+      "limitations": []
+    },
+    {
+      "validation_id": "val-004",
+      "validation_type": "docs_consistency",
+      "command_or_method": "python3 scripts/check_manifest_paths.py && python3 scripts/check_index_coverage.py && python3 scripts/check_knowledge_bundles.py && python3 scripts/check_repo_public_safety.py && python3 scripts/check_codex_goal_mode_defaults.py && python3 scripts/check_project_instructions_length.py",
+      "validated_revision": "working-tree iter-002 (post-fix)",
+      "covered_paths": ["MANIFEST.json", "ChatGPT/", "ARCHIVE_MAP.md"],
+      "covered_requirement_ids": [],
+      "started_at": "2026-08-06T14:19:00Z",
+      "completed_at": "2026-08-06T14:19:05Z",
+      "result": "pass",
+      "evidence_refs": ["ev-004"],
+      "freshness_status": "current",
+      "freshness_justification": "existing repo-wide governance/baseline checks, run to confirm the pilot did not touch governed content",
+      "unaffected_paths_evidence": "all 6 baseline scripts exited 0 / reported 0 failed",
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "art-analytics-pilot-memo",
+      "path": "docs/autonomous_execution/pilot_fixtures/analytics/PILOT_MEMO.md",
+      "artifact_type": "analytics_memo",
+      "mandatory": true,
+      "source_inputs": [
+        { "path": "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.json", "content_hash": null, "last_changed_iteration": "iter-002" },
+        { "path": "docs/autonomous_execution/pilot_fixtures/analytics/reconciliation_report.json", "content_hash": null, "last_changed_iteration": "iter-002" }
+      ],
+      "generation_method": "manual (written against the final, corrected mart_sales_by_quarter.json / reconciliation_report.json output)",
+      "generated_from_revision": "working-tree iter-002 (post-fix)",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-08-06T14:20:00Z",
+      "validation_refs": ["val-002"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-002"]
+    },
+    {
+      "artifact_id": "art-analytics-pilot-mart",
+      "path": "docs/autonomous_execution/pilot_fixtures/analytics/mart_sales_by_quarter.json",
+      "artifact_type": "mart_table",
+      "mandatory": true,
+      "source_inputs": [
+        { "path": "docs/autonomous_execution/pilot_fixtures/analytics/raw_sales.csv", "content_hash": null, "last_changed_iteration": "iter-001" }
+      ],
+      "generation_method": "scripts/pilot_analytics_build_mart.py",
+      "generated_from_revision": "working-tree iter-002 (post-fix)",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-08-06T14:16:00Z",
+      "validation_refs": ["val-002"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-002"]
+    }
+  ],
+  "acceptance_scopes": {
+    "requirements_traceability": {
+      "status": "pass",
+      "required_checks": ["req-001 links to def-001, iter-001, iter-002, val-001, val-002"],
+      "checks_run": ["req-001 links to def-001, iter-001, iter-002, val-001, val-002"],
+      "evidence_refs": ["ev-001", "ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "implementation": {
+      "status": "pass",
+      "required_checks": ["MART aggregation matches DATA_CONTRACT.md metric_rules (completed-only revenue)"],
+      "checks_run": ["MART aggregation matches DATA_CONTRACT.md metric_rules (completed-only revenue)"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "tests": {
+      "status": "pass",
+      "required_checks": ["python3 -m pytest tests/ -q (repo baseline, unaffected by pilot)"],
+      "checks_run": ["python3 -m pytest tests/ -q"],
+      "evidence_refs": ["ev-003"],
+      "open_defect_ids": [],
+      "limitations": ["pilot script itself has no dedicated pytest unit tests; correctness is demonstrated via the reconciliation check (val-001/val-002), not a separate test file"]
+    },
+    "validation": {
+      "status": "pass",
+      "required_checks": ["val-002 (reconciliation) current against final_revision", "val-003 (pytest) pass", "val-004 (governance/baseline) pass"],
+      "checks_run": ["val-002 (reconciliation) current against final_revision", "val-003 (pytest) pass", "val-004 (governance/baseline) pass"],
+      "evidence_refs": ["ev-002", "ev-003", "ev-004"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "output_artifacts": {
+      "status": "pass",
+      "required_checks": ["art-analytics-pilot-mart and art-analytics-pilot-memo are freshness_status: current relative to the final (corrected) mart revision"],
+      "checks_run": ["art-analytics-pilot-mart and art-analytics-pilot-memo are freshness_status: current relative to the final (corrected) mart revision"],
+      "evidence_refs": ["ev-002"],
+      "open_defect_ids": [],
+      "limitations": []
+    },
+    "corrective_loop": {
+      "status": "pass",
+      "required_checks": ["defect registered (def-001) before fix", "resolution evidence present (ev-002)", "affected checks rerun (val-002) and passed"],
+      "checks_run": ["defect registered (def-001) before fix", "resolution evidence present (ev-002)", "affected checks rerun (val-002) and passed"],
+      "evidence_refs": ["ev-001", "ev-002"],
+      "open_defect_ids": [],
+      "limitations": ["one corrective iteration was sufficient; the standard's iteration envelope was not stress-tested by this pilot"]
+    },
+    "rollback_readiness": {
+      "status": "pass",
+      "required_checks": ["git revert available for the pilot commit; fixture is additive-only, touches no existing governed file"],
+      "checks_run": ["git revert available for the pilot commit; fixture is additive-only, touches no existing governed file"],
+      "evidence_refs": [],
+      "open_defect_ids": [],
+      "limitations": []
+    }
+  },
+  "overall_delivery": "pass",
+  "qa_status": "not_run",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "not_opened",
+  "production_status": "not_applicable",
+  "rollback": {
+    "strategy": "git_revert",
+    "scope": "scripts/pilot_analytics_build_mart.py, docs/autonomous_execution/pilot_fixtures/analytics/*, docs/autonomous_execution/examples/pilot_evidence/analytics_pilot.json, docs/pilots/AES_ANALYTICS_PILOT_RESULTS.md",
+    "command_or_procedure": "git revert <pilot commit sha> (single additive commit, no existing file modified)",
+    "prerequisites": "none",
+    "data_loss_risk": "none (synthetic fixture data only, no production or governed data touched)",
+    "validation_after_rollback": "python3 -m pytest tests/ -q",
+    "status": "ready"
+  },
+  "external_actions": [
+    {
+      "action_id": "action-open-pr",
+      "action_type": "merge",
+      "required_for_objective": true,
+      "requested": true,
+      "required_authority": "repo owner (PR review)",
+      "authority_evidence_ref": null,
+      "status": "owner_review_pending",
+      "executed_at": null,
+      "result_evidence_ref": null
+    }
+  ],
+  "handoffs": [],
+  "final_report": {
+    "summary": "AES Phase 4 Analytics pilot executed end to end against a synthetic 16-row fixture: data contract -> RAW/STAGE/MART -> reconciliation FAIL (def-001, cancelled-order revenue leaking into MART totals) -> fix -> reconciliation PASS -> memo -> execution record. Repo baseline (pytest + 6 governance scripts) unaffected.",
+    "note": "No real Analytics data infrastructure exists in this repository; this pilot used an explicitly synthetic fixture instead of a real governed dataset, per the Phase 4 task's documented scope deviation from docs/pilots/AES_ANALYTICS_PILOT.md's 'use a real or realistic dataset' constraint. See docs/pilots/AES_ANALYTICS_PILOT_RESULTS.md for the full deviation rationale.",
+    "lineage_note": "parent_execution_id was added retroactively during pre-merge adoption cleanup of the AES PR stack (#225-#230), pointing to exec-aes-crossproject-pilot-001 (the Phase 5 cross-project handoff pilot's root execution, docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json), to close the one-directional lineage gap the Phase 5 pilot report identified. This is an additive linkage fix only; no test result, defect description, hash, or command in this record was altered. None of the PRs in this stack are merged yet."
+  }
+}
