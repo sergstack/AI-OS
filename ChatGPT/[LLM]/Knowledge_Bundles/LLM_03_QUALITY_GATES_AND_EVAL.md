@@ -10,6 +10,7 @@ Compact upload artifact for [LLM] covering quality gates and eval.
 - `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`
 - `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
 - `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
+- `AUTONOMOUS_EXECUTION_STANDARD.md`
 
 ## Upload target
 
@@ -20,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:8b374c74d1b5abe5c9a02b62df45b0a06af547e9a21f21194307720189ba4217
+- source_fingerprint: sha256:caeb2f3328c7a096060187c733cd5f3946d9084ffaf6242bc81f4f3e4111fd8e
 
 ---
 
@@ -97,6 +98,16 @@ Verdict: pass
 ## Acceptance status
 pass
 
+
+## Autonomous Execution Standard
+
+Execution in `[LLM]` now also follows the canonical Autonomous Execution
+Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+(canonical owner: `[AI OS]`). It sits above the output QA, hallucination
+checks, and judge/eval workflow above as a shared execution/validation/
+defect/acceptance loop, without replacing them or the merge policy in
+`GOAL_MODE.md`. No `[LLM]`-specific AES extension exists yet; only the
+canonical standard is in scope here.
 
 ## From: `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
 

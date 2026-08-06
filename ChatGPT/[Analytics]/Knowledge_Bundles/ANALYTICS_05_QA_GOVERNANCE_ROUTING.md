@@ -12,6 +12,8 @@ Compact upload artifact for [Analytics] covering qa governance routing.
 - `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`
 - `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`
 - `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
+- `AUTONOMOUS_EXECUTION_STANDARD.md`
+- `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md`
 
 ## Upload target
 
@@ -22,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:585dd80649e22d39563447f2968d9f13323c14156dcc7a27395a6b54622d66c5
+- source_fingerprint: sha256:d7396e7c0ea1d9b25dd0d81e5d413cde59b02a3bef72016c0e535e2ab58914e8
 
 ---
 
@@ -332,6 +334,16 @@ Do not claim production readiness unless:
 - residual risks listed;
 - rollback/release notes exist.
 
+
+## Autonomous Execution Standard
+
+Execution in `[Analytics]` now also follows the canonical Autonomous
+Execution Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
+root (canonical owner: `[AI OS]`), on top of the QA checklist, acceptance
+criteria, and governance rules above. Its `[Analytics]`-domain requirements —
+defect subtypes, required evidence, and acceptance-scope additions — are
+defined in `ANALYTICS_EXTENSION.md`; where the extension and the canonical
+standard disagree on a limit, the stricter one applies.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
 

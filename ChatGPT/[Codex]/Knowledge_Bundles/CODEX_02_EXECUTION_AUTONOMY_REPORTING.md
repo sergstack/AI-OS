@@ -10,6 +10,7 @@ Compact upload artifact for [Codex] covering execution autonomy reporting.
 - `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`
 - `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`
 - `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`
+- `AUTONOMOUS_EXECUTION_STANDARD.md`
 
 ## Upload target
 
@@ -20,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:66d87a0ecec0e9de39679d5ac40e38122191239edfde6c7262fe3fc9313a8641
+- source_fingerprint: sha256:be6861ed1b63b5926be8437cb62b4526965710e3a0df04905d9b11f9c6749aab
 
 ---
 
@@ -195,6 +196,17 @@ Merge / gate status:
 ```
 Mode-specific reports may be shorter, but they must not conflict with this schema.
 
+
+## Autonomous Execution Standard
+
+Execution in `[Codex]` now also follows the canonical Autonomous Execution
+Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+(canonical owner: `[AI OS]`). It sits above `AUTONOMY_POLICY.md`,
+`CODEX_LONG_RUN_PLAYBOOK.md`, and `EXECUTION_REPORTING_RULES.md` as a shared
+loop — requirements, execution, validation, defect registration, corrective
+action, revalidation, and scope acceptance — without replacing any of them or
+the merge policy in `GOAL_MODE.md`. No `[Codex]`-specific AES extension
+exists yet; only the canonical standard is in scope here.
 
 ## From: `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`
 
