@@ -8,8 +8,8 @@ Do not hand-edit this file; re-run the generator instead.
 ## Manifest
 
 - source_path: docs/autonomous_execution/pilot_fixtures/aes_artifact_pilot_source.md
-- generated_from_revision: sha256:351f3761f47f66aa0000196e56712bd95dcdd1f7733b9984539ffb444534986a
-- generated_at: 2026-08-06T14:03:46Z
+- generated_from_revision: sha256:ad18e0ad969c59a8a4631bbb2cad384f60e24abef66c98a9d4be3905e40ed7ee
+- generated_at: 2026-08-06T14:04:11Z
 
 ## Generated Table
 
@@ -17,6 +17,6 @@ Do not hand-edit this file; re-run the generator instead.
 | --- | --- |
 | component | AES Artifact Pilot |
 | owner | [AI OS] |
-| retry_limit | 3 |
-| timeout_seconds | 30 |
-| status | draft |
+| retry_limit | 5 |
+| timeout_seconds | 45 |
+| status | reviewed |
