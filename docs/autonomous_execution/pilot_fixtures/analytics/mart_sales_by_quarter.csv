@@ -1,0 +1,9 @@
+quarter,region,product,units,revenue_usd
+Q1,North,Widget A,15,300.0
+Q1,North,Widget C,5,250.0
+Q1,South,Widget A,5,100.0
+Q1,South,Widget B,10,300.0
+Q2,North,Widget A,18,360.0
+Q2,North,Widget C,7,350.0
+Q2,South,Widget A,7,140.0
+Q2,South,Widget B,11,330.0

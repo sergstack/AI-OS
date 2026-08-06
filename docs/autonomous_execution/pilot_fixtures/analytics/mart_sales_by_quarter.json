@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-08-06T14:15:01.288366+00:00",
+  "grain": "quarter x region x product",
+  "rows": [
+    {
+      "quarter": "Q1",
+      "region": "North",
+      "product": "Widget A",
+      "units": 15,
+      "revenue_usd": 300.0
+    },
+    {
+      "quarter": "Q1",
+      "region": "North",
+      "product": "Widget C",
+      "units": 5,
+      "revenue_usd": 250.0
+    },
+    {
+      "quarter": "Q1",
+      "region": "South",
+      "product": "Widget A",
+      "units": 5,
+      "revenue_usd": 100.0
+    },
+    {
+      "quarter": "Q1",
+      "region": "South",
+      "product": "Widget B",
+      "units": 10,
+      "revenue_usd": 300.0
+    },
+    {
+      "quarter": "Q2",
+      "region": "North",
+      "product": "Widget A",
+      "units": 18,
+      "revenue_usd": 360.0
+    },
+    {
+      "quarter": "Q2",
+      "region": "North",
+      "product": "Widget C",
+      "units": 7,
+      "revenue_usd": 350.0
+    },
+    {
+      "quarter": "Q2",
+      "region": "South",
+      "product": "Widget A",
+      "units": 7,
+      "revenue_usd": 140.0
+    },
+    {
+      "quarter": "Q2",
+      "region": "South",
+      "product": "Widget B",
+      "units": 11,
+      "revenue_usd": 330.0
+    }
+  ],
+  "formula": {
+    "name": "quarter_over_quarter_revenue_growth_pct",
+    "definition": "(Q2_total_revenue_usd - Q1_total_revenue_usd) / Q1_total_revenue_usd * 100",
+    "q1_total_revenue_usd": 950.0,
+    "q2_total_revenue_usd": 1180.0,
+    "growth_pct": 24.21
+  }
+}
