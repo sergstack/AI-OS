@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:726ba5f3572693f5d86af6103387b90f73706ba5916c5c858c0c4aa604378c9d
+- source_fingerprint: sha256:18ceffd6dfce2d8cd13b6084acb251caf9aab9151ebc962c87f8619fcd7938b2
 
 ---
 
@@ -77,23 +77,23 @@ forecast_to_period_end != leading_indicator_analysis
 
 | Intent | CORE | TRIGGERED | OPTIONAL |
 |---|---|---|---|
-| `validate_data` | `reconciliation` | anomaly, exception, unmatched, data-layer, timing, segmentation, subgroup robustness | — |
-| `diagnose_variance` | variance, contribution, unexplained residual | bridge, mix, segmentation, trend, unmatched, factor reconciliation, timing, data-layer | baseline robustness |
-| `explain_drivers` | driver decomposition, unexplained residual | alternative test, segmentation, trend, factor reconciliation, timing, data-layer, unmatched | baseline robustness, sensitivity |
+| `validate_data` | reconciliation, data-layer | anomaly, exception, unmatched, timing, segmentation, subgroup robustness | — |
+| `diagnose_variance` | variance, contribution, unexplained residual, factor reconciliation | bridge, mix, unmatched, segmentation, trend, timing | baseline robustness |
+| `explain_drivers` | driver decomposition, unexplained residual, factor reconciliation | alternative test, segmentation, trend, timing, data-layer | baseline robustness, sensitivity |
 | `test_explanation` | alternative explanation test | baseline/subgroup robustness, sensitivity, timing, data-layer | cohort |
 | `project_forward` | forecast to period end | sensitivity, leading indicator | trend, baseline robustness |
 
-Every non-CORE selection requires `trigger_type`, a concrete `trigger_rule`, and `trigger_evidence_required`. Types: deterministic, judgment, hybrid. Missing evidence cannot silently activate a method; a plausible omission is recorded for QA. Minimum sufficient set: include only methods capable of materially changing finding, confidence, risk, recommendation, limitation, or evidence assurance.
+Every non-CORE selection requires `trigger_type`, a concrete `trigger_rule`, `trigger_evidence_required`, and deterministic mapping-level `priority`. Priority is non-numeric: CORE first; deterministic triggers before judgment/hybrid triggers; OPTIONAL last. Missing evidence cannot silently activate a method; a plausible omission is recorded for QA. Minimum sufficient set: include only methods capable of materially changing finding, confidence, risk, recommendation, limitation, or evidence assurance.
 
 Trigger rules by intent:
 
-- `validate_data`: exception requires approved rule/population/fields/scope; unmatched requires comparable populations and approved match rule; data-layer requires traceable lineage and plausible transformation origin; timing requires dates/boundary/approved definition and material cut-off candidate.
-- `diagnose_variance`: unmatched when additions/removals may explain variance; factor reconciliation whenever executed multi-factor effects are mathematically applicable; timing/data-layer when cut-off or transformation may explain variance.
-- `explain_drivers`: factor reconciliation after applicable decomposition; timing, data-layer, or unmatched when the candidate driver may reflect cut-off, transformation, or changed population.
+- `validate_data`: reconciliation and data-layer are CORE; exception requires approved rule/population/fields/scope; unmatched requires comparable populations and approved match rule; timing requires dates/boundary/approved definition and material cut-off candidate.
+- `diagnose_variance`: factor reconciliation is CORE; unmatched activates when additions/removals may explain variance; timing activates when cut-off may explain variance.
+- `explain_drivers`: factor reconciliation is CORE; timing or data-layer activates when the candidate driver may reflect cut-off or transformation.
 - `test_explanation`: timing/data-layer only when either is a materially plausible competing explanation.
 - `project_forward`: leading indicator only when a defined precursor/target, temporal ordering, relevant history, and evidence basis can materially change outlook interpretation.
 
-Every new non-CORE method uses the existing `trigger_type`, `trigger_rule`, `trigger_evidence_required`, and `trigger_evidence` contract and the existing prerequisite gate.
+Every new non-CORE method uses the existing `trigger_type`, `trigger_rule`, `trigger_evidence_required`, `trigger_evidence`, and `priority` contract and the existing prerequisite gate.
 
 ## Output rule
 ```text
@@ -130,6 +130,8 @@ Do not run final conclusions directly on raw/stage unless the task is explicitly
 ## Boundary and flow
 
 This is a bounded reasoning-control extension; it does not replace Data Contract, RAW, STAGE, MART, deterministic calculations, chart sourcing, memo, QA/Judge, acceptance, or handoff. `mart_main_full` remains evidence/reuse; compact marts remain management-facing.
+
+Execution remains governed by repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`; `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. Reasoning control structures method selection only; it does not fork AES states, correction limits, stop/rollback/acceptance, or external authority. It is not an autonomous agent or an independent retry/self-improvement loop.
 
 ```text
 LLM reasoning != deterministic execution
@@ -173,7 +175,7 @@ Canonical P0 registry contains exactly 22 methods, including `exception_analysis
 ```text
 method; intent; status: CORE / TRIGGERED / OPTIONAL
 why_selected; question_answered
-trigger; trigger_type; trigger_rule; trigger_evidence_required; trigger_evidence
+trigger; trigger_type; trigger_rule; trigger_evidence_required; trigger_evidence; priority
 execution_owner; execution_mode
 prerequisites_met: yes / no / not_applicable
 execution_status: planned / executed / blocked / not_needed

@@ -99,20 +99,30 @@ forecast_to_period_end != leading_indicator_analysis
 
 | Intent | CORE | TRIGGERED | OPTIONAL |
 |---|---|---|---|
-| `validate_data` | `reconciliation` | `anomaly_analysis`, `exception_analysis`, `unmatched_elements_analysis`, `data_layer_check`, `timing_validation`, `segmentation`, `subgroup_robustness` | — |
-| `diagnose_variance` | `variance_analysis`, `contribution_analysis`, `unexplained_residual` | `bridge_analysis`, `mix_analysis`, `segmentation`, `trend_analysis`, `unmatched_elements_analysis`, `factor_reconciliation`, `timing_validation`, `data_layer_check` | `robustness_to_baseline` |
-| `explain_drivers` | `driver_decomposition`, `unexplained_residual` | `alternative_explanation_test`, `segmentation`, `trend_analysis`, `factor_reconciliation`, `timing_validation`, `data_layer_check`, `unmatched_elements_analysis` | `robustness_to_baseline`, `sensitivity_analysis` |
+| `validate_data` | `reconciliation`, `data_layer_check` | `anomaly_analysis`, `exception_analysis`, `unmatched_elements_analysis`, `timing_validation`, `segmentation`, `subgroup_robustness` | — |
+| `diagnose_variance` | `variance_analysis`, `contribution_analysis`, `unexplained_residual`, `factor_reconciliation` | `bridge_analysis`, `mix_analysis`, `unmatched_elements_analysis`, `segmentation`, `trend_analysis`, `timing_validation` | `robustness_to_baseline` |
+| `explain_drivers` | `driver_decomposition`, `unexplained_residual`, `factor_reconciliation` | `alternative_explanation_test`, `segmentation`, `trend_analysis`, `timing_validation`, `data_layer_check` | `robustness_to_baseline`, `sensitivity_analysis` |
 | `test_explanation` | `alternative_explanation_test` | `robustness_to_baseline`, `subgroup_robustness`, `sensitivity_analysis`, `timing_validation`, `data_layer_check` | `cohort_analysis` |
 | `project_forward` | `forecast_to_period_end` | `sensitivity_analysis`, `leading_indicator_analysis` | `trend_analysis`, `robustness_to_baseline` |
 
 ## Trigger contracts for non-CORE methods
+
+Every `INTENT × METHOD` entry has a non-numeric `priority` derived deterministically from status and trigger type:
+
+```text
+CORE → core_first
+TRIGGERED + deterministic → deterministic_trigger_first
+TRIGGERED + judgment / hybrid → judgment_hybrid_after_deterministic
+OPTIONAL → optional_last
+```
+
+This precedence is the mapping-level `PRIORITY` contract. It orders eligibility evaluation; it is not a quality score and cannot bypass prerequisites or trigger evidence.
 
 | Intent / method | trigger_type | trigger_rule | trigger_evidence_required |
 |---|---|---|---|
 | `validate_data` / `anomaly_analysis` | deterministic | A declared validation rule or threshold is breached in verified inputs. | Rule/threshold, tested field, and breach result. |
 | `validate_data` / `exception_analysis` | hybrid | An approved rule/control condition exists and testing violations is material to data/process validity. | Explicit rule, population, required fields, scope/filter, and evidence of rule applicability. |
 | `validate_data` / `unmatched_elements_analysis` | deterministic | Two populations are expected to align and entity-level mismatch may explain the issue. | Comparable populations, approved matching key/rule, scope, and duplicate treatment. |
-| `validate_data` / `data_layer_check` | hybrid | A verified result may plausibly originate from mapping/transformation rather than source economics. | Traceable lineage, comparable grain/bridge, transformation definitions, and observed layer discrepancy candidate. |
 | `validate_data` / `timing_validation` | hybrid | Period cut-off or timing shift could materially affect validity or interpretation. | Relevant dates, period boundary, entity grain, approved timing definition, and timing candidate evidence. |
 | `validate_data` / `segmentation` | hybrid | Mismatch/anomaly candidates span a declared segment dimension and segment comparison could localize a material integrity issue. | Candidate records, valid segment field, and segment counts/coverage. |
 | `validate_data` / `subgroup_robustness` | hybrid | A validation conclusion may differ across a materially relevant subgroup. | Overall result plus sufficient subgroup observations. |
@@ -121,19 +131,15 @@ forecast_to_period_end != leading_indicator_analysis
 | `diagnose_variance` / `segmentation` | hybrid | Aggregate variance contains materially heterogeneous eligible groups. | Aggregate result and comparable segment-level inputs. |
 | `diagnose_variance` / `trend_analysis` | deterministic | Three or more comparable ordered periods are available and timing can change interpretation. | Comparable time series and cut-off metadata. |
 | `diagnose_variance` / `unmatched_elements_analysis` | deterministic | Population additions/removals may materially explain the variance. | Comparable period populations, matching rule, duplicate treatment, and variance scope. |
-| `diagnose_variance` / `factor_reconciliation` | deterministic | A multi-factor/driver decomposition has executed and mathematical reconciliation is applicable. | Observed total delta, executed factor effects, and consistent scope/period/baseline. |
 | `diagnose_variance` / `timing_validation` | hybrid | Cut-off, posting, recognition, or cross-period movement may materially explain variance. | Relevant dates, boundary, approved timing definition, and variance candidate. |
-| `diagnose_variance` / `data_layer_check` | hybrid | Observed variance may first arise from mapping/transformation/classification. | Layer lineage, comparable grain/bridge, transformation definitions, and variance by layer. |
 | `diagnose_variance` / `robustness_to_baseline` | judgment | A reasonable alternative baseline could materially change a material/decision-critical conclusion. | Current baseline, alternative baseline rationale, and comparable inputs. |
 | `explain_drivers` / `alternative_explanation_test` | judgment | At least one materially plausible competing explanation has observable distinguishing evidence. | Leading/competing explanations and proposed discriminating evidence. |
 | `explain_drivers` / `segmentation` | hybrid | Quantified driver candidates may differ across a materially relevant segment. | Driver result plus comparable segment inputs. |
 | `explain_drivers` / `trend_analysis` | deterministic | Comparable time observations exist and sequence/timing can distinguish explanations. | Ordered time series and event/cut-off metadata. |
 | `explain_drivers` / `robustness_to_baseline` | judgment | A reasonable baseline alternative could change driver ranking or claim strength. | Baseline alternatives and comparable driver inputs. |
 | `explain_drivers` / `sensitivity_analysis` | hybrid | A quantified driver claim depends materially on an explicit uncertain assumption. | Deterministic model, assumption, plausible range, and target output. |
-| `explain_drivers` / `factor_reconciliation` | deterministic | Executed factor/driver effects require a completeness check against the observed total delta. | Observed delta, executed effects, and consistent scope/period/baseline. |
 | `explain_drivers` / `timing_validation` | hybrid | A candidate driver may reflect timing/cut-off rather than economic change. | Driver result, relevant dates/boundary, approved timing definition, and candidate timing evidence. |
 | `explain_drivers` / `data_layer_check` | hybrid | A candidate driver may originate from transformation/mapping rather than source data. | Driver result, traceable layers, comparable grain/bridge, and relevant transformation definitions. |
-| `explain_drivers` / `unmatched_elements_analysis` | deterministic | Changed population composition may materially explain a driver. | Comparable populations, approved match rule, duplicate treatment, and driver scope. |
 | `test_explanation` / `robustness_to_baseline` | judgment | The explanation depends on a baseline choice with a reasonable alternative. | Explanation, current/alternative baselines, and comparable data. |
 | `test_explanation` / `subgroup_robustness` | hybrid | The explanation could fail in a materially relevant subgroup with sufficient data. | Overall evidence and eligible subgroup data. |
 | `test_explanation` / `sensitivity_analysis` | hybrid | The explanation changes under a plausible range of an explicit assumption. | Deterministic test model and justified range. |
