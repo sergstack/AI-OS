@@ -32,6 +32,8 @@ Question
 
 Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
 
+`analytical_depth` and `output_mode` are independent. Apply the conditional reasoning depth and compact-path rules from `ANALYTICAL_REASONING_STANDARD.md`; a `quick` output does not become a full reasoning artifact unless a material trigger requires deeper analysis.
+
 ## Canonical workflow
 
 ```text
@@ -85,6 +87,8 @@ Define:
 - expected output.
 
 If scope is unclear, make a reasonable working assumption and mark it as `ASSUMPTION`.
+
+Classify the active analytical intent and create the bounded `TASK_PROFILE` when the case is not eligible for the routine compact path. Use `ANALYTICAL_REASONING_STANDARD.md`; do not replace the existing data, calculation, memo, QA, or acceptance stages.
 
 ## Step 2 — Inputs
 
@@ -176,18 +180,11 @@ mart_main_full
 
 ## Step 9 — Analysis
 
-Choose technique:
-
-- variance analysis;
-- driver analysis;
-- bridge analysis;
-- cohort analysis;
-- anomaly detection;
-- reconciliation;
-- segmentation;
-- trend analysis.
+Select the deterministic-first minimum sufficient method set through the registry and intent mapping in `ANALYTICAL_TECHNIQUES.md`. Apply the prerequisite gate before execution. A blocked method is not an executed method and is not supporting evidence.
 
 State method, metric, period, grain, data source and limitation.
+
+After deterministic findings, apply the preliminary evidence check, explanation challenge, claim calibration, and final evidence sufficiency from `ANALYTICAL_REASONING_STANDARD.md` only to the depth required by the case. Preserve `driver != root cause` and do not silently reconcile material method disagreement.
 
 ## Step 10 — Charts
 
@@ -201,7 +198,7 @@ Important sentences must be backed by metric/table/mart/period/evidence or marke
 
 ## Step 12 — QA and acceptance
 
-Run QA before final conclusion.
+Run the existing Data QA, Calculation QA, Analysis QA, Chart QA, Memo QA, Judge, and acceptance path before final conclusion. `manual_review_required = yes` blocks automatic final publication until the existing review path records a resolution.
 
 ## Default output
 
