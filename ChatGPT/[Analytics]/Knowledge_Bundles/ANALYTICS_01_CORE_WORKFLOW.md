@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:7523377cf22ac974882da261c56c461ccb675068652ae204158d99b0fd9969ee
+- source_fingerprint: sha256:2e758014c9b23c5b0d8d22b2b17420eae132837114d94c372fbb774820b5f2f3
 
 ---
 
@@ -37,6 +37,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `PROJECT_INSTRUCTIONS.md` | Главные инструкции проекта | Всегда; вставить в Project Instructions |
 | `ANALYTICS_PROJECT_FILES_INDEX.md` | Индекс пакета | Нужно понять, какой файл использовать |
 | `ANALYTICS_WORKFLOW.md` | End-to-end workflow | Любая аналитическая задача |
+| `ANALYTICAL_REASONING_STANDARD.md` | P0 reasoning-control layer | Нужны intent, method plan, prerequisites, explanation challenge или claim calibration |
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
@@ -64,7 +65,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Priority rules
 
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.
-2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`.
+2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`.
 3. Для memo/report используй `MEMO_PIPELINE.md`, `ANALYTICAL_MEMO_STRUCTURE.md`, `WORD_REPORT_STANDARD.md`, `TEXT_QA_AND_STYLE.md`.
 4. Для QA используй `QA_CHECKLIST.md` и `ACCEPTANCE_CRITERIA.md`.
 5. Для передачи в Codex используй `CODEX_TASK_PACKETS.md` и `ROUTING_AND_HANDOFF.md`.
