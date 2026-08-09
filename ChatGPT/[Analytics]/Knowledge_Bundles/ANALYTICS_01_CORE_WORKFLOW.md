@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:2e758014c9b23c5b0d8d22b2b17420eae132837114d94c372fbb774820b5f2f3
+- source_fingerprint: sha256:c32ad66d24246db844b2aec6896725c8ae8e45411ebc854b624de3342948b82f
 
 ---
 
@@ -99,6 +99,8 @@ If mode = `quick`, collapse to: question → minimal inputs → grain / period /
 
 Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
 
+`analytical_depth` and `output_mode` are independent. Use conditional reasoning depth from `ANALYTICAL_REASONING_STANDARD.md`; `quick` does not become a full reasoning artifact without a material trigger.
+
 ## Canonical workflow
 
 ```text
@@ -139,7 +141,7 @@ Analytics should define parent scope, child issue sequence, source/output layers
 
 ## Workflow steps
 
-1. Question / scope: business question, decision context, audience, period, grain, metrics, filters, owner, expected output.
+1. Question / scope: business question, decision context, audience, period, grain, metrics, filters, owner, expected output; classify analytical intent and create `TASK_PROFILE` unless eligible for the compact routine path.
 2. Inputs: available files, missing files, compact/full JSON, source systems, refresh date, required joins, directories/mappings, limitations.
 3. Data contract: no calculation without grain; no memo without method; no mart without expected output.
 4. RAW: original input only; no business logic, classifications, interpretations, or memo conclusions.
@@ -147,10 +149,10 @@ Analytics should define parent scope, child issue sequence, source/output layers
 6. `mart_main_full`: complete analysis-ready table with metrics, formulas, flags, risk/confidence, QA and evidence fields.
 7. `mart_main_tz` / compact: shortened mart for task, audience or executive memo.
 8. Slices: derive all slices from `mart_main_full`.
-9. Analysis: variance, driver, bridge, cohort, anomaly, reconciliation, segmentation, trend.
+9. Analysis: select the deterministic-first minimum sufficient method set from the registry, apply prerequisites, then use the preliminary evidence check, explanation challenge and claim calibration only to required depth. `blocked != executed`, `driver != root cause`, and material method conflict is not silently reconciled.
 10. Charts: source from `mart_main_full` or a documented derived slice.
 11. Memo: use verified analysis, not raw assumptions.
-12. QA and acceptance: run QA before final conclusion.
+12. QA and acceptance: preserve existing QA/Judge/acceptance; `manual_review_required = yes` blocks automatic final publication until review resolution is recorded.
 
 ## Default output
 
