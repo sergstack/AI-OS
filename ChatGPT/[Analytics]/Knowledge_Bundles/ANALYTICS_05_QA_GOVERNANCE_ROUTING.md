@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:ac979f5d8fe198b3150ab83056a969d00c0ead95160ea77b9482d886e41a33a7
+- source_fingerprint: sha256:f6704e1e5f1fd100436f387855243803704dc1cf3a089855735500bd85ca1330
 
 ---
 
@@ -70,7 +70,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] Confirmed cause separated from hypothesis.
 - [ ] Confidence rationale stated.
 - [ ] Method selection adequate; no material omission or method bloat.
-- [ ] Registry mapping followed; deterministic trigger and trigger contract/evidence checked; no silent LLM override.
+- [ ] Registry mapping followed; deterministic trigger, trigger priority, and trigger contract/evidence checked; no silent LLM override.
 - [ ] Selected prerequisites met; reasoning did not replace a deterministic claim.
 - [ ] Claim lineage is complete and references an executed method.
 - [ ] Baseline explicit; required baseline robustness assessed.
@@ -90,6 +90,8 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] Leading-indicator relationship supported and not presented as causal without evidence.
 - [ ] New-method trigger contract and prerequisites satisfied.
 - [ ] New method added only for a distinct capability.
+- [ ] AES remains canonical execution governance; the Analytics extension is applied without duplication.
+- [ ] Reasoning control is not treated as an autonomous execution or independent retry loop.
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. This extends existing Analysis QA and creates no separate QA framework.
 ## Chart QA
@@ -307,6 +309,7 @@ AI OS gives evidence and patterns. `[Analytics]` applies them only when they aff
 - Registry and trigger contracts govern method eligibility; no silent LLM override.
 - Reasoning cannot replace deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
+- AES remains canonical execution governance; the Analytics extension adds domain constraints without creating a second execution framework.
 ## Evidence labels
 ```text
 DATA FACT
@@ -355,6 +358,7 @@ Do not publish final management conclusion when:
 - Leading indicator treated as causal predictor → use signal/association/risk language without causal evidence.
 - Method catalog inflated by controls → require distinct question, execution, and material effect.
 - Decision methods leaking from `[Thinking]` → keep trade-offs, reversibility, premortem, risk appetite, choice, and decision in `[Thinking]`.
+- Reasoning-control loop mistaken for autonomous execution → keep it inside AES-governed scope, checks, bounded correction, stop, rollback, acceptance, and authority boundaries.
 ## metric / artifact explosion
 Anti-pattern: a short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
 

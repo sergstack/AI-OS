@@ -11,6 +11,7 @@
 - Method eligibility and triggers follow `ANALYTICAL_TECHNIQUES.md`; the LLM cannot silently override the registry.
 - Reasoning cannot substitute for deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
+- `AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
 
 ## Evidence labels
 
@@ -87,6 +88,7 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Leading indicator treated as proven causal predictor | Use calibrated signal/association/risk language unless causal evidence exists. |
 | Method catalog inflated by converting controls into methods | Require a distinct question, execution procedure, and material analytical effect before adding a method. |
 | Decision methods leak from `[Thinking]` into `[Analytics]` | Keep trade-offs, reversibility, premortem, risk appetite, choice, and decision in `[Thinking]`. |
+| Reasoning-control loop mistaken for an autonomous execution loop | Keep reasoning/method selection inside the AES-governed scope, checks, bounded correction, stop, rollback, acceptance, and authority boundaries. |
 
 ## Metric / artifact explosion
 

@@ -51,6 +51,7 @@
 - [ ] `registry_mapping_followed?`
 - [ ] `deterministic_trigger_applied?`
 - [ ] `trigger_contract_defined?`
+- [ ] `trigger_priority_followed?`
 - [ ] `trigger_evidence_sufficient?`
 - [ ] `llm_silent_override_detected?`
 - [ ] `selected_method_prerequisites_met?`
@@ -67,12 +68,12 @@
 - [ ] `contradicting_evidence_checked?`
 - [ ] `discriminating_evidence_defined?`
 - [ ] `falsification_test_defined_if_material?`
-- [ ] `material_method_disagreement_recorded?`
+- [ ] `material_method_disagreement_resolved_or_visible?`
 - [ ] `unresolved_method_conflict_reflected_in_claim_strength?`
 - [ ] `claim_support_correct?`
 - [ ] `causal_status_correct?`
 - [ ] `confidence_confused_with_causality?`
-- [ ] `manual_review_required_correctly_set?` If `yes`, reviewer/owner, status, and resolution are recorded before final publication.
+- [ ] `manual_review_required_assessed?` If `yes`, reviewer/owner, status, and resolution are recorded before final publication.
 - [ ] `final_evidence_sufficient_for_claim?`
 - [ ] `conclusion_stronger_than_evidence?`
 - [ ] `stop_condition_assessed?`
@@ -89,6 +90,9 @@
 - [ ] `new_method_trigger_contract_followed?`
 - [ ] `new_method_prerequisites_met?`
 - [ ] `new_method_added_only_if_distinct_capability?`
+- [ ] `aes_execution_governance_preserved?`
+- [ ] `analytics_extension_applied_without_duplication?`
+- [ ] `reasoning_control_not_treated_as_autonomous_execution_loop?`
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
 

@@ -4,6 +4,14 @@
 
 This standard adds a bounded reasoning-control layer to the existing `[Analytics]` workflow. It does not replace or redefine the Data Contract, RAW, `stage_main_full`, `mart_main_full`, `mart_main_tz` / `mart_main_compact`, deterministic calculations, chart sourcing, memo pipeline, QA / Judge, acceptance, or Codex handoff boundary.
 
+Execution remains governed by the canonical repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`. `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. This standard structures analytical reasoning and method selection only; it does not fork, weaken, or duplicate AES execution states, corrective-loop limits, stop conditions, rollback, acceptance, or external-action authority.
+
+```text
+reasoning-control loop != autonomous execution framework
+adaptive reasoning != autonomous agent
+adaptive reasoning does not create an independent retry/self-improvement loop
+```
+
 ```text
 business question
 → task profile and analytical intent
@@ -133,6 +141,7 @@ For every non-CORE selection that depends on a trigger, the mapping must define:
 trigger_type: deterministic / judgment / hybrid
 trigger_rule:
 trigger_evidence_required:
+priority:
 ```
 
 - `deterministic`: verified inputs satisfy an unambiguous calculation or rule.
@@ -185,6 +194,7 @@ trigger_type:
 trigger_rule:
 trigger_evidence_required:
 trigger_evidence:
+priority:
 
 execution_owner:
 execution_mode: deterministic / reasoning / mixed
