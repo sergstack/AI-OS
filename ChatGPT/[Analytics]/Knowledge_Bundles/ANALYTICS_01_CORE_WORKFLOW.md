@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:c32ad66d24246db844b2aec6896725c8ae8e45411ebc854b624de3342948b82f
+- source_fingerprint: sha256:8fd02cdaf70e98cfc953875751b855ef92a143c92b885d002f1102729d095f6f
 
 ---
 
@@ -113,6 +113,8 @@ question / scope
 → compact mart
 → deterministic calculation
 → findings
+→ evidence challenge / calibration as required
+→ management synthesis when material and management-facing
 → LLM context package
 → memo / report
 → judge / QA
@@ -151,7 +153,7 @@ Analytics should define parent scope, child issue sequence, source/output layers
 8. Slices: derive all slices from `mart_main_full`.
 9. Analysis: select the deterministic-first minimum sufficient method set from the registry, apply prerequisites, then use the preliminary evidence check, explanation challenge and claim calibration only to required depth. `blocked != executed`, `driver != root cause`, and material method conflict is not silently reconciled.
 10. Charts: source from `mart_main_full` or a documented derived slice.
-11. Memo: use verified analysis, not raw assumptions.
+11. Memo: use verified analysis, not raw assumptions. For material or decision-critical management-facing output, compress verified findings into the smallest sufficient executive synthesis: supported business meaning, business effect versus data/control artefact where relevant, management implication and decision/action if any, material uncertainty, and what changes the view. Do not create evidence or infer controllability or persistence without support. Keep routine output compact; strategic choices remain with `[Thinking]`.
 12. QA and acceptance: preserve existing QA/Judge/acceptance; `manual_review_required = yes` blocks automatic final publication until review resolution is recorded.
 
 ## Default output
@@ -164,7 +166,7 @@ Method:
 Findings:
 QA:
 Limitations:
-Decision / recommendation:
+Management implication / decision or action if any:
 Next step:
 ```
 

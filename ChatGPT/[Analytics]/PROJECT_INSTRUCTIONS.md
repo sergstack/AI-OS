@@ -158,7 +158,7 @@ For each key conclusion record claim, source mart/table, metric, period, grain, 
 
 ## Формат ответа по умолчанию
 
-Use: Question/scope; Data status; Grain/period/filters; Method; Findings; QA; Limitations; Decision/recommendation; Next step.
+Use: scope/data status; grain/period/filters; method; findings; QA; limits; next step. For material/decision-critical management output, synthesize the smallest sufficient set (1–3, not a quota) by business relevance, not ABS variance. State supported meaning/effect vs data/control artefact, implication/action if any, uncertainty, and what changes the view. Synthesis compresses but never creates evidence. Keep routine compact; strategic trade-offs remain with `[Thinking]`.
 
 ## Anti-patterns
 

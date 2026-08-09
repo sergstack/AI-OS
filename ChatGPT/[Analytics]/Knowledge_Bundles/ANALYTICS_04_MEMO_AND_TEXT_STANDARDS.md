@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:65c7a614a821e708793fb0c336533f8c386d5622b010ff7470a4fe9eee1e3e8c
+- source_fingerprint: sha256:05fd037f57e7b7ebbdc8844e7d4d43151aeae5a82033f2b5876de940f8948642
 
 ---
 
@@ -39,6 +39,7 @@ mart_main_full
 → insight cards
 → evidence cards
 → mart_main_tz / compact
+→ management synthesis when material and management-facing
 → LLM context package, if needed
 → draft memo
 → judge review
@@ -51,7 +52,7 @@ mart_main_full
 3. Main drivers.
 4. Exceptions / anomalies.
 5. Risks.
-6. Recommended actions.
+6. Management implication / decision or action if any.
 7. Limitations.
 8. Appendix / evidence.
 ## Audience split
@@ -60,8 +61,7 @@ mart_main_full
 - headline numbers;
 - where the money is;
 - main risks;
-- decisions needed;
-- actions;
+- decisions or actions if supported;
 - limitations.
 ```text
 mart_main_tz / mart_main_compact
@@ -86,7 +86,7 @@ Every important sentence must be backed by:
 - evidence card;
 - or explicitly marked as interpretation.
 ## Memo QA
-- [ ] Executive summary does not exceed evidence.
+- [ ] Executive summary is materially shorter than supporting evidence and does not exceed it.
 - [ ] Key numbers trace to mart.
 - [ ] Drivers are ranked by impact.
 - [ ] Risks have `risk_basis`.
@@ -100,27 +100,29 @@ Every important sentence must be backed by:
 # Analytical Memo Structure
 ## Purpose
 Структура аналитической записки, которая отделяет обязательный управленческий слой от рабочего evidence-пакета.
-## MVP memo standard
-1. DQ status.
-2. Plan / Fact / Delta / ABS Delta.
-3. Top deviations by ABS Delta.
-4. Row type.
-5. Timing status.
-6. Planning risk + risk basis.
-7. Confidence + why not higher.
-8. Confirmed cause vs hypothesis.
-9. Required action + owner + due date.
+## Executive layer for material management analysis
+For `analytical_depth = material / decision_critical` and management-facing output:
+1. Executive verdict answering the business question.
+2. Smallest sufficient set of material conclusions, usually 1–3 but never as a quota.
+3. Supported business meaning and affected performance dimension.
+4. Business effect versus data/control artefact where relevant.
+5. Management implication and decision/action required, if any.
+6. Material uncertainty and what would change the view.
+7. Material limitations.
+Rank by the relevant business criterion, not mechanically by `ABS Delta`; keep different performance dimensions visible. State controllability or persistence only when supported. The executive layer must be materially shorter than supporting evidence; routine output remains compact. If DQ or reconciliation prevents reliable interpretation, that limitation becomes the executive verdict.
+## Supporting evidence layer
+Preserve DQ, applicable Plan/Fact/Delta, material deviations and ranking criterion, row/timing status, risk basis, confidence, cause versus hypothesis, supported action details if asserted, and limitations/open questions.
 ## Must / Should / Conditional / Optional
 | Block | Status | Notes |
 | DQ status | Must | Без DQ нельзя публиковать сильный вывод |
 | Plan / Fact / Delta / ABS Delta | Must | Базовый слой отклонений |
-| Top deviations | Must | Ранжировать по ABS Delta или materiality |
+| Top deviations | Must | Ранжировать по явному business criterion; `ABS Delta` не является универсальным критерием |
 | Row type | Must | Например: real variance / timing / data issue / mapping issue |
 | Timing status | Must when relevant | candidate / confirmed / partial / not timing |
 | Risk + risk basis | Must for management memo | Risk без basis не публиковать |
 | Confidence + rationale | Must | Low Confidence не финальная причина |
 | Confirmed cause vs hypothesis | Must | Не смешивать |
-| Action + owner + due date | Must for управленческого действия | Иначе это observation |
+| Action + owner + due date | Must only when an action is supported | Иначе это observation / monitoring / validation gap |
 ## Stop conditions
 | DQ Fail | Do not publish management conclusion |
 | Low Confidence | Mark as hypothesis / not final cause |
@@ -131,12 +133,14 @@ Every important sentence must be backed by:
 ## Output template
 ```text
 Verdict:
+Material conclusions + why they matter:
 Key numbers:
 Top deviations:
 Main driver / hypothesis:
 Risk:
 Confidence:
-Action:
+Management implication / decision or action if any:
+What changes the view:
 Limitations:
 Evidence:
 ```
@@ -279,13 +283,22 @@ unless QA and evidence support it.
 ## Purpose
 ## Rubric
 | Area | Pass condition | Fail condition |
+| Executive verdict | Answers the business question | Finding catalogue without a verdict |
+| Prioritization | Smallest sufficient set ranked by an explicit business criterion | Mechanical Top-3 or `ABS Delta` treated as universal importance |
+| Business meaning | Each headline has supported meaning or an explicit evidence gap | Manufactured “so what” |
+| Performance dimensions | Materially different dimensions remain distinct | Unsupported overall good/bad assessment |
+| Effect type | Business effect and data/control artefact are separated where relevant | Data exception presented as economic effect without evidence |
 | Evidence | Key conclusions trace to mart/evidence | Unsupported claims |
-| Action | Action has owner / due date / status | Observation called action |
+| Management implication | Decision/action is stated only if supported | Decision manufactured from an observation |
+| Thinking boundary | Analytics provides evidence and implication; strategic trade-offs remain with `[Thinking]` | Analytics chooses a strategic option without supported criteria |
+| Compression | Executive layer is materially shorter than supporting evidence | Synthesis becomes a second analytical report |
 | Confidence | Confidence and limitations visible | Low confidence as fact |
 ## Golden memo criteria
 - executive summary is short and evidence-backed;
 - numbers are in tables and prose;
-- deviations are ranked by ABS Delta/materiality;
+- material conclusions are ranked by an explicit business criterion;
 - confirmed causes and hypotheses are separated;
 - limitations are visible before appendix;
+- management implication does not exceed verified evidence;
+- executive synthesis is materially shorter than the evidence layer;
 - appendix / evidence layer supports deep claims.

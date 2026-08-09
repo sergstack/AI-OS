@@ -60,6 +60,21 @@ For `full` mode:
   - field groups;
   - evidence appendix.
 
+## Material management synthesis acceptance
+
+For `analytical_depth = material / decision_critical` and management-facing output:
+
+- the business question is answered by an executive verdict;
+- the smallest sufficient set of material findings is prioritized by a supported business criterion;
+- headline business meaning is supported or its evidence gap is explicit;
+- materially different performance dimensions and data/control artefacts remain distinct where relevant;
+- management implication and decision/action if any do not exceed verified evidence;
+- material uncertainty remains visible, with what would change the view where applicable;
+- strategic choice is routed to `[Thinking]` when it depends on trade-offs, risk appetite, or preferences;
+- the executive layer is materially shorter than the supporting evidence.
+
+Routine compact tasks are excluded from expanded synthesis acceptance.
+
 ## Blocked status
 
 Use `blocked` when:
