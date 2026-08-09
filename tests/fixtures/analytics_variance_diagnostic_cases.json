@@ -1,0 +1,105 @@
+{
+  "historical_regression": {
+    "normalized_net_adverse": "611.0",
+    "main_adverse_driver": "776.8",
+    "other_favorable_movements": "-165.8",
+    "zero_plan_actuals_present": true,
+    "period_count": 1,
+    "source_sign_may_differ": true
+  },
+  "cases": [
+    {
+      "id": "A",
+      "kind": "normalization",
+      "metric": "expense",
+      "plan": "100",
+      "actual": "120",
+      "raw_formula": "actual_minus_plan",
+      "higher_is": "adverse",
+      "expected_normalized": "20"
+    },
+    {
+      "id": "B",
+      "kind": "normalization",
+      "metric": "revenue",
+      "plan": "100",
+      "actual": "80",
+      "raw_formula": "actual_minus_plan",
+      "higher_is": "favorable",
+      "expected_normalized": "20"
+    },
+    {
+      "id": "C",
+      "kind": "gross_bridge",
+      "gross_adverse": "776.8",
+      "gross_favorable": "-165.8",
+      "expected_net": "611.0",
+      "offset_must_be_explicit": true
+    },
+    {
+      "id": "D",
+      "kind": "secondary_attribute",
+      "budget_status": "unbudgeted",
+      "controllability_evidence": null,
+      "expected_controllability": "unknown"
+    },
+    {
+      "id": "E",
+      "kind": "generalization",
+      "period_count": 1,
+      "generalization_evidence": null,
+      "forbidden_claims": ["systemic", "non-systemic"]
+    },
+    {
+      "id": "F",
+      "kind": "recurrence",
+      "observations": 1,
+      "recurrence_evidence": null,
+      "expected_recurrence": "unknown"
+    },
+    {
+      "id": "G",
+      "kind": "coverage",
+      "eligible_gross_movement": "1000",
+      "classified_gross_movement": "750",
+      "expected_unclassified": "250",
+      "expected_coverage": "0.75"
+    },
+    {
+      "id": "H",
+      "kind": "coverage",
+      "gross_adverse": "1000",
+      "gross_favorable_absolute": "950",
+      "net_variance": "50",
+      "classified_gross_movement": "900",
+      "expected_denominator": "1950",
+      "expected_coverage": "0.4615384615384615384615384615"
+    },
+    {
+      "id": "I",
+      "kind": "primary_attribution",
+      "economic_effect": "40",
+      "timing_effect": "10",
+      "data_mapping_effect": "0",
+      "unresolved_effect": "0",
+      "expected_net": "50"
+    },
+    {
+      "id": "J",
+      "kind": "controllability",
+      "amount": "1000",
+      "management_owner_present": true,
+      "approved_evidence": null,
+      "expected_controllability": "unknown"
+    },
+    {
+      "id": "K",
+      "kind": "adjusted_view",
+      "reported_management_variance": "611",
+      "adverse_increasing_adjustments": "25",
+      "adverse_reducing_adjustments": "100",
+      "expected_adjusted_management_variance": "536",
+      "reported_view_must_remain_visible": true
+    }
+  ]
+}

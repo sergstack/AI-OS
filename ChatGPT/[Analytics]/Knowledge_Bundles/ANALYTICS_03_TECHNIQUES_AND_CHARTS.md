@@ -8,6 +8,7 @@ Compact upload artifact for [Analytics] covering techniques and charts.
 
 - `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`
 - `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`
+- `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`
 - `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`
 
 ## Upload target
@@ -19,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:18ceffd6dfce2d8cd13b6084acb251caf9aab9151ebc962c87f8619fcd7938b2
+- source_fingerprint: sha256:df4c7a5209ba7dcdd306fb45aef70fdccdc3a34294cded30cb2a0d22dc39e49d
 
 ---
 
@@ -36,6 +37,8 @@ Registry is the source of truth for eligibility; registration is not execution. 
 For P0, `NAME` is the stable registry label represented by `METHOD_ID`; display formatting cannot change identity.
 
 `P0 METHOD COUNT = 22`. Capability groups (`DECOMPOSE`, `LOCATE`, `VALIDATE`, `CHALLENGE`, `FORWARD`) are readability aids only, not runtime taxonomy or routing.
+
+Material Plan/Fact uses `VARIANCE_DIAGNOSTIC_CONTRACT.md` to configure existing methods. `variance_analysis` preserves raw/source formula and normalizes management direction from an explicit KPI rule; contribution exposes gross movement and coverage; bridge/factor reconciliation use one normalized sign; residual keeps incomplete attribution visible. Controllability, recurrence, budget status, materiality, coverage, and accountability are controls/attributes, not methods.
 
 | METHOD_ID | Role / mode | Purpose and required boundary |
 |---|---|---|
@@ -188,6 +191,19 @@ missing_requirement; method_execution_id
 
 Record baseline type/period/rationale and whether an alternative is material. For material/decision-critical cases, a reasonable alternative capable of changing the conclusion requires `robustness_to_baseline`. Ratios require numerator + denominator + population; explain population/denominator and quantify additions, removals, filters, entities, cut-offs, and definition changes.
 
+## Material Plan/Fact controls
+
+`VARIANCE_DIAGNOSTIC_CONTRACT.md` owns source-sign preservation, management-direction normalization, gross bridge, primary attribution, gross coverage, declared materiality, evidence-constrained secondary attributes, reported/adjusted separation, and CFO synthesis order. It adds no intent, method, registry, or workflow; full diagnostics activate only for material/decision-critical cases or material variance risk.
+
+```text
+raw/source variance != normalized management direction
+net attribution reconciliation != absolute classification coverage
+primary attribution is additive; secondary attributes are not
+driver/effect != controllability != accountability
+single-period evidence != systemic / non-systemic evidence
+reported result != adjusted management view
+```
+
 ## Explanation challenge
 
 Preliminary check records finding support (`yes / partial / no`), explanatory feasibility, critical gap, and next step (`continue / stop / collect evidence`). If infeasible: stop, state limitation, do not fabricate.
@@ -222,6 +238,41 @@ Routine + low uncertainty + no material trigger uses question → intent → cor
 Stop when added methods cannot materially change the outcome, discriminating evidence is unavailable, precision exceeds data quality, conclusion is robust, the remaining question is strategic, or complexity adds no decision value. Escalate for materially plausible competing explanations, unresolved contradictory/method conflict, unsupported assumptions, causal language without causal evidence, or evidence outside Analytics ownership. `[Analytics]` owns verified evidence; `[Thinking]` owns alternatives/trade-offs/risk appetite/decision.
 
 P1 pilot calibration and P2 expanded/autonomous taxonomies remain deferred; do not claim them implemented.
+
+
+## From: `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`
+
+# Variance Diagnostic Contract
+
+## Boundary and activation
+
+Canonical material Plan/Fact runtime/output contract; thin extension of the existing reasoning standard and 22-method registry. Full structure activates only for material/decision-critical cases or material variance risk; routine/quick cases collapse to verified result, direction rule, compact reconciliation/QA, and answer. Deterministic calculation/classification precedes LLM narrative.
+
+## Sign and reported result
+
+Record source value/formula/sign, raw variance, explicit `higher_is: favorable / adverse / context_dependent`, and normalized management variance where positive is adverse and negative favorable. Raw math is not management direction. Preserve native source sign; use one normalized sign inside management bridges. Context-dependent KPI without an approved business rule remains unresolved. Reported result stays canonical.
+
+## Gross bridge and primary attribution
+
+Material cases show gross adverse, gross favorable, normalized net, residual, and status. A driver above net requires explicit favorable offset. Reuse contribution, bridge, factor reconciliation, and residual methods.
+
+Primary `economic + timing + data/mapping + unresolved` effects are non-overlapping within a row, exhaustive within scope, and reconcile to normalized net variance. Failed residual remains visible and blocks a complete-explanation narrative.
+
+## Coverage and materiality
+
+Net attribution reconciliation is separate from absolute classification coverage. Coverage declares population, eligible/classified/unclassified gross absolute movement, row counts, dimensions, and exclusivity. Default denominator is eligible gross absolute movement, never small net variance.
+
+Materiality declares absolute/relative thresholds, meaningful denominator, zero-plan rule, gross contribution basis/threshold, qualitative override, selected/excluded population, and selection coverage. No universal threshold.
+
+## Secondary attributes and evidence
+
+Budget status, controllability, recurrence, and evidence status are non-additive attributes. Amount, zero-plan/driver/owner status does not prove controllability or accountability. Insufficient approved business evidence means controllability `unknown`. One observation does not prove recurring/one-off; single-period evidence does not prove systemic/non-systemic. Generalization requires traceable multi-period, process/control, contractual, or event-specific evidence.
+
+## Adjusted view and synthesis
+
+Adjusted management view is supplementary: explicit adjustment ID, amount, `increases_adverse / reduces_adverse` polarity, type, reason, evidence, normalization/reversal, approved rule, and inclusion. It reconciles from reported management variance and never replaces reported Plan/Fact.
+
+CFO synthesis order: reported result; normalized effect; supported driver; gross offset/bridge; primary nature; budget quality; controllability; coverage/unknown; supported; not established; action/next evidence. This is semantic order, not a verbose mandatory template. Claim strength stays within evidence; driver stays below root cause.
 
 
 ## From: `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`

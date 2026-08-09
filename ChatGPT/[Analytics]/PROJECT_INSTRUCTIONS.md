@@ -158,7 +158,7 @@ For each key conclusion record claim, source mart/table, metric, period, grain, 
 
 ## Формат ответа по умолчанию
 
-Use: scope/data status; grain/period/filters; method; findings; QA; limits; next step. For material/decision-critical management output, synthesize the smallest sufficient set (1–3, not a quota) by business relevance, not ABS variance. State supported meaning/effect vs data/control artefact, implication/action if any, uncertainty, and what changes the view. Synthesis compresses but never creates evidence. Keep routine compact; strategic trade-offs remain with `[Thinking]`.
+Default: scope/data; grain/period/filters; method; findings; QA/limits; next. Material: evidence-backed synthesis of business vs data/control effects, implication, uncertainty, what changes view. Plan/Fact follows `VARIANCE_DIAGNOSTIC_CONTRACT.md`: keep reported result; normalize sign; reconcile gross/net; separate coverage/non-additive attributes; never infer controllability, recurrence, accountability, systemic status. Routine compact; strategic choices → `[Thinking]`.
 
 ## Anti-patterns
 

@@ -75,6 +75,18 @@ For `analytical_depth = material / decision_critical` and management-facing outp
 
 Routine compact tasks are excluded from expanded synthesis acceptance.
 
+## Material Plan/Fact variance acceptance
+
+For cases governed by `VARIANCE_DIAGNOSTIC_CONTRACT.md`:
+
+- reported and normalized management views are both traceable and use explicit, non-mixed sign conventions;
+- gross adverse/favorable movement, normalized net variance, and primary attribution reconcile deterministically;
+- gross classification coverage declares population, denominator, classified/unclassified movement, and unknown rows separately from net reconciliation;
+- materiality basis and selected/excluded population are explicit;
+- controllability, recurrence, generalization, and accountability claims have required evidence or remain unknown/not established;
+- adjusted view is supplementary, reconciled, and uses explicit adjustment polarity;
+- management synthesis follows the contract semantically without expanding routine output.
+
 ## Blocked status
 
 Use `blocked` when:

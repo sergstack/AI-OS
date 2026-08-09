@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:8fd02cdaf70e98cfc953875751b855ef92a143c92b885d002f1102729d095f6f
+- source_fingerprint: sha256:5b71c103b4ac428049716166e49507d9f467aa48bfac812e128856090a319ae4
 
 ---
 
@@ -38,6 +38,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `ANALYTICS_PROJECT_FILES_INDEX.md` | Индекс пакета | Нужно понять, какой файл использовать |
 | `ANALYTICS_WORKFLOW.md` | End-to-end workflow | Любая аналитическая задача |
 | `ANALYTICAL_REASONING_STANDARD.md` | P0 reasoning-control layer | Нужны intent, method plan, prerequisites, explanation challenge или claim calibration |
+| `VARIANCE_DIAGNOSTIC_CONTRACT.md` | Material Plan/Fact variance runtime/output contract | Нужны sign normalization, gross bridge, attribution, coverage или evidence-constrained CFO synthesis |
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
@@ -65,7 +66,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Priority rules
 
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.
-2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`.
+2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`; для material Plan/Fact diagnostics — `VARIANCE_DIAGNOSTIC_CONTRACT.md`.
 3. Для memo/report используй `MEMO_PIPELINE.md`, `ANALYTICAL_MEMO_STRUCTURE.md`, `WORD_REPORT_STANDARD.md`, `TEXT_QA_AND_STYLE.md`.
 4. Для QA используй `QA_CHECKLIST.md` и `ACCEPTANCE_CRITERIA.md`.
 5. Для передачи в Codex используй `CODEX_TASK_PACKETS.md` и `ROUTING_AND_HANDOFF.md`.
