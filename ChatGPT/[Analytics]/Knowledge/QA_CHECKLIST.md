@@ -122,6 +122,17 @@ Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend 
 - [ ] Technical values such as `fact_only`, `plan_only`, `p_fact_adjusted`, `refund_only`, `source_mix`, `slice_*`, `mart_*`, `EV-*`, `CH_EXEC_*` appear only in appendix / evidence context.
 - [ ] Appendix is clearly separated from executive memo.
 
+### Material management synthesis QA
+
+Apply only to material / decision-critical management-facing output:
+
+- [ ] Business question is answered by an executive verdict; material findings are prioritized by business relevance rather than catalogued.
+- [ ] Supported business meaning is stated, or the evidence gap is explicit; any “main” issue has a supported criterion.
+- [ ] Material performance dimensions remain distinct; business effect and data/control artefact are separated where relevant.
+- [ ] Management implication and decision/action if any are evidence-constrained; material uncertainty remains visible.
+- [ ] What would materially change the conclusion is stated when relevant, and strategic choice is routed to `[Thinking]`.
+- [ ] Executive synthesis is materially shorter than supporting evidence; routine compact output is not expanded.
+
 ## Handoff QA
 
 - [ ] Handoff only if another project is needed.

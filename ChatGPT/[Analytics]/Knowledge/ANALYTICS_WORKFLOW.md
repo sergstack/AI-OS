@@ -46,6 +46,8 @@ question / scope
 → compact mart
 → deterministic calculation
 → findings
+→ evidence challenge / calibration as required
+→ management synthesis when material and management-facing
 → LLM context package
 → memo / report
 → judge / QA
@@ -196,6 +198,8 @@ Memo uses verified analysis, not raw assumptions.
 
 Important sentences must be backed by metric/table/mart/period/evidence or marked as interpretation.
 
+For material or decision-critical management-facing output, compress verified findings into the smallest sufficient executive synthesis: supported business meaning, business effect versus data/control artefact where relevant, management implication and decision/action if any, material uncertainty, and what changes the view. Do not create evidence or infer controllability or persistence without support. Keep routine output compact; strategic choices remain with `[Thinking]`.
+
 ## Step 12 — QA and acceptance
 
 Run the existing Data QA, Calculation QA, Analysis QA, Chart QA, Memo QA, Judge, and acceptance path before final conclusion. `manual_review_required = yes` blocks automatic final publication until the existing review path records a resolution.
@@ -210,6 +214,6 @@ Method:
 Findings:
 QA:
 Limitations:
-Decision / recommendation:
+Management implication / decision or action if any:
 Next step:
 ```

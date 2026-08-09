@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:f6704e1e5f1fd100436f387855243803704dc1cf3a089855735500bd85ca1330
+- source_fingerprint: sha256:8946d76d7336f5675be099cdd1af31843846eaa923cfa2dd8fe139fecf0a3a46
 
 ---
 
@@ -116,6 +116,14 @@ Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. This extends existin
 - [ ] No technical IDs in executive body.
 - [ ] Technical values such as `fact_only`, `plan_only`, `p_fact_adjusted`, `refund_only`, `source_mix`, `slice_*`, `mart_*`, `EV-*`, `CH_EXEC_*` appear only in appendix / evidence context.
 - [ ] Appendix is clearly separated from executive memo.
+### Material management synthesis QA
+Apply only to material / decision-critical management-facing output:
+- [ ] Business question is answered by an executive verdict; material findings are prioritized by business relevance rather than catalogued.
+- [ ] Supported business meaning is stated, or the evidence gap is explicit; any “main” issue has a supported criterion.
+- [ ] Material performance dimensions remain distinct; business effect and data/control artefact are separated where relevant.
+- [ ] Management implication and decision/action if any are evidence-constrained; material uncertainty remains visible.
+- [ ] What would materially change the conclusion is stated when relevant, and strategic choice is routed to `[Thinking]`.
+- [ ] Executive synthesis is materially shorter than supporting evidence; routine compact output is not expanded.
 ## Handoff QA
 - [ ] Handoff only if another project is needed.
 - [ ] Expected output clear.
@@ -172,6 +180,17 @@ For `standard` mode:
 
 For `full` mode:
 - workbook may be large, but must include README / index, compact front sheet, data dictionary, field groups and evidence appendix.
+## Material management synthesis acceptance
+For `analytical_depth = material / decision_critical` and management-facing output:
+- the business question is answered by an executive verdict;
+- the smallest sufficient set of material findings is prioritized by a supported business criterion;
+- headline business meaning is supported or its evidence gap is explicit;
+- materially different performance dimensions and data/control artefacts remain distinct where relevant;
+- management implication and decision/action if any do not exceed verified evidence;
+- material uncertainty remains visible, with what would change the view where applicable;
+- strategic choice is routed to `[Thinking]` when it depends on trade-offs, risk appetite, or preferences;
+- the executive layer is materially shorter than the supporting evidence.
+Routine compact tasks are excluded from expanded synthesis acceptance.
 ## Blocked status
 Use `blocked` when:
 - required data is missing;
