@@ -32,6 +32,8 @@ Canonical active P0 scope:
 P0 METHOD COUNT = 22
 ```
 
+For material Plan/Fact cases, `VARIANCE_DIAGNOSTIC_CONTRACT.md` configures the existing methods; it does not create a new `METHOD_ID`. `variance_analysis` preserves the declared source/raw formula and separately normalizes management direction from an explicit KPI rule. `contribution_analysis` exposes gross adverse/favorable movement and declared gross coverage. `bridge_analysis` and `factor_reconciliation` use one normalized sign convention and non-overlapping effects. `unexplained_residual` keeps incomplete attribution visible. Controllability, recurrence, budget status, materiality, coverage, and accountability are runtime attributes or controls, not methods.
+
 Capability groups are a readability aid only and do not create runtime taxonomy or routing:
 
 ```text

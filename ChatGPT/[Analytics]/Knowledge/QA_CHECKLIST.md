@@ -96,6 +96,19 @@
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
 
+### Material variance diagnostic QA
+
+Apply `VARIANCE_DIAGNOSTIC_CONTRACT.md` only to material/decision-critical Plan/Fact cases or a material variance risk:
+
+- [ ] Source/raw formula and sign convention remain distinct from normalized management direction; unresolved KPI direction blocks normalization.
+- [ ] Gross adverse/favorable movement and normalized net variance reconcile using one normalized sign convention.
+- [ ] Primary economic/timing/data-mapping/unresolved effects are non-overlapping, scope-complete, and reconciled; failed residual remains visible.
+- [ ] Classification population, eligible gross movement, classified/unclassified movement, row counts, and coverage denominator are explicit and separate from net reconciliation.
+- [ ] Materiality basis, denominator, selected/excluded population, and selection coverage are declared before narrative.
+- [ ] Budget status, controllability, recurrence, and evidence status remain non-additive; unsupported controllability/recurrence remain `unknown`.
+- [ ] Single-period evidence is not generalized as systemic/non-systemic; driver/ownership does not imply root cause or accountability.
+- [ ] Reported result remains canonical; adjusted view reconciles separately with explicit adjustment polarity.
+
 ## Chart QA
 
 - [ ] Chart source mart/slice listed.

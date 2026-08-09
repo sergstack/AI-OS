@@ -31,7 +31,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:1dbe1cd0ec6d69560e4b6d0b934b1c13e851f91bb4489ad4876e45adfda99301
+- source_fingerprint: sha256:88e4198de690390c85be7a2fc404fcbbfb31eb1868bf2277a515c86258a45ad0
 
 ---
 
@@ -138,14 +138,28 @@ Grain:
 Period:
 Comparison period:
 Filters:
+Materiality absolute/relative/zero-plan/contribution rules:
+Selected/excluded population and selection coverage:
 Method:
 Calculation tool:
-Variance table:
+Source formula/sign; economic direction rule; raw variance:
+Normalized management variance and resolution status:
+Variance table with primary attribution and non-additive attributes:
+Gross adverse/favorable/net bridge and reconciliation:
+Economic/timing/data-mapping/unresolved attribution and residual:
+Gross classification population, denominator, classified/unclassified movement, coverage, row counts:
 Drivers:
+Generalization scope/evidence:
+Reported view; adjusted view with explicit polarity and reconciliation:
 QA:
 - Plan and fact sources identified.
 - Period, grain, filters, and exclusions match across plan and fact.
 - Variance calculations performed by deterministic tool; LLM arithmetic not used.
+- Raw/source and normalized management signs are explicit and not mixed.
+- Gross/net and primary attribution reconcile; favorable offset is explicit when driver exceeds net.
+- Coverage uses eligible gross absolute movement, not net variance.
+- Unsupported controllability/recurrence/generalization remain unknown/not established.
+- Reported result remains visible and adjusted polarity is explicit.
 Limitations:
 Acceptance:
 
@@ -306,7 +320,7 @@ Human acceptance:
 ## From: `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
 
 # Claim / Evidence Registry Template
-| claim_id | hypothesis_id | claim_text | claim_type | method_execution_id | method_status | source_mart | source_table_or_slice | metric | period | grain | filter | baseline | formula_or_method | evidence_id | alternative_explanations | contradicting_evidence | discriminating_evidence | falsification_test | qa_status | confidence | claim_support | causal_status | limitation | allowed_in_executive | review_status |
+| claim_id | hypothesis_id | claim_text | claim_type | method_execution_id | method_status | source_mart | source_table_or_slice | metric | period | grain | filter | baseline | formula_or_method | evidence_id | alternative_explanations | contradicting_evidence | discriminating_evidence | falsification_test | generalization_scope | generalization_evidence | qa_status | confidence | claim_support | causal_status | limitation | allowed_in_executive | review_status |
 ## Claim types
 - DATA FACT
 - CALCULATION RESULT
@@ -326,6 +340,7 @@ Human acceptance:
 - Lineage: claim → executed method → source mart/table/slice → metric/period/grain/filter/baseline → evidence.
 - Blocked/planned/not-needed executions cannot support a claim requiring a method result.
 - `confidence`, `claim_support`, and `causal_status` are independent; claim strength cannot exceed evidence sufficiency.
+- Scope/evidence is required before one-period evidence is generalized as systemic, non-systemic, structural, persistent, recurring, isolated, or one-off.
 
 
 ## From: `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`

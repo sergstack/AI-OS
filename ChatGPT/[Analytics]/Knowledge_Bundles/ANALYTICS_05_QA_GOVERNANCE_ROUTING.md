@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:8946d76d7336f5675be099cdd1af31843846eaa923cfa2dd8fe139fecf0a3a46
+- source_fingerprint: sha256:0bb01ab91cdcc52de61b89dcc65c74aac55bb066c9ea634fae046175e591388c
 
 ---
 
@@ -94,6 +94,15 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] Reasoning control is not treated as an autonomous execution or independent retry loop.
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. This extends existing Analysis QA and creates no separate QA framework.
+### Material variance diagnostic QA
+Use `VARIANCE_DIAGNOSTIC_CONTRACT.md` only for material/decision-critical Plan/Fact or material variance risk:
+- [ ] Raw/source and normalized management signs are explicit/non-mixed; unresolved direction blocks normalization.
+- [ ] Gross adverse/favorable and net reconcile; primary economic/timing/data-mapping/unresolved effects are non-overlapping and scope-complete.
+- [ ] Coverage declares gross population/denominator, classified/unclassified movement and row counts separately from net reconciliation.
+- [ ] Materiality basis, denominator, selected/excluded population, and selection coverage precede narrative.
+- [ ] Secondary attributes are non-additive; unsupported controllability/recurrence remain unknown.
+- [ ] Single-period evidence is not systemic/non-systemic; driver/owner does not imply root cause/accountability.
+- [ ] Reported result remains canonical; adjusted view reconciles with explicit polarity.
 ## Chart QA
 - [ ] Chart source mart/slice listed.
 - [ ] Metric listed.
@@ -191,6 +200,15 @@ For `analytical_depth = material / decision_critical` and management-facing outp
 - strategic choice is routed to `[Thinking]` when it depends on trade-offs, risk appetite, or preferences;
 - the executive layer is materially shorter than the supporting evidence.
 Routine compact tasks are excluded from expanded synthesis acceptance.
+## Material Plan/Fact variance acceptance
+For `VARIANCE_DIAGNOSTIC_CONTRACT.md` cases:
+- reported/raw and normalized views are traceable and signs are explicit/non-mixed;
+- gross/net bridge and primary attribution reconcile deterministically;
+- gross coverage declares population, denominator, classified/unclassified movement and unknown rows separately;
+- materiality basis/population are explicit;
+- controllability, recurrence, generalization, and accountability have evidence or remain unknown/not established;
+- adjusted view is supplementary, reconciled, and uses explicit polarity;
+- management synthesis follows the semantic contract without expanding routine output.
 ## Blocked status
 Use `blocked` when:
 - required data is missing;

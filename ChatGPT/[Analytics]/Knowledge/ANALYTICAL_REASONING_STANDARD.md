@@ -249,6 +249,21 @@ Check additions, removals, filter changes, entity changes, cut-off changes, and 
 ratio interpretation requires numerator + denominator + population
 ```
 
+### Material Plan/Fact and variance diagnostics
+
+`VARIANCE_DIAGNOSTIC_CONTRACT.md` owns the bounded runtime/output controls for material Plan/Fact cases: source-sign preservation, explicit management-direction normalization, gross bridge, reconciled primary attribution, separate gross classification coverage, declared materiality, evidence-constrained secondary attributes, reported-versus-adjusted views, and CFO synthesis order.
+
+It reuses the existing `diagnose_variance` mapping and approved methods. It does not add an intent, method, registry, or workflow. Activate the full diagnostic only for material/decision-critical cases or a material variance risk; routine/quick cases keep the compact path.
+
+```text
+raw/source variance != normalized management direction
+net attribution reconciliation != absolute classification coverage
+primary attribution is additive; secondary management attributes are not
+driver/effect != controllability != accountability
+single-period evidence != systemic / non-systemic evidence
+reported result != adjusted management view
+```
+
 ## 6. Preliminary evidence and explanation challenge
 
 After deterministic findings and before explanation, record when the analysis is material or decision-critical:
