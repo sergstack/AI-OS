@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:2f83772cbdb1d7ec8b33a5d99b5c403983525691752a9530d839132febcfec7e
+- source_fingerprint: sha256:ae529de1aa3cc51f65e04bf92a4ede5dbcda7a2a2947c0e128067e53e7f9af64
 
 ---
 
@@ -58,6 +58,14 @@ Use `Mode: strict task` only when the work is high-risk, already scoped, or
 explicitly requested as a strict task package. Include known repo context,
 constraints, checks, acceptance criteria, and rollback notes without inventing
 missing facts.
+
+## AES applicability
+
+Inbox Router has thin AES applicability only when packaging or preserving a
+governed execution handoff. Repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`
+remains the single owner of execution semantics. Router still only routes,
+clarifies, and packages; it does not execute corrective loops or gain external
+authority. No Router AES extension is currently required.
 
 
 ## From: `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`

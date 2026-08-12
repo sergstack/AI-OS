@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-07-07
+- last_checked: 2026-08-12
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -27,6 +27,26 @@
 The repository contains ChatGPT project packages, compact Knowledge bundles,
 Codex APP execution contracts, routing docs, StreamDeck candidate artifacts, and
 repository governance checks.
+
+Deterministic repository state:
+
+- Baseline for the 2026-08-12 reconciliation is live `main` commit
+  `21526a812e5ea4823c64815b84f6792f10b563dd`.
+- `PROJECT_REGISTRY.md` identifies seven governed ChatGPT Projects, including
+  `[Thinkers OS]`, and records AES applicability separately from execution
+  evidence.
+- AES rollout artifacts, the Analytics extension, pilot evidence fixtures, and
+  Knowledge Bundle exposure are present in the repository. Their presence does
+  not prove external execution or deployment.
+
+Evidence-dependent or external state:
+
+- ChatGPT Project UI sync, actual smoke/pilot execution, owner acceptance, PR
+  review, merge, production authorization, and deploy require separate observed
+  evidence.
+- No new external evidence was observed during the 2026-08-12 repository
+  reconciliation. Existing dated evidence and `not_verified` / `not_run`
+  statuses remain unchanged.
 
 `PROJECT_INSTRUCTIONS.md` files must stay compact. Supporting policies, examples, templates, checklists, and detailed workflows belong in `Knowledge/`.
 

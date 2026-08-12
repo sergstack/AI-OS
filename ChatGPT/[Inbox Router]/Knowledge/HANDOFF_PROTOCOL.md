@@ -35,3 +35,11 @@ Use `Mode: strict task` only when the work is high-risk, already scoped, or
 explicitly requested as a strict task package. Include known repo context,
 constraints, checks, acceptance criteria, and rollback notes without inventing
 missing facts.
+
+## AES applicability
+
+Inbox Router has thin AES applicability only when it packages or preserves a
+governed execution handoff. Canonical execution semantics come from repo-root
+`AUTONOMOUS_EXECUTION_STANDARD.md`; Router does not execute the target task,
+run corrective loops, or gain merge/deploy/production authority. No Router
+AES extension is currently required.

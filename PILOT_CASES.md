@@ -20,6 +20,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 | `PILOT-LLM-001` | `[LLM]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-CODEX-001` | `[Codex]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-INBOX-001` | `[Inbox Router]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
+| `PILOT-THINKERS-001` | `[Thinkers OS]` | backlog | unsupported | Sergey | Complete manual sync, run smoke QA, then execute bounded source-to-artifact pilot |
 | `PILOT-CODEXAPP-001` | Codex APP | backlog | unsupported | Sergey | Run local task package classification pilot |
 | `PILOT-CROSS-001` | Cross-project | backlog | unsupported | Sergey | Execute after individual pilots are defined |
 
@@ -38,6 +39,22 @@ Status: backlog
 Confidence: unsupported
 Revisit trigger: AI OS project instructions, Knowledge files, evidence rules, or blocked promotion gates change.
 Next step: Sync `[AI OS]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+
+## [Thinkers OS] Pilot
+
+Pilot ID: `PILOT-THINKERS-001`
+Project: `[Thinkers OS]`
+Goal: Process one bounded thinker source request from corpus need through verified provenance, one source-backed artifact, Judge/Revisor as needed, and an export decision.
+Input: "For one registered thinker with an open corpus gap, classify one bounded source candidate and produce or block one traceable artifact without applying it to a real strategic decision."
+Expected behavior: The project preserves corpus priority, verifies source identity/provenance, separates partial from complete coverage, records artifact and Judge status, and routes any real-decision application to `[Thinking]`.
+Evidence required: source request/candidate identity, provenance or explicit blocker, corpus coverage state, bounded artifact or blocked result, Judge/Revisor evidence, export decision, and next resumable stage.
+Success criteria: no invented provenance; partial corpus not reported complete; only Judge-pass material may become an export candidate; raw source payload is not exported; real decision work is handed to `[Thinking]`.
+Failure criteria: invented or unverified source treated as verified; incomplete corpus reported complete; non-pass artifact controls synthesis/export; source payload exported; Thinkers OS performs the target strategic decision.
+Owner: Sergey
+Status: backlog
+Confidence: unsupported
+Revisit trigger: corpus/source rules, artifact contracts, Judge/Revisor, routing, or export gates change.
+Next step: Complete owner-led manual sync, run `[Thinkers OS]` smoke QA, then record an actual result with `PILOT_RESULTS_TEMPLATE.md`.
 
 ## [Thinking] Pilot
 

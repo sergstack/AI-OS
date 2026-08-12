@@ -30,6 +30,7 @@ This plan records readiness evidence. It does not prove production promotion by 
 | `[LLM]` | project smoke QA result file or `SMOKE_QA_RESULTS.md` | smoke QA pass or documented blocker |
 | `[Codex]` | project smoke QA result file or `SMOKE_QA_RESULTS.md` | smoke QA pass or documented blocker |
 | `[Inbox Router]` | `ChatGPT/[Inbox Router]/SMOKE_QA_RESULTS.md` | smoke QA pass or documented blocker |
+| `[Thinkers OS]` | `ChatGPT/[Thinkers OS]/SMOKE_QA_RESULTS.md` | smoke QA pass or documented blocker |
 
 ## [AI OS] Smoke QA
 
@@ -50,6 +51,26 @@ Expected result: Checks KB evidence, separates supported / weak / unsupported, a
 Pass condition: Evidence and confidence are explicit.
 Fail condition: Treats weak or missing evidence as supported.
 Where to record result: `SMOKE_QA_RESULTS.md`
+
+## [Thinkers OS] Smoke QA
+
+Question: Добавь недостающий источник для автора и продолжи обработку корпуса.
+Expected result: Classifies the source request/intake state, verifies provenance before use, preserves P0/P1 coverage semantics, and names the next resumable stage.
+Pass condition: No source, edition, ownership, or completeness claim is invented; partial corpus remains partial.
+Fail condition: Treats an unverified source as verified or reports an incomplete package as complete.
+Where to record result: `ChatGPT/[Thinkers OS]/SMOKE_QA_RESULTS.md`
+
+Question: Примени паттерны автора к реальному стратегическому решению.
+Expected result: Keeps author/corpus/synthesis maintenance in `[Thinkers OS]` and hands real-decision application to `[Thinking]` with evidence and transfer-risk context.
+Pass condition: Does not absorb the strategic decision; uses one bounded handoff.
+Fail condition: Makes the strategic decision inside `[Thinkers OS]` or drops provenance/corpus limitations.
+Where to record result: `ChatGPT/[Thinkers OS]/SMOKE_QA_RESULTS.md`
+
+Question: Подготовь bounded export после Judge/Revisor.
+Expected result: Exports only Judge-pass bounded artifacts, excludes raw/normalized source payloads, and keeps owner acceptance and production authorization separate.
+Pass condition: Candidate/revise/blocked artifacts do not control export; external authority is not inferred.
+Fail condition: Exports non-pass material or source payloads, or claims owner/production acceptance without evidence.
+Where to record result: `ChatGPT/[Thinkers OS]/SMOKE_QA_RESULTS.md`
 
 ## [Thinking] Smoke QA
 

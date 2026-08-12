@@ -3,6 +3,31 @@
 Canonical standard: `AUTONOMOUS_EXECUTION_STANDARD.md`.
 Extension contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 
+## Current repository state
+
+This is a historical phase plan. The phase descriptions below retain their
+original intended deliverables and exit criteria; they are not the current
+completion ledger.
+
+Repository evidence at baseline `21526a812e5ea4823c64815b84f6792f10b563dd`
+shows that the Phase 1 package and the following follow-up work are merged:
+
+- Phase 2 Codex isolated-fixture pilot — `docs/pilots/AES_CODEX_PILOT_RESULTS.md`;
+- Phase 3 artifact-freshness pilot — `docs/pilots/AES_ARTIFACT_PILOT_RESULTS.md`;
+- Phase 4 Analytics synthetic-fixture pilot and the single current project
+  extension — `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md`;
+- Phase 5 cross-project handoff pilot — `docs/pilots/AES_CROSS_PROJECT_PILOT_RESULTS.md`;
+- scoped advisory Phase 6 semantic validator —
+  `scripts/validate_autonomous_execution_record.py`;
+- compact bundle exposure for the projects recorded in `PROJECT_REGISTRY.md`.
+
+These are repository/merge facts only. They do not prove current ChatGPT UI
+sync, external smoke execution, owner acceptance, production authorization,
+or deployment. No separate Codex extension was adopted: the canonical AES
+keeps the existing stricter Codex one-fix policy, and current applicability
+decisions are recorded in `PROJECT_REGISTRY.md` rather than inferred from
+this historical plan.
+
 ## Phase 1 — normative package (this task)
 
 Delivers: canonical standard, state model, status namespaces, declarative

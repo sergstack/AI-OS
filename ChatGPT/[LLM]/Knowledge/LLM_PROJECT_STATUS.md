@@ -1,7 +1,7 @@
 # [LLM] Project Status
 
-status: minor fix
-last_reviewed: 2026-07-07
+status: controlled legacy eval debt
+last_reviewed: 2026-08-12
 current score: 8.6/10
 
 ## Files present
@@ -49,10 +49,14 @@ current score: 8.6/10
 - No production automation or CI is defined here.
 - Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
 - Communication Pack templates are candidate / ready for human review, not production reporting automation.
+- Reusable prompt entries are legacy/unversioned and have no recorded eval or
+  owner-acceptance evidence. Priority migration debt is listed in
+  `PROMPT_REGISTRY.md`; no eval pass is inferred.
 
 ## Next fix
 
-- Keep README aligned with actual Knowledge files after future additions.
+- Migrate priority reusable prompts to identifiable candidate revisions and run
+  risk-appropriate evals before any new activation decision.
 
 ## Acceptance checklist
 
