@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:caeb2f3328c7a096060187c733cd5f3946d9084ffaf6242bc81f4f3e4111fd8e
+- source_fingerprint: sha256:6b08d79b015a505b2b58ca72b9d075eb77e58e831713de78e504d6cd129758e1
 
 ---
 
@@ -112,7 +112,7 @@ canonical standard is in scope here.
 ## From: `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
 
 # [LLM] Project Status
-status: minor fix
+status: controlled legacy eval debt
 ## Files present
 - `PROJECT_INSTRUCTIONS.md`
 - `README.md`
@@ -147,8 +147,9 @@ status: minor fix
 - No production automation or CI is defined here.
 - Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
 - Communication Pack templates are candidate / ready for human review, not production reporting automation.
+- Reusable prompt entries are legacy/unversioned and have no recorded eval or owner-acceptance evidence. Priority migration debt is listed in `PROMPT_REGISTRY.md`; no eval pass is inferred.
 ## Next fix
-- Keep README aligned with actual Knowledge files after future additions.
+- Migrate priority reusable prompts to identifiable candidate revisions and run risk-appropriate evals before any new activation decision.
 ## Acceptance checklist
 - [x] README matches actual Knowledge files
 - [x] prompt registry exists

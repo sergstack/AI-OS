@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - generated_date: 2026-07-31
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:463258cb57d6923682a0f7361099cf180f0a8b5b0e558cca1fe272dba1ecee27
+- source_fingerprint: sha256:8c2bb3871cf5b7c3cf69f398f4d80d08dda1943e1bf866a306397c91b6aa1109
 
 ---
 
@@ -84,6 +84,15 @@ selection → corpus → source gate → verified/normalized source → traceabl
 ```
 
 After work, record coverage, request/artifact/Judge status, blocker, owner action, next resumable stage, observed execution status, and production status.
+
+## AES applicability
+
+Canonical execution mechanics come only from repo-root
+`AUTONOMOUS_EXECUTION_STANDARD.md`: requirements, defects, corrective
+iterations, acceptance, freshness, and external authority remain separate.
+Thinkers OS owns only its corpus, provenance, artifact, Judge/Revisor, and
+bounded-export semantics. No separate Thinkers OS AES extension is currently
+required, and this reference is not execution or pilot evidence.
 
 ## Safety
 

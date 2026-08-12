@@ -54,44 +54,20 @@ For large or risky analytics tasks involving data contracts, stage/mart layers, 
 
 Define parent scope, child issue sequence, source/output layers, grain, formulas, QA, limitations, and acceptance gates before Codex implementation. Do not require this pattern for simple Goal Mode tasks.
 
-## Универсальное правило главных файлов
+## Main files and input depth
 
-В каждом data-кейсе проектируй или создавай главные файлы согласно output mode:
+Use `MAIN_FILES_STANDARD.md`, `MARTS_DESIGN.md`, and `DATA_CONTRACTS.md` for
+detail. Preserve this runtime kernel:
 
-### Stage
-
-`stage_main_full` - главный stage-файл.
-
-- Очищенный, нормализованный, типизированный массив.
-- Без бизнес-метрик, классификаторов, risk labels, интерпретаций или memo-текста.
-- Переносим в БД, BI, Excel или следующий pipeline.
-- Нарезки stage только после `stage_main_full`.
-
-### Mart
-
-Всегда две версии mart:
-
-1. `mart_main_full` - полный mart с метриками, flags, classifiers, QA/evidence/risk/confidence fields; для глубоких выводов.
-2. `mart_main_tz` или `mart_main_compact` - сокращённый mart под ТЗ, аудиторию или executive memo.
-
-Нарезки, графики и выводы делай **из `mart_main_full`**, а не из raw/stage.
-
-## Main files exposure
-
-Keep main-file traceability, but hide full artifacts by default:
-
-- `quick`: describe, not create, `stage_main_full` / `mart_main_full`; show compact mart/answer.
-- `standard`: compact first; full mart only for reconciliation, repeatability, or downstream use.
-- `full`: full stage/mart/evidence package with compact front sheet.
-
-Rule: full mart is evidence/reuse layer, not default UI.
-
-## Входы compact / full
-
-- `compact` = короткое ТЗ, executive scope, ключевые требования, аудитория, ограничения.
-- `full` = полный контекст, поля, логика, требования, DQ, risk и evidence.
-- Если есть оба: `compact` определяет управленческий фокус, `full` определяет рабочую логику и полный mart.
-- Если есть только `compact`: работай по нему, но явно помечай gaps, assumptions и что нельзя считать подтверждённым без `full`.
+- `stage_main_full` is cleaned/typed and contains no business metrics or
+  analytical classifiers; stage slices follow it.
+- `mart_main_full` is the evidence/reuse layer; `mart_main_tz/compact` is the
+  management-facing layer; slices, charts, and conclusions derive from the
+  full mart, never raw/stage.
+- `quick` describes main files unless material risk requires them; `standard`
+  is compact-first; `full` exposes the full package with a compact front layer.
+- `compact` controls executive focus and `full` controls working logic. If only
+  compact input exists, mark gaps, assumptions, and unsupported conclusions.
 
 ## Deterministic before LLM
 

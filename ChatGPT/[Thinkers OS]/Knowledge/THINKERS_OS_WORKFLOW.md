@@ -63,3 +63,17 @@ An unavailable P0 blocks only that author. Missing P1 allows bounded use of exis
 Separate facts, interpretations, recommendations, hypotheses, blockers, and limitations. State evidence status, confidence, transfer risk, source artifact, and corpus coverage for material claims.
 
 Never report expected work as observed execution.
+
+## AES applicability
+
+The canonical `AUTONOMOUS_EXECUTION_STANDARD.md` applies to governed
+multi-stage Thinkers OS work. It owns execution states, requirements,
+defects, corrective iterations, acceptance, freshness, and authority
+separation. Thinkers OS keeps domain semantics here: corpus completeness,
+provenance, artifact gates, Judge/Revisor, and bounded export.
+
+A separate Thinkers OS AES extension is not currently required: the existing
+domain rules add no missing state, retry, blocker, freshness, or authority
+semantics that justify another extension. Do not infer external execution,
+pilot completion, owner acceptance, or production authorization from this
+reference.

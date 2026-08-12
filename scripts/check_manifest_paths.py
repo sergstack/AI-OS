@@ -10,19 +10,16 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-EXPECTED_PROJECTS = {
-    "[AI OS]": "ChatGPT/[AI OS]",
-    "[Thinking]": "ChatGPT/[Thinking]",
-    "[Analytics]": "ChatGPT/[Analytics]",
-    "[LLM]": "ChatGPT/[LLM]",
-    "[Codex]": "ChatGPT/[Codex]",
-    "[Inbox Router]": "ChatGPT/[Inbox Router]",
-    "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
+PROJECT_ROW_PATTERN = re.compile(
+    r"^\| `(?P<project>\[[^`]+\])` \| `(?P<path>ChatGPT/\[[^`]+\])` \|",
+    re.MULTILINE,
+)
+AES_APPLICABILITY_VALUES = {
+    "applicable",
+    "thin_applicability",
+    "not_applicable",
+    "requires_owner_decision",
 }
-EXPECTED_PROJECT_INSTRUCTIONS = {
-    f"{path}/PROJECT_INSTRUCTIONS.md" for path in EXPECTED_PROJECTS.values()
-}
-EXPECTED_REPO_PATHS = list(EXPECTED_PROJECTS.values()) + ["Codex APP"]
 LEGACY_PATH_PATTERNS = [
     (re.compile(r"(?<!ChatGPT/)\[AI OS\]/Project"), "[AI OS]/Project"),
     (re.compile(r"(?<!ChatGPT/)\[AI OS\]/Knowledge"), "[AI OS]/Knowledge"),
@@ -80,6 +77,33 @@ def read_text(root: Path, rel: str) -> str | None:
 
 def contains_all(text: str, values: list[str]) -> bool:
     return all(value in text for value in values)
+
+
+def markdown_section(text: str, heading: str) -> str:
+    if heading not in text:
+        return ""
+    tail = text.split(heading, 1)[1]
+    return tail.split("\n## ", 1)[0]
+
+
+def registered_projects(text: str) -> dict[str, str]:
+    section = markdown_section(text, "## ChatGPT Projects")
+    return {
+        match.group("project"): match.group("path")
+        for match in PROJECT_ROW_PATTERN.finditer(section)
+    }
+
+
+def aes_applicability_rows(text: str) -> dict[str, list[str]]:
+    section = markdown_section(text, "## AES Applicability")
+    rows: dict[str, list[str]] = {}
+    for line in section.splitlines():
+        if not line.startswith("| `["):
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) == 9:
+            rows[cells[0].strip("`")] = cells
+    return rows
 
 
 def path_exists(root: Path, rel: str) -> bool:
@@ -211,7 +235,7 @@ def check_upload_guide(root: Path) -> list[CheckResult]:
     return results
 
 
-def check_repo_paths(root: Path) -> list[CheckResult]:
+def check_repo_paths(root: Path, projects: dict[str, str]) -> list[CheckResult]:
     group = "Repo Paths"
     rel = "REPO_PATHS.md"
     text = read_text(root, rel)
@@ -229,7 +253,7 @@ def check_repo_paths(root: Path) -> list[CheckResult]:
                 suggested_fix=f"document {placeholder} in REPO_PATHS.md",
             )
         )
-    for canonical in EXPECTED_REPO_PATHS:
+    for canonical in [*projects.values(), "Codex APP"]:
         results.append(
             result(
                 group,
@@ -243,14 +267,24 @@ def check_repo_paths(root: Path) -> list[CheckResult]:
     return results
 
 
-def check_project_registry(root: Path) -> list[CheckResult]:
+def check_project_registry(root: Path, projects: dict[str, str]) -> list[CheckResult]:
     group = "Project Registry"
     rel = "PROJECT_REGISTRY.md"
     text = read_text(root, rel)
     if text is None:
         return [result(group, False, "file must exist", rel, suggested_fix="add PROJECT_REGISTRY.md")]
     results = [result(group, True, "file exists", rel)]
-    for project, path in EXPECTED_PROJECTS.items():
+    if not projects:
+        results.append(
+            result(
+                group,
+                False,
+                "ChatGPT Projects table must contain at least one parseable project",
+                rel,
+                suggested_fix="restore the canonical ChatGPT Projects table",
+            )
+        )
+    for project, path in projects.items():
         instruction = f"{path}/PROJECT_INSTRUCTIONS.md"
         results.append(
             result(
@@ -281,6 +315,258 @@ def check_project_registry(root: Path) -> list[CheckResult]:
             rel,
             value="Codex APP",
             suggested_fix="mark Codex APP as an execution layer, not a ChatGPT Project",
+        )
+    )
+    return results
+
+
+def check_cross_project_governance(root: Path, projects: dict[str, str]) -> list[CheckResult]:
+    group = "Cross-Project Governance Coverage"
+    definitions = {
+        "CHATGPT_PROJECT_SYNC_CHECKLIST.md": None,
+        "PILOT_CASES.md": "Pilot",
+        "SMOKE_QA_REFRESH_PLAN.md": "Smoke QA",
+    }
+    results: list[CheckResult] = []
+    for rel, section_suffix in definitions.items():
+        text = read_text(root, rel)
+        if text is None:
+            results.append(result(group, False, "definition file must exist", rel))
+            continue
+        for project in projects:
+            row_present = f"| `{project}` |" in text
+            section_present = True
+            if section_suffix:
+                section_present = f"## {project} {section_suffix}" in text
+            results.append(
+                result(
+                    group,
+                    row_present and section_present,
+                    "governed project must have definition coverage",
+                    rel,
+                    value=project,
+                    suggested_fix=(
+                        f"add {project} definition coverage without claiming execution evidence"
+                    ),
+                )
+            )
+    return results
+
+
+def check_aes_applicability(root: Path, projects: dict[str, str]) -> list[CheckResult]:
+    group = "AES Applicability"
+    rel = "PROJECT_REGISTRY.md"
+    text = read_text(root, rel)
+    if text is None:
+        return [result(group, False, "file must exist", rel)]
+    rows = aes_applicability_rows(text)
+    results: list[CheckResult] = []
+    canonical = read_text(root, "AUTONOMOUS_EXECUTION_STANDARD.md") or ""
+    results.append(
+        result(
+            group,
+            "Canonical owner: `[AI OS]`" in canonical,
+            "canonical AES owner must remain [AI OS]",
+            "AUTONOMOUS_EXECUTION_STANDARD.md",
+        )
+    )
+    for project in projects:
+        cells = rows.get(project)
+        if cells is None:
+            results.append(
+                result(
+                    group,
+                    False,
+                    "governed project must have an AES applicability decision",
+                    rel,
+                    value=project,
+                    suggested_fix=f"add an evidence-backed AES applicability row for {project}",
+                )
+            )
+            continue
+        applicability = cells[1]
+        canonical_reference = cells[2].strip("`")
+        extension_required = cells[3]
+        extension = cells[4].strip("`")
+        bundle = cells[5].strip("`")
+        authority = cells[8]
+        results.append(
+            result(
+                group,
+                applicability in AES_APPLICABILITY_VALUES,
+                "AES applicability value must use the governed vocabulary",
+                rel,
+                value=f"{project}: {applicability}",
+            )
+        )
+        results.append(
+            result(
+                group,
+                canonical_reference == "AUTONOMOUS_EXECUTION_STANDARD.md",
+                "applicable decision must reference the canonical AES source",
+                rel,
+                value=f"{project}: {canonical_reference}",
+            )
+        )
+        extension_ok = (
+            extension_required == "no" and extension == "not_required"
+        ) or (
+            extension_required == "yes" and path_exists(root, extension)
+        )
+        results.append(
+            result(
+                group,
+                extension_ok,
+                "extension decision must be explicit and referenced extension must exist",
+                extension if extension_required == "yes" else rel,
+                value=f"{project}: required={extension_required}; extension={extension}",
+            )
+        )
+        bundle_required = applicability in {"applicable", "thin_applicability"}
+        bundle_text = (read_text(root, bundle) or "") if bundle_required else ""
+        bundle_ok = (
+            path_exists(root, bundle)
+            and "AUTONOMOUS_EXECUTION_STANDARD.md" in bundle_text
+        ) if bundle_required else bundle == "not_required"
+        results.append(
+            result(
+                group,
+                bundle_ok,
+                "bundle exposure must match the AES applicability decision",
+                bundle if bundle_required else rel,
+                value=project,
+            )
+        )
+        results.append(
+            result(
+                group,
+                "no_external_authority" in authority,
+                "AES applicability must not imply external authority",
+                rel,
+                value=f"{project}: {authority}",
+            )
+        )
+    return results
+
+
+def check_validator_topology_alignment(root: Path, projects: dict[str, str]) -> list[CheckResult]:
+    group = "Validator Topology Alignment"
+    expected_paths = set(projects.values())
+    expected_knowledge_paths = {f"{path}/Knowledge" for path in expected_paths}
+
+    bundle_rel = "scripts/check_knowledge_bundles.py"
+    bundle_text = read_text(root, bundle_rel) or ""
+    bundle_paths = {
+        match.group(1)
+        for match in re.finditer(r'Path\("(ChatGPT/\[[^"\n]+\])"\)', bundle_text)
+    }
+
+    index_rel = "scripts/check_index_coverage.py"
+    index_text = read_text(root, index_rel) or ""
+    index_paths = set(
+        re.findall(r'"(ChatGPT/\[[^"\n]+\]/Knowledge)"', index_text)
+    )
+
+    return [
+        result(
+            group,
+            bundle_paths == expected_paths,
+            "Knowledge bundle validator project list must match canonical topology",
+            bundle_rel,
+            value=(
+                f"missing={sorted(expected_paths - bundle_paths)}; "
+                f"extra={sorted(bundle_paths - expected_paths)}"
+            ),
+            suggested_fix="align PROJECTS with PROJECT_REGISTRY.md",
+        ),
+        result(
+            group,
+            index_paths == expected_knowledge_paths,
+            "Knowledge index validator project list must match canonical topology",
+            index_rel,
+            value=(
+                f"missing={sorted(expected_knowledge_paths - index_paths)}; "
+                f"extra={sorted(index_paths - expected_knowledge_paths)}"
+            ),
+            suggested_fix="align CHECKS with PROJECT_REGISTRY.md",
+        ),
+    ]
+
+
+def check_llm_prompt_governance(root: Path) -> list[CheckResult]:
+    group = "LLM Prompt Governance"
+    registry_rel = "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md"
+    registry = read_text(root, registry_rel)
+    if registry is None:
+        return [result(group, False, "Prompt Registry must exist", registry_rel)]
+
+    required_columns = ["version", "eval_status", "acceptance_status", "eval_refs"]
+    priority_ids = {
+        "goal_to_codex_package",
+        "judge_review",
+        "eval_gate",
+        "context_package_builder",
+        "model_router",
+        "revisor_final",
+    }
+    rows: dict[str, list[str]] = {}
+    for line in registry.splitlines():
+        if not line.startswith("|") or line.startswith("|---") or "prompt_id" in line:
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if cells:
+            rows[cells[0]] = cells
+
+    normalized_registry = " ".join(registry.lower().split())
+    results = [
+        result(
+            group,
+            contains_all(registry, required_columns),
+            "Prompt Registry must expose version, eval, acceptance, and eval-reference state",
+            registry_rel,
+        ),
+        result(
+            group,
+            "new or materially revised reusable asset must receive an identifiable candidate version"
+            in normalized_registry,
+            "Prompt Registry must prevent uncontrolled activation of new or revised assets",
+            registry_rel,
+        ),
+    ]
+    for prompt_id in sorted(priority_ids):
+        cells = rows.get(prompt_id, [])
+        debt_explicit = len(cells) == 15 and cells[11:] == [
+            "unversioned",
+            "not_recorded",
+            "not_recorded",
+            "not_recorded",
+        ]
+        results.append(
+            result(
+                group,
+                debt_explicit,
+                "priority legacy prompt eval debt must be explicit without fabricated evidence",
+                registry_rel,
+                value=prompt_id,
+            )
+        )
+
+    root_library_rel = "ChatGPT/Prompt Library/README.md"
+    root_library = read_text(root, root_library_rel) or ""
+    results.append(
+        result(
+            group,
+            contains_all(
+                root_library,
+                [
+                    "legacy_reference",
+                    "special_non_registry_surface",
+                    registry_rel,
+                    "is not an active Prompt Registry",
+                ],
+            ),
+            "root Prompt Library must declare legacy role and canonical [LLM] owner",
+            root_library_rel,
         )
     )
     return results
@@ -325,11 +611,14 @@ def check_master_status(root: Path) -> list[CheckResult]:
     return results
 
 
-def check_project_instruction_coverage(root: Path) -> list[CheckResult]:
+def check_project_instruction_coverage(root: Path, projects: dict[str, str]) -> list[CheckResult]:
     group = "Project Instructions Coverage"
     found = {str(path.relative_to(root)) for path in root.rglob("PROJECT_INSTRUCTIONS.md")}
+    expected_project_instructions = {
+        f"{path}/PROJECT_INSTRUCTIONS.md" for path in projects.values()
+    }
     results: list[CheckResult] = []
-    for expected in sorted(EXPECTED_PROJECT_INSTRUCTIONS):
+    for expected in sorted(expected_project_instructions):
         results.append(
             result(
                 group,
@@ -340,29 +629,18 @@ def check_project_instruction_coverage(root: Path) -> list[CheckResult]:
                 suggested_fix=f"add or restore {expected}",
             )
         )
-    extras = sorted(found - EXPECTED_PROJECT_INSTRUCTIONS)
+    extras = sorted(found - expected_project_instructions)
     for extra in extras:
-        documented = extra.startswith("ChatGPT/")
         results.append(
             result(
                 group,
-                documented,
-                "extra PROJECT_INSTRUCTIONS.md must be under ChatGPT/ or documented in PROJECT_REGISTRY.md",
+                False,
+                "every ChatGPT PROJECT_INSTRUCTIONS.md must be registered in PROJECT_REGISTRY.md",
                 extra,
                 value=extra,
-                suggested_fix="move under ChatGPT/ or document it in PROJECT_REGISTRY.md",
+                suggested_fix="register the governed project or remove the unintended project package",
             )
         )
-    results.append(
-        result(
-            group,
-            len(found) >= 6,
-            "expected PROJECT_INSTRUCTIONS.md count must be at least 6",
-            "PROJECT_INSTRUCTIONS.md",
-            value=str(len(found)),
-            suggested_fix="restore missing ChatGPT project instructions files",
-        )
-    )
     return results
 
 
@@ -422,14 +700,20 @@ def print_group(name: str, results: list[CheckResult]) -> tuple[int, int]:
 
 def main() -> int:
     root = repo_root()
+    registry_text = read_text(root, "PROJECT_REGISTRY.md") or ""
+    projects = registered_projects(registry_text)
     groups = [
         ("Manifest JSON", check_manifest_json(root)),
         ("Manifest Markdown", check_manifest_markdown(root)),
         ("Upload Guide", check_upload_guide(root)),
-        ("Repo Paths", check_repo_paths(root)),
-        ("Project Registry", check_project_registry(root)),
+        ("Repo Paths", check_repo_paths(root, projects)),
+        ("Project Registry", check_project_registry(root, projects)),
+        ("Cross-Project Governance Coverage", check_cross_project_governance(root, projects)),
+        ("AES Applicability", check_aes_applicability(root, projects)),
+        ("Validator Topology Alignment", check_validator_topology_alignment(root, projects)),
+        ("LLM Prompt Governance", check_llm_prompt_governance(root)),
         ("Master Status", check_master_status(root)),
-        ("Project Instructions Coverage", check_project_instruction_coverage(root)),
+        ("Project Instructions Coverage", check_project_instruction_coverage(root, projects)),
         ("Legacy Path Drift", check_legacy_path_drift(root)),
     ]
 

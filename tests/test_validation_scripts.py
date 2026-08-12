@@ -342,6 +342,138 @@ def test_index_coverage_checks_all_chatgpt_project_knowledge_dirs() -> None:
     }
 
 
+def test_manifest_validator_derives_all_registered_projects() -> None:
+    module = load_script_module("check_manifest_paths.py")
+    registry = (REPO_ROOT / "PROJECT_REGISTRY.md").read_text(encoding="utf-8")
+
+    projects = module.registered_projects(registry)
+
+    assert projects == {
+        "[AI OS]": "ChatGPT/[AI OS]",
+        "[Thinking]": "ChatGPT/[Thinking]",
+        "[Analytics]": "ChatGPT/[Analytics]",
+        "[LLM]": "ChatGPT/[LLM]",
+        "[Codex]": "ChatGPT/[Codex]",
+        "[Inbox Router]": "ChatGPT/[Inbox Router]",
+        "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
+    }
+
+
+def test_manifest_validator_current_cross_project_coverage_passes() -> None:
+    module = load_script_module("check_manifest_paths.py")
+    registry = (REPO_ROOT / "PROJECT_REGISTRY.md").read_text(encoding="utf-8")
+    projects = module.registered_projects(registry)
+
+    coverage = module.check_cross_project_governance(REPO_ROOT, projects)
+    applicability = module.check_aes_applicability(REPO_ROOT, projects)
+    alignment = module.check_validator_topology_alignment(REPO_ROOT, projects)
+
+    assert all(item.ok for item in coverage)
+    assert all(item.ok for item in applicability)
+    assert all(item.ok for item in alignment)
+
+
+def test_manifest_validator_detects_missing_project_definition(tmp_path: Path) -> None:
+    module = load_script_module("check_manifest_paths.py")
+    projects = {
+        "[AI OS]": "ChatGPT/[AI OS]",
+        "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
+    }
+    for rel in (
+        "CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        "PILOT_CASES.md",
+        "SMOKE_QA_REFRESH_PLAN.md",
+    ):
+        source = (REPO_ROOT / rel).read_text(encoding="utf-8")
+        (tmp_path / rel).write_text(
+            "\n".join(line for line in source.splitlines() if "[Thinkers OS]" not in line),
+            encoding="utf-8",
+        )
+
+    results = module.check_cross_project_governance(tmp_path, projects)
+
+    failures = [item for item in results if not item.ok]
+    assert failures
+    assert all(item.value == "[Thinkers OS]" for item in failures)
+
+
+def test_manifest_validator_detects_specialized_validator_topology_drift(tmp_path: Path) -> None:
+    module = load_script_module("check_manifest_paths.py")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    (scripts / "check_knowledge_bundles.py").write_text(
+        'PROJECTS = {"[AI OS]": Path("ChatGPT/[AI OS]")}\n',
+        encoding="utf-8",
+    )
+    (scripts / "check_index_coverage.py").write_text(
+        'CHECKS = [("ChatGPT/[AI OS]/Knowledge", [])]\n',
+        encoding="utf-8",
+    )
+    projects = {
+        "[AI OS]": "ChatGPT/[AI OS]",
+        "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
+    }
+
+    results = module.check_validator_topology_alignment(tmp_path, projects)
+
+    assert len(results) == 2
+    assert all(not item.ok for item in results)
+    assert all("Thinkers OS" in item.value for item in results)
+
+
+def test_manifest_validator_detects_unregistered_project_instructions(tmp_path: Path) -> None:
+    module = load_script_module("check_manifest_paths.py")
+    registered = tmp_path / "ChatGPT" / "[AI OS]"
+    unregistered = tmp_path / "ChatGPT" / "[New Project]"
+    registered.mkdir(parents=True)
+    unregistered.mkdir(parents=True)
+    (registered / "PROJECT_INSTRUCTIONS.md").write_text("Registered.\n", encoding="utf-8")
+    (unregistered / "PROJECT_INSTRUCTIONS.md").write_text("Unregistered.\n", encoding="utf-8")
+
+    results = module.check_project_instruction_coverage(
+        tmp_path,
+        {"[AI OS]": "ChatGPT/[AI OS]"},
+    )
+
+    failures = [item for item in results if not item.ok]
+    assert len(failures) == 1
+    assert failures[0].path == "ChatGPT/[New Project]/PROJECT_INSTRUCTIONS.md"
+
+
+def test_manifest_validator_current_llm_prompt_governance_passes() -> None:
+    module = load_script_module("check_manifest_paths.py")
+
+    results = module.check_llm_prompt_governance(REPO_ROOT)
+
+    assert all(item.ok for item in results)
+
+
+def test_manifest_validator_detects_unrecorded_priority_prompt_debt(tmp_path: Path) -> None:
+    module = load_script_module("check_manifest_paths.py")
+    registry_rel = Path("ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md")
+    root_library_rel = Path("ChatGPT/Prompt Library/README.md")
+    (tmp_path / registry_rel.parent).mkdir(parents=True)
+    (tmp_path / root_library_rel.parent).mkdir(parents=True)
+    registry = (REPO_ROOT / registry_rel).read_text(encoding="utf-8")
+    (tmp_path / registry_rel).write_text(
+        registry.replace(
+            "| judge_review | judge |",
+            "| judge_review_missing | judge |",
+            1,
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / root_library_rel).write_text(
+        (REPO_ROOT / root_library_rel).read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+
+    results = module.check_llm_prompt_governance(tmp_path)
+
+    failures = [item for item in results if not item.ok]
+    assert any(item.value == "judge_review" for item in failures)
+
+
 def test_knowledge_bundles_detects_missing_referenced_source(tmp_path: Path) -> None:
     module = load_script_module("check_knowledge_bundles.py")
     root, project_dir = make_bundle_project(tmp_path)
