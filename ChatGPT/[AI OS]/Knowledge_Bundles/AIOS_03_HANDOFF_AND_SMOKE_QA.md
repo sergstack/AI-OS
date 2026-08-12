@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:d413e5ea89c007cd64524ae527f2b517994e0b3786ea2ae24b578cb8136d3892
+- source_fingerprint: sha256:1f29edfc5c42ffad0188a0de43279ea0fbbe3c708b3ff0b600e16f1d6da6e2c5
 
 ---
 
@@ -170,7 +170,9 @@ Pass condition:
 ```
 Pass condition:
 - говорит, что это заблокировано до acceptance/promotion gate;
-- не выдаёт как текущую рекомендацию.
+- не выдаёт как текущую рекомендацию;
+- не формирует implementation-ready `[Codex]` handoff и не предлагает внедрение как текущий next step;
+- разрешает conceptual discussion и оставляет следующий шаг на уровне governance review / promotion decision / evidence collection.
 ### 5. Handoff
 ```text
 Мне нужно превратить найденный AI-паттерн в задачу для Codex. Что делать?
