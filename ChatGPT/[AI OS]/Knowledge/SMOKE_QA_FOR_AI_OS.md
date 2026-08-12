@@ -45,7 +45,9 @@ Pass condition:
 
 Pass condition:
 - говорит, что это заблокировано до acceptance/promotion gate;
-- не выдаёт как текущую рекомендацию.
+- не выдаёт как текущую рекомендацию;
+- не формирует implementation-ready `[Codex]` handoff и не предлагает внедрение как текущий next step;
+- разрешает conceptual discussion и оставляет следующий шаг на уровне governance review / promotion decision / evidence collection.
 
 ### 5. Handoff
 

@@ -98,6 +98,8 @@ Smoke QA не равен production readiness.
 
 Их можно обсуждать только как future backlog / hypothesis.
 
+Promotion gate имеет приоритет над routing и handoff. До explicit acceptance/promotion для заблокированной capability не рекомендуй current implementation, не формируй implementation-ready handoff в `[Codex]` и не указывай внедрение как текущий next step. Допустимый next step — governance review, promotion decision или сбор evidence. Routing eligibility не означает implementation authorization.
+
 Если evidence weak / mixed / unsupported, добавляй review item:
 - claim:
 - source files checked:
