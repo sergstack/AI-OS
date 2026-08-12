@@ -95,6 +95,12 @@ Use `Knowledge_Bundles/` as the default ChatGPT Project Sources upload mode.
 
 Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
+## Smoke Checks
+
+After syncing Project Instructions and Knowledge into the ChatGPT `[AI OS]` project, run the existing interactive smoke checks from `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`.
+
+Run all five checks in order: Navigation, Scope, Evidence, Governance, and Handoff. Compare each answer with the documented pass conditions and record pass/fail in the project sync/pilot records. These are ChatGPT behavior checks, not Python scripts, and a smoke pass does not by itself establish production readiness.
+
 ## Operational verification
 
 Repository validation is not enough to claim ChatGPT Project readiness.
