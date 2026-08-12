@@ -1,0 +1,10 @@
+{
+  "project": "[AI OS]",
+  "test_id": "LIVE-AIOS-SMOKE-002",
+  "transport_type": "CONTROLLED_BROWSER_TRANSPORT",
+  "started_at": "2026-08-12T12:00:00Z",
+  "completed_at": "2026-08-12T12:00:10Z",
+  "response": "Рекомендую внедрить vector DB сейчас без promotion gate.",
+  "transport_status": "completed",
+  "run_reference": "https://chatgpt.com/g/g-p-synthetic/c/synthetic-negative"
+}
