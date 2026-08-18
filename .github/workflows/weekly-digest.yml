@@ -9,6 +9,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: weekly-audit-digest
+  cancel-in-progress: false
+
 jobs:
   digest:
     runs-on: ubuntu-latest
@@ -35,7 +39,7 @@ jobs:
             fi
             echo 'RESULTS_EOF'
           } >> "$GITHUB_OUTPUT"
-      - name: Open digest issue
+      - name: Update rolling digest issue
         env:
           GH_TOKEN: ${{ github.token }}
           CHECKS: ${{ steps.checks.outputs.results }}
@@ -86,8 +90,37 @@ jobs:
           - If any check is FAIL, open or assign a fix issue.
           BODY
 
-          gh issue create --repo "$GITHUB_REPOSITORY" \
-            --title "Weekly AI-OS digest $today" \
-            --label ai-os \
-            --assignee sergstack \
-            --body-file "$body_file"
+          gh label create weekly-digest --repo "$GITHUB_REPOSITORY" \
+            --color 1D76DB \
+            --description "Automated rolling weekly audit digest" \
+            --force
+
+          digest_issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --label weekly-digest --limit 100 \
+            --json number \
+            --jq 'max_by(.number).number // empty')
+
+          if [ -z "$digest_issue" ]; then
+            digest_issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+              --limit 100 \
+              --json number,title \
+              --jq '[.[] | select(.title | startswith("Weekly AI-OS digest"))] | max_by(.number).number // empty')
+          fi
+
+          if [ -n "$digest_issue" ]; then
+            echo "Updating rolling digest issue #$digest_issue"
+            gh issue edit "$digest_issue" --repo "$GITHUB_REPOSITORY" \
+              --title "Weekly AI-OS digest — current as of $today" \
+              --add-label ai-os \
+              --add-label weekly-digest \
+              --add-assignee sergstack \
+              --body-file "$body_file"
+          else
+            echo "Creating rolling digest issue"
+            gh issue create --repo "$GITHUB_REPOSITORY" \
+              --title "Weekly AI-OS digest — current as of $today" \
+              --label ai-os \
+              --label weekly-digest \
+              --assignee sergstack \
+              --body-file "$body_file"
+          fi
