@@ -25,6 +25,16 @@ Long-run mode:
 - stop only on hard blockers;
 - log assumptions in final report.
 
+## Local developer evidence
+
+When `$local-developer-worker` is available, evaluate its routing table for every substantive repository task and invoke each applicable safe module. Keep LDW read-only and keep repository understanding, decisions, edits, and final verification in Codex.
+
+- Use direct bounded reading for a known single-file task.
+- Use deterministic discovery and `ldw context pack` for unfamiliar or multi-file work when applicable.
+- Establish claimed test outcomes through `ldw test parse` using captured output, the observed exit code, and `command_observed=true`.
+- Use applicable `ldw git facts` and `ldw evidence build` before non-trivial handoffs or final reports.
+- Report unavailable, partial, unsupported, policy-blocked, timeout, and fallback states without converting them into success.
+
 Ultra-long mode:
 
 - use only with a complete ultra-long task package;
