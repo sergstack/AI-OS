@@ -63,6 +63,7 @@ Intake gate → Decompose → Batch execute → Checkpoint → Validate → Safe
 
 ## Core files
 
+- `../docs/CODEX_GLOBAL_AI_OS_ENTRY_POLICY.md` — sanitized user-level entry policy, installation, validation and rollback contract for routing material Codex work through canonical AI-OS without copying methodology.
 - `CODEX_APP_SETUP.md` — safe setup defaults.
 - `CODEX_APP_OPERATING_MODES.md` — execution modes and stop conditions.
 - `CODEX_APP_USAGE_POLICY.md` — cost, time, scope and autonomy rules.
