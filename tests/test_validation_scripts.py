@@ -486,16 +486,19 @@ def test_knowledge_bundles_detects_missing_referenced_source(tmp_path: Path) -> 
     assert report.source_paths is False
 
 
-def test_merge_gate_owner_tier_fails_closed() -> None:
+def test_merge_gate_owner_tier_stops_auto_merge_without_false_failure() -> None:
     workflow = (REPO_ROOT / ".github" / "workflows" / "auto-merge.yml").read_text(
         encoding="utf-8"
     )
 
     assert "gh pr merge \"$PR_URL\" --disable-auto" in workflow
+    assert "gh pr edit \"$PR_URL\" --add-label \"needs-human-review\"" in workflow
     assert "gh pr review \"$PR_URL\" --comment" in workflow
     assert "--request-changes" not in workflow
-    assert "::error::Protected paths changed" in workflow
-    assert "exit 1" in workflow
+    assert "::notice::Protected paths changed" in workflow
+    assert "exit 1" not in workflow
+    assert "issues: write" in workflow
+    assert "--remove-label \"needs-human-review\"" in workflow
 
 
 def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
