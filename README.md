@@ -1,77 +1,68 @@
 # AI-OS
 
-Repository for ChatGPT project settings, routing docs, Codex execution contracts, and governance checks.
+[![Docs Safety](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml/badge.svg)](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml)
 
-## Default Workflow
+AI-OS is a governed operating system for ChatGPT project routing, Codex
+execution, analytical and LLM workflows, and Stream Deck controls. GitHub is
+the live source of truth; ChatGPT Project Knowledge is a compact baseline for
+bootstrapping and formal sync.
 
-```text
-GOAL -> route -> infer scope -> Codex execution package -> checks -> PR -> ChatGPT reads GitHub for fresh state
+> [!IMPORTANT]
+> This repository is not production-authorized and has no open-source license.
+> See [Current Status](CURRENT_STATUS.md) and [Rights Posture](docs/rights_posture.md).
+
+## How it works
+
+```mermaid
+flowchart LR
+    Goal["Goal or raw input"] --> Router["Inbox Router"]
+    Router --> Project["Owner project"]
+    Project --> Codex["Codex execution package"]
+    Codex --> Checks["Checks and acceptance"]
+    Checks --> PR["Owner-reviewed PR"]
+    PR --> GitHub["GitHub source of truth"]
+    GitHub --> Sync["Manual ChatGPT Project sync"]
 ```
 
-Goal Mode is the default user-facing workflow. Sergey can provide a broad goal; Router, AI OS, LLM, or Codex should infer the route, scope, checks, rollback, and acceptance criteria before implementation. Future issues may reference `Goal Mode Contract` from `GOAL_MODE.md` by name.
+Goal Mode is the default user-facing workflow. A broad goal is enough: the
+responsible project should infer a bounded route, scope, checks, rollback, and
+acceptance criteria. Strict task packages remain available for high-risk,
+already-scoped, or explicitly requested work.
 
-Atomic task packages remain available as advanced/strict mode, but they are not the default user burden. GitHub is the live source of truth; ChatGPT Project Knowledge is a cached baseline for Project bootstrapping and formal sync.
+## Repository map
 
-Run sync readiness checks before opening a PR:
+| Area | Purpose |
+|---|---|
+| [`ChatGPT/[Inbox Router]`](ChatGPT/%5BInbox%20Router%5D) | Turns raw or mixed input into a bounded destination or handoff. |
+| [`ChatGPT/[AI OS]`](ChatGPT/%5BAI%20OS%5D) | AI evidence, supported patterns, confidence, and governance. |
+| [`ChatGPT/[Thinking]`](ChatGPT/%5BThinking%5D) | Strategy, decisions, options, scenarios, risks, Judge, and Revisor work. |
+| [`ChatGPT/[Analytics]`](ChatGPT/%5BAnalytics%5D) | Deterministic analysis, metrics, reconciliation, and analytical QA. |
+| [`ChatGPT/[LLM]`](ChatGPT/%5BLLM%5D) | Prompts, model routing, LLM workflows, and model-quality gates. |
+| [`ChatGPT/[Codex]`](ChatGPT/%5BCodex%5D) | Repository implementation framing, tests, and release handoffs. |
+| [`ChatGPT/[Thinkers OS]`](ChatGPT/%5BThinkers%20OS%5D) | Thinker corpus, provenance, source intake, and synthesis maintenance. |
+| [`Codex APP`](Codex%20APP) | Long-running repository execution and local run contracts. |
+| [`StreamDeck`](StreamDeck) | Candidate dual-deck command surface, exports, QA, and rollback archive. |
+| [`scripts`](scripts) and [`tests`](tests) | Repository governance checks and regression coverage. |
+
+The complete architecture and navigation live in the
+[Documentation Index](docs/README.md) and [Repository Map](docs/REPOSITORY_MAP.md).
+
+## Quick start
+
+Requirements: Git and Python 3. The full test suite additionally requires
+`pytest`.
 
 ```bash
+git clone https://github.com/sergstack/AI-OS.git
+cd AI-OS
 python3 scripts/sync_aios.py
+python3 -m pytest tests/ -q
 ```
 
-This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
+`sync_aios.py` validates repository readiness and prints sync guidance. It does
+not upload files to ChatGPT or change external Project settings.
 
-See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, and `SYNC_CONTRACT.md`.
-
-## Autonomous Execution Standard
-
-`AUTONOMOUS_EXECUTION_STANDARD.md` is the canonical cross-project execution
-layer that connects requirements, validation, defect handling, corrective
-iterations, and terminal reporting into one closed loop, without replacing
-Goal Mode, routing, Codex autonomy, testing, reporting, Judge/Revisor,
-handoffs, Analytics methodology, or the merge/production gates above. See
-`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` for the project-extension
-interface and `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md` for phased
-adoption status.
-
-## Daily Use
-
-- Use ChatGPT Projects for reasoning, routing, analytics framing, prompts, and evidence.
-- Use Codex APP for repo/file execution, branches, checks, PRs, and local run reports.
-- GitHub remains the live source of truth.
-- ChatGPT Project Knowledge is a baseline/cache for upload and bootstrapping.
-- Codex APP execution must report checks, risks, rollback, and acceptance status.
-- Use `HANDOFF_STYLE_STANDARD.md` for cross-project handoff wording and required fields.
-- Use `Existing Script Controlled Refactor Standard` only when an existing working script or pipeline must be cleaned or refactored without behavior loss.
-
-See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
-
-## Review Model
-
-AI-OS uses solo-owner governance by default. The canonical active merge policy is
-`Merge Policy` in `GOAL_MODE.md`. PRs should include the checks run, risks or
-residual risks, rollback notes, and merge/gate status. Owner-side Merge Gate
-settings are checked with `docs/MERGE_GATE_OWNER_CHECKLIST.md`.
-
-Rights posture: this repository has no open-source license. See
-`docs/rights_posture.md`.
-
-## Goal Packs
-
-Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
-
-Use `PARENT_CHILD_ISSUE_GATE_STANDARD.md` only for complex or high-risk analytics / Codex work that needs sequenced child issues, dependency gates, PR gates, and final QA. Do not require parent/child issue decomposition for simple Goal Mode tasks.
-
-Use `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` only when an existing working script or pipeline needs cleanup/refactor while preserving behavior. The required order is baseline current behavior, define output contract, add safety tests, then clean/refactor and compare before/after output.
-
-## Governance Rule
-
-Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
-
-If a Project Instructions file grows beyond this limit, do not paste oversized instructions into ChatGPT Project Settings. Move supporting policies, examples, templates, checklists, and detailed workflows into `Knowledge/` files. Keep `PROJECT_INSTRUCTIONS.md` as the compact behavior kernel: routing, scope, evidence rules, output contract, and critical safety boundaries.
-
-## Validation
-
-Run before opening or merging documentation/configuration PRs:
+For documentation or configuration changes, run the canonical validation set:
 
 ```bash
 python3 scripts/check_project_instructions_length.py
@@ -79,51 +70,74 @@ python3 scripts/check_repo_public_safety.py
 python3 scripts/check_codex_goal_mode_defaults.py
 python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
+python3 scripts/check_index_coverage.py
 ```
 
-The public safety scan also checks tracked text files, including scripts, CSVs, workflow YAML, and docs, for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
+## Common workflows
 
-The Codex Goal Mode scan reports every remaining atomic-task-package wording in Codex-facing files and fails if any wording implies atomic task packages are required by default.
+| Goal | Route | Primary output |
+|---|---|---|
+| Evaluate a consequential decision | `[Thinking]` | Options, risks, recommendation, and revisit trigger |
+| Implement a bounded repository change | `[Codex]` → Codex APP | Scoped diff, observed checks, rollback, and PR |
+| Produce an analytical memo | `[Analytics]` → `[Codex]` | Python/SQL evidence, reviewed narrative, and QA record |
+| Assess an AI pattern or evidence claim | `[AI OS]` | Supported/unsupported claims, confidence, and governance action |
+| Maintain thinker sources or synthesis | `[Thinkers OS]` | Provenance-aware corpus or synthesis artifact |
 
-The manifest/path consistency scan checks that `MANIFEST.json` paths exist, upload guide paths use canonical repo paths, project registry paths match actual folders, and legacy path variants stay blocked.
+See [Goal Mode](GOAL_MODE.md), [Project Routing](docs/PROJECT_ROUTING.md),
+[Goal Packs](GOAL_PACKS.md), and the
+[Autonomous Execution Standard](AUTONOMOUS_EXECUTION_STANDARD.md) for the
+governing contracts.
 
-The Knowledge bundle scan checks compact `Knowledge_Bundles/` upload artifacts for source paths, upload counts, required sections, and unsafe content.
+## Knowledge and sync model
 
-## Knowledge Bundles
+Each ChatGPT project keeps granular source files in `Knowledge/` and compact
+upload artifacts in `Knowledge_Bundles/`. Use the bundle upload list by default;
+granular upload is an advanced/debug path. Do not upload both layers together
+unless diagnosing a sync issue.
 
-Use `Knowledge_Bundles/` as the default ChatGPT Project Sources upload mode.
+Every `PROJECT_INSTRUCTIONS.md` must remain at or below 8,000 characters.
+Supporting policies, templates, examples, and detailed workflows belong in
+`Knowledge/`.
 
-Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
+Repository checks cannot prove live ChatGPT configuration. Before any promotion:
 
-## Operational verification
+1. sync Project Instructions manually;
+2. upload the expected Knowledge bundles;
+3. run smoke QA;
+4. complete the required pilot;
+5. record evidence in
+   [ChatGPT Project Sync Checklist](CHATGPT_PROJECT_SYNC_CHECKLIST.md) and
+   [Pilot Cases](PILOT_CASES.md).
 
-Repository validation is not enough to claim ChatGPT Project readiness.
+## Governance and safety
 
-Before production promotion:
+- Solo-owner governance and the merge policy are defined in
+  [Goal Mode](GOAL_MODE.md).
+- Codex must work on a non-main branch, report observed checks and residual
+  risks, and must not manually merge pull requests.
+- Use the [Handoff Style Standard](HANDOFF_STYLE_STANDARD.md) for cross-project
+  transfers.
+- Use the [Controlled Refactor Standard](EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md)
+  when cleaning an existing working script without behavior loss.
+- Report vulnerabilities privately through the [Security Policy](SECURITY.md).
+- Public visibility does not grant reuse rights; read the
+  [Rights Posture](docs/rights_posture.md).
 
-1. Sync Project Instructions manually into ChatGPT Projects.
-2. Upload expected Knowledge files.
-3. Run smoke QA.
-4. Complete at least one pilot case.
-5. Record results in `CHATGPT_PROJECT_SYNC_CHECKLIST.md` and `PILOT_CASES.md`.
+## Status and limitations
 
-## Analytical Memo Factory
+The repository contains validated project packages, governance checks,
+candidate operational artifacts, and bounded pilot evidence. File presence and
+passing repository checks do not prove external deployment, owner acceptance,
+or production readiness.
 
-For analytical memo production, use the `Analytical Memo Factory via Codex APP` workflow:
+Current status, blocked capabilities, smoke evidence, and next actions are
+tracked in [CURRENT_STATUS.md](CURRENT_STATUS.md). The canonical validation and
+operational gates are in [MASTER_STATUS.md](MASTER_STATUS.md).
 
-```text
-Analyst -> [Analytics] -> [Codex] -> Codex APP -> Python -> LLM -> Judge/QA -> Human
-```
+## Contributing
 
-Use `[Analytics]` for analytical task framing, `[Codex]` for the ultra-long Codex APP task package, and Codex APP for execution. Python calculates; LLM writes only from evidence.
-
-## Local Path Placeholders
-
-Public docs must not contain raw machine-specific absolute paths from local user profiles, home directories, or mounted volumes.
-
-Use placeholders instead:
-
-- `<LOCAL_AI_OS_ROOT>` for the local AI-OS repository root.
-- `<LOCAL_REPO_ROOT>` for the current repository root in generic examples.
-- `<LOCAL_CODEX_APP_ROOT>` for the local `Codex APP` folder.
-- `<LOCAL_ARTIFACTS_ROOT>` for local working artifacts outside the public repository.
+The repository currently uses solo-owner governance. Use the
+[AI-OS Goal issue template](https://github.com/sergstack/AI-OS/issues/new/choose)
+for a broad proposal or the strict Codex template for an implementation-ready
+task. Pull requests must follow the repository templates, pass `Docs Safety`,
+and receive the review required by `CODEOWNERS`.

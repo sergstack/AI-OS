@@ -20,6 +20,7 @@ If the input is raw, unclear, mixed, emotional, or not yet task-ready, route it 
 | `ChatGPT/[Analytics]` | Calculations, marts, metrics, reconciliations, deterministic data QA. |
 | `ChatGPT/[LLM]` | Prompts, model routing, workflow orchestration, LLM quality. |
 | `ChatGPT/[Codex]` | Implementation task framing, code review, tests/release handoff. |
+| `ChatGPT/[Thinkers OS]` | Thinker corpus, source intake, provenance, and cross-author synthesis maintenance. |
 | `Codex APP` | Execution/runtime layer for long-running Codex work. |
 | Things | Action system for next actions; not a knowledge base. |
 | Calendar | Time-bound commitments. |
@@ -40,3 +41,10 @@ ChatGPT Project display name may remain:
 ```
 
 `ChatGPT/[Inbox Router]` is the project package for the Inbox Router front-door layer.
+
+## Canonical sources
+
+- `PROJECT_CAPABILITIES.yaml` resolves the seven governed project packages.
+- `PROJECT_REGISTRY.md` records project ownership and AES applicability.
+- `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md` owns front-door routing.
+- `docs/README.md` provides repository documentation navigation.

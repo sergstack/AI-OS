@@ -1,3 +1,11 @@
+---
+name: AI-OS goal
+about: Propose a broad goal for inspection, implementation, cleanup, docs, sync, or workflow improvement.
+title: "[Goal] "
+labels: goal, goal-mode
+assignees: ''
+---
+
 # AI-OS Goal
 
 ## Goal
