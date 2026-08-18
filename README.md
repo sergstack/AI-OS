@@ -1,6 +1,30 @@
 # AI-OS
 
-Repository for ChatGPT project settings, routing docs, Codex execution contracts, and governance checks.
+[![Docs Safety](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml/badge.svg)](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml)
+
+AI-OS is a governed workspace for ChatGPT project settings, routing rules,
+Codex execution contracts, validation checks, and Stream Deck automation.
+It keeps reasoning, implementation, and human approval connected without
+treating generated output as accepted by default.
+
+> **Status:** candidate / ready for human review. Production promotion remains
+> disabled until the documented sync, smoke-QA, and pilot gates are complete.
+> This public repository is **not open source**; see the
+> [rights posture](docs/rights_posture.md).
+
+## Repository Map
+
+| Area | Purpose |
+|---|---|
+| [`ChatGPT/`](ChatGPT) | Project instructions, granular Knowledge sources, and compact upload bundles. |
+| [`Codex APP/`](Codex%20APP) | Local execution contracts, setup, runbooks, and review guidance. |
+| [`StreamDeck/`](StreamDeck) | Versioned Stream Deck configuration, exports, generators, and QA evidence. |
+| [`scripts/`](scripts) and [`tests/`](tests) | Deterministic repository validation and regression tests. |
+| [`.github/`](.github) | Issue templates, PR policy, ownership, and CI workflows. |
+| [`docs/`](docs) | Architecture, routing, merge-gate, and operating documentation. |
+
+For detailed routing, see the [repository map](docs/REPOSITORY_MAP.md). For the
+current maturity and open gates, see [`CURRENT_STATUS.md`](CURRENT_STATUS.md).
 
 ## Default Workflow
 
@@ -12,15 +36,24 @@ Goal Mode is the default user-facing workflow. Sergey can provide a broad goal; 
 
 Atomic task packages remain available as advanced/strict mode, but they are not the default user burden. GitHub is the live source of truth; ChatGPT Project Knowledge is a cached baseline for Project bootstrapping and formal sync.
 
-Run sync readiness checks before opening a PR:
+## Quick Start
+
+Run the repository readiness checks before opening a PR:
 
 ```bash
 python3 scripts/sync_aios.py
+python3 -m pytest tests/ -q
 ```
 
 This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
 
 See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, and `SYNC_CONTRACT.md`.
+
+Changes should start from the [Goal issue template](.github/ISSUE_TEMPLATE/goal.md)
+or the strict [Codex task template](.github/ISSUE_TEMPLATE/codex-task.md). Read
+[`CONTRIBUTING.md`](CONTRIBUTING.md) before submitting a pull request, and use
+the private reporting path in [the security policy](.github/SECURITY.md) for
+potential vulnerabilities.
 
 ## Autonomous Execution Standard
 

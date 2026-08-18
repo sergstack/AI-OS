@@ -4,6 +4,11 @@
 .env.*
 !StreamDeck/.env.example
 .claude/
+.codex/
+.pytest_cache/
+.repo_index/
+.coverage
+htmlcov/
 *.log
 *.tmp
 *.sqlite
