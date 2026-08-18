@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:79139b361e6e74aa8834022c02373df36ed16775a6c0006094da0b3e08d2ee1e
+- source_fingerprint: sha256:f26d0a7cae88647a8d097ca8338b6a86c45e311ed0334f1c5984d3b6e9b8a13d
 - runtime_eval_automation: no
 - acceptance_status: candidate / ready for human review
 
@@ -57,11 +57,16 @@ Registry definitions:
 | eval_id | workflow | owner_project | eval_type | judge/check |
 |---|---|---|---|---|
 | `AIOS-EVIDENCE` | AI OS evidence answer | `[AI OS]` | evidence | confidence and source check |
-| `LLM-OUTPUT` | draft -> judge -> revise | `[LLM]` | judge | rubric + unsupported claims check |
+| `LLM-OUTPUT` | output QA; memo review is risk-triggered | `[LLM]` | deterministic QA + triggered judge | output contract + required Judge triggers |
 | `ANALYTICS-QA` | analytical memo / QA | `[Analytics]` | deterministic QA + narrative judge | data contract, mart, metric, period, grain, QA status |
 | `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | workflow eval | diff, checks, scope, rollback |
 | `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | governance eval | loop acceptance checklist |
 | `THINKING-DECISION` | decision review | `[Thinking]` | judge | assumptions, downside, reversibility, revisit trigger |
+
+For memo generation, the active specialization is deterministic QA first,
+Judge only when a documented trigger applies, and revision only from explicit
+findings. Accepted run evidence is recorded in the canonical `[LLM]` project
+status; the registry stores eval definitions rather than run results.
 
 ## Judge Calibration Summary
 

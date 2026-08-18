@@ -1,8 +1,45 @@
 # [LLM] Project Status
 
 status: controlled legacy eval debt
-last_reviewed: 2026-08-12
+last_reviewed: 2026-08-18
 current score: 8.6/10
+
+## Accepted memo workflow evidence
+
+- workflow: risk-triggered memo review;
+- registry status: active;
+- owner acceptance: accepted on 2026-08-18;
+- corpus: 10 real memo cases from one workbook and period `2026-05`;
+- case mix: routine 4, material 2, evidence-sensitive 2, QA-defect 1,
+  Judge-defect 1;
+- quality: OLD 154/160; NEW 154/160;
+- blind verdict: equivalent 10/10;
+- false bypass count: 0;
+- Judge runs: 10 -> 6 (40% reduction);
+- Revise runs: 10 -> 2 (80% reduction);
+- semantic LLM stages: 30 -> 18 (40% reduction).
+
+Verdicts:
+
+- workflow quality: PASS;
+- safety: PASS;
+- logical execution efficiency: PASS;
+- token savings: NOT PROVEN;
+- billing savings: NOT PROVEN;
+- generalization beyond the current corpus: NOT PROVEN.
+
+Evidence boundaries:
+
+- the corpus covers one real workbook and one period, `2026-05`;
+- drafts were frozen, so the eval tested the review loop rather than draft
+  generation variability;
+- the blind Judge used the current environment model, not an independent model;
+- provider-level token usage was unavailable;
+- elapsed-time attribution was unavailable.
+
+These results accept the current memo review workflow without changing the
+project's overall `controlled legacy eval debt` status or resolving the separate
+prompt-registry debt below.
 
 ## Files present
 

@@ -61,6 +61,48 @@ Recent verified state:
   recorded.
 - StreamDeck v2.7 remains active; v2.8 remains candidate/manual-only.
 
+## Dual Surface operational acceptance
+
+Recorded on 2026-08-18 from three real Live Tests:
+
+| Live Test | Route | Manual orchestration |
+|---|---|---:|
+| `#1` | `[Analytics]` | 0 |
+| `#2` | `[Thinking] -> [Analytics] -> [Codex]` | 0 |
+| `#3` | `[Thinking] -> [LLM] -> [Codex]` | 0 |
+
+Scoped verdict:
+
+- Dual Surface Phase 1: operationally accepted;
+- single-project routing: pass;
+- cross-project routing: pass;
+- cross-project continuity: pass;
+- manual orchestration: 0 in the tested cases;
+- `broad_phase_2: NOT REQUIRED` by current evidence.
+
+This is operational evidence from three tested cases, not proof of universal or
+technically deterministic routing and not evidence of a production-grade
+orchestration engine. General correctness beyond the tested cases remains
+monitored.
+
+Revisit Phase 2 only if observed evidence shows a recurring material gap: manual
+routing becomes necessary, material context is lost during handoff, repeated
+canonical entrypoint exclusion affects correctness, ownership boundaries break,
+recurring AI-OS-owned execution friction appears, or QA/acceptance exposes a
+systematic defect.
+
+Operating mode:
+
+```text
+use
+-> observe
+-> record material friction
+-> fix only recurring evidenced gaps
+```
+
+Ordinary work uses the current merged Dual Surface without a special Live Test
+protocol unless an eval is explicitly requested.
+
 ## Next action
 
 Run repository validation before PR review: use the canonical command set from `AGENTS.md` ("Validation" section) or `python3 scripts/sync_aios.py`, plus `python3 -m pytest tests/ -q`.
