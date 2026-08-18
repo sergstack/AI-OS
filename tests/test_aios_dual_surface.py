@@ -110,7 +110,7 @@ def test_phase1_files_pass_existing_public_safety_validator(tmp_path: Path) -> N
         REGISTRY_PATH,
         Path(__file__),
         *(SKILLS_ROOT.rglob("*")),
-        *((REPO_ROOT / "docs" / "aios_dual_surface_phase1").rglob("*")),
+        *((REPO_ROOT / "archive" / "implementation_evidence" / "aios_dual_surface_phase1").rglob("*")),
     ]
 
     for source in phase1_files:
