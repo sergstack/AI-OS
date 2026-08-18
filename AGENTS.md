@@ -17,6 +17,10 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 - Obey this file and any more specific local instructions.
 - Keep source files and Knowledge bundle files consistent when both represent the same content.
 
+## Domain Capability Discovery
+
+For AI-OS domain work, classify the request using canonical routing rules, resolve the canonical project location from `PROJECT_CAPABILITIES.yaml`, use `project-context` to load only task-relevant canonical files, preserve ownership boundaries and explicit handoffs, then execute within bounded scope and validate acceptance.
+
 ## Change Rules
 
 - Make the smallest necessary change.
