@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:05fd037f57e7b7ebbdc8844e7d4d43151aeae5a82033f2b5876de940f8948642
+- source_fingerprint: sha256:913334aad235e7ab245efd0c56b45cb07ca4e5c11bcdb109efba8ff8add7d7c6
 
 ---
 
@@ -42,10 +42,12 @@ mart_main_full
 → management synthesis when material and management-facing
 → LLM context package, if needed
 → draft memo
-→ judge review
-→ revised memo
+→ deterministic memo QA
+→ LLM Judge according to the canonical [LLM] memo gate
+→ revision only from explicit findings
 → final report
 ```
+`[Analytics]` owns verified inputs and deterministic memo QA. `[LLM]` owns Judge/revise triggers in `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`; this pipeline references that contract rather than redefining it.
 ## Memo structure
 1. Executive summary.
 2. Key numbers.

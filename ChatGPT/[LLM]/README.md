@@ -29,7 +29,7 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `GEMINI_DEEP_RESEARCH__KB_HUNTER.md` — Gemini KB hunter workflow.
 - `LLM_ROUTING.md` — выбор LLM workflow.
 - `LOCAL_LLM_WORKFLOW.md` — local/Ollama/Open WebUI workflow.
-- `MEMO_GENERATION_WORKFLOW.md` — draft → judge → revise.
+- `MEMO_GENERATION_WORKFLOW.md` — draft → deterministic QA → conditional judge/revise.
 - `RELATIONSHIP_CRM_LITE_TEMPLATE.md` — candidate relationship CRM-lite fields, no real contact data.
 - `WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md` — candidate weekly relationship review block.
 - `VALUE_FIRST_OUTREACH_TEMPLATE.md` — candidate value-first outreach draft.
