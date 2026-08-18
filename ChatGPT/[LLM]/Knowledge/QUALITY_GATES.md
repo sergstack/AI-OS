@@ -16,7 +16,8 @@
 1. Ask: what claims are not supported?
 2. Remove or mark them.
 3. Check against AI OS or source context when needed.
-4. Run judge review.
+4. For memo generation, apply the Judge triggers and no-Judge acceptance rule in `MEMO_GENERATION_WORKFLOW.md`.
+5. Revise only from explicit findings; a `pass` result does not trigger a rewrite.
 
 ## Verdict
 

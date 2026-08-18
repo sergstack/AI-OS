@@ -26,8 +26,8 @@
 3. Prompt: задать role, task, constraints, output format, evidence rules.
 4. Model routing: выбрать fast/reasoning/local/judge модель.
 5. Generate: получить draft.
-6. Judge: проверить hallucinations, unsupported claims, missing evidence.
-7. Revise: исправить draft.
+6. Judge: проверить hallucinations, unsupported claims и missing evidence, когда этого требует risk / quality gate.
+7. Revise: исправить draft только по explicit QA / Judge findings; `pass` не запускает rewrite.
 8. Final: выдать compact final + limitations.
 9. Handoff: код → [Codex], расчёты → [Analytics], стратегия → [Thinking], KB evidence → [AI OS].
    Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
@@ -86,8 +86,8 @@ Before reusing an LLM workflow, verify:
 - unsupported claims are listed;
 - evidence references are present where needed;
 - hallucinations are not visible;
-- judge result is recorded;
-- revision is applied if judge fails;
+- judge result is recorded when Judge is required;
+- revision is applied only if QA or Judge returns explicit findings;
 - limitations are visible.
 
 ## Context rules

@@ -32,7 +32,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:942ecbcba5395ff16c2aff4d8dc2b527eb6b24fe8f21d917f084d48b5cb22291
+- source_fingerprint: sha256:236291cadfdfc4f7d733e1ba622744632cdb7611b156f68e42ec1ffaf63d2f8f
 
 ---
 
@@ -62,12 +62,13 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 # Memo Generation Workflow
 ## Pipeline
 ```text
-curated context
+curated context snapshot
 → draft
-→ judge
-→ revise
+→ deterministic output QA
+→ judge when a trigger applies
+→ revise only from explicit findings
+→ targeted recheck
 → final memo
-→ QA
 ```
 ## Inputs
 - verified numbers;
@@ -76,6 +77,12 @@ curated context
 - audience;
 - tone;
 - constraints.
+## Minimal run contract
+1. Build one curated context snapshot and assign a `context_id`. Reuse it for draft, judge, and revise; rebuild it only when sources change or QA identifies missing evidence.
+2. Before an LLM Judge, check deterministic items first: required sections, source/evidence labels, visible limitations, and the requested output schema.
+3. Run Judge when the output is material or decision-critical, evidence-sensitive, fails deterministic QA, uses an unreviewed workflow/model path, or a human explicitly requests review.
+4. Bypass Judge only when every trigger in step 3 is false and deterministic QA passes. If QA/Judge returns `pass`, publish the draft without rewriting it. If it returns `revise`, change only the listed findings and rerun the affected checks. If a material finding remains after one revision, return `blocked` for human review instead of starting an open-ended loop.
+Do not treat fewer calls as proof of token savings. Record available per-run evidence (`context_id`, generation steps, Judge trigger, revision count, and provider-reported input/output tokens when available); otherwise mark token cost `not measured`.
 ## Required sections
 1. Executive summary.
 2. Key facts.
@@ -91,6 +98,7 @@ curated context
 - unclear numbers;
 - weak structure;
 - wrong audience.
+Material or evidence-sensitive output cannot pass deterministic QA alone; Judge remains required. Revise remains findings-driven.
 
 
 ## From: `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`

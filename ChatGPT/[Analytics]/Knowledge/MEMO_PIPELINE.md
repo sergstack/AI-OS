@@ -15,10 +15,13 @@ mart_main_full
 → management synthesis when material and management-facing
 → LLM context package, if needed
 → draft memo
-→ judge review
-→ revised memo
+→ deterministic memo QA
+→ LLM Judge according to the canonical [LLM] memo gate
+→ revision only from explicit findings
 → final report
 ```
+
+`[Analytics]` owns verified inputs and deterministic memo QA. `[LLM]` owns Judge/revise triggers in `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`; this pipeline references that contract rather than redefining it.
 
 ## Memo structure
 

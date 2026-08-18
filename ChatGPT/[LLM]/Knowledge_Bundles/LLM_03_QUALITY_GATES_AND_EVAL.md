@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:6b08d79b015a505b2b58ca72b9d075eb77e58e831713de78e504d6cd129758e1
+- source_fingerprint: sha256:909bccea4b1950ddfa592a472c49ac57d840fb7c8b62d1388b243005fca41015
 
 ---
 
@@ -43,7 +43,8 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 1. Ask: what claims are not supported?
 2. Remove or mark them.
 3. Check against AI OS or source context when needed.
-4. Run judge review.
+4. For memo generation, apply the Judge triggers and no-Judge acceptance rule in `MEMO_GENERATION_WORKFLOW.md`.
+5. Revise only from explicit findings; a `pass` result does not trigger a rewrite.
 ## Verdict
 ```text
 quality_status: pass / revise / blocked
