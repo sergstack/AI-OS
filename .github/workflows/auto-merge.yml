@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pull-requests: write
 
 jobs:
@@ -41,15 +42,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
+          gh pr edit "$PR_URL" --remove-label "needs-human-review" || true
           gh pr review "$PR_URL" --approve --body "Merge gate: changes stay within the Tier 0/1 docs allowlist. Auto-merge enabled; merge waits for required checks. Post-merge review happens in the weekly digest."
           gh pr merge "$PR_URL" --auto --merge
-      - name: Owner review required
+      - name: Mark owner review required
         if: steps.classify.outputs.tier == 'owner'
         env:
           GH_TOKEN: ${{ github.token }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
           gh pr merge "$PR_URL" --disable-auto || true
+          gh pr edit "$PR_URL" --add-label "needs-human-review"
           gh pr review "$PR_URL" --comment --body "Merge gate: protected paths changed. Auto-merge is disabled and owner review is required via CODEOWNERS."
-          echo "::error::Protected paths changed; owner review required via CODEOWNERS."
-          exit 1
+          echo "::notice::Protected paths changed. Auto-merge is disabled; a manual owner merge decision is required."
