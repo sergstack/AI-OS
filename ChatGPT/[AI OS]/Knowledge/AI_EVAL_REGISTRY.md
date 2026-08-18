@@ -31,7 +31,7 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | eval_id | workflow | owner_project | task_type | eval_type | judge/check | pass criteria | revise criteria | blocked criteria | last_reviewed | status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | `AIOS-EVIDENCE` | AI OS evidence answer | `[AI OS]` | claim / pattern / governance | evidence | confidence and source check | supported evidence or clearly marked weak/mixed/not found | missing confidence, weak sourcing, unclear routing | unsupported claim presented as fact or blocked promotion item recommended | 2026-07-06 | active |
-| `LLM-OUTPUT` | draft -> judge -> revise | `[LLM]` | prompt output / memo text | judge | explicit rubric + unsupported claims check | schema followed, facts separated, limitations visible | local unsupported claims or missing limitations | hallucinated sources, hidden blockers, or no evidence path | 2026-07-06 | active |
+| `LLM-OUTPUT` | output QA; memo review is risk-triggered | `[LLM]` | prompt output / memo text | deterministic QA + triggered judge | output contract passes; required Judge passes when triggered | explicit QA or Judge findings require a bounded revision | hallucinated sources, hidden blockers, no evidence path, or required Judge omitted | 2026-08-18 | active |
 | `ANALYTICS-QA` | analytical memo / QA | `[Analytics]` | data / memo / mart | deterministic QA + narrative judge | data contract, source mart/table, metric, period, grain, QA status | deterministic QA passes and memo claims trace to evidence | fixable missing method, limitation, or traceability field | failed reconciliation, missing contract, unclear grain, or unapproved formula/schema change | 2026-07-06 | active |
 | `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | repo change / PR | workflow eval | diff, checks, scope, rollback | goal match, checks observed, rollback and risks visible | bounded scope or documentation fixes needed | secrets, production risk, failing checks, unsafe scope, or missing acceptance | 2026-07-06 | active |
 | `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | loop design | governance eval | loop acceptance checklist | supervised loop, bounded retry, stop conditions, human acceptance | missing owner, retry rule, or stop condition | autonomous retrieval, uncontrolled agents, runtime artifacts, or no validation | 2026-07-06 | active |
@@ -45,7 +45,12 @@ Checks whether claims are supported, weak, mixed, unsupported, or not found.
 
 ### LLM Output Eval
 
-Checks schema, facts vs interpretation, unsupported claims, evidence references, limitations, judge/revise.
+Checks schema, facts vs interpretation, unsupported claims, evidence references,
+limitations, and risk-appropriate judge/revise. For memo generation, the active
+specialization is deterministic QA first, Judge only when a documented trigger
+applies, and revision only from explicit findings. Accepted run evidence remains
+in the canonical `[LLM]` project status artifact; this registry continues to
+store definitions rather than run results.
 
 ### Analytics Eval
 

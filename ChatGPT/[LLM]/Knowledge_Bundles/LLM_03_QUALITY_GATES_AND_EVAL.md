@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:909bccea4b1950ddfa592a472c49ac57d840fb7c8b62d1388b243005fca41015
+- source_fingerprint: sha256:67c49dde82ce710e0e01aa5d757e11ba29df840e5186b2983c64ac4793fe5e9b
 
 ---
 
@@ -114,6 +114,38 @@ canonical standard is in scope here.
 
 # [LLM] Project Status
 status: controlled legacy eval debt
+last_reviewed: 2026-08-18
+
+## Accepted memo workflow evidence
+- workflow: risk-triggered memo review
+- registry status: active
+- owner acceptance: accepted on 2026-08-18
+- corpus: 10 real memo cases from one workbook and period `2026-05`
+- case mix: routine 4, material 2, evidence-sensitive 2, QA-defect 1, Judge-defect 1
+- quality: OLD 154/160; NEW 154/160
+- blind verdict: equivalent 10/10
+- false bypass count: 0
+- Judge runs: 10 -> 6 (40% reduction)
+- Revise runs: 10 -> 2 (80% reduction)
+- semantic LLM stages: 30 -> 18 (40% reduction)
+
+Verdicts:
+- workflow quality: PASS
+- safety: PASS
+- logical execution efficiency: PASS
+- token savings: NOT PROVEN
+- billing savings: NOT PROVEN
+- generalization beyond the current corpus: NOT PROVEN
+
+Evidence boundaries:
+- one real workbook and one period, `2026-05`
+- frozen drafts; review-loop tested, not draft-generation variability
+- blind Judge used the current environment model, not an independent model
+- provider-level token usage unavailable
+- elapsed-time attribution unavailable
+
+The accepted memo workflow does not resolve the separate legacy prompt-eval debt.
+
 ## Files present
 - `PROJECT_INSTRUCTIONS.md`
 - `README.md`
