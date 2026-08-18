@@ -501,6 +501,22 @@ def test_merge_gate_owner_tier_stops_auto_merge_without_false_failure() -> None:
     assert "--remove-label \"needs-human-review\"" in workflow
 
 
+def test_weekly_digest_updates_one_rolling_issue() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "weekly-digest.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "group: weekly-audit-digest" in workflow
+    assert "cancel-in-progress: false" in workflow
+    assert "gh label create weekly-digest" in workflow
+    assert "--force" in workflow
+    assert "--label weekly-digest" in workflow
+    assert 'startswith("Weekly AI-OS digest")' in workflow
+    assert 'if [ -n "$digest_issue" ]; then' in workflow
+    assert 'gh issue edit "$digest_issue"' in workflow
+    assert "gh issue create" in workflow
+
+
 def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
     workflow = (REPO_ROOT / ".github" / "workflows" / "auto-merge.yml").read_text(
         encoding="utf-8"
