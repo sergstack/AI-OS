@@ -517,6 +517,26 @@ def test_weekly_digest_updates_one_rolling_issue() -> None:
     assert "gh issue create" in workflow
 
 
+def test_codex_entrypoints_require_local_developer_evidence_routing() -> None:
+    paths = [
+        REPO_ROOT / "AGENTS.md",
+        REPO_ROOT / "Codex APP" / "CODEX_APP_AGENTS_TEMPLATE.md",
+        REPO_ROOT / "ChatGPT" / "[Codex]" / "Knowledge" / "AGENTS.md",
+        REPO_ROOT
+        / "ChatGPT"
+        / "[Codex]"
+        / "Knowledge_Bundles"
+        / "CODEX_05_AGENT_REFERENCES.md",
+    ]
+
+    for path in paths:
+        text = path.read_text(encoding="utf-8")
+        assert "$local-developer-worker" in text, path
+        assert "ldw test parse" in text, path
+        assert "ldw git facts" in text, path
+        assert "ldw evidence build" in text, path
+
+
 def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
     workflow = (REPO_ROOT / ".github" / "workflows" / "auto-merge.yml").read_text(
         encoding="utf-8"

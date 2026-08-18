@@ -7,14 +7,19 @@ Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects 
 ## Operating rules
 
 1. Read task context first.
-2. Identify files to inspect.
-3. Identify files allowed to modify.
-4. Respect forbidden actions.
-5. Infer bounded scope before editing.
-6. Make minimal changes.
-7. Run tests or smoke checks.
-8. Review diff.
-9. Report clearly.
+2. Evaluate `$local-developer-worker` for every substantive repository task.
+3. Identify files to inspect.
+4. Identify files allowed to modify.
+5. Respect forbidden actions.
+6. Infer bounded scope before editing.
+7. Make minimal changes.
+8. Run tests or smoke checks.
+9. Review diff.
+10. Report clearly.
+
+## Local developer evidence
+
+Invoke every applicable safe LDW module from its routing table. Use direct bounded reading for a known single-file task and deterministic discovery plus `ldw context pack` for unfamiliar or multi-file work. Establish claimed test outcomes only through `ldw test parse`; use applicable `ldw git facts` and `ldw evidence build` before non-trivial handoffs or final reports. Preserve non-success and fallback states. LDW remains read-only; Codex retains all decisions, edits, and verification authority.
 
 ## Autonomy
 

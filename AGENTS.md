@@ -17,6 +17,14 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 - Obey this file and any more specific local instructions.
 - Keep source files and Knowledge bundle files consistent when both represent the same content.
 
+## Local Developer Evidence
+
+- For every substantive repository task, evaluate `$local-developer-worker` and invoke each applicable safe module before claiming test or repository evidence.
+- Use direct bounded reading for one known file; use deterministic discovery plus `ldw context pack` for unfamiliar or multi-file work when available.
+- Establish claimed test outcomes through `ldw test parse` with captured output, the observed exit code, and `command_observed=true`.
+- Before a non-trivial handoff or final report, use applicable `ldw git facts` and `ldw evidence build` modules.
+- Preserve and report `partial`, `unsupported`, `policy_blocked`, timeout, and fallback states. LDW remains read-only and never owns edits or decisions.
+
 ## Domain Capability Discovery
 
 For AI-OS domain work, classify the request using canonical routing rules, resolve the canonical project location from `PROJECT_CAPABILITIES.yaml`, use `project-context` to load only task-relevant canonical files, preserve ownership boundaries and explicit handoffs, then execute within bounded scope and validate acceptance.

@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:2fd81495ee03de96f6fd7a9cb04853a6e5a4beb433bd2478687ae1655d3f5faf
+- source_fingerprint: sha256:c8298924458e5a4edd6db42d3154f4ba480b3b6b73cd18988d7e466f9ef98eb8
 
 ---
 
@@ -34,14 +34,19 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects the repository, infers bounded safe scope, makes the smallest useful scoped change, runs checks, and reports results. Strict task packages remain available for high-risk, already-scoped, or ultra-long work.
 ## Operating rules
 1. Read task context first.
-2. Identify files to inspect.
-3. Identify files allowed to modify.
-4. Respect forbidden actions.
-5. Infer bounded scope before editing.
-6. Make minimal changes.
-7. Run tests or smoke checks.
-8. Review diff.
-9. Report clearly.
+2. Evaluate `$local-developer-worker` for every substantive repository task.
+3. Identify files to inspect.
+4. Identify files allowed to modify.
+5. Respect forbidden actions.
+6. Infer bounded scope before editing.
+7. Make minimal changes.
+8. Run tests or smoke checks.
+9. Review diff.
+10. Report clearly.
+
+## Local developer evidence
+
+Invoke every applicable safe LDW module from its routing table. Use direct bounded reading for a known single-file task and deterministic discovery plus `ldw context pack` for unfamiliar or multi-file work. Establish claimed test outcomes only through `ldw test parse`; use applicable `ldw git facts` and `ldw evidence build` before non-trivial handoffs or final reports. Preserve non-success and fallback states. LDW remains read-only; Codex retains all decisions, edits, and verification authority.
 ## Autonomy
 Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
 Stop only on the canonical hard blockers in `AUTONOMY_POLICY.md`.
