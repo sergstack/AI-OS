@@ -75,7 +75,7 @@ debugging a sync problem.
 | Operational records | checklists, pilot plans, manifests | Track one operation or package; not general policy |
 | Evidence | smoke-QA, pilot, and acceptance results | Record what was checked; passing evidence is not production approval |
 | Delivery artifacts | `Knowledge_Bundles/`, Stream Deck exports | Distributable surfaces derived from canonical sources |
-| History | archives and completed task packages | Preserve audit history; not current guidance unless actively referenced |
+| History | [`archive/`](../archive), including completed task packages | Preserve audit history; not current guidance unless actively referenced |
 
 When files disagree, follow system and user instructions first, then the
 applicable `AGENTS.md`, canonical contracts, registries and manifests, current
@@ -104,8 +104,9 @@ files should record observations instead of creating new governance rules.
   `ChatGPT/[Project]/` package.
 - Put deterministic validation in `scripts/` and regression coverage in
   `tests/`.
-- Treat `StreamDeck/archive/`, root `archive/`, and completed task packages as
-  audit history, not current policy.
+- Treat `StreamDeck/archive/` and root `archive/` as audit history, not current
+  policy. Completed implementation packages live under
+  [`archive/implementation_evidence/`](../archive/implementation_evidence/README.md).
 - Move historical material only in a dedicated migration that updates every
   affected manifest, link, test, and upload contract.
 - Keep secrets, local settings, caches, worktrees, runtime output, and search
