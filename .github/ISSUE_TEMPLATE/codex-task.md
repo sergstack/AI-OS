@@ -1,3 +1,11 @@
+---
+name: Codex task
+about: Define a strict, implementation-ready repository task with explicit scope and checks.
+title: "[Codex] "
+labels: codex, ai-task, needs-human-review
+assignees: ''
+---
+
 # Codex Task
 
 Strict/advanced mode. For broad requests, use `goal.md`.
