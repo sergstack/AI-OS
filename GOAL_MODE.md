@@ -94,6 +94,8 @@ Do not remove code, split modules, or restructure internals before the baseline,
 
 In default Goal Mode, the user gives a broad goal, not an atomic task package.
 
+When that goal needs AI-OS methodology and no route is supplied, use the canonical `ai-os-orchestrator` skill. It resolves one owner from the existing capability registry, then delegates bounded context loading to `project-context`. Routing semantics remain owned by the Inbox Router rules; simple local reversible work stays local.
+
 Router, AI OS, LLM, or Codex may turn that goal into a route, scope, execution plan, checks, rollback path, and acceptance criteria. Codex keeps that execution package internal unless strict mode is requested, the task spans independent releases, or risk requires explicit review.
 
 Do not produce a roadmap, epic, child-issue tree, or approval package for a clear implementation goal unless Sergey explicitly asks for planning or a hard blocker prevents bounded execution.

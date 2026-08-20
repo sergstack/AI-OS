@@ -27,7 +27,9 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 
 ## Domain Capability Discovery
 
-For AI-OS domain work, classify the request using canonical routing rules, resolve the canonical project location from `PROJECT_CAPABILITIES.yaml`, use `project-context` to load only task-relevant canonical files, preserve ownership boundaries and explicit handoffs, then execute within bounded scope and validate acceptance.
+For any unscoped goal that needs AI-OS methodology, use `ai-os-orchestrator` as the default entrypoint. It must classify the request using canonical routing rules, resolve exactly one owner through `PROJECT_CAPABILITIES.yaml`, and use `project-context` only after routing to load task-relevant canonical files. Preserve ownership boundaries, add capabilities only through explicit handoffs, and fail closed when canonical ownership or paths cannot be verified.
+
+Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require AI-OS orchestration. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
 
 ## Change Rules
 

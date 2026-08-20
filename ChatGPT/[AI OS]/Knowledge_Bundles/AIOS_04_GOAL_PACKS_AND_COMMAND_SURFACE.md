@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:b5ddbc91be8cac0860f895e4a5d25a412c6b5019ddba4e2e859d8a9dbc7aa74c
+- source_fingerprint: sha256:8821269024e7aea6af5db3086b4213bc6e95aaf43eff748b405c02194409f4ef
 - default_upload_mode: `Knowledge_Bundles`
 
 ---
@@ -67,6 +67,7 @@ One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each co
 
 | Command | Target project | Input | Output | Related Goal Pack |
 |---|---|---|---|---|
+| `AI-OS Goal` | `ai-os-orchestrator` -> resolved owner | goal; route optional | bounded owner context, execution or explicit handoffs, checks, rollback, acceptance, status | context-dependent |
 | `ChatGPT Route` | `[Inbox Router]` | goal, task, message, or unclear request | target project and next prompt | context-dependent |
 | `Goal -> Codex APP` | Codex APP | broad repo/workflow goal, GitHub issue, or handoff | branch, checks, PR, report | `codex_goal_to_pr` |
 | `AI Trend` | `[AI OS]` | AI topic, release, tool, link, or question | trend verdict, relevance, risks, next step | `ai_trend_triage` |
@@ -88,7 +89,9 @@ Usage:
 
 - Press or type the command.
 - Add the goal and only the context needed to start.
-- Let the target project infer route, scope, checks, and next action.
+- `AI-OS Goal` is the default when no route is supplied; the orchestrator resolves the owner before loading project context.
+- Use `ChatGPT Route` when the desired output is routing only.
+- Let the resolved owner infer scope, checks, and next action within its boundary.
 - Use strict task packages only when scope is already known or risk is high.
 
 ## From: `CONTEXT_PACK_STANDARD.md`

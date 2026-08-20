@@ -28,7 +28,7 @@ simple local task?
    ├─ yes → local repository rules
    └─ no
        ↓
-canonical AI-OS routing
+canonical ai-os-orchestrator
        ↓
 appropriate project methodology
        ↓
@@ -43,8 +43,8 @@ The global file is an entry policy only. The AI-OS repository remains the single
 
 | Layer | Owns |
 |---|---|
-| Global user-level policy | Decide whether canonical AI-OS methodology is needed and initiate bounded context loading. |
-| AI-OS repository | Canonical routing, `PROJECT_CAPABILITIES.yaml`, project methodology, `project-context`, evidence, and governance. |
+| Global user-level policy | Decide whether canonical AI-OS methodology is needed and invoke the canonical orchestrator. |
+| AI-OS repository | `ai-os-orchestrator`, canonical routing, `PROJECT_CAPABILITIES.yaml`, project methodology, `project-context`, evidence, and governance. |
 | Local repository | Repository facts, codebase structure, commands, tests, business contracts, protected areas, and implementation constraints. |
 
 The global policy must not create another routing registry, copy domain Knowledge, install a second project-context implementation, or weaken local constraints.
@@ -74,18 +74,19 @@ Before loading AI-OS context, verify that the resolved checkout contains:
 ```text
 <LOCAL_AI_OS_ROOT>/AGENTS.md
 <LOCAL_AI_OS_ROOT>/PROJECT_CAPABILITIES.yaml
+<LOCAL_AI_OS_ROOT>/.agents/skills/ai-os-orchestrator/SKILL.md
 <LOCAL_AI_OS_ROOT>/.agents/skills/project-context/SKILL.md
 ```
 
 Then:
 
 1. Read the canonical repository instructions.
-2. Resolve the primary capability through the existing `PROJECT_CAPABILITIES.yaml`.
-3. Follow the canonical `project-context` skill.
-4. Load only the selected task-relevant context.
+2. Follow the canonical `ai-os-orchestrator` skill.
+3. Let it resolve exactly one primary capability through the existing `PROJECT_CAPABILITIES.yaml`.
+4. Follow `project-context` only after routing and load only selected task-relevant context.
 5. Load another capability only for an explicit cross-domain handoff.
 
-Do not add a new resolver solely for this setup. If the checkout moves, update the installed global policy with the new local path.
+Do not add another resolver or routing registry in the global setup. If the checkout moves, update the installed global policy with the new local path.
 
 If the checkout is unavailable, state that cross-domain AI-OS methodology was not loaded, continue only where local rules are sufficient and safe, and never invent or substitute canonical context.
 
@@ -103,12 +104,12 @@ For every task:
 1. Read and obey applicable local repository instructions.
 2. Determine whether the task is simple local reversible work or material strategy, analytics, LLM, AI-evidence, or cross-domain work.
 3. For simple local work with sufficient repository context, use local repository instructions directly and do not activate AI-OS.
-4. For material cross-domain work, verify the canonical AI-OS checkout, read its `AGENTS.md`, and use its existing routing and `PROJECT_CAPABILITIES.yaml` to select one primary capability.
-5. Follow the canonical `.agents/skills/project-context/SKILL.md` and load only the required project context.
+4. For material AI-OS work, verify the canonical AI-OS checkout, read its `AGENTS.md`, and use `.agents/skills/ai-os-orchestrator/SKILL.md` as the single default entrypoint.
+5. Let the orchestrator select exactly one primary capability through canonical routing and `PROJECT_CAPABILITIES.yaml`, then follow `.agents/skills/project-context/SKILL.md` to load only required project context.
 6. Preserve all local repository facts, protected areas, commands, tests, contracts, and implementation constraints.
 7. Before implementation following strategy or analysis, make a bounded handoff with owner, outcome, allowed scope, local constraints, checks, rollback, and acceptance criteria.
 8. Do not duplicate AI-OS routing, methodology, Knowledge, skills, or registry content in this global file or in local repositories.
-9. If canonical AI-OS context is unavailable, state the limitation and continue only where local rules are sufficient and safe.
+9. Fail closed when canonical routing has multiple owners or required canonical paths are missing; state the limitation and continue only where local rules are sufficient and safe.
 ```
 
 ## Installation
