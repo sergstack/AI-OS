@@ -26,6 +26,17 @@ def load_registry() -> dict:
     return json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
 
 
+def registry_matches(registry: dict, routed_destination: str) -> list[str]:
+    capabilities = registry["capabilities"]
+    if routed_destination in capabilities:
+        return [routed_destination]
+    return sorted(
+        capability_id
+        for capability_id, capability in capabilities.items()
+        if Path(capability["canonical_path"]).name == routed_destination
+    )
+
+
 def test_registry_is_location_resolver_only() -> None:
     registry = load_registry()
 
@@ -53,12 +64,15 @@ def test_context_entrypoints_exist_and_stay_within_canonical_project() -> None:
             assert resolved.is_file()
 
 
-def test_only_generic_project_context_skill_remains() -> None:
+def test_orchestrator_and_generic_project_context_are_the_only_skills() -> None:
     skill_files = sorted(
         path.relative_to(SKILLS_ROOT).as_posix()
         for path in SKILLS_ROOT.glob("*/SKILL.md")
     )
-    assert skill_files == ["project-context/SKILL.md"]
+    assert skill_files == [
+        "ai-os-orchestrator/SKILL.md",
+        "project-context/SKILL.md",
+    ]
 
     context = (SKILLS_ROOT / "project-context" / "SKILL.md").read_text(
         encoding="utf-8"
@@ -67,6 +81,71 @@ def test_only_generic_project_context_skill_remains() -> None:
     assert "included files with selection reasons" in context
     assert "excluded candidates with reasons" in context
     assert "reject paths that escape it" in context
+
+
+def test_orchestrator_is_thin_default_and_fails_closed() -> None:
+    orchestrator = (
+        SKILLS_ROOT / "ai-os-orchestrator" / "SKILL.md"
+    ).read_text(encoding="utf-8")
+
+    for canonical_reference in (
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "PROJECT_CAPABILITIES.yaml",
+        ".agents/skills/project-context/SKILL.md",
+        "GOAL_MODE.md",
+        "HANDOFF_STYLE_STANDARD.md",
+    ):
+        assert canonical_reference in orchestrator
+
+    assert "exactly one primary owner capability" in orchestrator
+    assert "Invoke or follow `project-context` only after" in orchestrator
+    assert "Add capabilities only by handoff" in orchestrator
+    assert "without a hardcoded label map" in orchestrator
+    assert "zero or multiple registry matches are `blocked`" in orchestrator
+    assert "do not invoke `project-context`" in orchestrator
+    assert "Do not guess an owner" in orchestrator
+    assert "load all projects" in orchestrator
+    assert "status `blocked`" in orchestrator
+
+
+def test_registry_derived_resolution_is_unique_and_fail_closed() -> None:
+    registry = load_registry()
+
+    assert registry_matches(registry, "thinking") == ["thinking"]
+    assert registry_matches(registry, "[Thinking]") == ["thinking"]
+    assert registry_matches(registry, "Codex APP") == []
+    assert registry_matches(registry, "[Missing]") == []
+
+    ambiguous = json.loads(json.dumps(registry))
+    ambiguous["capabilities"]["thinking_duplicate"] = {
+        "canonical_path": "Shadow/[Thinking]",
+        "context_entrypoints": ["PROJECT_INSTRUCTIONS.md"],
+    }
+    assert registry_matches(ambiguous, "[Thinking]") == [
+        "thinking",
+        "thinking_duplicate",
+    ]
+
+
+def test_missing_canonical_path_blocks_before_context_loading(tmp_path: Path) -> None:
+    registry = load_registry()
+    capability_id = registry_matches(registry, "[Thinking]")[0]
+    capability = registry["capabilities"][capability_id]
+    missing_root = tmp_path / capability["canonical_path"]
+
+    assert not missing_root.exists()
+    assert capability["context_entrypoints"][0] == "PROJECT_INSTRUCTIONS.md"
+
+
+def test_orchestrator_is_the_default_goal_entrypoint() -> None:
+    agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    goal_mode = (REPO_ROOT / "GOAL_MODE.md").read_text(encoding="utf-8")
+    commands = (REPO_ROOT / "COMMAND_SURFACE.md").read_text(encoding="utf-8")
+
+    assert "use `ai-os-orchestrator` as the default entrypoint" in agents
+    assert "Simple local, reversible repository work" in agents
+    assert "canonical `ai-os-orchestrator` skill" in goal_mode
+    assert "`AI-OS Goal` is the default when no route is supplied" in commands
 
 
 def test_canonical_inbox_router_owns_domain_routing_semantics() -> None:
@@ -91,7 +170,7 @@ def test_root_agents_uses_canonical_routing_and_bounded_context() -> None:
 
     assert "## Domain Capability Discovery" in agents
     assert "classify the request using canonical routing rules" in agents
-    assert "use `project-context` to load only task-relevant canonical files" in agents
+    assert "use `project-context` only after routing" in agents
     assert agents.count("## Domain Capability Discovery") == 1
 
 

@@ -4,6 +4,7 @@ This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prom
 
 | Command | Target project | Input | Output | Related Goal Pack |
 |---|---|---|---|---|
+| `AI-OS Goal` | `ai-os-orchestrator` -> resolved owner | goal; route optional | bounded owner context, execution or explicit handoffs, checks, rollback, acceptance, status | context-dependent |
 | `ChatGPT Route` | `[Inbox Router]` | goal, task, message, or unclear request | target project and next prompt | context-dependent |
 | `Goal -> Codex APP` | Codex APP | broad repo/workflow goal, GitHub issue, or handoff | branch, checks, PR, report | `codex_goal_to_pr` |
 | `AI Trend` | `[AI OS]` | AI topic, release, tool, link, or question | trend verdict, relevance, risks, next step | `ai_trend_triage` |
@@ -25,5 +26,7 @@ This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prom
 
 - Press or type the command.
 - Add the goal and only the context needed to start.
-- Let the target project infer route, scope, checks, and next action.
+- `AI-OS Goal` is the default when no route is supplied; the orchestrator resolves the owner before loading project context.
+- Use `ChatGPT Route` when the desired output is routing only.
+- Let the resolved owner infer scope, checks, and next action within its boundary.
 - Use strict task packages only when scope is already known or risk is high.
