@@ -23,6 +23,14 @@
 
 The requested routing contract is implemented and verified within the bounded documentation/skill scope. Production promotion remains `no`.
 
+## Branch and PR status
+
+- Branch: `codex/ai-os-orchestrator`
+- Implementation commit: `431a1c2`
+- PR: `https://github.com/sergstack/AI-OS/pull/258`
+- Merge status: open for owner review; not manually merged
+- Production status: not authorized
+
 ## Rollback
 
 Revert the implementation commit or close the PR without merge. This removes the new skill, restores prior entry instructions/command surface/tests, and restores the previous derived bundle content and fingerprint. Do not use destructive worktree rollback.

@@ -27,7 +27,7 @@
 ## Acceptance mapping
 
 - [x] Verify every SPEC requirement against changed files and observed checks.
-- [ ] Record risks, rollback, acceptance, and branch/PR status.
+- [x] Record risks, rollback, acceptance, and branch/PR status.
 
 ## Forbidden actions
 
