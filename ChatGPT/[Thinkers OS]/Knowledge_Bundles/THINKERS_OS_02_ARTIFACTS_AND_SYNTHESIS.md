@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:959c23e93208198e0f31e0586e0d1b285d9a91f59508de2d6e90292ddfedebd4
+- source_fingerprint: sha256:70af8f49c80a82a40f17fa67296b319a2f1ba4f87c60c4c8c31fe03de5fab037
 
 ---
 
@@ -62,7 +62,7 @@ All remain `active_provisional`; none is validated/canonical by application coun
 - Feedback/delay policy: Forrester + Deming; Ostrom for multiple owners.
 - Bias-aware review: Kahneman + Clausewitz.
 
-Drucker, Boyd, Munger, Ohno, Simon, and Goldratt are Judge-pass isolated author patterns pending a separate synthesis refresh.
+Drucker, Boyd, Munger, Ohno, Simon, Goldratt, Rumelt, Rogers, and Norman are Judge-pass isolated author patterns pending a separate synthesis refresh.
 
 ## Available isolated Judge-pass patterns
 
@@ -81,6 +81,27 @@ These are precedence-level-6 author patterns, not additions to the active five-p
 - workflow: define system and guardrails; verify the constraint; exploit before elevating; subordinate release; limit multitasking; monitor buffers; test assumptions; rediagnose after change;
 - transfer risk: a single-constraint story can erase plural goals or damage safety, quality, rights, and governance;
 - evidence/status: complete P0/P1 corpus; four traceable excerpts; Judge pass; isolated `active_provisional`; owner acceptance pending.
+
+### Strategy Kernel and Crux Review — Richard P. Rumelt
+
+- use: consequential strategy work with unclear diagnosis or incoherent actions;
+- workflow: diagnose challenge; state crux hypothesis; choose guiding policy; align actions; reopen on contrary evidence;
+- transfer risk: crux selection can hide uncertainty, stakeholders, or dissent;
+- evidence/status: partial P0/P1 corpus; three traceable excerpts; Judge pass; one P1 gap; isolated `active_provisional`.
+
+### Adoption Context Review — Everett M. Rogers
+
+- use: adoption hypothesis, channel testing, or decision-right diagnosis before broader rollout;
+- workflow: identify adopters and decision type; test perceived value and channels; run a bounded trial; inspect feedback;
+- transfer risk: mandated use can be confused with adoption; no outcome inference without data;
+- evidence/status: partial P0/P1 corpus; three traceable excerpts; Judge pass; two P1 gaps; isolated `active_provisional`.
+
+### Interaction Clarity Review — Donald A. Norman
+
+- use: users need to understand interaction, state, feedback, constraint, or recovery;
+- workflow: test discoverability, feedback, constraints, recovery, and visceral/behavioral/reflective experience;
+- transfer risk: heuristics cannot replace user research, accessibility, safety, or context testing;
+- evidence/status: complete selected P0/P1 corpus; three traceable excerpts; Judge pass; isolated `active_provisional`.
 
 ## Conflict Map
 
