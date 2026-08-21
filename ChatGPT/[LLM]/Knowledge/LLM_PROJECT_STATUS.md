@@ -1,7 +1,7 @@
 # [LLM] Project Status
 
 status: controlled legacy eval debt
-last_reviewed: 2026-08-18
+last_reviewed: 2026-08-21
 current score: 8.6/10
 
 ## Accepted memo workflow evidence
@@ -76,6 +76,7 @@ prompt-registry debt below.
 - `Knowledge/QUALITY_GATES.md`
 - `Knowledge/ROUTING_AND_HANDOFF.md`
 - `Knowledge/SMOKE_QA_FOR_LLM.md`
+- `Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `Knowledge/LLM_PROJECT_STATUS.md`
 - `Knowledge/EVAL_RUN_TEMPLATE.md`
 
@@ -89,9 +90,29 @@ prompt-registry debt below.
 - Reusable prompt entries are legacy/unversioned and have no recorded eval or
   owner-acceptance evidence. Priority migration debt is listed in
   `PROMPT_REGISTRY.md`; no eval pass is inferred.
+- Cross-project live coverage is partial: `[Inbox Router]` passed; `[AI OS]`
+  reproduced a scope-boundary defect by performing model selection and workflow
+  design after routing ownership to `[LLM]`; `[LLM]` produced a safe complete
+  asset but exceeded its hard 3,500-character cap by 28 characters; four cases
+  remain `NOT RUN` under a temporary ChatGPT account-level request limit.
+- AI OS corrective evidence: ownership was fixed in two completed reruns. The
+  temporary 1,800-character handoff target was rolled back because it could
+  remove necessary execution context; the current rule requires a focused,
+  executable handoff without an arbitrary length cap. A clean rerun is blocked
+  by the ChatGPT rate limit.
+- External AI OS, Thinking and LLM Project Instructions match the corrected
+  repository files by exact settings read-back.
+- LLM post-change validation passed 10/10 at 3,389 visible content characters,
+  preserving the prompt, gates, registry and handoffs with 111 characters of
+  buffer under the explicit maximum.
 
 ## Next fix
 
+- Rerun the synchronized `[AI OS]` compact override after a clean cooldown;
+  do not widen it after three correction attempts.
+- Complete the four `NOT RUN` cases in `CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
+  after the ChatGPT rate limit clears; use only completed responses to justify
+  additional Project Instruction changes.
 - Migrate priority reusable prompts to identifiable candidate revisions and run
   risk-appropriate evals before any new activation decision.
 
@@ -100,6 +121,7 @@ prompt-registry debt below.
 - [x] README matches actual Knowledge files
 - [x] prompt registry exists
 - [x] smoke QA file exists
+- [x] cross-project live-eval matrix exists
 - [x] status file exists
 - [x] eval template exists
 - [x] no production feature added

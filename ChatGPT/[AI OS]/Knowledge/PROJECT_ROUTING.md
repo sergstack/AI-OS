@@ -47,6 +47,13 @@ AI OS evidence/governance scope.
 - Не заменяет `[LLM]` как операционный оркестратор.
 - Не заменяет `[Thinkers OS]` как владельца author corpus, source provenance и thinker artifacts.
 
+Правило владения `[LLM]`: для reusable prompt, выбора model class, LLM workflow,
+orchestration или eval design направь задачу в `[LLM]` с фокусным, исполнимым
+handoff. Сохрани релевантные evidence/governance context, запрошенный результат,
+критерии приёмки и следующий шаг; не убирай сведения, нужные для продолжения
+работы. `[AI OS]` может уточнить границы и evidence, но не выбирает модель, не
+пишет prompt и не проектирует LLM workflow.
+
 ## Routing response pattern
 
 ```text
