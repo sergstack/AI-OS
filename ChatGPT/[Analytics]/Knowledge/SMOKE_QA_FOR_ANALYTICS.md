@@ -140,6 +140,23 @@ Pass condition:
 - answer includes QA note and limitations;
 - result is decision-readable.
 
+## 9. Missing-data compact fast path
+
+Question:
+
+```text
+Покажи Top-3 отклонения план-факт и управленческий вывод. Данных, grain, периода и единиц нет. Не задавай лишних вопросов.
+```
+
+Pass condition:
+
+- result is `NOT CALCULABLE`;
+- no placeholder ranking or empty Top-N table;
+- no invented example rows or values;
+- minimum required input and one next action are explicit;
+- confidence and the material blocker remain visible;
+- the same blocker is not repeated across separate QA, limitation, and gate sections.
+
 ## Smoke QA output
 
 ```text
