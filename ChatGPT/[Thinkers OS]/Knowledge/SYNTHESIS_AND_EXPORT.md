@@ -1,6 +1,6 @@
 # Synthesis and Export
 
-## Portfolio snapshot — 2026-07-31
+## Portfolio snapshot — 2026-08-21
 
 | Author | Coverage | Artifact/Judge state | Cross-author state |
 |---|---|---|---|
@@ -14,6 +14,8 @@
 | Jay Forrester | complete | Judge pass, export ready | active synthesis lens |
 | Carl von Clausewitz | complete | Judge pass, export ready | active synthesis lens |
 | Charlie Munger | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Herbert A. Simon | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Eliyahu M. Goldratt | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 
 Owner acceptance remains pending. Production status is `NOT AUTHORIZED`.
 
@@ -42,7 +44,27 @@ All are `active_provisional`, not validated/canonical. Application count does no
 | policy with feedback or delay | Forrester; Deming | Ostrom for multiple owners | `[Analytics]` plus bounded `[Thinking]` record |
 | bias-aware decision review | Kahneman; Clausewitz | none | `[Thinking]` |
 
-Boyd, Munger, and Ohno remain isolated Judge-pass patterns until a separate synthesis refresh explicitly merges, replaces, or rejects them under duplicate/conflict rules.
+Drucker, Boyd, Munger, Ohno, Simon, and Goldratt remain isolated Judge-pass patterns until a separate synthesis refresh explicitly merges, replaces, or rejects them under duplicate/conflict rules.
+
+## Available isolated Judge-pass patterns
+
+These patterns are available for bounded `[Thinking]` use at precedence level 6. They are not active synthesis patterns, do not change the Lens Router, and must not be selected without a matching case trigger.
+
+### `THINKERS-SIMON-PATTERN-001` — Bounded Decision Design
+
+- use: decisions overloaded by alternatives, unclear premises, limited attention, or a disputed problem representation;
+- workflow: define mandatory constraints and aspiration thresholds, separate facts from values and guesses, test the problem representation, search a bounded option set, choose a reversible sufficient action, and reopen when feedback violates a threshold;
+- boundary: satisficing cannot lower safety, legal, ethical, rights, evidence, or irreversible-downside constraints;
+- evidence: complete P0/P1 corpus, four traceable excerpts, Judge pass;
+- status: isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### `THINKERS-GOLDRATT-PATTERN-001` — Constraint-First Flow Review
+
+- use: recurring flow delay, too many concurrent initiatives, suspected bottlenecks, project multitasking, or persistent operational conflict;
+- workflow: define the system and guardrails, verify the current constraint, exploit before elevating, subordinate release, limit multitasking, monitor buffers, test conflict assumptions, and rediagnose after change;
+- boundary: the constraint lens cannot override safety, quality, rights, governance, demand evidence, or multiple legitimate system goals;
+- evidence: complete P0/P1 corpus, four traceable excerpts, Judge pass;
+- status: isolated `active_provisional`; owner acceptance pending; production not authorized.
 
 ## Conflict Map
 

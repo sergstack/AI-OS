@@ -5,8 +5,8 @@ This is the single authoritative manual upload list for ChatGPT Project `[Thinke
 generated_date: 2026-08-21
 target_project: `[Thinkers OS]`
 default_upload_mode: `Knowledge_Bundles`
-source_fingerprint_01: sha256:b734b2da6205e06cd2bb58417370818bb6568cbdf1564a2e79287eed5936ee59
-source_fingerprint_02: sha256:a69b7ae66abd7019cd80b32188d23b2a365d5a7b92ada3ae0cd2ec0dd885688d
+source_fingerprint_01: sha256:c3364cfc64e0095c8cb9cfdbe3b22245c11831c93c54fff199f11cabf09508ec
+source_fingerprint_02: sha256:959c23e93208198e0f31e0586e0d1b285d9a91f59508de2d6e90292ddfedebd4
 smoke_qa_reference: `../SMOKE_QA_RESULTS.md`
 
 ## Required upload files

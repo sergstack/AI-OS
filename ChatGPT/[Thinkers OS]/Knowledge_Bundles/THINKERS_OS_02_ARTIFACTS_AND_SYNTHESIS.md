@@ -18,10 +18,10 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
-- generated_date: 2026-07-31
+- generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:a69b7ae66abd7019cd80b32188d23b2a365d5a7b92ada3ae0cd2ec0dd885688d
+- source_fingerprint: sha256:959c23e93208198e0f31e0586e0d1b285d9a91f59508de2d6e90292ddfedebd4
 
 ---
 
@@ -62,7 +62,25 @@ All remain `active_provisional`; none is validated/canonical by application coun
 - Feedback/delay policy: Forrester + Deming; Ostrom for multiple owners.
 - Bias-aware review: Kahneman + Clausewitz.
 
-Boyd, Munger, and Ohno are Judge-pass isolated author patterns pending a separate synthesis refresh.
+Drucker, Boyd, Munger, Ohno, Simon, and Goldratt are Judge-pass isolated author patterns pending a separate synthesis refresh.
+
+## Available isolated Judge-pass patterns
+
+These are precedence-level-6 author patterns, not additions to the active five-pattern synthesis or Lens Router.
+
+### Bounded Decision Design — Herbert A. Simon
+
+- use: alternatives, premises, attention, or problem representation make a decision difficult to bound;
+- workflow: define constraints and aspiration thresholds; separate facts, values, and guesses; test the representation; search a bounded option set; choose a reversible sufficient action; reopen on failed feedback;
+- transfer risk: satisficing can rationalize weak evidence or hide material interactions and irreversible downside;
+- evidence/status: complete P0/P1 corpus; four traceable excerpts; Judge pass; isolated `active_provisional`; owner acceptance pending.
+
+### Constraint-First Flow Review — Eliyahu M. Goldratt
+
+- use: flow delay, excess concurrent work, bottleneck hypotheses, project multitasking, or persistent operational conflict;
+- workflow: define system and guardrails; verify the constraint; exploit before elevating; subordinate release; limit multitasking; monitor buffers; test assumptions; rediagnose after change;
+- transfer risk: a single-constraint story can erase plural goals or damage safety, quality, rights, and governance;
+- evidence/status: complete P0/P1 corpus; four traceable excerpts; Judge pass; isolated `active_provisional`; owner acceptance pending.
 
 ## Conflict Map
 

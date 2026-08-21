@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Compact decision-application bundle for `[Thinking]` covering the Judge-pass Thinkers OS Lens Router, Conflict Map, five active provisional synthesis patterns, precedence, anti-bloat, application logging, routing, and rollback.
+Compact decision-application bundle for `[Thinking]` covering the Judge-pass Thinkers OS Lens Router, Conflict Map, five active provisional synthesis patterns, two bounded isolated Judge-pass author patterns, precedence, anti-bloat, application logging, routing, and rollback.
 
 ## Source files
 
@@ -21,11 +21,11 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - bundle_status: active_provisional
 - source_of_truth: granular repository files listed above
-- generated_date: 2026-07-31
+- generated_date: 2026-08-21
 - canonical_status: false
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:3a8969fe4d9009cc54a3b96218f3a8060a6b50ec0a66806344237e87028c532b
+- source_fingerprint: sha256:a3fdcc3cff5190fbd7ed1d32d0d1042ed5c1e812b2758998b9b565957a2c082b
 
 ---
 
@@ -136,6 +136,26 @@ For every applicable conflict, record the dominating position, case evidence, sy
 
 All five remain `active_provisional`, `canonical_status: false`, and `owner_acceptance: pending`. Application count does not promote them.
 
+## Available isolated Judge-pass author patterns
+
+These patterns are available only at precedence level 6. They do not change the Lens Router, are not members of the five-pattern active synthesis set, and should be selected only when the case trigger is material.
+
+### Bounded Decision Design — Herbert A. Simon
+
+- use: a decision is overloaded by alternatives, unclear premises, limited attention, or a disputed problem representation;
+- apply: define mandatory constraints and aspiration thresholds; separate facts from values and guesses; test the representation; search a bounded option set; choose a reversible sufficient action; reopen when feedback violates a threshold;
+- do not use: to lower mandatory standards, automate value choices, or ignore safety, rights, domain evidence, or irreversible downside;
+- transfer risk: satisficing can rationalize low standards and decomposition can hide important interactions;
+- evidence/status: complete P0/P1 corpus; Judge pass; isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### Constraint-First Flow Review — Eliyahu M. Goldratt
+
+- use: recurring flow delay, too many concurrent initiatives, suspected bottlenecks, project multitasking, or persistent operational conflict;
+- apply: define the system and guardrails; verify the current constraint; exploit before elevating; subordinate release and priorities; limit multitasking; monitor buffers; test conflict assumptions; rediagnose after change;
+- do not use: when the system boundary, goal, demand, constraint evidence, safety, quality, rights, or governance guardrails are unknown;
+- transfer risk: a single-constraint framing can erase plural goals, while estimate compression and subordination can externalize harm;
+- evidence/status: complete P0/P1 corpus; Judge pass; isolated `active_provisional`; owner acceptance pending; production not authorized.
+
 ## Application logging rule
 
 Log only meaningful real `[Thinking]` applications using `THINKERS_APPLICATION_LOG.md`. Record facts, unknowns, selected patterns/lenses, count, reasons, exclusions, Conflict Map and precedence checks, decision, routes, risks, rollback, reasoning quality, observed versus expected outcome, confounders, and feedback. Do not import retrospective upstream entries or claim causality from pattern use.
@@ -150,7 +170,7 @@ Log only meaningful real `[Thinking]` applications using `THINKERS_APPLICATION_L
 
 ## Excluded material
 
-- isolated Boyd, Drucker, Munger, and Ohno author patterns;
+- isolated Boyd, Drucker, Munger, and Ohno author patterns not projected in this bounded bundle;
 - pilot candidate router/conflict revisions without separate Judge authorization;
 - candidate, revise, blocked, restricted, deprecated, rejected, or archival artifacts;
 - raw/normalized books, OCR/excerpt dumps, source/acquisition manifests, execution/application-history dumps, local absolute paths, secrets, embeddings, or runtime artifacts.
