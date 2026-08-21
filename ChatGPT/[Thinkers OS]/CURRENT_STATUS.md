@@ -1,9 +1,10 @@
 # Current Status — [Thinkers OS]
 
 - status_date: 2026-08-21
-- repository_package_status: synced_focused_live_pass
-- external_project_status: UPDATED — optimized Project Instructions were saved in the existing `[Thinkers OS]` ChatGPT Project and verified after reopening settings
-- external_sources_sync_status: UPDATED WITH DISPLAY-NAME LIMITATION — refreshed bundle 01 content was uploaded and unchanged bundle 02 remains in place; ChatGPT may append a numeric suffix because same-name items remain in Library
+- repository_package_status: refreshed_candidate_ready_for_owner_review
+- external_project_status: UPDATED — the previously uploaded package remains active; the latest Simon/Goldratt bundle refresh requires manual owner upload after repository merge
+- external_sources_sync_status: UPDATED WITH DISPLAY-NAME LIMITATION — the previously uploaded sources remain active; replace both Thinkers OS bundles and Thinking bundle 04 from the authoritative upload lists after merge
+- latest_bundle_refresh_status: UPDATE REQUIRED
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 - default_upload_mode: Knowledge_Bundles
@@ -11,10 +12,10 @@
 
 ## Portfolio snapshot
 
-- registered authors: 10
-- complete core packages: 8
+- registered authors: 12
+- complete core packages: 10
 - partial core packages: 2 — Elinor Ostrom and Taiichi Ohno
-- Judge-pass author packages: 10, including bounded partial packages for Ostrom and Ohno
+- Judge-pass author packages: 12, including bounded partial packages for Ostrom and Ohno
 - unresolved P0 requests: 0
 - unresolved P1 requests: 3
 
@@ -30,11 +31,11 @@
 - preferred lenses per case: 2–3
 - maximum lenses per case: 4
 - status source: repository-side Thinkers OS registry
-- current limitation: Boyd, Munger, and Ohno have Judge-pass isolated author patterns but are not yet incorporated into the active cross-author synthesis set.
+- current limitation: Drucker, Boyd, Munger, Ohno, Simon, and Goldratt have Judge-pass isolated author patterns but are not incorporated into the active cross-author synthesis set.
 
 ## Next resumable stage
 
-Run the remaining eleven external smoke cases. Uploaded bundles remain a cached baseline rather than live repository state.
+After merge, manually replace `THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md`, `THINKERS_OS_02_ARTIFACTS_AND_SYNTHESIS.md`, and `THINKING_04_THINKERS_SYNTHESIS.md`, then run focused Simon/Goldratt checks and the remaining external smoke cases. Uploaded bundles remain a cached baseline rather than live repository state.
 
 ## External behavioral observation
 
@@ -46,3 +47,4 @@ Run the remaining eleven external smoke cases. Uploaded bundles remain a cached 
 - post_sync_observed: the saved 6,962-character instructions matched the repository file after reopening settings; the refreshed bundle content was visible in Project Sources with an automatically suffixed display name; the new response returned `REVISE / SCOPE-BLOCKED`, a compact per-scope table, `NO CHANGE` for active synthesis, and `USABLE` for unaffected synthesis
 - post_sync_verdict: PASS
 - limitation: one focused post-sync case; the full twelve-case suite was not rerun; exact Project Source display naming is controlled by ChatGPT Library deduplication
+- latest_bundle_observation: NOT RUN — the Simon/Goldratt refresh has not yet been uploaded to external Project Sources

@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:b734b2da6205e06cd2bb58417370818bb6568cbdf1564a2e79287eed5936ee59
+- source_fingerprint: sha256:c3364cfc64e0095c8cb9cfdbe3b22245c11831c93c54fff199f11cabf09508ec
 
 ---
 
@@ -64,10 +64,10 @@ Allowed match outcomes: exact match, acceptable equivalent, partial match, not r
 
 ## Current portfolio snapshot
 
-- 10 registered authors.
-- 8 complete core packages.
+- 12 registered authors.
+- 10 complete core packages.
 - 2 partial packages: Elinor Ostrom and Taiichi Ohno.
-- 10 Judge-pass author packages, with partial limitations retained for Ostrom and Ohno.
+- 12 Judge-pass author packages, with partial limitations retained for Ostrom and Ohno.
 - 0 unresolved P0 requests.
 - 3 unresolved P1 requests.
 
