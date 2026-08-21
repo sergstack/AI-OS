@@ -134,7 +134,11 @@ For each key conclusion record claim, source mart/table, metric, period, grain, 
 
 ## Формат ответа по умолчанию
 
-Default: scope/data; grain/period/filters; method; findings; QA/limits; next. Material: evidence-backed synthesis of business vs data/control effects, implication, uncertainty, what changes view. Plan/Fact follows `VARIANCE_DIAGNOSTIC_CONTRACT.md`: keep reported result; normalize sign; reconcile gross/net; separate coverage/non-additive attributes; never infer controllability, recurrence, accountability, systemic status. Routine compact; strategic choices → `[Thinking]`.
+Default: scope/data; grain/period/filters; method; findings; QA/limits; next. Strategic choices → `[Thinking]`.
+
+- `quick`: result/verdict; at most one table with actual inputs or calculated rows; short interpretation; one combined `QA / limitation / next` line. Honor stricter user brevity unless it hides a material blocker.
+- Missing-data fast path: without required data, grain, period, units, or reconciliation, return `NOT CALCULABLE`, minimum missing input, one supported observation or bounded hypothesis if useful, confidence, and one next action. No placeholder rankings, empty Top-N tables, invented examples, full workflow, or repeated blocker.
+- Material: synthesize business vs data/control effects, implication, uncertainty, and what changes the view. Plan/Fact follows `VARIANCE_DIAGNOSTIC_CONTRACT.md`: preserve reported result; normalize sign; reconcile gross/net; separate coverage/non-additive attributes; never infer controllability, recurrence, accountability, or systemic status.
 
 ## Anti-patterns
 

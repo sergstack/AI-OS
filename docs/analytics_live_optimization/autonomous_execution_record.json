@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0.0",
+  "standard_version": "1.0.0",
+  "execution_id": "exec-analytics-live-optimization-20260821",
+  "parent_execution_id": null,
+  "project": "[Analytics]",
+  "project_extension": {
+    "extension_id": "analytics-extension-v1",
+    "source": "docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md"
+  },
+  "execution_mode": "implement",
+  "risk_mode": "full",
+  "source_revision": {
+    "revision_type": "content_manifest",
+    "baseline_revision": "dd3a0ea3ae9da3cbf47bb9cf5e39f0cba60f2ec5",
+    "final_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+    "content_manifest": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+    "final_iteration_id": "iter-002"
+  },
+  "created_at": "2026-08-21T08:55:00Z",
+  "updated_at": "2026-08-21T09:14:35Z",
+  "execution_state": "completed",
+  "terminal_reason": null,
+  "requirements": [
+    {
+      "requirement_id": "req-001",
+      "requirement": "Optimize the [Analytics] response contract from observed live evidence without weakening analytical functionality.",
+      "source": "user request and Codex in-app Browser baseline",
+      "mandatory": true,
+      "implementation_locations": [
+        "ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md",
+        "tests/test_analytics_response_contract.py"
+      ],
+      "evidence_refs": ["ev-001", "ev-002"],
+      "validation_refs": ["val-001", "val-002"],
+      "status": "passed",
+      "status_history": [
+        {"status": "implemented", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:03:00Z", "evidence_refs": ["ev-001"]},
+        {"status": "passed", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:09:00Z", "evidence_refs": ["ev-002", "ev-003"]}
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-001"]
+    },
+    {
+      "requirement_id": "req-002",
+      "requirement": "Update and verify the external [ANALYTICS] Project Instructions and rerun affected live cases.",
+      "source": "user-authorized live optimization",
+      "mandatory": true,
+      "implementation_locations": [
+        "external ChatGPT Project [ANALYTICS] Project Instructions",
+        "docs/analytics_live_optimization/LIVE_EVAL_REPORT.md"
+      ],
+      "evidence_refs": ["ev-002", "ev-004"],
+      "validation_refs": ["val-001"],
+      "status": "passed",
+      "status_history": [
+        {"status": "implemented", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:05:00Z", "evidence_refs": ["ev-004"]},
+        {"status": "passed", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:09:00Z", "evidence_refs": ["ev-002"]}
+      ],
+      "gap": null,
+      "corrective_action_refs": ["iter-001"]
+    },
+    {
+      "requirement_id": "req-003",
+      "requirement": "Keep Analytics smoke QA and its derived upload bundle current and validated.",
+      "source": "repository source-of-truth and bundle freshness contract",
+      "mandatory": true,
+      "implementation_locations": [
+        "ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md",
+        "ChatGPT/[Analytics]/Knowledge/SMOKE_QA_RESULT.md",
+        "ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md"
+      ],
+      "evidence_refs": ["ev-005", "ev-006"],
+      "validation_refs": ["val-002", "val-003"],
+      "status": "passed",
+      "status_history": [
+        {"status": "implemented", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:03:00Z", "evidence_refs": ["ev-005"]},
+        {"status": "passed", "iteration_id": "iter-002", "recorded_at": "2026-08-21T09:14:35Z", "evidence_refs": ["ev-006"]}
+      ],
+      "gap": "The external Project still displays the previous same-name bundle alongside the refreshed upload pending explicit removal authority.",
+      "corrective_action_refs": ["iter-001", "iter-002"]
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "def-001",
+      "requirement_id": "req-001",
+      "detected_in_iteration": "iter-001",
+      "detected_by": "live_browser_baseline",
+      "classification": "contract",
+      "subtype": "placeholder_and_repeated_blocker",
+      "severity": "recoverable",
+      "description": "A no-data quick response produced an empty ranking table and repeated one blocker under several labels.",
+      "evidence_refs": ["ev-001"],
+      "correction_eligible": true,
+      "required_authority": "not_required",
+      "remediation_owner": "[Codex]",
+      "corrective_action_refs": ["iter-001"],
+      "affected_scope": ["project_instructions", "smoke_contract", "focused_test"],
+      "required_validation_refs": ["val-001", "val-002"],
+      "status": "resolved",
+      "status_history": [
+        {"status": "open", "iteration_id": "iter-001", "recorded_at": "2026-08-21T08:59:00Z", "evidence_refs": ["ev-001"]},
+        {"status": "resolved", "iteration_id": "iter-001", "recorded_at": "2026-08-21T09:09:00Z", "evidence_refs": ["ev-002", "ev-003"]}
+      ],
+      "resolved_in_iteration": "iter-001",
+      "resolution_evidence_refs": ["ev-002", "ev-003"]
+    },
+    {
+      "defect_id": "def-002",
+      "requirement_id": "req-003",
+      "detected_in_iteration": "iter-002",
+      "detected_by": "knowledge_bundle_validation",
+      "classification": "artifact",
+      "subtype": "stale_source_fingerprint",
+      "severity": "recoverable",
+      "description": "Adding the missing-data smoke case made Analytics bundle 05 stale.",
+      "evidence_refs": ["ev-005"],
+      "correction_eligible": true,
+      "required_authority": "not_required",
+      "remediation_owner": "[Codex]",
+      "corrective_action_refs": ["iter-002"],
+      "affected_scope": ["analytics_bundle_05"],
+      "required_validation_refs": ["val-003"],
+      "status": "resolved",
+      "status_history": [
+        {"status": "open", "iteration_id": "iter-002", "recorded_at": "2026-08-21T09:12:00Z", "evidence_refs": ["ev-005"]},
+        {"status": "resolved", "iteration_id": "iter-002", "recorded_at": "2026-08-21T09:14:35Z", "evidence_refs": ["ev-006"]}
+      ],
+      "resolved_in_iteration": "iter-002",
+      "resolution_evidence_refs": ["ev-006"]
+    }
+  ],
+  "iterations": [
+    {
+      "iteration_id": "iter-001",
+      "iteration_number": 1,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-21T08:55:00Z",
+      "completed_at": "2026-08-21T09:11:00Z",
+      "trigger": "Live baseline found unnecessary placeholder output and repeated blocker sections in the no-data quick path.",
+      "requirements_affected": ["req-001", "req-002", "req-003"],
+      "defects_addressed": ["def-001"],
+      "changes": ["Added compact quick and missing-data response contracts", "Updated smoke QA and focused regression tests", "Synchronized external Project Instructions and reran live cases"],
+      "validation_refs": ["val-001", "val-002"],
+      "result": "pass"
+    },
+    {
+      "iteration_id": "iter-002",
+      "iteration_number": 2,
+      "iteration_type": "full_iteration",
+      "started_at": "2026-08-21T09:12:00Z",
+      "completed_at": "2026-08-21T09:14:35Z",
+      "trigger": "Bundle validation detected a stale fingerprint after the smoke source changed.",
+      "requirements_affected": ["req-003"],
+      "defects_addressed": ["def-002"],
+      "changes": ["Regenerated the affected Analytics QA bundle content and fingerprint", "Uploaded refreshed bundle 05 to the external Project"],
+      "validation_refs": ["val-003"],
+      "result": "pass_with_external_duplicate_source_limitation"
+    }
+  ],
+  "validation_runs": [
+    {
+      "validation_id": "val-001",
+      "validation_type": "smoke",
+      "command_or_method": "Codex in-app Browser settings read-back plus same-prompt no-data and supplied-data reruns",
+      "validated_revision": "sha256:6c8d0b9e40b70d35abb9f1e185e2b274af24018f66580bd08607422bc89870e6",
+      "covered_paths": ["external ChatGPT Project [ANALYTICS]"],
+      "covered_requirement_ids": ["req-001", "req-002"],
+      "started_at": "2026-08-21T09:05:00Z",
+      "completed_at": "2026-08-21T09:09:00Z",
+      "result": "pass",
+      "evidence_refs": ["ev-002", "ev-004"],
+      "freshness_status": "current",
+      "freshness_justification": "The reruns used the persisted optimized Project Instructions.",
+      "unaffected_paths_evidence": "No other ChatGPT Project settings were modified.",
+      "limitations": ["A real owner dataset and the full external suite were not run."]
+    },
+    {
+      "validation_id": "val-002",
+      "validation_type": "integration",
+      "command_or_method": "python3 -m pytest -q tests/test_analytics_response_contract.py tests/test_analytics_variance_diagnostic_contract.py tests/test_validation_scripts.py",
+      "validated_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+      "covered_paths": ["ChatGPT/[Analytics]", "tests/test_analytics_response_contract.py", "tests/test_analytics_variance_diagnostic_contract.py", "tests/test_validation_scripts.py"],
+      "covered_requirement_ids": ["req-001", "req-003"],
+      "started_at": null,
+      "completed_at": "2026-08-21T09:11:00Z",
+      "result": "pass",
+      "evidence_refs": ["ev-003"],
+      "freshness_status": "current",
+      "freshness_justification": "Later changes only refreshed the derived bundle and evidence documents; the tested source contract and test files did not change.",
+      "unaffected_paths_evidence": "Bundle freshness was validated separately in val-003.",
+      "limitations": []
+    },
+    {
+      "validation_id": "val-003",
+      "validation_type": "docs_consistency",
+      "command_or_method": "Instruction length, public safety, Goal Mode, manifest, Knowledge bundle, index coverage, and git diff checks",
+      "validated_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+      "covered_paths": ["ChatGPT/[Analytics]", "docs/analytics_live_optimization"],
+      "covered_requirement_ids": ["req-001", "req-002", "req-003"],
+      "started_at": null,
+      "completed_at": "2026-08-21T09:14:35Z",
+      "result": "pass",
+      "evidence_refs": ["ev-006"],
+      "freshness_status": "current",
+      "freshness_justification": "The affected bundle check passed after the only corrective fix.",
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    },
+    {
+      "validation_id": "val-004",
+      "validation_type": "schema",
+      "command_or_method": "Canonical AES JSON Schema validation",
+      "validated_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+      "covered_paths": ["docs/analytics_live_optimization/autonomous_execution_record.json"],
+      "covered_requirement_ids": ["req-001", "req-002", "req-003"],
+      "started_at": null,
+      "completed_at": "2026-08-21T09:14:35Z",
+      "result": "pass",
+      "evidence_refs": ["ev-007"],
+      "freshness_status": "current",
+      "freshness_justification": "The final record passed the canonical schema.",
+      "unaffected_paths_evidence": null,
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "art-001",
+      "path": "docs/analytics_live_optimization/LIVE_EVAL_REPORT.md",
+      "artifact_type": "live_evaluation_report",
+      "mandatory": true,
+      "source_inputs": [{"path": "ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md", "content_hash": "sha256:6c8d0b9e40b70d35abb9f1e185e2b274af24018f66580bd08607422bc89870e6", "last_changed_iteration": "iter-001"}],
+      "generation_method": "Codex AES live evaluation",
+      "generated_from_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-08-21T09:14:35Z",
+      "validation_refs": ["val-001", "val-003"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-002", "ev-006"]
+    },
+    {
+      "artifact_id": "art-002",
+      "path": "docs/analytics_live_optimization/autonomous_execution_record.json",
+      "artifact_type": "canonical_aes_execution_record",
+      "mandatory": true,
+      "source_inputs": [{"path": "AUTONOMOUS_EXECUTION_STANDARD.md", "content_hash": null, "last_changed_iteration": null}],
+      "generation_method": "Codex AES execution record",
+      "generated_from_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
+      "generated_in_iteration": "iter-002",
+      "generated_at": "2026-08-21T09:14:35Z",
+      "validation_refs": ["val-004"],
+      "freshness_status": "current",
+      "freshness_evidence_refs": ["ev-007"]
+    }
+  ],
+  "acceptance_scopes": {
+    "requirements_traceability": {"status": "pass", "required_checks": ["requirement mapping"], "checks_run": ["manual AES review"], "evidence_refs": ["ev-001", "ev-002", "ev-006"], "open_defect_ids": [], "limitations": []},
+    "implementation": {"status": "pass", "required_checks": ["scoped diff review"], "checks_run": ["manual review", "git diff --check"], "evidence_refs": ["ev-006"], "open_defect_ids": [], "limitations": []},
+    "tests": {"status": "pass", "required_checks": ["focused regression suite"], "checks_run": ["38 targeted tests"], "evidence_refs": ["ev-003"], "open_defect_ids": [], "limitations": []},
+    "validation": {"status": "pass", "required_checks": ["live rerun", "repository validators", "AES schema"], "checks_run": ["val-001", "val-002", "val-003", "val-004"], "evidence_refs": ["ev-002", "ev-003", "ev-006", "ev-007"], "open_defect_ids": [], "limitations": ["Real owner-data pilot not run."]},
+    "output_artifacts": {"status": "partial", "required_checks": ["report and execution record", "external source sync"], "checks_run": ["report review", "AES schema", "external upload"], "evidence_refs": ["ev-004", "ev-007"], "open_defect_ids": [], "limitations": ["Prior same-name external bundle remains visible pending explicit removal authority."]},
+    "corrective_loop": {"status": "pass", "required_checks": ["affected-scope rerun"], "checks_run": ["live rerun", "bundle revalidation"], "evidence_refs": ["ev-002", "ev-006"], "open_defect_ids": [], "limitations": []},
+    "rollback_readiness": {"status": "pass", "required_checks": ["scoped rollback"], "checks_run": ["manual rollback review"], "evidence_refs": ["ev-008"], "open_defect_ids": [], "limitations": []}
+  },
+  "overall_delivery": "partial",
+  "qa_status": "pass",
+  "judge_verdict": "not_run",
+  "authority_status": "owner_review_pending",
+  "merge_status": "not_opened",
+  "production_status": "not_authorized",
+  "rollback": {
+    "strategy": "scoped_restore",
+    "scope": "Only Analytics response-contract, smoke, bundle, test, and evidence files changed in this branch.",
+    "command_or_procedure": "Restore the listed repository files from origin/main and paste the baseline Project Instructions back into the external [ANALYTICS] settings.",
+    "prerequisites": "Do not remove unrelated Project Sources or repository changes.",
+    "data_loss_risk": "low",
+    "validation_after_rollback": "Rerun the focused Analytics tests, instruction-length check, bundle validation, and one no-data live case.",
+    "status": "ready"
+  },
+  "external_actions": [
+    {
+      "action_id": "action-save-analytics-instructions",
+      "action_type": "source_mutation",
+      "required_for_objective": true,
+      "requested": true,
+      "required_authority": "project owner optimization request",
+      "authority_evidence_ref": "ev-004",
+      "status": "completed",
+      "executed_at": "2026-08-21T09:05:00Z",
+      "result_evidence_ref": "ev-004"
+    },
+    {
+      "action_id": "action-upload-analytics-bundle-05",
+      "action_type": "source_mutation",
+      "required_for_objective": true,
+      "requested": true,
+      "required_authority": "project owner optimization request",
+      "authority_evidence_ref": "ev-004",
+      "status": "completed_with_duplicate_source_limitation",
+      "executed_at": "2026-08-21T09:14:35Z",
+      "result_evidence_ref": "ev-004"
+    }
+  ],
+  "handoffs": [
+    {
+      "handoff_id": "handoff-analytics-to-codex-001",
+      "execution_id": "exec-analytics-live-optimization-20260821",
+      "parent_execution_id": null,
+      "from": "[Analytics]",
+      "to": "[Codex]",
+      "requirement_ids": ["req-001", "req-002", "req-003"],
+      "open_defect_ids": [],
+      "current_iteration_id": "iter-002",
+      "evidence_refs": ["ev-001", "ev-002", "ev-003", "ev-004", "ev-005", "ev-006", "ev-007", "ev-008"],
+      "acceptance_snapshot": {"overall_delivery": "partial", "reason": "external duplicate source and real-data pilot limitations"},
+      "qa_status": "pass",
+      "judge_verdict": "not_run",
+      "authority_status": "owner_review_pending",
+      "next_owner": "[Analytics]"
+    }
+  ],
+  "final_report": {
+    "status": "pass_with_limitations",
+    "evidence_catalog": {
+      "ev-001": "Baseline no-data and supplied-data live responses",
+      "ev-002": "Same-prompt post-sync live reruns: 44.1% and 26.8% shorter with required gates preserved",
+      "ev-003": "38 targeted tests; LDW parse RUN-7f1bcfa5e1e24979 passed with observed exit code 0",
+      "ev-004": "External Project Instructions persisted at 7,703 characters and refreshed bundle 05 uploaded",
+      "ev-005": "Initial Knowledge bundle validation found stale Analytics bundle 05",
+      "ev-006": "Corrected bundle validation passed for 7 projects and 33 bundles; repository validators passed",
+      "ev-007": "Canonical AES JSON Schema validation",
+      "ev-008": "Scoped rollback review"
+    },
+    "residual_risks": [
+      "The external Project retains the prior same-name bundle pending explicit removal authority.",
+      "A real owner-data pilot and the full external Analytics suite were not run.",
+      "Production remains not authorized."
+    ]
+  }
+}
