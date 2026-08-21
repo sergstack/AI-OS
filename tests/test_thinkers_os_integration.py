@@ -80,9 +80,25 @@ def test_canonical_name_and_manual_external_boundary() -> None:
 
     assert "[Thinkers OS]" in texts
     assert "[Thinker OS]" not in texts
-    assert "external_project_status: NOT RUN" in texts
+    assert "external_project_status: UPDATED" in texts
+    assert "external_sources_sync_status: UPDATED WITH DISPLAY-NAME LIMITATION" in texts
+    assert "external_full_suite: NOT RUN" in texts
     assert "production_status: NOT AUTHORIZED" in texts
     assert "owner_acceptance: pending" in texts
+
+
+def test_source_gate_is_scope_based_and_compact() -> None:
+    instructions = read("PROJECT_INSTRUCTIONS.md")
+    source_rules = read("Knowledge/CORPUS_AND_SOURCE_RULES.md")
+    workflow = read("Knowledge/THINKERS_OS_WORKFLOW.md")
+    bundle = read("Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md")
+
+    for text in (instructions, source_rules, workflow, bundle):
+        assert "whole project" in text or "blanket project blocker" in text
+
+    assert "scope | status | evidence | next action" in instructions
+    assert "request closure" in source_rules
+    assert "unaffected Judge-pass synthesis" in bundle
 
 
 @pytest.mark.parametrize(

@@ -26,13 +26,15 @@ Upload only files listed in `Knowledge_Bundles/UPLOAD_LIST.md`. The default requ
 
 Do not upload `README.md`, granular Knowledge, raw or normalized books, OCR dumps, manifests, logs, local paths, secrets, blocked artifacts, or rejected artifacts.
 
-## Manual sync
+## Manual sync and maintenance
 
-1. Create the external ChatGPT Project `[Thinkers OS]` manually.
+The external `[Thinkers OS]` Project was observed on 2026-08-21. Creation remains an owner action only if the Project is absent; repository work never creates or modifies it automatically.
+
+1. Open the existing external ChatGPT Project `[Thinkers OS]`; create it manually only if absent.
 2. Paste `PROJECT_INSTRUCTIONS.md` into Project Instructions.
 3. Upload only the files listed in `Knowledge_Bundles/UPLOAD_LIST.md`.
 4. Do not upload granular Knowledge simultaneously.
-5. Run the twelve smoke questions and record actual external behavior separately.
+5. After an owner-authorized sync, run the focused source-gate case, then the twelve-case suite, and record actual external behavior separately.
 6. Keep `owner_acceptance: pending` and production status `NOT AUTHORIZED` until explicit acceptance.
 
 Repository implementation and validation do not perform these external steps.

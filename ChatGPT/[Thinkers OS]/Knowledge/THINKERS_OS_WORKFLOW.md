@@ -58,8 +58,14 @@ Record:
 
 An unavailable P0 blocks only that author. Missing P1 allows bounded use of existing evidence but requires partial coverage and an active request unless owner-waived.
 
+## Scope-based blocking
+
+Record the smallest affected scope. A missing or preview-only source blocks request closure and claims derived from that source; it does not block request registration, partial intake, unrelated authors, or existing Judge-pass synthesis. Report each material scope separately instead of collapsing the whole project into one `blocked` status.
+
 ## Output discipline
 
 Separate facts, interpretations, recommendations, hypotheses, blockers, and limitations. State evidence status, confidence, transfer risk, source artifact, and corpus coverage for material claims.
 
 Never report expected work as observed execution.
+
+For a routine source-gate answer, prefer one verdict, one compact `scope | status | evidence | next action` table, one blocker/owner action, and one routing/resume line. Expand the full workflow only when requested or necessary for the decision.

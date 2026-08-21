@@ -27,6 +27,15 @@ Never invent URL, edition, ISBN, language, license, completeness, ownership, pro
 
 Preview, sample chapter, third-party summary, related article, wrong work, and duplicate edition do not close a required request unless the registry explicitly approves an equivalent.
 
+For a preview/sample case, apply the gate per scope:
+
+- request closure: blocked;
+- new source-backed claim: blocked;
+- new contribution to active synthesis: blocked until its author artifact reaches Judge pass;
+- request registration, partial intake classification, owner-source request, and unaffected Judge-pass synthesis: allowed.
+
+Do not report a blanket project blocker when the missing source affects only one author, request, artifact, or synthesis contribution.
+
 ## Intake outcomes
 
 - `exact_match`
