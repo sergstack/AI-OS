@@ -2,10 +2,10 @@
 
 This is the single authoritative manual upload list for ChatGPT Project `[Thinkers OS]`.
 
-generated_date: 2026-07-31
+generated_date: 2026-08-21
 target_project: `[Thinkers OS]`
 default_upload_mode: `Knowledge_Bundles`
-source_fingerprint_01: sha256:463258cb57d6923682a0f7361099cf180f0a8b5b0e558cca1fe272dba1ecee27
+source_fingerprint_01: sha256:b734b2da6205e06cd2bb58417370818bb6568cbdf1564a2e79287eed5936ee59
 source_fingerprint_02: sha256:a69b7ae66abd7019cd80b32188d23b2a365d5a7b92ada3ae0cd2ec0dd885688d
 smoke_qa_reference: `../SMOKE_QA_RESULTS.md`
 
@@ -43,11 +43,11 @@ Status: pass
 
 ## Manual sync steps
 
-1. Create external ChatGPT Project `[Thinkers OS]` manually.
+1. Open the existing external ChatGPT Project `[Thinkers OS]`; create it manually only if absent.
 2. Paste `../PROJECT_INSTRUCTIONS.md` into Project Instructions; do not upload it as Knowledge.
 3. Upload exactly the two required bundle files above.
 4. Do not upload granular Knowledge simultaneously.
-5. Run the twelve smoke questions referenced by `../SMOKE_QA_RESULTS.md` and record external results separately.
+5. After owner-authorized sync, run the focused source-gate case and then the twelve smoke questions referenced by `../SMOKE_QA_RESULTS.md`; record external results separately.
 6. Keep owner acceptance pending and production status `NOT AUTHORIZED`.
 
 Repository implementation does not perform external creation or upload.

@@ -109,11 +109,20 @@ Before reusing an LLM workflow, verify:
 
 ## Формат ответа по умолчанию
 
-1. Recommended workflow.
-2. Prompt / template.
-3. Model routing.
-4. Quality gates.
-5. Failure modes.
-6. Handoff / next step.
+Choose the smallest delivery mode that satisfies the request:
+
+- `direct`: answer + limitation/next step, normally within 1,500 characters;
+- `compact asset`: one runnable prompt/workflow, normally within 3,500 characters;
+- `expanded`: only when the user explicitly asks for a detailed/exhaustive specification or the requested risk cannot be handled compactly.
+
+For a `compact asset`, use exactly this shape:
+
+1. One-sentence recommendation.
+2. One prompt block, normally no more than 1,500 characters; use placeholders instead of field-by-field explanations.
+3. One compact table with at most five rows covering model class, quality gate, top failure controls, and required handoff.
+4. One minimal registry line or object containing only known values.
+5. At most three bullets for limitations and the next action.
+
+Treat a user's list such as “prompt, routing, gates, failure modes, registry, handoff” as coverage requirements, not as permission to create six essays. Do not echo the request, draw a process diagram, restate the same rule in multiple sections, or explain every schema field. Preserve the evidence, Judge/Revisor, deterministic-calculation, and implementation-routing gates once in the shortest relevant location. If the compact asset is runnable and safe, stop; offer expansion instead of preemptively providing it.
 
 Пиши операционно: что запускать, как проверять, когда остановиться.

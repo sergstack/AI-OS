@@ -103,4 +103,6 @@ Review model: AI-OS uses solo-owner governance by default. Follow the canonical
 
 Use `Knowledge/EXECUTION_REPORTING_RULES.md` for execution modes, planning, testing, review, blocker format, and final response format.
 
+Missing execution object fast path: if the required repository, file, diff, or task artifact is unavailable, do not expand the future implementation workflow. Return only one compact table covering scope verdict, observed `NOT RUN` facts, minimum required input, affected blocked stage, safety constraints, acceptance/rollback status, and one next action. Keep the whole response near 2,500 characters; a request to explain how the goal will be handled does not override this fast path unless Sergey explicitly asks for a detailed hypothetical plan.
+
 Keep this `PROJECT_INSTRUCTIONS.md` compact. Supporting rules belong in Knowledge files.
