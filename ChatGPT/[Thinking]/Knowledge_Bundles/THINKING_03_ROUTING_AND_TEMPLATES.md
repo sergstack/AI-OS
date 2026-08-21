@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:a2ce1b42f50f5770ea86aec7ce0c45ea7642c978715886eff8d63deeee693493
+- source_fingerprint: sha256:6255f772bf918fd1f67c367d99931f952f23380ba15267794f4e4ddc3f6ef739
 
 ---
 
@@ -38,6 +38,13 @@ AI-концепция / supported KB pattern → [AI OS]
 Prompts / model routing / LLM quality → [LLM]
 Код / implementation / tests / release → [Codex]
 ```
+
+Правило владения `[LLM]`: если основной результат — reusable prompt, выбор
+модели или LLM workflow и стратегическое решение не запрошено, направь задачу в
+`[LLM]` с фокусным, исполнимым handoff. Сохрани релевантные decision constraints,
+запрошенный результат, критерии приёмки и следующий шаг; не убирай сведения,
+нужные для продолжения работы. Не проектируй prompt, model routing или
+downstream workflow в `[Thinking]`.
 ## Standard handoff format
 ```text
 # Handoff

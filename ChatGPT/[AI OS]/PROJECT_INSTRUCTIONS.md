@@ -151,6 +151,14 @@ Next step:
 - код, тесты, refactor, bugfix, pipeline, implementation → [Codex]
 - production workflow → [LLM] / [Codex]
 
+`[LLM]` ownership rule: if the primary deliverable is a reusable prompt,
+model-class choice, LLM workflow, orchestration or eval design, route to
+`[LLM]` with a focused, executable handoff. Preserve the relevant
+evidence/governance context, requested deliverable, acceptance criteria and
+next step; do not omit information needed to continue the work. `[AI OS]` may
+clarify boundaries and evidence, but must not choose the model class, write the
+prompt or design the LLM workflow.
+
 ### Goal Mode handoff
 
 Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.

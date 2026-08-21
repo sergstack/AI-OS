@@ -115,6 +115,10 @@ Choose the smallest delivery mode that satisfies the request:
 - `compact asset`: one runnable prompt/workflow, normally within 3,500 characters;
 - `expanded`: only when the user explicitly asks for a detailed/exhaustive specification or the requested risk cannot be handled compactly.
 
+An explicit user maximum is a hard cap. Before sending, trim the total visible
+answer—including headings, tables and source labels—below that maximum; keep a
+small buffer instead of targeting the exact boundary.
+
 For a `compact asset`, use exactly this shape:
 
 1. One-sentence recommendation.

@@ -9,6 +9,7 @@ Compact upload artifact for [LLM] covering quality gates and eval.
 - `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`
 - `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`
 - `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
+- `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
 - `AUTONOMOUS_EXECUTION_STANDARD.md`
 
@@ -21,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:67c49dde82ce710e0e01aa5d757e11ba29df840e5186b2983c64ac4793fe5e9b
+- source_fingerprint: sha256:4c036ee573ff553f6a5f8c014a944b1d09f8de603f60ec26b0a95aa063e35abc
 
 ---
 
@@ -79,6 +80,7 @@ pass / revise / blocked
 ## From: `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
 
 # [LLM] Smoke QA
+Date: 2026-08-21
 Verdict: pass
 ## Checks
 | Test | Expected | Result | Status |
@@ -92,12 +94,68 @@ Verdict: pass
 | Judge/revise test | high-risk outputs run judge then revise | workflow includes judge and revise before final | pass |
 | Codex handoff test | package handoff with acceptance criteria | task package requires objective, files, acceptance, rollback | pass |
 | Gemini test | treat Gemini output as candidate sources | KB hunter rules treat Gemini output as candidate sources only | pass |
+
+## Cross-project live coverage
+
+Matrix: `CROSS_PROJECT_LIVE_EVAL_MATRIX.md` (`LLM-XPROJECT-LIVE-001`,
+`1.0.0-candidate`).
+
+| Live case | Result | Evidence |
+|---|---|---|
+| `[Inbox Router]` → `[LLM]` | pass, 9/10 | strong single route, bounded handoff, target workflow not solved in the router |
+| `[AI OS]` → `[LLM]` | blocked, 5/10 | route named correctly, but `[AI OS]` selected the model class and designed the workflow instead of handing off |
+| `[LLM]` compact asset | revise, 9/10 | safe complete asset exceeded the 3,500-character cap by 28 visible content characters |
+| `[Thinking]`, `[Analytics]`, `[Codex]`, `[Thinkers OS]` | not run | ChatGPT rate limit prevented completed observable responses |
+
+Static smoke QA remains `pass`. Cross-project live coverage is `partial`; a
+rate-limited case is not a product failure and is not evidence for changing
+Project Instructions.
+
 ## Issues found
-- none
+- the reproduced AI OS/LLM scope-boundary defect is resolved in two completed reruns;
+- the temporary AI OS compactness cap was rolled back; the replacement preserves
+  executable handoff context without an arbitrary length limit, pending a clean live rerun;
+- one reproduced LLM compactness defect;
+- four live cases remain unobserved because of an external ChatGPT rate limit.
+
 ## Required fixes
-- none
+- rerun the synchronized AI OS compact override after a clean cooldown; do not widen it after three correction attempts;
+- rerun only the four `NOT RUN` cases after the rate limit clears;
+- make no other Project behavior change without a reproduced defect.
+
 ## Acceptance status
-pass
+static pass; cross-project live coverage partial
+
+
+## From: `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
+
+# Cross-Project LLM Live Eval Matrix
+
+- matrix_id: `LLM-XPROJECT-LIVE-001`
+- version: `1.0.0-candidate`
+- owner_project: `[LLM]`
+- status: `optimization_partial`
+- production_status: `NOT AUTHORIZED`
+
+The matrix uses one exact prompt for each of the seven ChatGPT Projects and
+scores route correctness, scope boundary, handoff completeness, evidence/QA
+preservation and compact operability. A rate limit, authentication loss or
+ambiguous Project identity is recorded as `NOT RUN`, not fail.
+
+Observed baseline: `[Inbox Router]` passed 9/10 with one strong route to
+`[LLM]`, a bounded handoff and no target-workflow solution. `[AI OS]` scored
+5/10: it named `[LLM]` as owner, then selected the model class and designed the
+workflow itself. `[Analytics]`, `[Codex]` and `[Thinkers OS]` produced partial
+diagnostic fragments before the rate-limit dialog interrupted generation;
+`[Thinking]` did not produce a response. `[LLM]` completed at 3,528 visible
+content characters and remains `REVISE` against its 3,500 cap. The four
+incomplete cases remain `NOT RUN`. Overall baseline status: `PARTIAL`.
+
+AI OS corrective evidence: two completed reruns fixed ownership; response size
+fell from 4,794 to 2,475 characters but remains above the compact target. A
+third rerun was interrupted and is `NOT RUN`. The synchronized `[LLM]` hard-cap
+rule passed its completed post-change rerun at 3,389 visible characters with
+all requested controls preserved.
 
 
 ## Autonomous Execution Standard
@@ -114,7 +172,7 @@ canonical standard is in scope here.
 
 # [LLM] Project Status
 status: controlled legacy eval debt
-last_reviewed: 2026-08-18
+last_reviewed: 2026-08-21
 
 ## Accepted memo workflow evidence
 - workflow: risk-triggered memo review
@@ -172,6 +230,7 @@ The accepted memo workflow does not resolve the separate legacy prompt-eval debt
 - `Knowledge/QUALITY_GATES.md`
 - `Knowledge/ROUTING_AND_HANDOFF.md`
 - `Knowledge/SMOKE_QA_FOR_LLM.md`
+- `Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `Knowledge/LLM_PROJECT_STATUS.md`
 - `Knowledge/EVAL_RUN_TEMPLATE.md`
 ## Known gaps
@@ -181,12 +240,18 @@ The accepted memo workflow does not resolve the separate legacy prompt-eval debt
 - Relationship Effectiveness templates are candidate / ready for human review, not a CRM project, outreach pipeline, or automation.
 - Communication Pack templates are candidate / ready for human review, not production reporting automation.
 - Reusable prompt entries are legacy/unversioned and have no recorded eval or owner-acceptance evidence. Priority migration debt is listed in `PROMPT_REGISTRY.md`; no eval pass is inferred.
+- Cross-project live coverage is partial: `[Inbox Router]` passed; `[AI OS]` reproduced a scope-boundary defect that was fixed in two completed reruns. Its later arbitrary compactness cap was rolled back in favour of a focused executable handoff; the clean rerun is `NOT RUN` under the ChatGPT account-level request limit. `[LLM]` passed the corrected explicit hard cap at 3,389 visible characters; four baseline cases remain `NOT RUN`.
+- External AI OS, Thinking and LLM Project Instructions match the corrected repository files by exact settings read-back.
+- LLM post-change validation passed 10/10 at 3,389 visible content characters, preserving the prompt, gates, registry and handoffs with 111 characters of buffer under the explicit maximum.
 ## Next fix
+- Rerun the synchronized `[AI OS]` focused-handoff rule after a clean cooldown; do not change it without a completed reproduced defect.
+- Complete the four `NOT RUN` cases in `CROSS_PROJECT_LIVE_EVAL_MATRIX.md` after the ChatGPT rate limit clears; use only completed responses to justify additional Project Instruction changes.
 - Migrate priority reusable prompts to identifiable candidate revisions and run risk-appropriate evals before any new activation decision.
 ## Acceptance checklist
 - [x] README matches actual Knowledge files
 - [x] prompt registry exists
 - [x] smoke QA file exists
+- [x] cross-project live-eval matrix exists
 - [x] status file exists
 - [x] eval template exists
 - [x] no production feature added
