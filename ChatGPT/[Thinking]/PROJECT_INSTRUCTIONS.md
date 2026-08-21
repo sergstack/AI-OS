@@ -51,6 +51,13 @@
    - AI-концепция / supported KB pattern → [AI OS]
    Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
 
+`[LLM]` ownership rule: when the primary deliverable is a reusable prompt,
+model choice or LLM workflow and no strategic decision is requested, route to
+`[LLM]` with a focused, executable handoff. Preserve relevant decision
+constraints, requested deliverable, acceptance criteria and next step; do not
+omit information needed to continue the work. Do not design the prompt, select
+the model or expand the downstream workflow inside `[Thinking]`.
+
 ## Использование Thinkers OS
 
 `[Thinking]` применяет Judge-pass active provisional patterns к реальным решениям. `[Thinkers OS]` управляет авторами, corpus, source intake, provenance, synthesis maintenance и status changes. Не запрашивай книги и не меняй pattern status в `[Thinking]`.

@@ -1,6 +1,6 @@
 # [LLM] Smoke QA
 
-Date: 2026-05-25
+Date: 2026-08-21
 Verdict: pass
 
 ## Checks
@@ -18,13 +18,35 @@ Verdict: pass
 | Codex handoff test | package handoff with acceptance criteria | task package requires objective, files, acceptance, rollback | pass |
 | Gemini test | treat Gemini output as candidate sources | KB hunter rules treat Gemini output as candidate sources only | pass |
 
+## Cross-project live coverage
+
+Matrix: `CROSS_PROJECT_LIVE_EVAL_MATRIX.md` (`LLM-XPROJECT-LIVE-001`,
+`1.0.0-candidate`).
+
+| Live case | Result | Evidence |
+|---|---|---|
+| `[Inbox Router]` → `[LLM]` | pass, 9/10 | strong single route, bounded handoff, target workflow not solved in the router |
+| `[AI OS]` → `[LLM]` | revise, 8/10 latest completed | ownership fixed; handoff shrank 48%, but remains above compact target |
+| `[LLM]` compact asset | pass, 10/10 post-change | 3,389 visible characters; prompt, gates, registry and handoffs preserved |
+| `[Thinking]`, `[Analytics]`, `[Codex]`, `[Thinkers OS]` | not run | ChatGPT rate limit prevented completed observable responses |
+
+Static smoke QA remains `pass`. Cross-project live coverage is `partial`; a
+rate-limited case is not a product failure and is not evidence for changing
+Project Instructions.
+
 ## Issues found
 
-- none
+- the reproduced AI OS/LLM scope-boundary defect is resolved in two completed reruns;
+- the temporary AI OS compactness cap was rolled back; the replacement preserves
+  executable handoff context without an arbitrary length limit, pending a clean live rerun;
+- the reproduced LLM compactness defect is resolved by a 3,389-character post-change pass;
+- four live cases remain unobserved because of an external ChatGPT rate limit.
 
 ## Required fixes
 
-- none
+- rerun the synchronized AI OS compact override after a clean cooldown; do not widen it after three correction attempts;
+- rerun only the four `NOT RUN` cases after the rate limit clears;
+- make no other Project behavior change without a reproduced defect.
 
 ## Acceptance status
-pass
+static pass; cross-project live coverage partial
