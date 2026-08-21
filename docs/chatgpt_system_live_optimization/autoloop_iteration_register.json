@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "state": "PASS_WITH_LIMITATIONS",
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_hashes": [],
+      "requirements_findings": [
+        "All seven registered ChatGPT project folders received a bounded live evaluation.",
+        "All seven preserved their semantic routing, evidence, and safety contracts.",
+        "LLM and Codex responses exceeded the smallest useful answer depth."
+      ],
+      "validation_findings": [
+        "Baseline score 64/70.",
+        "No critical routing, evidence, false-execution, or governance failures.",
+        "Two content-form defects require targeted correction."
+      ],
+      "defects_found": ["LIVE-LLM-001", "LIVE-CODEX-001"],
+      "defects_fixed": [],
+      "files_changed": [
+        "ChatGPT/[LLM]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md",
+        "docs/chatgpt_system_live_optimization/LIVE_EVAL_REPORT.md",
+        "docs/chatgpt_system_live_optimization/autoloop_iteration_register.json"
+      ],
+      "config_changed": true,
+      "affected_scope": ["[LLM]", "[Codex]"],
+      "commands_run": [
+        "python3 scripts/check_project_instructions_length.py",
+        "python3 scripts/check_repo_public_safety.py",
+        "python3 scripts/check_codex_goal_mode_defaults.py",
+        "python3 scripts/check_knowledge_bundles.py",
+        "python3 scripts/check_index_coverage.py"
+      ],
+      "tests_run": ["baseline live cases for seven projects"],
+      "rerun_result": "NOT RUN",
+      "remaining_defects": ["LIVE-LLM-001", "LIVE-CODEX-001"],
+      "iteration_status": "VALIDATED"
+    },
+    {
+      "iteration": 2,
+      "input_hashes": [],
+      "requirements_findings": [
+        "Targeted response-depth rules were added to LLM and Codex instructions and synchronized externally."
+      ],
+      "validation_findings": [
+        "LLM decreased from about 13163 to 12830 characters.",
+        "Codex decreased from about 8072 to 6511 characters.",
+        "Both projects preserved semantic gates but exceeded the new form targets."
+      ],
+      "defects_found": ["LIVE-LLM-001: recurrence", "LIVE-CODEX-001: recurrence"],
+      "defects_fixed": [],
+      "files_changed": [
+        "ChatGPT/[LLM]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md"
+      ],
+      "config_changed": true,
+      "affected_scope": ["[LLM]", "[Codex]"],
+      "commands_run": ["external Project settings read-back"],
+      "tests_run": ["same-prompt live rerun for LLM and Codex"],
+      "rerun_result": "REVISE",
+      "remaining_defects": ["LIVE-LLM-001", "LIVE-CODEX-001"],
+      "iteration_status": "FIXING"
+    },
+    {
+      "iteration": 3,
+      "input_hashes": [],
+      "requirements_findings": [
+        "Second bounded corrections made the response contracts explicit and measurable."
+      ],
+      "validation_findings": [
+        "LLM final response was about 10201 characters, 22.5 percent below baseline, with no semantic regression.",
+        "Codex final response was about 3880 characters, 51.9 percent below baseline, with no semantic regression.",
+        "The same verbosity finding recurred after two corrections, so AES stopped further automatic restriction."
+      ],
+      "defects_found": [],
+      "defects_fixed": ["LIVE-CODEX-001: materially reduced and structurally compact"],
+      "files_changed": [
+        "ChatGPT/[LLM]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md",
+        "docs/chatgpt_system_live_optimization/LIVE_EVAL_REPORT.md",
+        "docs/chatgpt_system_live_optimization/autoloop_iteration_register.json"
+      ],
+      "config_changed": true,
+      "affected_scope": ["[LLM]", "[Codex]"],
+      "commands_run": ["external Project settings read-back"],
+      "tests_run": [
+        "final same-prompt live rerun for LLM and Codex",
+        "53 focused pytest cases: passed; LDW test parse RUN-dc019e6ecef2aa7c",
+        "instruction length, public safety, Goal Mode defaults, Knowledge bundles, index coverage, JSON, and diff checks: passed",
+        "manifest path check: 14 pre-existing findings under two .codex/worktrees directories"
+      ],
+      "rerun_result": "PASS_WITH_LIMITATIONS",
+      "remaining_defects": [
+        "LIVE-LLM-001: REVISE_LIMIT_REACHED; response remains above the 4000-character default target",
+        "LIVE-CODEX-001: response remains above the 2500-character target despite compact one-table form",
+        "repository-level manifest validation: 14 pre-existing extra instructions under .codex/worktrees"
+      ],
+      "iteration_status": "PASS_WITH_LIMITATIONS"
+    }
+  ]
+}

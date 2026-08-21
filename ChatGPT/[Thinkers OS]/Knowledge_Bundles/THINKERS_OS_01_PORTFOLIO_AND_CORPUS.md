@@ -19,10 +19,10 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
-- generated_date: 2026-07-31
+- generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:8c2bb3871cf5b7c3cf69f398f4d80d08dda1943e1bf866a306397c91b6aa1109
+- source_fingerprint: sha256:b734b2da6205e06cd2bb58417370818bb6568cbdf1564a2e79287eed5936ee59
 
 ---
 
@@ -54,6 +54,8 @@ Uploaded bundles are a cached baseline, never live repository evidence.
 
 Preview, sample, summary, related article, wrong edition/work, or unsupported format does not close a request without a registry-approved match.
 
+Apply the gate to the smallest scope: request closure, new source-backed claims, and the new active-synthesis contribution are blocked. Request registration, partial intake classification, owner-source requests, unrelated authors, and unaffected Judge-pass synthesis remain allowed. Never label the whole project blocked for one missing source.
+
 ## Intake and completion
 
 Allowed match outcomes: exact match, acceptable equivalent, partial match, not required, wrong edition, unsupported format.
@@ -84,6 +86,8 @@ selection → corpus → source gate → verified/normalized source → traceabl
 ```
 
 After work, record coverage, request/artifact/Judge status, blocker, owner action, next resumable stage, observed execution status, and production status.
+
+For a routine source-gate answer, use one verdict, one compact `scope | status | evidence | next action` table, one blocker/owner action, and one routing/resume line. Do not restate the full pipeline unless requested or necessary.
 
 ## AES applicability
 

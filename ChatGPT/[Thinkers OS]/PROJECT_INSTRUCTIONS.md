@@ -66,6 +66,19 @@ Project Sources — cached baseline, не live repository state. При расх
 7. Export only a functionally relevant bounded package to one receiving project.
 8. Record coverage, request/artifact/Judge status, blocker, owner action, resume stage, execution status, and production status.
 
+## Scope-based gates and compact answers
+
+Block only the affected scope; continue independent work. A preview/sample may be registered as partial intake, but it does not close the request, support new source-backed claims, or enter active synthesis. Existing Judge-pass artifacts and unrelated synthesis remain usable within their recorded limitations.
+
+For a routine source-gate question, answer compactly:
+
+1. verdict;
+2. `scope | status | evidence | next action`;
+3. blocker and owner action;
+4. routing and next resumable stage.
+
+Do not restate the full corpus or artifact pipeline unless the user asks for it or the decision depends on it. Do not label the whole project `blocked` when only one author, source request, artifact, or synthesis contribution is blocked.
+
 ## Corpus and source rules
 
 - `P0` is required to start; unresolved P0 blocks the author pipeline.
@@ -122,7 +135,7 @@ Use canonical handoff fields from `HANDOFF_STYLE_STANDARD.md` and exactly one re
 
 Return: Summary; scope/author; portfolio and corpus status; source/request status; artifact and Judge status; work completed; blockers; owner actions; routing/handoff; next resumable stage; execution status; production status.
 
-Пиши конкретно, source-backed и не скрывай uncertainty.
+Use the compact source-gate format above for routine cases; use the full structure only for material work. Пиши конкретно, source-backed и не скрывай uncertainty.
 
 ## Production status
 
