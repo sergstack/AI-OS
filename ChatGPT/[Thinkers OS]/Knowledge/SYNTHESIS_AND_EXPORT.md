@@ -16,6 +16,9 @@
 | Charlie Munger | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 | Herbert A. Simon | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 | Eliyahu M. Goldratt | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Richard P. Rumelt | partial — one P1 gap | bounded Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Everett M. Rogers | partial — two P1 gaps | bounded Judge pass, export ready | isolated author pattern pending synthesis refresh |
+| Donald A. Norman | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 
 Owner acceptance remains pending. Production status is `NOT AUTHORIZED`.
 
@@ -44,7 +47,7 @@ All are `active_provisional`, not validated/canonical. Application count does no
 | policy with feedback or delay | Forrester; Deming | Ostrom for multiple owners | `[Analytics]` plus bounded `[Thinking]` record |
 | bias-aware decision review | Kahneman; Clausewitz | none | `[Thinking]` |
 
-Drucker, Boyd, Munger, Ohno, Simon, and Goldratt remain isolated Judge-pass patterns until a separate synthesis refresh explicitly merges, replaces, or rejects them under duplicate/conflict rules.
+Drucker, Boyd, Munger, Ohno, Simon, Goldratt, Rumelt, Rogers, and Norman remain isolated Judge-pass patterns until a separate synthesis refresh explicitly merges, replaces, or rejects them under duplicate/conflict rules.
 
 ## Available isolated Judge-pass patterns
 
@@ -64,6 +67,30 @@ These patterns are available for bounded `[Thinking]` use at precedence level 6.
 - workflow: define the system and guardrails, verify the current constraint, exploit before elevating, subordinate release, limit multitasking, monitor buffers, test conflict assumptions, and rediagnose after change;
 - boundary: the constraint lens cannot override safety, quality, rights, governance, demand evidence, or multiple legitimate system goals;
 - evidence: complete P0/P1 corpus, four traceable excerpts, Judge pass;
+- status: isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### `THINKERS-RUMELT-PATTERN-001` — Strategy Kernel and Crux Review
+
+- use: a consequential strategy has many issues, unclear diagnosis, or actions without a coherent policy;
+- workflow: diagnose the challenge, separate evidence from assumptions, state a crux hypothesis, choose a guiding policy, align actions, and reopen on disconfirming signals;
+- boundary: a crux is a testable hypothesis, not root-cause proof; quantitative claims require `[Analytics]`;
+- evidence: partial P0/P1 corpus, two normalized works, three traceable excerpts, Judge pass; one P1 work missing;
+- status: isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### `THINKERS-ROGERS-PATTERN-001` — Adoption Context Review
+
+- use: a change needs an adoption hypothesis, channel test, or decision-right diagnosis before wider rollout;
+- workflow: identify adopters and decision type, test perceived value and channels, run a bounded trial with feedback, then revise or stop;
+- boundary: mandated use is not adoption; no adoption-rate claim without observed data;
+- evidence: partial P0/P1 corpus, normalized fifth edition, three traceable excerpts, Judge pass; two P1 works missing;
+- status: isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### `THINKERS-NORMAN-PATTERN-001` — Interaction Clarity Review
+
+- use: users must understand an interaction, system state, feedback, constraint, or recovery path;
+- workflow: test discoverability, feedback, constraints, error recovery, and visceral/behavioral/reflective experience with representative users;
+- boundary: this does not replace user research, accessibility, safety, or context testing;
+- evidence: complete selected P0/P1 corpus, three normalized works, three traceable excerpts, Judge pass;
 - status: isolated `active_provisional`; owner acceptance pending; production not authorized.
 
 ## Conflict Map

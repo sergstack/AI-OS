@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Compact decision-application bundle for `[Thinking]` covering the Judge-pass Thinkers OS Lens Router, Conflict Map, five active provisional synthesis patterns, two bounded isolated Judge-pass author patterns, precedence, anti-bloat, application logging, routing, and rollback.
+Compact decision-application bundle for `[Thinking]` covering the Judge-pass Thinkers OS Lens Router, Conflict Map, five active provisional synthesis patterns, five bounded isolated Judge-pass author patterns, precedence, anti-bloat, application logging, routing, and rollback.
 
 ## Source files
 
@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - canonical_status: false
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:a3fdcc3cff5190fbd7ed1d32d0d1042ed5c1e812b2758998b9b565957a2c082b
+- source_fingerprint: sha256:3ecf0fff4a2d82f60977f6f5557b1af1d031d94400f17e185e4f3bc37e32faf1
 
 ---
 
@@ -155,6 +155,30 @@ These patterns are available only at precedence level 6. They do not change the 
 - do not use: when the system boundary, goal, demand, constraint evidence, safety, quality, rights, or governance guardrails are unknown;
 - transfer risk: a single-constraint framing can erase plural goals, while estimate compression and subordination can externalize harm;
 - evidence/status: complete P0/P1 corpus; Judge pass; isolated `active_provisional`; owner acceptance pending; production not authorized.
+
+### Strategy Kernel and Crux Review — Richard P. Rumelt
+
+- use: consequential strategy work with unclear diagnosis or incoherent action lists;
+- apply: diagnose the challenge, state a crux hypothesis, choose a guiding policy, align actions, and reopen on disconfirming evidence;
+- do not use: as root-cause proof or without evidence and quantitative validation where relevant;
+- transfer risk: compression can hide uncertainty, stakeholders, or dissent;
+- evidence/status: partial corpus; Judge pass; one P1 gap; isolated `active_provisional`.
+
+### Adoption Context Review — Everett M. Rogers
+
+- use: a change needs an adoption hypothesis, channel test, or decision-right diagnosis before broad rollout;
+- apply: identify adopters and decision type, test perceived value and channels, run a bounded trial, and inspect feedback;
+- do not use: to label people, predict adoption, or call mandated use voluntary adoption;
+- transfer risk: framework categories can conceal informal power; no adoption-rate claim without data;
+- evidence/status: partial corpus; Judge pass; two P1 gaps; isolated `active_provisional`.
+
+### Interaction Clarity Review — Donald A. Norman
+
+- use: users must understand an interaction, state, feedback, constraint, or recovery path;
+- apply: test discoverability, feedback, constraints, recovery, and visceral/behavioral/reflective experience with representative users;
+- do not use: as automatic usability approval or replacement for user research, accessibility, safety, or context testing;
+- transfer risk: visible cues can be misread and preference can mask task failure;
+- evidence/status: complete selected P0/P1 corpus; Judge pass; isolated `active_provisional`.
 
 ## Application logging rule
 
