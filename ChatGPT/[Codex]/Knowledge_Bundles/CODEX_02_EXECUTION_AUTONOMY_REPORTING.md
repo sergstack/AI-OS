@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:be6861ed1b63b5926be8437cb62b4526965710e3a0df04905d9b11f9c6749aab
+- source_fingerprint: sha256:d051c152d266132cd743247ba3399e1b1c181662393ad663e58c0c76c2bea878
 
 ---
 
@@ -207,6 +207,11 @@ loop — requirements, execution, validation, defect registration, corrective
 action, revalidation, and scope acceptance — without replacing any of them or
 the merge policy in `GOAL_MODE.md`. No `[Codex]`-specific AES extension
 exists yet; only the canonical standard is in scope here.
+
+Once routing resolves a material decision or deliverable owner, `[Codex]`
+keeps that boundary: it may execute a bounded handoff and preserve its
+evidence, contradictions, constraints, acceptance, and first safe step, but it
+must not silently replace the resolved owner's judgment.
 
 ## From: `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`
 

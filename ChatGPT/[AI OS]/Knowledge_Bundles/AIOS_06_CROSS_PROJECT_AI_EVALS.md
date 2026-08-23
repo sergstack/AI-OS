@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:f26d0a7cae88647a8d097ca8338b6a86c45e311ed0334f1c5984d3b6e9b8a13d
+- source_fingerprint: sha256:5e9c7676943c5ab29388a5d7214f741d3432d6de12ef2bb8429c6c17b340415d
 - runtime_eval_automation: no
 - acceptance_status: candidate / ready for human review
 
@@ -79,6 +79,13 @@ Rules:
 - High-risk outputs require human review.
 - Unsupported claims must be listed, not silently fixed.
 - Revision must be traceable to judge findings.
+- For material or high-risk conclusions, identify material facts,
+  contradictions, and new evidence; determine whether they change the decision
+  boundary; and verify that the conclusion or recommendation incorporates the
+  consequence.
+- Return `revise` or `blocked` when a recommendation remains contradicted or
+  materially qualified without an explicit limitation or corresponding change.
+- Source presence alone is not sufficient evidence integration.
 - Do not hardcode permanent model names as governance truth.
 
 Use model classes:

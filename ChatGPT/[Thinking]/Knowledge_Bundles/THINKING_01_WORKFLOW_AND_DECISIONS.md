@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:465a141927ca10f70315cc643c2d5d973e1cff69cfe7a1dc355e07163a5081c1
+- source_fingerprint: sha256:ea51f07b2923ac12e829e0200fd6d1204c38a8d6bd48384793b200cfb1c05478
 
 ---
 
@@ -195,6 +195,11 @@ root (canonical owner: `[AI OS]`). It connects the frame -> facts -> options
 defect/acceptance loop without replacing decision status tracking or the
 merge policy in `GOAL_MODE.md`. No `[Thinking]`-specific AES extension exists
 yet; only the canonical standard is in scope here.
+
+When routing resolves `[Thinking]` as the owner of a material decision, an
+upstream project may supply evidence, contradictions, options, risks, and a
+bounded handoff, but it must not silently make or approve the decision in
+`[Thinking]`'s place.
 
 ## From: `ChatGPT/[Thinking]/DECISION_LOG.md`
 

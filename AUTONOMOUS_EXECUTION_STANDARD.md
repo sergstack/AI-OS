@@ -112,6 +112,22 @@ namespaces, the canonical governance mapping, adoption status, and the
 source-versus-derived distinction. Project extensions (Section 10) own only
 domain-specific detail and never become an alternate semantic owner.
 
+### 2.1 Resolved owner boundary
+
+Once canonical routing resolves the primary owner for a material decision or
+deliverable, that ownership remains authoritative for the current stage. An
+upstream project may prepare evidence, contradictions, context, bounded
+options, risks, constraints, and a compact handoff, but it must not silently
+make, approve, or operationalize the owner-only outcome.
+
+The handoff must preserve the material evidence and contradictions, the
+decision boundary they affect, relevant requirements and constraints, risks,
+acceptance criteria, and the first safe step. It must carry enough bounded
+context for the receiving owner to continue without re-decomposing the goal.
+If the receiving owner cannot act, report the handoff or blocker; do not
+substitute a nearby project's judgment. Section 15 defines the execution-state
+fields that must persist across that handoff.
+
 ## 3. Target architecture
 
 ### 3.1 User entry layer

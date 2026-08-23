@@ -14,6 +14,21 @@ Define how AI-OS uses LLM-as-a-Judge without treating judge output as objective 
 - Unsupported claims must be listed, not silently fixed.
 - Revision must be traceable to judge findings.
 
+## Material-Evidence Integration Gate
+
+For every material or high-risk conclusion or recommendation, the Judge must
+check more than whether sources are present:
+
+1. identify the material facts, contradictions, and new evidence found;
+2. determine whether any of them changes or qualifies the decision boundary;
+3. verify that the conclusion and recommendation incorporate those
+   consequences; and
+4. return `revise` or `blocked` when a recommendation remains contradicted or
+   materially qualified without an explicit limitation or corresponding
+   change.
+
+Source presence alone is not sufficient evidence integration.
+
 ## Judge Volatility
 
 Judge model behavior may change across model versions, prompts, context windows, or temperature/settings.

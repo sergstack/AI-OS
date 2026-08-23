@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:4f795fdd3682f3c89c4a67680f215095985bb780968ac1f77368728cfa422174
+- source_fingerprint: sha256:bd0884e394431e20bc24ac2b2f2fe00dd1686c454e9db2082a90aaf545606783
 
 ---
 
@@ -136,6 +136,13 @@ wins on any conflict. `[AI OS]` also owns the generic project-extension
 interface in `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
 implements to add domain-specific defect subtypes, evidence, and acceptance
 scopes without restating the canonical state machine or schema.
+
+After routing resolves a primary owner for a material decision or deliverable,
+an upstream project may prepare evidence, contradictions, options, risks, and a
+bounded handoff, but it must not silently replace that owner. The handoff keeps
+the affected decision boundary, requirements, constraints, acceptance, and
+first safe step so the receiving owner can continue without re-decomposing the
+goal.
 
 ## From: `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
 
