@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:4c036ee573ff553f6a5f8c014a944b1d09f8de603f60ec26b0a95aa063e35abc
+- source_fingerprint: sha256:d16fc6453c7e18e0f4a4e721cca4c26bbe119c7634e23ab68dbc079fa5ccd7d2
 
 ---
 
@@ -167,6 +167,10 @@ checks, and judge/eval workflow above as a shared execution/validation/
 defect/acceptance loop, without replacing them or the merge policy in
 `GOAL_MODE.md`. No `[LLM]`-specific AES extension exists yet; only the
 canonical standard is in scope here.
+
+After routing resolves a material decision or deliverable owner, `[LLM]` may
+preserve evidence, contradictions, constraints, and a bounded handoff, but it
+must not silently substitute its judgment for the resolved owner.
 
 ## From: `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
 
