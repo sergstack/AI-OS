@@ -16,7 +16,7 @@ Section 17):
   local pytest. Wiring it into `.github/workflows/*` is a deliberately
   separate, not-yet-authorized step (see Section 17: "a blocking CI gate").
 - It implements a fixed, documented subset of semantic rules (SEM-001
-  through SEM-008 below). It is not a full implementation of every semantic
+  through SEM-011 below). It is not a full implementation of every semantic
   case referenced in
   `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md`.
 
@@ -358,6 +358,73 @@ def check_sem_008(record: dict, record_path: str) -> list[Violation]:
     return violations
 
 
+def _closure_aware(record: dict) -> bool:
+    return record.get("standard_version") == "1.1.0" or record.get("closure_review") is not None
+
+
+# SEM-009: a successful closure-aware record requires a passed Closure Review
+# which rechecked goal and scope, inspected invariants, preserved authority,
+# and found no remaining correctable gap.
+def check_sem_009(record: dict, record_path: str) -> list[Violation]:
+    violations: list[Violation] = []
+    if not _closure_aware(record) or record.get("overall_delivery") != "pass":
+        return violations
+    review = record.get("closure_review")
+    if not isinstance(review, dict):
+        _add(violations, record_path, "SEM-009", "closure-aware successful record has no closure_review")
+        return violations
+    if review.get("status") != "pass":
+        _add(violations, record_path, "SEM-009", "overall_delivery: pass requires closure_review.status: pass")
+    if not review.get("goal_rechecked") or not review.get("scope_rechecked"):
+        _add(violations, record_path, "SEM-009", "passed Closure Review must recheck the original goal and agreed scope")
+    if not review.get("invariants_checked"):
+        _add(violations, record_path, "SEM-009", "passed Closure Review must record an invariant sweep")
+    if review.get("remaining_correctable_gaps"):
+        _add(violations, record_path, "SEM-009", "passed Closure Review cannot retain correctable gaps")
+    if not review.get("authority_boundary_preserved"):
+        _add(violations, record_path, "SEM-009", "Closure Review must preserve the external authority boundary")
+    return violations
+
+
+# SEM-010: the effective closure-correction ceiling is at most two and cannot
+# be exceeded by recorded closure corrective iterations.
+def check_sem_010(record: dict, record_path: str) -> list[Violation]:
+    review = record.get("closure_review")
+    if not isinstance(review, dict):
+        return []
+    violations: list[Violation] = []
+    limit = review.get("effective_max_closure_corrective_iterations")
+    count = review.get("closure_iteration_count")
+    if isinstance(limit, int) and limit > 2:
+        _add(violations, record_path, "SEM-010", "effective closure corrective limit exceeds canonical ceiling of 2")
+    if isinstance(count, int) and isinstance(limit, int) and count > limit:
+        _add(violations, record_path, "SEM-010", "closure corrective iteration count exceeds its effective limit")
+    return violations
+
+
+# SEM-011: closure-found defects must be registered and a successful closure
+# after correction must cite fresh final validation evidence.
+def check_sem_011(record: dict, record_path: str) -> list[Violation]:
+    review = record.get("closure_review")
+    if not isinstance(review, dict):
+        return []
+    violations: list[Violation] = []
+    defects = {d.get("defect_id"): d for d in record.get("defects", [])}
+    for defect_id in review.get("defects_found", []):
+        if defect_id not in defects:
+            _add(violations, record_path, "SEM-011", f"closure defect {defect_id} is absent from defects register")
+    if review.get("status") == "pass" and review.get("closure_iteration_count", 0) > 0:
+        final_revision = (record.get("source_revision") or {}).get("final_revision")
+        fresh = [v for v in record.get("validation_runs", []) if v.get("result") == "pass" and v.get("freshness_status") == "current" and v.get("validated_revision") == final_revision]
+        if not fresh:
+            _add(violations, record_path, "SEM-011", "closure correction requires current validation at final source revision")
+        for defect_id in review.get("defects_found", []):
+            defect = defects.get(defect_id)
+            if defect and defect.get("status") != "resolved":
+                _add(violations, record_path, "SEM-011", f"closure defect {defect_id} is not resolved before Closure Review pass")
+    return violations
+
+
 ALL_CHECKS = [
     check_sem_001,
     check_sem_002,
@@ -367,6 +434,9 @@ ALL_CHECKS = [
     check_sem_006,
     check_sem_007,
     check_sem_008,
+    check_sem_009,
+    check_sem_010,
+    check_sem_011,
 ]
 
 RULE_DESCRIPTIONS = {
@@ -384,6 +454,9 @@ RULE_DESCRIPTIONS = {
     "and not equal to this record's own execution_id",
     "SEM-008": "full_iteration count/iteration_number must not exceed a stated "
     "max_full_iterations envelope, when present",
+    "SEM-009": "closure-aware successful record requires a passed, goal/scope/invariant/authority-preserving Closure Review with no correctable gaps",
+    "SEM-010": "closure corrective iterations must not exceed the effective ceiling of two",
+    "SEM-011": "closure defects must be registered; successful closure corrections require current final validation",
 }
 
 

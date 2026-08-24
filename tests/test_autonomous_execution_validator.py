@@ -4,7 +4,7 @@ Covers:
 (a) all five Phase 1 example records under docs/autonomous_execution/examples/
     validate cleanly (zero violations) against the Phase 6 semantic validator.
 (b) synthetic fixture records, each deliberately violating exactly one rule
-    (SEM-001 .. SEM-008), asserting the validator catches it and does not
+    (SEM-001 .. SEM-011), asserting the validator catches it and does not
     also flag an unrelated rule.
 """
 
@@ -206,6 +206,48 @@ def rule_ids(violations) -> set[str]:
     return {v.rule_id for v in violations}
 
 
+def closure_aware_record() -> dict:
+    record = fixture()
+    record["schema_version"] = "1.1.0"
+    record["standard_version"] = "1.1.0"
+    record["closure_review"] = {
+        "status": "pass",
+        "closure_context": {
+            "goal_or_task": "Fixture closure review.",
+            "agreed_scope": "fixture.py",
+            "explicit_constraints": [],
+            "acceptance_criteria": ["fixture passes"],
+            "material_invariants": ["validated evidence reaches acceptance"],
+            "source_revision": "rev-b",
+            "current_state_refs": ["fixture.py"],
+            "requirements_traceability_summary": "req-001 passed",
+            "latest_test_evidence": ["ev-001"],
+            "latest_validation_evidence": ["val-001"],
+            "artifact_refs": [],
+            "known_limitations": [],
+            "residual_risks": [],
+            "rollback_status": "ready",
+            "external_authority_status": "owner_review_pending",
+            "input_or_state_hashes": ["sha256:fixture"],
+        },
+        "goal_rechecked": True,
+        "scope_rechecked": True,
+        "invariants_checked": ["validated evidence reaches acceptance"],
+        "adversarial_cases": [],
+        "remaining_correctable_gaps": [],
+        "limitations_reviewed": [],
+        "defects_found": [],
+        "defects_reopened": [],
+        "validation_refs": ["val-001"],
+        "evidence_refs": ["ev-001"],
+        "closure_iteration_count": 0,
+        "effective_max_closure_corrective_iterations": 2,
+        "authority_boundary_preserved": True,
+        "final_reason": "no remaining correctable gap",
+    }
+    return record
+
+
 def test_sem001_failed_mandatory_requirement_with_overall_pass():
     record = fixture()
     record["requirements"][0]["status"] = "failed"
@@ -368,3 +410,44 @@ def test_clean_record_has_no_violations():
     record = fixture()
     violations = validator.validate_record(record, "fixture")
     assert violations == []
+
+
+def test_sem009_closure_aware_success_without_review_is_rejected():
+    record = closure_aware_record()
+    record["closure_review"] = None
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-009" in rule_ids(violations)
+
+
+def test_sem009_passed_closure_with_correctable_gap_is_rejected():
+    record = closure_aware_record()
+    record["closure_review"]["remaining_correctable_gaps"] = ["adjacent trust-boundary bypass"]
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-009" in rule_ids(violations)
+
+
+def test_sem010_closure_iteration_count_over_effective_limit_is_rejected():
+    record = closure_aware_record()
+    record["closure_review"]["closure_iteration_count"] = 2
+    record["closure_review"]["effective_max_closure_corrective_iterations"] = 1
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-010" in rule_ids(violations)
+
+
+def test_sem011_unregistered_closure_defect_is_rejected():
+    record = closure_aware_record()
+    record["closure_review"]["defects_found"] = ["def-closure-001"]
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-011" in rule_ids(violations)
+
+
+def test_sem011_closure_correction_requires_fresh_final_validation():
+    record = closure_aware_record()
+    record["closure_review"]["closure_iteration_count"] = 1
+    record["validation_runs"][0]["freshness_status"] = "stale"
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-011" in rule_ids(violations)
+
+
+def test_closure_aware_clean_record_has_no_violations():
+    assert validator.validate_record(closure_aware_record(), "fixture") == []

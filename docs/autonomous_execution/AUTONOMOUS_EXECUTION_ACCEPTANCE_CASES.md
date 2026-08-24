@@ -88,3 +88,26 @@ Phase 6 semantic validator exists.
 | Business-rule / formula / metric preservation | project-specific checks | out of Phase 1 scope entirely |
 
 Phase 1 does not assert that any Section 2 case is automatically enforced.
+
+## 4. Closure Review acceptance cases (issue #268)
+
+| ID | Case | Expected result | Deterministic evidence |
+| --- | --- | --- | --- |
+| AC1 | Adjacent class defect after green tests | register, correct, rerun, revalidate, review again | SEM-009/011 fixtures |
+| AC2 | No gap exists | pass without invented defect or iteration | clean closure fixture |
+| AC3 | Non-critical unfixable limitation | existing `partial`, no new status | status mapping |
+| AC4 | Mandatory owner decision missing | blocked/stopped, not partial | AES 10.3 |
+| AC5 | Closure budget exhausted | `closure_iteration_limit_reached` | SEM-010 fixture |
+| AC6 | Mutation only reasoned about | `NOT_RUN`/hypothesis, not observed | AES 10.3 |
+| AC7 | Late closure correction | old affected evidence stale | SEM-011 fixture |
+| AC8 | Material handoff | identity/evidence/authority persist | existing handoff schema |
+| AC9 | Codex stricter rule | one-fix policy is not widened | AES 10.3 |
+| AC10 | Research Intelligence OS PR #4 | trust-boundary review finds/fixes adjacent defect; merge separate | retrospective below |
+
+### AC10 retrospective mapping
+
+Research Intelligence OS PR #4 (`806ea31`, documentation `d9e754a`) is a
+retrospective fixture, not an external rerun. A closure review generalized a
+known defect's invariant, found an in-scope forged derived-state trust-boundary
+bypass, then the bounded correction/revalidation path closed. Merge remained a
+separate owner action.

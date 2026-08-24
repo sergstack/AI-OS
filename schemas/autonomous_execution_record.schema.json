@@ -34,8 +34,8 @@
     "handoffs"
   ],
   "properties": {
-    "schema_version": { "type": "string", "const": "1.0.0" },
-    "standard_version": { "type": "string", "const": "1.0.0" },
+    "schema_version": { "type": "string", "enum": ["1.0.0", "1.1.0"] },
+    "standard_version": { "type": "string", "enum": ["1.0.0", "1.1.0"] },
     "execution_id": { "type": "string", "pattern": "^exec-[a-z0-9][a-z0-9-]*$" },
     "parent_execution_id": {
       "oneOf": [
@@ -129,6 +129,12 @@
     "handoffs": {
       "type": "array",
       "items": { "$ref": "#/definitions/handoff" }
+    },
+    "closure_review": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/definitions/closure_review" }
+      ]
     },
     "final_report": {
       "type": ["object", "null"],
@@ -421,6 +427,68 @@
         "output_artifacts": { "$ref": "#/definitions/acceptance_scope_entry" },
         "corrective_loop": { "$ref": "#/definitions/acceptance_scope_entry" },
         "rollback_readiness": { "$ref": "#/definitions/acceptance_scope_entry" }
+      }
+    },
+    "closure_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "closure_context",
+        "goal_rechecked",
+        "scope_rechecked",
+        "invariants_checked",
+        "adversarial_cases",
+        "remaining_correctable_gaps",
+        "limitations_reviewed",
+        "defects_found",
+        "defects_reopened",
+        "validation_refs",
+        "evidence_refs",
+        "closure_iteration_count",
+        "effective_max_closure_corrective_iterations",
+        "authority_boundary_preserved",
+        "final_reason"
+      ],
+      "properties": {
+        "status": { "type": "string", "enum": ["not_run", "pass", "revise", "blocked"] },
+        "closure_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goal_or_task", "agreed_scope", "explicit_constraints", "acceptance_criteria", "material_invariants", "source_revision", "current_state_refs", "requirements_traceability_summary", "latest_test_evidence", "latest_validation_evidence", "artifact_refs", "known_limitations", "residual_risks", "rollback_status", "external_authority_status", "input_or_state_hashes"],
+          "properties": {
+            "goal_or_task": { "type": "string", "minLength": 1 },
+            "agreed_scope": { "type": "string", "minLength": 1 },
+            "explicit_constraints": { "type": "array", "items": { "type": "string" } },
+            "acceptance_criteria": { "type": "array", "items": { "type": "string" } },
+            "material_invariants": { "type": "array", "items": { "type": "string" } },
+            "source_revision": { "type": "string", "minLength": 1 },
+            "current_state_refs": { "type": "array", "items": { "type": "string" } },
+            "requirements_traceability_summary": { "type": "string", "minLength": 1 },
+            "latest_test_evidence": { "type": "array", "items": { "type": "string" } },
+            "latest_validation_evidence": { "type": "array", "items": { "type": "string" } },
+            "artifact_refs": { "type": "array", "items": { "type": "string" } },
+            "known_limitations": { "type": "array", "items": { "type": "string" } },
+            "residual_risks": { "type": "array", "items": { "type": "string" } },
+            "rollback_status": { "type": "string", "minLength": 1 },
+            "external_authority_status": { "type": "string", "minLength": 1 },
+            "input_or_state_hashes": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "goal_rechecked": { "type": "boolean" },
+        "scope_rechecked": { "type": "boolean" },
+        "invariants_checked": { "type": "array", "items": { "type": "string" } },
+        "adversarial_cases": { "type": "array", "items": { "type": "string" } },
+        "remaining_correctable_gaps": { "type": "array", "items": { "type": "string" } },
+        "limitations_reviewed": { "type": "array", "items": { "type": "string" } },
+        "defects_found": { "type": "array", "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" } },
+        "defects_reopened": { "type": "array", "items": { "type": "string", "pattern": "^def-[a-z0-9-]+$" } },
+        "validation_refs": { "type": "array", "items": { "type": "string", "pattern": "^val-[a-z0-9-]+$" } },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } },
+        "closure_iteration_count": { "type": "integer", "minimum": 0 },
+        "effective_max_closure_corrective_iterations": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "authority_boundary_preserved": { "type": "boolean" },
+        "final_reason": { "type": ["string", "null"] }
       }
     },
     "rollback": {

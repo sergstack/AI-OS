@@ -77,3 +77,12 @@ Verification scope: affected-scope MVP verification, not exhaustive full-project
 - limitation: no input dataset was supplied, so the response correctly remained at design scope; full response remains local.
 
 Requirements: `LPV-022 PASS`; `LPV-023 PASS`; `LPV-024 PASS`.
+
+## AES Closure Review repository rollout — 2026-08-24
+
+All seven registered project bundle surfaces were reviewed and updated with a
+thin Closure Review exposure. Repository bundle validation is PASS; this does
+not change any live Project Instructions/Sources status or prove a UI sync.
+Each project requires owner-led source replacement and project-specific smoke
+QA before its affected live scope can be marked verified. `[Thinkers OS]`
+remains `not_verified` for live sync.

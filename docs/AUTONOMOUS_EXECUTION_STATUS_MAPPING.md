@@ -138,3 +138,13 @@ already produces `AUTONOMOUS_EXECUTION_STANDARD.md`-shaped execution
 records (that is Phase 2-5 adoption work); or claim that any of the above
 mappings are automatically enforced. They are a normative correspondence
 table for humans and future extension authors.
+
+## 9. Closure Review compatibility
+
+`closure_review.status` uses `not_run / pass / revise / blocked`; it does not
+create `PASS_WITH_LIMITATIONS` or replace `overall_delivery`. A limitation can
+remain only when it is non-critical, explicit, safe, not technically fixable
+inside current scope/authority, and Closure Review passes. A missing mandatory
+owner/business/policy decision is `blocked`, not partial success. A Closure
+Review pass is evidence only: `authority_status`, `merge_status`, and
+`production_status` retain their independent meanings.
