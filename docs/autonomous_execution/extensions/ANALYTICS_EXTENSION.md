@@ -27,7 +27,7 @@ methodology onto the AES extension shape.
 ```yaml
 extension_id: aes-ext-analytics-v1
 project: "[Analytics]"
-standard_version: "1.0.0"
+standard_version: "2.0.0"
 applies_to:
   - execution records produced by [Analytics] work (data contract, RAW,
     stage, mart, analysis, chart, memo, QA, or cross-project handoff
@@ -81,6 +81,14 @@ freshness_requirements:
   - a validation-freshness check (Section 11.2 of the canonical standard)
     is required before `accepted: yes` may be recorded
 ```
+
+## 1.1 Current-record compatibility
+
+New Analytics AES execution records use the canonical v2 contract and its
+required Closure Review. Historical v1 records remain read-only evidence and
+are not rewritten. This is a compatibility reference only: the canonical AES
+standard remains the sole owner of the record schema, state model, and Closure
+Review semantics.
 
 ## 2. Domain vocabulary mapping
 

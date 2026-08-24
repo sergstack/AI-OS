@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:df4c7a5209ba7dcdd306fb45aef70fdccdc3a34294cded30cb2a0d22dc39e49d
+- source_fingerprint: sha256:7fdd393c903892d13d429a552030d02e9f7d91a95f8157d92435b104c0c85c17
 
 ---
 
@@ -135,6 +135,10 @@ Do not run final conclusions directly on raw/stage unless the task is explicitly
 This is a bounded reasoning-control extension; it does not replace Data Contract, RAW, STAGE, MART, deterministic calculations, chart sourcing, memo, QA/Judge, acceptance, or handoff. `mart_main_full` remains evidence/reuse; compact marts remain management-facing.
 
 Execution remains governed by repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`; `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. Reasoning control structures method selection only; it does not fork AES states, correction limits, stop/rollback/acceptance, or external authority. It is not an autonomous agent or an independent retry/self-improvement loop. Closure Review uses existing Data/Analysis/Output Judge, reconciliation, unsupported-conclusion, and artifact-freshness controls; the Analytics extension remains authoritative for domain detail.
+
+New AES execution records use the canonical v2 contract and its required
+Closure Review. Historical v1 records remain read-only evidence, not a path
+for new successful Analytics work.
 
 ```text
 LLM reasoning != deterministic execution
