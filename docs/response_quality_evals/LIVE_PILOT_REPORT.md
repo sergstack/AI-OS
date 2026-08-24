@@ -43,12 +43,21 @@ response. Because this report intentionally retains no raw provider transcript,
 there was no admissible input for a substitute review. No Judge verdict was
 created; both material cases remain `blocked`.
 
+## Fresh access smoke
+
+On 2026-08-25, a fresh access smoke repeated the first required condition for
+the material-class rerun. The canonical `[Codex]` Project URL again opened an
+empty temporary-chat view with no enabled composer. The run stopped before
+opening `[LLM]`: an independent Judge is not a substitute for an inaccessible
+target surface. No prompt, response, Judge input or verdict was created.
+
 No owner acceptance, deployment, production-readiness decision, source update
 or merge decision is evidenced by this report.
 
 ## Required continuation
 
-1. Run an independent Judge for `LIVE-RQE-EVIDENCE-001` and
+1. Verify an enabled composer in both canonical `[Codex]` and independent
+   `[LLM]` Projects, then run an independent Judge for `LIVE-RQE-EVIDENCE-001` and
    `LIVE-RQE-CODEX-001` using the applicable LLM quality workflow.
 2. Record only the resulting verdict, material findings and revision state;
    retain raw responses only under an explicitly approved evidence policy.
