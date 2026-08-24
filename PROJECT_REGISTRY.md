@@ -15,7 +15,7 @@
 ## AES Applicability
 
 `AUTONOMOUS_EXECUTION_STANDARD.md` is the single canonical AES semantic
-owner. Each listed exposure includes the v1.1 Closure Review reference; this
+owner. Each listed exposure includes the current v2 Closure Review reference; this
 table records applicability and deployment exposure; it does not
 claim external execution, pilot completion, owner acceptance, merge, or
 production authorization.

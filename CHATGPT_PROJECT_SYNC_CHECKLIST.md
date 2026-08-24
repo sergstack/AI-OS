@@ -8,6 +8,11 @@ Repository validation does not prove ChatGPT UI sync. Use `not_verified` until t
 
 For compact Sources sync, use each project's `Knowledge_Bundles/UPLOAD_LIST.md`. Upload bundle files OR granular Knowledge files, not both, unless debugging.
 
+For a changed bundle, follow `UPLOAD_GUIDE.md` Section 7: remove the stale
+same-name Source (including UI-added `(1)` / `(2)` suffixes), upload the
+canonical filename, and read back exactly one matching Source. Source
+replacement alone remains transport evidence, not behavioural acceptance.
+
 For analytical memo production, verify that the uploaded bundles include the `Analytical Memo Factory via Codex APP` workflow before running a memo pilot.
 
 Allowed sync status values: `not_verified`, `pending`, `partial`, `done`, `not_applicable`, `blocked`.
@@ -83,6 +88,11 @@ Requirements: `LPV-022 PASS`; `LPV-023 PASS`; `LPV-024 PASS`.
 All seven registered project bundle surfaces were reviewed and updated with a
 thin Closure Review exposure. Repository bundle validation is PASS; this does
 not change any live Project Instructions/Sources status or prove a UI sync.
-Each project requires owner-led source replacement and project-specific smoke
-QA before its affected live scope can be marked verified. `[Thinkers OS]`
+Repository validation alone does not prove UI sync. On 2026-08-24, browser
+read-back confirmed replacement under canonical filenames for the affected
+`[AI OS]`, `[Thinking]`, `[Analytics]`, `[LLM]`, and `[Codex]` bundles;
+their changed bundle sources have no duplicate same-name entries. This is
+transport evidence only and does not update their acceptance status or prove
+new behavioural smoke QA. `[Inbox Router]` and `[Thinkers OS]` still require
+owner-led source replacement and project-specific smoke QA; `[Thinkers OS]`
 remains `not_verified` for live sync.
