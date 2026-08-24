@@ -1,7 +1,7 @@
 # Response Quality Live Pilot Report
 
-Date: 2026-08-24
-Branch: `codex/response-quality-live-pilots`
+Date range: 2026-08-24 to 2026-08-25
+Initial pilot branch: `codex/response-quality-live-pilots`
 Related deterministic harness: PR [#274](https://github.com/sergstack/AI-OS/pull/274), merged at `d31b949`
 Delivery status: `CANDIDATE`
 Production status: `NOT AUTHORIZED`
@@ -26,13 +26,29 @@ does not establish stable model behaviour.
 | `LIVE-RQE-EVIDENCE-001` | evidence-sensitive | Required facts, interpretation and limitations markers were present; the response did not promote inference to observed fact. | Required; not run. | `blocked` | [ChatGPT conversation](https://chatgpt.com/g/g-p-69f7c5794ab481919143830fc1a513b9-codex/c/6a8c64f9-1748-83eb-a8c5-68a19c482123) |
 | `LIVE-RQE-CODEX-001` | Codex handoff | Required objective, acceptance and rollback markers were present; the response retained the no-owner-review/no-merge constraint. | Required; not run. | `blocked` | Not recorded; raw response intentionally not retained. |
 
+## Fresh material pilot
+
+On 2026-08-25, both canonical Projects exposed enabled composers. The two
+material classes were rerun in fresh chats and each response was judged in the
+independent `[LLM]` Project within the same supervised session. Raw responses
+were not retained in this report.
+
+| Pilot | Response class | Deterministic controls observed | Independent Judge | Status | Run references |
+| --- | --- | --- | --- | --- | --- |
+| `LIVE-RQE-EVIDENCE-002` | evidence-sensitive | Required fact, interpretation and limitation markers were present; no inference was presented as observed fact. | `pass`; material findings: none; required revision: none. | `pass` | [response](https://chatgpt.com/g/g-p-69f7c5794ab481919143830fc1a513b9/c/6a8cb3b8-fa90-83eb-a8d6-65e8d77611ca); [Judge](https://chatgpt.com/g/g-p-69e9f1058440819181beb1f41cfd672c/c/6a8cb3f0-8f10-83eb-be90-70192ffced9a) |
+| `LIVE-RQE-CODEX-002` | Codex handoff | Required objective, acceptance and rollback markers were present; owner review and merge were explicitly `NOT RUN`. | `pass`; material findings: none; required revision: none. | `pass` | [response](https://chatgpt.com/g/g-p-69f7c5794ab481919143830fc1a513b9/c/6a8cb40c-da7c-83eb-8a9b-3ddf7477e45f); [Judge](https://chatgpt.com/g/g-p-69e9f1058440819181beb1f41cfd672c/c/6a8cb42b-b614-83eb-abb2-0197ed1a4b4b) |
+
 ## Closure
 
-The live pilot supplies one positive observation for the direct-response
-contract. The two material classes remain blocked because the independent Judge
+The initial live pilot supplies one positive observation for the direct-response
+contract. Its two material records remain blocked because the independent Judge
 step was not performed. This is the intended fail-safe outcome: required review
 cannot be inferred from a structurally compliant response or from a successful
 live submission.
+
+The fresh material pilot adds one independently judged `pass` observation for
+each material class. It does not retroactively change the historical `001`
+records, establish stable model behaviour, or authorize production use.
 
 ## Judge access attempt
 
@@ -56,13 +72,12 @@ or merge decision is evidenced by this report.
 
 ## Required continuation
 
-1. Verify an enabled composer in both canonical `[Codex]` and independent
-   `[LLM]` Projects, then run an independent Judge for `LIVE-RQE-EVIDENCE-001` and
-   `LIVE-RQE-CODEX-001` using the applicable LLM quality workflow.
-2. Record only the resulting verdict, material findings and revision state;
-   retain raw responses only under an explicitly approved evidence policy.
-3. Obtain an owner decision before treating any material-class result as
-   accepted or expanding this candidate harness into a release gate.
+1. Obtain an owner decision on whether this three-class candidate baseline is
+   sufficient for `ready for owner review`.
+2. Rerun the affected class only when its Project instructions, quality contract
+   or evaluation harness changes; keep the same-session Judge boundary.
+3. Do not infer a release gate or production readiness from these three pilot
+   observations.
 
 ## Rollback
 
