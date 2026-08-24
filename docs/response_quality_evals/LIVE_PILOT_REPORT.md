@@ -34,6 +34,15 @@ step was not performed. This is the intended fail-safe outcome: required review
 cannot be inferred from a structurally compliant response or from a successful
 live submission.
 
+## Judge access attempt
+
+On 2026-08-24, the two material chat references were opened from both the
+in-app and signed-in browser surfaces to run the independent Judge. Each
+reference showed an empty, disabled conversation view, not the original
+response. Because this report intentionally retains no raw provider transcript,
+there was no admissible input for a substitute review. No Judge verdict was
+created; both material cases remain `blocked`.
+
 No owner acceptance, deployment, production-readiness decision, source update
 or merge decision is evidenced by this report.
 
@@ -48,5 +57,5 @@ or merge decision is evidenced by this report.
 
 ## Rollback
 
-Revert the single commit that introduces this report. The report changes no
+Revert the commits that introduce or amend this report. The report changes no
 runtime, project source, schema, routing or evaluation policy.
