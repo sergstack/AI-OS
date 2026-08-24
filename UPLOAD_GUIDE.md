@@ -91,6 +91,22 @@ Use `ChatGPT/[Project]/Knowledge_Bundles/UPLOAD_LIST.md` when uploading bundle f
 
 Granular `Knowledge/` files and the GitHub repository remain the source of truth. `Knowledge_Bundles` is the default upload mode; granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
 
+### Replace a changed bundle without duplicate Sources
+
+For a changed bundle, replace only that bundle in the matching ChatGPT Project:
+
+1. identify the canonical filename from `UPLOAD_LIST.md`;
+2. remove the older Source with the same semantic filename, including any UI-added
+   suffix such as `(1)` or `(2)`;
+3. upload the current repository bundle under its canonical filename;
+4. read back the Sources list and confirm exactly one file matches that canonical
+   filename.
+
+Record the observed replacement and any affected smoke QA in
+`CHATGPT_PROJECT_SYNC_CHECKLIST.md`. A replaced filename proves only source
+transport; it does not prove behavioural smoke QA, owner acceptance, or
+production authorization.
+
 For analytical memo production, upload bundle files that include the `Analytical Memo Factory via Codex APP` workflow. Do not upload granular and bundle files together unless debugging.
 
 For `[Thinkers OS]`, `ChatGPT/[Thinkers OS]/Knowledge_Bundles/UPLOAD_LIST.md` is the sole authoritative manual upload list. Its granular `Knowledge/` files remain repository source of truth and are not part of the standard upload. Do not upload raw or normalized books, OCR dumps, manifests, execution logs, local absolute paths, or blocked/rejected artifacts.
