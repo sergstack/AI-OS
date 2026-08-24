@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "case_id": "RQE-DIRECT-001",
+      "response_class": "direct",
+      "response": "Ответ: выполните локальную проверку. Ограничение: live-подтверждение отсутствует.",
+      "required_groups": [["Ответ:"], ["Ограничение:"]],
+      "forbidden_phrases": ["production ready"],
+      "unsupported_claims": [],
+      "judge_required": false,
+      "judge_verdict": "not_run",
+      "revision_count": 0,
+      "unresolved_material_findings": [],
+      "expected_verdict": "pass"
+    },
+    {
+      "case_id": "RQE-EVIDENCE-001",
+      "response_class": "evidence_sensitive",
+      "response": "Факты: evidence card A. Интерпретация: требуется проверка. Ограничения: выборка неполная.",
+      "required_groups": [["Факты:"], ["Интерпретация:"], ["Ограничения:"]],
+      "forbidden_phrases": ["гарантированно"],
+      "unsupported_claims": ["Причина изменения не подтверждена evidence card A."],
+      "judge_required": true,
+      "judge_verdict": "revise",
+      "revision_count": 0,
+      "unresolved_material_findings": [],
+      "expected_verdict": "revise"
+    },
+    {
+      "case_id": "RQE-CODEX-001",
+      "response_class": "codex_handoff",
+      "response": "Objective: add a local check. Acceptance: expected verdict is recorded. Rollback: revert one commit.",
+      "required_groups": [["Objective:"], ["Acceptance:"], ["Rollback:"]],
+      "forbidden_phrases": ["deploy immediately"],
+      "unsupported_claims": [],
+      "judge_required": true,
+      "judge_verdict": "not_run",
+      "revision_count": 0,
+      "unresolved_material_findings": [],
+      "expected_verdict": "blocked"
+    }
+  ]
+}
