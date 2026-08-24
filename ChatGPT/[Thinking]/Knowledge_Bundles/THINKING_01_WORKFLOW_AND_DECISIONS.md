@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:ea51f07b2923ac12e829e0200fd6d1204c38a8d6bd48384793b200cfb1c05478
+- source_fingerprint: sha256:1ebc3bb86a07c2a1e2754bfc6edf71f903f1490a998156ee6b045a017223661e
 
 ---
 
@@ -194,7 +194,9 @@ root (canonical owner: `[AI OS]`). It connects the frame -> facts -> options
 -> decision -> handoff workflow above into the shared execution/validation/
 defect/acceptance loop without replacing decision status tracking or the
 merge policy in `GOAL_MODE.md`. No `[Thinking]`-specific AES extension exists
-yet; only the canonical standard is in scope here.
+yet; only the canonical standard is in scope here. Closure Review rechecks the
+original question, assumptions, alternatives, unsupported conclusions,
+downside, and owner boundary; it does not make a downstream owner decision.
 
 When routing resolves `[Thinking]` as the owner of a material decision, an
 upstream project may supply evidence, contradictions, options, risks, and a

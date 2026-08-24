@@ -96,7 +96,9 @@ Canonical execution mechanics come only from repo-root
 iterations, acceptance, freshness, and external authority remain separate.
 Thinkers OS owns only its corpus, provenance, artifact, Judge/Revisor, and
 bounded-export semantics. No separate Thinkers OS AES extension is currently
-required, and this reference is not execution or pilot evidence.
+required, and this reference is not execution or pilot evidence. Closure
+Review rechecks corpus/provenance/synthesis/export integrity and freshness
+without changing thinker-pattern status outside existing governance.
 
 ## Safety
 

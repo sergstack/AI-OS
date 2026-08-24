@@ -25,6 +25,7 @@ retry_limit_overrides:
 hard_blocker_additions:
 authority_requirements:
 freshness_requirements:
+closure_review_requirements:
 ```
 
 ## 2. What an extension may do
@@ -37,6 +38,8 @@ freshness_requirements:
 - add acceptance scopes beyond the seven mandatory ones (Section 10.1 of the
   standard);
 - add project-specific hard blockers.
+- add domain-specific Closure Review checks, evidence, and stricter closure
+  limits; it may not omit canonical goal/scope/invariant/authority review.
 
 ## 3. What an extension must not do
 

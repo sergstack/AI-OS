@@ -1,6 +1,6 @@
-# Autonomous Execution Standard (AES) v1.0.0
+# Autonomous Execution Standard (AES) v1.1.0
 
-Status: Phase 1 — normative package and declarative contract.
+Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
 Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
 Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
@@ -39,8 +39,9 @@ requirements
 -> corrective action
 -> affected-scope rerun
 -> revalidation
--> scope acceptance
--> final evidence
+-> requirements traceability
+-> Closure Review
+-> terminal acceptance / stopped
 ```
 
 Where AES and an existing project rule set different limits for the same
@@ -69,7 +70,10 @@ authority evaluator, a runtime execution service, an orchestration platform,
 or any production enforcement. Only advisory structural validation of the
 declarative JSON Schema is in scope: JSON syntax, required fields, field
 types, enum values, nested object structure, and ID format patterns.
-Cross-field semantic invariants are deferred to Phase 6 (Section 12).
+The scoped advisory semantic validator now checks its documented subset of
+cross-field invariants. It remains read-only and is not a blocking CI service.
+Closure Review is normative for new closure-aware records; historical v1.0.0
+records remain historical evidence and are not rewritten.
 
 ## 1. Precedence model
 
@@ -203,6 +207,12 @@ canonical records are not permitted.
 
 `current`, `stale`, `unverifiable`, `not_applicable`.
 
+### 4.11 `closure_review.status`
+
+`not_run`, `pass`, `revise`, `blocked`. This applies the existing review
+verdict namespace to terminal evidence; it is not a delivery status and never
+authorizes merge, deploy, or another external action.
+
 There is no combined `judge_or_qa_status` field. `judge_verdict` and
 `qa_status` are always separate fields (Section 8).
 
@@ -211,8 +221,8 @@ There is no combined `judge_or_qa_status` field. `judge_verdict` and
 Minimal top-level structure (full contract: `schemas/autonomous_execution_record.schema.json`):
 
 ```yaml
-schema_version: "1.0.0"
-standard_version: "1.0.0"
+schema_version: "1.1.0"  # closure-aware record
+standard_version: "1.1.0"
 execution_id:
 parent_execution_id:
 project:
@@ -238,6 +248,7 @@ production_status:
 rollback:
 external_actions:
 handoffs:
+closure_review:
 final_report:
 ```
 
@@ -264,6 +275,14 @@ Example: `execution_id: "exec-aios-aes-v1-001"`, `requirement_id: "req-001"`,
 `defect_id: "def-001"`, `iteration_id: "iter-001"`, `artifact_id: "art-001"`,
 `evidence_id: "ev-001"`.
 
+### 5.4 Compatibility and migration
+
+Schema v1.1 is additive: `closure_review` is optional structurally so valid
+v1.0.0 historical records remain valid. A record declaring
+`standard_version: "1.1.0"` is closure-aware and a successful terminal record
+must carry a passed Closure Review; the advisory semantic validator enforces
+this. Do not rewrite accepted historical evidence solely to add closure data.
+
 ## 6. Source-revision contract
 
 ```yaml
@@ -285,16 +304,19 @@ timestamp alone is never sufficient freshness evidence.
 initialized -> scoped -> executing -> validating
 ```
 
-If mandatory checks pass: `validating -> completed`.
+If mandatory checks pass: `validating -> requirements traceability -> Closure
+Review -> completed`.
 If a correctable defect is found: `validating -> correcting -> revalidating`.
-After a successful re-check: `revalidating -> completed`.
+After a successful re-check: `revalidating -> requirements traceability ->
+Closure Review -> completed`.
 On a hard blocker or inability to continue, from any non-terminal state:
 `any non-terminal state -> stopped`.
 
 Terminal reasons (when `execution_state: stopped`): `hard_blocker`,
 `iteration_limit_reached`, `repeated_defect_limit_reached`,
 `conflicting_acceptance`, `validation_unavailable`,
-`scope_boundary_violation`, `required_external_action_not_authorized`.
+`scope_boundary_violation`, `required_external_action_not_authorized`,
+`closure_iteration_limit_reached`.
 
 `required_external_action_not_authorized` applies only when a specific
 external action is part of the mandatory objective and the objective cannot
@@ -520,6 +542,44 @@ remain; validation evidence matches the final source state; mandatory
 artifacts are current; rollback readiness has been evaluated; and external
 authority statuses are reported separately. Waiting for owner review does
 not pull `overall_delivery` down to `fail`.
+
+### 10.3 Closure Review (v1.1)
+
+Before a closure-aware record can successfully terminate, build a compact
+`closure_context` from the original goal/task, agreed scope, constraints,
+acceptance criteria, material invariants, final revision/state references,
+requirements traceability, latest test/validation/artifact evidence,
+limitations, residual risks, rollback and external-authority status, and
+input/state hashes. The full transcript is not required.
+
+Review the original goal rather than the last fix list. State the general
+invariant behind known defects and inspect applicable decision-bearing inputs,
+transformations, aggregation points, outputs, and material trust boundaries.
+Preserve uncertainty: `UNKNOWN != NOT_REPORTED`, `PARSE_FAILED != NOT_REPORTED`,
+`PROBABLE != CONFIRMED`, `NOT_RUN != PASS`, and `HYPOTHESIS != OBSERVED`.
+Mutation evidence is observed only when the mutation was applied, validation
+ran, and its result was recorded.
+
+For `material`, `complex`, or high-risk work, use existing execution/risk modes
+for a bounded adversarial attempt to reject acceptance: boundary and
+contradictory states, missing evidence, invalid transitions, aggregation loss,
+unsupported defaults, routing/requirement omissions, status inflation, forged
+intermediate state, and stale downstream artifacts are applicable classes.
+Lightweight reversible work may use a proportionate review.
+
+If an observable in-scope gap affects acceptance, is technically correctable,
+needs no new owner/business/policy decision, and can be fixed with available
+authority/tools, register it and return to `correcting`. Do not relabel it a
+limitation, residual risk, or future improvement merely to terminate. Scope or
+owner-policy changes follow existing blocked/stopped authority mapping.
+
+`max_closure_corrective_iterations: 2` is a ceiling separate from normal full
+iterations. Effective limit is the minimum of canonical, extension,
+task-package, and stricter applicable policy. A counted closure iteration
+changes state for a newly found correctable acceptance defect and completes
+rerun/revalidation. It never widens `[Codex]`
+`max_corrective_fixes_per_failed_check: 1`. After a closure correction,
+affected validations and artifacts are stale until refreshed under Section 11.
 
 ## 11. Validation runs and freshness
 

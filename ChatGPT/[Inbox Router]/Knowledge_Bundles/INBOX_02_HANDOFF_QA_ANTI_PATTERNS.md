@@ -65,7 +65,9 @@ Inbox Router has thin AES applicability only when packaging or preserving a
 governed execution handoff. Repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`
 remains the single owner of execution semantics. Router still only routes,
 clarifies, and packages; it does not execute corrective loops or gain external
-authority. No Router AES extension is currently required.
+authority. No Router AES extension is currently required. For a material
+package, the thin closure check verifies routing completeness, preserved
+constraints/evidence, owner match, and handoff integrity only.
 
 
 ## From: `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`

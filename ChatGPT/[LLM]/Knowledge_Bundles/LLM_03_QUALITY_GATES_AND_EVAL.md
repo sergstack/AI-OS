@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:d16fc6453c7e18e0f4a4e721cca4c26bbe119c7634e23ab68dbc079fa5ccd7d2
+- source_fingerprint: sha256:38c514b92bd318b17ddcfba330fffade19e31c985558623e9337f6510477ff43
 
 ---
 
@@ -166,7 +166,9 @@ Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 checks, and judge/eval workflow above as a shared execution/validation/
 defect/acceptance loop, without replacing them or the merge policy in
 `GOAL_MODE.md`. No `[LLM]`-specific AES extension exists yet; only the
-canonical standard is in scope here.
+canonical standard is in scope here. Closure Review rechecks prompt and
+input-context contracts, output schema, unsupported claims, eval regressions,
+and routing ownership before acceptance.
 
 After routing resolves a material decision or deliverable owner, `[LLM]` may
 preserve evidence, contradictions, constraints, and a bounded handoff, but it
