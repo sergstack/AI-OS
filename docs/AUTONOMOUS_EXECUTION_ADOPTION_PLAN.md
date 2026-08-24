@@ -36,8 +36,9 @@ specification, pilot specifications, this adoption plan, and thin
 references from existing canonical entry documents (`GOAL_MODE.md`,
 `README.md`, `REPO_PATHS.md`).
 
-Does not deliver: any per-project extension file, any pilot execution, any
-semantic validator, any CI enforcement.
+Historical Phase 1 did not deliver: any per-project extension file, any pilot
+execution, a semantic validator, or CI enforcement. This describes the
+original package only; it is not a claim about the current repository.
 
 Exit criteria: PR opened against `main`, owner review pending, not merged.
 
@@ -72,15 +73,16 @@ Produces a real multi-hop handoff chain (`[Thinking] -> [Analytics] ->
 requirement IDs, defect IDs, iteration count, evidence references,
 acceptance scopes, and authority status all survive every hop.
 
-## Phase 6 — semantic enforcement
+## Phase 6 — semantic enforcement (historical plan; partially delivered)
 
-Requires a separate, explicit owner decision, taken only after Phases 2-5
+Originally required a separate, explicit owner decision, taken only after Phases 2-5
 have produced enough real evidence to justify it. In scope for Phase 6
 only: a semantic validator, duplicate-ID checks, cross-field invariants,
 stale-artifact enforcement, stale-test enforcement, iteration-limit
 enforcement, handoff-ID enforcement, allowed-path enforcement, and
-optionally a blocking CI integration. None of this exists yet and none of
-it is authorized by Phase 1 completion.
+optionally a blocking CI integration. The read-only advisory validator now
+exists and covers SEM-001…011; blocking CI, runtime enforcement, and any
+broader semantic coverage remain separately unauthorized.
 
 ## What Phase 1 completion authorizes
 

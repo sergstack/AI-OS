@@ -208,8 +208,8 @@ def rule_ids(violations) -> set[str]:
 
 def closure_aware_record() -> dict:
     record = fixture()
-    record["schema_version"] = "1.1.0"
-    record["standard_version"] = "1.1.0"
+    record["schema_version"] = "2.0.0"
+    record["standard_version"] = "2.0.0"
     record["closure_review"] = {
         "status": "pass",
         "closure_context": {

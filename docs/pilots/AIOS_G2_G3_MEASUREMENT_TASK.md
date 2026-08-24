@@ -177,11 +177,12 @@ If Judge confirms a material AI OS behavioral defect: stop automatic progression
 
 | Evidence | Overall acceptance | Next action |
 |---|---|---|
-| G2 PASS + G3 PASS + no material Judge defect | `PASS` or `PASS_WITH_LIMITATIONS` | recommend status to human/canonical owner |
+| G2 PASS + G3 PASS + no material Judge defect | `pass` or `partial` with explicit limitations | recommend status to human/canonical owner |
 | any required case still externally blocked | `BLOCKED — incomplete validation` | report blocker only |
 | confirmed material behavioral FAIL | `BLOCKED` | stop promotion; separate repair handoff |
 
-Use `PASS_WITH_LIMITATIONS` when material source-integrity/UI reconciliation remains partial.
+Use `partial` when material source-integrity/UI reconciliation remains partial;
+record the limitations and the unresolved owner action separately.
 
 Do not mutate canonical pilot status automatically.
 
@@ -235,7 +236,7 @@ requirements acceptance
 evidence integrity
 blockers
 scope acceptance
-overall acceptance status: PASS / PASS_WITH_LIMITATIONS / BLOCKED
+overall acceptance status: pass / partial / blocked
 confirmed AI OS behavioral defects: none / list
 pilot status recommendation
 confidence: strong / medium / weak

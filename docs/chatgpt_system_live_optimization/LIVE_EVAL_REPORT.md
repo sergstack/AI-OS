@@ -7,6 +7,10 @@
 - scope: `[AI OS]`, `[Thinking]`, `[Analytics]`, `[LLM]`, `[Codex]`, `[Inbox Router]`, `[Thinkers OS]`
 - production status: `NOT AUTHORIZED`
 
+> Historical status note: `PASS_WITH_LIMITATIONS` below predates AES canonical
+> status names and maps to `partial` with the stated limitations. It is not a
+> current contract status.
+
 ## Rubric
 
 Each dimension is scored `0` (fail), `1` (partial), or `2` (pass): routing/boundary, evidence/grounding, contract/format, actionability, and calibrated limitations. A critical routing, evidence, safety, or false-execution defect overrides the total and requires `revise` or `blocked`.

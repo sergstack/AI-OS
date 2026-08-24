@@ -145,6 +145,10 @@ table for humans and future extension authors.
 create `PASS_WITH_LIMITATIONS` or replace `overall_delivery`. A limitation can
 remain only when it is non-critical, explicit, safe, not technically fixable
 inside current scope/authority, and Closure Review passes. A missing mandatory
+owner decision is `blocked`, not a limitation. Historical artifacts that use
+`PASS_WITH_LIMITATIONS` must be marked `historical_pre_aes` and map to
+`overall_delivery: partial` with their limitation text retained; new records
+must use only the canonical namespace.
 owner/business/policy decision is `blocked`, not partial success. A Closure
 Review pass is evidence only: `authority_status`, `merge_status`, and
 `production_status` retain their independent meanings.

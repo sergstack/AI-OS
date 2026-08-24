@@ -1,10 +1,11 @@
-# Autonomous Execution Standard (AES) v1.1.0
+# Autonomous Execution Standard (AES) v2.0.0
 
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
 Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
 Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
-Schema: `schemas/autonomous_execution_record.schema.json`.
+Current schema: `schemas/autonomous_execution_record.schema.json`.
+Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 
 This document is the single canonical source for the Autonomous Execution
 Standard. Knowledge Bundles, upload packages, and any future generated
@@ -63,7 +64,7 @@ Phase 1 (this package) delivers only:
 - the adoption plan;
 - thin references from existing canonical entry documents.
 
-Phase 1 explicitly does **not** include: a semantic execution validator,
+The original Phase 1 package explicitly did **not** include: a semantic execution validator,
 blocking CI enforcement, an automatic stale-artifact gate, automatic
 handoff-ID enforcement, an automatic scope-creep detector, an automatic
 authority evaluator, a runtime execution service, an orchestration platform,
@@ -72,8 +73,8 @@ declarative JSON Schema is in scope: JSON syntax, required fields, field
 types, enum values, nested object structure, and ID format patterns.
 The scoped advisory semantic validator now checks its documented subset of
 cross-field invariants. It remains read-only and is not a blocking CI service.
-Closure Review is normative for new closure-aware records; historical v1.0.0
-records remain historical evidence and are not rewritten.
+Closure Review is mandatory for every new v2 record; historical v1 records
+remain historical evidence and are not rewritten.
 
 ## 1. Precedence model
 
@@ -221,8 +222,8 @@ There is no combined `judge_or_qa_status` field. `judge_verdict` and
 Minimal top-level structure (full contract: `schemas/autonomous_execution_record.schema.json`):
 
 ```yaml
-schema_version: "1.1.0"  # closure-aware record
-standard_version: "1.1.0"
+schema_version: "2.0.0"  # current, closure-required record
+standard_version: "2.0.0"
 execution_id:
 parent_execution_id:
 project:
@@ -277,11 +278,13 @@ Example: `execution_id: "exec-aios-aes-v1-001"`, `requirement_id: "req-001"`,
 
 ### 5.4 Compatibility and migration
 
-Schema v1.1 is additive: `closure_review` is optional structurally so valid
-v1.0.0 historical records remain valid. A record declaring
-`standard_version: "1.1.0"` is closure-aware and a successful terminal record
-must carry a passed Closure Review; the advisory semantic validator enforces
-this. Do not rewrite accepted historical evidence solely to add closure data.
+New records must validate against the current v2 schema. It requires
+`schema_version` and `standard_version` to be `2.0.0`, plus a
+`closure_review` object. A successful v2 terminal record must carry a passed
+Closure Review; the advisory semantic validator enforces the cross-field
+conditions. Existing v1 evidence validates only against the explicitly named
+historical schema and is read-only: do not rewrite accepted evidence solely to
+add closure data. A v1 path is never a new-record intake path.
 
 ## 6. Source-revision contract
 
@@ -642,10 +645,12 @@ DOCX, PDF, PPTX, marts, charts, memos, and other generated bundles.
 
 ## 12. Validation responsibility matrix
 
-Phase 1 explicitly separates deterministic structural checks (available now)
-from semantic checks (documented, deferred to Phase 6):
+The original Phase 1 matrix separated deterministic structural checks from
+future semantic enforcement. The repository now has a scoped, read-only
+advisory semantic validator (`scripts/validate_autonomous_execution_record.py`)
+for its documented subset; it is not CI or runtime enforcement.
 
-| Property checked | Phase 1 mechanism | Future mechanism |
+| Property checked | Structural mechanism | Current semantic coverage |
 | --- | --- | --- |
 | JSON syntax | JSON parser | unchanged |
 | Required fields | JSON Schema | unchanged |
@@ -653,20 +658,21 @@ from semantic checks (documented, deferred to Phase 6):
 | Enum values | JSON Schema | unchanged |
 | ID string format | JSON Schema pattern | unchanged |
 | Nested record shape | JSON Schema | unchanged |
-| Duplicate IDs by property | acceptance-case specification only | semantic validator |
-| Mandatory failed requirement with overall pass | normative rule and case specification | semantic validator |
-| Open defect with overall pass | normative rule and case specification | semantic validator |
-| Artifact revision mismatch | normative rule and pilot | semantic validator |
-| Test revision mismatch | normative rule and pilot | semantic validator |
-| Iteration-limit enforcement | normative rule and pilot | semantic validator |
+| Duplicate IDs by property | acceptance-case specification | SEM-002 |
+| Mandatory failed requirement with overall pass | normative rule and case specification | SEM-001 |
+| Open defect with overall pass | normative rule and case specification | SEM-003 |
+| Artifact revision mismatch | normative rule and pilot | SEM-004 |
+| Test revision mismatch | normative rule and pilot | SEM-005 |
+| Iteration-limit enforcement | normative rule and pilot | SEM-006/010 |
 | Allowed-file scope | exact scope manifest and git diff review | repository validator |
 | Extension authority expansion | contract and Judge review | deterministic policy validator where feasible |
 | Canonical-content duplication | docs consistency and Judge review | optional repository consistency check |
 | Business-rule preservation | project-specific checks | project-specific enforcement |
 | Merge/deploy authority | explicit fields and owner review | external platform gates |
 
-Phase 1 must not claim any semantic check as automated or passed when it is
-only documented normatively. See
+The advisory validator covers only SEM-001…011 and is not evidence of CI,
+runtime enforcement, owner approval, merge, deploy, or production
+authorization. See
 `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the
 full structural and semantic case list.
 
@@ -793,10 +799,10 @@ workflows, multiple artifact layers. Minimum: full traceability, several QA
 layers, detailed defects, partial scope acceptance, cross-project handoff
 preservation, an explicit authority map, full artifact lineage.
 
-## 17. Non-goals (Phase 1)
+## 17. Non-goals and enforcement boundary
 
 Forbidden in this task: a runtime service; an execution database; a
-semantic validator; a blocking CI gate; changes to `.github/workflows/*`; a
+blocking CI gate; changes to `.github/workflows/*`; a
 web UI; a vector DB; embeddings; an agent orchestration platform; automatic
 project invocation; automatic issue creation or closing; automatic PR
 creation as a runtime behavior of the standard; automatic PR approval or
@@ -821,10 +827,10 @@ approve, merge or deploy pull requests.
 ## 19. Adoption phases
 
 See `docs/AUTONOMOUS_EXECUTION_ADOPTION_PLAN.md` for the full phase list.
-Summary: Phase 1 (this package, normative) -> Phase 2 (Codex pilot,
+Summary: Phase 1 (historical normative package) -> Phase 2 (Codex pilot,
 separate issue/PR) -> Phase 3 (artifact pilot) -> Phase 4 (Analytics pilot)
--> Phase 5 (cross-project pilot) -> Phase 6 (semantic enforcement, requires
-a separate owner decision).
+-> Phase 5 (cross-project pilot) -> scoped advisory semantic validation
+(delivered) -> any blocking enforcement (requires a separate owner decision).
 
 ## 20. Next owner
 
