@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:cbfa979396134e27a5e17ca84cd4ac911c92a4cd59e1989bd2690255e6c38e1d
+- source_fingerprint: sha256:810b6994285ee9e1cfced92cbabdfa5692e1d845027f2ae7cf8c3a5ba9a2dfd7
 
 ---
 
@@ -137,8 +137,9 @@ interface in `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
 implements to add domain-specific defect subtypes, evidence, and acceptance
 scopes without restating the canonical state machine or schema.
 
-Closure-aware work rechecks original goal, scope, invariants, final evidence
-freshness, rollback, and owner boundary before terminal acceptance.
+New AES v2 records require Closure Review: it rechecks original goal, scope,
+invariants, final-evidence freshness, rollback, and owner boundary before
+terminal acceptance. Historical v1 evidence remains read-only.
 
 After routing resolves a primary owner for a material decision or deliverable,
 an upstream project may prepare evidence, contradictions, options, risks, and a

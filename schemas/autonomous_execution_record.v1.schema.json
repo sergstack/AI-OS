@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/sergstack/AI-OS/schemas/autonomous_execution_record.schema.json",
-  "title": "Autonomous Execution Standard execution record (v2 closure-required)",
-  "description": "Current declarative contract for new AES records. It validates JSON syntax, required fields, field types, enum values, nested object shape, and ID format patterns. Historical v1 records use autonomous_execution_record.v1.schema.json. The separate read-only advisory semantic validator checks its documented cross-field subset; neither component is CI enforcement.",
+  "$id": "https://github.com/sergstack/AI-OS/schemas/autonomous_execution_record.v1.schema.json",
+  "title": "Autonomous Execution Standard execution record (v1 historical)",
+  "description": "Historical declarative contract for existing v1 evidence. New AES records must use autonomous_execution_record.schema.json (v2 closure-required). This schema validates structural shape only and is not a current-record intake contract.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -31,12 +31,11 @@
     "production_status",
     "rollback",
     "external_actions",
-    "handoffs",
-    "closure_review"
+    "handoffs"
   ],
   "properties": {
-    "schema_version": { "const": "2.0.0" },
-    "standard_version": { "const": "2.0.0" },
+    "schema_version": { "type": "string", "enum": ["1.0.0", "1.1.0"] },
+    "standard_version": { "type": "string", "enum": ["1.0.0", "1.1.0"] },
     "execution_id": { "type": "string", "pattern": "^exec-[a-z0-9][a-z0-9-]*$" },
     "parent_execution_id": {
       "oneOf": [
@@ -132,7 +131,12 @@
       "type": "array",
       "items": { "$ref": "#/definitions/handoff" }
     },
-    "closure_review": { "$ref": "#/definitions/closure_review" },
+    "closure_review": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/definitions/closure_review" }
+      ]
+    },
     "final_report": {
       "type": ["object", "null"],
       "additionalProperties": true

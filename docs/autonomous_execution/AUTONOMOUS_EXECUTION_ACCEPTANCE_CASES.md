@@ -2,18 +2,19 @@
 
 Canonical standard: `AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
 (Validation responsibility matrix).
-Schema: `schemas/autonomous_execution_record.schema.json`.
+Current schema: `schemas/autonomous_execution_record.schema.json`; historical
+v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 
-Phase 1 creates this specification. It does not create a semantic
-validator. Cases in Section 2 below are documented for future automation
-(Phase 6) and are not claimed as automated or passed today.
+Phase 1 created this specification without a semantic validator. The current
+repository includes a scoped, read-only advisory validator for SEM-001…011;
+it is not CI or runtime enforcement, and cases outside that subset remain
+documented requirements rather than automated checks.
 
 ## 1. Structural cases (checkable today by JSON Schema + `python3 -m json.tool`)
 
 Each case below can be produced as a minimal negative fixture and checked
-against `schemas/autonomous_execution_record.schema.json`. None of these
-fixtures are committed in Phase 1 — this table specifies what a Phase 6
-(or an ad hoc local) schema conformance test should assert.
+against the applicable schema. Structural conformance tests now cover the
+canonical v1 examples and critical v2 version/closure regression cases.
 
 | # | Case | Expected result |
 | --- | --- | --- |
@@ -40,11 +41,11 @@ package is not declared as a repository dependency (it is not installed by
 `.github/workflows/*`), so it is not used as an automated repository check;
 see Section 3.
 
-## 2. Semantic cases (documented for Phase 6; not automated in Phase 1)
+## 2. Semantic cases
 
 These require cross-field reasoning beyond a structural JSON Schema and are
-intentionally left to normative rules plus Judge/manual review until a
-Phase 6 semantic validator exists.
+checked by the read-only advisory validator where a SEM identifier exists;
+the remaining cases still require Judge/manual review.
 
 1. `overall_delivery: pass` without any populated `requirements` array
    (no requirements traceability at all).
@@ -79,15 +80,16 @@ Phase 6 semantic validator exists.
 
 ## 3. Validation responsibility summary
 
-| Property checked | Phase 1 mechanism | Automated in this repo today? |
+| Property checked | Current mechanism | Automated in this repo today? |
 | --- | --- | --- |
 | JSON syntax | `python3 -m json.tool` | yes |
-| Required fields / types / enums / ID patterns / nested shape | `schemas/autonomous_execution_record.schema.json` | not_run — no approved `jsonschema` dependency wired into `.github/workflows/*` or `tests/`; verified manually and via ad hoc local `jsonschema` use, not claimed as a repository CI check |
-| Semantic cases (Section 2) | normative rule + acceptance-case documentation | not_run — Phase 6 scope |
+| Required fields / types / enums / ID patterns / nested shape | current v2 schema plus historical v1 schema | pytest structural conformance tests; not a CI gate |
+| Semantic cases (Section 2) | advisory validator for SEM-001…011; normative/manual review for the rest | pytest covers SEM-001…011; not a CI gate |
 | Allowed-file scope | exact scope manifest + `git diff --stat` review | manual, per PR |
 | Business-rule / formula / metric preservation | project-specific checks | out of Phase 1 scope entirely |
 
-Phase 1 does not assert that any Section 2 case is automatically enforced.
+The repository does not assert that cases outside SEM-001…011 are
+automatically enforced.
 
 ## 4. Closure Review acceptance cases (issue #268)
 

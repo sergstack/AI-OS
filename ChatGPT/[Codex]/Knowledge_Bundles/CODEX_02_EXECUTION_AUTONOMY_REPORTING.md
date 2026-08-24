@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:46fc3249b5a0c94db2a885c0148f4367317841427c2f0b28da767780a8a61762
+- source_fingerprint: sha256:2e2bb77c82adc9d4536216f03e0fef86751ec6abfcac8cc680c4b93bbfa04db6
 
 ---
 
@@ -206,7 +206,7 @@ Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 loop — requirements, execution, validation, defect registration, corrective
 action, revalidation, and scope acceptance — without replacing any of them or
 the merge policy in `GOAL_MODE.md`. No `[Codex]`-specific AES extension
-exists yet; only the canonical standard is in scope here. Closure Review
+exists yet; only the canonical standard is in scope here. New v2 Closure Review
 rechecks repository trust boundaries, regression coverage, diff/freshness, and
 rollback; its ceiling never widens `max_corrective_fixes_per_failed_check: 1`.
 

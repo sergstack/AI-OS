@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Advisory semantic validator for Autonomous Execution Standard (AES) records.
 
-Phase 6 (scoped, advisory only). This script checks the cross-field semantic
+Scoped advisory semantic validation. This script checks the cross-field semantic
 invariants documented in `AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
 ("Validation responsibility matrix") that Phase 1's declarative JSON Schema
 (`schemas/autonomous_execution_record.schema.json`) deliberately does not
@@ -359,7 +359,13 @@ def check_sem_008(record: dict, record_path: str) -> list[Violation]:
 
 
 def _closure_aware(record: dict) -> bool:
-    return record.get("standard_version") == "1.1.0" or record.get("closure_review") is not None
+    """Return whether the record uses a contract that requires Closure Review.
+
+    v1 is frozen historical evidence and continues to be read under the v1
+    schema.  Every new v2 record is closure-required, so version selection
+    cannot silently create a successful record without final review.
+    """
+    return record.get("standard_version") == "2.0.0" or record.get("closure_review") is not None
 
 
 # SEM-009: a successful closure-aware record requires a passed Closure Review
@@ -454,7 +460,7 @@ RULE_DESCRIPTIONS = {
     "and not equal to this record's own execution_id",
     "SEM-008": "full_iteration count/iteration_number must not exceed a stated "
     "max_full_iterations envelope, when present",
-    "SEM-009": "closure-aware successful record requires a passed, goal/scope/invariant/authority-preserving Closure Review with no correctable gaps",
+    "SEM-009": "v2 or closure-aware successful record requires a passed, goal/scope/invariant/authority-preserving Closure Review with no correctable gaps",
     "SEM-010": "closure corrective iterations must not exceed the effective ceiling of two",
     "SEM-011": "closure defects must be registered; successful closure corrections require current final validation",
 }

@@ -7,6 +7,10 @@
 - method: baseline → defect → minimal contract correction → external sync → same-prompt rerun → regression check
 - production status: `NOT AUTHORIZED`
 
+> Historical status note: `PASS_WITH_LIMITATIONS` below maps to current AES
+> `partial` with the recorded limitations; it is retained as evidence, not as
+> a current status contract.
+
 ## Scope and handoff
 
 From `[Analytics]` to `[Codex]`: improve answer compactness without changing formulas, metric definitions, schemas, deterministic-calculation rules, evidence classes, QA gates, routing, or production authority. Allowed scope is Analytics Project Instructions, its smoke contract/result, focused tests, and this evidence record. Rollback is a scoped restore plus replacement of external Project Instructions with the baseline version.

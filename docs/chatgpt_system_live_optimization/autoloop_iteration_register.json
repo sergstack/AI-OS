@@ -1,5 +1,7 @@
 {
   "schema_version": "1.0",
+  "status_namespace": "historical_pre_aes",
+  "canonical_status_mapping": "PASS_WITH_LIMITATIONS -> partial (explicit limitations retained below)",
   "state": "PASS_WITH_LIMITATIONS",
   "iterations": [
     {
