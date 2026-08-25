@@ -92,8 +92,10 @@ def test_orchestrator_is_thin_default_and_fails_closed() -> None:
         "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
         "PROJECT_CAPABILITIES.yaml",
         ".agents/skills/project-context/SKILL.md",
+        "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
         "GOAL_MODE.md",
         "HANDOFF_STYLE_STANDARD.md",
+        "AUTONOMOUS_EXECUTION_STANDARD.md",
     ):
         assert canonical_reference in orchestrator
 
@@ -106,6 +108,81 @@ def test_orchestrator_is_thin_default_and_fails_closed() -> None:
     assert "Do not guess an owner" in orchestrator
     assert "load all projects" in orchestrator
     assert "status `blocked`" in orchestrator
+
+
+def test_invoke_ai_os_continues_the_original_goal_without_expanding_authority() -> None:
+    orchestrator = (
+        SKILLS_ROOT / "ai-os-orchestrator" / "SKILL.md"
+    ).read_text(encoding="utf-8")
+    handoff = (
+        REPO_ROOT / "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md"
+    ).read_text(encoding="utf-8")
+    smoke_qa = (
+        REPO_ROOT / "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md"
+    ).read_text(encoding="utf-8")
+
+    assert "## Invoke AI-OS continuation mode" in orchestrator
+    assert "original_goal" in orchestrator
+    assert "original_acceptance_criteria" in orchestrator
+    assert "Handoff completion is not goal completion." in orchestrator
+    assert "return the result to the current owner" in orchestrator
+    assert "reassess the original goal" in orchestrator
+    assert "does not expand authority" in orchestrator
+    assert "not a runtime service" in orchestrator
+    assert "Never weaken acceptance criteria" in orchestrator
+    for terminal_outcome in (
+        "`COMPLETED`",
+        "`OWNER_DECISION_REQUIRED`",
+        "`BLOCKED`",
+    ):
+        assert terminal_outcome in orchestrator
+
+    assert "Handoff completion is not goal completion." in handoff
+    assert "Destination вне `PROJECT_CAPABILITIES.yaml`" in handoff
+    assert "explicit terminal handoff" in handoff
+    assert "owner-frozen policy" in handoff
+
+    for scenario in (
+        "### 6. Safe continuation",
+        "### 7. Handoff is not completion",
+        "### 8. Owner authority",
+        "### 9. Corrective continuation",
+        "### 10. External destination",
+    ):
+        assert scenario in smoke_qa
+
+
+def test_orchestrator_references_canonical_routing_instead_of_copying_it() -> None:
+    orchestrator = (
+        SKILLS_ROOT / "ai-os-orchestrator" / "SKILL.md"
+    ).read_text(encoding="utf-8")
+
+    assert "Do not copy their routing tables" in orchestrator
+    assert "Calculation / data / metrics" not in orchestrator
+    assert "Prompt / model routing / LLM workflow" not in orchestrator
+    assert "Implementation / code / tests / release" not in orchestrator
+
+
+def test_current_repository_passes_sync_readiness_checks() -> None:
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts" / "sync_aios.py")],
+        cwd=REPO_ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    for check in (
+        "scripts/check_project_instructions_length.py",
+        "scripts/check_repo_public_safety.py",
+        "scripts/check_codex_goal_mode_defaults.py",
+        "scripts/check_manifest_paths.py",
+        "scripts/check_knowledge_bundles.py",
+        "scripts/check_index_coverage.py",
+    ):
+        assert f"PASS {check}" in result.stdout
 
 
 def test_registry_derived_resolution_is_unique_and_fail_closed() -> None:

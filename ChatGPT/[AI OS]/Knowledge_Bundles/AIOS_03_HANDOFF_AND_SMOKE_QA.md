@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Compact upload artifact for [AI OS] covering handoff and smoke qa.
+Compact upload artifact for [AI OS] covering handoff, executable continuation, and smoke qa.
 
 ## Source files
 
@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:1f29edfc5c42ffad0188a0de43279ea0fbbe3c708b3ff0b600e16f1d6da6e2c5
+- source_fingerprint: sha256:40d739aea1964d106d081a7c62c06059a0b2ee57bc07f113e9dcb3195d5ff19a
 
 ---
 
@@ -29,6 +29,13 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 ## From: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
 
 # Handoff Protocol
+## Continuation contract
+Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
+- `Goal` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку.
+- Если owner capability доступна, reversible, policy-permitted и authorized, вызови её, проверь результат и верни его текущему владельцу.
+- Если capability недоступна, верни terminal handoff с точной причиной; не считай подготовку handoff completion.
+- Не авторизуй owner-frozen policy, merge, deploy, production promotion или другое действие с material downside/низкой обратимостью.
+- Destination вне `PROJECT_CAPABILITIES.yaml` остаётся explicit terminal handoff: не изобретай capability, не вызывай `project-context` и не расширяй authority.
 ## Canonical compact field set
 ```text
 From:
@@ -180,6 +187,31 @@ Pass condition:
 Pass condition:
 - даёт handoff to `[Codex]`;
 - включает goal, context, evidence, constraints, acceptance criteria.
+### 6. Safe continuation
+```text
+Для исходной цели нужны LLM-workflow, затем его реализация в Codex. Оба шага доступны, reversible и разрешены. Где остановиться?
+```
+Pass condition:
+- маршрут `[AI OS] → [LLM] → [Codex]` исполняется последовательно;
+- каждый результат возвращается к владельцу и проверяется;
+- остановка только после acceptance исходной цели.
+### 7. Handoff is not completion
+Pass condition:
+- подготовленный, но неисполненный handoff не даёт `COMPLETED`;
+- original goal и acceptance criteria сохраняются.
+### 8. Owner authority
+Pass condition:
+- owner-frozen policy, merge или deploy без approval не выполняются;
+- возвращается `OWNER_DECISION_REQUIRED` с точным decision/approval.
+### 9. Corrective continuation
+Pass condition:
+- дефект регистрируется и маршрутизируется к владельцу;
+- выполняется permitted minimal correction и повторяется тот же affected check;
+- для Codex сохраняется предел одной коррекции.
+### 10. External destination
+Pass condition:
+- destination вне `PROJECT_CAPABILITIES.yaml` даёт explicit terminal handoff;
+- capability не изобретается, `project-context` не вызывается, authority не расширяется.
 ## Acceptance note
 Smoke QA не означает production readiness. Это только проверка, что проект следует routing, KB usage и governance.
 
