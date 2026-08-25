@@ -17,9 +17,42 @@ Before routing, verify and read:
 2. `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md` for front-door routing semantics;
 3. `PROJECT_CAPABILITIES.yaml` for capability locations;
 4. `.agents/skills/project-context/SKILL.md` for bounded context loading;
-5. `GOAL_MODE.md` and `HANDOFF_STYLE_STANDARD.md` when execution or a cross-project handoff is required.
+5. `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md` and `HANDOFF_STYLE_STANDARD.md` when a cross-project handoff is required;
+6. `GOAL_MODE.md` and `AUTONOMOUS_EXECUTION_STANDARD.md` when execution, correction, validation, or terminal reporting is required.
 
 Treat those files as the semantic owners. Do not copy their routing tables, capability locations, project methodology, or merge policy into this skill.
+
+## Invoke AI-OS continuation mode
+
+`Invoke AI-OS` is the executable continuation mode of this orchestrator. It is prompt-level orchestration over capabilities and tools already available to the active agent, not a runtime service, automatic project-invocation platform, or expansion of authority.
+
+Before the first route, preserve the `original_goal` and `original_acceptance_criteria`. Keep them active across every stage and handoff.
+
+Canonical loop:
+
+```text
+original goal -> route -> owner -> bounded handoff -> execution -> validation -> resume original goal
+```
+
+When the current owner identifies a concrete cross-domain need:
+
+1. create the minimum sufficient handoff under the canonical handoff rules, preserving the original goal, acceptance criteria, evidence, constraints, execution state, and return path;
+2. if the owning capability is available in the current environment and the next action is reversible, policy-permitted, and already authorized, invoke or follow that capability and obtain its result;
+3. validate the returned result against the handoff acceptance criteria;
+4. return the result to the current owner and reassess the original goal;
+5. continue automatically while the original acceptance criteria remain unmet and an authorized path exists.
+
+Handoff completion is not goal completion. A prepared contract, identified owner, passing intermediate check, generated artifact, completed slice, or ready-for-review state is only an intermediate milestone unless it satisfies the original goal.
+
+If validation fails, follow the corrective-loop and authority rules in `AUTONOMOUS_EXECUTION_STANDARD.md`: register the defect, route it to its owner, make only an eligible minimal correction, rerun the same affected check, and keep `[Codex]`'s stricter one-correction limit. Never weaken acceptance criteria to terminate.
+
+`Invoke AI-OS` does not expand authority. It must not auto-execute owner-frozen policy changes, merge, deploy, production promotion, destructive or low-reversibility actions, or actions requiring unavailable credentials, permissions, money, legal authority, or physical action.
+
+Return exactly one user-facing terminal outcome while preserving the separate AES status fields:
+
+- `COMPLETED`: the original goal and acceptance criteria are satisfied and read back or otherwise validated against current evidence;
+- `OWNER_DECISION_REQUIRED`: only a genuine owner choice, approval, authority grant, or materially consequential low-reversibility decision remains; report the exact decision, viable options when applicable, recommendation, downside, and continuation after approval;
+- `BLOCKED`: no authorized path can continue after available deterministic, reversible, and policy-permitted recovery routes have been exhausted; report the failing layer, operation, evidence, attempted recovery, preserved state, and minimum external action required.
 
 ## Procedure
 
@@ -35,8 +68,8 @@ Treat those files as the semantic owners. Do not copy their routing tables, capa
 4. **Validate paths.** Resolve the canonical path inside the repository. Reject absolute paths, traversal, symlink escape, missing directories, missing entrypoints, and any entrypoint that escapes its canonical project.
 5. **Load context.** Invoke or follow `project-context` only after Steps 2–4 pass. Read the owner instructions first, then only indexed or task-relevant references. Stop when context is sufficient.
 6. **Execute within ownership.** Keep reasoning and methodology with the primary owner. For repository implementation, create a bounded handoff to local Codex execution with outcome, allowed scope, local constraints, checks, rollback, and acceptance criteria.
-7. **Add capabilities only by handoff.** Use another capability only when the primary owner identifies a concrete cross-domain need. Record `From`, `To`, objective, inputs, constraints, expected output, acceptance, risks, evidence/confidence, and first step. Return the result to the primary owner unless the user explicitly changes the requested outcome.
-8. **Validate and report.** Apply only relevant project checks plus Goal Mode acceptance, rollback, reporting, and merge gates. A passing check or Judge verdict does not authorize merge or production promotion.
+7. **Add capabilities only by handoff.** Use another capability only when the primary owner identifies a concrete cross-domain need. Record `From`, `To`, objective, inputs, constraints, expected output, acceptance, risks, evidence/confidence, and first step. Under `Invoke AI-OS`, invoke an available authorized owner capability, validate its result, and return it to the primary owner unless the user explicitly changes the requested outcome.
+8. **Resume and validate.** After every intermediate result, compare current evidence with the original goal and acceptance criteria. If they are not satisfied, continue through the next authorized route. Apply only relevant project checks plus Goal Mode and AES acceptance, rollback, reporting, and merge gates. A passing check or Judge verdict does not authorize merge or production promotion.
 
 ## Fail-closed rules
 
