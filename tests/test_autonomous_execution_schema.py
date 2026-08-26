@@ -44,3 +44,30 @@ def test_current_contract_rejects_a_new_v1_success_record_without_closure_review
     assert ("schema_version",) in paths
     assert ("standard_version",) in paths
     assert () in paths  # closure_review is required at the record root
+
+
+def test_continuation_envelope_requires_durable_resume_state():
+    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["continuation"])
+    continuation = {
+        "original_goal": "Continue the original AI-OS execution.",
+        "original_acceptance_criteria": ["original goal is rechecked"],
+        "resolved_owner": "[AI OS]",
+        "resume_stage": "owner_execution",
+        "record_ref": "docs/autonomous_execution/records/exec-fixture.json",
+        "scope_ref": "scope:fixture",
+        "routing_state_ref": "routing:fixture",
+        "source_revision": "rev-b",
+        "goal_boundary_hash": "sha256:" + "a" * 64,
+        "acceptance_criteria_hash": "sha256:" + "b" * 64,
+        "state_hash": "sha256:" + "c" * 64,
+        "updated_at": "2026-01-01T01:00:00Z",
+    }
+    assert not list(validator.iter_errors(continuation))
+
+    record_errors = list(Draft7Validator(CURRENT_SCHEMA).iter_errors({
+        "continuation": continuation,
+    }))
+    assert not any(tuple(error.absolute_path)[:1] == ("continuation",) for error in record_errors)
+
+    del continuation["record_ref"]
+    assert list(validator.iter_errors(continuation))

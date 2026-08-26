@@ -54,7 +54,7 @@ already resolved locally, execute under that owner's instructions; preserve
 ownership boundaries, add capabilities only through explicit handoffs, and
 fail closed when ownership or paths cannot be verified.
 
-Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require AI-OS orchestration. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
+Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require a new AI-OS routing pass. If local work is a stage of an already-active AI-OS execution, it must return its result to that execution, validate it, and reassess the original acceptance criteria; local completion does not terminate the orchestration lifecycle. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
 
 ## Change Rules
 

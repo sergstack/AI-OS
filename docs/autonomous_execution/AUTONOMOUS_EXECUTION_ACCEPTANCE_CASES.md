@@ -77,6 +77,21 @@ the remaining cases still require Judge/manual review.
 14. `judge_verdict` and `authority_status` (or `qa_status`) merged into a
     single field or value instead of being reported separately.
 15. `merge_status: merged` used to imply `production_status: authorized`.
+16. An `Invoke AI-OS` execution resumes from session context alone rather than
+   a valid AES `continuation` envelope.
+17. A warm resume proceeds after a material change to original goal, owner,
+   scope, authority, routing state, or source revision.
+
+## 2.1 Invoke AI-OS continuation cases
+
+| ID | Scenario | Expected result |
+| --- | --- | --- |
+| CONT-1 | New Invoke AI-OS execution | Create an AES `continuation` envelope with original goal, acceptance, owner, stage, durable record reference, scope/routing references, revision, and hashes. |
+| CONT-2 | Local step inside active execution | Return evidence to the same execution, validate it, and reassess original acceptance; do not mark the goal complete merely because the local step completed. |
+| CONT-3 | Valid warm resume | Restore the recorded owner/stage and continue from the next unresolved requirement or defect without repeating full routing. |
+| CONT-4 | Stale or materially changed continuation state | Reject warm resume and use cold entry or return the relevant blocked/owner-decision outcome. |
+| CONT-5 | Missing record reference | Do not infer state from session context; use cold entry or report the missing state. |
+| CONT-6 | Local pointer proposed | Treat it only as a cache of execution ID and record reference, never as canonical state; add it only after behavioral evidence establishes need. |
 
 ## 3. Validation responsibility summary
 

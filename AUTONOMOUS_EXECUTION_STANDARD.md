@@ -249,6 +249,7 @@ production_status:
 rollback:
 external_actions:
 handoffs:
+continuation:
 closure_review:
 final_report:
 ```
@@ -285,6 +286,27 @@ Closure Review; the advisory semantic validator enforces the cross-field
 conditions. Existing v1 evidence validates only against the explicitly named
 historical schema and is read-only: do not rewrite accepted evidence solely to
 add closure data. A v1 path is never a new-record intake path.
+
+### 5.5 Continuation envelope for Invoke AI-OS
+
+`continuation` is optional for ordinary AES records. Once `Invoke AI-OS`
+orchestration begins, it is required and is the canonical durable continuation
+state for that execution. It contains the original goal and acceptance
+criteria, resolved owner, resume stage, stable `record_ref`, scope and routing
+references, source revision, and state hashes. It does not create a second
+state machine or override the record's requirements, defects, authority, or
+terminal fields.
+
+The record referenced by `record_ref` is the source of truth. Session context,
+handoffs, and any ignored local pointer are derived views only. A local pointer
+may contain only an execution ID and record reference, may be introduced only
+after a behavioral test establishes a need, and is never required for a cold
+entry.
+
+Warm resume is permitted only after checking that the continuation envelope is
+present and valid and that the original goal boundary, acceptance criteria,
+resolved owner, relevant scope, authority, canonical routing state, and source
+revision remain compatible. An unchanged source revision alone is insufficient.
 
 ## 6. Source-revision contract
 
@@ -780,6 +802,14 @@ next_owner:
 
 A handoff must never drop: execution ID, requirement IDs, defect IDs,
 iteration ID, evidence references, or authority status.
+
+### 15.2 Continuation handoff rule
+
+For an active `Invoke AI-OS` execution, a local or cross-project handoff is an
+intermediate stage, never a lifecycle terminator. Return its evidence to the
+same AES execution, update `continuation.resume_stage`, validate the affected
+requirements or defects, and compare the result with the original acceptance
+criteria before selecting `completed`, `stopped`, or the next authorized stage.
 
 ## 16. Risk-scaled modes
 
