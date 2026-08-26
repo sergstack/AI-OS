@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:810b6994285ee9e1cfced92cbabdfa5692e1d845027f2ae7cf8c3a5ba9a2dfd7
+- source_fingerprint: sha256:517fbf202823aa9a12428cb118c4023c1f361b6a64ccd8c6b9962df26da6927b
 
 ---
 
@@ -140,6 +140,13 @@ scopes without restating the canonical state machine or schema.
 New AES v2 records require Closure Review: it rechecks original goal, scope,
 invariants, final-evidence freshness, rollback, and owner boundary before
 terminal acceptance. Historical v1 evidence remains read-only.
+
+For an `Invoke AI-OS` execution, the AES `continuation` envelope is the
+canonical durable state: it preserves the original goal and acceptance
+criteria, owner, stage, scope/routing references, and freshness hashes. Warm
+resume verifies that state; an unchanged source revision alone is insufficient.
+The bounded supervised corrective-loop classification does not permit
+autonomous agents, generic agentic workflows, or expanded authority.
 
 After routing resolves a primary owner for a material decision or deliverable,
 an upstream project may prepare evidence, contradictions, options, risks, and a
