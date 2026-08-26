@@ -26,7 +26,7 @@ Treat those files as the semantic owners. Do not copy their routing tables, capa
 
 `Invoke AI-OS` is the executable continuation mode of this orchestrator. It is prompt-level orchestration over capabilities and tools already available to the active agent, not a runtime service, automatic project-invocation platform, or expansion of authority.
 
-Before the first route, preserve the `original_goal` and `original_acceptance_criteria`. Keep them active across every stage and handoff.
+Before the first route, preserve the `original_goal` and `original_acceptance_criteria`. When `Invoke AI-OS` begins, create or update the AES record's `continuation` envelope; it is the canonical durable state for this execution, not session context or a local cache. Keep it active across every stage and handoff.
 
 Canonical loop:
 
@@ -43,6 +43,36 @@ When the current owner identifies a concrete cross-domain need:
 5. continue automatically while the original acceptance criteria remain unmet and an authorized path exists.
 
 Handoff completion is not goal completion. A prepared contract, identified owner, passing intermediate check, generated artifact, completed slice, or ready-for-review state is only an intermediate milestone unless it satisfies the original goal.
+
+### Execution lifecycle and warm resume
+
+Once `Invoke AI-OS` begins for an execution, this orchestration contract
+governs that execution until the original acceptance criteria are satisfied,
+the user materially changes the original goal, or it reaches
+`OWNER_DECISION_REQUIRED` or `BLOCKED`. This is an execution lifecycle rule,
+not a standing mode for a whole Codex session.
+
+Simple local reversible work may execute without a new AI-OS routing pass. If
+it is a stage of an active AI-OS execution, completing that local step does
+not terminate orchestration: return its evidence to the active AES record,
+validate it, and reassess the original acceptance criteria.
+
+Use a **cold entry** (full Preflight, Classify, Resolve, and bounded context)
+for a new execution or when the saved continuation envelope is absent, invalid,
+stale, or has a material change to the original goal, resolved owner, scope,
+authority, or canonical routing state. In all other cases use **warm resume**:
+
+```text
+read AES record_ref -> verify envelope freshness and hashes
+-> restore resolved owner and resume_stage
+-> load bounded current-owner context only if needed
+-> continue from the next unresolved requirement or defect
+```
+
+An unchanged source revision alone never permits warm resume. A local ignored
+pointer may cache only `execution_id` and `record_ref` after a behavioral test
+shows it is needed; it is never canonical state and must not duplicate the
+goal, acceptance criteria, requirements, defects, or authority state.
 
 If validation fails, follow the corrective-loop and authority rules in `AUTONOMOUS_EXECUTION_STANDARD.md`: register the defect, route it to its owner, make only an eligible minimal correction, rerun the same affected check, and keep `[Codex]`'s stricter one-correction limit. Never weaken acceptance criteria to terminate.
 

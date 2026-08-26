@@ -130,6 +130,10 @@ def test_invoke_ai_os_continues_the_original_goal_without_expanding_authority() 
     assert "does not expand authority" in orchestrator
     assert "not a runtime service" in orchestrator
     assert "Never weaken acceptance criteria" in orchestrator
+    assert "Execution lifecycle and warm resume" in orchestrator
+    assert "continuation` envelope" in orchestrator
+    assert "not terminate orchestration" in orchestrator
+    assert "An unchanged source revision alone never permits warm resume." in orchestrator
     for terminal_outcome in (
         "`COMPLETED`",
         "`OWNER_DECISION_REQUIRED`",
@@ -141,6 +145,9 @@ def test_invoke_ai_os_continues_the_original_goal_without_expanding_authority() 
     assert "Destination вне `PROJECT_CAPABILITIES.yaml`" in handoff
     assert "explicit terminal handoff" in handoff
     assert "owner-frozen policy" in handoff
+
+    root_agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    assert "local completion does not terminate the orchestration lifecycle" in root_agents
 
     for scenario in (
         "### 6. Safe continuation",

@@ -29,7 +29,7 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 
 For any unscoped goal that needs AI-OS methodology, use `ai-os-orchestrator` as the default entrypoint. It must classify the request using canonical routing rules, resolve exactly one owner through `PROJECT_CAPABILITIES.yaml`, and use `project-context` only after routing to load task-relevant canonical files. Preserve ownership boundaries, add capabilities only through explicit handoffs, and fail closed when canonical ownership or paths cannot be verified.
 
-Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require AI-OS orchestration. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
+Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require a new AI-OS routing pass. If local work is a stage of an already-active AI-OS execution, it must return its result to that execution, validate it, and reassess the original acceptance criteria; local completion does not terminate the orchestration lifecycle. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
 
 ## Change Rules
 
