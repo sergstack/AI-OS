@@ -21,9 +21,16 @@ Prefer tasks prepared by `ChatGPT/[Codex]`.
 For normal bounded repo work, follow the canonical `Goal Mode Contract` from
 `GOAL_MODE.md` when available; this template defines executor conventions, not
 a competing policy layer.
-Before implementation, verify that the task contains objective, context, repo, files to inspect, files allowed to modify, forbidden actions, expected outputs, acceptance criteria, tests/smoke checks and rollback plan.
+For normal Goal Mode, infer the smallest bounded, reversible scope when it is
+safe to do so; record assumptions, allowed files, forbidden actions, checks,
+and rollback in the execution record and final report. A strict or advanced
+task package should contain objective, context, repo, files to inspect, files
+allowed to modify, forbidden actions, expected outputs, acceptance criteria,
+tests/smoke checks, and rollback plan.
 
-If the task package is incomplete and safe scope cannot be inferred from Goal Mode context, stop and return a blocker instead of guessing.
+Stop only on a canonical hard blocker or a genuinely unsafe or conflicting
+scope. Do not require a complete package when Goal Mode can safely infer the
+smallest conservative scope.
 
 ## Forbidden actions
 
