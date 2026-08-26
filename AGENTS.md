@@ -10,6 +10,25 @@ In default Goal Mode, Sergey may give a broad goal instead of an atomic task pac
 
 Atomic task packages remain available for advanced, high-risk, strict, or ultra-long work, but they are not the default user burden. Do not turn a clear implementation goal into an epic, roadmap, child issue tree, or approval package unless Sergey asks for planning, the work cannot fit in one bounded PR, or a hard approval gate is reached.
 
+## Autonomous Execution (AES)
+
+[`AUTONOMOUS_EXECUTION_STANDARD.md`](AUTONOMOUS_EXECUTION_STANDARD.md) is the
+direct execution contract for AES.
+For local, reversible docs or workflow changes whose safe scope can be
+inferred, Goal Mode/AES proceeds with the smallest bounded scope, validation,
+and a recorded execution mode and risk mode; it does not require an intake
+round-trip. Assume and log non-blocking ambiguity rather than asking: use the
+conservative branch, keep scope fixed, and record `DEFERRED:` in
+`Assumptions:` when it remains unresolved. Canonical hard blockers remain the
+only immediate stop conditions; see `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`.
+All AES numeric limits remain those of the canonical standard.
+
+A bounded, reversible, in-repo corrective loop is supervised execution only
+when it operates under an AES record, fixed authority and scope, validation,
+stop conditions, rollback, and human acceptance. This classification does not
+permit autonomous agents, generic agentic workflows, uncontrolled loops, or
+any expansion of execution authority.
+
 ## Source of Truth
 
 - Use repository files as the source of truth.
@@ -19,15 +38,21 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 
 ## Local Developer Evidence
 
-- For every substantive repository task, evaluate `$local-developer-worker` and invoke each applicable safe module before claiming test or repository evidence.
+- For every substantive repository task, evaluate `$local-developer-worker` and invoke each applicable safe module. It is evidence-scoped, not a prerequisite to begin safe local work.
 - Use direct bounded reading for one known file; use deterministic discovery plus `ldw context pack` for unfamiliar or multi-file work when available.
-- Establish claimed test outcomes through `ldw test parse` with captured output, the observed exit code, and `command_observed=true`.
-- Before a non-trivial handoff or final report, use applicable `ldw git facts` and `ldw evidence build` modules.
+- Establish a test claim through `ldw test parse` with captured output, the observed exit code, and `command_observed=true`; establish a git/repository fact claim through `ldw git facts`; build formal evidence packages through `ldw evidence build`.
 - Preserve and report `partial`, `unsupported`, `policy_blocked`, timeout, and fallback states. LDW remains read-only and never owns edits or decisions.
 
 ## Domain Capability Discovery
 
-For any unscoped goal that needs AI-OS methodology, use `ai-os-orchestrator` as the default entrypoint. It must classify the request using canonical routing rules, resolve exactly one owner through `PROJECT_CAPABILITIES.yaml`, and use `project-context` only after routing to load task-relevant canonical files. Preserve ownership boundaries, add capabilities only through explicit handoffs, and fail closed when canonical ownership or paths cannot be verified.
+For an unscoped goal that needs AI-OS methodology and whose canonical owner is
+genuinely unresolved, use `ai-os-orchestrator` as the default entrypoint. It must
+classify the request using canonical routing rules, resolve exactly one owner
+through `PROJECT_CAPABILITIES.yaml`, and use `project-context` only after routing
+to load task-relevant canonical files. When canonical ownership is
+already resolved locally, execute under that owner's instructions; preserve
+ownership boundaries, add capabilities only through explicit handoffs, and
+fail closed when ownership or paths cannot be verified.
 
 Simple local, reversible repository work with sufficient local instructions remains local Codex execution and does not require AI-OS orchestration. Direct already-routed and strict task packages remain valid when the user explicitly supplies them.
 

@@ -73,13 +73,22 @@ Local configuration presence is not approval. Approval must be explicit and boun
 
 If a check fails and the issue is local, reversible, and inside allowed files, attempt one minimal fix and rerun the smallest relevant check.
 
-If the same check still fails, stop changing files and report:
+If the same validation target still fails, the one-fix budget is exhausted
+for that target and the independently evidenced defect it represents. Stop
+further correction attempts for that target and report:
 
 - failing command;
 - observed failure;
 - attempted fix;
 - residual risk;
 - acceptance status.
+
+This does not terminate all execution: a different in-scope defect may be
+handled only when it is independently evidenced against a different affected
+requirement or independently failing validation target and remains eligible
+under AES Section 9.6 and all applicable limits. Renaming or changing only a
+`defect_id`, subtype, classification, label, wording, or representation never
+creates a new correction budget for the same failed validation target.
 
 ## Final report requirement
 
