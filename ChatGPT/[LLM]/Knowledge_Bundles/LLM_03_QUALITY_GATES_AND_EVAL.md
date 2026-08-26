@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:ea9f05009a64234d50036ca137237c5b918f43d98c6126a7fedca93e0d9e9c3b
+- source_fingerprint: sha256:eedb5d4df920173466cf7d8dd526406fc7174d5651da7065ca45b9cea42e759b
 
 ---
 
@@ -169,6 +169,9 @@ defect/acceptance loop, without replacing them or the merge policy in
 canonical standard is in scope here. New v2 Closure Review rechecks prompt and
 input-context contracts, output schema, unsupported claims, eval regressions,
 and routing ownership before acceptance.
+For an `Invoke AI-OS` continuation, the canonical AES envelope preserves the
+original goal, acceptance criteria, resolved owner, stage, and freshness
+state; it does not replace LLM quality gates, eval evidence, or owner review.
 
 After routing resolves a material decision or deliverable owner, `[LLM]` may
 preserve evidence, contradictions, constraints, and a bounded handoff, but it

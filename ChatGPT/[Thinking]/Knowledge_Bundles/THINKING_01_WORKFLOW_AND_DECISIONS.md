@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:3581cf27bec9d68fbc987874c315c0f64bef28aec893a25fcafb8590b65ac22b
+- source_fingerprint: sha256:b26f9c63488fab481f62a5c722c83b2a18249a500a66d9586a98e33627a8046c
 
 ---
 
@@ -197,6 +197,9 @@ merge policy in `GOAL_MODE.md`. No `[Thinking]`-specific AES extension exists
 yet; only the canonical standard is in scope here. New v2 Closure Review rechecks the
 original question, assumptions, alternatives, unsupported conclusions,
 downside, and owner boundary; it does not make a downstream owner decision.
+When an `Invoke AI-OS` continuation applies, its durable AES envelope preserves
+the original acceptance boundary and owner/stage; warm resume requires the
+envelope to remain valid, not merely an unchanged revision.
 
 When routing resolves `[Thinking]` as the owner of a material decision, an
 upstream project may supply evidence, contradictions, options, risks, and a

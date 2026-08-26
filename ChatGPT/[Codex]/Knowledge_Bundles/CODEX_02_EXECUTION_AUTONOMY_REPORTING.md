@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:2e2bb77c82adc9d4536216f03e0fef86751ec6abfcac8cc680c4b93bbfa04db6
+- source_fingerprint: sha256:fc2ac88ac25447523407212270c960d22ede463914bb61154e987e0c11aee674
 
 ---
 
@@ -78,12 +78,20 @@ Never print, log, expose, summarize, or commit sensitive values. Never commit lo
 Local configuration presence is not approval. Approval must be explicit and bounded.
 ## Retry policy
 If a check fails and the issue is local, reversible, and inside allowed files, attempt one minimal fix and rerun the smallest relevant check.
-If the same check still fails, stop changing files and report:
+If the same validation target still fails, the one-fix budget is exhausted for
+that target and the independently evidenced defect it represents. Stop further
+file-changing corrections for that target and report:
 - failing command;
 - observed failure;
 - attempted fix;
 - residual risk;
 - acceptance status.
+This does not terminate all execution: a different in-scope defect may be
+handled only when it is independently evidenced against a different affected
+requirement or independently failing validation target and remains eligible
+under AES Section 9.6 and all applicable limits. Renaming or changing only a
+`defect_id`, subtype, classification, label, wording, or representation never
+creates a new correction budget for the same failed validation target.
 ## Final report requirement
 Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`. Assumptions must be marked as assumptions, not facts.
 
@@ -205,10 +213,15 @@ Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 `CODEX_LONG_RUN_PLAYBOOK.md`, and `EXECUTION_REPORTING_RULES.md` as a shared
 loop — requirements, execution, validation, defect registration, corrective
 action, revalidation, and scope acceptance — without replacing any of them or
-the merge policy in `GOAL_MODE.md`. No `[Codex]`-specific AES extension
-exists yet; only the canonical standard is in scope here. New v2 Closure Review
+the merge policy in `GOAL_MODE.md`. The `[Codex]` AES extension at
+`docs/autonomous_execution/extensions/CODEX_EXTENSION.md` adds only
+Codex-specific evidence, validation, acceptance, freshness, and authority
+detail; it does not expand authority or numeric limits. New v2 Closure Review
 rechecks repository trust boundaries, regression coverage, diff/freshness, and
 rollback; its ceiling never widens `max_corrective_fixes_per_failed_check: 1`.
+For an `Invoke AI-OS` continuation, the canonical AES envelope preserves the
+original goal, acceptance criteria, resolved owner, stage, and freshness state;
+it does not turn a local completed step into terminal acceptance.
 
 Once routing resolves a material decision or deliverable owner, `[Codex]`
 keeps that boundary: it may execute a bounded handoff and preserve its
