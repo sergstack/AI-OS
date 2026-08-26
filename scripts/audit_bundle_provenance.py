@@ -43,6 +43,23 @@ def classify(bundle: str, sources: dict[str, str]) -> tuple[str, list[dict[str, 
     return "equivalent", [], []
 
 
+def candidate_source_paths(root: Path, findings: list[dict[str, str]]) -> list[str]:
+    """Return review candidates only; never auto-expand a declared mapping."""
+    candidates: set[str] = set()
+    for finding in findings:
+        words = finding["excerpt"].replace("`", "").split()
+        needle = " ".join(words[:8])
+        if len(needle) < 24:
+            continue
+        for path in root.rglob("*.md"):
+            rel = path.relative_to(root)
+            if "Knowledge_Bundles" in rel.parts or "archive" in rel.parts:
+                continue
+            if needle in normalize(path.read_text(encoding="utf-8")):
+                candidates.add(str(rel))
+    return sorted(candidates)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--json-out", type=Path, required=True)
@@ -65,6 +82,7 @@ def main() -> int:
                             "source_bytes": sum(len(value.encode()) for value in sources.values()), "bundle_bytes": len(text.encode()),
                             "classification": status, "bundle_only_excerpt_or_ref": bundle_only,
                             "source_only_excerpt_or_ref": source_only, "mapping_status": "unmapped" if missing else "mapped",
+                            "candidate_source_paths": candidate_source_paths(root, bundle_only),
                             "recommended_action": "block_generation_and_migrate_or_classify" if status in {"unmapped", "bundle_only_semantic"} else "eligible_after_review"})
     unresolved = sum(record["classification"] in {"unmapped", "bundle_only_semantic"} for record in records)
     payload = {"records": records, "metrics": {"bundles": len(records), "unresolved_bundle_only_semantic_count": unresolved}}
