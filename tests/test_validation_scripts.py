@@ -320,6 +320,32 @@ def test_knowledge_bundle_validator_recomputes_ready_manifest_output(tmp_path: P
     assert failures == [f"HASH_PROVENANCE_MISMATCH: {output}"]
 
 
+def test_knowledge_bundle_validator_detects_active_bundle_missing_manifest(
+    tmp_path: Path, monkeypatch
+) -> None:
+    module = load_script_module("check_knowledge_bundles.py")
+    root, project_dir = make_bundle_project(tmp_path)
+    source = "ChatGPT/[Test]/Knowledge/source.md"
+    (root / source).write_text("Source content.\n", encoding="utf-8")
+    write_bundle(
+        project_dir,
+        "TEST_BUNDLE.md",
+        source,
+        module.source_fingerprint(root, [source]),
+    )
+    (root / "knowledge_bundle_manifest.json").write_text(
+        json.dumps({"status": "ready", "bundles": []}), encoding="utf-8"
+    )
+    monkeypatch.setattr(module, "PROJECTS", {"[Test]": Path("ChatGPT/[Test]")})
+
+    failures = module.generated_drift_failures(root)
+
+    assert failures == [
+        "UNDECLARED_UPLOAD_BUNDLE: "
+        "ChatGPT/[Test]/Knowledge_Bundles/TEST_BUNDLE.md"
+    ]
+
+
 def test_index_coverage_passes_when_all_files_listed(tmp_path: Path) -> None:
     module = load_script_module("check_index_coverage.py")
     knowledge = tmp_path / "Knowledge"

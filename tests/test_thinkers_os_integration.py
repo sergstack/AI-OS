@@ -50,7 +50,8 @@ def test_upload_list_is_exact_and_authoritative() -> None:
     text = read("Knowledge_Bundles/UPLOAD_LIST.md")
 
     assert upload_files() == UPLOAD_NAMES
-    assert "single authoritative manual upload list" in text
+    assert "single authoritative upload list" in text
+    assert "generated from the declared granular sources" in text
     assert "Optional: 0" in text
     assert "Total if all uploaded: 2" in text
 
@@ -109,7 +110,7 @@ def test_source_gate_is_scope_based_and_compact() -> None:
         ("preview is not a full work", "Preview, sample chapter", "Knowledge/CORPUS_AND_SOURCE_RULES.md"),
         ("raw and normalized source payloads are excluded", "Never export books, normalized text", "Knowledge/ARTIFACT_CONTRACTS.md"),
         ("non-pass artifacts cannot control synthesis", "cannot control active synthesis", "Knowledge/THINKERS_OS_WORKFLOW.md"),
-        ("uploaded bundle is not live state", "never live repository evidence", "Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md"),
+        ("uploaded bundle is not live state", "repository source of truth", "Knowledge/INDEX.md"),
         ("handoff has one recipient and canonical fields", "Use one receiving project", "Knowledge/ROUTING_AND_HANDOFF.md"),
     ],
 )
