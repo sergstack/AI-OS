@@ -59,8 +59,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
-- Source bytes: 50590
-- Bundle bytes: 51559
+- Source bytes: 51566
+- Bundle bytes: 52530
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -129,8 +129,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
-- Source bytes: 41007
-- Bundle bytes: 42133
+- Source bytes: 41983
+- Bundle bytes: 43104
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -311,8 +311,8 @@ Blocking record count: **0**
 
 - Project: [LLM]
 - Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
-- Source bytes: 70388
-- Bundle bytes: 71510
+- Source bytes: 71364
+- Bundle bytes: 72481
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -381,8 +381,8 @@ Blocking record count: **0**
 
 - Project: [Codex]
 - Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 45134
-- Bundle bytes: 46139
+- Source bytes: 46110
+- Bundle bytes: 47110
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

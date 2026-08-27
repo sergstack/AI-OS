@@ -16,7 +16,7 @@ Section 17):
   local pytest. Wiring it into `.github/workflows/*` is a deliberately
   separate, not-yet-authorized step (see Section 17: "a blocking CI gate").
 - It implements a fixed, documented subset of semantic rules (SEM-001
-  through SEM-014 below). It is not a full implementation of every semantic
+  through SEM-015 below). It is not a full implementation of every semantic
   case referenced in
   `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md`.
 
@@ -531,6 +531,32 @@ def check_sem_014(record: dict, record_path: str) -> list[Violation]:
     return violations
 
 
+# SEM-015: declared side effects obey preview, authority, commit, and verify.
+# Source: Section 13.2 (effect-boundary invariant).
+def check_sem_015(record: dict, record_path: str) -> list[Violation]:
+    violations: list[Violation] = []
+    for action in record.get("external_actions", []):
+        if not isinstance(action, dict):
+            continue
+        boundary = action.get("effect_boundary")
+        if not isinstance(boundary, dict):
+            continue  # historical records remain readable under their prior contract
+        action_id = action.get("action_id", "<unknown>")
+        committed = boundary.get("commit_performed")
+        if not committed:
+            continue
+        if not action.get("authority_evidence_ref") or not boundary.get("authority_checked_at"):
+            _add(violations, record_path, "SEM-015", f"action {action_id} committed without recorded authority check")
+        preview = boundary.get("preview") or {}
+        if boundary.get("commit_intent_fingerprint") != preview.get("intent_fingerprint") and not boundary.get("authority_rechecked_after_preview_change"):
+            _add(violations, record_path, "SEM-015", f"action {action_id} materially differs from preview without authority recheck")
+        if boundary.get("verification_result") != "pass" or not boundary.get("verification_evidence_ref"):
+            _add(violations, record_path, "SEM-015", f"action {action_id} committed without passed verification evidence")
+        if record.get("overall_delivery") == "pass" and boundary.get("verification_result") != "pass":
+            _add(violations, record_path, "SEM-015", f"overall_delivery pass includes unverified committed action {action_id}")
+    return violations
+
+
 ALL_CHECKS = [
     check_sem_001,
     check_sem_002,
@@ -546,6 +572,7 @@ ALL_CHECKS = [
     check_sem_012,
     check_sem_013,
     check_sem_014,
+    check_sem_015,
 ]
 
 RULE_DESCRIPTIONS = {
@@ -569,6 +596,7 @@ RULE_DESCRIPTIONS = {
     "SEM-012": "a repeat route to an owner requires a named evidence_delta",
     "SEM-013": "progress partitions original acceptance criteria; a guard stop has the documented terminal reason and report",
     "SEM-014": "candidate research and hypotheses remain not_eligible across continuation and handoff provenance",
+    "SEM-015": "declared side effects require preview, authority check, intent consistency, and passed verification before successful completion",
 }
 
 

@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:4fbfd4173753b9ab774f702d44a066e3aadc7fdb3bb48cf31bcc94e4e1530a10
+- source_fingerprint: sha256:3923cb6810cf4353bb9cf4dd894c6c24bffc5683452dac0ca6c0a3d9e13b4a8b
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -886,6 +886,22 @@ An external action without explicit authority is not executed, is not
 retried automatically, is not treated as authorized just because local
 configuration exists, and does not turn a successful local implementation
 into `fail` when the action was not part of the mandatory objective.
+### 13.2 Effect-boundary invariant
+Every side-effecting `external_action` follows this bounded sequence:
+```text
+PLAN -> PREVIEW EFFECT -> AUTHORITY CHECK -> COMMIT -> VERIFY
+```
+The required `effect_boundary.preview` records the target resource, intended
+mutation, affected scope, required authority, reversibility/rollback note,
+expected verification, and an intent fingerprint. A preview is information,
+not authorization. Commit is forbidden without an authority evidence reference
+and recorded authority check. A material change between the preview fingerprint
+and commit intent requires an authority recheck before commit. After commit,
+verification must pass with evidence before successful completion can be
+reported; a failed or blocked verification is not a successful external action.
+This contract applies only to declared side-effect types in Section 13.1. It
+does not add a runtime approval service, auto-approval, or a preview burden to
+read-only actions.
 ## 14. Rollback readiness
 ```yaml
 rollback:
