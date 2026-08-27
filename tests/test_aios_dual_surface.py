@@ -247,6 +247,35 @@ def test_root_routing_rules_own_domain_routing_semantics() -> None:
         assert destination in routing
 
 
+def test_handoff_style_standard_is_the_only_field_set_owner() -> None:
+    fields = (
+        "From:",
+        "To:",
+        "Task type:",
+        "Mode:",
+        "Objective:",
+        "Context:",
+        "Inputs:",
+        "Constraints:",
+        "Expected output:",
+        "Acceptance criteria:",
+        "Risks:",
+        "Evidence / confidence:",
+        "Open questions:",
+        "Suggested first step:",
+    )
+    owners = []
+    for path in REPO_ROOT.rglob("*.md"):
+        relative = path.relative_to(REPO_ROOT)
+        if any(part in {"archive", "Knowledge_Bundles"} for part in relative.parts):
+            continue
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        if all(field in text for field in fields):
+            owners.append(relative.as_posix())
+
+    assert owners == ["HANDOFF_STYLE_STANDARD.md"]
+
+
 def test_root_agents_uses_canonical_routing_and_bounded_context() -> None:
     agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
 

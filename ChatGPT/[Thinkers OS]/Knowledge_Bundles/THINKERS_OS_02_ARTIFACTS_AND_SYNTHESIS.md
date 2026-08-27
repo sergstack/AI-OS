@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:94bf02147d7997e7c97a7e22ffbad779632d7a370ed4dddd49da43d6f3521f35
+- source_fingerprint: sha256:179a219050365422ec134ef9b8333c6e1721194b4e95c7a5df9f6018a04ae318
 
 ---
 
@@ -210,11 +210,6 @@ Never export raw source payloads, normalized books, source manifests, logs, loca
 
 Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 `[Thinkers OS]` prepares bounded handoffs; it does not absorb the receiving project's work.
-For the local boundary: source request/intake remains corpus work here; a real decision
-routes to `[Thinking]`; an extraction prompt routes to `[LLM]`;
-repository implementation routes to `[Codex]`; quantitative validation routes
-to `[Analytics]`.
-
 ## Handoff contract
 
 Use one receiving project and the canonical fields in `HANDOFF_STYLE_STANDARD.md`.

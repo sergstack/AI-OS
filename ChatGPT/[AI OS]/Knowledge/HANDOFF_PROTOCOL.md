@@ -14,19 +14,17 @@ Handoff — это внутренний переход между владель
 
 Вовлекай owner только когда нужно изменить owner-frozen policy, получить explicit governance approval, выбрать между материально разными вариантами без детерминированного предпочтения или выполнить действие с материальным downside/низкой обратимостью. Также эскалируй при недоступных credentials, permissions, money, legal authority, physical action или когда все authorized recovery paths исчерпаны.
 
-Destination вне `PROJECT_CAPABILITIES.yaml` всегда остаётся explicit terminal handoff: не создавай для него capability, не вызывай `project-context` и не расширяй полномочия.
+Destination вне `PROJECT_CAPABILITIES.yaml`: сначала проверь class в
+`ROUTING_RULES.md`: `external` остаётся explicit terminal handoff — не создавай
+capability, не вызывай `project-context` и не расширяй полномочия;
+`internal_non_capability` продолжай только через названную границу;
+`owner_escalation` требует решения владельца.
 
 ## Когда делать handoff
 
-| Ситуация | Куда |
-|---|---|
-| Нужно принять решение или выбрать стратегию | `[Thinking]` |
-| Нужно посчитать, построить mart, проверить данные | `[Analytics]` |
-| Нужно собрать prompt/workflow/model routing | `[LLM]` |
-| Нужно написать код, тесты, refactor, bugfix | `[Codex]` |
-| Нужно внедрять production workflow | `[Codex]` / `[LLM]` |
-
-Если handoff в `[Codex]` связан с repository work, предпочтительно оформлять его как GitHub Issue-driven task package с явным scope, allowed files, checks и acceptance criteria.
+Destination выбирается только по `ROUTING_RULES.md`. Если выбран `[Codex]` для
+repository work, предпочтительно оформить handoff как GitHub Issue-driven task
+package с явным scope, allowed files, checks и acceptance criteria.
 
 ## Handoff template
 

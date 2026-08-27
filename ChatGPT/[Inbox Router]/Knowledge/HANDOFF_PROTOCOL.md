@@ -5,12 +5,8 @@ is an AI-OS project. Its mode literal is `goal / strict`.
 
 ## Destination notes
 
-- `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
-- `[Thinkers OS]` — thinker portfolio, required corpus, source requests/intake, provenance, author artifacts, Judge/Revisor, and synthesis maintenance.
-- `[Thinking]` — strategy, decisions, assumptions, risks, options.
-- `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
-- `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
-- `[Codex]` — implementation-ready tasks, code review, tests, release handoff.
+Select the destination only through `ROUTING_RULES.md`; this protocol governs
+the handoff after that selection and does not define destination rows.
 
 ## Codex handoff minimum
 

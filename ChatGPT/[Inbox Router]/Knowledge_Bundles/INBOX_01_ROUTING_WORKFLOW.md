@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:3aad24ab385154e4bda72cd279c63479a18c2be3cffae1111d519ef8c59d7ea4
+- source_fingerprint: sha256:a9fc1bdb784533f3a7b4927fc64c39a95e0b498bbb5ee2a4d3ec46221e33af87
 
 ---
 
@@ -138,10 +138,6 @@ repo-root `ROUTING_RULES.md`; this file retains only the Inbox Router boundary.
 ## Boundary
 
 `[Inbox Router]` sorts and formulates. It does not deeply solve, calculate, implement, or create production workflows.
-
-Implementation, tests, and release belong to `[Codex]`.
-Raw input triage belongs to `[Inbox Router]`.
-Applying thinker patterns to a real decision belongs to `[Thinking]`; `[Thinkers OS]` maintains the evidence-backed thinker corpus and artifacts.
 
 ## From: `ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md`
 

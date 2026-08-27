@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c6949856bda438c72ca01889234a3df5c7ea254f17e8765ef0f360d57b016751
+- source_fingerprint: sha256:2da4f27be077b884add374be269983dfd64429f4457df1f3b4cdebc772e5a029
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -111,8 +111,6 @@ README.md
 Scope note: this file is the `[AI OS]` project routing and handoff reference.
 Canonical front-door routing lives in `ROUTING_RULES.md`. This file owns only
 the `[AI OS]` scope; it does not define destination rows or handoff fields.
-## Главный принцип
-Сначала routing, потом reasoning.
 ## Что делает [AI OS]
 [AI OS] отвечает на вопросы:
 1. Что это такое и как работает?
@@ -134,14 +132,6 @@ handoff. Сохрани релевантные evidence/governance context, за
 критерии приёмки и следующий шаг; не убирай сведения, нужные для продолжения
 работы. `[AI OS]` может уточнить границы и evidence, но не выбирает модель, не
 пишет prompt и не проектирует LLM workflow.
-## Routing response pattern
-```text
-Маршрут: [AI OS] / [Thinkers OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
-Почему: ...
-Что можно сделать здесь: ...
-Что нужно передать дальше: ...
-Evidence/confidence: ...
-```
 ## Handoff rule
 Use the canonical template in `HANDOFF_STYLE_STANDARD.md`; retain the relevant
 evidence, constraints, acceptance checks, and next step.

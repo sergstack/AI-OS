@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:3c4533c57df87ebbe88cce83ad157895d9c4cf8660534018cc827586cd50198b
+- source_fingerprint: sha256:16ce95bcc65d9d071d87c2fbd52981c10b0f17e9aa306966da017e0aa921115f
 
 ---
 
@@ -34,12 +34,8 @@ is an AI-OS project. Its mode literal is `goal / strict`.
 
 ## Destination notes
 
-- `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
-- `[Thinkers OS]` — thinker portfolio, required corpus, source requests/intake, provenance, author artifacts, Judge/Revisor, and synthesis maintenance.
-- `[Thinking]` — strategy, decisions, assumptions, risks, options.
-- `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
-- `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
-- `[Codex]` — implementation-ready tasks, code review, tests, release handoff.
+Select the destination only through `ROUTING_RULES.md`; this protocol governs
+the handoff after that selection and does not define destination rows.
 
 ## Codex handoff minimum
 
