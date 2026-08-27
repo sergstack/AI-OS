@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:4af82992ba113c889b2add9c0bc2e555a34831ec697becc05ff8db3d14c24809
+- source_fingerprint: sha256:3c3aad130768af10439d701632ac97f424c38833e8af45ff9fe381919de3ce79
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -57,6 +57,7 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | repo change / PR | workflow eval | diff, checks, scope, rollback | goal match, checks observed, rollback and risks visible | bounded scope or documentation fixes needed | secrets, production risk, failing checks, unsafe scope, or missing acceptance | 2026-07-06 | active |
 | `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | loop design | governance eval | loop acceptance checklist | supervised loop, bounded retry, stop conditions, human acceptance | missing owner, retry rule, or stop condition | autonomous retrieval, uncontrolled agents, runtime artifacts, or no validation | 2026-07-06 | active |
 | `ACT-ABSTAIN` | act-or-abstain decision | `[AI OS]` / routed owner | supervised workflow | governance eval | deterministic authority/evidence/validation check | expected and actual decision match | bounded decision mismatch or incomplete evidence | hard-boundary violation or no validation path | 2026-08-27 | candidate |
+| `GOAL-CLOSURE` | AES Closure Review view | routed owner / `[AI OS]` | candidate output or change | closure eval | final evidence against original goal, acceptance, and owner boundary | checks pass and all closure dimensions satisfied | repairable goal or acceptance gap | missing acceptance/evidence or owner-boundary violation | 2026-08-27 | candidate |
 | `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 ## Required Eval Types
 ### AI OS Evidence Eval
@@ -238,6 +239,19 @@ pass_example: both sides of a pair make the expected act or abstain decision
 revise_example: decision mismatch with a bounded owner correction path
 blocked_example: execution despite a hard boundary or missing validation path
 revisit_trigger: changed routing, promotion gate, stop condition, or observed decision failure
+## CASE-GOAL-CLOSURE-001
+case_id: `CASE-GOAL-CLOSURE-001`
+workflow: AES Closure Review
+owner_project: routed owner / `[AI OS]`
+input: original goal, acceptance criteria, final evidence, checks, constraints, and owner boundary
+expected_behavior: keep checks, goal, acceptance, and owner-boundary statuses distinct
+must_detect: green checks with a missed goal, missing acceptance evidence, or an owner-boundary violation
+must_not_do: report pass from green checks alone or grant owner acceptance automatically
+judge_criteria: traceable original goal and acceptance; material gaps; deterministic status; owner boundary
+pass_example: checks pass and goal, acceptance, and owner boundary are all satisfied
+revise_example: checks pass but final result misses a material original-goal requirement
+blocked_example: acceptance reference/evidence is missing or owner boundary is violated
+revisit_trigger: goal, acceptance, constraints, evidence, owner, or final revision changes
 ## CASE-THINKING-DECISION-001
 case_id: `CASE-THINKING-DECISION-001`
 workflow: Thinking decision review
