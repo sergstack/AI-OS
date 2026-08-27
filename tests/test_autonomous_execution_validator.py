@@ -529,3 +529,58 @@ def test_sem014_identical_accepted_policy_claim_remains_eligible():
     }]
     violations = validator.validate_record(record, "fixture")
     assert "SEM-014" not in rule_ids(violations)
+
+
+def effect_action(**overrides):
+    action = {
+        "action_id": "action-001",
+        "action_type": "source_mutation",
+        "required_for_objective": True,
+        "requested": True,
+        "required_authority": "owner instruction",
+        "authority_evidence_ref": "ev-authority",
+        "status": "completed",
+        "executed_at": "2026-01-01T00:30:00Z",
+        "result_evidence_ref": "ev-result",
+        "effect_boundary": {
+            "preview": {"intent_fingerprint": "intent-a"},
+            "authority_checked_at": "2026-01-01T00:20:00Z",
+            "commit_performed": True,
+            "commit_intent_fingerprint": "intent-a",
+            "authority_rechecked_after_preview_change": False,
+            "verification_result": "pass",
+            "verification_evidence_ref": "ev-verify",
+        },
+    }
+    action.update(overrides)
+    return action
+
+
+def test_sem015_reversible_authorized_action_with_verification_is_clean():
+    record = fixture()
+    record["external_actions"] = [effect_action()]
+    assert "SEM-015" not in rule_ids(validator.validate_record(record, "fixture"))
+
+
+def test_sem015_missing_authority_stops_before_commit():
+    record = fixture()
+    action = effect_action(authority_evidence_ref=None)
+    record["external_actions"] = [action]
+    assert "SEM-015" in rule_ids(validator.validate_record(record, "fixture"))
+
+
+def test_sem015_failed_verification_forbids_successful_completion():
+    record = fixture()
+    action = effect_action()
+    action["effect_boundary"]["verification_result"] = "fail"
+    action["effect_boundary"]["verification_evidence_ref"] = "ev-failed-verify"
+    record["external_actions"] = [action]
+    assert "SEM-015" in rule_ids(validator.validate_record(record, "fixture"))
+
+
+def test_sem015_changed_preview_requires_authority_recheck():
+    record = fixture()
+    action = effect_action()
+    action["effect_boundary"]["commit_intent_fingerprint"] = "intent-b"
+    record["external_actions"] = [action]
+    assert "SEM-015" in rule_ids(validator.validate_record(record, "fixture"))

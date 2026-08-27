@@ -515,7 +515,7 @@
     "external_action": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["action_id", "action_type", "required_for_objective", "requested", "status"],
+      "required": ["action_id", "action_type", "required_for_objective", "requested", "status", "effect_boundary"],
       "properties": {
         "action_id": { "type": "string", "pattern": "^action-[a-z0-9-]+$" },
         "action_type": {
@@ -526,6 +526,33 @@
         "requested": { "type": "boolean" },
         "required_authority": { "type": ["string", "null"] },
         "authority_evidence_ref": { "type": ["string", "null"] },
+        "effect_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["preview", "authority_checked_at", "commit_performed", "commit_intent_fingerprint", "authority_rechecked_after_preview_change", "verification_result", "verification_evidence_ref"],
+          "properties": {
+            "preview": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["target", "intended_mutation", "affected_scope", "required_authority", "rollback_note", "expected_verification", "intent_fingerprint"],
+              "properties": {
+                "target": { "type": "string", "minLength": 1 },
+                "intended_mutation": { "type": "string", "minLength": 1 },
+                "affected_scope": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+                "required_authority": { "type": ["string", "null"] },
+                "rollback_note": { "type": "string", "minLength": 1 },
+                "expected_verification": { "type": "string", "minLength": 1 },
+                "intent_fingerprint": { "type": "string", "minLength": 1 }
+              }
+            },
+            "authority_checked_at": { "type": ["string", "null"], "format": "date-time" },
+            "commit_performed": { "type": "boolean" },
+            "commit_intent_fingerprint": { "type": ["string", "null"] },
+            "authority_rechecked_after_preview_change": { "type": "boolean" },
+            "verification_result": { "type": "string", "enum": ["not_run", "pass", "fail", "blocked", "not_applicable"] },
+            "verification_evidence_ref": { "type": ["string", "null"] }
+          }
+        },
         "status": { "type": "string", "minLength": 1 },
         "executed_at": { "type": ["string", "null"], "format": "date-time" },
         "result_evidence_ref": { "type": ["string", "null"] }

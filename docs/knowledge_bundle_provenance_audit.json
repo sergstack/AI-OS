@@ -42,8 +42,8 @@
         "AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md",
         "ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 50590,
-      "bundle_bytes": 51559,
+      "source_bytes": 51566,
+      "bundle_bytes": 52530,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -144,8 +144,8 @@
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 41007,
-      "bundle_bytes": 42133,
+      "source_bytes": 41983,
+      "bundle_bytes": 43104,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -423,8 +423,8 @@
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 70388,
-      "bundle_bytes": 71510,
+      "source_bytes": 71364,
+      "bundle_bytes": 72481,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -535,8 +535,8 @@
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 45134,
-      "bundle_bytes": 46139,
+      "source_bytes": 46110,
+      "bundle_bytes": 47110,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

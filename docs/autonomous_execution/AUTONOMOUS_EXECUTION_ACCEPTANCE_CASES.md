@@ -6,7 +6,7 @@ Current schema: `schemas/autonomous_execution_record.schema.json`; historical
 v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 
 Phase 1 created this specification without a semantic validator. The current
-repository includes a scoped, read-only advisory validator for SEM-001…014;
+repository includes a scoped, read-only advisory validator for SEM-001…015;
 it is not CI or runtime enforcement, and cases outside that subset remain
 documented requirements rather than automated checks.
 
@@ -84,6 +84,9 @@ the remaining cases still require Judge/manual review.
 18. Identical claim text is carried as `candidate_research` in one
    continuation/handoff and `accepted_policy` in another, but the candidate
    is action-eligible or otherwise loses its source reference.
+19. A declared side effect commits without authority, differs materially from
+    its preview without recheck, or reports completion without passed
+    verification evidence.
 
 ## 2.1 Invoke AI-OS continuation cases
 
@@ -103,11 +106,11 @@ the remaining cases still require Judge/manual review.
 | --- | --- | --- |
 | JSON syntax | `python3 -m json.tool` | yes |
 | Required fields / types / enums / ID patterns / nested shape | current v2 schema plus historical v1 schema | pytest structural conformance tests; not a CI gate |
-| Semantic cases (Section 2) | advisory validator for SEM-001…014; normative/manual review for the rest | pytest covers SEM-001…014; not a CI gate |
+| Semantic cases (Section 2) | advisory validator for SEM-001…015; normative/manual review for the rest | pytest covers SEM-001…015; not a CI gate |
 | Allowed-file scope | exact scope manifest + `git diff --stat` review | manual, per PR |
 | Business-rule / formula / metric preservation | project-specific checks | out of Phase 1 scope entirely |
 
-The repository does not assert that cases outside SEM-001…014 are
+The repository does not assert that cases outside SEM-001…015 are
 automatically enforced.
 
 ## 4. Closure Review acceptance cases (issue #268)
