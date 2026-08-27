@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:f90d104e134a455f0d4b379e7b1abf0fe9b84a40e1ce8926d548f197fc6e156f
+- source_fingerprint: sha256:eaedf628221bbf0ac183f8dac0b9f0972232a32fad47ad76d2ec8c5a8518e501
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -603,6 +603,27 @@ without resolution evidence; reuse a stale test result after changing the
 affected scope; widen scope for convenience of the fix; delete or weaken
 validation; change business logic to obtain a `pass`; or use `blocked`
 instead of an available, permitted local correction.
+### 9.5.1 Trace-grounded repair eligibility
+A failed execution is evidence of an observed defect, not by itself evidence
+that the harness, prompt, skill, or workflow caused that defect. Before a
+repair candidate changes one of those control surfaces, record a bounded
+attribution statement that names the proposed target, the failed trace or
+reproducible trajectory, the evidence that connects the target to the
+failure, and the plausible alternatives considered.
+`harness/workflow repair eligible: true` requires at least one of: a
+reproducible failed step localized to the target; a paired or counterfactual
+replay that distinguishes the target; a deterministic contract violation in
+the target; or an isolated target change that removes the failure without
+widening scope. The statement must also name the affected scope, reversible
+minimal repair, and required revalidation/regression checks.
+An invalid input, unavailable external dependency, missing authority, or
+unidentified competing cause makes a harness/workflow repair `ineligible` or
+`revise`, as applicable. Keep attribution status `uncertain` when the trace
+cannot identify a cause; do not select a convenient repair. A candidate repair
+that introduces a hard regression is rejected by the existing regression gate.
+This gate is evidence discipline before a human-authorized, bounded repair;
+it creates no autonomous diagnosis, self-modification, acceptance, or
+unattended change authority.
 ### 9.6 Iteration model
 ```yaml
 iteration_id:

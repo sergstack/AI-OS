@@ -18,6 +18,8 @@ expected_behavior:
 observed_behavior:
 failure_class:
 evidence:
+attribution_status: attributable | uncertain | ineligible
+attribution_statement:
 severity: low | medium | high | critical
 status: candidate | confirmed | fixed | blocked | retired
 related_change:
@@ -28,6 +30,22 @@ regression_test_id:
 deterministic check, violated explicit contract/governance rule, reproducible
 difference from expected behavior, or human confirmation. A disliked output is
 not confirmation by itself.
+
+## Harness and workflow repair attribution
+
+The registry distinguishes an observed failure from an attributable
+harness/workflow failure. Before proposing a repair to a harness, prompt,
+skill, or workflow, record the failed trace or reproducible trajectory, the
+specific target, connecting evidence, plausible alternatives, minimal
+reversible change, and required validation/regression scope.
+
+Only reproducible localization, paired/counterfactual replay, deterministic
+target-contract violation, or an isolated target change that removes the
+failure without scope expansion makes such a repair candidate eligible. An
+invalid input, external dependency failure, missing authority, or unresolved
+competing causes remains `ineligible` or `uncertain`; it must not be relabeled
+as a harness defect. The owner still decides corrective work, and a hard
+regression rejects the candidate under `REGRESSION_GATE.md`.
 
 ## Failure to regression rule
 
