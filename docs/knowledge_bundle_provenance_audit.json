@@ -414,14 +414,15 @@
       "source_paths": [
         "ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md",
         "ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md",
+        "ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md",
         "ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md",
         "ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md",
         "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 64773,
-      "bundle_bytes": 65793,
+      "source_bytes": 68930,
+      "bundle_bytes": 70056,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
