@@ -74,6 +74,7 @@ prompt-registry debt below.
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
 - `Knowledge/QUALITY_GATES.md`
+- `Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`
 - `Knowledge/ROUTING_AND_HANDOFF.md`
 - `Knowledge/SMOKE_QA_FOR_LLM.md`
 - `Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
