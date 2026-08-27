@@ -12,7 +12,15 @@
         "ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md",
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md",
         "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Routing and Workflow",
+        "purpose": "Compact upload artifact for [AI OS] covering routing, workflow, and engineering/Codex standards discoverability.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[AI OS]",
@@ -22,7 +30,15 @@
         "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Governance and Evidence",
+        "purpose": "Compact upload artifact for [AI OS] covering governance and evidence.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[AI OS]",
@@ -32,7 +48,15 @@
         "ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md",
         "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md",
         "HANDOFF_STYLE_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Handoff and Smoke QA",
+        "purpose": "Compact upload artifact for [AI OS] covering handoff, executable continuation, and smoke qa.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[AI OS]",
@@ -44,7 +68,16 @@
         "PROMPT_QA_FACTORY.md",
         "ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md",
         "ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Goal Packs and Command Surface",
+        "purpose": "Compact upload artifact for [AI OS] covering the first Goal Packs layer, one-touch command surface, context pack standard, and Prompt QA Factory.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere",
+          "default_upload_mode: `Knowledge_Bundles`"
+        ]
+      }
     },
     {
       "project": "[AI OS]",
@@ -54,7 +87,16 @@
         "ChatGPT/[AI OS]/Knowledge/LOOP_ACCEPTANCE_CHECKLIST.md",
         "ChatGPT/[AI OS]/Knowledge/AUTO_RESEARCH_BACKLOG.md",
         "ChatGPT/[AI OS]/Knowledge/SKILLS_HOOKS_MCP_DECISION_MATRIX.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Supervised Agent Loops",
+        "purpose": "Compact upload artifact for [AI OS] covering supervised agent loops, loop acceptance, AutoResearch backlog, and skills/hooks/MCP decisions.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere",
+          "default_upload_mode: `Knowledge_Bundles`"
+        ]
+      }
     },
     {
       "project": "[AI OS]",
@@ -64,7 +106,17 @@
         "ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md",
         "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md",
         "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"
-      ]
+      ],
+      "contract": {
+        "title": "[AI OS] — Cross-Project AI Evals",
+        "purpose": "Compact upload artifact for [AI OS] covering lightweight AI eval and LLM-as-a-Judge governance across projects.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[AI OS]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere",
+          "runtime_eval_automation: no",
+          "acceptance_status: candidate / ready for human review"
+        ]
+      }
     },
     {
       "project": "[Thinking]",
@@ -76,7 +128,15 @@
         "ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md",
         "ChatGPT/[Thinking]/DECISION_LOG.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Thinking] — Workflow and Decisions",
+        "purpose": "Compact upload artifact for [Thinking] covering workflow and decisions.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinking]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Thinking]",
@@ -86,7 +146,15 @@
         "ChatGPT/[Thinking]/Knowledge/REVISOR_REWRITE.md",
         "ChatGPT/[Thinking]/Knowledge/RISK_REVIEW.md",
         "ChatGPT/[Thinking]/Knowledge/STRATEGY_OPTIONS_TEMPLATE.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Thinking] — Judge Revisor Risk",
+        "purpose": "Compact upload artifact for [Thinking] covering judge revisor risk.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinking]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Thinking]",
@@ -97,7 +165,15 @@
         "ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md",
         "ChatGPT/[Thinking]/CURRENT_STATUS.md",
         "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Thinking] — Routing and Templates",
+        "purpose": "Compact upload artifact for [Thinking] covering routing and templates.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinking]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Thinking]",
@@ -108,7 +184,19 @@
         "ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md",
         "ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md",
         "ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Thinking] — Thinkers Synthesis",
+        "purpose": "Compact decision-application bundle for `[Thinking]` covering the Judge-pass Thinkers OS Lens Router, Conflict Map, five active provisional synthesis patterns, five bounded isolated Judge-pass author patterns, precedence, anti-bloat, application logging, routing, and rollback.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinking]`.",
+        "status_lines": [
+          "bundle_status: active_provisional",
+          "generated_date: 2026-08-21",
+          "canonical_status: false",
+          "owner_acceptance: pending",
+          "production_status: NOT AUTHORIZED"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -118,7 +206,15 @@
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
         "ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md",
         "ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Core Workflow",
+        "purpose": "Compact upload artifact for [Analytics] covering core workflow.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -126,7 +222,15 @@
       "sources": [
         "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md",
         "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Data Contracts and Marts",
+        "purpose": "Compact upload artifact for [Analytics] covering data contracts and marts.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -136,7 +240,15 @@
         "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md",
         "ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md",
         "ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Techniques and Charts",
+        "purpose": "Compact upload artifact for [Analytics] covering techniques and charts.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -147,7 +259,15 @@
         "ChatGPT/[Analytics]/Knowledge/WORD_REPORT_STANDARD.md",
         "ChatGPT/[Analytics]/Knowledge/TEXT_QA_AND_STYLE.md",
         "ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Memo and Text Standards",
+        "purpose": "Compact upload artifact for [Analytics] covering memo and text standards.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -159,7 +279,15 @@
         "ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md",
         "ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md",
         "ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — QA Governance Routing",
+        "purpose": "Compact upload artifact for [Analytics] covering qa governance routing.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -180,7 +308,15 @@
         "ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md",
         "ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md",
         "ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Templates",
+        "purpose": "Compact upload artifact for [Analytics] covering templates.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Analytics]",
@@ -197,7 +333,15 @@
         "ChatGPT/[Analytics]/Codex_Tasks/06_TEXT_QA.md",
         "ChatGPT/[Analytics]/Codex_Tasks/07_SMOKE_QA.md",
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Analytics] — Codex Handoff Optional",
+        "purpose": "Compact upload artifact for [Analytics] covering codex handoff optional.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Analytics]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -206,7 +350,15 @@
         "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md",
         "ChatGPT/[LLM]/Knowledge/MODEL_ROUTING.md",
         "ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Routing and Model Selection",
+        "purpose": "Compact upload artifact for [LLM] covering routing and model selection.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -214,7 +366,15 @@
       "sources": [
         "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md",
         "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Prompt Library and Registry",
+        "purpose": "Compact upload artifact for [LLM] covering prompt library and registry.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -226,7 +386,15 @@
         "ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md",
         "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Quality Gates and Eval",
+        "purpose": "Compact upload artifact for [LLM] covering quality gates and eval.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -248,7 +416,15 @@
         "ChatGPT/[LLM]/Knowledge/EXTERNAL_AI_HANDOFF_PROTOCOL.md",
         "ChatGPT/[LLM]/Knowledge/GEMINI_DEEP_RESEARCH__KB_HUNTER.md",
         "ChatGPT/[LLM]/Knowledge/AI_OS_REFERENCE.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Workflows and Handoff",
+        "purpose": "Compact upload artifact for [LLM] covering workflows and handoff.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -259,7 +435,16 @@
         "ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md",
         "ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Context Engineering",
+        "purpose": "Compact upload artifact for `[LLM]` covering context engineering, CTC prompts, context intake, and good/bad examples.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere",
+          "autonomous_retrieval: no"
+        ]
+      }
     },
     {
       "project": "[LLM]",
@@ -270,7 +455,16 @@
         "ChatGPT/[LLM]/Knowledge/OLLAMA_OPENWEBUI_PILOT.md",
         "ChatGPT/[LLM]/Knowledge/LOCAL_MODEL_EVAL_MATRIX.md",
         "ChatGPT/[LLM]/Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md"
-      ]
+      ],
+      "contract": {
+        "title": "[LLM] — Local AI Experiments",
+        "purpose": "Compact upload artifact for `[LLM]` covering local AI, Ollama, Open WebUI, local model evals, and security boundaries as controlled experiments.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[LLM]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere",
+          "local_ai_status: experiment / pilot only"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -280,7 +474,15 @@
         "ChatGPT/[Codex]/Knowledge/CODEX_HANDOFF_WORKFLOW.md",
         "ChatGPT/[Codex]/Knowledge/AI_OS_REFERENCE.md",
         "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — Tasks and Handoff",
+        "purpose": "Compact upload artifact for [Codex] covering tasks and handoff.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -291,7 +493,15 @@
         "ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md",
         "ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — Execution Autonomy Reporting",
+        "purpose": "Compact upload artifact for [Codex] covering execution autonomy reporting.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -303,7 +513,15 @@
         "ChatGPT/[Codex]/Knowledge/RELEASE_CHECKLIST.md",
         "ChatGPT/[Codex]/Knowledge/DONE_DEFINITION.md",
         "ChatGPT/[Codex]/Knowledge/SMOKE_QA_CHECKLIST.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — Testing Acceptance Release",
+        "purpose": "Compact upload artifact for [Codex] covering testing acceptance release.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -316,7 +534,15 @@
         "ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md",
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md",
         "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — Implementation Workflows",
+        "purpose": "Compact upload artifact for [Codex] covering implementation workflows.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -327,7 +553,15 @@
         "ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md",
         "ChatGPT/[Codex]/Knowledge/PROMPT_LIBRARY_CODEX.md",
         "ChatGPT/[Codex]/Knowledge/PROJECT_CONTEXT.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — Agent References",
+        "purpose": "Compact upload artifact for [Codex] covering agent references.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     },
     {
       "project": "[Codex]",
@@ -338,7 +572,15 @@
         "ChatGPT/[Codex]/Knowledge/WORKTREE_AND_PARALLEL_AGENT_POLICY.md",
         "ChatGPT/[Codex]/Knowledge/CODEX_TASK_EXAMPLES.md",
         "ChatGPT/[Codex]/Knowledge/EVALS_FOR_CODEX_WORKFLOW.md"
-      ]
+      ],
+      "contract": {
+        "title": "[Codex] — AI Coding Discipline",
+        "purpose": "Compact upload artifact for [Codex] covering AI coding discipline, test-first workflow, PR judging, worktree safety, task examples, and lightweight workflow evals.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Codex]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
     }
   ]
 }

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -300,6 +301,23 @@ def test_knowledge_bundles_detects_stale_source_fingerprint(tmp_path: Path) -> N
 
     assert any("source_fingerprint mismatch" in failure for failure in report.failures)
     assert report.source_paths is False
+
+
+def test_knowledge_bundle_validator_recomputes_ready_manifest_output(tmp_path: Path) -> None:
+    module = load_script_module("check_knowledge_bundles.py")
+    source = "Knowledge/source.md"
+    (tmp_path / "Knowledge").mkdir()
+    (tmp_path / source).write_text("# Source\nText\n", encoding="utf-8")
+    output = "ChatGPT/[Test]/Knowledge_Bundles/TEST.md"
+    (tmp_path / "ChatGPT/[Test]/Knowledge_Bundles").mkdir(parents=True)
+    (tmp_path / output).write_text("stale", encoding="utf-8")
+    (tmp_path / "knowledge_bundle_manifest.json").write_text(json.dumps({
+        "status": "ready", "bundles": [{"output": output, "sources": [source]}],
+    }), encoding="utf-8")
+
+    failures = module.generated_drift_failures(tmp_path)
+
+    assert failures == [f"HASH_PROVENANCE_MISMATCH: {output}"]
 
 
 def test_index_coverage_passes_when_all_files_listed(tmp_path: Path) -> None:
