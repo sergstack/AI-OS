@@ -40,6 +40,7 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | `FAILURE-REGRESSION` | observed failure lifecycle | routed owner / `[AI OS]` | workflow failure | deterministic-first regression | failure evidence and explicit expected contract | confirmed failure has a bounded regression case where material | evidence or expected contract incomplete | hard boundary or no validation path | 2026-08-27 | candidate |
 | `BASELINE-REGRESSION` | baseline vs candidate | routed owner / `[AI OS]` | configuration change | regression matrix | accepted baseline, same required cases, deterministic checks | no hard regression and complete comparison | repairable or inconclusive comparison | unknown baseline, hard regression, or authority expansion | 2026-08-27 | candidate |
 | `INTERMEDIATE-ASSERTION` | analytical intermediate state | `[Analytics]` / `[Codex]` | stage/mart/evidence QA | deterministic assertion | accepted analytical contract | all applicable checks pass | contract needs clarification or check not run | failed reconciliation/cardinality or unknown contract | 2026-08-27 | candidate |
+| `CANDIDATE-GATE-SAMPLED-QA` | Candidate Gate sampled QA | `[LLM]` | selected-result relevance | reviewed-sample precision + replay | owner/reviewer labels; same-sample replay | current-run sample is traceable, labels and scoped observed precision are recorded, false positives and available attribution are shown, replay and owner decision are complete | incomplete review evidence, comparison, or owner decision | no current-run sample provenance or reviewer labels; recall claimed without a labelled denominator; automatic Candidate Gate change | 2026-08-27 | candidate |
 | `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 
 ## Required Eval Types
@@ -56,6 +57,18 @@ specialization is deterministic QA first, Judge only when a documented trigger
 applies, and revision only from explicit findings. Accepted run evidence remains
 in the canonical `[LLM]` project status artifact; this registry continues to
 store definitions rather than run results.
+
+### Candidate Gate Sampled QA
+
+Uses a bounded sample of results actually selected by the current Candidate
+Gate run. An owner or reviewer assigns `relevant`, `adjacent`, `irrelevant`,
+or `uncertain`; observed precision is reported only for that reviewed sample
+and excludes `uncertain` from its denominator. A false-positive attribution is
+recorded when available, one candidate change is replayed on the identical
+sample, and the owner accepts or rejects it. This standard does not create a
+permanent corpus, dataset, or manifest layer, report recall without a labelled
+denominator, or change Candidate Gate automatically. The canonical procedure
+is `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`.
 
 ### Analytics Eval
 
