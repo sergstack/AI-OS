@@ -113,6 +113,21 @@ revise_example: decision mismatch with a bounded owner correction path
 blocked_example: execution despite a hard boundary or missing validation path
 revisit_trigger: changed routing, promotion gate, stop condition, or observed decision failure
 
+## CASE-GOAL-CLOSURE-001
+
+case_id: `CASE-GOAL-CLOSURE-001`
+workflow: AES Closure Review
+owner_project: routed owner / `[AI OS]`
+input: original goal, acceptance criteria, final evidence, checks, constraints, and owner boundary
+expected_behavior: keep checks, goal, acceptance, and owner-boundary statuses distinct
+must_detect: green checks with a missed goal, missing acceptance evidence, or an owner-boundary violation
+must_not_do: report pass from green checks alone or grant owner acceptance automatically
+judge_criteria: traceable original goal and acceptance; material gaps; deterministic status; owner boundary
+pass_example: checks pass and goal, acceptance, and owner boundary are all satisfied
+revise_example: checks pass but final result misses a material original-goal requirement
+blocked_example: acceptance reference/evidence is missing or owner boundary is violated
+revisit_trigger: goal, acceptance, constraints, evidence, owner, or final revision changes
+
 ## CASE-THINKING-DECISION-001
 
 case_id: `CASE-THINKING-DECISION-001`
