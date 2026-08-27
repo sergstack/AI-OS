@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:0d1560086437178657ba20e4aa0d533e6f51a445d3711d871f1a41dfa52711d5
+- source_fingerprint: sha256:bd4ca1228355d8423a1f0ebed8fcf21f36d9801fd1a5f6ef5166c3cb4821a85d
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -59,6 +59,7 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | `ACT-ABSTAIN` | act-or-abstain decision | `[AI OS]` / routed owner | supervised workflow | governance eval | deterministic authority/evidence/validation check | expected and actual decision match | bounded decision mismatch or incomplete evidence | hard-boundary violation or no validation path | 2026-08-27 | candidate |
 | `GOAL-CLOSURE` | AES Closure Review view | routed owner / `[AI OS]` | candidate output or change | closure eval | final evidence against original goal, acceptance, and owner boundary | checks pass and all closure dimensions satisfied | repairable goal or acceptance gap | missing acceptance/evidence or owner-boundary violation | 2026-08-27 | candidate |
 | `FAILURE-REGRESSION` | observed failure lifecycle | routed owner / `[AI OS]` | workflow failure | deterministic-first regression | failure evidence and explicit expected contract | confirmed failure has a bounded regression case where material | evidence or expected contract incomplete | hard boundary or no validation path | 2026-08-27 | candidate |
+| `BASELINE-REGRESSION` | baseline vs candidate | routed owner / `[AI OS]` | configuration change | regression matrix | accepted baseline, same required cases, deterministic checks | no hard regression and complete comparison | repairable or inconclusive comparison | unknown baseline, hard regression, or authority expansion | 2026-08-27 | candidate |
 | `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 ## Required Eval Types
 ### AI OS Evidence Eval
@@ -266,6 +267,19 @@ pass_example: confirmed material failure produces a bounded regression case
 revise_example: candidate failure needs better evidence or expected behavior
 blocked_example: no validation path or corrective authority is available
 revisit_trigger: new evidence, reproduced failure, corrective result, or changed contract
+## CASE-BASELINE-REGRESSION-001
+case_id: `CASE-BASELINE-REGRESSION-001`
+workflow: accepted baseline versus candidate comparison
+owner_project: routed owner / `[AI OS]`
+input: baseline contract, candidate contract, regression matrix, and checks
+expected_behavior: compare each case explicitly; block hard regression despite unrelated improvement
+must_detect: unknown baseline, inconclusive comparison, Judge drift, and hard contract regression
+must_not_do: use aggregate score, auto-promote, or let a Judge override deterministic failure
+judge_criteria: matrix completeness, delta semantics, hard-contract precedence, owner acceptance
+pass_example: complete matrix with no hard regression and valid deterministic checks
+revise_example: comparison is incomplete or a repairable non-hard regression exists
+blocked_example: baseline is unknown or a high hard-contract regression occurs
+revisit_trigger: baseline, candidate, required cases, Judge class, or scope changes
 ## CASE-THINKING-DECISION-001
 case_id: `CASE-THINKING-DECISION-001`
 workflow: Thinking decision review

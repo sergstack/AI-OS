@@ -143,6 +143,21 @@ revise_example: candidate failure needs better evidence or expected behavior
 blocked_example: no validation path or corrective authority is available
 revisit_trigger: new evidence, reproduced failure, corrective result, or changed contract
 
+## CASE-BASELINE-REGRESSION-001
+
+case_id: `CASE-BASELINE-REGRESSION-001`
+workflow: accepted baseline versus candidate comparison
+owner_project: routed owner / `[AI OS]`
+input: baseline contract, candidate contract, regression matrix, and checks
+expected_behavior: compare each case explicitly; block hard regression despite unrelated improvement
+must_detect: unknown baseline, inconclusive comparison, Judge drift, and hard contract regression
+must_not_do: use aggregate score, auto-promote, or let a Judge override deterministic failure
+judge_criteria: matrix completeness, delta semantics, hard-contract precedence, owner acceptance
+pass_example: complete matrix with no hard regression and valid deterministic checks
+revise_example: comparison is incomplete or a repairable non-hard regression exists
+blocked_example: baseline is unknown or a high hard-contract regression occurs
+revisit_trigger: baseline, candidate, required cases, Judge class, or scope changes
+
 ## CASE-THINKING-DECISION-001
 
 case_id: `CASE-THINKING-DECISION-001`
