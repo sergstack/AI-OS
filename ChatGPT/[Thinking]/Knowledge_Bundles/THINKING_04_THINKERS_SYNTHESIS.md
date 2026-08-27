@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_status: NOT AUTHORIZED
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:3ecf0fff4a2d82f60977f6f5557b1af1d031d94400f17e185e4f3bc37e32faf1
+- source_fingerprint: sha256:70efb729c5030e3292db7a21f93ecf1104f1572246f38866cf58f4ad50e7d54d
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -63,7 +63,7 @@ MVP limits: 5 active patterns, preferably 2–3 lenses per case, maximum 4. Curr
 | `SYN-003-OWNERSHIP-AND-SYSTEM-CHECK` | ambiguous ownership, rules, permissions, or multiple decision centers | do not centralize away local fit or hide coercive transfer |
 | `SYN-004-BIAS-AWARE-DECISION-REVIEW` | prospective high-impact judgment sensitive to baseline/frame | do not label people retrospectively or replace domain evidence |
 | `SYN-005-REVERSIBLE-INTERVENTION-GATE` | structural intervention with feedback, multiple owners, or costly reversal | quantitative claims require `[Analytics]`; pilot needs stop and rollback owners |
-All are `active_provisional`, not validated/canonical. Application count does not promote them.
+All five remain `active_provisional`, not validated/canonical. Application count does not promote them.
 ## Lens Router
 | Problem type | Primary lenses | Optional lens | Route |
 |---|---|---|---|
@@ -231,7 +231,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - deployment_status: repository_candidate_not_uploaded
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-## SYN-001-REPEATED-FAILURE-DIAGNOSIS — Repeated Failure Diagnosis
+### `SYN-001-REPEATED-FAILURE-DIAGNOSIS`
+**Repeated Failure Diagnosis**
 - problem type: `repeated_process_failure`
 - source authors: Deming, Forrester, Clausewitz
 - source patterns: `THINKERS-DEMING-PATTERN-001`, `THINKERS-FORRESTER-PATTERN-001`, `THINKERS-CLAUSEWITZ-PATTERN-001`
@@ -245,7 +246,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - confidence: medium-low
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
-## SYN-002-DECISION-UNDER-FRICTION — Decision Under Friction
+### `SYN-002-DECISION-UNDER-FRICTION`
+**Decision Under Friction**
 - problem type: `consequential_decision_under_uncertainty`
 - source authors: Clausewitz, Kahneman, Forrester
 - source patterns: `THINKERS-CLAUSEWITZ-PATTERN-001`, `THINKERS-KAHNEMAN-PATTERN-001`, `THINKERS-FORRESTER-PATTERN-001`
@@ -259,7 +261,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - confidence: medium-low
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
-## SYN-003-OWNERSHIP-AND-SYSTEM-CHECK — Ownership and System Check
+### `SYN-003-OWNERSHIP-AND-SYSTEM-CHECK`
+**Ownership and System Check**
 - problem type: `unclear_ownership_or_governance`
 - source authors: Deming, Ostrom, Lenin
 - source patterns: `THINKERS-DEMING-PATTERN-001`, `THINKERS-OSTROM-PATTERN-001`, `THINKERS-LENIN-PATTERN-001`
@@ -273,7 +276,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - confidence: medium-low
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
-## SYN-004-BIAS-AWARE-DECISION-REVIEW — Bias-Aware Decision Review
+### `SYN-004-BIAS-AWARE-DECISION-REVIEW`
+**Bias-Aware Decision Review**
 - problem type: `bias_aware_decision_review`
 - source authors: Kahneman, Clausewitz
 - source patterns: `THINKERS-KAHNEMAN-PATTERN-001`, `THINKERS-CLAUSEWITZ-PATTERN-001`
@@ -287,7 +291,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - confidence: medium-low
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
-## SYN-005-REVERSIBLE-INTERVENTION-GATE — Reversible Intervention Gate
+### `SYN-005-REVERSIBLE-INTERVENTION-GATE`
+**Reversible Intervention Gate**
 - problem type: `policy_with_feedback_or_delay`
 - source authors: Forrester, Ostrom, Lenin, Deming
 - source patterns: `THINKERS-FORRESTER-PATTERN-001`, `THINKERS-OSTROM-PATTERN-001`, `THINKERS-LENIN-PATTERN-001`, `THINKERS-DEMING-PATTERN-001`
@@ -302,8 +307,8 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
 ## Excluded from active synthesis
-- Isolated Judge-pass author patterns for Boyd, Drucker, Munger, and Ohno are not part of these five cross-author patterns.
-- Candidate pilot revisions, candidate Conflict Map additions, candidate/revise/blocked/restricted/deprecated/archival artifacts, and raw source payloads are excluded.
+- isolated Boyd, Drucker, Munger, and Ohno author patterns are not part of these five cross-author patterns.
+- Exclude pilot candidate router/conflict revisions without separate Judge authorization, along with candidate, revise, blocked, restricted, deprecated, rejected, or archival artifacts and raw source payloads.
 - Exclusion does not reject an author pattern; it prevents unreviewed or irrelevant material from controlling a case.
 
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md`
