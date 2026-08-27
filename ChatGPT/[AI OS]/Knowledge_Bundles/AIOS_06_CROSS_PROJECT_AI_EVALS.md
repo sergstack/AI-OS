@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:5e9c7676943c5ab29388a5d7214f741d3432d6de12ef2bb8429c6c17b340415d
+- source_fingerprint: sha256:c5e5cb3786672ccf3e93e25fcf111e1f8e9d0b437b8d6c3b6f6ed8b7c24e7433
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -56,6 +56,12 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | `ANALYTICS-QA` | analytical memo / QA | `[Analytics]` | data / memo / mart | deterministic QA + narrative judge | data contract, source mart/table, metric, period, grain, QA status | deterministic QA passes and memo claims trace to evidence | fixable missing method, limitation, or traceability field | failed reconciliation, missing contract, unclear grain, or unapproved formula/schema change | 2026-07-06 | active |
 | `CODEX-PR` | PR Judge | `[Codex]` / `[Thinking]` | repo change / PR | workflow eval | diff, checks, scope, rollback | goal match, checks observed, rollback and risks visible | bounded scope or documentation fixes needed | secrets, production risk, failing checks, unsafe scope, or missing acceptance | 2026-07-06 | active |
 | `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | loop design | governance eval | loop acceptance checklist | supervised loop, bounded retry, stop conditions, human acceptance | missing owner, retry rule, or stop condition | autonomous retrieval, uncontrolled agents, runtime artifacts, or no validation | 2026-07-06 | active |
+| `ACT-ABSTAIN` | act-or-abstain decision | `[AI OS]` / routed owner | supervised workflow | governance eval | deterministic authority/evidence/validation check | expected and actual decision match | bounded decision mismatch or incomplete evidence | hard-boundary violation or no validation path | 2026-08-27 | candidate |
+| `GOAL-CLOSURE` | AES Closure Review view | routed owner / `[AI OS]` | candidate output or change | closure eval | final evidence against original goal, acceptance, and owner boundary | checks pass and all closure dimensions satisfied | repairable goal or acceptance gap | missing acceptance/evidence or owner-boundary violation | 2026-08-27 | candidate |
+| `FAILURE-REGRESSION` | observed failure lifecycle | routed owner / `[AI OS]` | workflow failure | deterministic-first regression | failure evidence and explicit expected contract | confirmed failure has a bounded regression case where material | evidence or expected contract incomplete | hard boundary or no validation path | 2026-08-27 | candidate |
+| `BASELINE-REGRESSION` | baseline vs candidate | routed owner / `[AI OS]` | configuration change | regression matrix | accepted baseline, same required cases, deterministic checks | no hard regression and complete comparison | repairable or inconclusive comparison | unknown baseline, hard regression, or authority expansion | 2026-08-27 | candidate |
+| `INTERMEDIATE-ASSERTION` | analytical intermediate state | `[Analytics]` / `[Codex]` | stage/mart/evidence QA | deterministic assertion | accepted analytical contract | all applicable checks pass | contract needs clarification or check not run | failed reconciliation/cardinality or unknown contract | 2026-08-27 | candidate |
+| `CANDIDATE-GATE-SAMPLED-QA` | Candidate Gate sampled QA | `[LLM]` | selected-result relevance | reviewed-sample precision + replay | owner/reviewer labels; same-sample replay | current-run sample is traceable, labels and scoped observed precision are recorded, false positives and available attribution are shown, replay and owner decision are complete | incomplete review evidence, comparison, or owner decision | no current-run sample provenance or reviewer labels; recall claimed without a labelled denominator; automatic Candidate Gate change | 2026-08-27 | candidate |
 | `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 ## Required Eval Types
 ### AI OS Evidence Eval
@@ -67,6 +73,16 @@ specialization is deterministic QA first, Judge only when a documented trigger
 applies, and revision only from explicit findings. Accepted run evidence remains
 in the canonical `[LLM]` project status artifact; this registry continues to
 store definitions rather than run results.
+### Candidate Gate Sampled QA
+Uses a bounded sample of results actually selected by the current Candidate
+Gate run. An owner or reviewer assigns `relevant`, `adjacent`, `irrelevant`,
+or `uncertain`; observed precision is reported only for that reviewed sample
+and excludes `uncertain` from its denominator. A false-positive attribution is
+recorded when available, one candidate change is replayed on the identical
+sample, and the owner accepts or rejects it. This standard does not create a
+permanent corpus, dataset, or manifest layer, report recall without a labelled
+denominator, or change Candidate Gate automatically. The canonical procedure
+is `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`.
 ### Analytics Eval
 Checks deterministic QA, source mart/table, metric, period, grain, calculation method, QA status, confidence, and limitations.
 ### Codex PR Eval
@@ -224,6 +240,58 @@ pass_example: loop follows `goal -> action -> check -> revise/rerun -> acceptanc
 revise_example: owner, stop condition, or retry limit is missing
 blocked_example: loop needs autonomous retrieval, production deploy, or no validation path
 revisit_trigger: tool permissions, owner, risk level, or promotion gate changes
+## CASE-ACT-ABSTAIN-001
+case_id: `CASE-ACT-ABSTAIN-001`
+workflow: supervised workflow decision gate
+owner_project: `[AI OS]` / routed owner
+input: paired scenario with an authority, evidence, or validation difference
+expected_behavior: act only with authority, evidence, and validation; otherwise abstain
+must_detect: production/authority expansion, unsupported evidence, and missing validation path
+must_not_do: execute past a hard boundary or reject an authorized reversible action
+judge_criteria: expected versus actual decision; deterministic boundary result; reason and evidence
+pass_example: both sides of a pair make the expected act or abstain decision
+revise_example: decision mismatch with a bounded owner correction path
+blocked_example: execution despite a hard boundary or missing validation path
+revisit_trigger: changed routing, promotion gate, stop condition, or observed decision failure
+## CASE-GOAL-CLOSURE-001
+case_id: `CASE-GOAL-CLOSURE-001`
+workflow: AES Closure Review
+owner_project: routed owner / `[AI OS]`
+input: original goal, acceptance criteria, final evidence, checks, constraints, and owner boundary
+expected_behavior: keep checks, goal, acceptance, and owner-boundary statuses distinct
+must_detect: green checks with a missed goal, missing acceptance evidence, or an owner-boundary violation
+must_not_do: report pass from green checks alone or grant owner acceptance automatically
+judge_criteria: traceable original goal and acceptance; material gaps; deterministic status; owner boundary
+pass_example: checks pass and goal, acceptance, and owner boundary are all satisfied
+revise_example: checks pass but final result misses a material original-goal requirement
+blocked_example: acceptance reference/evidence is missing or owner boundary is violated
+revisit_trigger: goal, acceptance, constraints, evidence, owner, or final revision changes
+## CASE-FAILURE-REGRESSION-001
+case_id: `CASE-FAILURE-REGRESSION-001`
+workflow: observed failure to bounded regression case
+owner_project: routed owner / `[AI OS]`
+input: observed behavior, expected contract, evidence, and severity
+expected_behavior: retain candidate status until confirmation; create regression only when material and reproducible
+must_detect: missing evidence, subjective dislike, unknown expected behavior, and hard boundaries
+must_not_do: invent a failure, automatically change a workflow, or treat a Judge as deterministic proof
+judge_criteria: confirmation basis, owner boundary, regression contract, and rollback
+pass_example: confirmed material failure produces a bounded regression case
+revise_example: candidate failure needs better evidence or expected behavior
+blocked_example: no validation path or corrective authority is available
+revisit_trigger: new evidence, reproduced failure, corrective result, or changed contract
+## CASE-BASELINE-REGRESSION-001
+case_id: `CASE-BASELINE-REGRESSION-001`
+workflow: accepted baseline versus candidate comparison
+owner_project: routed owner / `[AI OS]`
+input: baseline contract, candidate contract, regression matrix, and checks
+expected_behavior: compare each case explicitly; block hard regression despite unrelated improvement
+must_detect: unknown baseline, inconclusive comparison, Judge drift, and hard contract regression
+must_not_do: use aggregate score, auto-promote, or let a Judge override deterministic failure
+judge_criteria: matrix completeness, delta semantics, hard-contract precedence, owner acceptance
+pass_example: complete matrix with no hard regression and valid deterministic checks
+revise_example: comparison is incomplete or a repairable non-hard regression exists
+blocked_example: baseline is unknown or a high hard-contract regression occurs
+revisit_trigger: baseline, candidate, required cases, Judge class, or scope changes
 ## CASE-THINKING-DECISION-001
 case_id: `CASE-THINKING-DECISION-001`
 workflow: Thinking decision review

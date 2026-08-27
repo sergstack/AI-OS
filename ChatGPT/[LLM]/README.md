@@ -53,6 +53,7 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `PROMPT_LIBRARY.md` — библиотека промптов.
 - `PROMPT_REGISTRY.md` — controlled registry for reusable prompts.
 - `QUALITY_GATES.md` — проверки качества.
+- `CANDIDATE_GATE_SAMPLED_QA.md` — reusable sampled QA для Candidate Gate без постоянного dataset слоя.
 - `ROUTING_AND_HANDOFF.md` — передача в другие проекты.
 - `SMOKE_QA_FOR_LLM.md` — smoke QA checklist.
 - `CROSS_PROJECT_LIVE_EVAL_MATRIX.md` — versioned live test of the LLM boundary across all seven ChatGPT Projects.

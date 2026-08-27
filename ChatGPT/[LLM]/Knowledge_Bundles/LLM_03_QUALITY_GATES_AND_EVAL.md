@@ -8,6 +8,7 @@ Compact upload artifact for [LLM] covering quality gates and eval.
 
 - `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`
 - `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`
+- `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`
 - `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
 - `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
@@ -23,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:282f4ad2b91fb86a7d2bc5dae38b32c8a7df7ab15b87967ea3dd54b7f6d97cee
+- source_fingerprint: sha256:1563213fb06078276f6254ae92795eda7973918d976154de5e5a62224199ee51
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -76,6 +77,76 @@ pass / revise / blocked
 ## limitations
 ## owner_project
 ## next_step
+
+## From: `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`
+
+# Candidate Gate Sampled QA
+Status: `candidate / ready for owner review`.
+## Purpose and boundary
+This is a reusable QA procedure for Candidate Gate. It evaluates a bounded
+sample of results actually selected in one current run. It does not create a
+permanent dataset, corpus registry, or manifest layer; it does not require
+historical frozen artifacts; and it does not change Candidate Gate
+automatically.
+The sample record is run-scoped evidence: retain its selection timestamp or
+run identifier, the stable identifiers of selected results, and the current
+Candidate Gate revision in that run's issue or PR evidence. It exists only to
+make the before/after replay for that QA run reproducible.
+## Procedure
+1. Select a bounded sample from results that Candidate Gate actually selected
+   in the current run. Freeze the sample membership before review.
+2. An owner or designated reviewer assigns exactly one label to each sampled
+   result: `relevant`, `adjacent`, `irrelevant`, or `uncertain`.
+3. Calculate observed precision for this reviewed sample only:
+   ```text
+   observed_precision = relevant / (relevant + adjacent + irrelevant)
+   ```
+   Exclude `uncertain` from the denominator and report its count separately.
+   Do not report recall: no labelled denominator of all relevant results is
+   available from this procedure.
+4. List every sampled `irrelevant` result as a false positive. Include its
+   query-family and Candidate Gate rule attribution when that attribution is
+   available; otherwise record `attribution: unavailable`.
+5. Propose at most one minimal candidate-rule change, with the exact intended
+   effect and a rollback statement. This is a proposal, not an applied change.
+6. Replay the proposed change against the identical frozen sample. Do not add,
+   remove, or relabel sample members between the before and after comparison.
+7. Compare before and after: selected membership, reviewed-label counts,
+   observed precision, `uncertain` count, and false positives with available
+   attribution.
+8. The owner explicitly accepts or rejects the proposal. Only an accepted,
+   separately scoped implementation may change Candidate Gate.
+## Required run evidence
+Record only the following bounded fields for each QA run:
+- current-run identifier or timestamp and Candidate Gate revision;
+- sample size, membership identifiers, and evidence that members were
+  actually selected by the current run;
+- reviewer identity or owner-review reference, each of the four permitted
+  labels, and the `uncertain` count;
+- observed-precision numerator and denominator, explicitly scoped to the
+  reviewed sample;
+- false-positive list and query-family/rule attribution where available;
+- proposed change, replay result on the same sample, before/after comparison,
+  owner decision, and rollback path.
+## Stop conditions
+- No reviewer labels: stop before calculating observed precision.
+- Sample membership cannot be tied to results selected by the current run:
+  stop; do not substitute a historical or synthetic corpus.
+- No labelled denominator beyond the sample: report no recall.
+- Attribution is unavailable: retain the false positive and mark attribution
+  unavailable; do not infer a query family or rule.
+- Owner decision is absent or rejects the proposal: retain evidence only; do
+  not change Candidate Gate.
+## Acceptance examples
+| Scenario | Expected result |
+| --- | --- |
+| Reviewed sample includes `uncertain` labels | Precision excludes only those entries and reports their count. |
+| All labels are reviewed but no denominator of all relevant results exists | Observed sample precision may be reported; recall is not reported. |
+| Replay improves observed precision but owner has not accepted the change | `candidate / ready for owner review`; Candidate Gate remains unchanged. |
+| A false positive has no stored rule attribution | Include it with `attribution: unavailable`; do not manufacture an explanation. |
+## Rollback
+This procedure is documentation only. Revert its PR to remove the procedure;
+it does not alter Candidate Gate behavior or any runtime state.
 
 ## From: `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
 
@@ -515,6 +586,7 @@ prompt-registry debt below.
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
 - `Knowledge/QUALITY_GATES.md`
+- `Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`
 - `Knowledge/ROUTING_AND_HANDOFF.md`
 - `Knowledge/SMOKE_QA_FOR_LLM.md`
 - `Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
@@ -811,7 +883,14 @@ Warm resume is permitted only after checking that the continuation envelope is
 present and valid and that the original goal boundary, acceptance criteria,
 resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
-### 5.6 Authority provenance for transformed context
+### 5.6 Bounded multi-owner continuation control plane
+The optional continuation control plane is defined in
+`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+auditable route trace, acceptance progress, and independent continuation
+guards without creating a parallel state machine or changing the existing
+status namespaces.  Its guard thresholds are named parameters, not canonical
+numeric defaults; the stricter applicable corrective-loop limit still wins.
+### 5.7 Authority provenance for transformed context
 `authority_status` reports the execution's owner-approval state; it is not a
 claim-level provenance label. When an active `Invoke AI-OS` execution carries
 a decision-relevant claim through a context pack, handoff, or resume, its
@@ -1157,7 +1236,7 @@ for its documented subset; it is not CI or runtime enforcement.
 | Canonical-content duplication | docs consistency and Judge review | optional repository consistency check |
 | Business-rule preservation | project-specific checks | project-specific enforcement |
 | Merge/deploy authority | explicit fields and owner review | external platform gates |
-The advisory validator covers only SEM-001…012 and is not evidence of CI,
+The advisory validator covers only SEM-001…014 and is not evidence of CI,
 runtime enforcement, owner approval, merge, deploy, or production
 authorization. See
 `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the

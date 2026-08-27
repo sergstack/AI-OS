@@ -14,15 +14,15 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 
 | Pilot ID | Project | Status | Confidence | Owner | Next step |
 |---|---|---|---|---|---|
-| `PILOT-AIOS-001` | `[AI OS]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
-| `PILOT-THINKING-001` | `[Thinking]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
-| `PILOT-ANALYTICS-001` | `[Analytics]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
+| `PILOT-AIOS-001` | `[AI OS]` | candidate | medium | Sergey | Owner review of recorded live result; run the next bounded pilot |
+| `PILOT-THINKING-001` | `[Thinking]` | candidate | medium | Sergey | Owner review of recorded decision memo; run the next bounded pilot |
+| `PILOT-ANALYTICS-001` | `[Analytics]` | candidate | medium | Sergey | Owner review of recorded analytical result; run the cross-project pilot |
 | `PILOT-LLM-001` | `[LLM]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-CODEX-001` | `[Codex]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-INBOX-001` | `[Inbox Router]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-THINKERS-001` | `[Thinkers OS]` | backlog | unsupported | Sergey | Complete manual sync, run smoke QA, then execute bounded source-to-artifact pilot |
 | `PILOT-CODEXAPP-001` | Codex APP | backlog | unsupported | Sergey | Run local task package classification pilot |
-| `PILOT-CROSS-001` | Cross-project | backlog | unsupported | Sergey | Execute after individual pilots are defined |
+| `PILOT-CROSS-001` | Cross-project | candidate | medium | Sergey | Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a real failure-to-regression case |
 
 ## [AI OS] Pilot
 
@@ -35,10 +35,10 @@ Evidence required: ChatGPT response, KB files consulted or explicit not-found st
 Success criteria: KB checked / not found clearly stated; fresh external check separated if used; supported / weak / unsupported separated; no blocked feature recommended as current implementation; one clear next step.
 Failure criteria: Claims unsupported evidence as fact; recommends embeddings, semantic search, vector DB, web UI, or autonomous retrieval as current implementation; omits routing/handoff.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: AI OS project instructions, Knowledge files, evidence rules, or blocked promotion gates change.
-Next step: Sync `[AI OS]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_AIOS.md`, then run the next bounded pilot without changing blocked promotion items.
 
 ## [Thinkers OS] Pilot
 
@@ -51,8 +51,8 @@ Evidence required: source request/candidate identity, provenance or explicit blo
 Success criteria: no invented provenance; partial corpus not reported complete; only Judge-pass material may become an export candidate; raw source payload is not exported; real decision work is handed to `[Thinking]`.
 Failure criteria: invented or unverified source treated as verified; incomplete corpus reported complete; non-pass artifact controls synthesis/export; source payload exported; Thinkers OS performs the target strategic decision.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: corpus/source rules, artifact contracts, Judge/Revisor, routing, or export gates change.
 Next step: Complete owner-led manual sync, run `[Thinkers OS]` smoke QA, then record an actual result with `PILOT_RESULTS_TEMPLATE.md`.
 
@@ -67,10 +67,10 @@ Evidence required: Decision memo, assumptions list, risks, chosen recommendation
 Success criteria: 2-4 options; facts / assumptions separated; risks listed; decision status assigned; revisit trigger included; handoff if needed.
 Failure criteria: Gives a recommendation without assumptions or risks; omits status; performs Analytics/Codex work instead of decision framing.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: decision status rules, routing rules, or judge/revisor standards change.
-Next step: Sync `[Thinking]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_THINKING.md`, then run the next bounded pilot without expanding architecture.
 
 ## [Analytics] Pilot
 
@@ -83,10 +83,10 @@ Evidence required: Data contract, stage/mart plan or files, QA checklist, tracea
 Success criteria: grain / period / filters explicit; data contract present; stage_main_full and mart_main_full designed or created; QA checks listed; claims traceable to data/mart; limitations visible.
 Failure criteria: Uses unsupported calculations; mixes raw/stage/mart/report layers; omits assumptions or limitations; routes implementation directly to Codex without analysis contract.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: analytics workflow, data contract, QA, or mart standards change.
-Next step: Sync `[Analytics]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_ANALYTICS.md`, then run the cross-project pilot without widening scope.
 
 ## [LLM] Pilot
 
@@ -166,7 +166,9 @@ Owner: Sergey
 Status: backlog
 Confidence: unsupported
 Revisit trigger: any project role, handoff, or production promotion policy changes.
-Next step: Run after individual project sync records are available.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a
+real observed failure as a separate bounded regression candidate. Do not invent
+a failure or change architecture automatically.
 
 ## Acceptance rules
 
@@ -177,13 +179,12 @@ Next step: Run after individual project sync records are available.
 
 ## Blockers
 
-- ChatGPT Project UI sync is not verified in this repository.
-- Pilot results are not yet recorded.
-- Smoke QA refresh has not yet been run after sync.
+- `[AI OS]`, `[Thinking]`, and `[Analytics]` each have one observed candidate result; all other pilots remain unrecorded.
+- Smoke QA refresh has not yet been run after the current pilot evidence was recorded.
 
 ## Next steps
 
-1. Complete `CHATGPT_PROJECT_SYNC_CHECKLIST.md` after manual ChatGPT Project sync.
-2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md`.
-3. Record pilot results with `PILOT_RESULTS_TEMPLATE.md`.
+1. Obtain owner review of the three recorded candidate pilot results.
+2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md` when a refresh is required.
+3. Record the next pilot result with `PILOT_RESULTS_TEMPLATE.md`.
 4. Update pilot statuses only when evidence exists.

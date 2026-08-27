@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:3a4e87ecdf7a6cfb2d827fe48947077afedc620bf63d714564f31cb9f0d2fdf5
+- source_fingerprint: sha256:4fbfd4173753b9ab774f702d44a066e3aadc7fdb3bb48cf31bcc94e4e1530a10
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -497,7 +497,14 @@ Warm resume is permitted only after checking that the continuation envelope is
 present and valid and that the original goal boundary, acceptance criteria,
 resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
-### 5.6 Authority provenance for transformed context
+### 5.6 Bounded multi-owner continuation control plane
+The optional continuation control plane is defined in
+`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+auditable route trace, acceptance progress, and independent continuation
+guards without creating a parallel state machine or changing the existing
+status namespaces.  Its guard thresholds are named parameters, not canonical
+numeric defaults; the stricter applicable corrective-loop limit still wins.
+### 5.7 Authority provenance for transformed context
 `authority_status` reports the execution's owner-approval state; it is not a
 claim-level provenance label. When an active `Invoke AI-OS` execution carries
 a decision-relevant claim through a context pack, handoff, or resume, its
@@ -843,7 +850,7 @@ for its documented subset; it is not CI or runtime enforcement.
 | Canonical-content duplication | docs consistency and Judge review | optional repository consistency check |
 | Business-rule preservation | project-specific checks | project-specific enforcement |
 | Merge/deploy authority | explicit fields and owner review | external platform gates |
-The advisory validator covers only SEM-001…012 and is not evidence of CI,
+The advisory validator covers only SEM-001…014 and is not evidence of CI,
 runtime enforcement, owner approval, merge, deploy, or production
 authorization. See
 `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the

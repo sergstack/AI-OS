@@ -3,7 +3,9 @@
     "[AI OS]",
     "[Analytics]",
     "[Codex]",
+    "[Inbox Router]",
     "[LLM]",
+    "[Thinkers OS]",
     "[Thinking]"
   ],
   "records": [
@@ -19,8 +21,8 @@
         "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md",
         "ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 31982,
-      "bundle_bytes": 33272,
+      "source_bytes": 33035,
+      "bundle_bytes": 34325,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -37,10 +39,11 @@
         "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
+        "AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md",
         "ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 45539,
-      "bundle_bytes": 46393,
+      "source_bytes": 50590,
+      "bundle_bytes": 51559,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -119,8 +122,8 @@
         "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md",
         "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"
       ],
-      "source_bytes": 14083,
-      "bundle_bytes": 15128,
+      "source_bytes": 20885,
+      "bundle_bytes": 21920,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -141,8 +144,8 @@
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 40521,
-      "bundle_bytes": 41649,
+      "source_bytes": 41007,
+      "bundle_bytes": 42133,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -413,14 +416,15 @@
       "source_paths": [
         "ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md",
         "ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md",
+        "ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md",
         "ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md",
         "ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md",
         "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 65745,
-      "bundle_bytes": 66763,
+      "source_bytes": 70388,
+      "bundle_bytes": 71510,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -531,8 +535,8 @@
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 44648,
-      "bundle_bytes": 45655,
+      "source_bytes": 45134,
+      "bundle_bytes": 46139,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -625,10 +629,85 @@
       "candidate_source_paths": [],
       "resolution_status": "not_applicable",
       "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Inbox Router]",
+      "bundle_path": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_01_ROUTING_WORKFLOW.md",
+      "source_paths": [
+        "ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md"
+      ],
+      "source_bytes": 5710,
+      "bundle_bytes": 6815,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Inbox Router]",
+      "bundle_path": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md",
+      "source_paths": [
+        "ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md",
+        "ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md"
+      ],
+      "source_bytes": 5615,
+      "bundle_bytes": 6543,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Thinkers OS]",
+      "bundle_path": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md",
+      "source_paths": [
+        "ChatGPT/[Thinkers OS]/Knowledge/INDEX.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/THINKERS_OS_WORKFLOW.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md",
+        "ChatGPT/[Thinkers OS]/CURRENT_STATUS.md"
+      ],
+      "source_bytes": 10567,
+      "bundle_bytes": 11588,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Thinkers OS]",
+      "bundle_path": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_02_ARTIFACTS_AND_SYNTHESIS.md",
+      "source_paths": [
+        "ChatGPT/[Thinkers OS]/Knowledge/ARTIFACT_CONTRACTS.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/ROUTING_AND_HANDOFF.md"
+      ],
+      "source_bytes": 11927,
+      "bundle_bytes": 12888,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
     }
   ],
   "metrics": {
-    "bundles": 29,
+    "bundles": 33,
     "unresolved_bundle_only_semantic_count": 0,
     "blocking_record_count": 0
   }

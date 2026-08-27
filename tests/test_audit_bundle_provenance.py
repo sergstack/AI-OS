@@ -22,6 +22,10 @@ def test_blank_line_compaction_is_equivalent() -> None:
     assert source_only == []
 
 
+def test_audit_covers_every_active_upload_project() -> None:
+    assert AUDIT.TARGET_PROJECTS == frozenset(AUDIT.PROJECTS)
+
+
 def test_bundle_only_line_blocks_generation() -> None:
     bundle = "# Content\n## From: `Knowledge/a.md`\n# Title\nText\nAdditional rule\n"
     status, bundle_only, source_only = AUDIT.classify(bundle, {"Knowledge/a.md": "# Title\nText\n"})

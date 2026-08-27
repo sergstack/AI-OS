@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-12
+- last_checked: 2026-08-27 (repository and pilot evidence refresh)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -10,7 +10,7 @@
 - default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
 - smoke_qa_status: pass
 - runtime_smoke_status: candidate
-- realistic_pilot_status: not_run
+- realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -48,6 +48,58 @@ Evidence-dependent or external state:
   reconciliation. Existing dated evidence and `not_verified` / `not_run`
   statuses remain unchanged.
 
+Observed external pilot evidence — 2026-08-27:
+
+- `PILOT-AIOS-001` completed one live `[AI OS]` response and is recorded as
+  `candidate` with `medium` confidence in `PILOT_RESULTS_2026-08-27_AIOS.md`.
+- The response named its KB sources, separated facts from hypotheses, retained
+  the promotion gate for embeddings, semantic search, and vector DB, and
+  routed the next step to bounded governance evidence collection.
+- This is one bounded pilot result, not owner acceptance, a full pilot set,
+  or production authorization. All blocked items and `production_promotion: no`
+  remain unchanged.
+
+- `PILOT-THINKING-001` completed one live decision memo and is recorded as
+  `candidate` with `medium` confidence in
+  `PILOT_RESULTS_2026-08-27_THINKING.md`.
+- The memo compared four reversible options, separated facts, assumptions, and
+  unknowns, identified risks, set a `recommended` decision status and revisit
+  triggers, and handed the next stage back to `[AI OS]`.
+- It recommends further diverse live pilots before a retrieval investigation,
+  architecture change, owner acceptance, or any promotion decision. This is
+  decision-support evidence only; it does not authorize any of those actions.
+
+- `PILOT-ANALYTICS-001` completed one live quick-analysis response on an
+  artificial three-row dataset and is recorded as `candidate` with `medium`
+  confidence in `PILOT_RESULTS_2026-08-27_ANALYTICS.md`.
+- The response defined grain, period, units, formulas, `RAW → stage → mart`,
+  reconciliation checks, and limitations. It handled the zero-plan row without
+  inventing a percentage and made no causal claim beyond the supplied data.
+- This is bounded analytical behavior evidence only; no user data, files,
+  implementation, promotion, or production action was involved.
+
+- `PILOT-CROSS-001` completed one live `[AI OS] → [Thinking] → [AI OS]`
+  routing/resume case and is recorded as `candidate` with `medium` confidence
+  in `PILOT_RESULTS_2026-08-27_CROSS.md`.
+- The route preserved the original goal, constraints, owner boundaries, and
+  return path; no scope drift or role confusion was observed. This is limited
+  evidence from one route, not proof of general cross-project reliability,
+  owner acceptance, or production authorization.
+
+Repository evidence refresh — 2026-08-27:
+
+- PR #298 restored the generated Knowledge Bundle and provenance-audit
+  artifacts that had drifted from their tracked sources.
+- The repository bundle check and provenance-audit check completed
+  successfully; the focused provenance/bundle test set reported 11 passing
+  tests.
+- The PR's `docs-safety` and `merge-gate` checks were observed successful
+  before merge.
+- This refresh verifies repository evidence only. It does not add external
+  ChatGPT UI sync evidence, a new smoke run, pilot results, owner acceptance,
+  or production authorization. Accordingly, the smoke, pilot, acceptance, and
+  production-promotion statuses above are unchanged.
+
 `PROJECT_INSTRUCTIONS.md` files must stay compact. Supporting policies, examples, templates, checklists, and detailed workflows belong in `Knowledge/`.
 
 Recent verified state:
@@ -57,8 +109,9 @@ Recent verified state:
 - ChatGPT Project upload mode is compact `Knowledge_Bundles` by default.
 - `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
   2026-07-06 smoke QA evidence. Smoke QA does not equal production readiness.
-- `PILOT_CASES.md` remains backlog/unsupported until pilot result evidence is
-  recorded.
+- `PILOT-AIOS-001`, `PILOT-THINKING-001`, `PILOT-ANALYTICS-001`, and
+  `PILOT-CROSS-001` have recorded candidate results; all other pilots remain
+  backlog/unsupported until their own result evidence is recorded.
 - StreamDeck v2.7 remains active; v2.8 remains candidate/manual-only.
 
 ## Dual Surface operational acceptance
@@ -110,5 +163,6 @@ Run repository validation before PR review: use the canonical command set from `
 Then complete operational verification:
 
 - `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- execute and record pilot results from `PILOT_CASES.md`
+- obtain owner review for the four candidate pilots, then capture the next real
+  failure-to-regression case from `PILOT_CASES.md`
 - keep production promotion blocked until accepted pilot evidence exists

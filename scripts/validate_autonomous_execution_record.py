@@ -16,7 +16,7 @@ Section 17):
   local pytest. Wiring it into `.github/workflows/*` is a deliberately
   separate, not-yet-authorized step (see Section 17: "a blocking CI gate").
 - It implements a fixed, documented subset of semantic rules (SEM-001
-  through SEM-012 below). It is not a full implementation of every semantic
+  through SEM-014 below). It is not a full implementation of every semantic
   case referenced in
   `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md`.
 
@@ -431,10 +431,79 @@ def check_sem_011(record: dict, record_path: str) -> list[Violation]:
     return violations
 
 
-# SEM-012: candidate research and hypotheses must not become action-eligible
-# after a context transformation, handoff, or resume.
-# Source: Section 5.6 and Section 15 (authority provenance persistence).
+# SEM-012: a repeat visit to an owner requires a named evidence delta.
+# Source: AES Continuation Control Plane Contract, Section 5.
 def check_sem_012(record: dict, record_path: str) -> list[Violation]:
+    continuation = record.get("continuation")
+    if not isinstance(continuation, dict):
+        return []
+    violations: list[Violation] = []
+    visited_owners: set[str] = set()
+    for route in continuation.get("route_trace") or []:
+        owner = route.get("to_owner")
+        if owner in visited_owners and not route.get("evidence_delta"):
+            _add(
+                violations,
+                record_path,
+                "SEM-012",
+                f"repeat route to owner '{owner}' has no evidence_delta",
+            )
+        if isinstance(owner, str):
+            visited_owners.add(owner)
+    return violations
+
+
+# SEM-013: progress partitions the original acceptance criteria, and a guard
+# stop has the documented terminal reason and a report reference.
+# Source: AES Continuation Control Plane Contract, Sections 4, 6, and 8.
+def check_sem_013(record: dict, record_path: str) -> list[Violation]:
+    continuation = record.get("continuation")
+    if not isinstance(continuation, dict):
+        return []
+    violations: list[Violation] = []
+    original = set(continuation.get("original_acceptance_criteria") or [])
+    progress = continuation.get("progress")
+    if isinstance(progress, dict):
+        satisfied = set(progress.get("satisfied_criteria") or [])
+        remaining = set(progress.get("remaining_criteria") or [])
+        if satisfied & remaining or satisfied | remaining != original:
+            _add(
+                violations,
+                record_path,
+                "SEM-013",
+                "progress must partition original_acceptance_criteria into satisfied and remaining criteria",
+            )
+        if record.get("overall_delivery") == "pass" and remaining:
+            _add(
+                violations,
+                record_path,
+                "SEM-013",
+                "overall_delivery: pass requires no remaining original acceptance criteria",
+            )
+
+    guards = continuation.get("guards")
+    if not isinstance(guards, dict) or not guards.get("tripped_guard"):
+        return violations
+    expected_reasons = {
+        "hop_budget": "iteration_limit_reached",
+        "per_owner_retry_limit": "hard_blocker",
+        "no_progress_counter": "continuation_no_progress_limit_reached",
+        "route_signature_cycle": "hard_blocker",
+    }
+    guard = guards["tripped_guard"]
+    if record.get("execution_state") != "stopped":
+        _add(violations, record_path, "SEM-013", "a tripped continuation guard requires execution_state: stopped")
+    if record.get("terminal_reason") != expected_reasons.get(guard):
+        _add(violations, record_path, "SEM-013", f"guard '{guard}' requires terminal_reason '{expected_reasons.get(guard)}'")
+    if not guards.get("terminal_report_ref"):
+        _add(violations, record_path, "SEM-013", "a tripped continuation guard requires terminal_report_ref")
+    return violations
+
+
+# SEM-014: candidate research and hypotheses must not become action-eligible
+# after a context transformation, handoff, or resume.
+# Source: Section 5.7 and Section 15 (authority provenance persistence).
+def check_sem_014(record: dict, record_path: str) -> list[Violation]:
     violations: list[Violation] = []
     containers = []
     continuation = record.get("continuation")
@@ -455,7 +524,7 @@ def check_sem_012(record: dict, record_path: str) -> list[Violation]:
                 _add(
                     violations,
                     record_path,
-                    "SEM-012",
+                    "SEM-014",
                     f"{location} claim '{claim.get('claim_text', '<unknown>')}' is "
                     f"{claim.get('authority_class')} but not action-ineligible",
                 )
@@ -475,6 +544,8 @@ ALL_CHECKS = [
     check_sem_010,
     check_sem_011,
     check_sem_012,
+    check_sem_013,
+    check_sem_014,
 ]
 
 RULE_DESCRIPTIONS = {
@@ -495,7 +566,9 @@ RULE_DESCRIPTIONS = {
     "SEM-009": "v2 or closure-aware successful record requires a passed, goal/scope/invariant/authority-preserving Closure Review with no correctable gaps",
     "SEM-010": "closure corrective iterations must not exceed the effective ceiling of two",
     "SEM-011": "closure defects must be registered; successful closure corrections require current final validation",
-    "SEM-012": "candidate research and hypotheses remain not_eligible across continuation and handoff provenance",
+    "SEM-012": "a repeat route to an owner requires a named evidence_delta",
+    "SEM-013": "progress partitions original acceptance criteria; a guard stop has the documented terminal reason and report",
+    "SEM-014": "candidate research and hypotheses remain not_eligible across continuation and handoff provenance",
 }
 
 
