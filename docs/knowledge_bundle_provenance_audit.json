@@ -66,6 +66,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -92,6 +93,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -151,6 +153,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -212,6 +217,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "GOAL_PACKS.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -246,6 +254,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -280,6 +289,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -304,6 +314,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -347,6 +358,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -407,6 +419,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -446,6 +459,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -505,6 +519,11 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
+        "ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -546,6 +565,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -605,6 +627,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -661,6 +684,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -722,6 +748,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -792,6 +819,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -842,6 +870,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -879,6 +908,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -932,6 +962,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -956,6 +989,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1006,6 +1040,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1045,6 +1080,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1084,6 +1120,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1131,6 +1168,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1154,6 +1194,7 @@
       ],
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1194,6 +1235,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1256,6 +1298,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1295,6 +1338,7 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [],
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1355,6 +1399,9 @@
         }
       ],
       "mapping_status": "mapped",
+      "candidate_source_paths": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md"
+      ],
       "recommended_action": "block_generation_and_migrate_or_classify"
     }
   ],

@@ -57,6 +57,23 @@ def classify(bundle: str, sources: dict[str, str]) -> tuple[str, list[dict[str, 
     return "equivalent", [], []
 
 
+def candidate_source_paths(root: Path, findings: list[dict[str, str]]) -> list[str]:
+    """Surface review candidates without changing a declared mapping."""
+    candidates: set[str] = set()
+    for finding in findings:
+        needle = " ".join(finding["excerpt"].replace("`", "").split()[:8])
+        if len(needle) < 24:
+            continue
+        for path in root.rglob("*.md"):
+            relative = path.relative_to(root)
+            if ("Knowledge_Bundles" in relative.parts or "archive" in relative.parts
+                    or str(relative).startswith("docs/knowledge_bundle_provenance_")):
+                continue
+            if needle in normalize(path.read_text(encoding="utf-8")):
+                candidates.add(str(relative))
+    return sorted(candidates)
+
+
 def render_markdown(payload: dict[str, object]) -> str:
     metrics = payload["metrics"]
     records = payload["records"]
@@ -86,6 +103,7 @@ def render_markdown(payload: dict[str, object]) -> str:
             f"- Classification: {record['classification']}",
             f"- Mapping status: {record['mapping_status']}",
             f"- Recommended action: {record['recommended_action']}",
+            f"- Candidate canonical source paths: {', '.join(f'`{path}`' for path in record['candidate_source_paths']) or 'none'}",
             f"- Bundle-only excerpt or reference: {json.dumps(record['bundle_only_excerpt_or_ref'], ensure_ascii=False)}",
             f"- Source-only excerpt or reference: {json.dumps(record['source_only_excerpt_or_ref'], ensure_ascii=False)}",
         ])
@@ -116,6 +134,7 @@ def main() -> int:
                             "source_bytes": sum(len(value.encode()) for value in sources.values()), "bundle_bytes": len(text.encode()),
                             "classification": status, "bundle_only_excerpt_or_ref": bundle_only,
                             "source_only_excerpt_or_ref": source_only, "mapping_status": "unmapped" if missing else "mapped",
+                            "candidate_source_paths": candidate_source_paths(root, bundle_only),
                             "recommended_action": "eligible_after_review" if status == "equivalent" else "block_generation_and_migrate_or_classify"})
     unresolved = sum(record["classification"] in {"unmapped", "bundle_only_semantic"} for record in records)
     blocking = sum(record["classification"] != "equivalent" for record in records)

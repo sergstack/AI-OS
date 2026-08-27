@@ -52,9 +52,21 @@ def test_markdown_report_has_all_provenance_fields() -> None:
             "project": "[AI OS]", "bundle_path": "bundle.md", "source_paths": ["Knowledge/a.md"],
             "source_bytes": 1, "bundle_bytes": 2, "classification": "bundle_only_semantic",
             "mapping_status": "mapped", "recommended_action": "block_generation_and_migrate_or_classify",
+            "candidate_source_paths": ["Knowledge/candidate.md"],
             "bundle_only_excerpt_or_ref": [{"path": "Knowledge/a.md", "excerpt": "extra"}],
             "source_only_excerpt_or_ref": [],
         }],
     })
     for field in ("Source paths", "Source bytes", "Bundle bytes", "Classification", "Mapping status", "Recommended action", "Bundle-only excerpt", "Source-only excerpt"):
         assert field in report
+
+
+def test_candidate_sources_exclude_bundles_and_archives(tmp_path: Path) -> None:
+    (tmp_path / "Knowledge").mkdir()
+    (tmp_path / "Knowledge_Bundles").mkdir()
+    (tmp_path / "archive").mkdir()
+    phrase = "This is a unique canonical source sentence for matching."
+    (tmp_path / "Knowledge" / "candidate.md").write_text(phrase, encoding="utf-8")
+    (tmp_path / "Knowledge_Bundles" / "copy.md").write_text(phrase, encoding="utf-8")
+    (tmp_path / "archive" / "old.md").write_text(phrase, encoding="utf-8")
+    assert AUDIT.candidate_source_paths(tmp_path, [{"path": "x", "excerpt": phrase}]) == ["Knowledge/candidate.md"]
