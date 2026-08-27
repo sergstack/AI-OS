@@ -15,7 +15,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 | Pilot ID | Project | Status | Confidence | Owner | Next step |
 |---|---|---|---|---|---|
 | `PILOT-AIOS-001` | `[AI OS]` | candidate | medium | Sergey | Owner review of recorded live result; run the next bounded pilot |
-| `PILOT-THINKING-001` | `[Thinking]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
+| `PILOT-THINKING-001` | `[Thinking]` | candidate | medium | Sergey | Owner review of recorded decision memo; run the next bounded pilot |
 | `PILOT-ANALYTICS-001` | `[Analytics]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-LLM-001` | `[LLM]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-CODEX-001` | `[Codex]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
@@ -67,10 +67,10 @@ Evidence required: Decision memo, assumptions list, risks, chosen recommendation
 Success criteria: 2-4 options; facts / assumptions separated; risks listed; decision status assigned; revisit trigger included; handoff if needed.
 Failure criteria: Gives a recommendation without assumptions or risks; omits status; performs Analytics/Codex work instead of decision framing.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: decision status rules, routing rules, or judge/revisor standards change.
-Next step: Sync `[Thinking]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_THINKING.md`, then run the next bounded pilot without expanding architecture.
 
 ## [Analytics] Pilot
 
@@ -177,12 +177,12 @@ Next step: Run after individual project sync records are available.
 
 ## Blockers
 
-- The `[AI OS]` pilot has one observed candidate result; all other pilots remain unrecorded.
+- `[AI OS]` and `[Thinking]` each have one observed candidate result; all other pilots remain unrecorded.
 - Smoke QA refresh has not yet been run after the current pilot evidence was recorded.
 
 ## Next steps
 
-1. Obtain owner review of `PILOT_RESULTS_2026-08-27_AIOS.md`.
+1. Obtain owner review of `PILOT_RESULTS_2026-08-27_AIOS.md` and `PILOT_RESULTS_2026-08-27_THINKING.md`.
 2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md` when a refresh is required.
 3. Record the next pilot result with `PILOT_RESULTS_TEMPLATE.md`.
 4. Update pilot statuses only when evidence exists.
