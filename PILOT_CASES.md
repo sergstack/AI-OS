@@ -16,7 +16,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 |---|---|---|---|---|---|
 | `PILOT-AIOS-001` | `[AI OS]` | candidate | medium | Sergey | Owner review of recorded live result; run the next bounded pilot |
 | `PILOT-THINKING-001` | `[Thinking]` | candidate | medium | Sergey | Owner review of recorded decision memo; run the next bounded pilot |
-| `PILOT-ANALYTICS-001` | `[Analytics]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
+| `PILOT-ANALYTICS-001` | `[Analytics]` | candidate | medium | Sergey | Owner review of recorded analytical result; run the cross-project pilot |
 | `PILOT-LLM-001` | `[LLM]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-CODEX-001` | `[Codex]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-INBOX-001` | `[Inbox Router]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
@@ -83,10 +83,10 @@ Evidence required: Data contract, stage/mart plan or files, QA checklist, tracea
 Success criteria: grain / period / filters explicit; data contract present; stage_main_full and mart_main_full designed or created; QA checks listed; claims traceable to data/mart; limitations visible.
 Failure criteria: Uses unsupported calculations; mixes raw/stage/mart/report layers; omits assumptions or limitations; routes implementation directly to Codex without analysis contract.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: analytics workflow, data contract, QA, or mart standards change.
-Next step: Sync `[Analytics]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_ANALYTICS.md`, then run the cross-project pilot without widening scope.
 
 ## [LLM] Pilot
 
@@ -177,12 +177,12 @@ Next step: Run after individual project sync records are available.
 
 ## Blockers
 
-- `[AI OS]` and `[Thinking]` each have one observed candidate result; all other pilots remain unrecorded.
+- `[AI OS]`, `[Thinking]`, and `[Analytics]` each have one observed candidate result; all other pilots remain unrecorded.
 - Smoke QA refresh has not yet been run after the current pilot evidence was recorded.
 
 ## Next steps
 
-1. Obtain owner review of `PILOT_RESULTS_2026-08-27_AIOS.md` and `PILOT_RESULTS_2026-08-27_THINKING.md`.
+1. Obtain owner review of the three recorded candidate pilot results.
 2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md` when a refresh is required.
 3. Record the next pilot result with `PILOT_RESULTS_TEMPLATE.md`.
 4. Update pilot statuses only when evidence exists.
