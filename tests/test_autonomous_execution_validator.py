@@ -496,3 +496,36 @@ def test_sem011_closure_correction_requires_fresh_final_validation():
 
 def test_closure_aware_clean_record_has_no_violations():
     assert validator.validate_record(closure_aware_record(), "fixture") == []
+
+
+def test_sem014_candidate_research_cannot_become_action_eligible_after_resume():
+    record = fixture()
+    record["continuation"] = {
+        "authority_provenance": {
+            "claims": [{
+                "claim_text": "Enable feature X.",
+                "authority_class": "candidate_research",
+                "source_refs": ["research:fixture"],
+                "action_eligibility": "eligible",
+            }]
+        }
+    }
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-014" in rule_ids(violations)
+
+
+def test_sem014_identical_accepted_policy_claim_remains_eligible():
+    record = fixture()
+    record["handoffs"] = [{
+        "handoff_id": "handoff-001",
+        "authority_provenance": {
+            "claims": [{
+                "claim_text": "Enable feature X.",
+                "authority_class": "accepted_policy",
+                "source_refs": ["policy:fixture"],
+                "action_eligibility": "eligible",
+            }]
+        },
+    }]
+    violations = validator.validate_record(record, "fixture")
+    assert "SEM-014" not in rule_ids(violations)

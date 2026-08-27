@@ -317,6 +317,31 @@ guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
 numeric defaults; the stricter applicable corrective-loop limit still wins.
 
+### 5.7 Authority provenance for transformed context
+
+`authority_status` reports the execution's owner-approval state; it is not a
+claim-level provenance label. When an active `Invoke AI-OS` execution carries
+a decision-relevant claim through a context pack, handoff, or resume, its
+`continuation.authority_provenance` and every new AES handoff preserve:
+
+```yaml
+claim_text:
+authority_class:       # source_fact | owner_instruction | accepted_policy |
+                        # observed_execution_evidence | candidate_research |
+                        # hypothesis_recommendation
+source_refs: []
+action_eligibility:    # eligible | not_eligible | owner_decision_required
+```
+
+The same text may legitimately have different action eligibility because its
+authority class differs. `candidate_research` and `hypothesis_recommendation`
+must be `not_eligible`; they can inform review or evidence collection but
+never authorize acceptance, policy change, or execution. `source_fact` and
+`observed_execution_evidence` are evidence, not authority. `eligible` is
+permitted only for an in-scope `owner_instruction` or `accepted_policy` and
+never replaces an external authority gate. Source references are retained; a
+summary, confidence label, or generic evidence reference is not a substitute.
+
 ## 6. Source-revision contract
 
 ```yaml
@@ -711,7 +736,7 @@ for its documented subset; it is not CI or runtime enforcement.
 | Business-rule preservation | project-specific checks | project-specific enforcement |
 | Merge/deploy authority | explicit fields and owner review | external platform gates |
 
-The advisory validator covers only SEM-001…011 and is not evidence of CI,
+The advisory validator covers only SEM-001…014 and is not evidence of CI,
 runtime enforcement, owner approval, merge, deploy, or production
 authorization. See
 `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the
@@ -788,6 +813,7 @@ acceptance_snapshot:
 qa_status:
 judge_verdict:
 authority_status:
+authority_provenance:
 next_owner:
 ```
 
@@ -810,7 +836,9 @@ next_owner:
 ```
 
 A handoff must never drop: execution ID, requirement IDs, defect IDs,
-iteration ID, evidence references, or authority status.
+iteration ID, evidence references, authority status, or authority provenance
+for a decision-relevant claim. A new AES handoff carries an
+`authority_provenance` object even when its `claims` list is empty.
 
 ### 15.2 Continuation handoff rule
 

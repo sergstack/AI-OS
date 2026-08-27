@@ -59,8 +59,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
-- Source bytes: 49132
-- Bundle bytes: 50105
+- Source bytes: 50590
+- Bundle bytes: 51559
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -73,8 +73,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`, `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`, `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`, `HANDOFF_STYLE_STANDARD.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_03_HANDOFF_AND_SMOKE_QA_BUNDLE_SEMANTICS.md`
-- Source bytes: 15647
-- Bundle bytes: 16706
+- Source bytes: 17235
+- Bundle bytes: 18289
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -87,8 +87,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `GOAL_PACKS.md`, `COMMAND_SURFACE.md`, `CONTEXT_PACK_STANDARD.md`, `PROMPT_QA_FACTORY.md`, `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`, `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md`
-- Source bytes: 27634
-- Bundle bytes: 28824
+- Source bytes: 27927
+- Bundle bytes: 29116
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -129,8 +129,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
-- Source bytes: 39549
-- Bundle bytes: 40679
+- Source bytes: 41007
+- Bundle bytes: 42133
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -311,8 +311,8 @@ Blocking record count: **0**
 
 - Project: [LLM]
 - Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
-- Source bytes: 68930
-- Bundle bytes: 70056
+- Source bytes: 70388
+- Bundle bytes: 71510
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -339,8 +339,8 @@ Blocking record count: **0**
 
 - Project: [LLM]
 - Source paths: `CONTEXT_PACK_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`, `ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
-- Source bytes: 9879
-- Bundle bytes: 10931
+- Source bytes: 10172
+- Bundle bytes: 11223
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -381,8 +381,8 @@ Blocking record count: **0**
 
 - Project: [Codex]
 - Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 43676
-- Bundle bytes: 44685
+- Source bytes: 45134
+- Bundle bytes: 46139
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

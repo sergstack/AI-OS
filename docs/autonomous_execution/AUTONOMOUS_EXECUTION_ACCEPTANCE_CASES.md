@@ -6,7 +6,7 @@ Current schema: `schemas/autonomous_execution_record.schema.json`; historical
 v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 
 Phase 1 created this specification without a semantic validator. The current
-repository includes a scoped, read-only advisory validator for SEM-001…011;
+repository includes a scoped, read-only advisory validator for SEM-001…014;
 it is not CI or runtime enforcement, and cases outside that subset remain
 documented requirements rather than automated checks.
 
@@ -81,6 +81,9 @@ the remaining cases still require Judge/manual review.
    a valid AES `continuation` envelope.
 17. A warm resume proceeds after a material change to original goal, owner,
    scope, authority, routing state, or source revision.
+18. Identical claim text is carried as `candidate_research` in one
+   continuation/handoff and `accepted_policy` in another, but the candidate
+   is action-eligible or otherwise loses its source reference.
 
 ## 2.1 Invoke AI-OS continuation cases
 
@@ -92,6 +95,7 @@ the remaining cases still require Judge/manual review.
 | CONT-4 | Stale or materially changed continuation state | Reject warm resume and use cold entry or return the relevant blocked/owner-decision outcome. |
 | CONT-5 | Missing record reference | Do not infer state from session context; use cold entry or report the missing state. |
 | CONT-6 | Local pointer proposed | Treat it only as a cache of execution ID and record reference, never as canonical state; add it only after behavioral evidence establishes need. |
+| CONT-7 | Decision-relevant claim is summarized, handed off, or resumed | Preserve claim text, authority class, source reference, and action eligibility; candidate research and hypotheses remain `not_eligible`. |
 
 ## 3. Validation responsibility summary
 
@@ -99,11 +103,11 @@ the remaining cases still require Judge/manual review.
 | --- | --- | --- |
 | JSON syntax | `python3 -m json.tool` | yes |
 | Required fields / types / enums / ID patterns / nested shape | current v2 schema plus historical v1 schema | pytest structural conformance tests; not a CI gate |
-| Semantic cases (Section 2) | advisory validator for SEM-001…011; normative/manual review for the rest | pytest covers SEM-001…011; not a CI gate |
+| Semantic cases (Section 2) | advisory validator for SEM-001…014; normative/manual review for the rest | pytest covers SEM-001…014; not a CI gate |
 | Allowed-file scope | exact scope manifest + `git diff --stat` review | manual, per PR |
 | Business-rule / formula / metric preservation | project-specific checks | out of Phase 1 scope entirely |
 
-The repository does not assert that cases outside SEM-001…011 are
+The repository does not assert that cases outside SEM-001…014 are
 automatically enforced.
 
 ## 4. Closure Review acceptance cases (issue #268)

@@ -6,6 +6,27 @@
 
 Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
 
+## Authority provenance
+
+When a handoff or context pack carries a decision-relevant claim, preserve its
+claim-level authority provenance across summarization, handoff, and resume:
+
+- `source_fact`;
+- `owner_instruction` (including owner-frozen policy);
+- `accepted_policy`;
+- `observed_execution_evidence`;
+- `candidate_research`;
+- `hypothesis_recommendation`.
+
+Record the claim text, at least one source reference, and action eligibility.
+`candidate_research` and `hypothesis_recommendation` are `not_eligible`: they
+may justify review or evidence gathering, never policy acceptance or execution.
+`source_fact` and `observed_execution_evidence` are evidence, not authority to
+act. Only an in-scope `owner_instruction` or `accepted_policy` may be marked
+`eligible`, and it still does not replace required external authority gates.
+Do not collapse these classes into `authority_status`, confidence, or an
+unqualified evidence reference.
+
 - Поле `Objective` сохраняет исходную цель и не заменяется локальной подзадачей.
 - `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки.
 - Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу.

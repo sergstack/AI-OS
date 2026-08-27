@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:a955f87277aec5b0e0c579912ba59d3b8f07620b153fba314446c23e4cf7892b
+- source_fingerprint: sha256:57afb7f9a59ec069f87cf3baa66689860fa971257069b5bbf1e51b1ad6e78805
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -34,6 +34,23 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 Назначение: как `[AI OS]` передаёт результат в другие Project-папки.
 ## Continuation contract
 Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
+## Authority provenance
+When a handoff or context pack carries a decision-relevant claim, preserve its
+claim-level authority provenance across summarization, handoff, and resume:
+- `source_fact`;
+- `owner_instruction` (including owner-frozen policy);
+- `accepted_policy`;
+- `observed_execution_evidence`;
+- `candidate_research`;
+- `hypothesis_recommendation`.
+Record the claim text, at least one source reference, and action eligibility.
+`candidate_research` and `hypothesis_recommendation` are `not_eligible`: they
+may justify review or evidence gathering, never policy acceptance or execution.
+`source_fact` and `observed_execution_evidence` are evidence, not authority to
+act. Only an in-scope `owner_instruction` or `accepted_policy` may be marked
+`eligible`, and it still does not replace required external authority gates.
+Do not collapse these classes into `authority_status`, confidence, or an
+unqualified evidence reference.
 - Поле `Objective` сохраняет исходную цель и не заменяется локальной подзадачей.
 - `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки.
 - Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу.
@@ -234,6 +251,7 @@ Objective:
 Context:
 Inputs:
 Constraints:
+Authority provenance:
 Expected output:
 Acceptance criteria:
   Business acceptance:
@@ -248,6 +266,15 @@ Use `Mode: goal` for broad repo/workflow/project goals where the receiving
 project can infer bounded safe scope. Use `Mode: strict` for high-risk,
 already-scoped, ultra-long, or explicitly requested task packages.
 The three acceptance sub-fields are required for user-facing artifacts and business deliverables. `Objective:` preserves the original goal through continuation; do not replace it with a local subtask.
+`Authority provenance:` is required whenever a handoff carries a
+decision-relevant claim. For each such claim, retain the claim text, authority
+class, source reference, and action eligibility. Use only the canonical AES
+classes: `source_fact`, `owner_instruction`, `accepted_policy`,
+`observed_execution_evidence`, `candidate_research`, and
+`hypothesis_recommendation`. Candidate research and hypotheses may inform
+review, but are never action-eligible; a source fact or observed evidence is
+not itself an authorization. This field complements, and never replaces,
+`authority_status` or a required owner/merge/production gate.
 ## Project-Specific Additions
 - `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.
 - `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.

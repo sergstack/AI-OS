@@ -52,7 +52,7 @@ def test_current_contract_rejects_a_new_v1_success_record_without_closure_review
 
 
 def test_continuation_envelope_requires_durable_resume_state():
-    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["continuation"])
+    validator = Draft7Validator(CURRENT_SCHEMA)
     continuation = {
         "original_goal": "Continue the original AI-OS execution.",
         "original_acceptance_criteria": ["original goal is rechecked"],
@@ -65,21 +65,21 @@ def test_continuation_envelope_requires_durable_resume_state():
         "goal_boundary_hash": "sha256:" + "a" * 64,
         "acceptance_criteria_hash": "sha256:" + "b" * 64,
         "state_hash": "sha256:" + "c" * 64,
+        "authority_provenance": {"claims": []},
         "updated_at": "2026-01-01T01:00:00Z",
     }
-    assert not list(validator.iter_errors(continuation))
-
-    record_errors = list(Draft7Validator(CURRENT_SCHEMA).iter_errors({
+    record_errors = list(validator.iter_errors({
         "continuation": continuation,
     }))
     assert not any(tuple(error.absolute_path)[:1] == ("continuation",) for error in record_errors)
 
     del continuation["record_ref"]
-    assert list(validator.iter_errors(continuation))
+    record_errors = list(validator.iter_errors({"continuation": continuation}))
+    assert any(tuple(error.absolute_path)[:1] == ("continuation",) for error in record_errors)
 
 
 def test_continuation_control_plane_fields_are_additive_and_allow_unset_thresholds():
-    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["continuation"])
+    validator = Draft7Validator(CURRENT_SCHEMA)
     continuation = {
         "original_goal": "Continue the original AI-OS execution.",
         "original_acceptance_criteria": ["original goal is rechecked"],
@@ -92,6 +92,7 @@ def test_continuation_control_plane_fields_are_additive_and_allow_unset_threshol
         "goal_boundary_hash": "sha256:" + "a" * 64,
         "acceptance_criteria_hash": "sha256:" + "b" * 64,
         "state_hash": "sha256:" + "c" * 64,
+        "authority_provenance": {"claims": []},
         "updated_at": "2026-01-01T01:00:00Z",
         "route_trace": [{
             "route_id": "route-001", "from_owner": "[AI OS]", "to_owner": "[Codex]",
@@ -102,4 +103,13 @@ def test_continuation_control_plane_fields_are_additive_and_allow_unset_threshol
         "progress": {"satisfied_criteria": [], "remaining_criteria": ["original goal is rechecked"], "last_real_progress_route_id": None, "evidence_refs": []},
         "guards": {"max_continuation_hops": None, "max_retries_per_owner": None, "max_no_progress_hops": None, "route_signature_history_window": None, "tripped_guard": None, "tripped_guards": [], "terminal_report_ref": None},
     }
-    assert not list(validator.iter_errors(continuation))
+    errors = list(validator.iter_errors({"continuation": continuation}))
+    assert not any(tuple(error.absolute_path)[:1] == ("continuation",) for error in errors)
+
+
+def test_authority_provenance_keeps_identical_claims_action_distinct():
+    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["authority_provenance"])
+    policy_claim = {"claims": [{"claim_text": "Enable feature X.", "authority_class": "accepted_policy", "source_refs": ["policy:fixture"], "action_eligibility": "eligible"}]}
+    research_claim = {"claims": [{"claim_text": "Enable feature X.", "authority_class": "candidate_research", "source_refs": ["research:fixture"], "action_eligibility": "not_eligible"}]}
+    assert not list(validator.iter_errors(policy_claim))
+    assert not list(validator.iter_errors(research_claim))

@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - autonomous_retrieval: no
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:537f2459fe2e36cfa1ba730ef34a9bbf781deabab2d71bb1a39ed6c3cec32644
+- source_fingerprint: sha256:42c83642bdfc5f30dfc907be796457f431e5e29252b9b58d3c70b69fc997e04f
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -40,6 +40,7 @@ Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows.
 ## Decision needed
 ## Relevant files
 ## Facts
+## Authority provenance
 ## Constraints
 ## Forbidden
 ## Open questions
@@ -50,6 +51,9 @@ Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows.
 - Do not dump all files.
 - Use curated context.
 - Separate facts from assumptions.
+- For each decision-relevant claim, retain its authority class, source
+  reference, and action eligibility. The same claim text can have different
+  eligibility when its authority differs.
 - Mark missing evidence and open questions.
 - Route deterministic calculations to `[Analytics]`.
 - Route implementation, repo changes, checks, and PR work to `[Codex]`.
@@ -60,6 +64,7 @@ A Context Pack is ready when:
 - the goal is clear;
 - relevant files or sources are named;
 - facts and assumptions are separated;
+- decision-relevant claims retain authority provenance and action eligibility;
 - constraints and forbidden actions are visible;
 - the expected output is specific;
 - the receiving project can act without asking Sergey to write an atomic task package.
