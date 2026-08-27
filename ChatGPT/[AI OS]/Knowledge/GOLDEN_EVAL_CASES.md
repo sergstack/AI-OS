@@ -128,6 +128,21 @@ revise_example: checks pass but final result misses a material original-goal req
 blocked_example: acceptance reference/evidence is missing or owner boundary is violated
 revisit_trigger: goal, acceptance, constraints, evidence, owner, or final revision changes
 
+## CASE-FAILURE-REGRESSION-001
+
+case_id: `CASE-FAILURE-REGRESSION-001`
+workflow: observed failure to bounded regression case
+owner_project: routed owner / `[AI OS]`
+input: observed behavior, expected contract, evidence, and severity
+expected_behavior: retain candidate status until confirmation; create regression only when material and reproducible
+must_detect: missing evidence, subjective dislike, unknown expected behavior, and hard boundaries
+must_not_do: invent a failure, automatically change a workflow, or treat a Judge as deterministic proof
+judge_criteria: confirmation basis, owner boundary, regression contract, and rollback
+pass_example: confirmed material failure produces a bounded regression case
+revise_example: candidate failure needs better evidence or expected behavior
+blocked_example: no validation path or corrective authority is available
+revisit_trigger: new evidence, reproduced failure, corrective result, or changed contract
+
 ## CASE-THINKING-DECISION-001
 
 case_id: `CASE-THINKING-DECISION-001`

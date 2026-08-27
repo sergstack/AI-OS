@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:3c3aad130768af10439d701632ac97f424c38833e8af45ff9fe381919de3ce79
+- source_fingerprint: sha256:0d1560086437178657ba20e4aa0d533e6f51a445d3711d871f1a41dfa52711d5
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -58,6 +58,7 @@ Deterministic checks override LLM judge for calculations, tests, schemas, output
 | `AGENT-LOOP` | supervised loop review | `[AI OS]` / `[Thinking]` | loop design | governance eval | loop acceptance checklist | supervised loop, bounded retry, stop conditions, human acceptance | missing owner, retry rule, or stop condition | autonomous retrieval, uncontrolled agents, runtime artifacts, or no validation | 2026-07-06 | active |
 | `ACT-ABSTAIN` | act-or-abstain decision | `[AI OS]` / routed owner | supervised workflow | governance eval | deterministic authority/evidence/validation check | expected and actual decision match | bounded decision mismatch or incomplete evidence | hard-boundary violation or no validation path | 2026-08-27 | candidate |
 | `GOAL-CLOSURE` | AES Closure Review view | routed owner / `[AI OS]` | candidate output or change | closure eval | final evidence against original goal, acceptance, and owner boundary | checks pass and all closure dimensions satisfied | repairable goal or acceptance gap | missing acceptance/evidence or owner-boundary violation | 2026-08-27 | candidate |
+| `FAILURE-REGRESSION` | observed failure lifecycle | routed owner / `[AI OS]` | workflow failure | deterministic-first regression | failure evidence and explicit expected contract | confirmed failure has a bounded regression case where material | evidence or expected contract incomplete | hard boundary or no validation path | 2026-08-27 | candidate |
 | `THINKING-DECISION` | decision review | `[Thinking]` | decision memo / strategy | judge | assumptions, downside, reversibility, revisit trigger | options, risks, confidence, and revisit trigger are explicit | weak assumptions or missing downside can be revised | one-option decision, hidden blocker, or unsupported recommendation | 2026-07-06 | active |
 ## Required Eval Types
 ### AI OS Evidence Eval
@@ -252,6 +253,19 @@ pass_example: checks pass and goal, acceptance, and owner boundary are all satis
 revise_example: checks pass but final result misses a material original-goal requirement
 blocked_example: acceptance reference/evidence is missing or owner boundary is violated
 revisit_trigger: goal, acceptance, constraints, evidence, owner, or final revision changes
+## CASE-FAILURE-REGRESSION-001
+case_id: `CASE-FAILURE-REGRESSION-001`
+workflow: observed failure to bounded regression case
+owner_project: routed owner / `[AI OS]`
+input: observed behavior, expected contract, evidence, and severity
+expected_behavior: retain candidate status until confirmation; create regression only when material and reproducible
+must_detect: missing evidence, subjective dislike, unknown expected behavior, and hard boundaries
+must_not_do: invent a failure, automatically change a workflow, or treat a Judge as deterministic proof
+judge_criteria: confirmation basis, owner boundary, regression contract, and rollback
+pass_example: confirmed material failure produces a bounded regression case
+revise_example: candidate failure needs better evidence or expected behavior
+blocked_example: no validation path or corrective authority is available
+revisit_trigger: new evidence, reproduced failure, corrective result, or changed contract
 ## CASE-THINKING-DECISION-001
 case_id: `CASE-THINKING-DECISION-001`
 workflow: Thinking decision review
