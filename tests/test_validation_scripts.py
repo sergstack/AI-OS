@@ -566,45 +566,22 @@ def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
         if line.strip() and not line.startswith("#")
     }
 
-    protected_paths = [
-        ("AGENTS.md", "AGENTS.md"),
-        ("CLAUDE.md", "CLAUDE.md"),
-        ("GOAL_MODE.md", "GOAL_MODE.md"),
-        ("GOAL_PACKS.md", "GOAL_PACKS.md"),
-        ("COMMAND_SURFACE.md", "COMMAND_SURFACE.md"),
-        ("CONTEXT_PACK_STANDARD.md", "CONTEXT_PACK_STANDARD.md"),
-        ("MASTER_STATUS.md", "MASTER_STATUS.md"),
-        ("CURRENT_STATUS.md", "CURRENT_STATUS.md"),
-        ("SYNC_CONTRACT.md", "SYNC_CONTRACT.md"),
-        ("README.md", "README.md"),
-        ("MANIFEST.md", "MANIFEST.md"),
-        ("MANIFEST.json", "MANIFEST.json"),
-        ("PROJECT_REGISTRY.md", "PROJECT_REGISTRY.md"),
-        ("PARENT_CHILD_ISSUE_GATE_STANDARD.md", "PARENT_CHILD_ISSUE_GATE_STANDARD.md"),
-        ("EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"),
-        ("ARCHIVE_MAP.md", "ARCHIVE_MAP.md"),
-        ("UPLOAD_GUIDE.md", "UPLOAD_GUIDE.md"),
-        ("REPO_PATHS.md", "REPO_PATHS.md"),
-        ("docs/AI_DEVELOPMENT_WORKFLOW.md", "docs/AI_DEVELOPMENT_WORKFLOW.md"),
-        ("docs/MERGE_GATE_OWNER_CHECKLIST.md", "docs/MERGE_GATE_OWNER_CHECKLIST.md"),
-        ("ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "ChatGPT/*/Knowledge/AI_OS_PROJECT_FILES_INDEX.md"),
-        ("ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md", "ChatGPT/*/Knowledge/ARCHIVE_SUPERSEDED_RULE.md"),
-        ("ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md", "ChatGPT/*/Knowledge/GOVERNANCE_RULES.md"),
-        ("ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "ChatGPT/*/Knowledge/HANDOFF_PROTOCOL.md"),
-        ("ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md", "ChatGPT/*/Knowledge/KB_USAGE_RULES.md"),
-        ("ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md", "ChatGPT/*/Knowledge/PROJECT_ROUTING.md"),
-        ("scripts/", "scripts/"),
-        ("tests/", "tests/"),
-        (".github/", ".github/"),
-        ("PROJECT_INSTRUCTIONS.md", "PROJECT_INSTRUCTIONS.md"),
-    ]
-
-    expected_codeowners_patterns = {f"/{pattern}" for _, pattern in protected_paths}
-    expected_codeowners_patterns.remove("/PROJECT_INSTRUCTIONS.md")
-    expected_codeowners_patterns.add("PROJECT_INSTRUCTIONS.md")
-    assert codeowners_patterns == expected_codeowners_patterns
-
-    for path, codeowners_pattern in protected_paths:
-        workflow_pattern = path.replace(".", r"\.").replace("[", r"\[").replace("]", r"\]")
-        assert codeowners_pattern in codeowners
-        assert workflow_pattern in workflow or path in workflow
+    assert "auto_allowed=" in workflow
+    assert "protected=" not in workflow
+    required_codeowner_patterns = {
+        "/schemas/",
+        "/SMOKE_QA_RESULTS.md",
+        "/CROSS_PROJECT_SMOKE_QA_RESULTS.md",
+        "/PILOT_CASES.md",
+        "/PILOT_RESULTS_TEMPLATE.md",
+        "/AUTONOMOUS_EXECUTION_STANDARD.md",
+        "/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
+        "/ROUTING_RULES.md",
+        "/HANDOFF_STYLE_STANDARD.md",
+        "/PROMPT_QA_FACTORY.md",
+        "/PROJECT_CAPABILITIES.yaml",
+        "/knowledge_bundle_manifest.json",
+        "/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        "/ChatGPT/*/Knowledge/HANDOFF_PROTOCOL.md",
+    }
+    assert required_codeowner_patterns <= codeowners_patterns

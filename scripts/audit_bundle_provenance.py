@@ -128,10 +128,14 @@ def render_markdown(payload: dict[str, object]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--json-out", type=Path, required=True)
-    parser.add_argument("--markdown-out", type=Path, required=True)
+    parser.add_argument("--check", action="store_true")
+    parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
+    if args.check == args.write:
+        parser.error("choose exactly one of --check or --write")
     root = Path(__file__).resolve().parents[1]
+    json_out = root / "docs/knowledge_bundle_provenance_audit.json"
+    markdown_out = root / "docs/knowledge_bundle_provenance_audit.md"
     manifest = json.loads((root / "knowledge_bundle_manifest.json").read_text(encoding="utf-8"))
     manifest_items = {item["output"]: item for item in manifest["bundles"]}
     records = []
@@ -162,9 +166,19 @@ def main() -> int:
     unresolved = sum(record["classification"] == "unmapped" or (record["classification"] == "bundle_only_semantic" and record["resolution_status"] != "migrated_to_canonical_knowledge") for record in records)
     blocking = sum(record["classification"] != "equivalent" for record in records)
     payload = {"audit_scope": sorted(TARGET_PROJECTS), "records": records, "metrics": {"bundles": len(records), "unresolved_bundle_only_semantic_count": unresolved, "blocking_record_count": blocking}}
-    args.json_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    args.markdown_out.write_text(render_markdown(payload), encoding="utf-8")
-    print(json.dumps(payload["metrics"]))
+    json_text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    markdown_text = render_markdown(payload)
+    if args.write:
+        json_out.write_text(json_text, encoding="utf-8")
+        markdown_out.write_text(markdown_text, encoding="utf-8")
+        print("WROTE")
+        return 1 if unresolved else 0
+    drift = [path for path, expected in ((json_out, json_text), (markdown_out, markdown_text))
+             if not path.is_file() or path.read_text(encoding="utf-8") != expected]
+    if drift:
+        print("FAIL:\n" + "\n".join(f"STALE_AUDIT_ARTIFACT: {path.relative_to(root)}" for path in drift))
+        return 1
+    print("PASS")
     return 1 if unresolved else 0
 
 

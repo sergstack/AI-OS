@@ -1,5 +1,5 @@
 # Tier 2 — protected paths: owner review required before merge.
-# Keep in sync with the protected regex in .github/workflows/auto-merge.yml.
+# Keep in sync with the Tier 0/1 allowlist in .github/workflows/auto-merge.yml.
 /AGENTS.md @sergstack
 /CLAUDE.md @sergstack
 /GOAL_MODE.md @sergstack
@@ -18,8 +18,21 @@
 /ARCHIVE_MAP.md @sergstack
 /UPLOAD_GUIDE.md @sergstack
 /REPO_PATHS.md @sergstack
+/AUTONOMOUS_EXECUTION_STANDARD.md @sergstack
+/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md @sergstack
+/ROUTING_RULES.md @sergstack
+/HANDOFF_STYLE_STANDARD.md @sergstack
+/PROMPT_QA_FACTORY.md @sergstack
+/PROJECT_CAPABILITIES.yaml @sergstack
+/knowledge_bundle_manifest.json @sergstack
+/CHATGPT_PROJECT_SYNC_CHECKLIST.md @sergstack
+/SMOKE_QA_RESULTS.md @sergstack
+/CROSS_PROJECT_SMOKE_QA_RESULTS.md @sergstack
+/PILOT_CASES.md @sergstack
+/PILOT_RESULTS_TEMPLATE.md @sergstack
 /docs/AI_DEVELOPMENT_WORKFLOW.md @sergstack
 /docs/MERGE_GATE_OWNER_CHECKLIST.md @sergstack
+/schemas/ @sergstack
 /ChatGPT/*/Knowledge/AI_OS_PROJECT_FILES_INDEX.md @sergstack
 /ChatGPT/*/Knowledge/ARCHIVE_SUPERSEDED_RULE.md @sergstack
 /ChatGPT/*/Knowledge/GOVERNANCE_RULES.md @sergstack

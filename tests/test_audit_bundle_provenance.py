@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 from pathlib import Path
+import subprocess
 import sys
 
 
@@ -71,3 +72,16 @@ def test_candidate_sources_exclude_bundles_and_archives(tmp_path: Path) -> None:
     (tmp_path / "Knowledge_Bundles" / "copy.md").write_text(phrase, encoding="utf-8")
     (tmp_path / "archive" / "old.md").write_text(phrase, encoding="utf-8")
     assert AUDIT.candidate_source_paths(tmp_path, [{"path": "x", "excerpt": phrase}]) == ["Knowledge/candidate.md"]
+
+
+def test_check_mode_rejects_stale_committed_artifacts() -> None:
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/audit_bundle_provenance.py"), "--check"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout == "PASS\n"
