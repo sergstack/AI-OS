@@ -62,6 +62,24 @@ Every important judge workflow should have:
 - known failure modes;
 - owner project.
 
+## Bias and reference regression coverage
+
+For material judge workflows, rerun the four manual golden cases in
+`GOLDEN_EVAL_CASES.md` when judge class, rubric, prompt, supported language,
+or reference-check availability changes:
+
+- self-preference: hidden or changed author/model identity must not change a
+  verdict without an evidence-bearing reason;
+- language parity: semantically equivalent supported-language inputs must
+  surface material verdict drift rather than silently treating it as quality;
+- ambiguity calibration: low-agreement cases must preserve uncertainty as
+  `revise` or `blocked`, not inflate confidence to `pass`;
+- reference available: a deterministic/reference-based result takes precedence
+  over unconstrained holistic preference.
+
+These are bounded regression cases, not a claim of universal vendor behavior
+or a substitute for owner acceptance.
+
 ## Verdict Discipline
 
 Use:
