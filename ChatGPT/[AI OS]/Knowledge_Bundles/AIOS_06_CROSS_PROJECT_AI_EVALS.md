@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:7339b5fd5fe2a025eb8824f5f92e3c88bacea685b10f9857e9594dae572ea78e
+- source_fingerprint: sha256:8d29dad5e2e797e8acc64276ffadffd69537bcd339e3f2da1a516e0f423a7093
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -410,6 +410,58 @@ pass_example: record remains non-current until a comparable revision/fingerprint
 revise_example: provider metadata is available but implementation linkage needs clarification
 blocked_example: no permitted way to establish implementation identity exists
 revisit_trigger: implementation fingerprint, provider evidence, or registry revision changes
+## TRACE-ATTRIBUTION-EXTERNAL-INPUT
+case_id: `TRACE-ATTRIBUTION-EXTERNAL-INPUT`
+workflow: AES corrective-loop attribution
+owner_project: routed owner / `[AI OS]`
+input: failed trace caused by invalid input or unavailable external dependency, with no failed harness contract
+expected_behavior: retain observed failure but reject harness/workflow repair eligibility
+must_detect: invalid input or dependency cause and missing target attribution evidence
+must_not_do: infer that failure alone authorizes a harness/workflow change
+judge_criteria: trace evidence, alternative cause, correction eligibility, owner boundary
+pass_example: failure is recorded as external/input-bound and repair is ineligible
+revise_example: trace needs a bounded replay to separate input from control-surface cause
+blocked_example: required external evidence or authority is unavailable
+revisit_trigger: input contract, dependency availability, or new trace evidence changes
+## TRACE-ATTRIBUTION-LOCALIZED-TARGET
+case_id: `TRACE-ATTRIBUTION-LOCALIZED-TARGET`
+workflow: AES corrective-loop attribution
+owner_project: routed owner / `[AI OS]`
+input: reproducible failed step localized to a named harness/workflow rule, with a paired replay or deterministic target-contract violation
+expected_behavior: a minimal reversible repair may become a candidate with affected-scope revalidation
+must_detect: named target, connecting trace evidence, bounded scope, and required regression checks
+must_not_do: widen the repair or accept it without validation and owner review
+judge_criteria: localization quality, alternative causes, minimality, validation freshness
+pass_example: paired replay isolates the target and a candidate repair is recorded
+revise_example: target is plausible but replay or contract evidence is incomplete
+blocked_example: target repair requires forbidden authority or scope expansion
+revisit_trigger: target rule, trace, validation scope, or authority changes
+## TRACE-ATTRIBUTION-AMBIGUOUS
+case_id: `TRACE-ATTRIBUTION-AMBIGUOUS`
+workflow: AES corrective-loop attribution
+owner_project: routed owner / `[AI OS]`
+input: one failure trace with multiple plausible harness, input, or dependency causes
+expected_behavior: attribution remains uncertain and status is revise/blocked rather than selecting a convenient repair
+must_detect: competing causes and missing discriminating evidence
+must_not_do: convert a plausible diagnosis into a corrective change
+judge_criteria: uncertainty statement, next discriminating check, authority boundary
+pass_example: record names the alternatives and requests bounded replay/evidence
+revise_example: uncertainty is named but required next evidence is not specified
+blocked_example: no permitted way to gather the deciding evidence exists
+revisit_trigger: new trace, replay, deterministic contract result, or scope change
+## TRACE-ATTRIBUTION-HARD-REGRESSION
+case_id: `TRACE-ATTRIBUTION-HARD-REGRESSION`
+workflow: AES corrective-loop attribution
+owner_project: routed owner / `[AI OS]`
+input: an attributable candidate repair fixes its target failure but causes a hard-contract regression elsewhere
+expected_behavior: reject the repair under the baseline regression gate
+must_detect: target improvement and hard regression as separate facts
+must_not_do: accept an improvement as compensation for a hard regression
+judge_criteria: explicit regression matrix, hard-contract precedence, rollback, owner acceptance
+pass_example: candidate is rejected and the prior state/rollback path remains available
+revise_example: comparison is incomplete or a non-hard regression needs bounded repair
+blocked_example: baseline or required regression evidence is unavailable
+revisit_trigger: baseline, candidate, required contracts, or validation evidence changes
 ## CASE-THINKING-DECISION-001
 case_id: `CASE-THINKING-DECISION-001`
 workflow: Thinking decision review

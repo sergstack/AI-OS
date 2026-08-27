@@ -1,0 +1,7 @@
+[claude_second_opinion]
+mode = "auto"
+max_consultations_per_task = 2
+max_review_calls_per_task = 1
+max_total_claude_invocations_per_task = 2
+max_claude_turns_per_call = 6
+max_claude_timeout_seconds = 180
