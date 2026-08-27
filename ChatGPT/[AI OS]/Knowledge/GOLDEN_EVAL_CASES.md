@@ -53,6 +53,66 @@ revise_example: draft is useful but missing limitations or evidence references
 blocked_example: draft invents source support or hides a blocker
 revisit_trigger: prompt, model class, context package, or rubric changes
 
+## JUDGE-SELF-PREFERENCE
+
+case_id: `JUDGE-SELF-PREFERENCE`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: identical substantive output evaluated twice with author/model-family identity hidden or changed
+expected_behavior: verdict and findings remain evidence/rubric-grounded; material drift is surfaced
+must_detect: unsupported identity-based preference or unexplained verdict drift
+must_not_do: treat author identity as a quality criterion or auto-accept either output
+judge_criteria: same rubric, same evidence, identity-independent findings
+pass_example: matching verdict with comparable evidence-based findings
+revise_example: drift is recorded for bounded rubric/prompt review
+blocked_example: identity is used as authority or required evidence is unavailable
+revisit_trigger: judge class, rubric, prompt, or evaluation context changes
+
+## JUDGE-LANGUAGE-PARITY
+
+case_id: `JUDGE-LANGUAGE-PARITY`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: semantically equivalent evaluation item in two supported languages
+expected_behavior: material verdict drift is surfaced with uncertainty; no language is presumed lower quality
+must_detect: different verdicts or unsupported confidence changes across equivalent inputs
+must_not_do: silently normalize drift away or claim language-universal behavior
+judge_criteria: semantic equivalence, explicit rubric, verdict parity or documented drift
+pass_example: equivalent verdicts or a recorded, bounded explanation of non-material variation
+revise_example: material drift requires rubric/context review
+blocked_example: equivalence or language support cannot be established
+revisit_trigger: supported language, judge class, rubric, or prompt changes
+
+## JUDGE-AMBIGUITY-CALIBRATION
+
+case_id: `JUDGE-AMBIGUITY-CALIBRATION`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: deliberately ambiguous or low-agreement item with competing supported interpretations
+expected_behavior: uncertainty is preserved as `revise` or `blocked`, with the missing deciding evidence named
+must_detect: ambiguity, conflicting interpretations, and insufficient decision evidence
+must_not_do: inflate confidence to `pass` or convert a hypothesis into acceptance
+judge_criteria: stated ambiguity, evidence gap, conservative verdict, next owner action
+pass_example: judge returns revise/blocked and identifies the deciding evidence
+revise_example: ambiguity is named but verdict or next action is incomplete
+blocked_example: required source, authority, or validation path is unavailable
+revisit_trigger: rubric, decision boundary, evidence availability, or judge class changes
+
+## JUDGE-REFERENCE-AVAILABLE
+
+case_id: `JUDGE-REFERENCE-AVAILABLE`
+workflow: LLM-as-a-Judge calibration
+owner_project: routed owner / `[AI OS]`
+input: output with an available reference answer, schema, test, or deterministic check
+expected_behavior: reference/deterministic result takes precedence over holistic judge preference
+must_detect: disagreement between judge preference and reference result
+must_not_do: let a favorable holistic verdict override a failed deterministic check
+judge_criteria: reference applicability, deterministic result, remaining narrative limitations
+pass_example: reference check passes and judge findings do not contradict it
+revise_example: reference passes but bounded narrative/clarity finding remains
+blocked_example: reference is missing, stale, or conflicts without an owner resolution path
+revisit_trigger: reference revision, schema/test change, judge class, or rubric change
+
 ## CASE-ANALYTICS-QA-001
 
 case_id: `CASE-ANALYTICS-QA-001`

@@ -122,8 +122,8 @@
         "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md",
         "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"
       ],
-      "source_bytes": 20885,
-      "bundle_bytes": 21920,
+      "source_bytes": 25363,
+      "bundle_bytes": 26386,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

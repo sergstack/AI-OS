@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - acceptance_status: candidate / ready for human review
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c5e5cb3786672ccf3e93e25fcf111e1f8e9d0b437b8d6c3b6f6ed8b7c24e7433
+- source_fingerprint: sha256:c3f67fb47ccd428d3cbbc939d8f6b0f59e53d4f2a181e6123a90488e8bc7fa81
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -141,6 +141,20 @@ Every important judge workflow should have:
 - one blocked example;
 - known failure modes;
 - owner project.
+## Bias and reference regression coverage
+For material judge workflows, rerun the four manual golden cases in
+`GOLDEN_EVAL_CASES.md` when judge class, rubric, prompt, supported language,
+or reference-check availability changes:
+- self-preference: hidden or changed author/model identity must not change a
+  verdict without an evidence-bearing reason;
+- language parity: semantically equivalent supported-language inputs must
+  surface material verdict drift rather than silently treating it as quality;
+- ambiguity calibration: low-agreement cases must preserve uncertainty as
+  `revise` or `blocked`, not inflate confidence to `pass`;
+- reference available: a deterministic/reference-based result takes precedence
+  over unconstrained holistic preference.
+These are bounded regression cases, not a claim of universal vendor behavior
+or a substitute for owner acceptance.
 ## Verdict Discipline
 Use:
 ```text
@@ -201,6 +215,58 @@ pass_example: final answer follows schema and marks limitations
 revise_example: draft is useful but missing limitations or evidence references
 blocked_example: draft invents source support or hides a blocker
 revisit_trigger: prompt, model class, context package, or rubric changes
+## JUDGE-SELF-PREFERENCE
+case_id: `JUDGE-SELF-PREFERENCE`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: identical substantive output evaluated twice with author/model-family identity hidden or changed
+expected_behavior: verdict and findings remain evidence/rubric-grounded; material drift is surfaced
+must_detect: unsupported identity-based preference or unexplained verdict drift
+must_not_do: treat author identity as a quality criterion or auto-accept either output
+judge_criteria: same rubric, same evidence, identity-independent findings
+pass_example: matching verdict with comparable evidence-based findings
+revise_example: drift is recorded for bounded rubric/prompt review
+blocked_example: identity is used as authority or required evidence is unavailable
+revisit_trigger: judge class, rubric, prompt, or evaluation context changes
+## JUDGE-LANGUAGE-PARITY
+case_id: `JUDGE-LANGUAGE-PARITY`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: semantically equivalent evaluation item in two supported languages
+expected_behavior: material verdict drift is surfaced with uncertainty; no language is presumed lower quality
+must_detect: different verdicts or unsupported confidence changes across equivalent inputs
+must_not_do: silently normalize drift away or claim language-universal behavior
+judge_criteria: semantic equivalence, explicit rubric, verdict parity or documented drift
+pass_example: equivalent verdicts or a recorded, bounded explanation of non-material variation
+revise_example: material drift requires rubric/context review
+blocked_example: equivalence or language support cannot be established
+revisit_trigger: supported language, judge class, rubric, or prompt changes
+## JUDGE-AMBIGUITY-CALIBRATION
+case_id: `JUDGE-AMBIGUITY-CALIBRATION`
+workflow: LLM-as-a-Judge calibration
+owner_project: `[AI OS]` / `[LLM]`
+input: deliberately ambiguous or low-agreement item with competing supported interpretations
+expected_behavior: uncertainty is preserved as `revise` or `blocked`, with the missing deciding evidence named
+must_detect: ambiguity, conflicting interpretations, and insufficient decision evidence
+must_not_do: inflate confidence to `pass` or convert a hypothesis into acceptance
+judge_criteria: stated ambiguity, evidence gap, conservative verdict, next owner action
+pass_example: judge returns revise/blocked and identifies the deciding evidence
+revise_example: ambiguity is named but verdict or next action is incomplete
+blocked_example: required source, authority, or validation path is unavailable
+revisit_trigger: rubric, decision boundary, evidence availability, or judge class changes
+## JUDGE-REFERENCE-AVAILABLE
+case_id: `JUDGE-REFERENCE-AVAILABLE`
+workflow: LLM-as-a-Judge calibration
+owner_project: routed owner / `[AI OS]`
+input: output with an available reference answer, schema, test, or deterministic check
+expected_behavior: reference/deterministic result takes precedence over holistic judge preference
+must_detect: disagreement between judge preference and reference result
+must_not_do: let a favorable holistic verdict override a failed deterministic check
+judge_criteria: reference applicability, deterministic result, remaining narrative limitations
+pass_example: reference check passes and judge findings do not contradict it
+revise_example: reference passes but bounded narrative/clarity finding remains
+blocked_example: reference is missing, stale, or conflicts without an owner resolution path
+revisit_trigger: reference revision, schema/test change, judge class, or rubric change
 ## CASE-ANALYTICS-QA-001
 case_id: `CASE-ANALYTICS-QA-001`
 workflow: Analytics memo
