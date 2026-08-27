@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:6efaebcbc7b51d0a67d83643b8990b347eb147ce1ec66fec771f5a7a17b1d9c6
+- source_fingerprint: sha256:33fe00ef21e6b6db95a520dbd0b2bdeb09cce08271a5ff4806ca4d01ba2a2c87
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -443,6 +443,27 @@ Warm resume is permitted only after checking that the continuation envelope is
 present and valid and that the original goal boundary, acceptance criteria,
 resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
+### 5.6 Authority provenance for transformed context
+`authority_status` reports the execution's owner-approval state; it is not a
+claim-level provenance label. When an active `Invoke AI-OS` execution carries
+a decision-relevant claim through a context pack, handoff, or resume, its
+`continuation.authority_provenance` and every new AES handoff preserve:
+```yaml
+claim_text:
+authority_class:       # source_fact | owner_instruction | accepted_policy |
+                        # observed_execution_evidence | candidate_research |
+                        # hypothesis_recommendation
+source_refs: []
+action_eligibility:    # eligible | not_eligible | owner_decision_required
+```
+The same text may legitimately have different action eligibility because its
+authority class differs. `candidate_research` and `hypothesis_recommendation`
+must be `not_eligible`; they can inform review or evidence collection but
+never authorize acceptance, policy change, or execution. `source_fact` and
+`observed_execution_evidence` are evidence, not authority. `eligible` is
+permitted only for an in-scope `owner_instruction` or `accepted_policy` and
+never replaces an external authority gate. Source references are retained; a
+summary, confidence label, or generic evidence reference is not a substitute.
 ## 6. Source-revision contract
 ```yaml
 source_revision:
@@ -768,7 +789,7 @@ for its documented subset; it is not CI or runtime enforcement.
 | Canonical-content duplication | docs consistency and Judge review | optional repository consistency check |
 | Business-rule preservation | project-specific checks | project-specific enforcement |
 | Merge/deploy authority | explicit fields and owner review | external platform gates |
-The advisory validator covers only SEM-001…011 and is not evidence of CI,
+The advisory validator covers only SEM-001…012 and is not evidence of CI,
 runtime enforcement, owner approval, merge, deploy, or production
 authorization. See
 `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md` for the
@@ -833,6 +854,7 @@ acceptance_snapshot:
 qa_status:
 judge_verdict:
 authority_status:
+authority_provenance:
 next_owner:
 ```
 A new execution ID is permitted only with an explicit parent/child link.
@@ -851,7 +873,9 @@ evidence_refs:
 next_owner:
 ```
 A handoff must never drop: execution ID, requirement IDs, defect IDs,
-iteration ID, evidence references, or authority status.
+iteration ID, evidence references, authority status, or authority provenance
+for a decision-relevant claim. A new AES handoff carries an
+`authority_provenance` object even when its `claims` list is empty.
 ### 15.2 Continuation handoff rule
 For an active `Invoke AI-OS` execution, a local or cross-project handoff is an
 intermediate stage, never a lifecycle terminator. Return its evidence to the

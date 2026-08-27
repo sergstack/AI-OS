@@ -47,7 +47,7 @@ def test_current_contract_rejects_a_new_v1_success_record_without_closure_review
 
 
 def test_continuation_envelope_requires_durable_resume_state():
-    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["continuation"])
+    validator = Draft7Validator(CURRENT_SCHEMA)
     continuation = {
         "original_goal": "Continue the original AI-OS execution.",
         "original_acceptance_criteria": ["original goal is rechecked"],
@@ -60,14 +60,45 @@ def test_continuation_envelope_requires_durable_resume_state():
         "goal_boundary_hash": "sha256:" + "a" * 64,
         "acceptance_criteria_hash": "sha256:" + "b" * 64,
         "state_hash": "sha256:" + "c" * 64,
+        "authority_provenance": {
+            "claims": [
+                {
+                    "claim_text": "Enable feature X.",
+                    "authority_class": "accepted_policy",
+                    "source_refs": ["policy:fixture"],
+                    "action_eligibility": "eligible",
+                }
+            ]
+        },
         "updated_at": "2026-01-01T01:00:00Z",
     }
-    assert not list(validator.iter_errors(continuation))
-
-    record_errors = list(Draft7Validator(CURRENT_SCHEMA).iter_errors({
+    record_errors = list(validator.iter_errors({
         "continuation": continuation,
     }))
     assert not any(tuple(error.absolute_path)[:1] == ("continuation",) for error in record_errors)
 
     del continuation["record_ref"]
-    assert list(validator.iter_errors(continuation))
+    record_errors = list(validator.iter_errors({"continuation": continuation}))
+    assert any(tuple(error.absolute_path)[:1] == ("continuation",) for error in record_errors)
+
+
+def test_authority_provenance_keeps_identical_claims_action_distinct():
+    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["authority_provenance"])
+    policy_claim = {
+        "claims": [{
+            "claim_text": "Enable feature X.",
+            "authority_class": "accepted_policy",
+            "source_refs": ["policy:fixture"],
+            "action_eligibility": "eligible",
+        }]
+    }
+    research_claim = {
+        "claims": [{
+            "claim_text": "Enable feature X.",
+            "authority_class": "candidate_research",
+            "source_refs": ["research:fixture"],
+            "action_eligibility": "not_eligible",
+        }]
+    }
+    assert not list(validator.iter_errors(policy_claim))
+    assert not list(validator.iter_errors(research_claim))

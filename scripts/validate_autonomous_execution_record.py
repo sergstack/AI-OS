@@ -16,7 +16,7 @@ Section 17):
   local pytest. Wiring it into `.github/workflows/*` is a deliberately
   separate, not-yet-authorized step (see Section 17: "a blocking CI gate").
 - It implements a fixed, documented subset of semantic rules (SEM-001
-  through SEM-011 below). It is not a full implementation of every semantic
+  through SEM-012 below). It is not a full implementation of every semantic
   case referenced in
   `docs/autonomous_execution/AUTONOMOUS_EXECUTION_ACCEPTANCE_CASES.md`.
 
@@ -431,6 +431,37 @@ def check_sem_011(record: dict, record_path: str) -> list[Violation]:
     return violations
 
 
+# SEM-012: candidate research and hypotheses must not become action-eligible
+# after a context transformation, handoff, or resume.
+# Source: Section 5.6 and Section 15 (authority provenance persistence).
+def check_sem_012(record: dict, record_path: str) -> list[Violation]:
+    violations: list[Violation] = []
+    containers = []
+    continuation = record.get("continuation")
+    if isinstance(continuation, dict):
+        containers.append(("continuation", continuation.get("authority_provenance")))
+    for handoff in record.get("handoffs", []):
+        if isinstance(handoff, dict):
+            containers.append((handoff.get("handoff_id", "handoff"), handoff.get("authority_provenance")))
+    for location, provenance in containers:
+        if not isinstance(provenance, dict):
+            continue
+        for claim in provenance.get("claims", []):
+            if (
+                isinstance(claim, dict)
+                and claim.get("authority_class") in {"candidate_research", "hypothesis_recommendation"}
+                and claim.get("action_eligibility") != "not_eligible"
+            ):
+                _add(
+                    violations,
+                    record_path,
+                    "SEM-012",
+                    f"{location} claim '{claim.get('claim_text', '<unknown>')}' is "
+                    f"{claim.get('authority_class')} but not action-ineligible",
+                )
+    return violations
+
+
 ALL_CHECKS = [
     check_sem_001,
     check_sem_002,
@@ -443,6 +474,7 @@ ALL_CHECKS = [
     check_sem_009,
     check_sem_010,
     check_sem_011,
+    check_sem_012,
 ]
 
 RULE_DESCRIPTIONS = {
@@ -463,6 +495,7 @@ RULE_DESCRIPTIONS = {
     "SEM-009": "v2 or closure-aware successful record requires a passed, goal/scope/invariant/authority-preserving Closure Review with no correctable gaps",
     "SEM-010": "closure corrective iterations must not exceed the effective ceiling of two",
     "SEM-011": "closure defects must be registered; successful closure corrections require current final validation",
+    "SEM-012": "candidate research and hypotheses remain not_eligible across continuation and handoff provenance",
 }
 
 

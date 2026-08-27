@@ -21,6 +21,7 @@ Objective:
 Context:
 Inputs:
 Constraints:
+Authority provenance:
 Expected output:
 Acceptance criteria:
   Business acceptance:
@@ -37,6 +38,16 @@ project can infer bounded safe scope. Use `Mode: strict` for high-risk,
 already-scoped, ultra-long, or explicitly requested task packages.
 
 The three acceptance sub-fields are required for user-facing artifacts and business deliverables. `Objective:` preserves the original goal through continuation; do not replace it with a local subtask.
+
+`Authority provenance:` is required whenever a handoff carries a
+decision-relevant claim. For each such claim, retain the claim text, authority
+class, source reference, and action eligibility. Use only the canonical AES
+classes: `source_fact`, `owner_instruction`, `accepted_policy`,
+`observed_execution_evidence`, `candidate_research`, and
+`hypothesis_recommendation`. Candidate research and hypotheses may inform
+review, but are never action-eligible; a source fact or observed evidence is
+not itself an authorization. This field complements, and never replaces,
+`authority_status` or a required owner/merge/production gate.
 
 ## Project-Specific Additions
 
