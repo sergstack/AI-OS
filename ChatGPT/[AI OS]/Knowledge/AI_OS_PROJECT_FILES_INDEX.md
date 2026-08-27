@@ -33,6 +33,7 @@
 | `GOAL_CONSISTENCY_CLOSURE_CHECK.md` | closure eval | Проверяет исходную цель, acceptance и owner boundary поверх AES Closure Review | Перед terminal closure candidate result |
 | `FAILURE_REGISTRY.md` | failure lifecycle | Фиксирует подтверждённый сбой и условную передачу в regression case | После observed workflow failure |
 | `REGRESSION_GATE.md` | comparison eval | Сравнивает accepted baseline и candidate без aggregate-score обхода hard regressions | Перед owner acceptance изменения workflow |
+| `INTERMEDIATE_STATE_ASSERTIONS.md` | pipeline QA | Определяет deterministic assertions для STAGE/MART/EVIDENCE без изменения ownership | Перед analytical artifact QA |
 | `GOLDEN_EVAL_CASES.md` | eval cases | Reusable manual smoke QA cases для prompt, model или workflow changes | Когда нужно проверить eval behavior или judge drift |
 | `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
 | `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |

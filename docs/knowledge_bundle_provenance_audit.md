@@ -41,8 +41,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`, `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`, `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`, `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 32835
-- Bundle bytes: 34125
+- Source bytes: 33035
+- Bundle bytes: 34325
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -111,8 +111,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md`, `ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md`, `ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md`, `ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md`
-- Source bytes: 19272
-- Bundle bytes: 20309
+- Source bytes: 19601
+- Bundle bytes: 20638
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:94da7cde082b00946d33ac4c2bfaa64bb1765e45902dfd040193bb4cca504d45
+- source_fingerprint: sha256:485f07d1596d2ebff146ea71793e07ceb6ee02ef0b09dd55ef7adb28bfd15330
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -62,6 +62,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 | `GOAL_CONSISTENCY_CLOSURE_CHECK.md` | closure eval | Проверяет исходную цель, acceptance и owner boundary поверх AES Closure Review | Перед terminal closure candidate result |
 | `FAILURE_REGISTRY.md` | failure lifecycle | Фиксирует подтверждённый сбой и условную передачу в regression case | После observed workflow failure |
 | `REGRESSION_GATE.md` | comparison eval | Сравнивает accepted baseline и candidate без aggregate-score обхода hard regressions | Перед owner acceptance изменения workflow |
+| `INTERMEDIATE_STATE_ASSERTIONS.md` | pipeline QA | Определяет deterministic assertions для STAGE/MART/EVIDENCE без изменения ownership | Перед analytical artifact QA |
 | `GOLDEN_EVAL_CASES.md` | eval cases | Reusable manual smoke QA cases для prompt, model или workflow changes | Когда нужно проверить eval behavior или judge drift |
 | `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
 | `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |
