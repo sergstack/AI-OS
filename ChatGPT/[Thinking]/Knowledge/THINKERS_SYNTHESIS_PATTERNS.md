@@ -6,7 +6,9 @@
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 
-## SYN-001-REPEATED-FAILURE-DIAGNOSIS — Repeated Failure Diagnosis
+### `SYN-001-REPEATED-FAILURE-DIAGNOSIS`
+
+**Repeated Failure Diagnosis**
 
 - problem type: `repeated_process_failure`
 - source authors: Deming, Forrester, Clausewitz
@@ -22,7 +24,9 @@
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
 
-## SYN-002-DECISION-UNDER-FRICTION — Decision Under Friction
+### `SYN-002-DECISION-UNDER-FRICTION`
+
+**Decision Under Friction**
 
 - problem type: `consequential_decision_under_uncertainty`
 - source authors: Clausewitz, Kahneman, Forrester
@@ -38,7 +42,9 @@
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
 
-## SYN-003-OWNERSHIP-AND-SYSTEM-CHECK — Ownership and System Check
+### `SYN-003-OWNERSHIP-AND-SYSTEM-CHECK`
+
+**Ownership and System Check**
 
 - problem type: `unclear_ownership_or_governance`
 - source authors: Deming, Ostrom, Lenin
@@ -54,7 +60,9 @@
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
 
-## SYN-004-BIAS-AWARE-DECISION-REVIEW — Bias-Aware Decision Review
+### `SYN-004-BIAS-AWARE-DECISION-REVIEW`
+
+**Bias-Aware Decision Review**
 
 - problem type: `bias_aware_decision_review`
 - source authors: Kahneman, Clausewitz
@@ -70,7 +78,9 @@
 - status: `active_provisional`
 - evidence: Judge-pass author patterns; cross-author synthesis Judge pass.
 
-## SYN-005-REVERSIBLE-INTERVENTION-GATE — Reversible Intervention Gate
+### `SYN-005-REVERSIBLE-INTERVENTION-GATE`
+
+**Reversible Intervention Gate**
 
 - problem type: `policy_with_feedback_or_delay`
 - source authors: Forrester, Ostrom, Lenin, Deming
@@ -88,6 +98,6 @@
 
 ## Excluded from active synthesis
 
-- Isolated Judge-pass author patterns for Boyd, Drucker, Munger, and Ohno are not part of these five cross-author patterns.
-- Candidate pilot revisions, candidate Conflict Map additions, candidate/revise/blocked/restricted/deprecated/archival artifacts, and raw source payloads are excluded.
+- isolated Boyd, Drucker, Munger, and Ohno author patterns are not part of these five cross-author patterns.
+- Exclude pilot candidate router/conflict revisions without separate Judge authorization, along with candidate, revise, blocked, restricted, deprecated, rejected, or archival artifacts and raw source payloads.
 - Exclusion does not reject an author pattern; it prevents unreviewed or irrelevant material from controlling a case.

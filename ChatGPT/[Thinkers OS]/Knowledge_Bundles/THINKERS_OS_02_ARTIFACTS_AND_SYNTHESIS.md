@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - generated_date: 2026-08-21
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
-- source_fingerprint: sha256:179a219050365422ec134ef9b8333c6e1721194b4e95c7a5df9f6018a04ae318
+- source_fingerprint: sha256:c1e98fd04870879f42ac0ac95a6191024c4c5f274b4afec91bac388744df6a06
 
 ---
 
@@ -118,7 +118,7 @@ MVP limits: 5 active patterns, preferably 2–3 lenses per case, maximum 4. Curr
 | `SYN-004-BIAS-AWARE-DECISION-REVIEW` | prospective high-impact judgment sensitive to baseline/frame | do not label people retrospectively or replace domain evidence |
 | `SYN-005-REVERSIBLE-INTERVENTION-GATE` | structural intervention with feedback, multiple owners, or costly reversal | quantitative claims require `[Analytics]`; pilot needs stop and rollback owners |
 
-All are `active_provisional`, not validated/canonical. Application count does not promote them.
+All five remain `active_provisional`, not validated/canonical. Application count does not promote them.
 
 ## Lens Router
 
