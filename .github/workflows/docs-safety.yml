@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install pytest
-        run: python3 -m pip install pytest
+      - name: Install development dependencies
+        run: python3 -m pip install -r requirements-dev.txt
       - name: Run pytest
         run: python3 -m pytest tests/ -q
       - name: Check project instructions length
@@ -24,5 +24,7 @@ jobs:
         run: python3 scripts/check_manifest_paths.py
       - name: Check knowledge bundles
         run: python3 scripts/check_knowledge_bundles.py
+      - name: Check provenance audit artifact
+        run: python3 scripts/audit_bundle_provenance.py --check
       - name: Check index coverage
         run: python3 scripts/check_index_coverage.py

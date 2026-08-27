@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install pytest
-        run: python3 -m pip install pytest
+      - name: Install development dependencies
+        run: python3 -m pip install -r requirements-dev.txt
       - name: Run validation suite
         id: checks
         run: |
