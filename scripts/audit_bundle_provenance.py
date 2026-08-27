@@ -12,7 +12,7 @@ import re
 from check_knowledge_bundles import PROJECTS, listed_files, section_between, source_files_from_bundle
 
 
-TARGET_PROJECTS = frozenset({"[AI OS]", "[Codex]", "[Analytics]", "[Thinking]", "[LLM]"})
+TARGET_PROJECTS = frozenset(PROJECTS)
 DETAIL_LIMIT = 5
 EXCERPT_LIMIT = 160
 

@@ -262,12 +262,29 @@ def generated_drift_failures(root: Path) -> list[str]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("status") != "ready":
         return []
+    declared_outputs = {
+        item["output"]
+        for item in manifest.get("bundles", [])
+        if isinstance(item, dict) and isinstance(item.get("output"), str)
+    }
+    contract_failures: list[str] = []
+    for _project, project_dir in PROJECTS.items():
+        upload_list = root / project_dir / "Knowledge_Bundles/UPLOAD_LIST.md"
+        if not upload_list.is_file():
+            continue
+        upload_text = upload_list.read_text(encoding="utf-8")
+        bundle_names = listed_files(section_between(upload_text, "## Required upload files", "## Optional upload files"))
+        bundle_names += listed_files(section_between(upload_text, "## Optional upload files", "## Do not upload"))
+        for bundle_name in bundle_names:
+            relative = str(project_dir / "Knowledge_Bundles" / bundle_name)
+            if relative not in declared_outputs:
+                contract_failures.append(f"UNDECLARED_UPLOAD_BUNDLE: {relative}")
     builder_path = Path(__file__).with_name("build_knowledge_bundles.py")
     spec = importlib.util.spec_from_file_location("knowledge_bundle_builder", builder_path)
     assert spec and spec.loader
     builder = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(builder)
-    return builder.check(root, manifest)
+    return contract_failures + builder.check(root, manifest)
 
 
 def main() -> int:

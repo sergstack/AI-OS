@@ -3,7 +3,9 @@
     "[AI OS]",
     "[Analytics]",
     "[Codex]",
+    "[Inbox Router]",
     "[LLM]",
+    "[Thinkers OS]",
     "[Thinking]"
   ],
   "records": [
@@ -627,10 +629,85 @@
       "candidate_source_paths": [],
       "resolution_status": "not_applicable",
       "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Inbox Router]",
+      "bundle_path": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_01_ROUTING_WORKFLOW.md",
+      "source_paths": [
+        "ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md"
+      ],
+      "source_bytes": 5710,
+      "bundle_bytes": 6815,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Inbox Router]",
+      "bundle_path": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md",
+      "source_paths": [
+        "ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md",
+        "ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md"
+      ],
+      "source_bytes": 5615,
+      "bundle_bytes": 6543,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Thinkers OS]",
+      "bundle_path": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md",
+      "source_paths": [
+        "ChatGPT/[Thinkers OS]/Knowledge/INDEX.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/THINKERS_OS_WORKFLOW.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md",
+        "ChatGPT/[Thinkers OS]/CURRENT_STATUS.md"
+      ],
+      "source_bytes": 10567,
+      "bundle_bytes": 11588,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
+    },
+    {
+      "project": "[Thinkers OS]",
+      "bundle_path": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_02_ARTIFACTS_AND_SYNTHESIS.md",
+      "source_paths": [
+        "ChatGPT/[Thinkers OS]/Knowledge/ARTIFACT_CONTRACTS.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/ROUTING_AND_HANDOFF.md"
+      ],
+      "source_bytes": 11927,
+      "bundle_bytes": 12888,
+      "classification": "equivalent",
+      "bundle_only_excerpt_or_ref": [],
+      "source_only_excerpt_or_ref": [],
+      "mapping_status": "mapped",
+      "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
+      "recommended_action": "eligible_after_review"
     }
   ],
   "metrics": {
-    "bundles": 29,
+    "bundles": 33,
     "unresolved_bundle_only_semantic_count": 0,
     "blocking_record_count": 0
   }

@@ -18,6 +18,11 @@ INDEXES = {
     "[Analytics]": ["ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md"],
     "[LLM]": ["ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md", "ChatGPT/[LLM]/README.md"],
     "[Codex]": ["ChatGPT/[Codex]/Knowledge/INDEX.md"],
+    "[Inbox Router]": [
+        "ChatGPT/[Inbox Router]/Knowledge/INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md",
+    ],
+    "[Thinkers OS]": ["ChatGPT/[Thinkers OS]/Knowledge/INDEX.md"],
 }
 
 

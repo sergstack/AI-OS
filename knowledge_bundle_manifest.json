@@ -643,6 +643,81 @@
       "migration_sources": [
         "ChatGPT/[Codex]/Knowledge/CODEX_06_AI_CODING_DISCIPLINE_BUNDLE_SEMANTICS.md"
       ]
+    },
+    {
+      "project": "[Inbox Router]",
+      "output": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_01_ROUTING_WORKFLOW.md",
+      "sources": [
+        "ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/INDEX.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md"
+      ],
+      "contract": {
+        "title": "[Inbox Router] — Routing Workflow",
+        "purpose": "Compact upload artifact for [Inbox Router] covering routing workflow.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Inbox Router]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
+    },
+    {
+      "project": "[Inbox Router]",
+      "output": "ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md",
+      "sources": [
+        "ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md",
+        "ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md",
+        "ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md"
+      ],
+      "contract": {
+        "title": "[Inbox Router] — Handoff QA Anti Patterns",
+        "purpose": "Compact upload artifact for [Inbox Router] covering handoff QA and anti-patterns.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Inbox Router]`.",
+        "status_lines": [
+          "production_promotion: no, unless explicitly accepted elsewhere"
+        ]
+      }
+    },
+    {
+      "project": "[Thinkers OS]",
+      "output": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md",
+      "sources": [
+        "ChatGPT/[Thinkers OS]/Knowledge/INDEX.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/THINKERS_OS_WORKFLOW.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md",
+        "ChatGPT/[Thinkers OS]/CURRENT_STATUS.md"
+      ],
+      "contract": {
+        "title": "[Thinkers OS] — Portfolio and Corpus",
+        "purpose": "Compact upload artifact for [Thinkers OS] covering portfolio, corpus-first intake, and resumable status.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.",
+        "status_lines": [
+          "owner_acceptance: pending",
+          "production_status: NOT AUTHORIZED",
+          "default_upload_mode: Knowledge_Bundles"
+        ]
+      }
+    },
+    {
+      "project": "[Thinkers OS]",
+      "output": "ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_02_ARTIFACTS_AND_SYNTHESIS.md",
+      "sources": [
+        "ChatGPT/[Thinkers OS]/Knowledge/ARTIFACT_CONTRACTS.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md",
+        "ChatGPT/[Thinkers OS]/Knowledge/ROUTING_AND_HANDOFF.md"
+      ],
+      "contract": {
+        "title": "[Thinkers OS] — Artifacts and Synthesis",
+        "purpose": "Compact upload artifact for [Thinkers OS] covering artifact contracts, bounded synthesis, and export routing.",
+        "upload_target": "ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.",
+        "status_lines": [
+          "owner_acceptance: pending",
+          "production_status: NOT AUTHORIZED",
+          "default_upload_mode: Knowledge_Bundles"
+        ]
+      }
     }
   ]
 }

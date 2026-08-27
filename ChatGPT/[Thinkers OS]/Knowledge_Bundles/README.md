@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This folder contains the only standard manual upload artifacts for ChatGPT Project `[Thinkers OS]`.
+This folder contains generated upload artifacts for ChatGPT Project `[Thinkers OS]`.
 
 Granular files in `ChatGPT/[Thinkers OS]/Knowledge/` remain repository source of truth. Do not delete them, replace them with bundles, or upload both layers together except controlled debugging.
 

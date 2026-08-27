@@ -1,13 +1,10 @@
 # Upload List — [Thinkers OS]
 
-This is the single authoritative manual upload list for ChatGPT Project `[Thinkers OS]`.
+This is the single authoritative upload list for ChatGPT Project `[Thinkers OS]`.
 
-generated_date: 2026-08-21
-target_project: `[Thinkers OS]`
-default_upload_mode: `Knowledge_Bundles`
-source_fingerprint_01: sha256:c3364cfc64e0095c8cb9cfdbe3b22245c11831c93c54fff199f11cabf09508ec
-source_fingerprint_02: sha256:959c23e93208198e0f31e0586e0d1b285d9a91f59508de2d6e90292ddfedebd4
-smoke_qa_reference: `../SMOKE_QA_RESULTS.md`
+The listed bundles are generated from the declared granular sources in
+`knowledge_bundle_manifest.json`; each bundle carries its current source
+fingerprint. External Project upload remains a manual owner action.
 
 ## Required upload files
 
