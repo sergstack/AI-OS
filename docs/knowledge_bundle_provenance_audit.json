@@ -19,8 +19,8 @@
         "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md",
         "ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 31982,
-      "bundle_bytes": 33272,
+      "source_bytes": 32427,
+      "bundle_bytes": 33717,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -120,8 +120,8 @@
         "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md",
         "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"
       ],
-      "source_bytes": 14083,
-      "bundle_bytes": 15128,
+      "source_bytes": 16642,
+      "bundle_bytes": 17683,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
