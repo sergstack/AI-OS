@@ -31,6 +31,7 @@
 | `CROSS_PROJECT_EVAL_PLAYBOOK.md` | eval routing | Маршрутизация AI evals к правильному проекту и judge/check | Когда нужно оценить output между AI OS, LLM, Analytics, Codex, Thinking или loop design |
 | `ACT_OR_ABSTAIN_EVAL_GATE.md` | eval gate | Проверяет, когда supervised workflow должен действовать или остановиться | Перед execution, change или supervised-loop continuation |
 | `GOAL_CONSISTENCY_CLOSURE_CHECK.md` | closure eval | Проверяет исходную цель, acceptance и owner boundary поверх AES Closure Review | Перед terminal closure candidate result |
+| `FAILURE_REGISTRY.md` | failure lifecycle | Фиксирует подтверждённый сбой и условную передачу в regression case | После observed workflow failure |
 | `GOLDEN_EVAL_CASES.md` | eval cases | Reusable manual smoke QA cases для prompt, model или workflow changes | Когда нужно проверить eval behavior или judge drift |
 | `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
 | `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |
