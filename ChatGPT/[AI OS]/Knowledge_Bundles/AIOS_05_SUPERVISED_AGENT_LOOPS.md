@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - default_upload_mode: `Knowledge_Bundles`
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:64a5c38e669d3ac5d825ddbcf9070e8eeba3c2c591f7df798fde617b151f07e4
+- source_fingerprint: sha256:108523a32cf77e20ffbde41bcae48947f10f6b3c4dd6c667a9c7e2c566ea38dd
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -182,3 +182,34 @@ Prefer prompt/runbook/checklist first. Add tools only when repeated friction is 
 - uncontrolled multi-agent edits.
 ## Human Acceptance
 Human acceptance is required before enabling any new tool, hook, MCP workflow, sub-agent pattern, or automation as a standard workflow.
+## MCP verification freshness
+An approved source and permission are not indefinite verification. For each
+MCP tool considered for a standard workflow, keep a compact, human-reviewed
+verification record:
+```text
+verification_status: not_verified | verified | reverify_required | blocked
+verified_at:
+verified_revision_or_fingerprint:
+provider_or_server_identity:
+tool_or_schema_identity:
+permissions_or_auth_scope:
+freshness_status: current | stale | unverifiable | not_applicable
+authority_evidence_ref:
+reverify_trigger:
+```
+Reuse AES freshness semantics: `current` requires that the verification can
+be tied to the current revision/fingerprint and unchanged relevant scope;
+`stale` applies after a relevant known change; `unverifiable` applies when
+the current implementation/revision cannot be compared with the verification
+record. A timestamp alone, unchanged registry description, or matching name
+is not sufficient proof of implementation or security freshness.
+Set `reverify_required` when the provider/server, package or registry
+revision, tool list/schema identity, permissions/auth scope, or current
+implementation fingerprint changes; also reverify when the previous record
+cannot be tied to the current artifact. Higher-risk proposed use may require
+fresher, explicitly scoped owner evidence, but this file intentionally sets
+no arbitrary global time-to-live.
+An auth/permission expansion is new authority: prior verification and approval
+do not authorize it. Reverification supplies evidence only; it never installs,
+executes, promotes, or authorizes an MCP server automatically. Human
+acceptance remains required for standardization.
