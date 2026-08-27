@@ -10,7 +10,7 @@
 - default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
 - smoke_qa_status: pass
 - runtime_smoke_status: candidate
-- realistic_pilot_status: candidate (AI OS, Thinking, and Analytics pilots passed; broader pilot set not run)
+- realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -78,6 +78,14 @@ Observed external pilot evidence — 2026-08-27:
 - This is bounded analytical behavior evidence only; no user data, files,
   implementation, promotion, or production action was involved.
 
+- `PILOT-CROSS-001` completed one live `[AI OS] → [Thinking] → [AI OS]`
+  routing/resume case and is recorded as `candidate` with `medium` confidence
+  in `PILOT_RESULTS_2026-08-27_CROSS.md`.
+- The route preserved the original goal, constraints, owner boundaries, and
+  return path; no scope drift or role confusion was observed. This is limited
+  evidence from one route, not proof of general cross-project reliability,
+  owner acceptance, or production authorization.
+
 Repository evidence refresh — 2026-08-27:
 
 - PR #298 restored the generated Knowledge Bundle and provenance-audit
@@ -101,9 +109,9 @@ Recent verified state:
 - ChatGPT Project upload mode is compact `Knowledge_Bundles` by default.
 - `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
   2026-07-06 smoke QA evidence. Smoke QA does not equal production readiness.
-- `PILOT-AIOS-001`, `PILOT-THINKING-001`, and `PILOT-ANALYTICS-001` have
-  recorded candidate results; all other pilots remain backlog/unsupported
-  until their own result evidence is recorded.
+- `PILOT-AIOS-001`, `PILOT-THINKING-001`, `PILOT-ANALYTICS-001`, and
+  `PILOT-CROSS-001` have recorded candidate results; all other pilots remain
+  backlog/unsupported until their own result evidence is recorded.
 - StreamDeck v2.7 remains active; v2.8 remains candidate/manual-only.
 
 ## Dual Surface operational acceptance
@@ -155,6 +163,6 @@ Run repository validation before PR review: use the canonical command set from `
 Then complete operational verification:
 
 - `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- obtain owner review for the three candidate pilots, then execute and record
-  the cross-project pilot from `PILOT_CASES.md`
+- obtain owner review for the four candidate pilots, then capture the next real
+  failure-to-regression case from `PILOT_CASES.md`
 - keep production promotion blocked until accepted pilot evidence exists

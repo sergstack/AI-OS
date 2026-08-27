@@ -22,7 +22,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 | `PILOT-INBOX-001` | `[Inbox Router]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-THINKERS-001` | `[Thinkers OS]` | backlog | unsupported | Sergey | Complete manual sync, run smoke QA, then execute bounded source-to-artifact pilot |
 | `PILOT-CODEXAPP-001` | Codex APP | backlog | unsupported | Sergey | Run local task package classification pilot |
-| `PILOT-CROSS-001` | Cross-project | backlog | unsupported | Sergey | Execute after individual pilots are defined |
+| `PILOT-CROSS-001` | Cross-project | candidate | medium | Sergey | Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a real failure-to-regression case |
 
 ## [AI OS] Pilot
 
@@ -51,8 +51,8 @@ Evidence required: source request/candidate identity, provenance or explicit blo
 Success criteria: no invented provenance; partial corpus not reported complete; only Judge-pass material may become an export candidate; raw source payload is not exported; real decision work is handed to `[Thinking]`.
 Failure criteria: invented or unverified source treated as verified; incomplete corpus reported complete; non-pass artifact controls synthesis/export; source payload exported; Thinkers OS performs the target strategic decision.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: corpus/source rules, artifact contracts, Judge/Revisor, routing, or export gates change.
 Next step: Complete owner-led manual sync, run `[Thinkers OS]` smoke QA, then record an actual result with `PILOT_RESULTS_TEMPLATE.md`.
 
@@ -166,7 +166,9 @@ Owner: Sergey
 Status: backlog
 Confidence: unsupported
 Revisit trigger: any project role, handoff, or production promotion policy changes.
-Next step: Run after individual project sync records are available.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a
+real observed failure as a separate bounded regression candidate. Do not invent
+a failure or change architecture automatically.
 
 ## Acceptance rules
 
