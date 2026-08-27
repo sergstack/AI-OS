@@ -18,7 +18,7 @@
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md",
         "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
       ],
-      "source_bytes": 29381,
+      "source_bytes": 29645,
       "bundle_bytes": 19109,
       "classification": "bundle_only_semantic",
       "bundle_only_excerpt_or_ref": [
@@ -66,7 +66,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -94,6 +97,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -154,8 +158,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_03_HANDOFF_AND_SMOKE_QA_BUNDLE_SEMANTICS.md",
         "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -218,8 +224,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md",
         "GOAL_PACKS.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -255,6 +263,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -290,6 +299,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -303,7 +313,7 @@
         "ChatGPT/[Thinking]/DECISION_LOG.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md"
       ],
-      "source_bytes": 37399,
+      "source_bytes": 37610,
       "bundle_bytes": 6752,
       "classification": "bundle_only_structural",
       "bundle_only_excerpt_or_ref": [
@@ -315,6 +325,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -358,7 +369,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Thinking]/Knowledge/THINKING_02_JUDGE_REVISOR_RISK_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -419,7 +433,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -460,6 +477,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -471,7 +489,7 @@
         "ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md",
         "ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md"
       ],
-      "source_bytes": 20116,
+      "source_bytes": 20554,
       "bundle_bytes": 16377,
       "classification": "bundle_only_semantic",
       "bundle_only_excerpt_or_ref": [
@@ -502,28 +520,30 @@
           "excerpt": "Назначение: навигация по файлам настройки проекта `[Analytics]`."
         },
         {
-          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
-          "excerpt": "Before running the full workflow, define:"
+          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md",
+          "excerpt": "## Bundle semantic migration sources"
         },
         {
-          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
-          "excerpt": "If mode = `quick`, collapse the workflow:"
+          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md",
+          "excerpt": "- `ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`"
         },
         {
-          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
-          "excerpt": "```text"
+          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md",
+          "excerpt": "- `ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`"
         },
         {
-          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
-          "excerpt": "Question"
+          "path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md",
+          "excerpt": "- `ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`"
         }
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md",
         "ChatGPT/[Analytics]/PROJECT_INSTRUCTIONS.md",
         "ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -566,8 +586,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md",
         "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -627,7 +649,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -685,8 +710,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md",
         "ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -748,7 +775,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -819,7 +849,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -871,6 +904,7 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -909,6 +943,7 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -963,8 +998,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[LLM]/Knowledge/LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md",
         "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -978,7 +1015,7 @@
         "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md"
       ],
-      "source_bytes": 58466,
+      "source_bytes": 58618,
       "bundle_bytes": 12322,
       "classification": "bundle_only_structural",
       "bundle_only_excerpt_or_ref": [
@@ -990,6 +1027,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1041,6 +1079,7 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1081,6 +1120,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1121,6 +1161,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1169,8 +1210,10 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_01_TASKS_AND_HANDOFF_BUNDLE_SEMANTICS.md",
         "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1195,6 +1238,7 @@
       "source_only_excerpt_or_ref": [],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1236,6 +1280,7 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1298,7 +1343,10 @@
         }
       ],
       "mapping_status": "mapped",
-      "candidate_source_paths": [],
+      "candidate_source_paths": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_04_IMPLEMENTATION_WORKFLOWS_BUNDLE_SEMANTICS.md"
+      ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1339,6 +1387,7 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [],
+      "resolution_status": "not_applicable",
       "recommended_action": "block_generation_and_migrate_or_classify"
     },
     {
@@ -1400,14 +1449,16 @@
       ],
       "mapping_status": "mapped",
       "candidate_source_paths": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_06_AI_CODING_DISCIPLINE_BUNDLE_SEMANTICS.md",
         "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md"
       ],
+      "resolution_status": "migrated_to_canonical_knowledge",
       "recommended_action": "block_generation_and_migrate_or_classify"
     }
   ],
   "metrics": {
     "bundles": 29,
-    "unresolved_bundle_only_semantic_count": 16,
+    "unresolved_bundle_only_semantic_count": 0,
     "blocking_record_count": 29
   }
 }

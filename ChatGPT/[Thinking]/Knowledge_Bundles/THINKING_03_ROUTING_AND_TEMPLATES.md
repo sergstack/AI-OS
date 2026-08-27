@@ -11,6 +11,7 @@ Compact upload artifact for [Thinking] covering routing and templates.
 - `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`
 - `ChatGPT/[Thinking]/CURRENT_STATUS.md`
 - `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
+- `ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`
 
 ## Upload target
 
@@ -18,10 +19,11 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:6255f772bf918fd1f67c367d99931f952f23380ba15267794f4e4ddc3f6ef739
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
+- source_fingerprint: sha256:7b9f78906619debfcfad86a3eb7696d7ec6b8cf1247f485fdf79d9154e95ecd8
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -38,7 +40,6 @@ AI-концепция / supported KB pattern → [AI OS]
 Prompts / model routing / LLM quality → [LLM]
 Код / implementation / tests / release → [Codex]
 ```
-
 Правило владения `[LLM]`: если основной результат — reusable prompt, выбор
 модели или LLM workflow и стратегическое решение не запрошено, направь задачу в
 `[LLM]` с фокусным, исполнимым handoff. Сохрани релевантные decision constraints,
@@ -48,7 +49,6 @@ downstream workflow в `[Thinking]`.
 ## Standard handoff format
 ```text
 # Handoff
-
 From:
 To:
 Task type:
@@ -63,6 +63,8 @@ Evidence / confidence:
 Open questions:
 ```
 ## Thinking → Analytics
+Используй, когда decision или scenario требует расчётов.
+Передать:
 - question;
 - metrics;
 - period;
@@ -70,12 +72,16 @@ Open questions:
 - options to test;
 - expected analytical output.
 ## Analytics → LLM
+Используй, когда verified numbers нужно превратить в memo, summary или narrative.
+Передать:
 - curated facts;
 - tables or marts;
 - reconciled metrics;
 - limitations;
 - tone and output format.
 ## LLM → Codex
+Используй, когда нужен код для автоматизации prompt/memo/report workflow.
+Передать:
 - prompt spec;
 - input/output contract;
 - files to inspect;
@@ -83,6 +89,7 @@ Open questions:
 - tests;
 - acceptance criteria.
 ## Codex → QA / Release
+Передать:
 - changed files;
 - tests run;
 - smoke QA;
@@ -90,11 +97,12 @@ Open questions:
 - residual risks;
 - rollback notes.
 
-
 ## From: `ChatGPT/[Thinking]/Knowledge/AI_OS_REFERENCE.md`
 
 # AI OS Reference
 ## Purpose
+Этот проект не содержит полную AI OS KB. `[AI OS]` уже существует и хранит governed knowledge base.
+Используй `[AI OS]`, когда нужно:
 - понять новую AI-концепцию;
 - найти supported pattern;
 - проверить confidence / evidence;
@@ -102,6 +110,7 @@ Open questions:
 - найти governance rule;
 - отличить supported / weak / unsupported claim.
 ## Не копировать
+Не копировать в этот проект:
 - весь compact KB package;
 - raw transcripts;
 - source cards;
@@ -116,7 +125,6 @@ Open questions:
 ```text
 Используй AI OS KB. Найди supported/weak/unsupported evidence по теме:
 <topic>
-
 Верни:
 - найдено в KB: да/нет/частично
 - sources
@@ -127,7 +135,6 @@ Open questions:
 ```
 ## Rule
 AI OS даёт evidence и patterns. Текущий проект применяет их в своей области, не смешивая роли.
-
 
 ## From: `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`
 
@@ -151,29 +158,42 @@ AI OS даёт evidence и patterns. Текущий проект применя�
 ## Confidence
 ## Next step
 
-
 ## From: `ChatGPT/[Thinking]/CURRENT_STATUS.md`
 
 # [Thinking] Current Status
 Status: active
 Owner: Sergey / Thinking Lead
+Last updated: 2026-07-31
 Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
 ## Active canonical files
 | File | Status | Purpose |
+|---|---|---|
+| `PROJECT_INSTRUCTIONS.md` | active | core project instructions |
+| `README.md` | active | project setup and loading guidance |
 | `CURRENT_STATUS.md` | active | live status tracking |
 | `SMOKE_QA_RESULTS.md` | active | smoke QA record |
+| `DECISION_LOG.md` | active | reusable decision record |
+| `Knowledge/INDEX.md` | active | canonical file index |
+| `Knowledge/REVISOR_REWRITE.md` | active | rewrite standard |
 | `Knowledge/DECISION_STATUS_AND_REVISIT.md` | active | decision status standard |
 | `Knowledge/THINKERS_LENS_ROUTER.md` | active | bounded lens selection for real decisions |
 | `Knowledge/THINKERS_CONFLICT_MAP.md` | active | provisional cross-author conflict boundaries |
-| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional patterns mirrored from Thinkers OS |
+| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional synthesis patterns mirrored from Thinkers OS |
 | `Knowledge/THINKERS_APPLICATION_LOG.md` | active | empty append-only real-case logging schema |
 ## Candidate files
 | File | Status | Why candidate |
+|---|---|---|
 | `Knowledge/THINKING_WORKFLOW.md` | candidate | workflow reference, not status source |
 | `Knowledge/DECISION_MEMO_TEMPLATE.md` | candidate | template, not policy |
+| `Knowledge/RISK_REVIEW.md` | candidate | supporting review guidance |
+| `Knowledge/JUDGE_REVIEW.md` | candidate | supporting review guidance |
 | `Knowledge/STRATEGY_OPTIONS_TEMPLATE.md` | candidate | supporting template |
 | `Knowledge/ROUTING_AND_HANDOFF.md` | candidate | routing reference |
+| `Knowledge/AI_OS_REFERENCE.md` | candidate | external reference |
 ## Deprecated / do not load as core
+| File | Reason |
+|---|---|
+| none | no deprecated core files identified |
 ## Recently resolved gaps
 - Dedicated decision log added.
 - Smoke QA results file added.
@@ -201,13 +221,14 @@ Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass a
 - handoff confusion;
 - smoke QA fail.
 
-
 ## From: `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
 
 # [Thinking] Smoke QA Results
+Date: 2026-07-31
 Repository contract verdict: pass
 External behavioral verdict: pass after targeted remediation
 | Test | Prompt / Input | Expected behavior | Actual behavior | Status | Fix required |
+|---|---|---|---|---|---|
 | Routing calculation to [Analytics] | Ask for deterministic calculation or metric math | Route to `[Analytics]`, not `[Thinking]` | Route rules and evidence guidance point to `[Analytics]` | pass | no |
 | Routing code implementation to [Codex] | Ask for code changes, tests, or repo edits | Route to `[Codex]` | Handoff guidance points code work to `[Codex]` | pass | no |
 | Unsupported claim flagged by `@judge` | Present weak claim with missing evidence | Mark unsupported claim and note evidence gap | Evidence rules require unsupported / blocker classification | pass | no |
@@ -228,9 +249,41 @@ External behavioral verdict: pass after targeted remediation
 - none
 ## Acceptance status
 pass
-
+Repository evidence: `python3 -m pytest -q tests/test_thinking_thinkers_integration.py tests/test_validation_scripts.py tests/test_thinkers_os_integration.py` — 52 passed. This command is static repository-contract evidence only; external behavior is recorded separately below.
 ## External behavioral smoke
+Environment: cloud ChatGPT Project `[Thinking]` after Project Instructions refresh and upload of the four authoritative bundles from `Knowledge_Bundles/UPLOAD_LIST.md`.
 | Case | Observed behavior | Status | Fix required |
+|---|---|---|---|
+| Primary problem classification | Produced a bounded pilot recommendation but did not output `primary_problem_type` | revise | require the explicit complex-case field in Project Instructions |
+| Lens anti-bloat | Selected exactly two lenses (Clausewitz and Kahneman), explained why additional lenses were unnecessary | pass | no |
+| Conflict Map review | Reconciled speed versus recurring-defect diagnosis through a contained pilot, QA gate, and rollback, but did not output `conflict_map_check` | revise | require the explicit complex-case field in Project Instructions |
+| Case evidence precedence | Explicitly stated that direct 4-of-5 pilot failures override the general automation pattern and blocked scaling | pass | no |
+| Irrelevant authors excluded | Returned a narrow second-reviewer recommendation without enumerating authors | pass | no |
+| Simple task remains simple | Returned only the requested short title; no synthesis activation | pass | no |
+| Analytics / LLM / Codex routing preserved | Routed calculation to `[Analytics]`, prompt workflow to `[LLM]`, and repository code/tests to `[Codex]` without doing the tasks | pass | no |
+External result: 5 pass, 2 revise. The two revisions concern missing explicit observability fields, not the substantive recommendations.
+## External issues found
+- `primary_problem_type` was not emitted for a material complex case.
+- `conflict_map_check` was not emitted for a mapped speed-versus-quality tension.
+## External remediation and targeted rerun
+- Project Instructions now require `primary_problem_type`, `selected_lenses`, `conflict_map_check`, and `precedence_check` in material complex outputs.
+- The material-complex gate now explicitly includes competing objectives, recurring defects, material downside, weak or conflicting evidence, cross-functional conflict, and low reversibility.
+| Rerun | Observed behavior | Status |
+|---|---|---|
+| Primary problem classification | Emitted all four required fields and a bounded pilot recommendation | pass |
+| Conflict Map review | Emitted all four required fields and reconciled speed versus quality through an explicit boundary | pass |
+Targeted rerun result: 2 pass, 0 revise.
+## External acceptance status
+pass
+
+## From: `ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`
+
+# Migrated Bundle Semantics
+Canonical source created during Issue #285 provenance migration.
+Legacy bundle provenance: `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_03_ROUTING_AND_TEMPLATES.md`.
+## Legacy section: `ChatGPT/[Thinking]/CURRENT_STATUS.md`
+| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional patterns mirrored from Thinkers OS |
+## Legacy section: `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
 | Primary problem classification | Bounded pilot recommendation; missing `primary_problem_type` | revise | require explicit complex-case field |
 | Lens anti-bloat | Exactly two lenses; additional lenses explicitly excluded | pass | no |
 | Conflict Map review | Contained pilot resolved the tension; missing `conflict_map_check` | revise | require explicit complex-case field |
@@ -239,10 +292,7 @@ pass
 | Simple task remains simple | Only the requested short title | pass | no |
 | Analytics / LLM / Codex routing preserved | Correct three-way routing without task execution | pass | no |
 External result: 5 pass, 2 revise.
-## External remediation and targeted rerun
 - Require `primary_problem_type`, `selected_lenses`, `conflict_map_check`, and `precedence_check` for material complex cases.
 - Clarify the material-complex gate for competing objectives, recurring defects, material downside, weak or conflicting evidence, cross-functional conflict, and low reversibility.
 - Primary problem classification rerun: pass.
 - Conflict Map review rerun: pass.
-## External acceptance status
-pass

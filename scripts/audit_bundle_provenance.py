@@ -57,6 +57,21 @@ def classify(bundle: str, sources: dict[str, str]) -> tuple[str, list[dict[str, 
     return "equivalent", [], []
 
 
+def all_bundle_only_lines(bundle: str, sources: dict[str, str]) -> list[str]:
+    content = bundle.split("# Content", 1)[1] if "# Content" in bundle else bundle
+    findings = []
+    for path, text in sources.items():
+        marker = f"## From: `{path}`"
+        if marker not in content:
+            continue
+        segment = content.split(marker, 1)[1].split("## From: `", 1)[0]
+        matcher = difflib.SequenceMatcher(a=normalize(text).splitlines(), b=normalize(segment).splitlines(), autojunk=False)
+        for tag, _i1, _i2, j1, j2 in matcher.get_opcodes():
+            if tag in {"insert", "replace"}:
+                findings.extend(normalize(segment).splitlines()[j1:j2])
+    return findings
+
+
 def candidate_source_paths(root: Path, findings: list[dict[str, str]]) -> list[str]:
     """Surface review candidates without changing a declared mapping."""
     candidates: set[str] = set()
@@ -102,6 +117,7 @@ def render_markdown(payload: dict[str, object]) -> str:
             f"- Bundle bytes: {record['bundle_bytes']}",
             f"- Classification: {record['classification']}",
             f"- Mapping status: {record['mapping_status']}",
+            f"- Resolution status: {record['resolution_status']}",
             f"- Recommended action: {record['recommended_action']}",
             f"- Candidate canonical source paths: {', '.join(f'`{path}`' for path in record['candidate_source_paths']) or 'none'}",
             f"- Bundle-only excerpt or reference: {json.dumps(record['bundle_only_excerpt_or_ref'], ensure_ascii=False)}",
@@ -116,6 +132,8 @@ def main() -> int:
     parser.add_argument("--markdown-out", type=Path, required=True)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    manifest = json.loads((root / "knowledge_bundle_manifest.json").read_text(encoding="utf-8"))
+    manifest_items = {item["output"]: item for item in manifest["bundles"]}
     records = []
     for project, project_dir in PROJECTS.items():
         if project not in TARGET_PROJECTS:
@@ -130,19 +148,24 @@ def main() -> int:
             missing = [source for source in declared if not (root / source).is_file()]
             sources = {source: (root / source).read_text(encoding="utf-8") for source in declared if source not in missing}
             status, bundle_only, source_only = classify(text, sources) if not missing else ("unmapped", [], [])
+            migration_sources = manifest_items.get(str(path.relative_to(root)), {}).get("migration_sources", [])
+            migration_text = "\n".join((root / source).read_text(encoding="utf-8") for source in migration_sources if (root / source).is_file())
+            semantic_lines = all_bundle_only_lines(text, sources) if status == "bundle_only_semantic" else []
+            resolved = bool(semantic_lines) and all(line in normalize(migration_text) for line in semantic_lines)
             records.append({"project": project, "bundle_path": str(path.relative_to(root)), "source_paths": declared,
                             "source_bytes": sum(len(value.encode()) for value in sources.values()), "bundle_bytes": len(text.encode()),
                             "classification": status, "bundle_only_excerpt_or_ref": bundle_only,
                             "source_only_excerpt_or_ref": source_only, "mapping_status": "unmapped" if missing else "mapped",
                             "candidate_source_paths": candidate_source_paths(root, bundle_only),
+                            "resolution_status": "migrated_to_canonical_knowledge" if resolved else "unresolved" if status == "bundle_only_semantic" else "not_applicable",
                             "recommended_action": "eligible_after_review" if status == "equivalent" else "block_generation_and_migrate_or_classify"})
-    unresolved = sum(record["classification"] in {"unmapped", "bundle_only_semantic"} for record in records)
+    unresolved = sum(record["classification"] == "unmapped" or (record["classification"] == "bundle_only_semantic" and record["resolution_status"] != "migrated_to_canonical_knowledge") for record in records)
     blocking = sum(record["classification"] != "equivalent" for record in records)
     payload = {"audit_scope": sorted(TARGET_PROJECTS), "records": records, "metrics": {"bundles": len(records), "unresolved_bundle_only_semantic_count": unresolved, "blocking_record_count": blocking}}
     args.json_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     args.markdown_out.write_text(render_markdown(payload), encoding="utf-8")
     print(json.dumps(payload["metrics"]))
-    return 1 if blocking else 0
+    return 1 if unresolved else 0
 
 
 if __name__ == "__main__":

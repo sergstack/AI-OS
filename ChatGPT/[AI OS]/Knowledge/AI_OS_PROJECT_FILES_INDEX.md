@@ -76,3 +76,10 @@ README.md
 - production promotion: no
 - intended use: настройка поведения `[AI OS]`
 - not intended use: замена governed KB
+
+## Bundle semantic migration sources
+
+- `AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md`
+- `AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
+- `AIOS_03_HANDOFF_AND_SMOKE_QA_BUNDLE_SEMANTICS.md`
+- `AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md`

@@ -8,6 +8,7 @@ Compact upload artifact for [Analytics] covering data contracts and marts.
 
 - `ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md`
 - `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`
+- `ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
 
 ## Upload target
 
@@ -15,10 +16,11 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:2337d76212b6e47325a64a33d2c06358ac9e28ccf9f0ab4f381e7ddf6de48bdd
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
+- source_fingerprint: sha256:784aa92b4a8c57bcb0ed63e3a1bb9cabfc2c9f6f966eadbe7d6a765429d8697a
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -28,10 +30,10 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 
 # Data Contracts
 ## Purpose
+Data contract фиксирует, какие данные нужны, на каком grain, с какими типами, правилами качества и ограничениями.
 ## Minimum contract
 ```markdown
 # Data Contract
-
 Dataset:
 Owner:
 Business owner:
@@ -54,15 +56,21 @@ Null policy:
 Duplicate policy:
 Freshness rule:
 Mapping rules:
+Join rules:
+Metric rules:
+Classification rules:
+Validation checks:
+Known limitations:
+Expected outputs:
 ```
 ## Main file additions
+For every case, define:
 ```text
 stage_main_full:
 - expected grain
 - required columns
 - no metrics / no classifiers rule
 - portability target: DB / dashboard / Excel / BI
-
 mart_main_full:
 - expected grain
 - metrics
@@ -70,7 +78,6 @@ mart_main_full:
 - classifiers
 - QA fields
 - evidence fields
-
 mart_main_tz / compact:
 - audience
 - shortened field list
@@ -84,11 +91,13 @@ mart_main_tz / compact:
 - No chart without source mart or mart slice.
 - No executive conclusion from raw data.
 ## Compact/full input
+When only `compact` exists:
 ```text
 contract_status: partial
 missing_full_context: yes
 assumptions_required: yes
 ```
+When both `compact` and `full` exist:
 ```text
 contract_status: complete_or_reviewable
 compact_used_for: executive scope
@@ -106,11 +115,11 @@ full_used_for: data contract and full mart
 - [ ] Expected outputs listed.
 - [ ] Main files listed.
 
-
 ## From: `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`
 
 # Marts Design
 ## Purpose
+Mart is an analysis-ready table. It is not raw data and not final narrative.
 ## Layers
 ```text
 RAW: original inputs, minimally touched.
@@ -138,23 +147,30 @@ QA totals:
 limitations:
 ```
 ## Main mart rule
+Always design two levels:
 ```text
 mart_main_full
 mart_main_tz / mart_main_compact
 ```
 `mart_main_full` is the source of truth for analytical slices, charts and evidence.
+`mart_main_tz/compact` is the shortened management-ready view.
 ## mart size guardrails
 A mart must be useful to read, not just complete.
-
+Default visible field budget:
 | Mode | Metrics | Visible columns | Sheets / views |
 |---|---:|---:|---:|
 | quick | 3-5 | 8-12 | 0-1 |
 | standard | 5-10 | 15-30 | 3-5 |
 | full | as needed | as needed | as needed, but requires index and compact front sheet |
-
 Rules:
 - Do not create 40 sheets or 200 columns unless user explicitly requests `full` mode / reusable model / dashboard-ready package.
-- If more than 30 columns are needed, split fields into identity, core metrics, variance, risk/confidence, QA/evidence and technical lineage.
+- If more than 30 columns are needed, split fields into groups:
+  - identity;
+  - core metrics;
+  - variance;
+  - risk/confidence;
+  - QA/evidence;
+  - technical lineage.
 - User-facing compact mart must show only decision-relevant fields.
 - Technical QA/evidence fields should be hidden in appendix/evidence view unless requested.
 ## Mart checklist
@@ -223,3 +239,11 @@ limitation_text
 - Do not change formula definitions silently.
 - Do not make isolated mini-marts from raw slices when a main mart is required.
 - Do not build chart slices from raw if mart exists or is required.
+
+## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
+
+# Migrated Bundle Semantics
+Canonical source created during Issue #285 provenance migration.
+Legacy bundle provenance: `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS.md`.
+## Legacy section: `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`
+- If more than 30 columns are needed, split fields into identity, core metrics, variance, risk/confidence, QA/evidence and technical lineage.

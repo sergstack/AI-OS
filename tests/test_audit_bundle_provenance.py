@@ -52,6 +52,7 @@ def test_markdown_report_has_all_provenance_fields() -> None:
             "project": "[AI OS]", "bundle_path": "bundle.md", "source_paths": ["Knowledge/a.md"],
             "source_bytes": 1, "bundle_bytes": 2, "classification": "bundle_only_semantic",
             "mapping_status": "mapped", "recommended_action": "block_generation_and_migrate_or_classify",
+            "resolution_status": "unresolved",
             "candidate_source_paths": ["Knowledge/candidate.md"],
             "bundle_only_excerpt_or_ref": [{"path": "Knowledge/a.md", "excerpt": "extra"}],
             "source_only_excerpt_or_ref": [],

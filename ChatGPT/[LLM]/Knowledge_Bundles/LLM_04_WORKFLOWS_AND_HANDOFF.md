@@ -29,10 +29,11 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
 - source_fingerprint: sha256:236291cadfdfc4f7d733e1ba622744632cdb7611b156f68e42ec1ffaf63d2f8f
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -42,6 +43,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 
 # Local LLM Workflow
 ## Purpose
+Use local/Ollama/Open WebUI for drafts, retrieval experiments, private context exploration, or non-critical generation.
 ## Workflow
 1. Prepare compact context.
 2. Run retrieval or draft locally.
@@ -55,7 +57,6 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - rely on raw dump;
 - skip source grounding;
 - use local output as production fact without QA.
-
 
 ## From: `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`
 
@@ -100,7 +101,6 @@ Do not treat fewer calls as proof of token savings. Record available per-run evi
 - wrong audience.
 Material or evidence-sensitive output cannot pass deterministic QA alone; Judge remains required. Revise remains findings-driven.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`
 
 # Relationship CRM Lite Template
@@ -128,7 +128,6 @@ Notes:
 - All outbound messages require human review before sending.
 - Prompt QA is required before promoting outreach prompts or Stream Deck commands.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`
 
 # Weekly Relationship Review Block
@@ -153,7 +152,6 @@ Acceptance criteria:
 - No autonomous follow-up.
 - No real contact data or private notes in repo files.
 - Stream Deck relationship commands remain candidate until Prompt QA, testing, and owner acceptance.
-
 
 ## From: `ChatGPT/[LLM]/Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`
 
@@ -181,7 +179,6 @@ Hi [name],
 - [ ] Human reviewed before sending.
 - [ ] No auto-send or autonomous follow-up.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/MEETING_RECAP_TEMPLATE.md`
 
 # Meeting Recap Template
@@ -204,7 +201,6 @@ Risks / sensitivities:
 - No autonomous follow-up.
 - Do not store real private notes, emails, phone numbers, addresses, or personal data in repo templates.
 - Keep sensitive context out of public repo files.
-
 
 ## From: `ChatGPT/[LLM]/Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`
 
@@ -233,7 +229,6 @@ Hi [name],
 - [ ] Human reviewed before sending.
 - [ ] No auto-send or autonomous follow-up.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`
 
 # No-Spam / Human-Review Rule
@@ -257,7 +252,6 @@ Purpose: safety boundary for Relationship Effectiveness templates and outreach p
 - [ ] No private data is exposed.
 - [ ] Follow-up, if any, is human-owned.
 - [ ] No automation or production promotion is implied.
-
 
 ## From: `ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`
 
@@ -294,18 +288,21 @@ Limitations:
 - No LLM variance, driver, exposure, or root-cause calculation.
 - Root cause must be evidenced or marked `requires management confirmation`.
 - Recommendations must trace to verified facts.
-
+- Facts, interpretation, limitations, confidence, and next action must be visible.
+- Do not add facts, causes, metrics, recommendations, or private data.
 
 ## From: `ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md`
 
 # Communication QA Checklist
 Status: candidate / ready for human review.
+Purpose: QA checklist for executive, finance, audit, chart, and decision communication after Analytics QA.
 ## Source and scope
 - [ ] Main message exists.
 - [ ] Source exists.
 - [ ] Period exists.
 - [ ] Scope / population exists.
 - [ ] Metric / amount / fact exists where applicable.
+- [ ] Currency / units are visible where applicable.
 - [ ] Evidence cards, source mart, or accepted source references are listed.
 ## Evidence and claims
 - [ ] Facts are separated from interpretation.
@@ -321,14 +318,28 @@ Status: candidate / ready for human review.
 - [ ] Deterministic checks came before narrative.
 - [ ] LLM arithmetic was not used.
 - [ ] LLM variance, driver, exposure, or root-cause calculation was not used.
+- [ ] No new facts, metrics, causes, or recommendations were invented.
+## Output safety
+- [ ] No private/client/vendor/employee/bank/invoice/payment/tax ID/personal data.
+- [ ] No secrets or credentials.
+- [ ] No raw dumps or runtime artifacts.
+- [ ] No production reporting automation is implied.
+- [ ] No deck generator or raw-data-to-deck workflow is implied.
 ## Verdict
 QA verdict: pass / revise / blocked
-
+Reason:
+Unsupported claims:
+Missing evidence:
+Overclaimed root cause:
+Weak recommendation:
+Required revision:
+Approved next step:
 
 ## From: `ChatGPT/[LLM]/Knowledge/CHART_COMMENTARY_STANDARD.md`
 
 # Chart Commentary Standard
 Status: candidate / ready for human review.
+Purpose: concise chart commentary based only on verified Analytics chart data and QA.
 ## Required inputs
 Chart ID:
 Chart source:
@@ -345,17 +356,24 @@ What it shows:
 What changed:
 Why it matters:
 What to do next:
+## Evidence
+Source:
+Period:
+Scope / population:
+Metric / amount / fact:
+Confidence:
 ## Guardrails
 - Do not infer unsupported causes from visual shape.
 - Do not calculate variance, exposure, driver impact, or root cause by LLM.
 - If cause is not evidenced, write `requires management confirmation`.
 - Recommendation must trace to verified chart facts or accepted Analytics findings.
-
+- Keep limitations visible.
 
 ## From: `ChatGPT/[LLM]/Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`
 
 # Audit Finding Wording Template
 Status: candidate / ready for human review.
+Purpose: cautious audit wording after verified Analytics facts, deterministic checks, and reviewer QA.
 ## Finding structure
 Finding:
 Criteria:
@@ -377,7 +395,8 @@ Reviewer:
 - Do not label fraud, misconduct, manipulation, or confirmed breach unless separately evidenced and accepted by the human reviewer.
 - Root cause must be evidenced or marked `requires management confirmation`.
 - Recommendation must trace to verified facts.
-
+- Separate facts, interpretation, limitations, confidence, and next action.
+- Do not include private/client/vendor/employee/bank/invoice/payment/tax ID/personal data.
 
 ## From: `ChatGPT/[LLM]/Knowledge/SLIDE_STORYLINE_TEMPLATE.md`
 
@@ -399,23 +418,37 @@ Slide 2 - What changed:
 Slide 3 - Evidence:
 Slide 4 - Risk / opportunity:
 Slide 5 - Recommended action:
+## Per-slide check
+| slide | message | verified fact | source | limitation | next action |
+|---|---|---|---|---|---|
 ## Guardrails
 - Optional and candidate-only.
 - Do not generate a deck.
 - Do not create a new Presentation project.
 - Do not create a raw-data-to-deck workflow.
 - Do not add facts, causes, metrics, or recommendations.
-
+- Root cause must be evidenced or marked `requires management confirmation`.
+- Recommendations must trace to verified facts.
+- Stream Deck communication commands require Prompt QA before promotion.
 
 ## From: `ChatGPT/[LLM]/Knowledge/EXTERNAL_AI_HANDOFF_PROTOCOL.md`
 
 # External AI Handoff Protocol
 ## Purpose
+Define when to use external AI surfaces and what context package to send.
 ## Rule
+Function first, tool second.
 Do not choose a tool because it is fashionable.
+Choose a tool because the task requires its surface, context handling, tools, or workflow.
 ## Surfaces
 | Surface | Use when | Inputs | Outputs | Owner project | QA gate |
+|---|---|---|---|---|---|
+| ChatGPT / Claude Chat | reasoning, alternative judge, revisor, executive writing | compact context, constraints, desired output | critique, rewrite, structured memo | [Thinking] / [LLM] | unsupported claims listed |
+| Gemini Deep Research | fresh web / YouTube / creator / repo scouting | research prompt, criteria, scope | sourced research report | [LLM] / [AI OS] | sources checked, hype filtered |
+| Codex | implementation, tests, repo hygiene, docs changes | Goal Mode handoff or scoped task package | changed files, tests, PR / commit | [Codex] | tests / smoke checks |
+| Claude Code | coding agent alternative, repo review, CLAUDE.md workflows, hooks / skills / MCP | task package, allowed files, constraints | code/doc changes, review, PR | [Codex] | diff review and tests |
 | Ollama | local memo reasoning over prepared payloads | metrics, signals, evidence cards, prompts | draft memo, local judgement | [Analytics] / [LLM] | deterministic facts preserved |
+| Kestra | orchestration of stable workflows | validated scripts, configs, artifact policy | execution, artifacts, run_summary | [Codex] | validation + run_summary |
 ## Never send
 - secrets;
 - `.env`;
@@ -445,11 +478,13 @@ Every handoff should include:
 - research result accepted without source filtering;
 - orchestration marked successful without business validation.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/GEMINI_DEEP_RESEARCH__KB_HUNTER.md`
 
 # Gemini Deep Research — KB Hunter
 ## Purpose
+Use Gemini Deep Research as a research scout for fresh AI workflows, videos, creator practices, repos, and power-user patterns.
+Gemini is not the final source of truth.
+It produces candidate sources for KB ingestion.
 ## Best use cases
 - YouTube workflow discovery;
 - AI power-user subscription workflows;
@@ -465,6 +500,7 @@ Every handoff should include:
 - clickbait;
 - unsupported claims.
 ## Research input package
+Include:
 - topic;
 - scope;
 - must-have criteria;
@@ -473,6 +509,7 @@ Every handoff should include:
 - output schema;
 - Sergey relevance criteria.
 ## Scoring rubric
+For each candidate source:
 - signal score;
 - operational depth;
 - novelty;
@@ -482,12 +519,14 @@ Every handoff should include:
 - hype risk;
 - Sergey relevance.
 ## Second-pass filter
+Keep only sources with:
 - reproducible workflow;
 - concrete tools;
 - visible steps;
 - output artifact;
 - quality check;
 - repeatability.
+Remove:
 - pure reviews;
 - news;
 - opinions;
@@ -509,11 +548,12 @@ Pass if:
 - Sergey relevance is scored;
 - claims are separated from interpretation.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/AI_OS_REFERENCE.md`
 
 # AI OS Reference
 ## Purpose
+Этот проект не содержит полную AI OS KB. `[AI OS]` уже существует и хранит governed knowledge base.
+Используй `[AI OS]`, когда нужно:
 - понять новую AI-концепцию;
 - найти supported pattern;
 - проверить confidence / evidence;
@@ -521,6 +561,7 @@ Pass if:
 - найти governance rule;
 - отличить supported / weak / unsupported claim.
 ## Не копировать
+Не копировать в этот проект:
 - весь compact KB package;
 - raw transcripts;
 - source cards;
@@ -535,7 +576,6 @@ Pass if:
 ```text
 Используй AI OS KB. Найди supported/weak/unsupported evidence по теме:
 <topic>
-
 Верни:
 - найдено в KB: да/нет/частично
 - sources
