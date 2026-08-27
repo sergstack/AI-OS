@@ -12,6 +12,21 @@ from check_knowledge_bundles import PROJECTS, listed_files, section_between, sou
 TARGETS = {"[AI OS]", "[Thinking]", "[Analytics]", "[LLM]", "[Codex]"}
 
 
+def contract_from_bundle(text: str) -> dict[str, object]:
+    """Preserve the human-facing upload contract declaratively."""
+    title = text.split("\n", 1)[0].removeprefix("# ")
+    purpose = section_between(text, "## Purpose", "## Source files").strip()
+    upload_target = section_between(text, "## Upload target", "## Status").strip()
+    status = section_between(text, "## Status", "---")
+    status_lines = []
+    for line in status.splitlines():
+        value = line.removeprefix("- ").strip()
+        if not line.startswith("- ") or value.startswith(("bundle_type:", "source_of_truth:", "source_fingerprint:", "generator:")):
+            continue
+        status_lines.append(value)
+    return {"title": title, "purpose": purpose, "upload_target": upload_target, "status_lines": status_lines}
+
+
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
     bundles = []
@@ -23,7 +38,8 @@ def main() -> int:
         names += listed_files(section_between(upload, "## Optional upload files", "## Do not upload"))
         for name in names:
             path = root / project_dir / "Knowledge_Bundles" / name
-            bundles.append({"project": project, "output": str(path.relative_to(root)), "sources": source_files_from_bundle(path.read_text(encoding="utf-8"))})
+            text = path.read_text(encoding="utf-8")
+            bundles.append({"project": project, "output": str(path.relative_to(root)), "sources": source_files_from_bundle(text), "contract": contract_from_bundle(text)})
     payload = {"schema_version": 1, "status": "audit_pending", "bundles": bundles}
     target = root / "knowledge_bundle_manifest.json"
     target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
