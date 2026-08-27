@@ -10,6 +10,7 @@ Compact upload artifact for [AI OS] covering governance and evidence.
 - `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
 - `AUTONOMOUS_EXECUTION_STANDARD.md`
 - `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
+- `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`
 
 ## Upload target
 
@@ -20,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:810b6994285ee9e1cfced92cbabdfa5692e1d845027f2ae7cf8c3a5ba9a2dfd7
+- source_fingerprint: sha256:bd59733c5ab12f6df3e484a0c52d1149f5bac88ce7d7db81f67a615d1af32340
 
 ---
 
@@ -140,6 +141,11 @@ scopes without restating the canonical state machine or schema.
 New AES v2 records require Closure Review: it rechecks original goal, scope,
 invariants, final-evidence freshness, rollback, and owner boundary before
 terminal acceptance. Historical v1 evidence remains read-only.
+
+For an active multi-owner continuation, the AES layer is the control-plane hub;
+the canonical continuation contract records route trace, acceptance progress,
+and bounded guards without replacing domain ownership or the AES status
+namespaces. Guard thresholds remain unset pending observed pilot calibration.
 
 After routing resolves a primary owner for a material decision or deliverable,
 an upstream project may prepare evidence, contradictions, options, risks, and a
