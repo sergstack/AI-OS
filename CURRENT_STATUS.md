@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-12
+- last_checked: 2026-08-27 (repository evidence refresh)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -47,6 +47,20 @@ Evidence-dependent or external state:
 - No new external evidence was observed during the 2026-08-12 repository
   reconciliation. Existing dated evidence and `not_verified` / `not_run`
   statuses remain unchanged.
+
+Repository evidence refresh — 2026-08-27:
+
+- PR #298 restored the generated Knowledge Bundle and provenance-audit
+  artifacts that had drifted from their tracked sources.
+- The repository bundle check and provenance-audit check completed
+  successfully; the focused provenance/bundle test set reported 11 passing
+  tests.
+- The PR's `docs-safety` and `merge-gate` checks were observed successful
+  before merge.
+- This refresh verifies repository evidence only. It does not add external
+  ChatGPT UI sync evidence, a new smoke run, pilot results, owner acceptance,
+  or production authorization. Accordingly, the smoke, pilot, acceptance, and
+  production-promotion statuses above are unchanged.
 
 `PROJECT_INSTRUCTIONS.md` files must stay compact. Supporting policies, examples, templates, checklists, and detailed workflows belong in `Knowledge/`.
 
