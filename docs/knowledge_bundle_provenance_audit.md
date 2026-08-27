@@ -1,0 +1,386 @@
+# Knowledge Bundle Provenance Audit
+
+Audit scope: [AI OS], [Analytics], [Codex], [LLM], [Thinking]
+
+Unresolved bundle-only semantic count: **16**
+Blocking record count: **29**
+
+| Project | Bundle | Classification | Mapping | Action |
+| --- | --- | --- | --- | --- |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_05_SUPERVISED_AGENT_LOOPS.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [AI OS] | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_06_CROSS_PROJECT_AI_EVALS.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [Thinking] | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORKFLOW_AND_DECISIONS.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [Thinking] | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_02_JUDGE_REVISOR_RISK.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Thinking] | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_03_ROUTING_AND_TEMPLATES.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Thinking] | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_04_THINKERS_SYNTHESIS.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_01_CORE_WORKFLOW.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_06_TEMPLATES.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Analytics] | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_07_CODEX_HANDOFF_OPTIONAL.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_01_ROUTING_AND_MODEL_SELECTION.md` | source_only | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_02_PROMPT_LIBRARY_AND_REGISTRY.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_04_WORKFLOWS_AND_HANDOFF.md` | source_only | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_05_CONTEXT_ENGINEERING.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [LLM] | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_06_LOCAL_AI_EXPERIMENTS.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_01_TASKS_AND_HANDOFF.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_02_EXECUTION_AUTONOMY_REPORTING.md` | bundle_only_structural | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_03_TESTING_ACCEPTANCE_RELEASE.md` | source_only | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_04_IMPLEMENTATION_WORKFLOWS.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_05_AGENT_REFERENCES.md` | source_only | mapped | block_generation_and_migrate_or_classify |
+| [Codex] | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_06_AI_CODING_DISCIPLINE.md` | bundle_only_semantic | mapped | block_generation_and_migrate_or_classify |
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md`
+
+- Project: [AI OS]
+- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`, `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`, `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`, `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+- Source bytes: 29381
+- Bundle bytes: 19109
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md", "excerpt": "`ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`."}, {"path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md", "excerpt": "If raw-input triage and AI OS scoped routing differ, use Inbox Router for"}, {"path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md", "excerpt": "triage and this file for AI OS evidence/governance scope."}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "This is an engineering/Codex standard, not Analytics methodology. It does not define business logic, metrics, formulas, or analytical conclusions."}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "Use `Existing Script Controlled Refactor Standard` when an existing script, CLI, notebook-exported script, or pipeline already runs or has known useful output, "}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "excerpt": "Назначение: второй индекс для `[AI OS]`, только по рабочим файлам, которые добавляются этим пакетом."}, {"path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "excerpt": "| Индекс | Статус | Для чего использовать |"}, {"path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "excerpt": "|---|---|---|"}, {"path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "excerpt": "| Файл | Тип | Назначение | Когда использовать |"}, {"path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md", "excerpt": "|---|---|---|---|"}]
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
+
+- Project: [AI OS]
+- Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
+- Source bytes: 41864
+- Bundle bytes: 6576
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: AUTONOMOUS_EXECUTION_STANDARD.md"}, {"path": "bundle", "excerpt": "missing section: AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md`
+
+- Project: [AI OS]
+- Source paths: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`, `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`, `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`, `HANDOFF_STYLE_STANDARD.md`
+- Source bytes: 13218
+- Bundle bytes: 10086
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- `Goal` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Если owner capability доступна, reversible, policy-permitted и authorized, вызови её, проверь результат и верни его текущему владельцу."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Если capability недоступна, верни terminal handoff с точной причиной; не считай подготовку handoff completion."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Не авторизуй owner-frozen policy, merge, deploy, production promotion или другое действие с material downside/низкой обратимостью."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Destination вне `PROJECT_CAPABILITIES.yaml` остаётся explicit terminal handoff: не изобретай capability, не вызывай `project-context` и не расширяй authority."}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "Назначение: как `[AI OS]` передаёт результат в другие Project-папки."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Поле `Goal` сохраняет исходную цель и не заменяется локальной подзадачей."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу."}, {"path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "excerpt": "- Если capability доступна в текущей среде, а следующий шаг reversible, policy-permitted и уже authorized, вызови capability, проверь её результат и верни его т"}]
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
+
+- Project: [AI OS]
+- Source paths: `GOAL_PACKS.md`, `COMMAND_SURFACE.md`, `CONTEXT_PACK_STANDARD.md`, `PROMPT_QA_FACTORY.md`, `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`, `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
+- Source bytes: 21681
+- Bundle bytes: 14065
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "GOAL_PACKS.md", "excerpt": "Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI-OS, LLM, Analytics, or Codex infer safe execution details."}, {"path": "GOAL_PACKS.md", "excerpt": "### Active packs"}, {"path": "GOAL_PACKS.md", "excerpt": "| Pack | Trigger | Route | Output | Quality gate |"}, {"path": "GOAL_PACKS.md", "excerpt": "|---|---|---|---|---|"}, {"path": "GOAL_PACKS.md", "excerpt": "| `ai_trend_triage` | \"What changed in AI and does it matter for me?\" | `[AI OS]` -> `[Thinking]` or `[LLM]` if needed | short verdict, use cases, risks, next s"}]
+- Source-only excerpt or reference: [{"path": "GOAL_PACKS.md", "excerpt": "# Goal Packs"}, {"path": "GOAL_PACKS.md", "excerpt": "Goal Packs are reusable workflows for broad goals. They help Sergey start from intent while AI-OS, LLM, Analytics, or Codex infer the safe execution details."}, {"path": "GOAL_PACKS.md", "excerpt": "## Active Packs"}, {"path": "GOAL_PACKS.md", "excerpt": "### `ai_trend_triage`"}, {"path": "GOAL_PACKS.md", "excerpt": "- trigger: \"What changed in AI and does it matter for me?\""}]
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_05_SUPERVISED_AGENT_LOOPS.md`
+
+- Project: [AI OS]
+- Source paths: `ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md`, `ChatGPT/[AI OS]/Knowledge/LOOP_ACCEPTANCE_CHECKLIST.md`, `ChatGPT/[AI OS]/Knowledge/AUTO_RESEARCH_BACKLOG.md`, `ChatGPT/[AI OS]/Knowledge/SKILLS_HOOKS_MCP_DECISION_MATRIX.md`
+- Source bytes: 5628
+- Bundle bytes: 3461
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/LOOP_ACCEPTANCE_CHECKLIST.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/AUTO_RESEARCH_BACKLOG.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/SKILLS_HOOKS_MCP_DECISION_MATRIX.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_06_CROSS_PROJECT_AI_EVALS.md`
+
+- Project: [AI OS]
+- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md`, `ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md`, `ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md`, `ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md`
+- Source bytes: 14083
+- Bundle bytes: 5702
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORKFLOW_AND_DECISIONS.md`
+
+- Project: [Thinking]
+- Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`
+- Source bytes: 37399
+- Bundle bytes: 6752
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: AUTONOMOUS_EXECUTION_STANDARD.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_02_JUDGE_REVISOR_RISK.md`
+
+- Project: [Thinking]
+- Source paths: `ChatGPT/[Thinking]/Knowledge/JUDGE_REVIEW.md`, `ChatGPT/[Thinking]/Knowledge/REVISOR_REWRITE.md`, `ChatGPT/[Thinking]/Knowledge/RISK_REVIEW.md`, `ChatGPT/[Thinking]/Knowledge/STRATEGY_OPTIONS_TEMPLATE.md`
+- Source bytes: 3937
+- Bundle bytes: 4102
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Thinking]/Knowledge/JUDGE_REVIEW.md", "excerpt": "Verdict rule: if a proposal adds a new mode, automation, folder, dashboard, agentic workflow, or broad repo change before pilot evidence, verdict must be `revis"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Thinking]/Knowledge/JUDGE_REVIEW.md", "excerpt": "`@judge` — критик результата. Не переписывает красиво, а ищет слабые места."}, {"path": "ChatGPT/[Thinking]/Knowledge/JUDGE_REVIEW.md", "excerpt": "Verdict rule:"}, {"path": "ChatGPT/[Thinking]/Knowledge/JUDGE_REVIEW.md", "excerpt": "- If a proposal adds a new mode, automation, folder, dashboard, agentic workflow, or broad repo change before pilot evidence, verdict must be `revise` or `block"}, {"path": "ChatGPT/[Thinking]/Knowledge/REVISOR_REWRITE.md", "excerpt": "Define `@revisor` as a rewrite role after judge review."}, {"path": "ChatGPT/[Thinking]/Knowledge/REVISOR_REWRITE.md", "excerpt": "Revisor rewrites the result without adding new facts."}]
+
+## `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_03_ROUTING_AND_TEMPLATES.md`
+
+- Project: [Thinking]
+- Source paths: `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Thinking]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`, `ChatGPT/[Thinking]/CURRENT_STATUS.md`, `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`
+- Source bytes: 13009
+- Bundle bytes: 11224
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Thinking]/CURRENT_STATUS.md", "excerpt": "| `Knowledge/THINKERS_SYNTHESIS_PATTERNS.md` | active | five active provisional patterns mirrored from Thinkers OS |"}, {"path": "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md", "excerpt": "| Primary problem classification | Bounded pilot recommendation; missing `primary_problem_type` | revise | require explicit complex-case field |"}, {"path": "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md", "excerpt": "| Lens anti-bloat | Exactly two lenses; additional lenses explicitly excluded | pass | no |"}, {"path": "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md", "excerpt": "| Conflict Map review | Contained pilot resolved the tension; missing `conflict_map_check` | revise | require explicit complex-case field |"}, {"path": "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md", "excerpt": "| Case evidence precedence | Direct 4-of-5 pilot failures overrode the general automation pattern | pass | no |"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md", "excerpt": "Используй, когда decision или scenario требует расчётов."}, {"path": "ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md", "excerpt": "Передать:"}, {"path": "ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md", "excerpt": "Используй, когда verified numbers нужно превратить в memo, summary или narrative."}, {"path": "ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md", "excerpt": "Передать:"}, {"path": "ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md", "excerpt": "Используй, когда нужен код для автоматизации prompt/memo/report workflow."}]
+
+## `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_04_THINKERS_SYNTHESIS.md`
+
+- Project: [Thinking]
+- Source paths: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md`
+- Source bytes: 26134
+- Bundle bytes: 13276
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_01_CORE_WORKFLOW.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`, `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`, `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`
+- Source bytes: 20116
+- Bundle bytes: 16377
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "If mode = `quick`, collapse to: question → minimal inputs → grain / period / filters → calculation or reasoning → compact result → QA note → limitation."}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "`analytical_depth` and `output_mode` are independent. Use conditional reasoning depth from `ANALYTICAL_REASONING_STANDARD.md`; `quick` does not become a full re"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "## Parent / Child Issue Gate"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "For large or risky analytics tasks involving data contracts, stage/mart layers, workbook/report contracts, reconciliation, manual review, provider evidence, dup"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "Analytics should define parent scope, child issue sequence, source/output layers, grain, formulas, QA, limitations, and acceptance gates before Codex implementa"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md", "excerpt": "Назначение: навигация по файлам настройки проекта `[Analytics]`."}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "Before running the full workflow, define:"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "If mode = `quick`, collapse the workflow:"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "```text"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md", "excerpt": "Question"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md`, `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`
+- Source bytes: 4770
+- Bundle bytes: 4833
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md", "excerpt": "- If more than 30 columns are needed, split fields into identity, core metrics, variance, risk/confidence, QA/evidence and technical lineage."}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "excerpt": "Data contract фиксирует, какие данные нужны, на каком grain, с какими типами, правилами качества и ограничениями."}, {"path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "excerpt": "Join rules:"}, {"path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "excerpt": "Metric rules:"}, {"path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "excerpt": "Classification rules:"}, {"path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "excerpt": "Validation checks:"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`, `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`
+- Source bytes: 51508
+- Bundle bytes: 22255
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "Registry is the source of truth for eligibility; registration is not execution. Each method records `METHOD_ID`, name, purpose, role, requirements, input grain,"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "For P0, `NAME` is the stable registry label represented by `METHOD_ID`; display formatting cannot change identity."}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "`P0 METHOD COUNT = 22`. Capability groups (`DECOMPOSE`, `LOCATE`, `VALIDATE`, `CHALLENGE`, `FORWARD`) are readability aids only, not runtime taxonomy or routing"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "Material Plan/Fact uses `VARIANCE_DIAGNOSTIC_CONTRACT.md` to configure existing methods. `variance_analysis` preserves raw/source formula and normalizes managem"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "| METHOD_ID | Role / mode | Purpose and required boundary |"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "This registry is the source of truth for method eligibility. Selection follows `ANALYTICAL_REASONING_STANDARD.md`; registry entries do not mean a method has bee"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "For P0, `NAME` is the stable registry label represented by `METHOD_ID`; a display label may replace underscores with spaces but cannot change method identity."}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "Required registry schema:"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "```text"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md", "excerpt": "METHOD_ID"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`, `ChatGPT/[Analytics]/Knowledge/WORD_REPORT_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/TEXT_QA_AND_STYLE.md`, `ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md`
+- Source bytes: 13417
+- Bundle bytes: 12590
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md", "excerpt": "For `analytical_depth = material / decision_critical` and management-facing output:"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md", "excerpt": "Rank by the relevant business criterion, not mechanically by `ABS Delta`; keep different performance dimensions visible. State controllability or persistence on"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md", "excerpt": "Preserve DQ, applicable Plan/Fact/Delta, material deviations and ranking criterion, row/timing status, risk basis, confidence, cause versus hypothesis, supporte"}, {"path": "ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md", "excerpt": "| Management implication | Decision/action is stated only if supported | Decision manufactured from an observation |"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md", "excerpt": "For CFO / COO / руководители:"}, {"path": "ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md", "excerpt": "Uses:"}, {"path": "ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md", "excerpt": "For Sergey / Finance Team / deep review:"}, {"path": "ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md", "excerpt": "Uses:"}, {"path": "ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md", "excerpt": "For `analytical_depth = material / decision_critical` and management-facing output, open with a compressed executive layer:"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`, `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
+- Source bytes: 24555
+- Bundle bytes: 21730
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] Method selection adequate; no material omission or method bloat."}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] Registry mapping followed; deterministic trigger, trigger priority, and trigger contract/evidence checked; no silent LLM override."}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] Selected prerequisites met; reasoning did not replace a deterministic claim."}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] Claim lineage is complete and references an executed method."}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] Baseline explicit; required baseline robustness assessed."}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] `method_selection_adequate?`"}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] `material_method_omitted?`"}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] `unnecessary_method_bloat?`"}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] `registry_mapping_followed?`"}, {"path": "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md", "excerpt": "- [ ] `deterministic_trigger_applied?`"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_06_TEMPLATES.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Templates/ANALYSIS_RESPONSE_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MART_SPEC_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MEMO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/VARIANCE_ANALYSIS_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AUDIT_ANOMALY_IO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/FINANCE_MEMO_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_CONTEXT_PACK.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_RISK_LIBRARY.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_EXCEPTION_REGISTER_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_AUDIT_FINDING_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
+- Source bytes: 28571
+- Bundle bytes: 11895
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md", "excerpt": "Data contract:"}, {"path": "ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md", "excerpt": "Method:"}, {"path": "ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md", "excerpt": "Verified facts:"}, {"path": "ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md", "excerpt": "QA:"}, {"path": "ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md", "excerpt": "- Data contract, grain, period, filters, and exclusions explicit."}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md", "excerpt": "Dataset:"}, {"path": "ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md", "excerpt": "Source:"}, {"path": "ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md", "excerpt": "Refresh frequency:"}, {"path": "ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md", "excerpt": "Load timestamp:"}, {"path": "ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md", "excerpt": "Period:"}]
+
+## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_07_CODEX_HANDOFF_OPTIONAL.md`
+
+- Project: [Analytics]
+- Source paths: `ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md`, `ChatGPT/[Analytics]/Templates/CODEX_HANDOFF_TEMPLATE.md`, `ChatGPT/[Analytics]/Codex_Tasks/00_OVERVIEW.md`, `ChatGPT/[Analytics]/Codex_Tasks/01_STAGE.md`, `ChatGPT/[Analytics]/Codex_Tasks/02_MART.md`, `ChatGPT/[Analytics]/Codex_Tasks/03_CHARTS.md`, `ChatGPT/[Analytics]/Codex_Tasks/04_INSIGHTS.md`, `ChatGPT/[Analytics]/Codex_Tasks/05_WORD.md`, `ChatGPT/[Analytics]/Codex_Tasks/06_TEXT_QA.md`, `ChatGPT/[Analytics]/Codex_Tasks/07_SMOKE_QA.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
+- Source bytes: 15140
+- Bundle bytes: 11295
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md", "excerpt": "`[Analytics]` remains the analytical methodology layer. `[Codex]` prepares the task package. Codex APP executes locally. Python calculates; LLM writes only from"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md", "excerpt": "Когда нужно изменить документы, код или автоматизацию, `[Analytics]` выдаёт ТЗ для `[Codex]` частями, чтобы изменения были управляемыми."}, {"path": "ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md", "excerpt": "Codex task packets are for implementation. Analytical logic stays in `[Analytics]` first."}, {"path": "ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md", "excerpt": "For analytical memo production, `[Codex]` prepares the ultra-long Codex APP task package and Codex APP executes it locally. Python calculates metrics, deltas, s"}, {"path": "ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md", "excerpt": "Use:"}, {"path": "ChatGPT/[Analytics]/Knowledge/CODEX_TASK_PACKETS.md", "excerpt": "Objective: update or create the Analytics package without breaking in-project analysis mode."}]
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_01_ROUTING_AND_MODEL_SELECTION.md`
+
+- Project: [LLM]
+- Source paths: `ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md`, `ChatGPT/[LLM]/Knowledge/MODEL_ROUTING.md`, `ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md`
+- Source bytes: 2669
+- Bundle bytes: 2457
+- Classification: source_only
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: []
+- Source-only excerpt or reference: [{"path": "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md", "excerpt": "| Need | Route |"}, {"path": "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md", "excerpt": "|---|---|"}, {"path": "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md", "excerpt": "| Draft text | draft workflow |"}, {"path": "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md", "excerpt": "| Critique | judge workflow |"}, {"path": "ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md", "excerpt": "| Improve | revise workflow |"}]
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_02_PROMPT_LIBRARY_AND_REGISTRY.md`
+
+- Project: [LLM]
+- Source paths: `ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md`, `ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md`
+- Source bytes: 6656
+- Bundle bytes: 7214
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md", "excerpt": "11. rollback / deletion rule."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md", "excerpt": "- do not create a new project, mode, folder, button, dashboard, agent, or automation unless unavoidable."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md", "excerpt": "`unversioned` and `not_recorded` describe missing repository evidence; they do not imply an eval pass, owner acceptance, or a fabricated historical version."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md", "excerpt": "Existing active entries may remain usable as explicit legacy debt. A new or materially revised reusable asset must receive an identifiable candidate version, ri"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md", "excerpt": "11. Rollback / deletion rule."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md", "excerpt": "- Do not create a new project, mode, folder, button, dashboard, agent, or automation unless unavoidable."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md", "excerpt": "Controlled registry of reusable prompts and workflows."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md", "excerpt": "Prompts are controlled assets, not one-off chat text."}, {"path": "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md", "excerpt": "`unversioned` and `not_recorded` describe missing repository evidence; they do"}]
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md`
+
+- Project: [LLM]
+- Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`
+- Source bytes: 58466
+- Bundle bytes: 12322
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: AUTONOMOUS_EXECUTION_STANDARD.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_04_WORKFLOWS_AND_HANDOFF.md`
+
+- Project: [LLM]
+- Source paths: `ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`, `ChatGPT/[LLM]/Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/MEETING_RECAP_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`, `ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/CHART_COMMENTARY_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/SLIDE_STORYLINE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/EXTERNAL_AI_HANDOFF_PROTOCOL.md`, `ChatGPT/[LLM]/Knowledge/GEMINI_DEEP_RESEARCH__KB_HUNTER.md`, `ChatGPT/[LLM]/Knowledge/AI_OS_REFERENCE.md`
+- Source bytes: 17790
+- Bundle bytes: 16683
+- Classification: source_only
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: []
+- Source-only excerpt or reference: [{"path": "ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md", "excerpt": "Use local/Ollama/Open WebUI for drafts, retrieval experiments, private context exploration, or non-critical generation."}, {"path": "ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md", "excerpt": "- Facts, interpretation, limitations, confidence, and next action must be visible."}, {"path": "ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md", "excerpt": "- Do not add facts, causes, metrics, recommendations, or private data."}, {"path": "ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md", "excerpt": "Purpose: QA checklist for executive, finance, audit, chart, and decision communication after Analytics QA."}, {"path": "ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md", "excerpt": "- [ ] Currency / units are visible where applicable."}]
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_05_CONTEXT_ENGINEERING.md`
+
+- Project: [LLM]
+- Source paths: `CONTEXT_PACK_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`, `ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
+- Source bytes: 9879
+- Bundle bytes: 3442
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: CONTEXT_PACK_STANDARD.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_06_LOCAL_AI_EXPERIMENTS.md`
+
+- Project: [LLM]
+- Source paths: `ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/LOCAL_AI_EXPERIMENT_PLAYBOOK.md`, `ChatGPT/[LLM]/Knowledge/OLLAMA_OPENWEBUI_PILOT.md`, `ChatGPT/[LLM]/Knowledge/LOCAL_MODEL_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md`
+- Source bytes: 9228
+- Bundle bytes: 3916
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/LOCAL_AI_EXPERIMENT_PLAYBOOK.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/OLLAMA_OPENWEBUI_PILOT.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/LOCAL_MODEL_EVAL_MATRIX.md"}, {"path": "bundle", "excerpt": "missing section: ChatGPT/[LLM]/Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_01_TASKS_AND_HANDOFF.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md`, `ChatGPT/[Codex]/Knowledge/CODEX_HANDOFF_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md`
+- Source bytes: 6099
+- Bundle bytes: 5627
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md", "excerpt": "Do not use destructive rollback commands as the default. Commands such as `git reset --hard` require explicit human confirmation and a clean understanding of wh"}, {"path": "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md", "excerpt": "These are local GitHub sync blockers in addition to the canonical hard blockers in `AUTONOMY_POLICY.md`."}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "excerpt": "## Files allowed to modify"}, {"path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "excerpt": "- `<path>`"}, {"path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "excerpt": "## Forbidden actions"}, {"path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "excerpt": "- Do not modify secrets or `.env`."}, {"path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "excerpt": "- Do not change business logic unless explicitly stated."}]
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_02_EXECUTION_AUTONOMY_REPORTING.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`
+- Source bytes: 40974
+- Bundle bytes: 11380
+- Classification: bundle_only_structural
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "bundle", "excerpt": "missing section: AUTONOMOUS_EXECUTION_STANDARD.md"}]
+- Source-only excerpt or reference: []
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_03_TESTING_ACCEPTANCE_RELEASE.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/TESTING_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Codex]/Knowledge/REVIEW_CHECKLIST.md`, `ChatGPT/[Codex]/Knowledge/RELEASE_CHECKLIST.md`, `ChatGPT/[Codex]/Knowledge/DONE_DEFINITION.md`, `ChatGPT/[Codex]/Knowledge/SMOKE_QA_CHECKLIST.md`
+- Source bytes: 3078
+- Bundle bytes: 3966
+- Classification: source_only
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: []
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/TESTING_WORKFLOW.md", "excerpt": "If no unit tests exist for docs-only changes, run file-existence, grep, markdown consistency, and git diff checks."}, {"path": "ChatGPT/[Codex]/Knowledge/TESTING_WORKFLOW.md", "excerpt": "Minimum generic fallback commands:"}, {"path": "ChatGPT/[Codex]/Knowledge/TESTING_WORKFLOW.md", "excerpt": "Use actual repo commands from the task package."}, {"path": "ChatGPT/[Codex]/Knowledge/REVIEW_CHECKLIST.md", "excerpt": "Before final answer:"}, {"path": "ChatGPT/[Codex]/Knowledge/DONE_DEFINITION.md", "excerpt": "A Codex task is done when:"}]
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_04_IMPLEMENTATION_WORKFLOWS.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/BUGFIX_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/REFACTORING_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+- Source bytes: 15580
+- Bundle bytes: 6062
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md", "excerpt": "`[Codex]` is the task package design layer. Codex APP is the executor layer."}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "Engineering / Codex standard for cleaning or refactoring an existing working script or pipeline without losing useful behavior."}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "Use when an existing script, CLI, notebook-exported script, or pipeline already runs or has known useful output and Sergey asks for cleanup, controlled refactor"}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "Do not use for greenfield implementation, bug recovery, Analytics methodology, business definition work, output-contract changes without acceptance, production "}, {"path": "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "excerpt": "Core rule:"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md", "excerpt": "## Canonical route"}, {"path": "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md", "excerpt": "Use the Analytical Memo Factory via Codex APP pattern:"}, {"path": "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md", "excerpt": "```text"}, {"path": "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md", "excerpt": "Analyst defines the task"}, {"path": "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md", "excerpt": "-> [Analytics] structures methodology"}]
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_05_AGENT_REFERENCES.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/AGENTS.md`, `ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md`, `ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md`, `ChatGPT/[Codex]/Knowledge/PROMPT_LIBRARY_CODEX.md`, `ChatGPT/[Codex]/Knowledge/PROJECT_CONTEXT.md`
+- Source bytes: 6613
+- Bundle bytes: 6762
+- Classification: source_only
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: []
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/AGENTS.md", "excerpt": "For safe uncertainty, make the safest assumption and log it."}, {"path": "ChatGPT/[Codex]/Knowledge/AGENTS.md", "excerpt": "If something is not specified, make the safest reasonable assumption and write it in final report."}, {"path": "ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md", "excerpt": "Use Claude Code as an alternative or complementary coding-agent surface for repo work, reviews, hooks, skills, MCP-connected workflows, and multi-agent coding s"}, {"path": "ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md", "excerpt": "If creating Claude Code setup later, prefer:"}, {"path": "ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md", "excerpt": "Clarifies scope, files, dependencies, acceptance criteria."}]
+
+## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_06_AI_CODING_DISCIPLINE.md`
+
+- Project: [Codex]
+- Source paths: `ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/PR_JUDGE_CHECKLIST.md`, `ChatGPT/[Codex]/Knowledge/WORKTREE_AND_PARALLEL_AGENT_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_TASK_EXAMPLES.md`, `ChatGPT/[Codex]/Knowledge/EVALS_FOR_CODEX_WORKFLOW.md`
+- Source bytes: 7194
+- Bundle bytes: 4154
+- Classification: bundle_only_semantic
+- Mapping status: mapped
+- Recommended action: block_generation_and_migrate_or_classify
+- Bundle-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "Use test-first discipline for code, scripts, parsers, validators, bugfixes, pipeline logic, and approved output contract changes."}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "Loop:"}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "Docs-only tasks do not need TDD. Use lightweight smoke checks such as affected file search, `git diff --check`, repo consistency scripts, and bundle/source cons"}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "For numeric, financial, or analytical logic, Python or SQL performs calculations. Stop or ask before changing formulas, schemas, metrics, column names, output c"}, {"path": "ChatGPT/[Codex]/Knowledge/PR_JUDGE_CHECKLIST.md", "excerpt": "Review a PR for:"}]
+- Source-only excerpt or reference: [{"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "# Codex TDD Workflow"}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "## Purpose"}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "Keep AI coding tasks testable and reviewable without turning docs-only work into heavy process."}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "## Use TDD For"}, {"path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "excerpt": "- code changes;"}]
