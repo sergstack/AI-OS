@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:db16fa7762022516a5518bbfec3df2111285fa92a972c3c6708a5088565c89d0
+- source_fingerprint: sha256:a310f5faa7aa5950e2673aa134af6fd76381593ab65f72a131367beb253e2838
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -497,6 +497,13 @@ Warm resume is permitted only after checking that the continuation envelope is
 present and valid and that the original goal boundary, acceptance criteria,
 resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
+### 5.6 Bounded multi-owner continuation control plane
+The optional continuation control plane is defined in
+`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+auditable route trace, acceptance progress, and independent continuation
+guards without creating a parallel state machine or changing the existing
+status namespaces.  Its guard thresholds are named parameters, not canonical
+numeric defaults; the stricter applicable corrective-loop limit still wins.
 ## 6. Source-revision contract
 ```yaml
 source_revision:
