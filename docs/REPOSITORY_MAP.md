@@ -14,6 +14,7 @@ the machine-readable capability registry.
 | Understand the repository | [`README.md`](../README.md) | Human-facing entry point |
 | Execute repository work | [`AGENTS.md`](../AGENTS.md) | Local agent instructions |
 | Route work to one capability | [`PROJECT_CAPABILITIES.yaml`](../PROJECT_CAPABILITIES.yaml) | Machine-readable capability registry |
+| Select a destination | [`ROUTING_RULES.md`](../ROUTING_RULES.md) | Single semantic owner of destination routing |
 | Find a ChatGPT Project package | [`PROJECT_REGISTRY.md`](../PROJECT_REGISTRY.md) | Canonical project paths and roles |
 | Check the current state | [`CURRENT_STATUS.md`](../CURRENT_STATUS.md) | Concise repository status and next action |
 | Check required gates | [`MASTER_STATUS.md`](../MASTER_STATUS.md) | Canonical validation and operational gates |

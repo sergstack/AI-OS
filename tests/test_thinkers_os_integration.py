@@ -125,16 +125,10 @@ def test_smoke_contracts(scenario: str, needle: str, relative: str) -> None:
 def test_repository_routing_surfaces_discover_thinkers_os() -> None:
     registry = (REPO_ROOT / "PROJECT_REGISTRY.md").read_text(encoding="utf-8")
     repo_paths = (REPO_ROOT / "REPO_PATHS.md").read_text(encoding="utf-8")
-    inbox = (REPO_ROOT / "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md").read_text(
-        encoding="utf-8"
-    )
-    ai_os = (REPO_ROOT / "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md").read_text(
-        encoding="utf-8"
-    )
+    routing_rules = (REPO_ROOT / "ROUTING_RULES.md").read_text(encoding="utf-8")
 
     assert "ChatGPT/[Thinkers OS]" in registry
     assert "ChatGPT/[Thinkers OS]" in repo_paths
-    assert "[Thinkers OS]" in inbox
-    assert "[Thinkers OS]" in ai_os
-    assert "real decision" in inbox
-    assert "`[Thinking]`" in inbox
+    assert "[Thinkers OS]" in routing_rules
+    assert "Strategy, decision" in routing_rules
+    assert "[Thinking]" in routing_rules

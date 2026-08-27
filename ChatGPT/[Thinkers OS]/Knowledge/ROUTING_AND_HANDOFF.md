@@ -2,8 +2,8 @@
 
 Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 `[Thinkers OS]` prepares bounded handoffs; it does not absorb the receiving project's work.
-For the local boundary: source request/intake remains corpus work here; a real
-decision routes to `[Thinking]`; an extraction prompt routes to `[LLM]`;
+For the local boundary: source request/intake remains corpus work here; a real decision
+routes to `[Thinking]`; an extraction prompt routes to `[LLM]`;
 repository implementation routes to `[Codex]`; quantitative validation routes
 to `[Analytics]`.
 
