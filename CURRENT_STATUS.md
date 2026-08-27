@@ -10,7 +10,7 @@
 - default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
 - smoke_qa_status: pass
 - runtime_smoke_status: candidate
-- realistic_pilot_status: not_run
+- realistic_pilot_status: candidate (PILOT-AIOS-001 passed; broader pilot set not run)
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -48,6 +48,17 @@ Evidence-dependent or external state:
   reconciliation. Existing dated evidence and `not_verified` / `not_run`
   statuses remain unchanged.
 
+Observed external pilot evidence — 2026-08-27:
+
+- `PILOT-AIOS-001` completed one live `[AI OS]` response and is recorded as
+  `candidate` with `medium` confidence in `PILOT_RESULTS_2026-08-27_AIOS.md`.
+- The response named its KB sources, separated facts from hypotheses, retained
+  the promotion gate for embeddings, semantic search, and vector DB, and
+  routed the next step to bounded governance evidence collection.
+- This is one bounded pilot result, not owner acceptance, a full pilot set,
+  or production authorization. All blocked items and `production_promotion: no`
+  remain unchanged.
+
 Repository evidence refresh — 2026-08-27:
 
 - PR #298 restored the generated Knowledge Bundle and provenance-audit
@@ -71,8 +82,8 @@ Recent verified state:
 - ChatGPT Project upload mode is compact `Knowledge_Bundles` by default.
 - `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
   2026-07-06 smoke QA evidence. Smoke QA does not equal production readiness.
-- `PILOT_CASES.md` remains backlog/unsupported until pilot result evidence is
-  recorded.
+- `PILOT-AIOS-001` has one recorded candidate result; all other pilots remain
+  backlog/unsupported until their own result evidence is recorded.
 - StreamDeck v2.7 remains active; v2.8 remains candidate/manual-only.
 
 ## Dual Surface operational acceptance
@@ -124,5 +135,6 @@ Run repository validation before PR review: use the canonical command set from `
 Then complete operational verification:
 
 - `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- execute and record pilot results from `PILOT_CASES.md`
+- obtain owner review for `PILOT-AIOS-001`, then execute and record the next
+  pilot from `PILOT_CASES.md`
 - keep production promotion blocked until accepted pilot evidence exists

@@ -14,7 +14,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 
 | Pilot ID | Project | Status | Confidence | Owner | Next step |
 |---|---|---|---|---|---|
-| `PILOT-AIOS-001` | `[AI OS]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
+| `PILOT-AIOS-001` | `[AI OS]` | candidate | medium | Sergey | Owner review of recorded live result; run the next bounded pilot |
 | `PILOT-THINKING-001` | `[Thinking]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-ANALYTICS-001` | `[Analytics]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-LLM-001` | `[LLM]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
@@ -35,10 +35,10 @@ Evidence required: ChatGPT response, KB files consulted or explicit not-found st
 Success criteria: KB checked / not found clearly stated; fresh external check separated if used; supported / weak / unsupported separated; no blocked feature recommended as current implementation; one clear next step.
 Failure criteria: Claims unsupported evidence as fact; recommends embeddings, semantic search, vector DB, web UI, or autonomous retrieval as current implementation; omits routing/handoff.
 Owner: Sergey
-Status: backlog
-Confidence: unsupported
+Status: candidate
+Confidence: medium
 Revisit trigger: AI OS project instructions, Knowledge files, evidence rules, or blocked promotion gates change.
-Next step: Sync `[AI OS]`, run smoke QA, then record result with `PILOT_RESULTS_TEMPLATE.md`.
+Next step: Owner review of `PILOT_RESULTS_2026-08-27_AIOS.md`, then run the next bounded pilot without changing blocked promotion items.
 
 ## [Thinkers OS] Pilot
 
@@ -177,13 +177,12 @@ Next step: Run after individual project sync records are available.
 
 ## Blockers
 
-- ChatGPT Project UI sync is not verified in this repository.
-- Pilot results are not yet recorded.
-- Smoke QA refresh has not yet been run after sync.
+- The `[AI OS]` pilot has one observed candidate result; all other pilots remain unrecorded.
+- Smoke QA refresh has not yet been run after the current pilot evidence was recorded.
 
 ## Next steps
 
-1. Complete `CHATGPT_PROJECT_SYNC_CHECKLIST.md` after manual ChatGPT Project sync.
-2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md`.
-3. Record pilot results with `PILOT_RESULTS_TEMPLATE.md`.
+1. Obtain owner review of `PILOT_RESULTS_2026-08-27_AIOS.md`.
+2. Run smoke QA using `SMOKE_QA_REFRESH_PLAN.md` when a refresh is required.
+3. Record the next pilot result with `PILOT_RESULTS_TEMPLATE.md`.
 4. Update pilot statuses only when evidence exists.
