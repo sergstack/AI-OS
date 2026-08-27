@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:7b9f78906619debfcfad86a3eb7696d7ec6b8cf1247f485fdf79d9154e95ecd8
+- source_fingerprint: sha256:ac1ccbb139e8eafa73a9104b8b3199cbe849e5b3d703cb1054d880be08a6b191
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -32,36 +32,14 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 ## From: `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`
 
 # Routing and Handoff
-## Project routing
-```text
-AI-концепция / supported KB pattern → [AI OS]
-Стратегия / решение / риски → [Thinking]
-Расчёты / данные / marts → [Analytics]
-Prompts / model routing / LLM quality → [LLM]
-Код / implementation / tests / release → [Codex]
-```
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 Правило владения `[LLM]`: если основной результат — reusable prompt, выбор
 модели или LLM workflow и стратегическое решение не запрошено, направь задачу в
 `[LLM]` с фокусным, исполнимым handoff. Сохрани релевантные decision constraints,
 запрошенный результат, критерии приёмки и следующий шаг; не убирай сведения,
 нужные для продолжения работы. Не проектируй prompt, model routing или
 downstream workflow в `[Thinking]`.
-## Standard handoff format
-```text
-# Handoff
-From:
-To:
-Task type:
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected outputs:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
+Use the canonical handoff fields in `HANDOFF_STYLE_STANDARD.md`.
 ## Thinking → Analytics
 Используй, когда decision или scenario требует расчётов.
 Передать:

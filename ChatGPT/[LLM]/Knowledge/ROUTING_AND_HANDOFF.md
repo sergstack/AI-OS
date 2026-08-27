@@ -1,33 +1,8 @@
 # Routing and Handoff
 
-## Project routing
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 
-```text
-AI-концепция / supported KB pattern → [AI OS]
-Стратегия / решение / риски → [Thinking]
-Расчёты / данные / marts → [Analytics]
-Prompts / model routing / LLM quality → [LLM]
-Код / implementation / tests / release → [Codex]
-```
-
-## Standard handoff format
-
-```text
-# Handoff
-
-From:
-To:
-Task type:
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected outputs:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
+Use the canonical handoff fields in `HANDOFF_STYLE_STANDARD.md`.
 
 ## Thinking → Analytics
 

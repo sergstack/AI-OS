@@ -5,29 +5,17 @@ Legacy bundle provenance: `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND
 
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
 
-- `Goal` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку.
+- `Objective` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку.
 - Если owner capability доступна, reversible, policy-permitted и authorized, вызови её, проверь результат и верни его текущему владельцу.
 - Если capability недоступна, верни terminal handoff с точной причиной; не считай подготовку handoff completion.
 - Не авторизуй owner-frozen policy, merge, deploy, production promotion или другое действие с material downside/низкой обратимостью.
-- Destination вне `PROJECT_CAPABILITIES.yaml` остаётся explicit terminal handoff: не изобретай capability, не вызывай `project-context` и не расширяй authority.
+- Destination вне `PROJECT_CAPABILITIES.yaml` обрабатывается по class в `ROUTING_RULES.md`: `external` остаётся explicit terminal handoff; `internal_non_capability` продолжает только названную границу; `owner_escalation` требует owner decision.
+
 ## Canonical compact field set
-```text
-From:
-To:
-Task type:
-Mode: goal / strict
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-Suggested first step:
-```
-Use `Mode: goal` for broad repo/workflow/project goals where the receiving project can infer bounded safe scope. Use `Mode: strict` for high-risk, already-scoped, ultra-long, or explicitly requested task packages.
+
+The sole field-set owner is `HANDOFF_STYLE_STANDARD.md`. This migrated bundle
+semantics file references that standard and does not repeat its fields or mode
+rules.
 
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
 

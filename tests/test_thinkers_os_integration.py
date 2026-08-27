@@ -104,11 +104,6 @@ def test_source_gate_is_scope_based_and_compact() -> None:
 @pytest.mark.parametrize(
     ("scenario", "needle", "relative"),
     [
-        ("missing book routes to source pipeline", "source request/intake", "Knowledge/ROUTING_AND_HANDOFF.md"),
-        ("real decision routes to Thinking", "real decision", "Knowledge/ROUTING_AND_HANDOFF.md"),
-        ("extraction prompt routes to LLM", "extraction prompt", "Knowledge/ROUTING_AND_HANDOFF.md"),
-        ("source pipeline implementation routes to Codex", "repository implementation", "Knowledge/ROUTING_AND_HANDOFF.md"),
-        ("quantitative validation routes to Analytics", "quantitative validation", "Knowledge/ROUTING_AND_HANDOFF.md"),
         ("missing verified source blocks claim", "no verified source", "PROJECT_INSTRUCTIONS.md"),
         ("partial corpus is not complete", "package is not complete", "Knowledge/CORPUS_AND_SOURCE_RULES.md"),
         ("preview is not a full work", "Preview, sample chapter", "Knowledge/CORPUS_AND_SOURCE_RULES.md"),
@@ -125,16 +120,14 @@ def test_smoke_contracts(scenario: str, needle: str, relative: str) -> None:
 def test_repository_routing_surfaces_discover_thinkers_os() -> None:
     registry = (REPO_ROOT / "PROJECT_REGISTRY.md").read_text(encoding="utf-8")
     repo_paths = (REPO_ROOT / "REPO_PATHS.md").read_text(encoding="utf-8")
-    inbox = (REPO_ROOT / "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md").read_text(
-        encoding="utf-8"
-    )
-    ai_os = (REPO_ROOT / "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md").read_text(
-        encoding="utf-8"
-    )
+    routing_rules = (REPO_ROOT / "ROUTING_RULES.md").read_text(encoding="utf-8")
 
     assert "ChatGPT/[Thinkers OS]" in registry
     assert "ChatGPT/[Thinkers OS]" in repo_paths
-    assert "[Thinkers OS]" in inbox
-    assert "[Thinkers OS]" in ai_os
-    assert "real decision" in inbox
-    assert "`[Thinking]`" in inbox
+    assert "[Thinkers OS]" in routing_rules
+    assert "source request or intake" in routing_rules
+    assert "Applying thinker patterns to a real decision" in routing_rules
+    assert "Prompt, model routing, model selection" in routing_rules
+    assert "quantitative validation" in routing_rules
+    assert "Strategy, decision" in routing_rules
+    assert "[Thinking]" in routing_rules

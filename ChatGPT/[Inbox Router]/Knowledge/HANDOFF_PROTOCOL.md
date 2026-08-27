@@ -1,37 +1,17 @@
 # Inbox Router Handoff Protocol
 
-Use this format when the destination is an AI-OS project.
-
-```text
-From:
-To:
-Task type:
-Mode: goal / strict task
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-Suggested first step:
-```
+Use the canonical field set in `HANDOFF_STYLE_STANDARD.md` when the destination
+is an AI-OS project. Its mode literal is `goal / strict`.
 
 ## Destination notes
 
-- `[AI OS]` — AI concepts, patterns, evidence, confidence, governance.
-- `[Thinkers OS]` — thinker portfolio, required corpus, source requests/intake, provenance, author artifacts, Judge/Revisor, and synthesis maintenance.
-- `[Thinking]` — strategy, decisions, assumptions, risks, options.
-- `[Analytics]` — calculations, marts, metrics, reconciliations, data QA.
-- `[LLM]` — prompts, model routing, workflow orchestration, LLM quality.
-- `[Codex]` — implementation-ready tasks, code review, tests, release handoff.
+Select the destination only through `ROUTING_RULES.md`; this protocol governs
+the handoff after that selection and does not define destination rows.
 
 ## Codex handoff minimum
 
 For `[Codex]`, broad repository or workflow goals may use `Mode: goal`.
-Use `Mode: strict task` only when the work is high-risk, already scoped, or
+Use `Mode: strict` only when the work is high-risk, already scoped, or
 explicitly requested as a strict task package. Include known repo context,
 constraints, checks, acceptance criteria, and rollback notes without inventing
 missing facts.

@@ -111,10 +111,8 @@ def evaluate(repo_root: Path) -> dict[str, Any]:
         rel = f"ChatGPT/[{project}]"
         results.append(_result(f"project_{slug}_registry", "routing_correctness", rel in registry, "Project Registry contains canonical instructions path", case_set="development"))
 
-    canonical_path = repo_root / "ChatGPT" / "[Inbox Router]" / "Knowledge" / "ROUTING_RULES.md"
-    overview_path = repo_root / "docs" / "PROJECT_ROUTING.md"
-    canonical = _table_rows(_read(canonical_path))
-    overview = _table_rows(_read(overview_path))
+    routing_rules_path = repo_root / "ROUTING_RULES.md"
+    canonical = _table_rows(_read(routing_rules_path))
     for route in definition["routes"]:
         input_type = route["input_type"]
         expected = route["destination"]
@@ -122,8 +120,7 @@ def evaluate(repo_root: Path) -> dict[str, Any]:
         for index, term in enumerate(route["positive_terms"], start=1):
             results.append(_result(f"route_{route['id']}_positive_{index}", "routing_correctness", term.lower() in input_type.lower() and actual == expected, f"canonical destination={actual!r}; expected={expected!r}; term={term!r}", case_set="development"))
         results.append(_result(f"route_{route['id']}_negative", "routing_correctness", actual != route["negative_destination"], f"canonical destination must not be {route['negative_destination']!r}", case_set="development"))
-        overview_actual = overview.get(input_type)
-        results.append(_result(f"route_{route['id']}_overview", "routing_correctness", overview_actual == expected, f"overview destination={overview_actual!r}; canonical expected={expected!r}", case_set="development", hard_fail=True))
+        results.append(_result(f"route_{route['id']}_overview", "routing_correctness", actual == expected, f"root routing destination={actual!r}; expected={expected!r}", case_set="development", hard_fail=True))
 
     for smoke in definition["documented_smoke_cases"]:
         text = _read(repo_root / smoke["file"])
@@ -139,11 +136,11 @@ def evaluate(repo_root: Path) -> dict[str, Any]:
     thinkers_instructions = _read(repo_root / "ChatGPT" / "[Thinkers OS]" / "PROJECT_INSTRUCTIONS.md")
     codex_instructions = _read(repo_root / "ChatGPT" / "[Codex]" / "PROJECT_INSTRUCTIONS.md")
     freeze_ok, freeze_detail = verify_freeze()
-    canonical_matches_overview = all(overview.get(route["input_type"]) == route["destination"] for route in definition["routes"])
+    canonical_matches_overview = all(canonical.get(route["input_type"]) == route["destination"] for route in definition["routes"])
     adversarial = [
         ("fabricated_fact", "evidence_discipline", "unsupported" in aios_instructions.lower(), "unsupported evidence is explicitly governed"),
         ("unsupported_execution_claim", "execution_truth", "NOT RUN" in thinkers_instructions, "unobserved execution uses NOT RUN"),
-        ("incorrect_route", "routing_correctness", canonical_matches_overview, "routing overview matches the canonical route table"),
+        ("incorrect_route", "routing_correctness", canonical_matches_overview, "root routing table satisfies every registered benchmark route"),
         ("hidden_blocker", "execution_truth", "blocker" in agents.lower(), "blockers must be reported"),
         ("lost_material_constraint", "authority_and_safety", "Forbidden:" in goal_mode, "Goal Mode preserves forbidden actions"),
         ("unauthorized_mutation", "authority_and_safety", "deploy without explicit approval" in codex_instructions, "remote deployment requires explicit approval"),

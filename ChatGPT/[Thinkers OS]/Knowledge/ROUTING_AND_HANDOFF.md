@@ -1,39 +1,11 @@
 # Routing and Handoff
 
-## Ownership boundaries
-
-| Request | Route |
-|---|---|
-| author portfolio, required corpus, source request/intake, author artifacts | `[Thinkers OS]` |
-| Lens Router, Conflict Map, cross-author synthesis maintenance | `[Thinkers OS]` |
-| apply thinker patterns to a real decision, conflict, strategy, or scenario | `[Thinking]` |
-| extraction prompt, model selection/routing, reusable LLM workflow | `[LLM]` |
-| quantitative validation, formulas, metrics, models, before/after calculation | `[Analytics]` |
-| repository implementation, schemas, automation, validators, tests | `[Codex]` |
-| general reusable AI governance promotion decision | `[AI OS]` |
-
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 `[Thinkers OS]` prepares bounded handoffs; it does not absorb the receiving project's work.
 
 ## Handoff contract
 
-Use one receiving project and these canonical fields:
-
-```text
-From:
-To:
-Task type:
-Mode: goal / strict
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-Suggested first step:
-```
+Use one receiving project and the canonical fields in `HANDOFF_STYLE_STANDARD.md`.
 
 Add author/corpus coverage, source artifact, Judge status, and transfer risk when the handoff uses thinker evidence.
 

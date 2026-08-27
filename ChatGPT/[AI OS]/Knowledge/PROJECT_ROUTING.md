@@ -3,29 +3,8 @@
 Назначение: определить, в каком ChatGPT Project должна решаться задача.
 
 Scope note: this file is the `[AI OS]` project routing and handoff reference.
-Canonical front-door routing lives in
-`ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`. If raw-input triage and
-AI OS scoped routing differ, use Inbox Router for triage and this file for
-AI OS evidence/governance scope.
-
-## Главный принцип
-
-Сначала routing, потом reasoning.
-
-| Тип задачи | Куда направлять | Почему |
-|---|---|---|
-| Понять AI-концепцию | `[AI OS]` | Здесь KB по AI-трендам, моделям, паттернам |
-| Найти AI-use case | `[AI OS]` | Здесь use cases и связь с работой Сергея |
-| Сравнить AI-подходы | `[AI OS]` | Здесь pattern/evidence слой |
-| Найти supported/weak evidence | `[AI OS]` | Здесь confidence/governance слой |
-| Управлять thinker corpus, source requests, author artifacts и cross-author synthesis | `[Thinkers OS]` | Там source-backed author pipeline и portfolio state |
-| Применить thinker patterns к реальному решению | `[Thinking]` | Thinker artifacts — evidence input; decision ownership остаётся в `[Thinking]` |
-| Принять стратегическое решение | `[Thinking]` | Там сценарии, риски, decision memo, judge/revisor |
-| Посчитать финансовую модель или метрики | `[Analytics]` | Там deterministic расчёты, marts, QA |
-| Спроектировать prompt/workflow/model routing | `[LLM]` | Там prompt library и orchestration |
-| Подготовить coding task | `[Codex]` или `[LLM]` | Там task packages и implementation workflow |
-| Реализовать код | `[Codex]` | `[AI OS]` не пишет production-код |
-| Проверить production readiness | `[Codex]` / `[LLM]` / `[AI OS]` | Зависит от типа evidence и реализации |
+Canonical front-door routing lives in `ROUTING_RULES.md`. This file owns only
+the `[AI OS]` scope; it does not define destination rows or handoff fields.
 
 ## Что делает [AI OS]
 
@@ -54,25 +33,7 @@ handoff. Сохрани релевантные evidence/governance context, за
 работы. `[AI OS]` может уточнить границы и evidence, но не выбирает модель, не
 пишет prompt и не проектирует LLM workflow.
 
-## Routing response pattern
-
-```text
-Маршрут: [AI OS] / [Thinkers OS] / [Thinking] / [Analytics] / [LLM] / [Codex]
-Почему: ...
-Что можно сделать здесь: ...
-Что нужно передать дальше: ...
-Evidence/confidence: ...
-```
-
 ## Handoff rule
 
-Если задача выходит за пределы `[AI OS]`, дай короткий handoff:
-
-```text
-Handoff to: [Project]
-Goal: ...
-Context from KB: ...
-Inputs needed: ...
-Expected output: ...
-Risks / constraints: ...
-```
+Use the canonical template in `HANDOFF_STYLE_STANDARD.md`; retain the relevant
+evidence, constraints, acceptance checks, and next step.

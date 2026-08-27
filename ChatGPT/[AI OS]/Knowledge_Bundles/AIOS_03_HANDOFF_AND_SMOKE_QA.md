@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:98da2c5fa91a0af774e968aed6ff198af5f3fd8ce4bd517946597954c11a6c96
+- source_fingerprint: sha256:a955f87277aec5b0e0c579912ba59d3b8f07620b153fba314446c23e4cf7892b
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -34,40 +34,24 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 Назначение: как `[AI OS]` передаёт результат в другие Project-папки.
 ## Continuation contract
 Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
-- Поле `Goal` сохраняет исходную цель и не заменяется локальной подзадачей.
+- Поле `Objective` сохраняет исходную цель и не заменяется локальной подзадачей.
 - `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки.
 - Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу.
 - Если capability доступна в текущей среде, а следующий шаг reversible, policy-permitted и уже authorized, вызови capability, проверь её результат и верни его текущему владельцу.
 - Если capability недоступна, верни terminal handoff с точной причиной, а не выдавай подготовку handoff за completion.
 Вовлекай owner только когда нужно изменить owner-frozen policy, получить explicit governance approval, выбрать между материально разными вариантами без детерминированного предпочтения или выполнить действие с материальным downside/низкой обратимостью. Также эскалируй при недоступных credentials, permissions, money, legal authority, physical action или когда все authorized recovery paths исчерпаны.
-Destination вне `PROJECT_CAPABILITIES.yaml` всегда остаётся explicit terminal handoff: не создавай для него capability, не вызывай `project-context` и не расширяй полномочия.
+Destination вне `PROJECT_CAPABILITIES.yaml`: сначала проверь class в
+`ROUTING_RULES.md`: `external` остаётся explicit terminal handoff — не создавай
+capability, не вызывай `project-context` и не расширяй полномочия;
+`internal_non_capability` продолжай только через названную границу;
+`owner_escalation` требует решения владельца.
 ## Когда делать handoff
-| Ситуация | Куда |
-|---|---|
-| Нужно принять решение или выбрать стратегию | `[Thinking]` |
-| Нужно посчитать, построить mart, проверить данные | `[Analytics]` |
-| Нужно собрать prompt/workflow/model routing | `[LLM]` |
-| Нужно написать код, тесты, refactor, bugfix | `[Codex]` |
-| Нужно внедрять production workflow | `[Codex]` / `[LLM]` |
-Если handoff в `[Codex]` связан с repository work, предпочтительно оформлять его как GitHub Issue-driven task package с явным scope, allowed files, checks и acceptance criteria.
+Destination выбирается только по `ROUTING_RULES.md`. Если выбран `[Codex]` для
+repository work, предпочтительно оформить handoff как GitHub Issue-driven task
+package с явным scope, allowed files, checks и acceptance criteria.
 ## Handoff template
-```text
-Handoff to: [Project]
-Task type: concept / workflow / analytics / implementation / QA / release
-Goal:
-Context from AI OS:
-KB evidence used:
-Confidence:
-Inputs required:
-Expected output:
-Constraints:
-Risks:
-Acceptance criteria:
-Business acceptance:
-Artifact/content checks:
-Non-acceptance examples:
-Suggested first step:
-```
+Use the canonical template in `HANDOFF_STYLE_STANDARD.md`. Preserve the
+continuation, evidence, confidence, and destination rules in this protocol.
 ## Thinking → Analytics → LLM → Codex → QA → Release
 1. `[Thinking]` формулирует решение, сценарии, риски, assumptions.
 2. `[Analytics]` считает deterministic часть: data contracts, marts, metrics, QA.
@@ -252,6 +236,9 @@ Inputs:
 Constraints:
 Expected output:
 Acceptance criteria:
+  Business acceptance:
+  Artifact/content checks:
+  Non-acceptance examples:
 Risks:
 Evidence / confidence:
 Open questions:
@@ -260,6 +247,7 @@ Suggested first step:
 Use `Mode: goal` for broad repo/workflow/project goals where the receiving
 project can infer bounded safe scope. Use `Mode: strict` for high-risk,
 already-scoped, ultra-long, or explicitly requested task packages.
+The three acceptance sub-fields are required for user-facing artifacts and business deliverables. `Objective:` preserves the original goal through continuation; do not replace it with a local subtask.
 ## Project-Specific Additions
 - `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.
 - `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.
@@ -286,29 +274,15 @@ already-scoped, ultra-long, or explicitly requested task packages.
 Canonical source created during Issue #285 provenance migration.
 Legacy bundle provenance: `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_03_HANDOFF_AND_SMOKE_QA.md`.
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
-- `Goal` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку.
+- `Objective` сохраняет исходную цель; `Expected output` описывает текущий этап; `Acceptance criteria` не теряет исходную приёмку.
 - Если owner capability доступна, reversible, policy-permitted и authorized, вызови её, проверь результат и верни его текущему владельцу.
 - Если capability недоступна, верни terminal handoff с точной причиной; не считай подготовку handoff completion.
 - Не авторизуй owner-frozen policy, merge, deploy, production promotion или другое действие с material downside/низкой обратимостью.
-- Destination вне `PROJECT_CAPABILITIES.yaml` остаётся explicit terminal handoff: не изобретай capability, не вызывай `project-context` и не расширяй authority.
+- Destination вне `PROJECT_CAPABILITIES.yaml` обрабатывается по class в `ROUTING_RULES.md`: `external` остаётся explicit terminal handoff; `internal_non_capability` продолжает только названную границу; `owner_escalation` требует owner decision.
 ## Canonical compact field set
-```text
-From:
-To:
-Task type:
-Mode: goal / strict
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected output:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-Suggested first step:
-```
-Use `Mode: goal` for broad repo/workflow/project goals where the receiving project can infer bounded safe scope. Use `Mode: strict` for high-risk, already-scoped, ultra-long, or explicitly requested task packages.
+The sole field-set owner is `HANDOFF_STYLE_STANDARD.md`. This migrated bundle
+semantics file references that standard and does not repeat its fields or mode
+rules.
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
 - Acceptance criteria
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
