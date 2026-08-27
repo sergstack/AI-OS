@@ -11,6 +11,7 @@ Compact upload artifact for [Analytics] covering memo and text standards.
 - `ChatGPT/[Analytics]/Knowledge/WORD_REPORT_STANDARD.md`
 - `ChatGPT/[Analytics]/Knowledge/TEXT_QA_AND_STYLE.md`
 - `ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md`
+- `ChatGPT/[Analytics]/Knowledge/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md`
 
 ## Upload target
 
@@ -18,10 +19,11 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:913334aad235e7ab245efd0c56b45cb07ca4e5c11bcdb109efba8ff8add7d7c6
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
+- source_fingerprint: sha256:2765f7d6ebe99d4062bc9de7505910192d012de943a25c71411b481490c85712
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -59,16 +61,19 @@ mart_main_full
 8. Appendix / evidence.
 ## Audience split
 ### Executive memo
+For CFO / COO / руководители:
 - verdict;
 - headline numbers;
 - where the money is;
 - main risks;
 - decisions or actions if supported;
 - limitations.
+Uses:
 ```text
 mart_main_tz / mart_main_compact
 ```
 ### Finance working package
+For Sergey / Finance Team / deep review:
 - full evidence;
 - DQ;
 - timing notes;
@@ -77,6 +82,7 @@ mart_main_tz / mart_main_compact
 - cards;
 - backlog;
 - reconciliation.
+Uses:
 ```text
 mart_main_full
 ```
@@ -96,14 +102,13 @@ Every important sentence must be backed by:
 - [ ] Limitations visible.
 - [ ] Hypotheses are not presented as confirmed causes.
 
-
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`
 
 # Analytical Memo Structure
 ## Purpose
 Структура аналитической записки, которая отделяет обязательный управленческий слой от рабочего evidence-пакета.
 ## Executive layer for material management analysis
-For `analytical_depth = material / decision_critical` and management-facing output:
+For `analytical_depth = material / decision_critical` and management-facing output, open with a compressed executive layer:
 1. Executive verdict answering the business question.
 2. Smallest sufficient set of material conclusions, usually 1–3 but never as a quota.
 3. Supported business meaning and affected performance dimension.
@@ -111,11 +116,23 @@ For `analytical_depth = material / decision_critical` and management-facing outp
 5. Management implication and decision/action required, if any.
 6. Material uncertainty and what would change the view.
 7. Material limitations.
-Rank by the relevant business criterion, not mechanically by `ABS Delta`; keep different performance dimensions visible. State controllability or persistence only when supported. The executive layer must be materially shorter than supporting evidence; routine output remains compact. If DQ or reconciliation prevents reliable interpretation, that limitation becomes the executive verdict.
+Rank by the business criterion relevant to the question, not mechanically by `ABS Delta`. Do not collapse materially different performance dimensions. State controllability or persistence only when supported; otherwise mark them unknown or omit them. The executive layer must be materially shorter than the supporting evidence. Routine output remains compact and does not instantiate this layer.
+If DQ or reconciliation prevents reliable interpretation, that limitation becomes the executive verdict. Otherwise keep methodology and reconciliation in the evidence layer.
 ## Supporting evidence layer
-Preserve DQ, applicable Plan/Fact/Delta, material deviations and ranking criterion, row/timing status, risk basis, confidence, cause versus hypothesis, supported action details if asserted, and limitations/open questions.
+Preserve the verified analytical detail:
+1. DQ status.
+2. Plan / Fact / Delta / ABS Delta where applicable.
+3. Material deviations and their ranking criterion.
+4. Row type.
+5. Timing status.
+6. Planning risk + risk basis.
+7. Confidence + why not higher.
+8. Confirmed cause vs hypothesis.
+9. Supported action + owner + due date, if an action is asserted.
+10. Limitations / open questions.
 ## Must / Should / Conditional / Optional
 | Block | Status | Notes |
+|---|---|---|
 | DQ status | Must | Без DQ нельзя публиковать сильный вывод |
 | Plan / Fact / Delta / ABS Delta | Must | Базовый слой отклонений |
 | Top deviations | Must | Ранжировать по явному business criterion; `ABS Delta` не является универсальным критерием |
@@ -125,8 +142,16 @@ Preserve DQ, applicable Plan/Fact/Delta, material deviations and ranking criteri
 | Confidence + rationale | Must | Low Confidence не финальная причина |
 | Confirmed cause vs hypothesis | Must | Не смешивать |
 | Action + owner + due date | Must only when an action is supported | Иначе это observation / monitoring / validation gap |
+| INOUT | Conditional | Только при Definition Card |
+| Forecast | Optional | Если вопрос про будущее решение |
+| Scenario analysis | Optional / advanced | Если нужен выбор сценария |
+| ML anomaly detection | Advanced | Не MVP по умолчанию |
+| Methodology backlog | Should | Для улучшения системы |
 ## Stop conditions
+| Condition | Action |
+|---|---|
 | DQ Fail | Do not publish management conclusion |
+| No single currency/unit logic | Stop materiality conclusion |
 | Low Confidence | Mark as hypothesis / not final cause |
 | Timing only candidate | Do not call confirmed timing |
 | Risk without basis | Do not publish risk |
@@ -146,7 +171,6 @@ What changes the view:
 Limitations:
 Evidence:
 ```
-
 
 ## From: `ChatGPT/[Analytics]/Knowledge/WORD_REPORT_STANDARD.md`
 
@@ -217,12 +241,13 @@ Only handoff DOCX generation to Codex if the task requires:
 - file conversion;
 - reproducible report generator;
 - tests or CI.
-
+Otherwise, structure and content can be prepared inside `[Analytics]`.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/TEXT_QA_AND_STYLE.md`
 
 # Text QA and Style
 ## Purpose
+Отладка текстов и оформления аналитических записок так, чтобы текст не становился сильнее данных.
 ## Style principles
 - Concrete over decorative.
 - Numbers before adjectives.
@@ -231,6 +256,7 @@ Only handoff DOCX generation to Codex if the task requires:
 - Hypothesis is not cause.
 - Observation is not action.
 ## Language rules
+Use:
 ```text
 Данные показывают...
 Расчёт по mart_main_full показывает...
@@ -238,6 +264,7 @@ Only handoff DOCX generation to Codex if the task requires:
 Вероятная причина, требующая проверки...
 Ограничение анализа...
 ```
+Avoid:
 ```text
 Очевидно...
 Бесспорно...
@@ -278,24 +305,31 @@ unless QA and evidence support it.
 - [ ] No hidden methodological caveats.
 - [ ] Executive memo body is not overloaded with evidence detail.
 
-
 ## From: `ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md`
 
 # Analytical Memo Rubric
 ## Purpose
+Define what a good analytical memo means for `[Analytics]`.
 ## Rubric
 | Area | Pass condition | Fail condition |
+|---|---|---|
 | Executive verdict | Answers the business question | Finding catalogue without a verdict |
 | Prioritization | Smallest sufficient set ranked by an explicit business criterion | Mechanical Top-3 or `ABS Delta` treated as universal importance |
 | Business meaning | Each headline has supported meaning or an explicit evidence gap | Manufactured “so what” |
 | Performance dimensions | Materially different dimensions remain distinct | Unsupported overall good/bad assessment |
 | Effect type | Business effect and data/control artefact are separated where relevant | Data exception presented as economic effect without evidence |
 | Evidence | Key conclusions trace to mart/evidence | Unsupported claims |
-| Management implication | Decision/action is stated only if supported | Decision manufactured from an observation |
+| Numbers | Key figures have metric, period, grain, source | Numbers without source |
+| Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
+| Risk | Risk has `risk_basis` | Risk without basis |
+| Management implication | Decision/action is stated only if supported; otherwise monitoring, validation, no action, or uncertainty remains explicit | Decision manufactured from an observation |
 | Thinking boundary | Analytics provides evidence and implication; strategic trade-offs remain with `[Thinking]` | Analytics chooses a strategic option without supported criteria |
 | Compression | Executive layer is materially shorter than supporting evidence | Synthesis becomes a second analytical report |
 | Confidence | Confidence and limitations visible | Low confidence as fact |
+| Language | Russian, business-readable executive body | Technical IDs in executive body |
+| Charts | Source mart, metric, period, grain visible | Caption stronger than data |
 ## Golden memo criteria
+A memo is strong when:
 - executive summary is short and evidence-backed;
 - numbers are in tables and prose;
 - material conclusions are ranked by an explicit business criterion;
@@ -304,3 +338,15 @@ unless QA and evidence support it.
 - management implication does not exceed verified evidence;
 - executive synthesis is materially shorter than the evidence layer;
 - appendix / evidence layer supports deep claims.
+
+## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md`
+
+# Migrated Bundle Semantics
+Canonical source created during Issue #285 provenance migration.
+Legacy bundle provenance: `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS.md`.
+## Legacy section: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`
+For `analytical_depth = material / decision_critical` and management-facing output:
+Rank by the relevant business criterion, not mechanically by `ABS Delta`; keep different performance dimensions visible. State controllability or persistence only when supported. The executive layer must be materially shorter than supporting evidence; routine output remains compact. If DQ or reconciliation prevents reliable interpretation, that limitation becomes the executive verdict.
+Preserve DQ, applicable Plan/Fact/Delta, material deviations and ranking criterion, row/timing status, risk basis, confidence, cause versus hypothesis, supported action details if asserted, and limitations/open questions.
+## Legacy section: `ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md`
+| Management implication | Decision/action is stated only if supported | Decision manufactured from an observation |

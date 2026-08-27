@@ -18,7 +18,9 @@ Define safe Codex operating modes.
 
 ## Rule
 
-If user does not specify mode, Codex must infer one and state it before editing.
+If the user does not specify a mode, Codex infers one, records it in the
+AES/execution record, and reports it in the final report. This recording is
+non-blocking and does not require a user round-trip before editing.
 
 For `ultra-long-local`, Codex must also state:
 
@@ -42,4 +44,6 @@ Codex must use `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md` before starting this mode.
 
 ## Stop conditions
 
-Stop on the canonical Codex hard blockers in `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`. Operating-mode setup also blocks when objective, allowed files, or forbidden actions are unclear or conflicting.
+Stop on the canonical Codex hard blockers in `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`. Operating-mode setup also stops for genuinely unsafe or
+conflicting objective, allowed-file, or forbidden-action scope; safely
+inferable Goal Mode ambiguity is recorded and handled conservatively.

@@ -52,3 +52,9 @@ GitHub path: `ChatGPT/[Thinking]`
 It must not absorb their responsibilities.
 
 `[Thinking]` applies active provisional thinker patterns to real decisions. `[Thinkers OS]` retains corpus, source intake, provenance, synthesis maintenance, and pattern-status ownership.
+
+## Bundle semantic migration sources
+
+- `THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
+- `THINKING_02_JUDGE_REVISOR_RISK_BUNDLE_SEMANTICS.md`
+- `THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`

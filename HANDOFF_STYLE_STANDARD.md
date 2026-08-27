@@ -23,6 +23,9 @@ Inputs:
 Constraints:
 Expected output:
 Acceptance criteria:
+  Business acceptance:
+  Artifact/content checks:
+  Non-acceptance examples:
 Risks:
 Evidence / confidence:
 Open questions:
@@ -32,6 +35,8 @@ Suggested first step:
 Use `Mode: goal` for broad repo/workflow/project goals where the receiving
 project can infer bounded safe scope. Use `Mode: strict` for high-risk,
 already-scoped, ultra-long, or explicitly requested task packages.
+
+The three acceptance sub-fields are required for user-facing artifacts and business deliverables. `Objective:` preserves the original goal through continuation; do not replace it with a local subtask.
 
 ## Project-Specific Additions
 

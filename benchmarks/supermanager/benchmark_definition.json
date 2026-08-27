@@ -45,17 +45,17 @@
     "Thinkers OS"
   ],
   "routes": [
-    {"id": "inbox", "input_type": "Raw input / capture / unclear thought", "destination": "[Inbox Router]", "positive_terms": ["raw input", "unclear thought"], "negative_destination": "[Thinking]"},
+    {"id": "inbox", "input_type": "Raw input, capture, unclear thought", "destination": "[Inbox Router]", "positive_terms": ["raw input", "unclear thought"], "negative_destination": "[Thinking]"},
     {"id": "things", "input_type": "Things-ready action", "destination": "Things", "positive_terms": ["things-ready", "action"], "negative_destination": "Calendar"},
     {"id": "calendar", "input_type": "Hard time commitment", "destination": "Calendar", "positive_terms": ["hard time", "commitment"], "negative_destination": "Things"},
-    {"id": "notes", "input_type": "Reference material / context", "destination": "Notes / Obsidian", "positive_terms": ["reference material", "context"], "negative_destination": "[AI OS]"},
-    {"id": "aios", "input_type": "AI concept / AI pattern / supported evidence", "destination": "[AI OS]", "positive_terms": ["ai concept", "supported evidence"], "negative_destination": "[LLM]"},
-    {"id": "thinkers_os", "input_type": "Thinker author / required corpus / source request / source intake / author artifact / cross-author synthesis maintenance", "destination": "[Thinkers OS]", "positive_terms": ["thinker author", "source intake"], "negative_destination": "[Thinking]"},
-    {"id": "thinking", "input_type": "Strategy / decision / risks / scenarios", "destination": "[Thinking]", "positive_terms": ["strategy", "decision"], "negative_destination": "[Thinkers OS]"},
-    {"id": "analytics", "input_type": "Calculation / data / metrics / mart / reconciliation", "destination": "[Analytics]", "positive_terms": ["calculation", "reconciliation"], "negative_destination": "[Codex]"},
-    {"id": "llm", "input_type": "Prompt / model routing / LLM workflow", "destination": "[LLM]", "positive_terms": ["prompt", "model routing"], "negative_destination": "[Codex]"},
-    {"id": "codex", "input_type": "Implementation / code / tests / release", "destination": "[Codex]", "positive_terms": ["implementation", "tests"], "negative_destination": "[LLM]"},
-    {"id": "codex_app", "input_type": "Long-running Codex execution", "destination": "Codex APP", "positive_terms": ["long-running", "execution"], "negative_destination": "[Codex]"}
+    {"id": "notes", "input_type": "Reference material, context, idea", "destination": "Notes / Obsidian", "positive_terms": ["reference material", "context"], "negative_destination": "[AI OS]"},
+    {"id": "aios", "input_type": "AI concept, AI pattern, supported evidence, AI governance question, governance promotion decision", "destination": "[AI OS]", "positive_terms": ["ai concept", "governance question"], "negative_destination": "[LLM]"},
+    {"id": "thinkers_os", "input_type": "Thinker author, required corpus, source request or intake, provenance, author artifact, cross-author synthesis maintenance, Lens Router, Conflict Map", "destination": "[Thinkers OS]", "positive_terms": ["thinker author", "source intake"], "negative_destination": "[Thinking]"},
+    {"id": "thinking", "input_type": "Strategy, decision, risks, scenarios, options, assumptions", "destination": "[Thinking]", "positive_terms": ["strategy", "decision"], "negative_destination": "[Thinkers OS]"},
+    {"id": "analytics", "input_type": "Calculation, data, metrics, mart, reconciliation, quantitative validation, data QA", "destination": "[Analytics]", "positive_terms": ["calculation", "reconciliation"], "negative_destination": "[Codex]"},
+    {"id": "llm", "input_type": "Prompt, model routing, model selection, LLM workflow, orchestration, eval design", "destination": "[LLM]", "positive_terms": ["prompt", "model routing"], "negative_destination": "[Codex]"},
+    {"id": "codex", "input_type": "Implementation, code, tests, refactor, release, schemas, automation, validators", "destination": "[Codex]", "positive_terms": ["implementation", "tests"], "negative_destination": "[LLM]"},
+    {"id": "codex_app", "input_type": "Long-running Codex execution", "destination": "Codex APP directory", "positive_terms": ["long-running", "execution"], "negative_destination": "[Codex]"}
   ],
   "documented_smoke_cases": [
     {"id": "aios_navigation", "file": "SMOKE_QA_RESULTS.md", "tokens": ["| 1 | Navigation |", "| pass |"]},

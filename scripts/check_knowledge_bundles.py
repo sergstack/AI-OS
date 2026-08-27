@@ -5,6 +5,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+import importlib.util
+import json
 from pathlib import Path
 import re
 import sys
@@ -252,9 +254,26 @@ def check_project(root: Path, project: str, project_dir: Path) -> ProjectReport:
     )
 
 
+def generated_drift_failures(root: Path) -> list[str]:
+    """Recompute ready manifest outputs instead of trusting stored hashes."""
+    manifest_path = root / "knowledge_bundle_manifest.json"
+    if not manifest_path.is_file():
+        return []
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("status") != "ready":
+        return []
+    builder_path = Path(__file__).with_name("build_knowledge_bundles.py")
+    spec = importlib.util.spec_from_file_location("knowledge_bundle_builder", builder_path)
+    assert spec and spec.loader
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    return builder.check(root, manifest)
+
+
 def main() -> int:
     root = repo_root()
     reports = [check_project(root, project, project_dir) for project, project_dir in PROJECTS.items()]
+    drift_failures = generated_drift_failures(root)
     failed = 0
     bundles_checked = 0
     upload_max = 0
@@ -277,11 +296,16 @@ def main() -> int:
             print(f"  FAIL: {failure}")
         print()
 
+    failed += len(drift_failures)
     print("Summary:")
     print(f"- projects checked: {len(reports)}")
     print(f"- bundles checked: {bundles_checked}")
     print(f"- upload files max: {upload_max}")
     print(f"- failed: {failed}")
+    if drift_failures:
+        print("- generated drift failures:")
+        for failure in drift_failures:
+            print(f"  FAIL: {failure}")
     return 1 if failed else 0
 
 

@@ -89,7 +89,7 @@ def test_orchestrator_is_thin_default_and_fails_closed() -> None:
     ).read_text(encoding="utf-8")
 
     for canonical_reference in (
-        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "ROUTING_RULES.md",
         "PROJECT_CAPABILITIES.yaml",
         ".agents/skills/project-context/SKILL.md",
         "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
@@ -232,10 +232,8 @@ def test_orchestrator_is_the_default_goal_entrypoint() -> None:
     assert "`AI-OS Goal` is the default when no route is supplied" in commands
 
 
-def test_canonical_inbox_router_owns_domain_routing_semantics() -> None:
-    routing = (
-        REPO_ROOT / "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md"
-    ).read_text(encoding="utf-8")
+def test_root_routing_rules_own_domain_routing_semantics() -> None:
+    routing = (REPO_ROOT / "ROUTING_RULES.md").read_text(encoding="utf-8")
 
     for destination in (
         "`[AI OS]`",
@@ -247,6 +245,35 @@ def test_canonical_inbox_router_owns_domain_routing_semantics() -> None:
         "`[Inbox Router]`",
     ):
         assert destination in routing
+
+
+def test_handoff_style_standard_is_the_only_field_set_owner() -> None:
+    fields = (
+        "From:",
+        "To:",
+        "Task type:",
+        "Mode:",
+        "Objective:",
+        "Context:",
+        "Inputs:",
+        "Constraints:",
+        "Expected output:",
+        "Acceptance criteria:",
+        "Risks:",
+        "Evidence / confidence:",
+        "Open questions:",
+        "Suggested first step:",
+    )
+    owners = []
+    for path in REPO_ROOT.rglob("*.md"):
+        relative = path.relative_to(REPO_ROOT)
+        if any(part in {"archive", "Knowledge_Bundles"} for part in relative.parts):
+            continue
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        if all(field in text for field in fields):
+            owners.append(relative.as_posix())
+
+    assert owners == ["HANDOFF_STYLE_STANDARD.md"]
 
 
 def test_root_agents_uses_canonical_routing_and_bounded_context() -> None:

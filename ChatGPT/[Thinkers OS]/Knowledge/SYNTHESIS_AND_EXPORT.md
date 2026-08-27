@@ -34,7 +34,7 @@ MVP limits: 5 active patterns, preferably 2–3 lenses per case, maximum 4. Curr
 | `SYN-004-BIAS-AWARE-DECISION-REVIEW` | prospective high-impact judgment sensitive to baseline/frame | do not label people retrospectively or replace domain evidence |
 | `SYN-005-REVERSIBLE-INTERVENTION-GATE` | structural intervention with feedback, multiple owners, or costly reversal | quantitative claims require `[Analytics]`; pilot needs stop and rollback owners |
 
-All are `active_provisional`, not validated/canonical. Application count does not promote them.
+All five remain `active_provisional`, not validated/canonical. Application count does not promote them.
 
 ## Lens Router
 

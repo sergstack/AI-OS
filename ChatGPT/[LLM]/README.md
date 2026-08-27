@@ -62,3 +62,8 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 ## Что не делать
 
 Не превращать LLM в расчётный слой, не загружать raw dumps, не хранить API keys.
+
+## Bundle semantic migration sources
+
+- `LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md`
+- `LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`

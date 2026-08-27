@@ -9,7 +9,7 @@
   "specific_file_allowlist": [
     "benchmarks/supermanager/",
     "tests/test_supermanager_benchmark.py",
-    "docs/PROJECT_ROUTING.md"
+    "ROUTING_RULES.md"
   ],
   "forbidden_files": [
     ".github/workflows/",

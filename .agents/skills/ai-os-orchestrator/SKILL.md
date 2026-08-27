@@ -14,7 +14,7 @@ This skill owns orchestration only. It does not own domain methodology, replace 
 Before routing, verify and read:
 
 1. the applicable `AGENTS.md` files;
-2. `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md` for front-door routing semantics;
+2. `ROUTING_RULES.md` for front-door routing semantics and external destination classes;
 3. `PROJECT_CAPABILITIES.yaml` for capability locations;
 4. `.agents/skills/project-context/SKILL.md` for bounded context loading;
 5. `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md` and `HANDOFF_STYLE_STANDARD.md` when a cross-project handoff is required;
@@ -94,7 +94,7 @@ Return exactly one user-facing terminal outcome while preserving the separate AE
    - require exactly one match; zero or multiple registry matches are `blocked`;
    - then require one relative `canonical_path` and a non-empty `context_entrypoints` list whose first item is `PROJECT_INSTRUCTIONS.md`.
    The unique registered match is exactly one primary owner capability for the current stage.
-   A canonical destination outside the registered AI-OS capabilities, such as Things, Calendar, Notes, or Codex APP, is an explicit terminal handoff: report it without inventing a capability and do not invoke `project-context`.
+   A canonical destination outside the registered AI-OS capabilities is not a registry failure. Respect the class from `ROUTING_RULES.md`: for `external`, report an explicit terminal handoff without inventing a capability; do not invoke `project-context`; for `internal_non_capability`, continue only through the named non-capability boundary; for `owner_escalation`, stop as `OWNER_DECISION_REQUIRED` and request the stated owner decision. Do not recast any of these classes as a registered project.
 4. **Validate paths.** Resolve the canonical path inside the repository. Reject absolute paths, traversal, symlink escape, missing directories, missing entrypoints, and any entrypoint that escapes its canonical project.
 5. **Load context.** Invoke or follow `project-context` only after Steps 2–4 pass. Read the owner instructions first, then only indexed or task-relevant references. Stop when context is sufficient.
 6. **Execute within ownership.** Keep reasoning and methodology with the primary owner. For repository implementation, create a bounded handoff to local Codex execution with outcome, allowed scope, local constraints, checks, rollback, and acceptance criteria.

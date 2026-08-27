@@ -527,10 +527,20 @@ existing policy:
 max_corrective_fixes_per_failed_check: 1
 ```
 
-If the same check fails again after one minimal correction attempt: stop
-changing files, record the evidence, report the residual risk, and set an
-honest acceptance status. This standard's canonical envelope (Section 9.6)
-never widens this policy.
+If the same validation target fails again after one minimal correction
+attempt: stop further file-changing corrections for that target, record the
+evidence, report the residual risk, and set an honest acceptance status. This
+standard's canonical envelope (Section 9.6) never widens this policy. A
+distinct defect is eligible for separate handling only when independently
+evidenced against a different affected requirement or independently failing
+validation target; changing only `defect_id`, subtype, classification, label,
+wording, or representation never resets the one-fix budget.
+
+For the prohibition on agentic workflows, a bounded, reversible, in-repo
+corrective loop operating under an AES record, fixed authority and scope,
+validation, stop conditions, rollback, and human acceptance is supervised
+execution. This narrow classification neither permits autonomous agents or
+generic agentic workflows nor expands execution authority.
 
 ## 10. Acceptance model
 

@@ -1,16 +1,16 @@
 {
   "benchmark_version": "1.0.1",
   "hash_algorithm": "sha256(sorted(relative_path + NUL + file_hash + newline))",
-  "benchmark_hash": "361db9b5b16cf2819b1bdb6978936ae24203687da35ccf1cf62e737433449ea0",
-  "evaluator_hash": "6517bc3391fa7c8671f66ff5ff6ccafc696579965ad928c034d0997ac7aaf73b",
+  "benchmark_hash": "5b1478a00ca3ba96d0d659cf3d266df9c02fa56c2c427e7eadc0daea6a53a6bb",
+  "evaluator_hash": "afaeff66b35585438fc1c33da8bf39d4d7e07a16a62edd120db1edba6da3584a",
   "file_hashes": {
     "BENCHMARK_CHANGELOG.md": "709732f73e1f0474282b0e40c92a0c87751a7951c6464b4260f1fc87415740b2",
     "CAPABILITY_ASSESSMENT.md": "4d965ce229ed1551eaf18242a5d6aea6a7b936c341d5c538780daca41b27b85c",
     "COVERAGE.md": "fa31c74da8f2ce9f980e51d91e52909c7415fdf4634844d75615d94cc160cc66",
     "README.md": "804e16a3a115d5d039e9bd6ab49c51c3f417c8437330ccc23a56ef79ef31d19b",
-    "SCOPE_LOCK.json": "e743acffe2c6bc57c0b9c2927e26de803b4b15a83b01b89a5e6bdfb7d4652c9b",
-    "benchmark_definition.json": "ff82f84c86704904c57584694cca3788135d1f89948c47e925913a5b5e61eff6",
-    "evaluator.py": "6517bc3391fa7c8671f66ff5ff6ccafc696579965ad928c034d0997ac7aaf73b",
+    "SCOPE_LOCK.json": "ba1581613e8a3425a59209c5a70d6b15af973079883c8266743d9d99a7f4cec0",
+    "benchmark_definition.json": "899090818af3ef6560563ff07322b957078d1ddfa7c7608522c76aa3439fdc32",
+    "evaluator.py": "afaeff66b35585438fc1c33da8bf39d4d7e07a16a62edd120db1edba6da3584a",
     "final_judge.py": "54c1a1cf1eb692b50001f1112f7ea36038f5475e108ef0fd54f77c9be6b7a2b2",
     "run_benchmark.py": "8aa11c7056ef15b50c1efed046cdf85b61740a209a48bd2df9cb49fd756dea3c",
     "../../tests/test_supermanager_benchmark.py": "544fdcc439111fa143ddbb71300134e92d1d6174324cbe152dff85b8ed8c8a89"
