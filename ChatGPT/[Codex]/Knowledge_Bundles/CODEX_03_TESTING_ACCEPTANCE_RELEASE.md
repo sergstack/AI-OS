@@ -19,10 +19,11 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
 - source_fingerprint: sha256:f6fcf73ce33abc6260c9c4a267405993272b1eaf31c48e3da3265b3ef01c1212
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -46,6 +47,8 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 4. Add tests only where useful.
 5. Report pass/fail/blocked.
 ## Docs-only fallback checks
+If no unit tests exist for docs-only changes, run file-existence, grep, markdown consistency, and git diff checks.
+Minimum generic fallback commands:
 ```bash
 git status --short
 git diff --stat
@@ -60,7 +63,7 @@ If `markdownlint` is available, run it against the affected markdown files. Do n
 pytest tests/
 python scripts/validate_artifact_outputs.py
 ```
-
+Use actual repo commands from the task package.
 
 ## From: `ChatGPT/[Codex]/Knowledge/ACCEPTANCE_CRITERIA.md`
 
@@ -83,10 +86,10 @@ residual_risks:
 next_step:
 ```
 
-
 ## From: `ChatGPT/[Codex]/Knowledge/REVIEW_CHECKLIST.md`
 
 # Review Checklist
+Before final answer:
 - [ ] Did I inspect the right files?
 - [ ] Did I keep scope small?
 - [ ] Did I avoid forbidden actions?
@@ -96,7 +99,6 @@ next_step:
 - [ ] Did I document assumptions?
 - [ ] Did I classify recoverable issues, needs_check items, and hard_blocker risks correctly?
 - [ ] Did I provide acceptance status?
-
 
 ## From: `ChatGPT/[Codex]/Knowledge/RELEASE_CHECKLIST.md`
 
@@ -111,10 +113,10 @@ next_step:
 - [ ] Known risks listed.
 - [ ] Next scope defined.
 
-
 ## From: `ChatGPT/[Codex]/Knowledge/DONE_DEFINITION.md`
 
 # Definition of Done
+A Codex task is done when:
 - objective is complete;
 - changes are scoped;
 - files changed are listed;
@@ -124,7 +126,6 @@ next_step:
 - assumptions and hard blockers are recorded when relevant;
 - rollback or next step is clear;
 - final report is concise and usable.
-
 
 ## From: `ChatGPT/[Codex]/Knowledge/SMOKE_QA_CHECKLIST.md`
 

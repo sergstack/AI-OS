@@ -137,3 +137,8 @@ prompt-registry debt below.
 - autonomous workflows
 - web UI as current recommendation
 - production-ready claims without acceptance
+
+## Bundle semantic migration sources
+
+- `LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md`
+- `LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`

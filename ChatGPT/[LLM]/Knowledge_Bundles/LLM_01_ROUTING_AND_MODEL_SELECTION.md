@@ -16,10 +16,11 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
 - source_fingerprint: sha256:cd52ea369a2fefddc0e79389b09ab0068b137e6d85fc88a6a17dca1d464d9690
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -29,8 +30,18 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 
 # LLM Routing
 ## Task types
+| Need | Route |
+|---|---|
+| Draft text | draft workflow |
+| Critique | judge workflow |
+| Improve | revise workflow |
+| Summarize | summarize workflow |
+| Extract structured facts | extraction workflow |
+| Build memo | memo generation workflow |
 | Choose model | model routing |
+| Check output | quality gates |
 ## Routing rule
+Before prompting, decide:
 1. task type;
 2. input context;
 3. output format;
@@ -42,11 +53,19 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - unsupported factual claims;
 - production implementation without Codex.
 
-
 ## From: `ChatGPT/[LLM]/Knowledge/MODEL_ROUTING.md`
 
 # Model Routing
 ## Routing criteria
+| Need | Model style |
+|---|---|
+| Fast draft | fast model |
+| Hard reasoning | reasoning model |
+| Long context synthesis | long-context model |
+| Local/private draft | local/Ollama |
+| Critique | judge model |
+| Rewrite | balanced model |
+| Code implementation | route to Codex |
 ## Rule
 Model routing is guidance, not a factual claim about current model capabilities. For current prices, limits, API details or release status, verify with fresh sources.
 ## Selection checklist
@@ -57,7 +76,6 @@ Model routing is guidance, not a factual claim about current model capabilities.
 - privacy;
 - tool access;
 - quality gate.
-
 
 ## From: `ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md`
 
@@ -73,7 +91,6 @@ Prompts / model routing / LLM quality → [LLM]
 ## Standard handoff format
 ```text
 # Handoff
-
 From:
 To:
 Task type:
@@ -88,6 +105,8 @@ Evidence / confidence:
 Open questions:
 ```
 ## Thinking → Analytics
+Используй, когда decision или scenario требует расчётов.
+Передать:
 - question;
 - metrics;
 - period;
@@ -95,12 +114,16 @@ Open questions:
 - options to test;
 - expected analytical output.
 ## Analytics → LLM
+Используй, когда verified numbers нужно превратить в memo, summary или narrative.
+Передать:
 - curated facts;
 - tables or marts;
 - reconciled metrics;
 - limitations;
 - tone and output format.
 ## LLM → Codex
+Используй, когда нужен код для автоматизации prompt/memo/report workflow.
+Передать:
 - prompt spec;
 - input/output contract;
 - files to inspect;
@@ -108,6 +131,7 @@ Open questions:
 - tests;
 - acceptance criteria.
 ## Codex → QA / Release
+Передать:
 - changed files;
 - tests run;
 - smoke QA;

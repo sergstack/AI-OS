@@ -47,3 +47,13 @@
 ## Non-negotiable rule
 
 Не превращай `[Analytics]` в проект, который только выдаёт ТЗ. Он должен сам проводить анализ, если у него есть данные/контекст и задача не требует implementation.
+
+## Bundle semantic migration sources
+
+- `ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_07_CODEX_HANDOFF_OPTIONAL_BUNDLE_SEMANTICS.md`

@@ -18,10 +18,11 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
 - source_fingerprint: sha256:c8298924458e5a4edd6db42d3154f4ba480b3b6b73cd18988d7e466f9ef98eb8
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
@@ -43,24 +44,24 @@ Codex is an implementation agent. In Goal Mode it accepts broad goals, inspects 
 8. Run tests or smoke checks.
 9. Review diff.
 10. Report clearly.
-
 ## Local developer evidence
-
 Invoke every applicable safe LDW module from its routing table. Use direct bounded reading for a known single-file task and deterministic discovery plus `ldw context pack` for unfamiliar or multi-file work. Establish claimed test outcomes only through `ldw test parse`; use applicable `ldw git facts` and `ldw evidence build` before non-trivial handoffs or final reports. Preserve non-success and fallback states. LDW remains read-only; Codex retains all decisions, edits, and verification authority.
 ## Autonomy
 Act autonomously when scope can be safely inferred, changes are local/reversible, and checks are possible. Do not stop for soft uncertainty; make the safest bounded assumption and log it.
 Stop only on the canonical hard blockers in `AUTONOMY_POLICY.md`.
+For safe uncertainty, make the safest assumption and log it.
 ## Repository template
 For real working repositories, use the repo-root file `Codex APP/CODEX_APP_AGENTS_TEMPLATE.md` as the root `AGENTS.md` starting point.
 ## Assumptions
+If something is not specified, make the safest reasonable assumption and write it in final report.
 ## Final report
 Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-specific reports may be shorter but must not conflict.
-
 
 ## From: `ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md`
 
 # Claude Code Handoff
 ## Purpose
+Use Claude Code as an alternative or complementary coding-agent surface for repo work, reviews, hooks, skills, MCP-connected workflows, and multi-agent coding sessions.
 ## Use when
 - repo documentation needs review;
 - `CLAUDE.md` project memory is useful;
@@ -96,6 +97,7 @@ Use the canonical final report schema in `EXECUTION_REPORTING_RULES.md`; mode-sp
 - changing governed KB content;
 - adding semantic search / vector DB / web UI / autonomous retrieval without approval.
 ## Claude Code specific assets
+If creating Claude Code setup later, prefer:
 - `CLAUDE.md`;
 - skills;
 - hooks;
@@ -110,21 +112,25 @@ Pass if:
 - forbidden files are untouched;
 - final answer includes branch / commit / PR.
 
-
 ## From: `ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md`
 
 # Subagent Decomposition
 ## Planner
+Clarifies scope, files, dependencies, acceptance criteria.
 ## Data analyst
+Checks metrics, formulas, data contracts, grain, reconciliation.
 ## Pipeline engineer
+Implements raw/stage/marts/report pipeline changes.
 ## Test engineer
+Adds or runs unit, contract, smoke, regression, golden tests.
 ## Reviewer
 Checks diff, risks, forbidden actions, output contracts.
 ## Documentation writer
+Updates README, runbook, task notes, release notes.
 ## Release operator
+Prepares acceptance report, release checklist, rollback notes.
 ## Rule
 Do not create subagents for complexity theatre. Use roles only to make the work clearer.
-
 
 ## From: `ChatGPT/[Codex]/Knowledge/PROMPT_LIBRARY_CODEX.md`
 
@@ -144,7 +150,6 @@ Do not produce a roadmap, epic, child issue tree, or approval package unless pla
 ## Long-run implementation
 ```text
 Implement the scoped task below in long-run mode.
-
 Do not ask unless a hard blocker appears.
 For reversible local decisions, make the safest assumption and continue.
 Keep the diff minimal.
@@ -173,11 +178,11 @@ Review the diff for bugs, scope creep, missing tests, business logic changes, an
 Return pass/revise/blocked.
 ```
 
-
 ## From: `ChatGPT/[Codex]/Knowledge/PROJECT_CONTEXT.md`
 
 # Project Context
 ## Purpose
+This file gives persistent engineering context for Codex / Claude Code tasks.
 ## Default principles
 - Goal Mode is build-first for normal broad goals.
 - Atomic task packages only for strict, high-risk, already-scoped, or ultra-long work.

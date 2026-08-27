@@ -17,20 +17,23 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 
 ## Status
 
-- bundle_type: compact upload artifact
-- source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:64a5c38e669d3ac5d825ddbcf9070e8eeba3c2c591f7df798fde617b151f07e4
 - default_upload_mode: `Knowledge_Bundles`
+- bundle_type: generated compact upload artifact
+- source_of_truth: declared granular source files
+- source_fingerprint: sha256:64a5c38e669d3ac5d825ddbcf9070e8eeba3c2c591f7df798fde617b151f07e4
+- generator: scripts/build_knowledge_bundles.py
 
 ---
 
 # Content
 
+## From: `ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md`
+
+# Agent Loop Playbook
+## Purpose
+Define supervised agent loops for AI-OS without promoting autonomous agents or production agentic workflows.
 ## Supervised Loop Pattern
-
-Allowed loop shape:
-
 ```text
 goal
 -> action
@@ -39,11 +42,8 @@ goal
 -> acceptance
 -> next trigger
 ```
-
-Supervised loops require explicit owner, bounded action, checks, stop conditions, and human acceptance.
-
-## Allowed Loops
-
+The loop is supervised when a human or explicit project gate controls scope, stop conditions, acceptance, and promotion.
+## Allowed Loop Types
 | Loop | Owner | Allowed retry |
 |---|---|---|
 | Analytics `autoloop` | `[Analytics]` | revise/rerun from visible QA findings |
@@ -51,31 +51,134 @@ Supervised loops require explicit owner, bounded action, checks, stop conditions
 | PR Judge loop | `[Thinking]` / `[Codex]` | revise PR until pass/revise/blocked is clear |
 | ChatGPT routing loop | `[Inbox Router]` | reroute when task type is unclear |
 | Prompt QA Factory | `[AI OS]` -> owner project | candidate -> test -> judge -> revise -> selected, with human acceptance |
-
-## Boundary
-
-Supervised loops are not autonomous agents, autonomous retrieval, production agentic workflows, background automation, vector DB, embeddings, semantic search, web UI, or uncontrolled multi-agent execution.
-
+## Not Autonomous Agents
+Supervised loops are not:
+- autonomous retrieval;
+- autonomous agents;
+- production agentic workflows;
+- background automation;
+- vector DB / embeddings / semantic search;
+- web UI;
+- uncontrolled multi-agent execution.
 ## Stop Conditions
+Stop when:
+- no validation path exists;
+- secrets, credentials, tokens, or `.env` values are needed;
+- production, runtime, deploy, or migration work appears;
+- formulas, schemas, output contracts, column names, metric definitions, or business logic may change;
+- autonomous retrieval is needed;
+- uncontrolled multi-agent work would be required;
+- acceptance criteria conflict.
+## Human Acceptance
+Human acceptance is required before:
+- merge;
+- deploy;
+- final adoption;
+- promotion from candidate/pilot to standard workflow;
+- adding automation, retrieval, persistent memory, or new runtime tools.
 
-Stop on no validation path, secrets, production/runtime/deploy, schema/formula/business logic/output contract changes, autonomous retrieval, uncontrolled multi-agent work, or conflicting acceptance criteria.
+## From: `ChatGPT/[AI OS]/Knowledge/LOOP_ACCEPTANCE_CHECKLIST.md`
 
-## Acceptance Checklist
+# Loop Acceptance Checklist
+## Purpose
+Decide whether a loop is safe to run as supervised work.
+## Required Before Running
+- [ ] Goal is explicit.
+- [ ] Owner project is named.
+- [ ] Allowed actions are clear.
+- [ ] Forbidden actions are clear.
+- [ ] Checks are listed.
+- [ ] Retry/rerun rule is bounded.
+- [ ] Stop conditions are visible.
+- [ ] Human acceptance point is defined.
+## Pass Criteria
+- loop follows `goal -> action -> check -> revise/rerun -> acceptance -> next trigger`;
+- each action is reviewable;
+- checks are deterministic or explicitly human-reviewed;
+- retry does not widen scope;
+- artifacts are source docs or PR diffs, not runtime stores;
+- final status is `candidate / ready for human review` unless separately promoted.
+## Revise Criteria
+Use `revise` when:
+- checks are missing but easy to add;
+- stop conditions are incomplete;
+- owner project is unclear;
+- retry/rerun rule is too broad;
+- human acceptance point is missing.
+## Blocked Criteria
+Use `blocked` when the loop requires:
+- secrets or credentials;
+- production/runtime/deploy access;
+- schema, formula, metric, output contract, column, or business logic changes without approval;
+- autonomous retrieval;
+- vector DB, embeddings, semantic search, web UI, or production agentic workflow;
+- uncontrolled multi-agent edits;
+- no meaningful validation path.
 
-Pass when the loop has goal, owner, allowed actions, forbidden actions, checks, bounded retry/rerun, stop conditions, and human acceptance point.
+## From: `ChatGPT/[AI OS]/Knowledge/AUTO_RESEARCH_BACKLOG.md`
 
-Use `revise` when the loop is close but missing checks, stop conditions, owner, retry rule, or human acceptance point.
+# AutoResearch Backlog
+## Purpose
+Track future research-loop ideas without treating them as current production workflows.
+## Status
+AutoResearch / Karpathy-style loops are backlog or future pilot candidates only.
+They are not:
+- production workflows;
+- autonomous agents;
+- autonomous retrieval;
+- vector DB / embeddings / semantic search;
+- web UI;
+- background automation.
+## Candidate Pilot Shape
+```text
+research question
+-> bounded source set
+-> extraction
+-> deterministic or human QA
+-> synthesis
+-> review
+-> acceptance
+-> next pilot decision
+```
+## Promotion Gates
+Before promotion, require:
+- explicit owner;
+- source boundaries;
+- no autonomous retrieval;
+- reproducible checks;
+- 3 accepted pilot cases;
+- rollback path;
+- human acceptance.
+## Backlog Items
+| Idea | Status | Next safe step |
+|---|---|---|
+| AutoResearch loop for AI trend triage | backlog | design one read-only pilot |
+| Karpathy-style minimal verifiable research loop | backlog | define sources and QA gate |
+| Multi-agent research critique | backlog | keep as review-only until isolated scopes are proven |
 
-Use `blocked` when the loop requires secrets, production/runtime/deploy access, unapproved schema/formula/business logic changes, autonomous retrieval, vector DB, embeddings, semantic search, web UI, production agentic workflow, uncontrolled multi-agent edits, or no validation path.
+## From: `ChatGPT/[AI OS]/Knowledge/SKILLS_HOOKS_MCP_DECISION_MATRIX.md`
 
-## AutoResearch Backlog
-
-AutoResearch / Karpathy-style loops are backlog or future pilot candidates only. They are not production workflows, autonomous agents, autonomous retrieval, vector DB, embeddings, semantic search, web UI, or background automation.
-
-Future pilots require explicit owner, source boundaries, no autonomous retrieval, reproducible checks, 3 accepted pilot cases, rollback path, and human acceptance.
-
-## Skills / Hooks / MCP Decision Matrix
-
-Prefer prompt/runbook/checklist first. Consider skills, hooks, MCP tools, or sub-agents only when repeated friction is proven and the source, permission, isolation, checks, and human acceptance gate are clear.
-
-Do not enable new tools, hooks, MCP workflows, sub-agent patterns, or automation as standard workflow without human acceptance and promotion gate.
+# Skills Hooks MCP Decision Matrix
+## Purpose
+Decide when skills, hooks, MCP tools, or sub-agents are useful as workflow aids. This file does not enable runtime tools.
+## Decision Matrix
+| Tooling option | Use when | Do not use when | Gate |
+|---|---|---|---|
+| Skill | workflow is repeated, bounded, and human-readable | one-off task is enough | document trigger and checks |
+| Hook | local guardrail is deterministic and reversible | it mutates production/runtime state | dry-run or human review first |
+| MCP tool | existing source/tool access is needed | it expands retrieval beyond approved scope | explicit source and permission |
+| Sub-agent | scope is isolated and final diff owner is clear | agents would edit same files uncontrolled | branch/file isolation |
+| Background automation | almost never in this repo layer | task lacks production approval | separate promotion gate |
+## Default
+Prefer prompt/runbook/checklist first. Add tools only when repeated friction is proven.
+## Forbidden Before Promotion
+- autonomous retrieval;
+- production agentic workflow;
+- vector DB;
+- embeddings;
+- semantic search;
+- web UI;
+- persistent runtime artifact store;
+- uncontrolled multi-agent edits.
+## Human Acceptance
+Human acceptance is required before enabling any new tool, hook, MCP workflow, sub-agent pattern, or automation as a standard workflow.

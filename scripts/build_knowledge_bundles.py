@@ -20,7 +20,7 @@ def normalized(text: str) -> str:
 
 
 def source_material(root: Path, item: dict[str, object]) -> tuple[list[tuple[str, str]], str]:
-    sources = item["sources"]
+    sources = list(item["sources"]) + list(item.get("migration_sources", []))
     assert isinstance(sources, list) and sources
     digest = hashlib.sha256()
     material = []
@@ -29,8 +29,9 @@ def source_material(root: Path, item: dict[str, object]) -> tuple[list[tuple[str
         path = root / source
         if not path.is_file() or any(part.lower() in FORBIDDEN_PARTS for part in path.parts):
             raise ValueError(f"forbidden or missing source: {source}")
-        text = normalized(path.read_text(encoding="utf-8"))
-        digest.update(source.encode() + b"\0" + text.encode() + b"\0")
+        raw = path.read_text(encoding="utf-8")
+        text = normalized(raw)
+        digest.update(source.encode() + b"\0" + raw.encode() + b"\0")
         material.append((source, text))
     return material, f"sha256:{digest.hexdigest()}"
 

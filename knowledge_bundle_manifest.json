@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "audit_pending",
+  "status": "ready",
   "bundles": [
     {
       "project": "[AI OS]",
@@ -20,7 +20,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[AI OS]",
@@ -38,7 +41,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[AI OS]",
@@ -56,7 +62,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_03_HANDOFF_AND_SMOKE_QA_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[AI OS]",
@@ -77,7 +86,10 @@
           "production_promotion: no, unless explicitly accepted elsewhere",
           "default_upload_mode: `Knowledge_Bundles`"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[AI OS]",
@@ -136,7 +148,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Thinking]",
@@ -154,7 +169,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Thinking]/Knowledge/THINKING_02_JUDGE_REVISOR_RISK_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Thinking]",
@@ -173,7 +191,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Thinking]",
@@ -214,7 +235,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -230,7 +254,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -248,7 +275,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -267,7 +297,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -287,7 +320,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -316,7 +352,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Analytics]",
@@ -341,7 +380,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Analytics]/Knowledge/ANALYTICS_07_CODEX_HANDOFF_OPTIONAL_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[LLM]",
@@ -374,7 +416,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[LLM]/Knowledge/LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[LLM]",
@@ -394,7 +439,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[LLM]",
@@ -482,7 +530,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_01_TASKS_AND_HANDOFF_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Codex]",
@@ -501,7 +552,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Codex]",
@@ -542,7 +596,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_04_IMPLEMENTATION_WORKFLOWS_BUNDLE_SEMANTICS.md"
+      ]
     },
     {
       "project": "[Codex]",
@@ -580,7 +637,10 @@
         "status_lines": [
           "production_promotion: no, unless explicitly accepted elsewhere"
         ]
-      }
+      },
+      "migration_sources": [
+        "ChatGPT/[Codex]/Knowledge/CODEX_06_AI_CODING_DISCIPLINE_BUNDLE_SEMANTICS.md"
+      ]
     }
   ]
 }
