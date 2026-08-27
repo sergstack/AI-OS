@@ -75,7 +75,8 @@
         "validation_unavailable",
         "scope_boundary_violation",
         "required_external_action_not_authorized",
-        "closure_iteration_limit_reached"
+        "closure_iteration_limit_reached",
+        "continuation_no_progress_limit_reached"
       ]
     },
     "requirements": {
@@ -597,7 +598,56 @@
         "goal_boundary_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
         "acceptance_criteria_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
         "state_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
-        "updated_at": { "type": "string", "format": "date-time" }
+        "updated_at": { "type": "string", "format": "date-time" },
+        "route_trace": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["route_id", "from_owner", "to_owner", "resume_stage", "criteria_addressed", "outcome"],
+            "properties": {
+              "route_id": { "type": "string", "minLength": 1 },
+              "from_owner": { "type": "string", "minLength": 1 },
+              "to_owner": { "type": "string", "minLength": 1 },
+              "resume_stage": { "type": "string", "enum": ["cold_entry", "owner_execution", "validation", "reassess_original_acceptance"] },
+              "criteria_addressed": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+              "route_signature": { "type": ["string", "null"] },
+              "evidence_delta": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "type": "string", "enum": ["new_evidence", "changed_assumption", "failed_validation", "changed_acceptance_interpretation", "new_owner_instruction", "implementation_feedback"] }
+              },
+              "outcome": { "type": "string", "enum": ["dispatched", "completed", "refused"] },
+              "refusal_reason": { "type": ["string", "null"], "enum": [null, "repeat_route_refused_missing_evidence_delta"] },
+              "evidence_refs": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "progress": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["satisfied_criteria", "remaining_criteria", "last_real_progress_route_id"],
+          "properties": {
+            "satisfied_criteria": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "remaining_criteria": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "last_real_progress_route_id": { "type": ["string", "null"] },
+            "evidence_refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "guards": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["max_continuation_hops", "max_retries_per_owner", "max_no_progress_hops", "route_signature_history_window", "tripped_guard", "tripped_guards", "terminal_report_ref"],
+          "properties": {
+            "max_continuation_hops": { "type": ["integer", "null"], "minimum": 1 },
+            "max_retries_per_owner": { "type": ["integer", "null"], "minimum": 1 },
+            "max_no_progress_hops": { "type": ["integer", "null"], "minimum": 1 },
+            "route_signature_history_window": { "type": ["integer", "null"], "minimum": 1 },
+            "tripped_guard": { "type": ["string", "null"], "enum": [null, "hop_budget", "per_owner_retry_limit", "no_progress_counter", "route_signature_cycle"] },
+            "tripped_guards": { "type": "array", "uniqueItems": true, "items": { "type": "string", "enum": ["hop_budget", "per_owner_retry_limit", "no_progress_counter", "route_signature_cycle"] } },
+            "terminal_report_ref": { "type": ["string", "null"] }
+          }
+        }
       }
     }
   }

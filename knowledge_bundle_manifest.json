@@ -32,7 +32,8 @@
         "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
         "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
-        "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md"
+        "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
+        "AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md"
       ],
       "contract": {
         "title": "[AI OS] — Governance and Evidence",

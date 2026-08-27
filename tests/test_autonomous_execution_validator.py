@@ -248,6 +248,51 @@ def closure_aware_record() -> dict:
     return record
 
 
+def continuation_record() -> dict:
+    record = closure_aware_record()
+    record["continuation"] = {
+        "original_goal": "Continue the original goal.",
+        "original_acceptance_criteria": ["criterion one"],
+        "resolved_owner": "[AI OS]",
+        "resume_stage": "owner_execution",
+        "record_ref": "fixture.json",
+        "scope_ref": "scope:fixture",
+        "routing_state_ref": "routing:fixture",
+        "source_revision": "rev-b",
+        "goal_boundary_hash": "sha256:" + "a" * 64,
+        "acceptance_criteria_hash": "sha256:" + "b" * 64,
+        "state_hash": "sha256:" + "c" * 64,
+        "updated_at": "2026-01-01T01:00:00Z",
+        "route_trace": [{"route_id": "route-001", "from_owner": "[AI OS]", "to_owner": "[Codex]", "resume_stage": "owner_execution", "criteria_addressed": ["criterion one"], "outcome": "completed"}],
+        "progress": {"satisfied_criteria": ["criterion one"], "remaining_criteria": [], "last_real_progress_route_id": "route-001"},
+        "guards": {"max_continuation_hops": None, "max_retries_per_owner": None, "max_no_progress_hops": None, "route_signature_history_window": None, "tripped_guard": None, "tripped_guards": [], "terminal_report_ref": None},
+    }
+    return record
+
+
+def test_sem012_repeat_route_requires_evidence_delta():
+    record = continuation_record()
+    record["continuation"]["route_trace"].append({"route_id": "route-002", "from_owner": "[AI OS]", "to_owner": "[Codex]", "resume_stage": "owner_execution", "criteria_addressed": ["criterion one"], "outcome": "refused"})
+    assert "SEM-012" in rule_ids(validator.validate_record(record, "fixture"))
+
+
+def test_sem013_guard_stop_requires_mapped_terminal_reason_and_report():
+    record = continuation_record()
+    record["execution_state"] = "stopped"
+    record["overall_delivery"] = "partial"
+    record["terminal_reason"] = "continuation_no_progress_limit_reached"
+    record["continuation"]["progress"] = {"satisfied_criteria": [], "remaining_criteria": ["criterion one"], "last_real_progress_route_id": None}
+    record["continuation"]["guards"].update({"tripped_guard": "no_progress_counter", "tripped_guards": ["no_progress_counter"], "terminal_report_ref": "report:fixture"})
+    assert "SEM-013" not in rule_ids(validator.validate_record(record, "fixture"))
+
+
+def test_sem013_rejects_non_partitioned_progress_and_unreported_guard_stop():
+    record = continuation_record()
+    record["continuation"]["progress"]["remaining_criteria"] = ["criterion one"]
+    record["continuation"]["guards"]["tripped_guard"] = "hop_budget"
+    assert "SEM-013" in rule_ids(validator.validate_record(record, "fixture"))
+
+
 def test_sem001_failed_mandatory_requirement_with_overall_pass():
     record = fixture()
     record["requirements"][0]["status"] = "failed"

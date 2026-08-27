@@ -18,6 +18,11 @@ def test_schema_accepts_closure_iteration_limit_terminal_reason():
     assert not list(validator.iter_errors("closure_iteration_limit_reached"))
 
 
+def test_schema_accepts_continuation_no_progress_terminal_reason():
+    validator = Draft7Validator(CURRENT_SCHEMA["properties"]["terminal_reason"])
+    assert not list(validator.iter_errors("continuation_no_progress_limit_reached"))
+
+
 def test_schema_rejects_unknown_terminal_reason():
     validator = Draft7Validator(CURRENT_SCHEMA["properties"]["terminal_reason"])
     errors = list(validator.iter_errors("made_up"))
@@ -71,3 +76,30 @@ def test_continuation_envelope_requires_durable_resume_state():
 
     del continuation["record_ref"]
     assert list(validator.iter_errors(continuation))
+
+
+def test_continuation_control_plane_fields_are_additive_and_allow_unset_thresholds():
+    validator = Draft7Validator(CURRENT_SCHEMA["definitions"]["continuation"])
+    continuation = {
+        "original_goal": "Continue the original AI-OS execution.",
+        "original_acceptance_criteria": ["original goal is rechecked"],
+        "resolved_owner": "[AI OS]",
+        "resume_stage": "owner_execution",
+        "record_ref": "docs/autonomous_execution/records/exec-fixture.json",
+        "scope_ref": "scope:fixture",
+        "routing_state_ref": "routing:fixture",
+        "source_revision": "rev-b",
+        "goal_boundary_hash": "sha256:" + "a" * 64,
+        "acceptance_criteria_hash": "sha256:" + "b" * 64,
+        "state_hash": "sha256:" + "c" * 64,
+        "updated_at": "2026-01-01T01:00:00Z",
+        "route_trace": [{
+            "route_id": "route-001", "from_owner": "[AI OS]", "to_owner": "[Codex]",
+            "resume_stage": "owner_execution", "criteria_addressed": ["original goal is rechecked"],
+            "route_signature": "aios:codex", "evidence_delta": ["implementation_feedback"],
+            "outcome": "completed", "refusal_reason": None, "evidence_refs": [],
+        }],
+        "progress": {"satisfied_criteria": [], "remaining_criteria": ["original goal is rechecked"], "last_real_progress_route_id": None, "evidence_refs": []},
+        "guards": {"max_continuation_hops": None, "max_retries_per_owner": None, "max_no_progress_hops": None, "route_signature_history_window": None, "tripped_guard": None, "tripped_guards": [], "terminal_report_ref": None},
+    }
+    assert not list(validator.iter_errors(continuation))

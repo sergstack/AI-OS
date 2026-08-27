@@ -308,6 +308,15 @@ present and valid and that the original goal boundary, acceptance criteria,
 resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
 
+### 5.6 Bounded multi-owner continuation control plane
+
+The optional continuation control plane is defined in
+`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+auditable route trace, acceptance progress, and independent continuation
+guards without creating a parallel state machine or changing the existing
+status namespaces.  Its guard thresholds are named parameters, not canonical
+numeric defaults; the stricter applicable corrective-loop limit still wins.
+
 ## 6. Source-revision contract
 
 ```yaml
