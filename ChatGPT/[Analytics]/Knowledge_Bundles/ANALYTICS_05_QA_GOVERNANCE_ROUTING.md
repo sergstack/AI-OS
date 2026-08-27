@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:98a3567ea7b03958a9a15d41d7b0c4fe5e9d5df32aab99d81961348c4a35c112
+- source_fingerprint: sha256:39b7a92d62453c2e21df75e95603b0b7e2b47a644001c098914fde1c75790def
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -252,14 +252,7 @@ Smoke QA or a good memo does not equal production readiness. Production readines
 ## From: `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`
 
 # Routing and Handoff
-## Project routing
-```text
-AI-концепция / supported KB pattern → [AI OS]
-Стратегия / решение / риски → [Thinking]
-Расчёты / данные / marts → [Analytics]
-Prompts / model routing / LLM quality → [LLM]
-Код / implementation / tests / release → [Codex]
-```
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 ## Analytics default
 For metrics, marts, data contracts, QA, calculations, deviations, charts and analytical memo structure: stay in `[Analytics]`.
 ## Analytical Memo Factory via Codex APP
@@ -279,22 +272,7 @@ Before handoff, provide:
 - expected metrics;
 - QA requirements;
 - acceptance criteria.
-## Standard handoff format
-```text
-# Handoff
-From:
-To:
-Task type:
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected outputs:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
+Use the canonical handoff fields in `HANDOFF_STYLE_STANDARD.md`.
 ## Thinking → Analytics
 Use when decision/scenario requires calculations.
 Pass:

@@ -6,7 +6,7 @@
 
 Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
 
-- Поле `Goal` сохраняет исходную цель и не заменяется локальной подзадачей.
+- Поле `Objective` сохраняет исходную цель и не заменяется локальной подзадачей.
 - `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки.
 - Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу.
 - Если capability доступна в текущей среде, а следующий шаг reversible, policy-permitted и уже authorized, вызови capability, проверь её результат и верни его текущему владельцу.
@@ -30,23 +30,8 @@ Destination вне `PROJECT_CAPABILITIES.yaml` всегда остаётся exp
 
 ## Handoff template
 
-```text
-Handoff to: [Project]
-Task type: concept / workflow / analytics / implementation / QA / release
-Goal:
-Context from AI OS:
-KB evidence used:
-Confidence:
-Inputs required:
-Expected output:
-Constraints:
-Risks:
-Acceptance criteria:
-Business acceptance:
-Artifact/content checks:
-Non-acceptance examples:
-Suggested first step:
-```
+Use the canonical template in `HANDOFF_STYLE_STANDARD.md`. Preserve the
+continuation, evidence, confidence, and destination rules in this protocol.
 
 ## Thinking → Analytics → LLM → Codex → QA → Release
 

@@ -89,7 +89,7 @@ def test_orchestrator_is_thin_default_and_fails_closed() -> None:
     ).read_text(encoding="utf-8")
 
     for canonical_reference in (
-        "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md",
+        "ROUTING_RULES.md",
         "PROJECT_CAPABILITIES.yaml",
         ".agents/skills/project-context/SKILL.md",
         "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
@@ -232,10 +232,8 @@ def test_orchestrator_is_the_default_goal_entrypoint() -> None:
     assert "`AI-OS Goal` is the default when no route is supplied" in commands
 
 
-def test_canonical_inbox_router_owns_domain_routing_semantics() -> None:
-    routing = (
-        REPO_ROOT / "ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md"
-    ).read_text(encoding="utf-8")
+def test_root_routing_rules_own_domain_routing_semantics() -> None:
+    routing = (REPO_ROOT / "ROUTING_RULES.md").read_text(encoding="utf-8")
 
     for destination in (
         "`[AI OS]`",

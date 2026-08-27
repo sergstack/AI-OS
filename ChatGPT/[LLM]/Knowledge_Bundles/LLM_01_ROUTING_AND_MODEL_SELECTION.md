@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:cd52ea369a2fefddc0e79389b09ab0068b137e6d85fc88a6a17dca1d464d9690
+- source_fingerprint: sha256:d64b02fe74d4ec0f15fb063c5b0c880dd1bce8be874477c2fe00e5af5cf59767
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -80,30 +80,8 @@ Model routing is guidance, not a factual claim about current model capabilities.
 ## From: `ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md`
 
 # Routing and Handoff
-## Project routing
-```text
-AI-концепция / supported KB pattern → [AI OS]
-Стратегия / решение / риски → [Thinking]
-Расчёты / данные / marts → [Analytics]
-Prompts / model routing / LLM quality → [LLM]
-Код / implementation / tests / release → [Codex]
-```
-## Standard handoff format
-```text
-# Handoff
-From:
-To:
-Task type:
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected outputs:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
+Use the canonical handoff fields in `HANDOFF_STYLE_STANDARD.md`.
 ## Thinking → Analytics
 Используй, когда decision или scenario требует расчётов.
 Передать:

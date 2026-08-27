@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:98da2c5fa91a0af774e968aed6ff198af5f3fd8ce4bd517946597954c11a6c96
+- source_fingerprint: sha256:09b5caacfc00ae11e8ae0c0e68c4f5bf86bf3a1588f2faa755de25b270328055
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -34,7 +34,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 Назначение: как `[AI OS]` передаёт результат в другие Project-папки.
 ## Continuation contract
 Handoff — это внутренний переход между владельцами внутри исходной цели. Handoff completion is not goal completion.
-- Поле `Goal` сохраняет исходную цель и не заменяется локальной подзадачей.
+- Поле `Objective` сохраняет исходную цель и не заменяется локальной подзадачей.
 - `Expected output` описывает результат текущего этапа, а `Acceptance criteria` сохраняет релевантную часть исходной приёмки.
 - Handoff сохраняет evidence, constraints, risks, authority/execution status и путь возврата к текущему владельцу.
 - Если capability доступна в текущей среде, а следующий шаг reversible, policy-permitted и уже authorized, вызови capability, проверь её результат и верни его текущему владельцу.
@@ -51,23 +51,8 @@ Destination вне `PROJECT_CAPABILITIES.yaml` всегда остаётся exp
 | Нужно внедрять production workflow | `[Codex]` / `[LLM]` |
 Если handoff в `[Codex]` связан с repository work, предпочтительно оформлять его как GitHub Issue-driven task package с явным scope, allowed files, checks и acceptance criteria.
 ## Handoff template
-```text
-Handoff to: [Project]
-Task type: concept / workflow / analytics / implementation / QA / release
-Goal:
-Context from AI OS:
-KB evidence used:
-Confidence:
-Inputs required:
-Expected output:
-Constraints:
-Risks:
-Acceptance criteria:
-Business acceptance:
-Artifact/content checks:
-Non-acceptance examples:
-Suggested first step:
-```
+Use the canonical template in `HANDOFF_STYLE_STANDARD.md`. Preserve the
+continuation, evidence, confidence, and destination rules in this protocol.
 ## Thinking → Analytics → LLM → Codex → QA → Release
 1. `[Thinking]` формулирует решение, сценарии, риски, assumptions.
 2. `[Analytics]` считает deterministic часть: data contracts, marts, metrics, QA.
@@ -252,6 +237,9 @@ Inputs:
 Constraints:
 Expected output:
 Acceptance criteria:
+  Business acceptance:
+  Artifact/content checks:
+  Non-acceptance examples:
 Risks:
 Evidence / confidence:
 Open questions:
@@ -260,6 +248,7 @@ Suggested first step:
 Use `Mode: goal` for broad repo/workflow/project goals where the receiving
 project can infer bounded safe scope. Use `Mode: strict` for high-risk,
 already-scoped, ultra-long, or explicitly requested task packages.
+The three acceptance sub-fields are required for user-facing artifacts and business deliverables. `Objective:` preserves the original goal through continuation; do not replace it with a local subtask.
 ## Project-Specific Additions
 - `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.
 - `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.

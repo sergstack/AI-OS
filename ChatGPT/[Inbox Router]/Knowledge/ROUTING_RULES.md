@@ -1,22 +1,7 @@
 # Inbox Router Routing Rules
 
-Routing first, reasoning second.
-
-## Destination rules
-
-| Input type | Destination |
-|---|---|
-| Raw input / capture / unclear thought | `[Inbox Router]` |
-| Things-ready action | Things |
-| Hard time commitment | Calendar |
-| Reference material / context | Notes / Obsidian |
-| AI concept / AI pattern / supported evidence | `[AI OS]` |
-| Thinker author / required corpus / source request / source intake / author artifact / cross-author synthesis maintenance | `[Thinkers OS]` |
-| Strategy / decision / risks / scenarios | `[Thinking]` |
-| Calculation / data / metrics / mart / reconciliation | `[Analytics]` |
-| Prompt / model routing / LLM workflow | `[LLM]` |
-| Implementation / code / tests / release | `[Codex]` |
-| Long-running Codex execution | Codex APP |
+Routing first, reasoning second. Canonical destination selection is defined in
+repo-root `ROUTING_RULES.md`; this file retains only the Inbox Router boundary.
 
 ## Boundary
 

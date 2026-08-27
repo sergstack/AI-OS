@@ -14,7 +14,7 @@ This skill owns orchestration only. It does not own domain methodology, replace 
 Before routing, verify and read:
 
 1. the applicable `AGENTS.md` files;
-2. `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md` for front-door routing semantics;
+2. `ROUTING_RULES.md` for front-door routing semantics and external destination classes;
 3. `PROJECT_CAPABILITIES.yaml` for capability locations;
 4. `.agents/skills/project-context/SKILL.md` for bounded context loading;
 5. `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md` and `HANDOFF_STYLE_STANDARD.md` when a cross-project handoff is required;

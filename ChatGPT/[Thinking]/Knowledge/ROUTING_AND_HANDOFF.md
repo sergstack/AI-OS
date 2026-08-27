@@ -1,14 +1,6 @@
 # Routing and Handoff
 
-## Project routing
-
-```text
-AI-концепция / supported KB pattern → [AI OS]
-Стратегия / решение / риски → [Thinking]
-Расчёты / данные / marts → [Analytics]
-Prompts / model routing / LLM quality → [LLM]
-Код / implementation / tests / release → [Codex]
-```
+Canonical destination routing is defined in repo-root `ROUTING_RULES.md`.
 
 Правило владения `[LLM]`: если основной результат — reusable prompt, выбор
 модели или LLM workflow и стратегическое решение не запрошено, направь задачу в
@@ -17,24 +9,7 @@ Prompts / model routing / LLM quality → [LLM]
 нужные для продолжения работы. Не проектируй prompt, model routing или
 downstream workflow в `[Thinking]`.
 
-## Standard handoff format
-
-```text
-# Handoff
-
-From:
-To:
-Task type:
-Objective:
-Context:
-Inputs:
-Constraints:
-Expected outputs:
-Acceptance criteria:
-Risks:
-Evidence / confidence:
-Open questions:
-```
+Use the canonical handoff fields in `HANDOFF_STYLE_STANDARD.md`.
 
 ## Thinking → Analytics
 
