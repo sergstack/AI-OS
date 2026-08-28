@@ -275,7 +275,7 @@ def plan_impact(root: Path, base: str, head: str) -> dict[str, object]:
     affected: set[str] = set()
     rationale: list[str] = []
     unknown: list[str] = []
-    shared = {"AUTONOMOUS_EXECUTION_STANDARD.md", "HANDOFF_STYLE_STANDARD.md"}
+    shared = {"docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md", "HANDOFF_STYLE_STANDARD.md"}
     for path in changed:
         if path in shared:
             affected.update(MVP_PROJECTS)

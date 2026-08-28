@@ -14,7 +14,7 @@ file-changing corrections for that target and report:
 
 ## Autonomous Execution Standard
 Execution in `[Codex]` now also follows the canonical Autonomous Execution
-Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 (canonical owner: `[AI OS]`). It sits above `AUTONOMY_POLICY.md`,
 `CODEX_LONG_RUN_PLAYBOOK.md`, and `EXECUTION_REPORTING_RULES.md` as a shared
 loop — requirements, execution, validation, defect registration, corrective

@@ -2,12 +2,12 @@
 
 Status: specification only. This pilot is not executed by this Phase 1
 task and is not authorized by Phase 1 completion
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
 
 ## Goal
 
 Demonstrate the artifact-freshness contract
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 11.3) end to end:
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 11.3) end to end:
 
 ```text
 generate -> validate -> detect defect -> fix source -> regenerate

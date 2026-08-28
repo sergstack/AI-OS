@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:0774d47f87513d49e497622d1bbf6bcd40d1d270db84c94dddf284f5ba260d2c
+- source_fingerprint: sha256:7eb89642dffbb0ee2feaa8ee5a157d5d12052515abf06f2b07676618d0262612
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -194,7 +194,7 @@ Use only the minimum sufficient method set. A method must be able to materially 
 # Analytical Reasoning Standard — P0
 ## Purpose and boundary
 This standard adds a bounded reasoning-control layer to the existing `[Analytics]` workflow. It does not replace or redefine the Data Contract, RAW, `stage_main_full`, `mart_main_full`, `mart_main_tz` / `mart_main_compact`, deterministic calculations, chart sourcing, memo pipeline, QA / Judge, acceptance, or Codex handoff boundary.
-Execution remains governed by the canonical repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`. `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. This standard structures analytical reasoning and method selection only; it does not fork, weaken, or duplicate AES execution states, corrective-loop limits, stop conditions, rollback, acceptance, or external-action authority.
+Execution remains governed by the canonical repo-root `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`. `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. This standard structures analytical reasoning and method selection only; it does not fork, weaken, or duplicate AES execution states, corrective-loop limits, stop conditions, rollback, acceptance, or external-action authority.
 New AES execution records use the canonical v2 contract and its required
 Closure Review. Historical v1 records remain read-only evidence, not a path
 for new successful Analytics work.
@@ -869,7 +869,7 @@ Every new non-CORE method uses the existing `trigger_type`, `trigger_rule`, `tri
 ## Legacy section: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`
 ## Boundary and flow
 This is a bounded reasoning-control extension; it does not replace Data Contract, RAW, STAGE, MART, deterministic calculations, chart sourcing, memo, QA/Judge, acceptance, or handoff. `mart_main_full` remains evidence/reuse; compact marts remain management-facing.
-Execution remains governed by repo-root `AUTONOMOUS_EXECUTION_STANDARD.md`; `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. Reasoning control structures method selection only; it does not fork AES states, correction limits, stop/rollback/acceptance, or external authority. It is not an autonomous agent or an independent retry/self-improvement loop. Closure Review uses existing Data/Analysis/Output Judge, reconciliation, unsupported-conclusion, and artifact-freshness controls; the Analytics extension remains authoritative for domain detail.
+Execution remains governed by repo-root `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`; `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` remains authoritative for Analytics-specific AES requirements. Reasoning control structures method selection only; it does not fork AES states, correction limits, stop/rollback/acceptance, or external authority. It is not an autonomous agent or an independent retry/self-improvement loop. Closure Review uses existing Data/Analysis/Output Judge, reconciliation, unsupported-conclusion, and artifact-freshness controls; the Analytics extension remains authoritative for domain detail.
 LLM reasoning != deterministic execution
 TASK PROFILE → INTENT → deterministic-first minimum methods → prerequisite gate
 → existing execution → preliminary evidence → explanation challenge when material

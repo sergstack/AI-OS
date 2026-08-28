@@ -58,9 +58,9 @@ Blocking record count: **0**
 ## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
 
 - Project: [AI OS]
-- Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
-- Source bytes: 53026
-- Bundle bytes: 53986
+- Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
+- Source bytes: 53154
+- Bundle bytes: 54204
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -128,9 +128,9 @@ Blocking record count: **0**
 ## `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORKFLOW_AND_DECISIONS.md`
 
 - Project: [Thinking]
-- Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
-- Source bytes: 43443
-- Bundle bytes: 44560
+- Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
+- Source bytes: 43511
+- Bundle bytes: 44658
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -213,8 +213,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`, `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 68917
-- Bundle bytes: 69937
+- Source bytes: 68947
+- Bundle bytes: 69967
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -241,8 +241,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`, `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 31070
-- Bundle bytes: 32382
+- Source bytes: 31085
+- Bundle bytes: 32397
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -310,9 +310,9 @@ Blocking record count: **0**
 ## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md`
 
 - Project: [LLM]
-- Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
-- Source bytes: 72824
-- Bundle bytes: 73937
+- Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
+- Source bytes: 72892
+- Bundle bytes: 74035
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -380,9 +380,9 @@ Blocking record count: **0**
 ## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_02_EXECUTION_AUTONOMY_REPORTING.md`
 
 - Project: [Codex]
-- Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 47570
-- Bundle bytes: 48566
+- Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
+- Source bytes: 47638
+- Bundle bytes: 48664
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -465,8 +465,8 @@ Blocking record count: **0**
 
 - Project: [Inbox Router]
 - Source paths: `ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md`, `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`, `ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md`
-- Source bytes: 5615
-- Bundle bytes: 6543
+- Source bytes: 5630
+- Bundle bytes: 6558
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -479,8 +479,8 @@ Blocking record count: **0**
 
 - Project: [Thinkers OS]
 - Source paths: `ChatGPT/[Thinkers OS]/Knowledge/INDEX.md`, `ChatGPT/[Thinkers OS]/Knowledge/THINKERS_OS_WORKFLOW.md`, `ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md`, `ChatGPT/[Thinkers OS]/CURRENT_STATUS.md`
-- Source bytes: 10567
-- Bundle bytes: 11588
+- Source bytes: 10582
+- Bundle bytes: 11603
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

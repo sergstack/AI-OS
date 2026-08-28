@@ -12,7 +12,7 @@ Compact upload artifact for [LLM] covering quality gates and eval.
 - `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`
 - `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`
-- `AUTONOMOUS_EXECUTION_STANDARD.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 - `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:08fcd0b4867ce5909c8919eadeb94316859aea1889b0a835afdd0a0a8c04a1c1
+- source_fingerprint: sha256:f7499250fe5ff55ff6ce3541e1ed2270fc5d47fdef87c64a1ba1114b2f23c8cf
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -646,13 +646,13 @@ prompt-registry debt below.
 - `LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md`
 - `LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
 
-## From: `AUTONOMOUS_EXECUTION_STANDARD.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 
 # Autonomous Execution Standard (AES) v2.0.0
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
-Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
-Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical source path: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Companion contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 Current schema: `schemas/autonomous_execution_record.schema.json`.
 Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 This document is the single canonical source for the Autonomous Execution
@@ -720,7 +720,7 @@ remain historical evidence and are not rewritten.
 3. approved task package
 4. project instructions
 5. applicable project-specific execution extension
-6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+6. this document (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`)
 7. supporting playbooks, templates and examples
 ```
 General rule: when two applicable rules conflict, the stricter constraint on
@@ -737,7 +737,7 @@ Consequences:
 ## 2. Canonical ownership
 ```yaml
 canonical_owner: "[AI OS]"
-canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+canonical_source_path: "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 derived_artifacts: []   # none registered in Phase 1
 supersedes: []
 superseded_by: []
@@ -885,7 +885,8 @@ resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
 ### 5.6 Bounded multi-owner continuation control plane
 The optional continuation control plane is defined in
-`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+`docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.
+It adds an
 auditable route trace, acceptance progress, and independent continuation
 guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
@@ -1455,7 +1456,7 @@ rule passed its completed post-change rerun at 3,389 visible characters with
 all requested controls preserved.
 ## Autonomous Execution Standard
 Execution in `[LLM]` now also follows the canonical Autonomous Execution
-Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 (canonical owner: `[AI OS]`). It sits above the output QA, hallucination
 checks, and judge/eval workflow above as a shared execution/validation/
 defect/acceptance loop, without replacing them or the merge policy in

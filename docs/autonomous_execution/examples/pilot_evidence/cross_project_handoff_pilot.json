@@ -1,7 +1,7 @@
 {
   "pilot": "AES Phase 5 cross-project handoff pilot",
   "spec_ref": "docs/pilots/AES_CROSS_PROJECT_PILOT.md",
-  "standard_ref": "AUTONOMOUS_EXECUTION_STANDARD.md Section 15 (cross-project handoff persistence) and Section 15.1 (reverse handoff)",
+  "standard_ref": "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Section 15 (cross-project handoff persistence) and Section 15.1 (reverse handoff)",
   "shape_note": "This file is a handoff-chain artifact, not a full AES execution record. It does not itself contain 'requirements' / 'overall_delivery' / etc. top-level fields, and is not expected to satisfy scripts/validate_autonomous_execution_record.py's execution-record shape checks. It exists to make the Section 15 handoff_id/execution_id/parent_execution_id/... shape concrete across three real, already-executed pilot legs (Phase 2 Codex, Phase 4 Analytics) plus one new root [Thinking] execution, per docs/pilots/AES_CROSS_PROJECT_PILOT.md deliverable 1.",
   "root_execution": {
     "execution_id": "exec-aes-crossproject-pilot-001",
@@ -55,7 +55,7 @@
       "fulfilled_by_execution_id": "exec-aes-codex-pilot-001",
       "fulfillment_defect_ids_carried_forward": ["def-pilot-001"],
       "fulfillment_note": "Fulfilled by the real, already-executed Phase 2 Codex pilot: docs/autonomous_execution/examples/pilot_evidence/codex_corrective_loop_pilot.json, execution_id exec-aes-codex-pilot-001. Its def-pilot-001 corrective-loop (registered at iter-001, resolved at iter-002, one-fix policy respected) demonstrates the code-side fix leg of this chain.",
-      "gap_observed": "Phase 2's def-pilot-001 (clamp_percentage missing lower-bound clamp) is NOT literally causally derived from Phase 4's def-001 (MART reconciliation leakage) -- they are two independently-fixtured pilot defects, produced on two separate, unrelated branches/fixtures. This handoff record links them purely to pilot the cross-project identity-preservation mechanics required by AUTONOMOUS_EXECUTION_STANDARD.md Section 15 (which is what docs/pilots/AES_CROSS_PROJECT_PILOT.md asks this Phase 5 pilot to exercise), not to assert a real data/causal dependency between the two defects -- that would be a fabrication. Also carries the same parent_execution_id gap as hop 1: exec-aes-codex-pilot-001's own frozen record stores parent_execution_id: null."
+      "gap_observed": "Phase 2's def-pilot-001 (clamp_percentage missing lower-bound clamp) is NOT literally causally derived from Phase 4's def-001 (MART reconciliation leakage) -- they are two independently-fixtured pilot defects, produced on two separate, unrelated branches/fixtures. This handoff record links them purely to pilot the cross-project identity-preservation mechanics required by docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Section 15 (which is what docs/pilots/AES_CROSS_PROJECT_PILOT.md asks this Phase 5 pilot to exercise), not to assert a real data/causal dependency between the two defects -- that would be a fabrication. Also carries the same parent_execution_id gap as hop 1: exec-aes-codex-pilot-001's own frozen record stores parent_execution_id: null."
     },
     {
       "handoff_id": "handoff-crossproject-pilot-003",
@@ -73,7 +73,7 @@
       "resolved_defect_ids_carried_forward": ["def-pilot-001"],
       "authority_status": "owner_review_pending",
       "shape_note": "This entry follows the Section 15.1 reverse-handoff shape (Judge/QA back to executor is the canonical direction; this is the mirror -- executor surfacing its resolved state to Judge for a not-yet-performed review). parent_execution_id and authority_status are additive fields beyond the literal 15.1 yaml block, included here for full chain traceability back to the root pilot execution.",
-      "honesty_note": "No live Judge pass occurred in this pilot run. judge_verdict is honestly recorded as not_run, matching the real codex_corrective_loop_pilot.json record's own judge_verdict field (also not_run, see that file's top-level 'judge_verdict' and 'qa_status'). This reverse handoff records the Codex leg's resolved-defect state (def-pilot-001, status: resolved, one-fix policy respected, revalidated by val-pilot-002/003/004) being surfaced to Judge as the next owner -- it is not a claim that Judge review happened. Fabricating a pass here would violate the authority-separation principle in AUTONOMOUS_EXECUTION_STANDARD.md Section 15.1 ('a handoff must never drop ... authority status') by blurring not_run into pass."
+      "honesty_note": "No live Judge pass occurred in this pilot run. judge_verdict is honestly recorded as not_run, matching the real codex_corrective_loop_pilot.json record's own judge_verdict field (also not_run, see that file's top-level 'judge_verdict' and 'qa_status'). This reverse handoff records the Codex leg's resolved-defect state (def-pilot-001, status: resolved, one-fix policy respected, revalidated by val-pilot-002/003/004) being surfaced to Judge as the next owner -- it is not a claim that Judge review happened. Fabricating a pass here would violate the authority-separation principle in docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Section 15.1 ('a handoff must never drop ... authority status') by blurring not_run into pass."
     }
   ],
   "identity_preserved_summary": {

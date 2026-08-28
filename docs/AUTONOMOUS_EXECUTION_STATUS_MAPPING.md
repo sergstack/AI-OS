@@ -1,6 +1,6 @@
 # Autonomous Execution Standard — Status Migration Map
 
-Canonical standard: `AUTONOMOUS_EXECUTION_STANDARD.md`.
+Canonical standard: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
 
 This is a compatibility document. It maps existing repository status
 vocabularies onto the AES v1 status namespaces (Section 4 of the standard)
@@ -71,7 +71,7 @@ document references this section rather than restating it.
 
 `accepted: yes` MAY be reflected as `overall_delivery: pass` only when it
 coincides with satisfying every mandatory `acceptance_scope` already
-required by the canonical standard (`AUTONOMOUS_EXECUTION_STANDARD.md`
+required by the canonical standard (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 Section 10.1: `requirements_traceability`, `implementation`, `tests`,
 `validation`, `output_artifacts`, `corrective_loop`,
 `rollback_readiness`) **and** the domain-specific
@@ -134,7 +134,7 @@ value for use inside an execution record.
 
 This document does not: rename any existing field in any existing file;
 require any existing script or template to change; imply that any project
-already produces `AUTONOMOUS_EXECUTION_STANDARD.md`-shaped execution
+already produces `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`-shaped execution
 records (that is Phase 2-5 adoption work); or claim that any of the above
 mappings are automatically enforced. They are a normative correspondence
 table for humans and future extension authors.

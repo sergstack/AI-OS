@@ -3,9 +3,9 @@
 Goal Mode is the default user-facing workflow for AI-OS and Codex. It is build-first: inspect, infer bounded scope, implement the smallest useful working version, check it, and report evidence.
 
 Execution follows the canonical Autonomous Execution Standard in
-`AUTONOMOUS_EXECUTION_STANDARD.md`. Project-specific requirements are
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`. Project-specific requirements are
 supplied by the applicable execution extension (see
-`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`). This reference does not
+`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`). This reference does not
 change the Goal Mode Contract or Merge Policy below.
 
 ## Goal Mode Contract

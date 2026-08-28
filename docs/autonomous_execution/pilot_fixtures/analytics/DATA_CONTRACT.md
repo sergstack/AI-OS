@@ -69,7 +69,7 @@ Expected outputs:     mart_sales_by_quarter.csv/json (grain: quarter x
 ```
 
 ## Entity / grain / period / currency summary (Analytics extension
-## expectations, `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2)
+## expectations, `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2)
 
 - **Entity**: a synthetic sales order line (`raw_sales.csv`, one row per
   `order_id`).

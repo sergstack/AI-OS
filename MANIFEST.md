@@ -8,29 +8,15 @@
 - existing KB index: `KB__00_INDEX.md`
 - new project files index: `AI_OS_PROJECT_FILES_INDEX.md`
 
-## Knowledge source inventory
+## Authoritative inventory
 
-Semantics: source inventory for project settings. Default manual ChatGPT Project upload uses compact bundles from `ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md`; granular Knowledge files are advanced/debug upload mode only.
+[`MANIFEST.json`](MANIFEST.json) is the machine-readable source for the
+complete source and local-file inventories. This Markdown file is a concise
+human navigation surface and intentionally does not repeat those lists.
 
-- `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`
-- `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`
-- `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
-- `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`
-- `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`
-- `ChatGPT/[AI OS]/Knowledge/GITHUB_ISSUE_DRIVEN_HANDOFF.md`
-- `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`
-- `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`
-- `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
-- `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
-- `ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md`
-
-## Local / setup files
-
-- `ARCHIVE_MAP.md`
-- `docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md`
-- `UPLOAD_GUIDE.md`
-- `ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md`
-- `ChatGPT/[AI OS]/README.md`
+For default manual ChatGPT Project upload, use only the compact bundle files
+listed in `ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md`. Granular
+`Knowledge/` files are an advanced/debug mode only.
 
 ## Rule
 

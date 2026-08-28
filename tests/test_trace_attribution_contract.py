@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-AES = ROOT / "AUTONOMOUS_EXECUTION_STANDARD.md"
+AES = ROOT / "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 FAILURE_REGISTRY = ROOT / "ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md"
 GOLDEN_CASES = ROOT / "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md"
 

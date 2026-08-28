@@ -18,7 +18,7 @@ Before routing, verify and read:
 3. `PROJECT_CAPABILITIES.yaml` for capability locations;
 4. `.agents/skills/project-context/SKILL.md` for bounded context loading;
 5. `ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md` and `HANDOFF_STYLE_STANDARD.md` when a cross-project handoff is required;
-6. `GOAL_MODE.md` and `AUTONOMOUS_EXECUTION_STANDARD.md` when execution, correction, validation, or terminal reporting is required.
+6. `GOAL_MODE.md` and `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` when execution, correction, validation, or terminal reporting is required.
 
 Treat those files as the semantic owners. Do not copy their routing tables, capability locations, project methodology, or merge policy into this skill.
 
@@ -74,7 +74,10 @@ pointer may cache only `execution_id` and `record_ref` after a behavioral test
 shows it is needed; it is never canonical state and must not duplicate the
 goal, acceptance criteria, requirements, defects, or authority state.
 
-If validation fails, follow the corrective-loop and authority rules in `AUTONOMOUS_EXECUTION_STANDARD.md`: register the defect, route it to its owner, make only an eligible minimal correction, rerun the same affected check, and keep `[Codex]`'s stricter one-correction limit. Never weaken acceptance criteria to terminate.
+If validation fails, follow the corrective-loop and authority rules in
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`: register the defect, route
+it to its owner, make only an eligible minimal correction, rerun the same
+affected check, and keep `[Codex]`'s stricter one-correction limit. Never weaken acceptance criteria to terminate.
 
 `Invoke AI-OS` does not expand authority. It must not auto-execute owner-frozen policy changes, merge, deploy, production promotion, destructive or low-reversibility actions, or actions requiring unavailable credentials, permissions, money, legal authority, or physical action.
 

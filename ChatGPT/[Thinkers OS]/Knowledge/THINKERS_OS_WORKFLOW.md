@@ -72,7 +72,7 @@ For a routine source-gate answer, prefer one verdict, one compact `scope | statu
 
 ## AES applicability
 
-The canonical `AUTONOMOUS_EXECUTION_STANDARD.md` applies to governed
+The canonical `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` applies to governed
 multi-stage Thinkers OS work. It owns execution states, requirements,
 defects, corrective iterations, acceptance, freshness, and authority
 separation. Thinkers OS keeps domain semantics here: corpus completeness,

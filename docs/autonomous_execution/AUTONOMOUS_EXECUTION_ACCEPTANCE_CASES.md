@@ -1,6 +1,6 @@
 # Autonomous Execution Standard — Acceptance-Case Specification
 
-Canonical standard: `AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
+Canonical standard: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
 (Validation responsibility matrix).
 Current schema: `schemas/autonomous_execution_record.schema.json`; historical
 v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
@@ -66,7 +66,7 @@ the remaining cases still require Judge/manual review.
 9. `production_status: authorized` without a populated
    `authority_evidence_ref` on the corresponding `external_actions` entry.
 10. An iteration count exceeding the effective limit defined in
-    `AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.6 without a recorded
+    `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.6 without a recorded
     `stopped` terminal reason.
 11. A project extension that widens `merge_status` or `production_status`
     reachability beyond what the canonical standard allows.

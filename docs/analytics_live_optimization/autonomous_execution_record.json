@@ -245,7 +245,7 @@
       "path": "docs/analytics_live_optimization/autonomous_execution_record.json",
       "artifact_type": "canonical_aes_execution_record",
       "mandatory": true,
-      "source_inputs": [{"path": "AUTONOMOUS_EXECUTION_STANDARD.md", "content_hash": null, "last_changed_iteration": null}],
+      "source_inputs": [{"path": "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md", "content_hash": null, "last_changed_iteration": null}],
       "generation_method": "Codex AES execution record",
       "generated_from_revision": "sha256:5672d45389fe96d9648298274254d9369c4ac6219b90903ac7597a210bd7b74d",
       "generated_in_iteration": "iter-002",

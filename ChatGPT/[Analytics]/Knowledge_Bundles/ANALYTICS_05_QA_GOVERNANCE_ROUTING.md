@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:39b7a92d62453c2e21df75e95603b0b7e2b47a644001c098914fde1c75790def
+- source_fingerprint: sha256:c6eed25af74b4722a385d0603c129c9aa0dcbe30cafc8efe24e01fa6561c8ddf
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -360,7 +360,7 @@ AI OS gives evidence and patterns. `[Analytics]` applies them only when they aff
 - Method eligibility and triggers follow `ANALYTICAL_TECHNIQUES.md`; the LLM cannot silently override the registry.
 - Reasoning cannot substitute for deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
-- `AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
 ## Evidence labels
 Use:
 ```text

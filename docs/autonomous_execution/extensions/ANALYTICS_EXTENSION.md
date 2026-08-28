@@ -3,8 +3,8 @@
 Status: Phase 1-scope deliverable, authored during adoption cleanup ahead of
 owner review of the Phase 1-6 PR stack.
 
-Companion to: `AUTONOMOUS_EXECUTION_STANDARD.md` (canonical, `[AI OS]`-owned)
-and `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` (the generic interface this
+Companion to: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` (canonical, `[AI OS]`-owned)
+and `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` (the generic interface this
 document implements, Section 5.2 of that contract).
 
 This document adds `[Analytics]`-domain specifics to the canonical
@@ -12,7 +12,7 @@ Autonomous Execution Standard. It does not restate the state machine,
 defect model, schema, or precedence rules defined there — it references
 them by section number. Where this document and the canonical standard
 disagree on a limit, the stricter one applies
-(`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 4).
+(`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 4).
 
 Source vocabulary for everything below: `ChatGPT/[Analytics]/Knowledge/`
 (`ANALYTICS_WORKFLOW.md`, `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`,
@@ -72,7 +72,7 @@ hard_blocker_additions:
     mart for a mart-based conclusion)
 authority_requirements:
   - this extension grants no merge, deploy, or production authority
-    (per AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md Section 3); an
+    (per docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md Section 3); an
     Analytics `accepted: yes` decision is a domain content-acceptance
     decision only, not an authority decision
 freshness_requirements:
@@ -117,13 +117,13 @@ duplicate it, only points to it.
 Summary for orientation only (not a substitute for the mapping doc): an
 Analytics `accepted: yes` is necessary but never sufficient by itself for
 `overall_delivery: pass`; it also requires the mandatory canonical
-acceptance scopes (`AUTONOMOUS_EXECUTION_STANDARD.md` Section 10.1) and the
+acceptance scopes (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 10.1) and the
 `acceptance_scope_additions` in Section 1 above to be satisfied.
 `accepted: no` always blocks `overall_delivery: pass`.
 
 ## 4. What this extension does not do
 
-Consistent with `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 3,
+Consistent with `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 3,
 this document does not: expand external authority (no merge/deploy/
 production permission is granted here); weaken any canonical hard blocker;
 cancel or shortcut requirements traceability; or copy the canonical

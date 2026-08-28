@@ -47,7 +47,7 @@ Nothing outside `tests/fixtures/aes_pilot/` was modified.
 
 Single minimal corrective iteration, per Codex's
 `max_corrective_fixes_per_failed_check: 1` policy
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7):
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7):
 
 ```diff
 -    return min(value, 100)
@@ -155,14 +155,14 @@ rewrite of any test result, defect description, hash, or command output.
 - This pilot run did not need to exercise the "same check fails twice ->
   stop and report residual risk" path, since the single fix succeeded.
   That path remains validated only by the normative spec text
-  (`AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7), not by an observed
+  (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7), not by an observed
   run, and would need a second, separate pilot fixture to exercise for
   real if that evidence gap matters later.
 
 ## Governance note
 
 This is a **Phase 2 pilot**, governed by
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 19 ("Adoption phases": Phase 1
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 19 ("Adoption phases": Phase 1
 normative package -> Phase 2 Codex pilot -> ...) and Section 20 ("Next
 owner": completion of Phase 1 "does not authorize: pilot execution,
 semantic enforcement, CI blocking, merge, deploy, or production
@@ -173,6 +173,6 @@ blocking, or any change to `.github/workflows/*`.
 
 Note: the task brief that requested this pilot referenced
 "spec Section 45.1" for this governance claim. No Section 45.1 exists in
-`AUTONOMOUS_EXECUTION_STANDARD.md` (the document has 20 sections) — the
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` (the document has 20 sections) — the
 correct citations are Sections 19 and 20 above, used in this report and
 the PR description instead.

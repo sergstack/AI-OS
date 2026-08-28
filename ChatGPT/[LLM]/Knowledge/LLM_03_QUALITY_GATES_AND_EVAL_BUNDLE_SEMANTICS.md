@@ -35,7 +35,7 @@ rule passed its completed post-change rerun at 3,389 visible characters with
 all requested controls preserved.
 ## Autonomous Execution Standard
 Execution in `[LLM]` now also follows the canonical Autonomous Execution
-Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 (canonical owner: `[AI OS]`). It sits above the output QA, hallucination
 checks, and judge/eval workflow above as a shared execution/validation/
 defect/acceptance loop, without replacing them or the merge policy in

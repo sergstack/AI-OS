@@ -18,8 +18,8 @@
 /ARCHIVE_MAP.md @sergstack
 /UPLOAD_GUIDE.md @sergstack
 /REPO_PATHS.md @sergstack
-/AUTONOMOUS_EXECUTION_STANDARD.md @sergstack
-/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md @sergstack
+/docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md @sergstack
+/docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md @sergstack
 /ROUTING_RULES.md @sergstack
 /HANDOFF_STYLE_STANDARD.md @sergstack
 /docs/standards/PROMPT_QA_FACTORY.md @sergstack

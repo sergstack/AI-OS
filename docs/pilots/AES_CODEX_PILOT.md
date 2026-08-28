@@ -2,12 +2,12 @@
 
 Status: specification only. This pilot is not executed by this Phase 1
 task and is not authorized by Phase 1 completion
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
 
 ## Goal
 
 Demonstrate the normative corrective-loop contract
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.5) end to end on a real,
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.5) end to end on a real,
 isolated Codex fixture:
 
 ```text
@@ -22,7 +22,7 @@ defect registration -> bounded fix -> affected check rerun -> regression -> reva
   fixture), never an artificially introduced defect in shipped code.
 - Use an existing focused test as the primary validation signal.
 - Preserve the existing Codex `max_corrective_fixes_per_failed_check: 1`
-  policy (`AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7); the pilot must
+  policy (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.7); the pilot must
   demonstrate stopping and reporting a residual risk if the same check
   fails twice, not looping.
 - Rollback must be a scoped `git restore` or a single revertible commit.
@@ -30,7 +30,7 @@ defect registration -> bounded fix -> affected check rerun -> regression -> reva
 ## Deliverables (Phase 2, separate issue/PR)
 
 1. A `[Codex]` execution extension (path decided during Phase 2 per
-   `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 6).
+   `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 6).
 2. One real execution record (conforming to
    `schemas/autonomous_execution_record.schema.json`) capturing the actual
    fixture run, including a real defect, a real corrective iteration, and

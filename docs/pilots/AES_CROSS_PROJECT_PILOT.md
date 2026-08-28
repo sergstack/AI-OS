@@ -2,7 +2,7 @@
 
 Status: specification only. This pilot is not executed by this Phase 1
 task and is not authorized by Phase 1 completion
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
 
 ## Goal
 
@@ -33,7 +33,7 @@ pilot must use a real task, not a fabricated example.
   (`ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md`,
   `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`,
   `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`) plus the AES
-  handoff record shape (`AUTONOMOUS_EXECUTION_STANDARD.md` Section 15).
+  handoff record shape (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 15).
 - No project's methodology is rewritten or merged into another's; AES adds
   tracking, not a new workflow.
 - No automatic issue/PR creation, approval, or merge as part of the pilot
@@ -54,6 +54,6 @@ pilot must use a real task, not a fabricated example.
 - Every handoff record includes `execution_id`, `requirement_ids`, and
   `authority_status`.
 - A new execution ID appears only where an explicit parent/child link is
-  recorded, per `AUTONOMOUS_EXECUTION_STANDARD.md` Section 15.
+  recorded, per `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 15.
 - The final authority/merge/production statuses at the end of the chain
   are still reported separately, not collapsed into one value.

@@ -1,7 +1,7 @@
 # `[Codex]` Autonomous Execution Extension
 
-Companion to `AUTONOMOUS_EXECUTION_STANDARD.md` (canonical `[AI OS]` owner)
-and `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`. This extension maps existing
+Companion to `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` (canonical `[AI OS]` owner)
+and `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`. This extension maps existing
 Codex repository-execution rules onto the AES extension shape. It does not
 duplicate the canonical state machine, record schema, numeric limits, or
 authority model.

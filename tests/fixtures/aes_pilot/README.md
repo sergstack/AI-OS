@@ -5,7 +5,7 @@ Status: **pilot evidence, not real functionality.**
 This directory exists solely to provide durable, isolated evidence for the
 Phase 2 Codex corrective-loop pilot specified in
 `docs/pilots/AES_CODEX_PILOT.md` and executed under
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.5 (defect registration ->
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 9.5 (defect registration ->
 bounded fix -> affected check rerun -> regression -> revalidation).
 
 Nothing in this directory is imported by, or affects, any production code

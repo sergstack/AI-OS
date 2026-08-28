@@ -2,7 +2,7 @@
 
 Status: specification only. This pilot is not executed by this Phase 1
 task and is not authorized by Phase 1 completion
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
 
 ## Goal
 
@@ -37,7 +37,7 @@ data contract -> mapping -> reconciliation -> mart -> findings -> memo
 
 1. A `[Analytics]` execution extension defining domain defect subtypes,
    required evidence, and acceptance-scope additions
-   (`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2).
+   (`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2).
 2. Resolution of the `accepted: yes/no` -> `overall_delivery` open question
    left in `docs/AUTONOMOUS_EXECUTION_STATUS_MAPPING.md` Section 4: which
    domain conditions must hold before `accepted: yes` may be reflected as

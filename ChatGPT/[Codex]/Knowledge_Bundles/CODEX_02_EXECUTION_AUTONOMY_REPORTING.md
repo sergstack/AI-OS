@@ -10,7 +10,7 @@ Compact upload artifact for [Codex] covering execution autonomy reporting.
 - `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`
 - `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`
 - `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`
-- `AUTONOMOUS_EXECUTION_STANDARD.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 - `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c562026bb97ca422690dcc95282c4bd5b7aadb8308dcca7b8659d984ca357a97
+- source_fingerprint: sha256:e9ce1803cb31f462c75b2aeb1e9a8a7622abfe091228caf0588c4b9d3796f26a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -260,13 +260,13 @@ If a failure mode appears:
 3. inspect and validate before continuing for `needs_check` issues;
 4. stop for `hard_blocker` issues and report blocker plus safe minimal next step.
 
-## From: `AUTONOMOUS_EXECUTION_STANDARD.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 
 # Autonomous Execution Standard (AES) v2.0.0
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
-Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
-Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical source path: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Companion contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 Current schema: `schemas/autonomous_execution_record.schema.json`.
 Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 This document is the single canonical source for the Autonomous Execution
@@ -334,7 +334,7 @@ remain historical evidence and are not rewritten.
 3. approved task package
 4. project instructions
 5. applicable project-specific execution extension
-6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+6. this document (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`)
 7. supporting playbooks, templates and examples
 ```
 General rule: when two applicable rules conflict, the stricter constraint on
@@ -351,7 +351,7 @@ Consequences:
 ## 2. Canonical ownership
 ```yaml
 canonical_owner: "[AI OS]"
-canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+canonical_source_path: "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 derived_artifacts: []   # none registered in Phase 1
 supersedes: []
 superseded_by: []
@@ -499,7 +499,8 @@ resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
 ### 5.6 Bounded multi-owner continuation control plane
 The optional continuation control plane is defined in
-`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+`docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.
+It adds an
 auditable route trace, acceptance progress, and independent continuation
 guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
@@ -1048,7 +1049,7 @@ file-changing corrections for that target and report:
 ## Legacy section: `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`
 ## Autonomous Execution Standard
 Execution in `[Codex]` now also follows the canonical Autonomous Execution
-Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
+Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root
 (canonical owner: `[AI OS]`). It sits above `AUTONOMY_POLICY.md`,
 `CODEX_LONG_RUN_PLAYBOOK.md`, and `EXECUTION_REPORTING_RULES.md` as a shared
 loop — requirements, execution, validation, defect registration, corrective

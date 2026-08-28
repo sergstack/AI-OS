@@ -114,7 +114,7 @@
       "iteration_type": "full_iteration",
       "started_at": "2026-08-06T14:05:25Z",
       "completed_at": "2026-08-06T14:05:50Z",
-      "trigger": "bounded correction for def-pilot-001, one attempt per Codex max_corrective_fixes_per_failed_check: 1 policy (AUTONOMOUS_EXECUTION_STANDARD.md Section 9.7)",
+      "trigger": "bounded correction for def-pilot-001, one attempt per Codex max_corrective_fixes_per_failed_check: 1 policy (docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Section 9.7)",
       "requirements_affected": ["req-pilot-001"],
       "defects_addressed": ["def-pilot-001"],
       "changes": [
@@ -310,7 +310,7 @@
   "final_report": {
     "summary": "Real, observed execution of the Codex corrective-loop pilot specified in docs/pilots/AES_CODEX_PILOT.md, on an isolated fixture only. def-pilot-001 (missing lower-bound clamp) was registered before any fix, corrected in a single minimal iteration per the Codex one-fix policy, and revalidated with both the focused test and the full repo test/scripts baseline with zero collateral damage.",
     "note": "See docs/pilots/AES_CODEX_PILOT_RESULTS.md for the full narrative report, commands, and output.",
-    "phase": "Phase 2 pilot, governed by AUTONOMOUS_EXECUTION_STANDARD.md Sections 19-20 (adoption phases / next owner); does not authorize semantic enforcement or CI blocking.",
+    "phase": "Phase 2 pilot, governed by docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Sections 19-20 (adoption phases / next owner); does not authorize semantic enforcement or CI blocking.",
     "lineage_note": "parent_execution_id was added retroactively during pre-merge adoption cleanup of the AES PR stack (#225-#230), pointing to exec-aes-crossproject-pilot-001 (the Phase 5 cross-project handoff pilot's root execution, docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json), to close the one-directional lineage gap the Phase 5 pilot report identified. This is an additive linkage fix only; no test result, defect description, hash, or command in this record was altered. None of the PRs in this stack are merged yet."
   }
 }

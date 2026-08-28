@@ -11,7 +11,7 @@
 - Method eligibility and triggers follow `ANALYTICAL_TECHNIQUES.md`; the LLM cannot silently override the registry.
 - Reasoning cannot substitute for deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
-- `AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
 
 ## Evidence labels
 

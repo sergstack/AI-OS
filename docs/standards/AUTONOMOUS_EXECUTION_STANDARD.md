@@ -2,8 +2,8 @@
 
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
-Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
-Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical source path: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Companion contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 Current schema: `schemas/autonomous_execution_record.schema.json`.
 Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 
@@ -84,7 +84,7 @@ remain historical evidence and are not rewritten.
 3. approved task package
 4. project instructions
 5. applicable project-specific execution extension
-6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+6. this document (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`)
 7. supporting playbooks, templates and examples
 ```
 
@@ -106,7 +106,7 @@ Consequences:
 
 ```yaml
 canonical_owner: "[AI OS]"
-canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+canonical_source_path: "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 derived_artifacts: []   # none registered in Phase 1
 supersedes: []
 superseded_by: []
@@ -311,7 +311,8 @@ revision remain compatible. An unchanged source revision alone is insufficient.
 ### 5.6 Bounded multi-owner continuation control plane
 
 The optional continuation control plane is defined in
-`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+`docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.
+It adds an
 auditable route trace, acceptance progress, and independent continuation
 guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
