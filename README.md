@@ -1,66 +1,120 @@
 # AI-OS
 
-Repository for ChatGPT project settings, routing docs, Codex execution contracts, and governance checks.
-
-## Default Workflow
+AI-OS — рабочая система для превращения неструктурированной идеи или задачи в
+обоснованный результат: решение, анализ, промпт, изменение в репозитории или
+проверяемый отчёт. Она не заменяет человека и не «автоматизирует всё»; система
+помогает выбрать правильный контур работы, сохранить границы ответственности и
+оставить проверяемый след решения.
 
 ```text
-GOAL -> route -> infer scope -> Codex execution package -> checks -> PR -> ChatGPT reads GitHub for fresh state
+Идея / вопрос → маршрут → работа по профилю → проверка → решение человека
 ```
 
-Goal Mode is the default user-facing workflow. Sergey can provide a broad goal; Router, AI OS, LLM, or Codex should infer the route, scope, checks, rollback, and acceptance criteria before implementation. Future issues may reference `Goal Mode Contract` from `GOAL_MODE.md` by name.
+## Что в ней ценно
 
-Atomic task packages remain available as advanced/strict mode, but they are not the default user burden. GitHub is the live source of truth; ChatGPT Project Knowledge is a cached baseline for Project bootstrapping and formal sync.
+- **Один вход для разных типов работы.** Сырая мысль не обязана сразу быть
+  техническим ТЗ: сначала определяется владелец задачи и ближайшее безопасное
+  действие.
+- **Аналитика, а не только отчёты.** Контур `[Analytics]` задаёт путь от
+  вопроса и контракта данных до расчёта, вывода, записки и QA.
+- **Доказуемость.** Выводы отделены от допущений, расчёты — от LLM-текста,
+  а проверки и ограничения результата не теряются в переписке.
+- **Практическое исполнение.** `[Codex]` и `Codex APP` превращают
+  согласованную задачу в ограниченное изменение с проверками и планом отката.
+- **Человек остаётся владельцем решения.** Система помогает с маршрутами,
+  вариантами и проверкой, но не выдаёт непроверенный результат за решение или
+  production-ready состояние.
 
-Run sync readiness checks before opening a PR:
+## Что можно показать снаружи
 
-```bash
-python3 scripts/sync_aios.py
-```
+Это не «набор промптов», а несколько связанных рабочих поверхностей:
 
-This helper validates repo settings and prints sync guidance. It does not perform external ChatGPT UI upload. GitHub remains the live source of truth.
+| Поверхность | Для чего она | Подтверждённый масштаб |
+|---|---|---|
+| Семь ChatGPT-проектов | Разделяют входящий поток, AI-подходы, решения, аналитику, LLM, разработку и корпус мыслителей | Отдельные роли и границы в `ChatGPT/` |
+| Analytics Factory | Ведёт от вопроса к data contract, marts, расчётам, memo и QA | Реестр из **22** аналитических методов |
+| Проверка поведения | Не смешивает проверку репозитория с проверкой живого ChatGPT-проекта | 99 детерминированных проверок, включая **22** регрессионных кейса; live-каталог — 45 кейсов × 3 запуска |
+| StreamDeck | Делает ежедневные маршруты и безопасные prompts доступными с двух устройств | 16 переносимых профилей и 140 × 3 model-QA входов |
 
-See `GOAL_MODE.md`, `PARENT_CHILD_ISSUE_GATE_STANDARD.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, and `SYNC_CONTRACT.md`.
+### 22 аналитических метода — человеческим языком
 
-## Daily Use
+Это не «22 примера ради количества», а словарь способов проверить вопрос.
+Он покрывает пять типов работы:
 
-- Use ChatGPT Projects for reasoning, routing, analytics framing, prompts, and evidence.
-- Use Codex APP for repo/file execution, branches, checks, PRs, and local run reports.
-- GitHub remains the live source of truth.
-- ChatGPT Project Knowledge is a baseline/cache for upload and bootstrapping.
-- Codex APP execution must report checks, risks, rollback, and acceptance status.
-- Use `HANDOFF_STYLE_STANDARD.md` for cross-project handoff wording and required fields.
-- Use `Existing Script Controlled Refactor Standard` only when an existing working script or pipeline must be cleaned or refactored without behavior loss.
+- **Изменение и структура:** variance, contribution, bridge, drivers, mix,
+  сегментация, тренд, cohort.
+- **Контроль и качество данных:** anomaly, exception, unmatched elements,
+  reconciliation, factor reconciliation, residual, data-layer и timing check.
+- **Проверка объяснения:** альтернативные объяснения, устойчивость к baseline,
+  устойчивость по подгруппам и sensitivity analysis.
+- **Взгляд вперёд:** forecast-to-period-end и leading indicators.
+- **Честная интерпретация:** метод не повышает доказательность сам по себе;
+  причинный вывод возможен только при достаточных данных и проверках.
 
-See `CHATGPT_CODEX_OPERATING_GUIDE.md`, `GOAL_MODE_TEMPLATES.md`, and `Codex APP/CODEX_APP_RUNBOOK.md`.
+Полный реестр с предпосылками, ограничениями и владельцами проверки —
+в [ANALYTICAL_TECHNIQUES.md](<ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md>).
 
-## Review Model
+## С чего начать
 
-AI-OS uses solo-owner governance by default. The canonical active merge policy is
-`Merge Policy` in `GOAL_MODE.md`. PRs should include the checks run, risks or
-residual risks, rollback notes, and merge/gate status. Owner-side Merge Gate
-settings are checked with `docs/MERGE_GATE_OWNER_CHECKLIST.md`.
+| Если у вас… | Начните здесь | Что получите |
+|---|---|---|
+| Смутная идея, задача или заметка | [`[Inbox Router]`](<ChatGPT/[Inbox Router]/README.md>) | маршрут, вопрос на уточнение или следующий шаг |
+| AI-инициатива, use case, governance-вопрос | [`[AI OS]`](<ChatGPT/[AI OS]/README.md>) | границы, evidence и handoff |
+| Выбор, стратегия, риски и сценарии | [`[Thinking]`](<ChatGPT/[Thinking]/README.md>) | decision memo, варианты и revisit trigger |
+| Данные, отклонения, контроль, прогноз или записка | [`[Analytics]`](<ChatGPT/[Analytics]/README.md>) | аналитический контур от данных до QA |
+| Промпт, модель, eval или локальный LLM-пилот | [`[LLM]`](<ChatGPT/[LLM]/README.md>) | контролируемый prompt/model workflow |
+| Изменение кода, файлов или репозитория | [`[Codex]`](<ChatGPT/[Codex]/README.md>) → [`Codex APP`](<Codex APP/README.md>) | ограниченное исполнение, проверки и отчёт |
+| Корпус авторов и синтез идей | [`[Thinkers OS]`](<ChatGPT/[Thinkers OS]/README.md>) | provenance-aware источники и synthesis |
 
-Rights posture: this repository has no open-source license. See
-`docs/rights_posture.md`.
+## Карта репозитория
 
-## Goal Packs
+| Папка | Содержание и роль |
+|---|---|
+| [`ChatGPT/`](ChatGPT) | Семь настроек ChatGPT-проектов, их Knowledge, templates и пакеты загрузки; `Prompt Library` — отдельная библиотека промптов. |
+| [`Codex APP/`](<Codex APP>) | Правила и шаблоны исполнительного слоя: scope, checks, PR, rollback и long-running work. |
+| [`StreamDeck/`](StreamDeck) | Двухдековая навигация, prompt registry, profile exports, QA и rollback-архив. |
+| [`benchmarks/`](benchmarks) | Детерминированный SUPERManager benchmark и отдельный сценарий live behavioral validation. |
+| [`artifacts/`](artifacts) | Сохранённые результаты и ограничения реальной валидации; не источник политики. |
+| [`archive/`](archive) | Суперседированные отчёты с причинами и ссылками на замену. |
+| [`docs/`](docs) | Карта репозитория, маршрутизация, права и история отдельных инициатив. |
+| [`scripts/`](scripts) и [`tests/`](tests) | Проверки целостности документов, манифестов, знаний и профилей. |
+| [`Qwen Studio/`](<Qwen Studio>) | Сейчас пустая заготовка: у неё нет описанной функции или демонстрируемого артефакта. |
 
-Use `GOAL_PACKS.md` for reusable broad-goal workflows, `COMMAND_SURFACE.md` for one-touch commands, and `CONTEXT_PACK_STANDARD.md` for compact reusable context.
+Служебные каталоги вроде `.git`, `.pytest_cache`, `.repo_index`, worktrees и
+`__pycache__` не являются частью пользовательской карты продукта.
 
-Use `PARENT_CHILD_ISSUE_GATE_STANDARD.md` only for complex or high-risk analytics / Codex work that needs sequenced child issues, dependency gates, PR gates, and final QA. Do not require parent/child issue decomposition for simple Goal Mode tasks.
+## Доказательства вместо маркетинга
 
-Use `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` only when an existing working script or pipeline needs cleanup/refactor while preserving behavior. The required order is baseline current behavior, define output contract, add safety tests, then clean/refactor and compare before/after output.
+- [SUPERManager coverage](benchmarks/supermanager/COVERAGE.md) фиксирует 22
+  сохранённых регрессионных кейса и границы детерминированной проверки.
+- [Live behavioral benchmark](benchmarks/live_behavioral/README.md) описывает,
+  как отдельно проверять реальное поведение проектов; статические проверки не
+  считаются доказательством живого поведения.
+- [StreamDeck](StreamDeck/README.md) документирует физические риски: импорт,
+  focus, clipboard и auto-send остаются owner-проверками, пока не наблюдались.
+- [Live validation evidence](artifacts/live_validation/README.md) честно
+  фиксирует заблокированную browser-проверку, а не маскирует её успехом.
 
-## Governance Rule
+## Важное ограничение: доменные демонстрации
 
-Every `PROJECT_INSTRUCTIONS.md` file must be <= 8000 characters.
+В текущем дереве **нет вело-кейса**: ни данных, ни готового анализа, ни
+пользовательского сценария про велосипеды. Поэтому README не должен создавать
+впечатление, что такой пример уже работает. Его можно добавить как отдельный
+демо-кейс в `[Analytics]`: исходные данные → выбранные методы из 22 →
+проверяемые выводы → memo/визуализация. До появления такого набора система
+доказывает прежде всего переносимый способ работы, а не экспертизу в вело-домене.
 
-If a Project Instructions file grows beyond this limit, do not paste oversized instructions into ChatGPT Project Settings. Move supporting policies, examples, templates, checklists, and detailed workflows into `Knowledge/` files. Keep `PROJECT_INSTRUCTIONS.md` as the compact behavior kernel: routing, scope, evidence rules, output contract, and critical safety boundaries.
+## Техническая навигация
 
-## Validation
+Для настройки и сопровождения используйте только по необходимости:
 
-Run before opening or merging documentation/configuration PRs:
+- [маршрутизация проектов](docs/PROJECT_ROUTING.md);
+- [карта файлов](docs/REPOSITORY_MAP.md);
+- [ежедневная работа ChatGPT + Codex](CHATGPT_CODEX_OPERATING_GUIDE.md);
+- [синхронизация ChatGPT-проектов](CHATGPT_PROJECT_SYNC_CHECKLIST.md);
+- [статус репозитория](CURRENT_STATUS.md).
+
+Перед документационным PR доступны локальные проверки:
 
 ```bash
 python3 scripts/check_project_instructions_length.py
@@ -68,51 +122,8 @@ python3 scripts/check_repo_public_safety.py
 python3 scripts/check_codex_goal_mode_defaults.py
 python3 scripts/check_manifest_paths.py
 python3 scripts/check_knowledge_bundles.py
+python3 scripts/check_index_coverage.py
 ```
 
-The public safety scan also checks tracked text files, including scripts, CSVs, workflow YAML, and docs, for blocked public-repo artifacts such as `.env`, logs, runtime files, vector/embedding folders, obvious secrets, unsafe local paths, and zip archives used as Knowledge sources.
-
-The Codex Goal Mode scan reports every remaining atomic-task-package wording in Codex-facing files and fails if any wording implies atomic task packages are required by default.
-
-The manifest/path consistency scan checks that `MANIFEST.json` paths exist, upload guide paths use canonical repo paths, project registry paths match actual folders, and legacy path variants stay blocked.
-
-The Knowledge bundle scan checks compact `Knowledge_Bundles/` upload artifacts for source paths, upload counts, required sections, and unsafe content.
-
-## Knowledge Bundles
-
-Use `Knowledge_Bundles/` as the default ChatGPT Project Sources upload mode.
-
-Granular `Knowledge/`, `Templates/`, and task files remain the source of truth. Granular Knowledge upload is advanced/debug mode only. Upload bundles OR granular files, not both, unless debugging a sync issue.
-
-## Operational verification
-
-Repository validation is not enough to claim ChatGPT Project readiness.
-
-Before production promotion:
-
-1. Sync Project Instructions manually into ChatGPT Projects.
-2. Upload expected Knowledge files.
-3. Run smoke QA.
-4. Complete at least one pilot case.
-5. Record results in `CHATGPT_PROJECT_SYNC_CHECKLIST.md` and `PILOT_CASES.md`.
-
-## Analytical Memo Factory
-
-For analytical memo production, use the `Analytical Memo Factory via Codex APP` workflow:
-
-```text
-Analyst -> [Analytics] -> [Codex] -> Codex APP -> Python -> LLM -> Judge/QA -> Human
-```
-
-Use `[Analytics]` for analytical task framing, `[Codex]` for the ultra-long Codex APP task package, and Codex APP for execution. Python calculates; LLM writes only from evidence.
-
-## Local Path Placeholders
-
-Public docs must not contain raw machine-specific absolute paths from local user profiles, home directories, or mounted volumes.
-
-Use placeholders instead:
-
-- `<LOCAL_AI_OS_ROOT>` for the local AI-OS repository root.
-- `<LOCAL_REPO_ROOT>` for the current repository root in generic examples.
-- `<LOCAL_CODEX_APP_ROOT>` for the local `Codex APP` folder.
-- `<LOCAL_ARTIFACTS_ROOT>` for local working artifacts outside the public repository.
+GitHub остаётся живым источником состояния; ChatGPT Project Knowledge —
+синхронизируемая стартовая база, а не гарантия актуального внешнего поведения.
