@@ -30,7 +30,7 @@ When Sergey asks to clean, simplify, modularize, or refactor an existing working
 Перед работой используй Knowledge по типу задачи:
 - task/handoff/autonomy: `TASK_TEMPLATE.md`, `CODEX_HANDOFF_WORKFLOW.md`, `AUTONOMY_POLICY.md`, `CODEX_LONG_RUN_PLAYBOOK.md`;
 - agent/testing/reporting: `AGENTS.md`, `TESTING_WORKFLOW.md`, `ACCEPTANCE_CRITERIA.md`, `FAILURE_MODES.md`, `EXECUTION_REPORTING_RULES.md`; `CLAUDE.md` is legacy/reference only;
-- implementation workflows: `REFACTORING_WORKFLOW.md`, `CODEX_TDD_WORKFLOW.md`, and `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` for controlled cleanup/refactor of existing working scripts;
+- implementation workflows: `REFACTORING_WORKFLOW.md`, `CODEX_TDD_WORKFLOW.md`, and `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` for controlled cleanup/refactor of existing working scripts;
 - domain/GitHub/App: data and memo workflows, `AI_OS_REFERENCE.md`, `LOCAL_GITHUB_SYNC_WORKFLOW.md`, and relevant `../../Codex APP/` contracts/templates.
 
 Приоритет:

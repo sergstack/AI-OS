@@ -6,7 +6,7 @@ Compact upload artifact for `[LLM]` covering context engineering, CTC prompts, c
 
 ## Source files
 
-- `CONTEXT_PACK_STANDARD.md`
+- `docs/standards/CONTEXT_PACK_STANDARD.md`
 - `ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`
 - `ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md`
 - `ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md`
@@ -22,14 +22,14 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - autonomous_retrieval: no
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:42c83642bdfc5f30dfc907be796457f431e5e29252b9b58d3c70b69fc997e04f
+- source_fingerprint: sha256:93f876d6e36a1cf2427f6a1072a7cb35d3e57ac08ba009a6c4287c61d49f4094
 - generator: scripts/build_knowledge_bundles.py
 
 ---
 
 # Content
 
-## From: `CONTEXT_PACK_STANDARD.md`
+## From: `docs/standards/CONTEXT_PACK_STANDARD.md`
 
 # Context Pack Standard
 Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows. They should contain the context needed for the next decision or output, not every available file.
@@ -74,7 +74,7 @@ A Context Pack is ready when:
 # Context Engineering Playbook
 ## Purpose
 Define the lightweight context engineering workflow for `[LLM]`.
-`CONTEXT_PACK_STANDARD.md` remains the reusable root standard. This playbook explains how `[LLM]` prepares prompt-ready context without turning raw material into a dump.
+`docs/standards/CONTEXT_PACK_STANDARD.md` remains the reusable root standard. This playbook explains how `[LLM]` prepares prompt-ready context without turning raw material into a dump.
 ## Ownership
 - `[LLM]` owns prompt/context workflows, prompt registry, CTC prompts, and context pack preparation.
 - `[AI OS]` owns KB evidence, governance, supported / weak / unsupported labels, and AI pattern checks.
@@ -97,7 +97,7 @@ goal
 ```
 ## Context Pack Use
 Use a full Context Pack when the receiving project needs reusable context, multi-step work, implementation, evidence-sensitive reasoning, or handoff.
-Minimum sections stay aligned with `CONTEXT_PACK_STANDARD.md`:
+Minimum sections stay aligned with `docs/standards/CONTEXT_PACK_STANDARD.md`:
 - Goal
 - Decision needed
 - Relevant files

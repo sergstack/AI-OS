@@ -12,7 +12,7 @@ Compact upload artifact for [Codex] covering implementation workflows.
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`
 - `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`
 - `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
-- `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+- `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
 - `ChatGPT/[Codex]/Knowledge/CODEX_04_IMPLEMENTATION_WORKFLOWS_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:2e590eac52bf5a3106633fb6ba75b776a7132d511cf54a0139ca71790c884ba9
+- source_fingerprint: sha256:ec821c704f14e805cf1a5cb0fc28ef1da4d594e2813063d2c8b67cb0c349715a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -297,7 +297,7 @@ Do not force the user into a manual loop where `[Analytics]` asks for Python out
 - production_promotion: no
 - source_of_truth: this file plus the granular Analytics and Codex workflow files
 
-## From: `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+## From: `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
 
 # Existing Script Controlled Refactor Standard
 ## Purpose
@@ -415,7 +415,7 @@ cli / entrypoint
 ```
 This split is recommended, not mandatory. Use the smallest structure that makes behavior safer and clearer.
 ## Parent/child decomposition for large risky refactors
-For large or risky refactors, use `Parent / Child Issue Gate Standard` from `PARENT_CHILD_ISSUE_GATE_STANDARD.md`.
+For large or risky refactors, use `Parent / Child Issue Gate Standard` from `docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md`.
 Do not duplicate the full parent/child standard here.
 A large refactor should usually be split into child issues such as:
 1. baseline and output contract;
@@ -472,9 +472,9 @@ Canonical source created during Issue #285 provenance migration.
 Legacy bundle provenance: `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_04_IMPLEMENTATION_WORKFLOWS.md`.
 ## Legacy section: `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`
 `[Codex]` is the task package design layer. Codex APP is the executor layer.
-## Legacy section: `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
+## Legacy section: `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`
 Engineering / Codex standard for cleaning or refactoring an existing working script or pipeline without losing useful behavior.
 Use when an existing script, CLI, notebook-exported script, or pipeline already runs or has known useful output and Sergey asks for cleanup, controlled refactor, modularization, simplification, or removal of obsolete internal code.
 Do not use for greenfield implementation, bug recovery, Analytics methodology, business definition work, output-contract changes without acceptance, production deploys, migrations, source mutation, or real provider/API execution without separate approval.
 Core rule:
-For large or risky refactors, use `Parent / Child Issue Gate Standard` from `PARENT_CHILD_ISSUE_GATE_STANDARD.md` by reference.
+For large or risky refactors, use `Parent / Child Issue Gate Standard` from `docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` by reference.

@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:8afc68368a9437c4ea07a9f3d48c03a9bcc76b48b2c6a1d7713418ec537f6468
+- source_fingerprint: sha256:4156af54cb78414a671a5c4d70a157c7e844e3dab1af0b514354801b5b362dce
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -62,7 +62,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `SMOKE_QA_FOR_ANALYTICS.md` | Проверка проекта | После загрузки пакета |
 | `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
-| `../../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
+| `../../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 ## Priority rules
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.
 2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`; для material Plan/Fact diagnostics — `VARIANCE_DIAGNOSTIC_CONTRACT.md`.

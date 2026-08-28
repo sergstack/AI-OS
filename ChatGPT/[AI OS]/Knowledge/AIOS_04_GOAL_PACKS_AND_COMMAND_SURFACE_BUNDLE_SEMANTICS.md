@@ -3,7 +3,7 @@
 Canonical source created during Issue #285 provenance migration.
 Legacy bundle provenance: `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`.
 
-## Legacy section: `GOAL_PACKS.md`
+## Legacy section: `docs/standards/GOAL_PACKS.md`
 
 Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI-OS, LLM, Analytics, or Codex infer safe execution details.
 ### Active packs
@@ -29,13 +29,13 @@ Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI
 | `weekly_ai_os_review` | `[AI OS]` -> `[Thinking]` / `[Codex]` | review drift and choose one next useful improvement | do not create status ledgers or operating journals |
 | `reconciliation_builder` | `[Analytics]` -> `[Codex]` | build or improve reconciliation workflow | keep numeric logic deterministic and source layers explicit |
 
-## Legacy section: `COMMAND_SURFACE.md`
+## Legacy section: `docs/standards/COMMAND_SURFACE.md`
 
 One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each command starts from the result Sergey wants, not from an atomic task form.
 | `Autoloop Analysis` | `[Analytics]` | question, data, QA criteria, stop conditions | supervised revise/rerun loop or blocker report | `autoloop` |
 Usage:
 
-## Legacy section: `CONTEXT_PACK_STANDARD.md`
+## Legacy section: `docs/standards/CONTEXT_PACK_STANDARD.md`
 
 Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows. They contain the context needed for the next decision or output, not every available file.
 ### Minimal schema
@@ -43,7 +43,7 @@ Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows.
 ### Quality gate
 A Context Pack is ready when the goal is clear, sources are named, facts and assumptions are separated, constraints and forbidden actions are visible, the expected output is specific, and the receiving project can act without asking Sergey to write an atomic task package.
 
-## Legacy section: `PROMPT_QA_FACTORY.md`
+## Legacy section: `docs/standards/PROMPT_QA_FACTORY.md`
 
 Core loop:
 Applies to StreamDeck prompts, ChatGPT Project prompts, Codex prompts, Judge/Revisor prompts, and Analytics memo prompts.

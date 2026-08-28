@@ -73,6 +73,7 @@ debugging a sync problem.
 | Governance and contracts | `AGENTS.md`, `GOAL_MODE.md`, active standards | Normative rules; protected-path review applies |
 | Current status | root and project-local `CURRENT_STATUS.md` | State maturity and next action; do not redefine gates |
 | Operations | [`docs/operations/`](operations) | Active sync, smoke-QA, and pilot records; not entry-point policy |
+| Shared standards | [`docs/standards/`](standards) | Reusable cross-repository standards that are not primary root contracts |
 | Gate definitions | `MASTER_STATUS.md` | Define validation and operational gates and point to evidence |
 | Evidence | [`docs/evidence/`](evidence) | Record what was checked; passing evidence is not production approval |
 | Delivery artifacts | `Knowledge_Bundles/`, Stream Deck exports | Distributable surfaces derived from canonical sources |

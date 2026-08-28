@@ -4,7 +4,7 @@
 
 Define the lightweight context engineering workflow for `[LLM]`.
 
-`CONTEXT_PACK_STANDARD.md` remains the reusable root standard. This playbook explains how `[LLM]` prepares prompt-ready context without turning raw material into a dump.
+`docs/standards/CONTEXT_PACK_STANDARD.md` remains the reusable root standard. This playbook explains how `[LLM]` prepares prompt-ready context without turning raw material into a dump.
 
 ## Ownership
 
@@ -34,7 +34,7 @@ goal
 
 Use a full Context Pack when the receiving project needs reusable context, multi-step work, implementation, evidence-sensitive reasoning, or handoff.
 
-Minimum sections stay aligned with `CONTEXT_PACK_STANDARD.md`:
+Minimum sections stay aligned with `docs/standards/CONTEXT_PACK_STANDARD.md`:
 
 - Goal
 - Decision needed

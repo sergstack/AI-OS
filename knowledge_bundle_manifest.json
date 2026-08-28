@@ -11,7 +11,7 @@
         "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
         "ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md",
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md",
-        "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
+        "docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
       ],
       "contract": {
         "title": "[AI OS] — Routing and Workflow",
@@ -72,10 +72,10 @@
       "project": "[AI OS]",
       "output": "ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md",
       "sources": [
-        "GOAL_PACKS.md",
-        "COMMAND_SURFACE.md",
-        "CONTEXT_PACK_STANDARD.md",
-        "PROMPT_QA_FACTORY.md",
+        "docs/standards/GOAL_PACKS.md",
+        "docs/standards/COMMAND_SURFACE.md",
+        "docs/standards/CONTEXT_PACK_STANDARD.md",
+        "docs/standards/PROMPT_QA_FACTORY.md",
         "ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md",
         "ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md"
       ],
@@ -480,7 +480,7 @@
       "project": "[LLM]",
       "output": "ChatGPT/[LLM]/Knowledge_Bundles/LLM_05_CONTEXT_ENGINEERING.md",
       "sources": [
-        "CONTEXT_PACK_STANDARD.md",
+        "docs/standards/CONTEXT_PACK_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md",
         "ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md",
@@ -589,7 +589,7 @@
         "ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md",
         "ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md",
         "ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md",
-        "EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
+        "docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md"
       ],
       "contract": {
         "title": "[Codex] — Implementation Workflows",

@@ -6,10 +6,10 @@ Compact upload artifact for [AI OS] covering the first Goal Packs layer, one-tou
 
 ## Source files
 
-- `GOAL_PACKS.md`
-- `COMMAND_SURFACE.md`
-- `CONTEXT_PACK_STANDARD.md`
-- `PROMPT_QA_FACTORY.md`
+- `docs/standards/GOAL_PACKS.md`
+- `docs/standards/COMMAND_SURFACE.md`
+- `docs/standards/CONTEXT_PACK_STANDARD.md`
+- `docs/standards/PROMPT_QA_FACTORY.md`
 - `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`
 - `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`
 - `ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md`
@@ -24,14 +24,14 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - default_upload_mode: `Knowledge_Bundles`
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:58fe7a793dc4f83042e262e61aed739043c26d5c00598927f6cd3361bd898e41
+- source_fingerprint: sha256:f604982af9b80f3622213a1083e8bc26db04e31af7fe43ca753223aaa1ecf471
 - generator: scripts/build_knowledge_bundles.py
 
 ---
 
 # Content
 
-## From: `GOAL_PACKS.md`
+## From: `docs/standards/GOAL_PACKS.md`
 
 # Goal Packs
 Goal Packs are reusable workflows for broad goals. They help Sergey start from intent while AI-OS, LLM, Analytics, or Codex infer the safe execution details.
@@ -98,7 +98,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - trigger: "Turn this reusable prompt into an accepted standard"
 - route: `[AI OS]` -> owner project -> `[LLM]` / `[Thinking]` judge-revisor when needed -> `[Codex]` only for repo docs or PR work
 - input: candidate prompt, owner project, use case, test cases, judge criteria, acceptance constraints
-- context needed: `PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
+- context needed: `docs/standards/PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
 - output: Prompt QA Record with candidate -> test -> judge -> revise -> selected status, UX score, residual risks, and acceptance status
 - quality gate: supervised only; human-owned acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge
 - done when: prompt is selected by owner acceptance or remains a candidate with visible risks and next revision need
@@ -106,7 +106,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - trigger: "Build a compact context package or prompt from this goal"
 - route: `[LLM]` -> owner project by output type
 - input: goal, source files or facts, constraints, expected output, risk level
-- context needed: `CONTEXT_PACK_STANDARD.md`, prompt registry, routing rules, raw-dump guardrails
+- context needed: `docs/standards/CONTEXT_PACK_STANDARD.md`, prompt registry, routing rules, raw-dump guardrails
 - output: Context Pack or CTC prompt with goal, facts, constraints, forbidden inputs, expected output, and quality gate
 - quality gate: curated context only; no raw dumps, source-card dumps, chunks, logs, runtime artifacts, secrets, vector DB, embeddings, semantic search, web UI, or autonomous retrieval
 - done when: receiving project can act without asking Sergey to rewrite the context from scratch
@@ -168,7 +168,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - quality gate: numeric logic is deterministic and source layers stay explicit
 - done when: reconciliation output is reproducible and exceptions are traceable
 
-## From: `COMMAND_SURFACE.md`
+## From: `docs/standards/COMMAND_SURFACE.md`
 
 # Command Surface
 This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each command starts from a result Sergey wants, not from an atomic task form.
@@ -199,7 +199,7 @@ This is the one-touch command map for AI-OS, Stream Deck buttons, and quick prom
 - Let the resolved owner infer scope, checks, and next action within its boundary.
 - Use strict task packages only when scope is already known or risk is high.
 
-## From: `CONTEXT_PACK_STANDARD.md`
+## From: `docs/standards/CONTEXT_PACK_STANDARD.md`
 
 # Context Pack Standard
 Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows. They should contain the context needed for the next decision or output, not every available file.
@@ -239,7 +239,7 @@ A Context Pack is ready when:
 - the expected output is specific;
 - the receiving project can act without asking Sergey to write an atomic task package.
 
-## From: `PROMPT_QA_FACTORY.md`
+## From: `docs/standards/PROMPT_QA_FACTORY.md`
 
 # Prompt QA Factory
 Prompt QA Factory is the AI-OS standard for turning reusable prompts into accepted prompt assets.
@@ -458,7 +458,7 @@ Rollback note:
 # Migrated Bundle Semantics
 Canonical source created during Issue #285 provenance migration.
 Legacy bundle provenance: `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`.
-## Legacy section: `GOAL_PACKS.md`
+## Legacy section: `docs/standards/GOAL_PACKS.md`
 Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI-OS, LLM, Analytics, or Codex infer safe execution details.
 ### Active packs
 | Pack | Trigger | Route | Output | Quality gate |
@@ -482,17 +482,17 @@ Goal Packs are reusable workflows for broad goals. Sergey starts from intent; AI
 | `security_cleanup` | `[Codex]` | repo-only safety cleanup for risky public-repo artifacts or safety wording | not full access/security management |
 | `weekly_ai_os_review` | `[AI OS]` -> `[Thinking]` / `[Codex]` | review drift and choose one next useful improvement | do not create status ledgers or operating journals |
 | `reconciliation_builder` | `[Analytics]` -> `[Codex]` | build or improve reconciliation workflow | keep numeric logic deterministic and source layers explicit |
-## Legacy section: `COMMAND_SURFACE.md`
+## Legacy section: `docs/standards/COMMAND_SURFACE.md`
 One-touch command map for AI-OS, Stream Deck buttons, and quick prompts. Each command starts from the result Sergey wants, not from an atomic task form.
 | `Autoloop Analysis` | `[Analytics]` | question, data, QA criteria, stop conditions | supervised revise/rerun loop or blocker report | `autoloop` |
 Usage:
-## Legacy section: `CONTEXT_PACK_STANDARD.md`
+## Legacy section: `docs/standards/CONTEXT_PACK_STANDARD.md`
 Context Packs are compact inputs for AI-OS, LLM, Analytics, and Codex workflows. They contain the context needed for the next decision or output, not every available file.
 ### Minimal schema
 ### Guidance
 ### Quality gate
 A Context Pack is ready when the goal is clear, sources are named, facts and assumptions are separated, constraints and forbidden actions are visible, the expected output is specific, and the receiving project can act without asking Sergey to write an atomic task package.
-## Legacy section: `PROMPT_QA_FACTORY.md`
+## Legacy section: `docs/standards/PROMPT_QA_FACTORY.md`
 Core loop:
 Applies to StreamDeck prompts, ChatGPT Project prompts, Codex prompts, Judge/Revisor prompts, and Analytics memo prompts.
 Selection requires recorded test cases, judge criteria, UX score, residual risks, and owner acceptance.

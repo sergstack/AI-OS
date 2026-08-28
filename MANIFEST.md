@@ -27,7 +27,7 @@ Semantics: source inventory for project settings. Default manual ChatGPT Project
 ## Local / setup files
 
 - `ARCHIVE_MAP.md`
-- `PARENT_CHILD_ISSUE_GATE_STANDARD.md`
+- `docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md`
 - `UPLOAD_GUIDE.md`
 - `ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md`
 - `ChatGPT/[AI OS]/README.md`

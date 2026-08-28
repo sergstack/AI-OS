@@ -82,7 +82,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - trigger: "Turn this reusable prompt into an accepted standard"
 - route: `[AI OS]` -> owner project -> `[LLM]` / `[Thinking]` judge-revisor when needed -> `[Codex]` only for repo docs or PR work
 - input: candidate prompt, owner project, use case, test cases, judge criteria, acceptance constraints
-- context needed: `PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
+- context needed: `docs/standards/PROMPT_QA_FACTORY.md`, supervised loop boundary, prompt registry/library, owner project rules
 - output: Prompt QA Record with candidate -> test -> judge -> revise -> selected status, UX score, residual risks, and acceptance status
 - quality gate: supervised only; human-owned acceptance required; no production automation, sensitive data, autonomous retrieval, vector DB, embeddings, semantic search, or auto-merge
 - done when: prompt is selected by owner acceptance or remains a candidate with visible risks and next revision need
@@ -92,7 +92,7 @@ In default Goal Mode, Goal Packs are not atomic task packages. Codex still compi
 - trigger: "Build a compact context package or prompt from this goal"
 - route: `[LLM]` -> owner project by output type
 - input: goal, source files or facts, constraints, expected output, risk level
-- context needed: `CONTEXT_PACK_STANDARD.md`, prompt registry, routing rules, raw-dump guardrails
+- context needed: `docs/standards/CONTEXT_PACK_STANDARD.md`, prompt registry, routing rules, raw-dump guardrails
 - output: Context Pack or CTC prompt with goal, facts, constraints, forbidden inputs, expected output, and quality gate
 - quality gate: curated context only; no raw dumps, source-card dumps, chunks, logs, runtime artifacts, secrets, vector DB, embeddings, semantic search, web UI, or autonomous retrieval
 - done when: receiving project can act without asking Sergey to rewrite the context from scratch

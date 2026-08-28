@@ -64,7 +64,7 @@ def test_representative_governance_paths_require_owner_review() -> None:
         "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
         "ROUTING_RULES.md",
         "HANDOFF_STYLE_STANDARD.md",
-        "PROMPT_QA_FACTORY.md",
+        "docs/standards/PROMPT_QA_FACTORY.md",
         "PROJECT_CAPABILITIES.yaml",
         "knowledge_bundle_manifest.json",
         "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md",

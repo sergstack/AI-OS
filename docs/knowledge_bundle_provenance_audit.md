@@ -44,9 +44,9 @@ Blocking record count: **0**
 ## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_01_ROUTING_AND_WORKFLOW.md`
 
 - Project: [AI OS]
-- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`, `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`, `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`, `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 33035
-- Bundle bytes: 34325
+- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`, `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`, `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`, `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md`
+- Source bytes: 33095
+- Bundle bytes: 34415
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -86,9 +86,9 @@ Blocking record count: **0**
 ## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
 
 - Project: [AI OS]
-- Source paths: `GOAL_PACKS.md`, `COMMAND_SURFACE.md`, `CONTEXT_PACK_STANDARD.md`, `PROMPT_QA_FACTORY.md`, `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`, `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md`
-- Source bytes: 27927
-- Bundle bytes: 29116
+- Source paths: `docs/standards/GOAL_PACKS.md`, `docs/standards/COMMAND_SURFACE.md`, `docs/standards/CONTEXT_PACK_STANDARD.md`, `docs/standards/PROMPT_QA_FACTORY.md`, `ChatGPT/[AI OS]/Knowledge/WEEKLY_AI_OS_REVIEW_TEMPLATE.md`, `ChatGPT/[AI OS]/Knowledge/ARCHIVE_SUPERSEDED_RULE.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE_BUNDLE_SEMANTICS.md`
+- Source bytes: 28017
+- Bundle bytes: 29326
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -185,8 +185,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`, `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`, `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 26492
-- Bundle bytes: 27549
+- Source bytes: 26507
+- Bundle bytes: 27564
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -338,9 +338,9 @@ Blocking record count: **0**
 ## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_05_CONTEXT_ENGINEERING.md`
 
 - Project: [LLM]
-- Source paths: `CONTEXT_PACK_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`, `ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
-- Source bytes: 10172
-- Bundle bytes: 11223
+- Source paths: `docs/standards/CONTEXT_PACK_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_ENGINEERING_PLAYBOOK.md`, `ChatGPT/[LLM]/Knowledge/CTC_PROMPT_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/CONTEXT_INTAKE_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/GOOD_BAD_CONTEXT_EXAMPLES.md`
+- Source bytes: 10202
+- Bundle bytes: 11283
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -408,9 +408,9 @@ Blocking record count: **0**
 ## `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_04_IMPLEMENTATION_WORKFLOWS.md`
 
 - Project: [Codex]
-- Source paths: `ChatGPT/[Codex]/Knowledge/BUGFIX_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/REFACTORING_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_04_IMPLEMENTATION_WORKFLOWS_BUNDLE_SEMANTICS.md`
-- Source bytes: 16772
-- Bundle bytes: 18281
+- Source paths: `ChatGPT/[Codex]/Knowledge/BUGFIX_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/REFACTORING_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/DATA_PIPELINE_IMPLEMENTATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_MEMO_AUTOMATION_WORKFLOW.md`, `ChatGPT/[Codex]/Knowledge/ANALYTICAL_TECHNIQUES_FOR_CODEX.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_04_IMPLEMENTATION_WORKFLOWS_BUNDLE_SEMANTICS.md`
+- Source bytes: 16817
+- Bundle bytes: 18356
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
