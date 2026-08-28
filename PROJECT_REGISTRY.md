@@ -14,7 +14,7 @@
 
 ## AES Applicability
 
-`AUTONOMOUS_EXECUTION_STANDARD.md` is the single canonical AES semantic
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` is the single canonical AES semantic
 owner. Each listed exposure includes the current v2 Closure Review reference; this
 table records applicability and deployment exposure; it does not
 claim external execution, pilot completion, owner acceptance, merge, or
@@ -22,13 +22,13 @@ production authorization.
 
 | Project | AES applicability | Canonical reference | Extension required | Extension | Bundle exposure | Execution evidence | Pilot evidence | Authority constraints |
 |---|---|---|---|---|---|---|---|---|
-| `[AI OS]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md` | canonical_owner_repository_package | not_recorded | no_external_authority |
-| `[Thinking]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORKFLOW_AND_DECISIONS.md` | `docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json` | cross_project_pilot_only | no_external_authority |
-| `[Analytics]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | yes | `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` | `docs/autonomous_execution/examples/pilot_evidence/analytics_pilot.json` | synthetic_fixture_only | no_external_authority |
-| `[LLM]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md` | not_recorded | not_recorded | no_external_authority |
-| `[Codex]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_02_EXECUTION_AUTONOMY_REPORTING.md` | `docs/autonomous_execution/examples/pilot_evidence/codex_corrective_loop_pilot.json` | isolated_fixture_only | stricter_one_fix_policy; no_external_authority |
-| `[Inbox Router]` | thin_applicability | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md` | not_recorded | not_recorded | route_clarify_package_only; no_external_authority |
-| `[Thinkers OS]` | applicable | `AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md` | not_recorded | not_recorded | no_external_authority |
+| `[AI OS]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md` | canonical_owner_repository_package | not_recorded | no_external_authority |
+| `[Thinking]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORKFLOW_AND_DECISIONS.md` | `docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json` | cross_project_pilot_only | no_external_authority |
+| `[Analytics]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | yes | `docs/autonomous_execution/extensions/ANALYTICS_EXTENSION.md` | `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` | `docs/autonomous_execution/examples/pilot_evidence/analytics_pilot.json` | synthetic_fixture_only | no_external_authority |
+| `[LLM]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md` | not_recorded | not_recorded | no_external_authority |
+| `[Codex]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Codex]/Knowledge_Bundles/CODEX_02_EXECUTION_AUTONOMY_REPORTING.md` | `docs/autonomous_execution/examples/pilot_evidence/codex_corrective_loop_pilot.json` | isolated_fixture_only | stricter_one_fix_policy; no_external_authority |
+| `[Inbox Router]` | thin_applicability | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Inbox Router]/Knowledge_Bundles/INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md` | not_recorded | not_recorded | route_clarify_package_only; no_external_authority |
+| `[Thinkers OS]` | applicable | `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` | no | not_required | `ChatGPT/[Thinkers OS]/Knowledge_Bundles/THINKERS_OS_01_PORTFOLIO_AND_CORPUS.md` | not_recorded | not_recorded | no_external_authority |
 
 ## Executor Layer
 

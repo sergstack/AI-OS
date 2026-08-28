@@ -1,7 +1,8 @@
 # Autonomous Execution Extension Contract
 
 Status: Phase 1 — normative package and declarative contract.
-Companion to: `AUTONOMOUS_EXECUTION_STANDARD.md` (canonical, `[AI OS]`-owned).
+Companion to: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` (canonical,
+`[AI OS]`-owned).
 
 This is the one generic interface that a project-specific execution
 extension must implement. It is a template/contract, not a set of already
@@ -57,11 +58,13 @@ closure_review_requirements:
 ## 4. Precedence inside an extension
 
 An extension sits between the task package and the canonical standard in
-the precedence order defined in `AUTONOMOUS_EXECUTION_STANDARD.md` Section 1:
+the precedence order defined in
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 1:
 
 ```text
 ... project instructions -> project-specific execution extension
--> AUTONOMOUS_EXECUTION_STANDARD.md -> supporting playbooks/templates/examples
+-> docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md
+-> supporting playbooks/templates/examples
 ```
 
 Where the extension and the canonical standard disagree on a limit, the

@@ -2,7 +2,7 @@
 
 Status: executed (real evidence, not narrative). Spec:
 `docs/pilots/AES_CROSS_PROJECT_PILOT.md`. Standard reference:
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 15 (cross-project handoff
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 15 (cross-project handoff
 persistence) and Section 15.1 (reverse handoff).
 
 Evidence artifact: `docs/autonomous_execution/examples/pilot_evidence/cross_project_handoff_pilot.json`.
@@ -114,7 +114,7 @@ reference, evidence_refs, and — critically — `qa_status` /
 `judge_verdict` = `not_run` were **not** collapsed into a fabricated
 pass. No live Judge pass occurred during this pilot; the reverse handoff
 honestly reports `not_run`, matching the source record's own value, per
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 15.1 ("a handoff must never
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 15.1 ("a handoff must never
 drop ... authority status").
 
 ## Cross-check summary (all eight tracked items, all three hops)

@@ -2,8 +2,8 @@
 
 Status: executed. This is the Phase 4 run of the pilot specified in
 `docs/pilots/AES_ANALYTICS_PILOT.md`, per
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 19 (adoption phases) and
-`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2 (`[Analytics]`
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 19 (adoption phases) and
+`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2 (`[Analytics]`
 extension expectations).
 
 ## Scope deviation (read first)
@@ -29,7 +29,7 @@ referenced beyond the vocabulary check in
 and `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`.
 
 Formal authoring of the `[Analytics]` execution extension itself
-(`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2, deliverable 1
+(`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2, deliverable 1
 of `AES_ANALYTICS_PILOT.md`) and resolution of the `accepted: yes/no` ->
 `overall_delivery` open question (deliverable 2) were **not** part of
 this concrete pilot-run task and remain follow-up work; the execution
@@ -148,7 +148,7 @@ claim" disclaimer at the top and confidence/limitations section.
 ## 6. Judge-style self-review checklist
 
 Checked against the Analytics extension's expected blockers
-(`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2 vocabulary /
+(`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 5.2 vocabulary /
 `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`):
 
 | Check | Outcome |

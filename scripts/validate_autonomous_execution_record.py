@@ -2,12 +2,12 @@
 """Advisory semantic validator for Autonomous Execution Standard (AES) records.
 
 Scoped advisory semantic validation. This script checks the cross-field semantic
-invariants documented in `AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
+invariants documented in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 12
 ("Validation responsibility matrix") that Phase 1's declarative JSON Schema
 (`schemas/autonomous_execution_record.schema.json`) deliberately does not
 enforce, because JSON Schema alone cannot express cross-field invariants.
 
-Scope and non-goals (see `AUTONOMOUS_EXECUTION_STANDARD.md` Section 0.1 and
+Scope and non-goals (see `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 0.1 and
 Section 17):
 
 - This script is pure additive, advisory, and read-only. It never mutates an
@@ -102,7 +102,7 @@ def _add(violations: list[Violation], record_path: str, rule_id: str, message: s
 # passed, or blocked/not_applicable with a stated reason. A mandatory
 # requirement left at any other status (including failed) forbids
 # overall_delivery: pass.
-# Source: AUTONOMOUS_EXECUTION_STANDARD.md Section 8.2 rules 2, 3, 5;
+# Source: docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md Section 8.2 rules 2, 3, 5;
 # Section 10.2.
 # ---------------------------------------------------------------------------
 def check_sem_001(record: dict, record_path: str) -> list[Violation]:

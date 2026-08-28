@@ -11,7 +11,7 @@ Compact upload artifact for [Thinking] covering workflow and decisions.
 - `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`
 - `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`
 - `ChatGPT/[Thinking]/DECISION_LOG.md`
-- `AUTONOMOUS_EXECUTION_STANDARD.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 - `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:eaedf628221bbf0ac183f8dac0b9f0972232a32fad47ad76d2ec8c5a8518e501
+- source_fingerprint: sha256:2356c9676def66453372f742692179cc70bf4807a6d077f698f1b0eca97924e5
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -206,13 +206,13 @@ Acceptance criteria:
 | AIOS-2026-06-15-03 | 2026-06-15 | Add manifest and path consistency validator | accepted | medium-strong | Sergey / AI-OS | Docs Safety fail; manifest/path validator false positive; path governance drift | on next governance update | PR #28 | Sergey | PR #28 merged; Docs Safety pass; manifest/path validator 103/103 pass; negative smoke passed | none | none | active | https://github.com/sergstack/AI-OS/pull/28 |
 | AIOS-2026-06-15-04 | 2026-06-15 | Add pilot case framework and ChatGPT Project sync checklist | accepted | strong | Sergey | new ChatGPT Project added; Project Instructions changed; Knowledge upload policy changed; smoke QA fail; pilot case fail; production promotion requested | on next governance update | PR #29 | Sergey | PR #29 merged; docs-safety pass; length/safety/manifest validators pass; no PROJECT_INSTRUCTIONS.md or governed Knowledge files changed | none | none | active | https://github.com/sergstack/AI-OS/pull/29 |
 
-## From: `AUTONOMOUS_EXECUTION_STANDARD.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 
 # Autonomous Execution Standard (AES) v2.0.0
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
-Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
-Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical source path: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Companion contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 Current schema: `schemas/autonomous_execution_record.schema.json`.
 Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 This document is the single canonical source for the Autonomous Execution
@@ -280,7 +280,7 @@ remain historical evidence and are not rewritten.
 3. approved task package
 4. project instructions
 5. applicable project-specific execution extension
-6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+6. this document (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`)
 7. supporting playbooks, templates and examples
 ```
 General rule: when two applicable rules conflict, the stricter constraint on
@@ -297,7 +297,7 @@ Consequences:
 ## 2. Canonical ownership
 ```yaml
 canonical_owner: "[AI OS]"
-canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+canonical_source_path: "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 derived_artifacts: []   # none registered in Phase 1
 supersedes: []
 superseded_by: []
@@ -445,7 +445,8 @@ resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
 ### 5.6 Bounded multi-owner continuation control plane
 The optional continuation control plane is defined in
-`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+`docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.
+It adds an
 auditable route trace, acceptance progress, and independent continuation
 guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
@@ -989,7 +990,7 @@ Legacy bundle provenance: `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORK
 ## Legacy section: `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`
 ## Autonomous Execution Standard
 Execution in `[Thinking]` now also follows the canonical Autonomous
-Execution Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
+Execution Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
 root (canonical owner: `[AI OS]`). It connects the frame -> facts -> options
 -> decision -> handoff workflow above into the shared execution/validation/
 defect/acceptance loop without replacing decision status tracking or the

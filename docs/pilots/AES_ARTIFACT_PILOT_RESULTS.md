@@ -1,7 +1,7 @@
 # AES Artifact-Freshness Pilot — Results (Phase 3, executed)
 
 Status: this pilot was actually run, on a purpose-built pilot fixture pair.
-It is Phase 3 evidence per `AUTONOMOUS_EXECUTION_STANDARD.md` Section 20 and
+It is Phase 3 evidence per `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20 and
 `docs/pilots/AES_ARTIFACT_PILOT.md`; it does not authorize enforcement or CI
 gating of the Autonomous Execution Standard.
 
@@ -148,7 +148,7 @@ Full hashes are recorded in
 ## Execution record
 
 A structurally valid execution record demonstrating the full
-`AUTONOMOUS_EXECUTION_STANDARD.md` Section 11.3 artifact-freshness contract
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 11.3 artifact-freshness contract
 (`generated_from_revision`, `source_inputs[].content_hash`,
 `freshness_status` transitioning `stale` -> `current`) is saved at
 `docs/autonomous_execution/examples/pilot_evidence/artifact_freshness_pilot.json`.
@@ -189,7 +189,7 @@ asserted after the final artifact reached `current`.
   this pilot populated them by hand from the iteration record, matching
   Phase 1's documented scope (structural schema validation only, no
   semantic/automatic iteration tracking — see schema description and
-  `AUTONOMOUS_EXECUTION_STANDARD.md` Section 12).
+  `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 12).
 - **The pilot's "generation method" is intentionally trivial** (a ~100-line
   script parsing `- key: value` lines into a markdown table). This is
   sufficient to prove the freshness contract's mechanics but is not

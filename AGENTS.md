@@ -12,7 +12,7 @@ Atomic task packages remain available for advanced, high-risk, strict, or ultra-
 
 ## Autonomous Execution (AES)
 
-Execution follows [`AUTONOMOUS_EXECUTION_STANDARD.md`](AUTONOMOUS_EXECUTION_STANDARD.md)
+Execution follows [`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`](docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md)
 together with Goal Mode, the Codex autonomy policy, and applicable project
 extensions. For normal local and reversible work, infer the smallest safe
 scope, execute, validate, record assumptions, and continue without asking

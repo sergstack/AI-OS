@@ -9,13 +9,13 @@ Do not use this pattern to justify autonomous retrieval:
 ## Autonomous Execution Standard
 `[AI OS]` is the canonical owner of the Autonomous Execution Standard (AES).
 Execution across all projects now also follows the canonical loop defined in
-`AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root: requirements -> execution
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root: requirements -> execution
 -> validation -> defect registration -> corrective action -> affected-scope
 rerun -> revalidation -> scope acceptance -> final evidence. It does not
 replace Goal Mode, routing, autonomy policy, or the merge policy in
 `GOAL_MODE.md`; it connects them into one closed loop, and the stricter rule
 wins on any conflict. `[AI OS]` also owns the generic project-extension
-interface in `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
+interface in `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
 implements to add domain-specific defect subtypes, evidence, and acceptance
 scopes without restating the canonical state machine or schema.
 New AES v2 records require Closure Review: it rechecks original goal, scope,

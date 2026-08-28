@@ -6,7 +6,7 @@
   "project": "[Analytics]",
   "project_extension": {
     "extension_id": "aes-analytics-pilot-defect-subtypes-v0",
-    "note": "Illustrative subtypes only, demonstrated by this pilot; not a ratified [Analytics] extension. Formal extension authoring (AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md Section 5.2, deliverable 1 of docs/pilots/AES_ANALYTICS_PILOT.md) is out of scope for this concrete pilot run and remains a follow-up.",
+    "note": "Illustrative subtypes only, demonstrated by this pilot; not a ratified [Analytics] extension. Formal extension authoring (docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md Section 5.2, deliverable 1 of docs/pilots/AES_ANALYTICS_PILOT.md) is out of scope for this concrete pilot run and remains a follow-up.",
     "domain_defect_subtypes_observed": [
       "data_or_mapping_fix",
       "calculation_or_logic_fix"

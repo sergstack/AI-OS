@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:16ce95bcc65d9d071d87c2fbd52981c10b0f17e9aa306966da017e0aa921115f
+- source_fingerprint: sha256:4235b8fe00f1939eb0f9a3a277ea7d0982398f219fc2d2e2dfc67a6b6279b660
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -43,7 +43,7 @@ missing facts.
 ## AES applicability
 Inbox Router has thin AES applicability only when it packages or preserves a
 governed execution handoff. Canonical execution semantics come from repo-root
-`AUTONOMOUS_EXECUTION_STANDARD.md`; Router does not execute the target task,
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`; Router does not execute the target task,
 run corrective loops, or gain merge/deploy/production authority. No Router
 AES extension is currently required.
 

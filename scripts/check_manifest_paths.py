@@ -361,13 +361,13 @@ def check_aes_applicability(root: Path, projects: dict[str, str]) -> list[CheckR
         return [result(group, False, "file must exist", rel)]
     rows = aes_applicability_rows(text)
     results: list[CheckResult] = []
-    canonical = read_text(root, "AUTONOMOUS_EXECUTION_STANDARD.md") or ""
+    canonical = read_text(root, "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md") or ""
     results.append(
         result(
             group,
             "Canonical owner: `[AI OS]`" in canonical,
             "canonical AES owner must remain [AI OS]",
-            "AUTONOMOUS_EXECUTION_STANDARD.md",
+            "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
         )
     )
     for project in projects:
@@ -402,7 +402,7 @@ def check_aes_applicability(root: Path, projects: dict[str, str]) -> list[CheckR
         results.append(
             result(
                 group,
-                canonical_reference == "AUTONOMOUS_EXECUTION_STANDARD.md",
+                canonical_reference == "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
                 "applicable decision must reference the canonical AES source",
                 rel,
                 value=f"{project}: {canonical_reference}",
@@ -426,7 +426,7 @@ def check_aes_applicability(root: Path, projects: dict[str, str]) -> list[CheckR
         bundle_text = (read_text(root, bundle) or "") if bundle_required else ""
         bundle_ok = (
             path_exists(root, bundle)
-            and "AUTONOMOUS_EXECUTION_STANDARD.md" in bundle_text
+            and "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md" in bundle_text
         ) if bundle_required else bundle == "not_required"
         results.append(
             result(

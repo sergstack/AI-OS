@@ -57,7 +57,7 @@ Do not treat that branch/HEAD as GitHub-confirmed unless independently reconcile
 Use existing canonical owners only. Inspect as needed:
 
 - `GOAL_MODE.md`;
-- `AUTONOMOUS_EXECUTION_STANDARD.md`;
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`;
 - `ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md`;
 - relevant AIOS governance/smoke/supervised-loop bundles;
 - canonical source that defines `G2` and `G3`;

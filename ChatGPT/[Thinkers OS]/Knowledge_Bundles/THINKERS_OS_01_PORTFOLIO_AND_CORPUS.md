@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - default_upload_mode: Knowledge_Bundles
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c3364cfc64e0095c8cb9cfdbe3b22245c11831c93c54fff199f11cabf09508ec
+- source_fingerprint: sha256:7e1669f80b331625a37db031bec1faf8aadfec63284cde3bd9bb443d47864774
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -106,7 +106,7 @@ Separate facts, interpretations, recommendations, hypotheses, blockers, and limi
 Never report expected work as observed execution.
 For a routine source-gate answer, prefer one verdict, one compact `scope | status | evidence | next action` table, one blocker/owner action, and one routing/resume line. Expand the full workflow only when requested or necessary for the decision.
 ## AES applicability
-The canonical `AUTONOMOUS_EXECUTION_STANDARD.md` applies to governed
+The canonical `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` applies to governed
 multi-stage Thinkers OS work. It owns execution states, requirements,
 defects, corrective iterations, acceptance, freshness, and authority
 separation. Thinkers OS keeps domain semantics here: corpus completeness,

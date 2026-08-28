@@ -1,7 +1,7 @@
 # Autonomous Execution Standard — Adoption Plan
 
-Canonical standard: `AUTONOMOUS_EXECUTION_STANDARD.md`.
-Extension contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical standard: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Extension contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 
 ## Current repository state
 
@@ -46,7 +46,7 @@ Exit criteria: PR opened against `main`, owner review pending, not merged.
 
 Separate issue and PR. Scope: `docs/pilots/AES_CODEX_PILOT.md`. Produces a
 real `[Codex]` execution extension (path decided during this phase, per
-`AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 6) and one real,
+`docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md` Section 6) and one real,
 isolated-fixture execution record demonstrating defect registration ->
 bounded fix -> affected-check rerun -> regression -> revalidation. Does not
 touch production branches or introduce a real defect into working code.
@@ -89,7 +89,7 @@ broader semantic coverage remain separately unauthorized.
 Phase 1 completion authorizes exactly one thing: opening a PR for owner
 review of the normative package. It does not authorize pilot execution,
 semantic enforcement, CI blocking, merge, deploy, or production adoption
-(`AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
+(`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 20).
 
 ## PR-as-delivery-mechanism statement
 

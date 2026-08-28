@@ -7,7 +7,7 @@ Legacy bundle provenance: `ChatGPT/[Thinking]/Knowledge_Bundles/THINKING_01_WORK
 
 ## Autonomous Execution Standard
 Execution in `[Thinking]` now also follows the canonical Autonomous
-Execution Standard defined in `AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
+Execution Standard defined in `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo
 root (canonical owner: `[AI OS]`). It connects the frame -> facts -> options
 -> decision -> handoff workflow above into the shared execution/validation/
 defect/acceptance loop without replacing decision status tracking or the

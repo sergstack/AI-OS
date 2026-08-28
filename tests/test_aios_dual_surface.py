@@ -95,7 +95,7 @@ def test_orchestrator_is_thin_default_and_fails_closed() -> None:
         "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
         "GOAL_MODE.md",
         "HANDOFF_STYLE_STANDARD.md",
-        "AUTONOMOUS_EXECUTION_STANDARD.md",
+        "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
     ):
         assert canonical_reference in orchestrator
 

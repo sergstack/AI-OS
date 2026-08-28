@@ -8,9 +8,9 @@ Compact upload artifact for [AI OS] covering governance and evidence.
 
 - `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`
 - `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`
-- `AUTONOMOUS_EXECUTION_STANDARD.md`
-- `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
-- `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
+- `docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`
 - `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:6e319b114f9955208dbf4e733a9db5d4d35f7a3b493c0d7d94680b6c107b9ab9
+- source_fingerprint: sha256:9c0c5e7191c595f05ed8671a4534147fe15a475f4afa3fbefd48d499a1eacb36
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -179,13 +179,13 @@ autonomous retrieval
 - скрыта неопределённость;
 - нет web-проверки для текущих AI-релизов.
 
-## From: `AUTONOMOUS_EXECUTION_STANDARD.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`
 
 # Autonomous Execution Standard (AES) v2.0.0
 Status: normative package with scoped advisory semantic validation.
 Canonical owner: `[AI OS]`.
-Canonical source path: `AUTONOMOUS_EXECUTION_STANDARD.md` (this file, repo root).
-Companion contract: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
+Canonical source path: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`.
+Companion contract: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`.
 Current schema: `schemas/autonomous_execution_record.schema.json`.
 Historical v1 schema: `schemas/autonomous_execution_record.v1.schema.json`.
 This document is the single canonical source for the Autonomous Execution
@@ -253,7 +253,7 @@ remain historical evidence and are not rewritten.
 3. approved task package
 4. project instructions
 5. applicable project-specific execution extension
-6. this document (AUTONOMOUS_EXECUTION_STANDARD.md)
+6. this document (`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`)
 7. supporting playbooks, templates and examples
 ```
 General rule: when two applicable rules conflict, the stricter constraint on
@@ -270,7 +270,7 @@ Consequences:
 ## 2. Canonical ownership
 ```yaml
 canonical_owner: "[AI OS]"
-canonical_source_path: "AUTONOMOUS_EXECUTION_STANDARD.md"
+canonical_source_path: "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md"
 derived_artifacts: []   # none registered in Phase 1
 supersedes: []
 superseded_by: []
@@ -418,7 +418,8 @@ resolved owner, relevant scope, authority, canonical routing state, and source
 revision remain compatible. An unchanged source revision alone is insufficient.
 ### 5.6 Bounded multi-owner continuation control plane
 The optional continuation control plane is defined in
-`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.  It adds an
+`docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`.
+It adds an
 auditable route trace, acceptance progress, and independent continuation
 guards without creating a parallel state machine or changing the existing
 status namespaces.  Its guard thresholds are named parameters, not canonical
@@ -954,11 +955,12 @@ separate issue/PR) -> Phase 3 (artifact pilot) -> Phase 4 (Analytics pilot)
 Completion of this Phase 1 package does not authorize: pilot execution,
 semantic enforcement, CI blocking, merge, deploy, or production adoption.
 
-## From: `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`
 
 # Autonomous Execution Extension Contract
 Status: Phase 1 — normative package and declarative contract.
-Companion to: `AUTONOMOUS_EXECUTION_STANDARD.md` (canonical, `[AI OS]`-owned).
+Companion to: `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` (canonical,
+`[AI OS]`-owned).
 This is the one generic interface that a project-specific execution
 extension must implement. It is a template/contract, not a set of already
 adopted per-project extensions. Writing and adopting an actual extension for
@@ -1005,10 +1007,12 @@ closure_review_requirements:
   the state machine, defect model, or schema.
 ## 4. Precedence inside an extension
 An extension sits between the task package and the canonical standard in
-the precedence order defined in `AUTONOMOUS_EXECUTION_STANDARD.md` Section 1:
+the precedence order defined in
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` Section 1:
 ```text
 ... project instructions -> project-specific execution extension
--> AUTONOMOUS_EXECUTION_STANDARD.md -> supporting playbooks/templates/examples
+-> docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md
+-> supporting playbooks/templates/examples
 ```
 Where the extension and the canonical standard disagree on a limit, the
 stricter one applies.
@@ -1047,7 +1051,7 @@ the Phase 2 pilot task for the first project that actually adopts an
 extension, so it can follow that project's live Knowledge conventions
 instead of being guessed here.
 
-## From: `AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`
+## From: `docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`
 
 # AES Continuation Control Plane Contract
 Status: normative continuation semantics; implementation is additive and
@@ -1127,13 +1131,13 @@ Do not use this pattern to justify autonomous retrieval:
 ## Autonomous Execution Standard
 `[AI OS]` is the canonical owner of the Autonomous Execution Standard (AES).
 Execution across all projects now also follows the canonical loop defined in
-`AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root: requirements -> execution
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` at the repo root: requirements -> execution
 -> validation -> defect registration -> corrective action -> affected-scope
 rerun -> revalidation -> scope acceptance -> final evidence. It does not
 replace Goal Mode, routing, autonomy policy, or the merge policy in
 `GOAL_MODE.md`; it connects them into one closed loop, and the stricter rule
 wins on any conflict. `[AI OS]` also owns the generic project-extension
-interface in `AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
+interface in `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, which a project
 implements to add domain-specific defect subtypes, evidence, and acceptance
 scopes without restating the canonical state machine or schema.
 New AES v2 records require Closure Review: it rechecks original goal, scope,

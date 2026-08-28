@@ -20,6 +20,6 @@ missing facts.
 
 Inbox Router has thin AES applicability only when it packages or preserves a
 governed execution handoff. Canonical execution semantics come from repo-root
-`AUTONOMOUS_EXECUTION_STANDARD.md`; Router does not execute the target task,
+`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`; Router does not execute the target task,
 run corrective loops, or gain merge/deploy/production authority. No Router
 AES extension is currently required.

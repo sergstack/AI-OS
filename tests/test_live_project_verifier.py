@@ -115,7 +115,7 @@ def test_changed_project_path_selects_affected_smoke(tmp_path: Path) -> None:
 
 def test_shared_governance_selects_mvp_regression(tmp_path: Path) -> None:
     write_contracts(tmp_path)
-    base, head = make_history(tmp_path, "base.txt", "AUTONOMOUS_EXECUTION_STANDARD.md")
+    base, head = make_history(tmp_path, "base.txt", "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md")
     assert set(lpv.plan_impact(tmp_path, base, head)["affected_projects"]) == set(lpv.MVP_PROJECTS)
 
 
