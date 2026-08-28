@@ -20,6 +20,7 @@ the machine-readable capability registry.
 | Check required gates | [`MASTER_STATUS.md`](../MASTER_STATUS.md) | Canonical validation and operational gates |
 | Prepare or review a change | [`GOAL_MODE.md`](../GOAL_MODE.md) | Execution and merge policy |
 | Sync ChatGPT Project settings | [`UPLOAD_GUIDE.md`](../UPLOAD_GUIDE.md) | Upload and sync guidance |
+| Choose ChatGPT or Codex APP | [`CHATGPT_CODEX_OPERATING_GUIDE.md`](guides/CHATGPT_CODEX_OPERATING_GUIDE.md) | Daily routing shortcut |
 
 ## Working Architecture
 
@@ -74,6 +75,8 @@ debugging a sync problem.
 | Current status | root and project-local `CURRENT_STATUS.md` | State maturity and next action; do not redefine gates |
 | Operations | [`docs/operations/`](operations) | Active sync, smoke-QA, and pilot records; not entry-point policy |
 | Shared standards | [`docs/standards/`](standards) | Reusable cross-repository standards that are not primary root contracts |
+| Guides | [`docs/guides/`](guides) | Cross-repository operator guidance and quick-start material |
+| Reference maps | [`docs/reference/`](reference) | Active package maps and supporting reference material |
 | Gate definitions | `MASTER_STATUS.md` | Define validation and operational gates and point to evidence |
 | Evidence | [`docs/evidence/`](evidence) | Record what was checked; passing evidence is not production approval |
 | Delivery artifacts | `Knowledge_Bundles/`, Stream Deck exports | Distributable surfaces derived from canonical sources |

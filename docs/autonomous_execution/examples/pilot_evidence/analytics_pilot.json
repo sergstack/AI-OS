@@ -197,7 +197,7 @@
       "validation_type": "docs_consistency",
       "command_or_method": "python3 scripts/check_manifest_paths.py && python3 scripts/check_index_coverage.py && python3 scripts/check_knowledge_bundles.py && python3 scripts/check_repo_public_safety.py && python3 scripts/check_codex_goal_mode_defaults.py && python3 scripts/check_project_instructions_length.py",
       "validated_revision": "working-tree iter-002 (post-fix)",
-      "covered_paths": ["MANIFEST.json", "ChatGPT/", "ARCHIVE_MAP.md"],
+      "covered_paths": ["MANIFEST.json", "ChatGPT/", "docs/reference/ARCHIVE_MAP.md"],
       "covered_requirement_ids": [],
       "started_at": "2026-08-06T14:19:00Z",
       "completed_at": "2026-08-06T14:19:05Z",
