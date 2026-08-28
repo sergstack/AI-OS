@@ -2,113 +2,178 @@
 
 [![Docs Safety](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml/badge.svg)](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml)
 
-AI-OS is a governed workspace for designing and operating ChatGPT Projects,
-repository work, validation, and a versioned Stream Deck interface. It makes
-the path from a broad goal to a reviewable change explicit: route the work,
-bound the scope, preserve evidence, validate the result, and leave acceptance
-with a human owner.
+AI-OS is a governed operating system for work that spans ChatGPT Projects,
+repository delivery, validation, and a versioned Stream Deck interface. It
+turns a broad goal into a reviewable path: identify one accountable owner,
+bound the change, preserve evidence, validate the result, and keep acceptance
+and irreversible decisions with a human owner.
 
-> **Status:** candidate / ready for human review. Production promotion is
-> disabled until the documented sync, smoke-QA, and pilot gates are complete.
-> This public repository is **not open source**; see the
+> **Current status:** candidate / ready for human review. Production promotion
+> remains disabled until the documented sync, smoke-QA, and pilot gates are
+> satisfied. This public repository is **not open source**; see the
 > [rights posture](docs/rights_posture.md).
 
-## What this repository provides
+## Why AI-OS is different
 
-| Capability | Outcome |
-|---|---|
-| Seven ChatGPT Project packages | Clear ownership for routing, strategy, analytics, LLM quality, implementation, and corpus work. |
-| Goal Mode and execution contracts | Broad goals become bounded, reversible work with checks, risks, rollback, and acceptance. |
-| Deterministic validation | Scripts and regression tests keep manifests, instructions, bundles, indexes, and public-repo safety consistent. |
-| Delivery surfaces | Compact Knowledge Bundles for ChatGPT upload and versioned Stream Deck artifacts with QA and rollback history. |
+Most AI workspaces stop at a prompt, a collection of documents, or an agent
+loop. AI-OS makes the operational boundaries explicit and versioned.
 
-## How work moves
+| Design choice | What it provides | What it deliberately does not claim |
+|---|---|---|
+| **One accountable destination** | Seven named ChatGPT Project packages split routing, governance, decisions, analytics, LLM quality, implementation, and corpus work. | A single general-purpose agent that owns every decision. |
+| **Two content surfaces** | Granular `Knowledge/` files are canonical; compact `Knowledge_Bundles/` are derived upload artifacts with source fingerprints. | That a ChatGPT Project UI is always current after a repository change. |
+| **Goal Mode** | A broad goal can become a bounded, reversible branch change with checks, risks, rollback, and acceptance. | Permission to widen scope, merge, deploy, or change protected business rules. |
+| **Evidence-bearing gates** | Manifests, paths, bundle provenance, instruction length, public-repo safety, smoke QA, and pilots are separate checks. | That a passing test or generated file is owner acceptance or production readiness. |
+| **Human authority** | Review, merge, production promotion, and other consequential actions stay explicit. | Autonomous approval, deployment, or a persistent production agent platform. |
+| **Versioned operating surfaces** | ChatGPT packages, Codex APP contracts, and Stream Deck artifacts can evolve through Git review and rollback. | A hidden runtime state outside the repository. |
+
+The result is a repository that can be inspected at every boundary: where a
+task should go, which source owns its content, which artifact is uploaded, what
+was checked, and what still needs an owner decision.
+
+## How the system works
 
 ```text
 goal or raw input
-  -> route to one accountable project
-  -> establish scope and evidence
-  -> implement in Codex on a non-main branch
-  -> run checks and review the diff
-  -> human owner accepts, merges, or rolls back
+  -> route to one accountable Project
+  -> establish scope, evidence, and constraints
+  -> work in the relevant domain or hand off to Codex
+  -> validate sources, artifacts, and the changed behavior
+  -> human owner reviews, accepts, merges, or rolls back
 ```
 
-Generated output is a candidate, not an accepted result. GitHub is the live
-source of truth; ChatGPT Project Knowledge is a versioned baseline for
-bootstrapping and formal sync.
+`[Inbox Router]` handles unclear intake. The routed project keeps domain
+ownership; `[Codex]` prepares implementation work and Codex APP performs
+repository changes on a non-`main` branch. The canonical map is
+[`ROUTING_RULES.md`](ROUTING_RULES.md), not this overview.
 
-## Explore the system
+### The seven ChatGPT Projects
 
-| Start here | Use it for |
+| Project | Use it when you need | Typical output |
+|---|---|---|
+| `[Inbox Router]` | A raw request needs classification or a clear destination. | A bounded route or handoff. |
+| `[AI OS]` | Governance, AI patterns, evidence, confidence, or supported use cases. | Evidence-aware guidance and a next owner. |
+| `[Thinking]` | Options, trade-offs, decisions, risks, or a Judge/Revisor pass. | A decision memo with assumptions and revisit triggers. |
+| `[Analytics]` | Deterministic calculations, data QA, reconciliations, metrics, or charts. | A method, calculations, checks, and limitations. |
+| `[LLM]` | Prompts, model routing, evaluation, quality gates, or workflow design. | A governed prompt/workflow proposal and evaluation boundary. |
+| `[Codex]` | Implementation framing, code review, tests, and release handoff. | A scoped execution package for repository work. |
+| `[Thinkers OS]` | Thinker corpus, provenance, synthesis, and pattern status. | Source-aware synthesis without invented attribution. |
+
+The authoritative paths, instruction limits, and AES applicability are in the
+[project registry](PROJECT_REGISTRY.md). Project packages are deliberately
+separate so that a strategy discussion does not silently become an analytics
+calculation or a repository mutation.
+
+### Canonical sources and upload artifacts
+
+```text
+canonical granular Knowledge/ source
+  -> declared source fingerprint
+  -> generated Knowledge_Bundle
+  -> manual ChatGPT Project Knowledge upload
+```
+
+The repository is the live source of truth. ChatGPT Project Knowledge is a
+versioned baseline for bootstrapping and periodic formal sync, not a live
+replica of every commit. Upload only the bundle files named by a project's
+`Knowledge_Bundles/UPLOAD_LIST.md`; do not upload both bundles and their
+granular sources unless debugging a sync issue.
+
+Read the [Sync Contract](SYNC_CONTRACT.md) for the exact freshness rules and
+[Upload Guide](UPLOAD_GUIDE.md) before a manual ChatGPT update.
+
+### Goal Mode and AES
+
+[Goal Mode](GOAL_MODE.md) is the default execution model for broad repository
+work: inspect first, infer the smallest safe scope, implement on a branch, run
+relevant checks, and report evidence, risks, rollback, and acceptance status.
+
+The [Autonomous Execution Standard (AES)](docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md)
+defines the shared execution vocabulary for requirements, validation, defects,
+corrective action, traceability, and closure review. It does not override
+project ownership or authorize an agent to approve its own work. Current AES
+applicability and the limited evidence for each Project are recorded in the
+[registry](PROJECT_REGISTRY.md).
+
+## Start using AI-OS
+
+### 1. Find the right entry point
+
+| Your need | Start here |
 |---|---|
-| [Repository map](docs/REPOSITORY_MAP.md) | A guided map of canonical documents, projects, and lifecycle rules. |
-| [Current status](CURRENT_STATUS.md) | Current maturity, observed evidence, open gates, and next actions. |
-| [Project registry](PROJECT_REGISTRY.md) | The seven governed ChatGPT Projects and their canonical paths. |
-| [Goal Mode](GOAL_MODE.md) | Normal workflow and merge policy for changes. |
-| [Contributing guide](CONTRIBUTING.md) | Issue, branch, validation, and pull-request expectations. |
-| [Security policy](.github/SECURITY.md) | Private vulnerability reporting route. |
+| Understand the repository | [Repository map](docs/REPOSITORY_MAP.md) |
+| Choose ChatGPT Projects or Codex APP for daily work | [Operating guide](docs/guides/CHATGPT_CODEX_OPERATING_GUIDE.md) |
+| Change repository content | [`AGENTS.md`](AGENTS.md), then [Goal Mode](GOAL_MODE.md) |
+| Prepare a goal or fixed task | [Goal issue template](.github/ISSUE_TEMPLATE/goal.md) or [Codex task template](.github/ISSUE_TEMPLATE/codex-task.md) |
+| Upload a ChatGPT Project baseline | [Upload Guide](UPLOAD_GUIDE.md) and the project's `UPLOAD_LIST.md` |
+| Check evidence, maturity, and open gates | [Current status](CURRENT_STATUS.md) and [Master status](MASTER_STATUS.md) |
 
-### Repository areas
+### 2. Work from a goal, not from a guessed implementation
+
+For a repository change, state the desired outcome. Goal Mode then constrains
+the work to a branch, a minimal reversible scope, relevant checks, a rollback
+path, and explicit acceptance. Do not treat a passing test, a ready PR, or a
+generated artifact as proof that the user's outcome has been accepted.
+
+For a simple local and reversible change with sufficient repository context,
+follow the applicable local instructions directly. For AI-OS methodology work,
+use the canonical routing and bounded-context flow defined in `AGENTS.md`.
+
+### 3. Validate before opening a pull request
+
+From a local checkout, run the repository readiness helper and the relevant
+tests:
+
+```bash
+python3 scripts/sync_aios.py
+python3 -m pytest tests/ -rA
+```
+
+`sync_aios.py` checks project-instruction length, public-repository safety,
+Goal Mode defaults, manifest paths, Knowledge Bundles, and index coverage. It
+does **not** upload to ChatGPT, push to GitHub, merge a pull request, or grant
+production approval.
+
+For contribution and branch requirements, follow the
+[contributing guide](CONTRIBUTING.md). For the exact merge policy, follow
+[Goal Mode](GOAL_MODE.md).
+
+## Repository layout
 
 | Area | Purpose |
 |---|---|
-| [`ChatGPT/`](ChatGPT) | Project instructions, granular Knowledge sources, and compact upload bundles. |
+| [`ChatGPT/`](ChatGPT) | Project instructions, canonical granular Knowledge, and compact upload bundles. |
 | [`Codex APP/`](Codex%20APP) | Local execution contracts, setup, runbooks, and review guidance. |
 | [`StreamDeck/`](StreamDeck) | Versioned configuration, exports, generators, QA, and rollback history. |
-| [`scripts/`](scripts) and [`tests/`](tests) | Deterministic repository validation and regression tests. |
-| [`.github/`](.github) | Issue intake, PR policy, ownership, and CI workflows. |
-| [`docs/`](docs) | Architecture, routing, merge-gate, and operating documentation. |
+| [`docs/`](docs) | Maps, guides, shared standards, operations, evidence, and reference material. |
+| [`scripts/`](scripts) and [`tests/`](tests) | Deterministic validation and regression coverage. |
+| [`.github/`](.github) | Issue intake, PR policy, ownership, security reporting, and CI workflows. |
 
-## Get started
+## Evidence and limits
 
-1. Read the [repository map](docs/REPOSITORY_MAP.md) and
-   [`AGENTS.md`](AGENTS.md) before changing repository content.
-2. Start broad work from the [Goal issue template](.github/ISSUE_TEMPLATE/goal.md),
-   or use the strict [Codex task template](.github/ISSUE_TEMPLATE/codex-task.md)
-   when scope is already fixed.
-3. Create a non-`main` branch, keep the change reversible, and run the local
-   readiness suite before opening a pull request:
+AI-OS distinguishes repository consistency from external or operational proof.
+The repository records passing checks and bounded candidate evidence, but these
+do not by themselves prove that every ChatGPT Project is synced, that every
+workflow is generally reliable, or that production promotion is allowed.
 
-   ```bash
-   python3 scripts/sync_aios.py
-   python3 -m pytest tests/ -rA
-   ```
+Current candidate status, smoke-QA evidence, pilot boundaries, and blocked
+promotion items are maintained in [Current status](CURRENT_STATUS.md). Exact
+validation and operational gates live in [Master status](MASTER_STATUS.md).
 
-`sync_aios.py` validates repository consistency and prints sync guidance. It
-does not upload to the ChatGPT UI, push to GitHub, merge a pull request, or
-grant production approval.
+AI-OS does **not** add embeddings, semantic search, vector databases, web UI,
+autonomous retrieval, agentic workflows, persistent runtime memory, or
+production deployments. Public visibility does not grant reuse rights; the
+repository has no open-source license.
 
-## Working principles
+## Useful references
 
-- **One accountable destination.** Use the routing rules and project boundaries
-  rather than duplicating methodology across packages.
-- **Canonical sources first.** Granular `Knowledge/` files own content;
-  `Knowledge_Bundles/` are derived upload artifacts. Upload bundles or
-  granular files, not both, unless debugging a sync issue.
-- **Evidence before claims.** Checks, smoke QA, pilots, owner acceptance, and
-  production authorization are distinct gates.
-- **Human authority remains explicit.** Automation does not merge, deploy,
-  approve production, or enlarge the change scope.
-
-## Validation and operating references
-
-The readiness suite checks Project Instructions length, public-repo safety,
-Goal Mode defaults, manifest paths, Knowledge Bundles, and index coverage.
-For the exact gate definitions, read [`MASTER_STATUS.md`](MASTER_STATUS.md).
-
-Useful operating references:
-
-- [`docs/guides/CHATGPT_CODEX_OPERATING_GUIDE.md`](docs/guides/CHATGPT_CODEX_OPERATING_GUIDE.md)
-- [`SYNC_CONTRACT.md`](SYNC_CONTRACT.md)
-- [`HANDOFF_STYLE_STANDARD.md`](HANDOFF_STYLE_STANDARD.md)
-- [`docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`](docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md)
-
-## Boundaries
-
-AI-OS does not add a production agent platform. Embeddings, semantic search,
-vector databases, web UI, autonomous retrieval, agentic workflows, and
-production deployments remain blocked promotion items. Public visibility does
-not grant reuse rights; the repository has no open-source license.
+- [Repository map](docs/REPOSITORY_MAP.md)
+- [Project registry](PROJECT_REGISTRY.md)
+- [Goal Mode](GOAL_MODE.md)
+- [Sync Contract](SYNC_CONTRACT.md)
+- [Autonomous Execution Standard](docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md)
+- [Current status](CURRENT_STATUS.md)
+- [Security policy](.github/SECURITY.md)
 
 ## Local path placeholders
 
