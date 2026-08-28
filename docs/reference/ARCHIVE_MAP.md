@@ -2,7 +2,9 @@
 
 ```text
 AI_OS_Project_Settings_v05/
-├── ARCHIVE_MAP.md
+├── docs/
+│   └── reference/
+│       └── ARCHIVE_MAP.md
 ├── MANIFEST.json
 ├── MANIFEST.md
 ├── UPLOAD_GUIDE.md

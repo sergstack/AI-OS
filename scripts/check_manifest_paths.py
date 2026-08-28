@@ -36,7 +36,7 @@ GOVERNANCE_DOCS = [
     "REPO_PATHS.md",
     "MANIFEST.md",
     "MANIFEST.json",
-    "ARCHIVE_MAP.md",
+    "docs/reference/ARCHIVE_MAP.md",
     "UPLOAD_GUIDE.md",
     "CURRENT_STATUS.md",
 ]

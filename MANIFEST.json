@@ -21,7 +21,7 @@
   ],
   "local_files": [
     "AGENTS.md",
-    "ARCHIVE_MAP.md",
+    "docs/reference/ARCHIVE_MAP.md",
     "docs/standards/COMMAND_SURFACE.md",
     "docs/standards/CONTEXT_PACK_STANDARD.md",
     "docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md",
