@@ -13,7 +13,29 @@ and irreversible decisions with a human owner.
 > satisfied. This public repository is **not open source**; see the
 > [rights posture](docs/rights_posture.md).
 
-## Why AI-OS is different
+## The system at a glance
+
+```mermaid
+flowchart LR
+    A["Broad goal or raw input"] --> B["[Inbox Router]<br/>when the route is unclear"]
+    B --> C["One accountable Project"]
+    C --> D{"Repository change?"}
+    D -->|"no"| E["Domain result<br/>with evidence and limits"]
+    D -->|"yes"| F["[Codex]<br/>bounded handoff"]
+    F --> G["Codex APP<br/>branch and implementation"]
+    E --> H["Validation and source checks"]
+    G --> H
+    H --> I{"Human owner decision"}
+    I -->|"accept"| J["Review and merge<br/>where authorized"]
+    I -->|"not accepted"| K["Revise, stop, or roll back"]
+```
+
+This is a control loop, not an autonomous agent loop: work may move forward
+automatically only within the authorized, reversible scope. Acceptance,
+merge, production promotion, and other consequential decisions remain human
+decisions.
+
+## What makes the architecture distinctive
 
 Most AI workspaces stop at a prompt, a collection of documents, or an agent
 loop. AI-OS makes the operational boundaries explicit and versioned.
@@ -30,6 +52,20 @@ loop. AI-OS makes the operational boundaries explicit and versioned.
 The result is a repository that can be inspected at every boundary: where a
 task should go, which source owns its content, which artifact is uploaded, what
 was checked, and what still needs an owner decision.
+
+### Five connected mechanisms
+
+| Mechanism | Control it adds | Canonical owner |
+|---|---|---|
+| **Routing and ownership** | One task has one primary destination; cross-domain work uses an explicit handoff rather than an implicit transfer. | [Routing Rules](ROUTING_RULES.md) and [Project Registry](PROJECT_REGISTRY.md) |
+| **Knowledge provenance** | Granular sources own meaning; generated bundles carry declared source fingerprints for formal upload. | [Sync Contract](SYNC_CONTRACT.md) and project `UPLOAD_LIST.md` files |
+| **Bounded delivery** | Goal Mode requires a smallest useful branch change, relevant checks, rollback, and acceptance reporting. | [Goal Mode](GOAL_MODE.md) |
+| **Execution traceability** | AES defines requirement, validation, defect, corrective-action, and closure-review vocabulary without taking ownership from Projects. | [AES](docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md) |
+| **Evidence and authority** | Repository checks, smoke QA, pilots, external sync, review, and production authorization remain distinct states. | [Master Status](MASTER_STATUS.md) and [Current Status](CURRENT_STATUS.md) |
+
+The two most important separations are deliberate: a generated artifact never
+becomes the semantic owner of its source, and a validated result never becomes
+an accepted decision without the appropriate human authority.
 
 ## How the system works
 
@@ -66,11 +102,13 @@ calculation or a repository mutation.
 
 ### Canonical sources and upload artifacts
 
-```text
-canonical granular Knowledge/ source
-  -> declared source fingerprint
-  -> generated Knowledge_Bundle
-  -> manual ChatGPT Project Knowledge upload
+```mermaid
+flowchart LR
+    A["Granular Knowledge/<br/>canonical semantic source"] --> B["Declared sources<br/>and source fingerprint"]
+    B --> C["Generated Knowledge_Bundle<br/>upload artifact"]
+    C --> D["Manual ChatGPT Project<br/>Knowledge upload"]
+    A -. "repository remains live source of truth" .-> E["GitHub / local checkout"]
+    E -. "fresh state" .-> D
 ```
 
 The repository is the live source of truth. ChatGPT Project Knowledge is a
