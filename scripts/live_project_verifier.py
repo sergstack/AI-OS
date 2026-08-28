@@ -270,7 +270,7 @@ def sync_gate(root: Path, project_ref: ProjectRef, checklist: Path) -> dict[str,
 
 def plan_impact(root: Path, base: str, head: str) -> dict[str, object]:
     registry = parse_project_registry(root / "PROJECT_REGISTRY.md")
-    cases = parse_smoke_cases(root / "SMOKE_QA_REFRESH_PLAN.md")
+    cases = parse_smoke_cases(root / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")
     changed = [line for line in _run_git(root, "diff", "--name-only", f"{base}..{head}").splitlines() if line]
     affected: set[str] = set()
     rationale: list[str] = []
@@ -291,7 +291,7 @@ def plan_impact(root: Path, base: str, head: str) -> dict[str, object]:
                 break
         if matched or Path(path).name.casefold().startswith("readme"):
             continue
-        if path in {"PROJECT_REGISTRY.md", "SMOKE_QA_REFRESH_PLAN.md", "PILOT_CASES.md", "CHATGPT_PROJECT_SYNC_CHECKLIST.md"}:
+        if path in {"PROJECT_REGISTRY.md", "docs/operations/SMOKE_QA_REFRESH_PLAN.md", "docs/operations/PILOT_CASES.md", "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md"}:
             affected.update(MVP_PROJECTS)
             rationale.append(f"{path}: verifier governance regression")
         else:
@@ -570,7 +570,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     root = _root(args.root)
     registry = parse_project_registry(root / "PROJECT_REGISTRY.md")
-    cases = parse_smoke_cases(root / "SMOKE_QA_REFRESH_PLAN.md")
+    cases = parse_smoke_cases(root / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")
     try:
         if args.command == "plan":
             output = plan_impact(root, args.base, args.head)
@@ -583,7 +583,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise ContractError("project is outside Live Project Verifier v1 scope")
             project_ref = registry[args.project]
             if args.command == "sync":
-                output = sync_gate(root, project_ref, root / "CHATGPT_PROJECT_SYNC_CHECKLIST.md")
+                output = sync_gate(root, project_ref, root / "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md")
             else:
                 test_case = cases.get(args.test_id)
                 if test_case is None:
@@ -597,7 +597,7 @@ def main(argv: list[str] | None = None) -> int:
                     live = CapturedLiveTransport(capture).run(project_ref, test_case)
                     judge_payload = json.loads(args.judge.read_text(encoding="utf-8"))
                     judge_result = parse_judge(judge_payload, args.project)
-                    sync_result = sync_gate(root, project_ref, root / "CHATGPT_PROJECT_SYNC_CHECKLIST.md")
+                    sync_result = sync_gate(root, project_ref, root / "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md")
                     deterministic = deterministic_evaluate(test_case, live.response)
                     output = governed_record(
                         root, project_ref, test_case, live, sync_result, deterministic, judge_result

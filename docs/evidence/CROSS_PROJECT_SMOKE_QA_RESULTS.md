@@ -20,10 +20,10 @@ Revision update: the two original `revise` findings from PR #62 were fixed in Pr
 
 ## Files Checked
 
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `../operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`
 - `SMOKE_QA_RESULTS.md`
-- `SMOKE_QA_REFRESH_PLAN.md`
-- `PILOT_CASES.md`
+- `../operations/SMOKE_QA_REFRESH_PLAN.md`
+- `../operations/PILOT_CASES.md`
 - `archive/reports/KB_COMPACT_CONSISTENCY_REPORT.md`
 - `ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md`
 - `ChatGPT/[Thinking]/PROJECT_INSTRUCTIONS.md`
@@ -83,7 +83,7 @@ Other project smoke QA was run in ChatGPT UI as one combined prompt per project,
 | `python3 scripts/check_knowledge_bundles.py` | pass | 6 projects checked; 30 bundles checked; failed=0. |
 | `python3 scripts/sync_aios.py` | pass | Internal checks passed; helper printed sync readiness guidance and did not upload, push, or modify remote systems. |
 | `git diff --check` | pass | No whitespace errors reported. |
-| `git status --short` | pass | Shows only expected docs/settings files changed: `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, `CROSS_PROJECT_SMOKE_QA_RESULTS.md`, `ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md`, and `ChatGPT/[Inbox Router]/PROJECT_INSTRUCTIONS.md`. |
+| `git status --short` | pass | Shows only expected docs/settings files changed: `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`, `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md`, `ChatGPT/[Codex]/PROJECT_INSTRUCTIONS.md`, and `ChatGPT/[Inbox Router]/PROJECT_INSTRUCTIONS.md`. |
 
 ## Checklist Updates Made
 
@@ -97,7 +97,7 @@ Other project smoke QA was run in ChatGPT UI as one combined prompt per project,
 
 ## Pilot Statuses
 
-`PILOT_CASES.md` was not changed.
+`../operations/PILOT_CASES.md` was not changed.
 All pilot completions remain open / `not_verified` unless already recorded elsewhere.
 
 ## Residual Risks
@@ -114,7 +114,7 @@ All pilot completions remain open / `not_verified` unless already recorded elsew
 - Checklist updates: observed UI sync and smoke QA status recorded for `[Thinking]`, `[Analytics]`, `[LLM]`, `[Codex]`, and `[Inbox Router]`; `[AI OS]` reused issue #59 row.
 - Pilots left open: yes.
 - Risks / limitations: combined prompts for the original cross-project run, no full byte-for-byte UI instruction comparison, no production promotion.
-- Rollback: revert this documentation update, the related `CHATGPT_PROJECT_SYNC_CHECKLIST.md` row updates, and the two Project Instructions wording updates.
+- Rollback: revert this documentation update, the related `../operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md` row updates, and the two Project Instructions wording updates.
 - Acceptance status: `candidate / ready for human review`.
 
 ## Next Step

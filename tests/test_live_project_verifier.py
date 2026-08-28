@@ -25,7 +25,9 @@ def write_contracts(tmp_path: Path, smoke: str | None = None) -> None:
         "| `[Analytics]` | `ChatGPT/[Analytics]` | `PROJECT_INSTRUCTIONS.md` <= 8000 chars |\n",
         encoding="utf-8",
     )
-    (tmp_path / "SMOKE_QA_REFRESH_PLAN.md").write_text(
+    plan_path = tmp_path / "docs/operations/SMOKE_QA_REFRESH_PLAN.md"
+    plan_path.parent.mkdir(parents=True)
+    plan_path.write_text(
         smoke
         or """## [AI OS] Smoke QA
 Test ID: `LIVE-AIOS-SMOKE-001`
@@ -53,7 +55,7 @@ def test_canonical_project_resolution(tmp_path: Path) -> None:
 
 
 def test_stable_test_id_parsing() -> None:
-    cases = lpv.parse_smoke_cases(ROOT / "SMOKE_QA_REFRESH_PLAN.md")
+    cases = lpv.parse_smoke_cases(ROOT / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")
     assert set(cases) >= {
         "LIVE-AIOS-SMOKE-001",
         "LIVE-AIOS-SMOKE-002",
@@ -68,7 +70,7 @@ def test_stable_test_id_parsing() -> None:
 def test_missing_test_id_fails_for_mvp_project(tmp_path: Path) -> None:
     write_contracts(tmp_path, "## [AI OS] Smoke QA\nQuestion: unregistered\n")
     with pytest.raises(lpv.ContractError, match="missing Test ID"):
-        lpv.parse_smoke_cases(tmp_path / "SMOKE_QA_REFRESH_PLAN.md")
+        lpv.parse_smoke_cases(tmp_path / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")
 
 
 def test_duplicate_test_id_fails(tmp_path: Path) -> None:
@@ -86,7 +88,7 @@ Fail condition: F2
 """
     write_contracts(tmp_path, block)
     with pytest.raises(lpv.ContractError, match="duplicate Test ID"):
-        lpv.parse_smoke_cases(tmp_path / "SMOKE_QA_REFRESH_PLAN.md")
+        lpv.parse_smoke_cases(tmp_path / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")
 
 
 def make_history(tmp_path: Path, first: str, second: str) -> tuple[str, str]:
@@ -135,11 +137,13 @@ def test_unknown_path_is_conservative(tmp_path: Path) -> None:
 
 def test_sync_not_verified(tmp_path: Path) -> None:
     write_contracts(tmp_path)
-    (tmp_path / "CHATGPT_PROJECT_SYNC_CHECKLIST.md").write_text("# no rows\n", encoding="utf-8")
+    checklist_path = tmp_path / "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md"
+    checklist_path.parent.mkdir(parents=True, exist_ok=True)
+    checklist_path.write_text("# no rows\n", encoding="utf-8")
     result = lpv.sync_gate(
         tmp_path,
         lpv.ProjectRef("[AI OS]", "ChatGPT/[AI OS]"),
-        tmp_path / "CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        checklist_path,
     )
     assert result["state"] == "SYNC_NOT_VERIFIED"
 
@@ -206,7 +210,7 @@ def test_run_record_validation_rejects_runtime_response() -> None:
 
 
 def test_synthetic_negative_fixture_cannot_pass() -> None:
-    case = lpv.parse_smoke_cases(ROOT / "SMOKE_QA_REFRESH_PLAN.md")["LIVE-AIOS-SMOKE-002"]
+    case = lpv.parse_smoke_cases(ROOT / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")["LIVE-AIOS-SMOKE-002"]
     capture = json.loads((ROOT / "tests/fixtures/live_project_bad_response.json").read_text(encoding="utf-8"))
     result = lpv.deterministic_evaluate(case, capture["response"])
     assert result.result == "fail"
@@ -216,7 +220,7 @@ def test_synthetic_negative_fixture_cannot_pass() -> None:
 def test_capture_hash_scope_is_preserved() -> None:
     capture = json.loads((ROOT / "tests/fixtures/live_project_bad_response.json").read_text(encoding="utf-8"))
     capture["capture_scope"] = "bounded exact excerpt"
-    case = lpv.parse_smoke_cases(ROOT / "SMOKE_QA_REFRESH_PLAN.md")["LIVE-AIOS-SMOKE-002"]
+    case = lpv.parse_smoke_cases(ROOT / "docs/operations/SMOKE_QA_REFRESH_PLAN.md")["LIVE-AIOS-SMOKE-002"]
     response = lpv.CapturedLiveTransport(capture).run(
         lpv.ProjectRef("[AI OS]", "ChatGPT/[AI OS]"), case
     )

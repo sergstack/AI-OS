@@ -24,4 +24,4 @@ All listed cases are deterministic Level A assertions. Model-evaluated and isola
 | Route: Codex APP | 3 | 1 | 0 | 0 | 4 | 0 |
 | Repository-wide hard-fail classes | 0 | 0 | 0 | 12 | 12 | 0 |
 
-The 22 regression cases preserve every individual `pass` row documented in `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md`; the cross-project aggregate `[AI OS]` row is represented by its seven underlying cases rather than counted twice.
+The 22 regression cases preserve every individual `pass` row documented in `docs/evidence/SMOKE_QA_RESULTS.md` and `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md`; the cross-project aggregate `[AI OS]` row is represented by its seven underlying cases rather than counted twice.

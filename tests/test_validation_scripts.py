@@ -424,12 +424,14 @@ def test_manifest_validator_detects_missing_project_definition(tmp_path: Path) -
         "[Thinkers OS]": "ChatGPT/[Thinkers OS]",
     }
     for rel in (
-        "CHATGPT_PROJECT_SYNC_CHECKLIST.md",
-        "PILOT_CASES.md",
-        "SMOKE_QA_REFRESH_PLAN.md",
+        "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        "docs/operations/PILOT_CASES.md",
+        "docs/operations/SMOKE_QA_REFRESH_PLAN.md",
     ):
         source = (REPO_ROOT / rel).read_text(encoding="utf-8")
-        (tmp_path / rel).write_text(
+        target = tmp_path / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
             "\n".join(line for line in source.splitlines() if "[Thinkers OS]" not in line),
             encoding="utf-8",
         )
@@ -596,10 +598,10 @@ def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
     assert "protected=" not in workflow
     required_codeowner_patterns = {
         "/schemas/",
-        "/SMOKE_QA_RESULTS.md",
-        "/CROSS_PROJECT_SMOKE_QA_RESULTS.md",
-        "/PILOT_CASES.md",
-        "/PILOT_RESULTS_TEMPLATE.md",
+        "/docs/evidence/SMOKE_QA_RESULTS.md",
+        "/docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md",
+        "/docs/operations/PILOT_CASES.md",
+        "/docs/operations/PILOT_RESULTS_TEMPLATE.md",
         "/AUTONOMOUS_EXECUTION_STANDARD.md",
         "/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
         "/ROUTING_RULES.md",
@@ -607,7 +609,7 @@ def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
         "/PROMPT_QA_FACTORY.md",
         "/PROJECT_CAPABILITIES.yaml",
         "/knowledge_bundle_manifest.json",
-        "/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        "/docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
         "/ChatGPT/*/Knowledge/HANDOFF_PROTOCOL.md",
     }
     assert required_codeowner_patterns <= codeowners_patterns

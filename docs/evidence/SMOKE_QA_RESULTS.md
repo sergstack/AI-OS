@@ -28,9 +28,9 @@ This report records repository checks and direct ChatGPT UI smoke QA evidence.
 - `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_04_GOAL_PACKS_AND_COMMAND_SURFACE.md`
 - `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_05_SUPERVISED_AGENT_LOOPS.md`
 - `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_06_CROSS_PROJECT_AI_EVALS.md`
-- `SMOKE_QA_REFRESH_PLAN.md`
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- `PILOT_CASES.md`
+- `../operations/SMOKE_QA_REFRESH_PLAN.md`
+- `../operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `../operations/PILOT_CASES.md`
 - `archive/reports/KB_COMPACT_CONSISTENCY_REPORT.md`
 
 ## ChatGPT UI Smoke QA
@@ -61,7 +61,7 @@ The captured answer began with the required evidence header: `KB провере�
 
 ## Blockers
 
-- Pilot execution is not complete. `PILOT_CASES.md` still records `PILOT-AIOS-001` as `draft` with `unsupported` confidence.
+- Pilot execution is not complete. `../operations/PILOT_CASES.md` still records `PILOT-AIOS-001` as `draft` with `unsupported` confidence.
 - Production promotion remains `no`.
 
 ## Residual Risks
@@ -82,4 +82,4 @@ The captured answer began with the required evidence header: `KB провере�
 
 ## Next Step
 
-Execute `PILOT-AIOS-001`, record pilot evidence with `PILOT_RESULTS_TEMPLATE.md`, and keep production promotion blocked until required pilots pass and are accepted by the human owner.
+Execute `PILOT-AIOS-001`, record pilot evidence with `../operations/PILOT_RESULTS_TEMPLATE.md`, and keep production promotion blocked until required pilots pass and are accepted by the human owner.

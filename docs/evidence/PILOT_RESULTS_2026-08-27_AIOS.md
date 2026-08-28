@@ -34,7 +34,7 @@ Evidence:
 - direct live response: <https://chatgpt.com/g/g-p-6a0512a228c88191afcc953866789dad-ai-os/c/6a9019be-c360-83eb-b5fb-0d2bd736cd7a>;
 - response completed in the live `[AI OS]` project; no source upload,
   settings change, implementation handoff, or production action occurred;
-- repository context: `PILOT_CASES.md`, `CHATGPT_PROJECT_SYNC_CHECKLIST.md`,
+- repository context: `../operations/PILOT_CASES.md`, `../operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`,
   and the existing `[AI OS]` smoke/sync evidence.
 
 Checks run:

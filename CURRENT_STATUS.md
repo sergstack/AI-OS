@@ -12,7 +12,7 @@
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - acceptance_status: candidate / ready for human review
-- smoke_qa_evidence: SMOKE_QA_RESULTS.md; CROSS_PROJECT_SMOKE_QA_RESULTS.md
+- smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
 - blocked_items:
   - embeddings
@@ -51,7 +51,7 @@ Evidence-dependent or external state:
 Observed external pilot evidence — 2026-08-27:
 
 - `PILOT-AIOS-001` completed one live `[AI OS]` response and is recorded as
-  `candidate` with `medium` confidence in `PILOT_RESULTS_2026-08-27_AIOS.md`.
+  `candidate` with `medium` confidence in `docs/evidence/PILOT_RESULTS_2026-08-27_AIOS.md`.
 - The response named its KB sources, separated facts from hypotheses, retained
   the promotion gate for embeddings, semantic search, and vector DB, and
   routed the next step to bounded governance evidence collection.
@@ -61,7 +61,7 @@ Observed external pilot evidence — 2026-08-27:
 
 - `PILOT-THINKING-001` completed one live decision memo and is recorded as
   `candidate` with `medium` confidence in
-  `PILOT_RESULTS_2026-08-27_THINKING.md`.
+  `docs/evidence/PILOT_RESULTS_2026-08-27_THINKING.md`.
 - The memo compared four reversible options, separated facts, assumptions, and
   unknowns, identified risks, set a `recommended` decision status and revisit
   triggers, and handed the next stage back to `[AI OS]`.
@@ -71,7 +71,7 @@ Observed external pilot evidence — 2026-08-27:
 
 - `PILOT-ANALYTICS-001` completed one live quick-analysis response on an
   artificial three-row dataset and is recorded as `candidate` with `medium`
-  confidence in `PILOT_RESULTS_2026-08-27_ANALYTICS.md`.
+  confidence in `docs/evidence/PILOT_RESULTS_2026-08-27_ANALYTICS.md`.
 - The response defined grain, period, units, formulas, `RAW → stage → mart`,
   reconciliation checks, and limitations. It handled the zero-plan row without
   inventing a percentage and made no causal claim beyond the supplied data.
@@ -80,7 +80,7 @@ Observed external pilot evidence — 2026-08-27:
 
 - `PILOT-CROSS-001` completed one live `[AI OS] → [Thinking] → [AI OS]`
   routing/resume case and is recorded as `candidate` with `medium` confidence
-  in `PILOT_RESULTS_2026-08-27_CROSS.md`.
+  in `docs/evidence/PILOT_RESULTS_2026-08-27_CROSS.md`.
 - The route preserved the original goal, constraints, owner boundaries, and
   return path; no scope drift or role confusion was observed. This is limited
   evidence from one route, not proof of general cross-project reliability,
@@ -107,7 +107,8 @@ Recent verified state:
 - Goal Mode is the default; strict task packages are reserved for high-risk,
   already-scoped, ultra-long, or explicitly requested work.
 - ChatGPT Project upload mode is compact `Knowledge_Bundles` by default.
-- `SMOKE_QA_RESULTS.md` and `CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
+- `docs/evidence/SMOKE_QA_RESULTS.md` and
+  `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` record
   2026-07-06 smoke QA evidence. Smoke QA does not equal production readiness.
 - `PILOT-AIOS-001`, `PILOT-THINKING-001`, `PILOT-ANALYTICS-001`, and
   `PILOT-CROSS-001` have recorded candidate results; all other pilots remain
@@ -162,7 +163,7 @@ Run repository validation before PR review: use the canonical command set from `
 
 Then complete operational verification:
 
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`
 - obtain owner review for the four candidate pilots, then capture the next real
-  failure-to-regression case from `PILOT_CASES.md`
+  failure-to-regression case from `docs/operations/PILOT_CASES.md`
 - keep production promotion blocked until accepted pilot evidence exists

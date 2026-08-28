@@ -72,9 +72,9 @@ debugging a sync problem.
 | Entry and routing | `README.md`, this map, registries | Explain where to start; do not copy domain methodology |
 | Governance and contracts | `AGENTS.md`, `GOAL_MODE.md`, active standards | Normative rules; protected-path review applies |
 | Current status | root and project-local `CURRENT_STATUS.md` | State maturity and next action; do not redefine gates |
+| Operations | [`docs/operations/`](operations) | Active sync, smoke-QA, and pilot records; not entry-point policy |
 | Gate definitions | `MASTER_STATUS.md` | Define validation and operational gates and point to evidence |
-| Operational records | checklists, pilot plans, manifests | Track one operation or package; not general policy |
-| Evidence | smoke-QA, pilot, and acceptance results | Record what was checked; passing evidence is not production approval |
+| Evidence | [`docs/evidence/`](evidence) | Record what was checked; passing evidence is not production approval |
 | Delivery artifacts | `Knowledge_Bundles/`, Stream Deck exports | Distributable surfaces derived from canonical sources |
 | History | [`archive/`](../archive), including completed task packages | Preserve audit history; not current guidance unless actively referenced |
 
