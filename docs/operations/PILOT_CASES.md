@@ -22,7 +22,7 @@ Allowed pilot statuses: `backlog`, `candidate`, `active`, `accepted`, `deprecate
 | `PILOT-INBOX-001` | `[Inbox Router]` | backlog | unsupported | Sergey | Sync project, run smoke QA, then execute pilot |
 | `PILOT-THINKERS-001` | `[Thinkers OS]` | backlog | unsupported | Sergey | Complete manual sync, run smoke QA, then execute bounded source-to-artifact pilot |
 | `PILOT-CODEXAPP-001` | Codex APP | backlog | unsupported | Sergey | Run local task package classification pilot |
-| `PILOT-CROSS-001` | Cross-project | candidate | medium | Sergey | Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a real failure-to-regression case |
+| `PILOT-CROSS-001` | Cross-project | candidate | medium | Sergey | Owner review of `../evidence/PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a real failure-to-regression case |
 
 ## [AI OS] Pilot
 
@@ -38,7 +38,7 @@ Owner: Sergey
 Status: candidate
 Confidence: medium
 Revisit trigger: AI OS project instructions, Knowledge files, evidence rules, or blocked promotion gates change.
-Next step: Owner review of `PILOT_RESULTS_2026-08-27_AIOS.md`, then run the next bounded pilot without changing blocked promotion items.
+Next step: Owner review of `../evidence/PILOT_RESULTS_2026-08-27_AIOS.md`, then run the next bounded pilot without changing blocked promotion items.
 
 ## [Thinkers OS] Pilot
 
@@ -70,7 +70,7 @@ Owner: Sergey
 Status: candidate
 Confidence: medium
 Revisit trigger: decision status rules, routing rules, or judge/revisor standards change.
-Next step: Owner review of `PILOT_RESULTS_2026-08-27_THINKING.md`, then run the next bounded pilot without expanding architecture.
+Next step: Owner review of `../evidence/PILOT_RESULTS_2026-08-27_THINKING.md`, then run the next bounded pilot without expanding architecture.
 
 ## [Analytics] Pilot
 
@@ -86,7 +86,7 @@ Owner: Sergey
 Status: candidate
 Confidence: medium
 Revisit trigger: analytics workflow, data contract, QA, or mart standards change.
-Next step: Owner review of `PILOT_RESULTS_2026-08-27_ANALYTICS.md`, then run the cross-project pilot without widening scope.
+Next step: Owner review of `../evidence/PILOT_RESULTS_2026-08-27_ANALYTICS.md`, then run the cross-project pilot without widening scope.
 
 ## [LLM] Pilot
 
@@ -166,7 +166,7 @@ Owner: Sergey
 Status: backlog
 Confidence: unsupported
 Revisit trigger: any project role, handoff, or production promotion policy changes.
-Next step: Owner review of `PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a
+Next step: Owner review of `../evidence/PILOT_RESULTS_2026-08-27_CROSS.md`, then capture a
 real observed failure as a separate bounded regression candidate. Do not invent
 a failure or change architecture automatically.
 

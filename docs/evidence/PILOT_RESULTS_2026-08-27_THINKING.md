@@ -33,7 +33,7 @@ Evidence:
 - direct live decision memo: <https://chatgpt.com/g/g-p-69e9f13c78c8819188256ba238a46627-thinking/c/6a901d93-4b40-83ed-9560-fa273c8ffcd8>;
 - response completed in the live `[Thinking]` project; no source upload,
   settings change, calculation, implementation, or production action occurred;
-- repository context: `PILOT_CASES.md`, `CHATGPT_PROJECT_SYNC_CHECKLIST.md`,
+- repository context: `../operations/PILOT_CASES.md`, `../operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`,
   and existing `[Thinking]` instruction and smoke evidence.
 
 Checks run:

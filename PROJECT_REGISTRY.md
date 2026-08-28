@@ -48,9 +48,9 @@ production authorization.
 
 ## Operational Artifacts
 
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- `PILOT_CASES.md`
-- `SMOKE_QA_REFRESH_PLAN.md`
+- `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `docs/operations/PILOT_CASES.md`
+- `docs/operations/SMOKE_QA_REFRESH_PLAN.md`
 - `ChatGPT/[Project]/Knowledge_Bundles/`
 
 ## Canonical Workflows

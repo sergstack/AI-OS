@@ -56,10 +56,10 @@ def test_representative_governance_paths_require_owner_review() -> None:
     allowlist = auto_allowlist()
     protected_paths = [
         "schemas/autonomous_execution_record.schema.json",
-        "SMOKE_QA_RESULTS.md",
-        "CROSS_PROJECT_SMOKE_QA_RESULTS.md",
-        "PILOT_CASES.md",
-        "PILOT_RESULTS_TEMPLATE.md",
+        "docs/evidence/SMOKE_QA_RESULTS.md",
+        "docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md",
+        "docs/operations/PILOT_CASES.md",
+        "docs/operations/PILOT_RESULTS_TEMPLATE.md",
         "AUTONOMOUS_EXECUTION_STANDARD.md",
         "AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
         "ROUTING_RULES.md",
@@ -67,7 +67,7 @@ def test_representative_governance_paths_require_owner_review() -> None:
         "PROMPT_QA_FACTORY.md",
         "PROJECT_CAPABILITIES.yaml",
         "knowledge_bundle_manifest.json",
-        "CHATGPT_PROJECT_SYNC_CHECKLIST.md",
+        "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md",
         "ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md",
     ]
     assert all(not allowlist.fullmatch(path) for path in protected_paths)

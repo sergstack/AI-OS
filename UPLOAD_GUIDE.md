@@ -83,7 +83,7 @@ SMOKE_QA_FOR_AI_OS.md
 
 ## 6. Operational verification
 
-After manual sync, record status in `CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smoke QA from `SMOKE_QA_REFRESH_PLAN.md`, and complete the relevant pilot in `PILOT_CASES.md`.
+After manual sync, record status in `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`, run smoke QA from `docs/operations/SMOKE_QA_REFRESH_PLAN.md`, and complete the relevant pilot in `docs/operations/PILOT_CASES.md`.
 
 ## 7. Compact Knowledge bundles
 
@@ -103,7 +103,7 @@ For a changed bundle, replace only that bundle in the matching ChatGPT Project:
    filename.
 
 Record the observed replacement and any affected smoke QA in
-`CHATGPT_PROJECT_SYNC_CHECKLIST.md`. A replaced filename proves only source
+`docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`. A replaced filename proves only source
 transport; it does not prove behavioural smoke QA, owner acceptance, or
 production authorization.
 

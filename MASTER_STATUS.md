@@ -40,10 +40,10 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 ## Evidence Pointers
 
-- `SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
-- `CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md` — manual sync status.
-- `PILOT_CASES.md` — pilot backlog; pilot completion still requires result evidence.
+- `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
+- `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
+- `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md` — manual sync status.
+- `docs/operations/PILOT_CASES.md` — pilot backlog; pilot completion still requires result evidence.
 - `StreamDeck/README.md` — StreamDeck active/candidate status.
 
 ## Repository State Reconciliation

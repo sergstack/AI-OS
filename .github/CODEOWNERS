@@ -25,11 +25,11 @@
 /PROMPT_QA_FACTORY.md @sergstack
 /PROJECT_CAPABILITIES.yaml @sergstack
 /knowledge_bundle_manifest.json @sergstack
-/CHATGPT_PROJECT_SYNC_CHECKLIST.md @sergstack
-/SMOKE_QA_RESULTS.md @sergstack
-/CROSS_PROJECT_SMOKE_QA_RESULTS.md @sergstack
-/PILOT_CASES.md @sergstack
-/PILOT_RESULTS_TEMPLATE.md @sergstack
+/docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md @sergstack
+/docs/evidence/SMOKE_QA_RESULTS.md @sergstack
+/docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md @sergstack
+/docs/operations/PILOT_CASES.md @sergstack
+/docs/operations/PILOT_RESULTS_TEMPLATE.md @sergstack
 /docs/AI_DEVELOPMENT_WORKFLOW.md @sergstack
 /docs/MERGE_GATE_OWNER_CHECKLIST.md @sergstack
 /schemas/ @sergstack

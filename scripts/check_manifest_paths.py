@@ -323,9 +323,9 @@ def check_project_registry(root: Path, projects: dict[str, str]) -> list[CheckRe
 def check_cross_project_governance(root: Path, projects: dict[str, str]) -> list[CheckResult]:
     group = "Cross-Project Governance Coverage"
     definitions = {
-        "CHATGPT_PROJECT_SYNC_CHECKLIST.md": None,
-        "PILOT_CASES.md": "Pilot",
-        "SMOKE_QA_REFRESH_PLAN.md": "Smoke QA",
+        "docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md": None,
+        "docs/operations/PILOT_CASES.md": "Pilot",
+        "docs/operations/SMOKE_QA_REFRESH_PLAN.md": "Smoke QA",
     }
     results: list[CheckResult] = []
     for rel, section_suffix in definitions.items():

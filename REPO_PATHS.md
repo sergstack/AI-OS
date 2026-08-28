@@ -33,11 +33,11 @@
 
 ## Operational Verification
 
-- `CHATGPT_PROJECT_SYNC_CHECKLIST.md`
-- `PROJECT_SYNC_TEMPLATE.md`
-- `PILOT_CASES.md`
-- `PILOT_RESULTS_TEMPLATE.md`
-- `SMOKE_QA_REFRESH_PLAN.md`
+- `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md`
+- `docs/operations/PROJECT_SYNC_TEMPLATE.md`
+- `docs/operations/PILOT_CASES.md`
+- `docs/operations/PILOT_RESULTS_TEMPLATE.md`
+- `docs/operations/SMOKE_QA_REFRESH_PLAN.md`
 
 ## Knowledge Bundle Paths
 
