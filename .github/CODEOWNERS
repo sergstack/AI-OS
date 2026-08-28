@@ -3,9 +3,9 @@
 /AGENTS.md @sergstack
 /CLAUDE.md @sergstack
 /GOAL_MODE.md @sergstack
-/GOAL_PACKS.md @sergstack
-/COMMAND_SURFACE.md @sergstack
-/CONTEXT_PACK_STANDARD.md @sergstack
+/docs/standards/GOAL_PACKS.md @sergstack
+/docs/standards/COMMAND_SURFACE.md @sergstack
+/docs/standards/CONTEXT_PACK_STANDARD.md @sergstack
 /MASTER_STATUS.md @sergstack
 /CURRENT_STATUS.md @sergstack
 /SYNC_CONTRACT.md @sergstack
@@ -13,8 +13,8 @@
 /MANIFEST.md @sergstack
 /MANIFEST.json @sergstack
 /PROJECT_REGISTRY.md @sergstack
-/PARENT_CHILD_ISSUE_GATE_STANDARD.md @sergstack
-/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md @sergstack
+/docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md @sergstack
+/docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md @sergstack
 /ARCHIVE_MAP.md @sergstack
 /UPLOAD_GUIDE.md @sergstack
 /REPO_PATHS.md @sergstack
@@ -22,7 +22,7 @@
 /AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md @sergstack
 /ROUTING_RULES.md @sergstack
 /HANDOFF_STYLE_STANDARD.md @sergstack
-/PROMPT_QA_FACTORY.md @sergstack
+/docs/standards/PROMPT_QA_FACTORY.md @sergstack
 /PROJECT_CAPABILITIES.yaml @sergstack
 /knowledge_bundle_manifest.json @sergstack
 /docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md @sergstack

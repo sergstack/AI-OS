@@ -606,7 +606,7 @@ def test_merge_gate_protected_paths_match_codeowners_roots() -> None:
         "/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md",
         "/ROUTING_RULES.md",
         "/HANDOFF_STYLE_STANDARD.md",
-        "/PROMPT_QA_FACTORY.md",
+        "/docs/standards/PROMPT_QA_FACTORY.md",
         "/PROJECT_CAPABILITIES.yaml",
         "/knowledge_bundle_manifest.json",
         "/docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md",

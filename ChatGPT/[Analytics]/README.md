@@ -21,7 +21,7 @@ The root-level path `/[Analytics]` is not the active source unless it is explici
 2. Загрузи все файлы из папки `Knowledge/` в knowledge area проекта `[Analytics]`.
 3. Файлы из `Templates/` можно загрузить как knowledge или держать как рабочие шаблоны.
 4. Файлы из `Codex_Tasks/` используй для передачи задач в `[Codex]`, когда нужно изменить код/документы/автоматизацию.
-5. Для complex/high-risk analytics work со staged child issues используй `../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` by reference; не копируй полный текст в project guidance.
+5. Для complex/high-risk analytics work со staged child issues используй `../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` by reference; не копируй полный текст в project guidance.
 
 ZIP — только транспортный архив. Не загружай ZIP как единственный knowledge source, если можно загрузить отдельные `.md` файлы.
 

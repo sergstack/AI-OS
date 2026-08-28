@@ -24,7 +24,7 @@ Do not upload granular `Knowledge/` files together with bundles unless debugging
 
 ## Active granular Knowledge sources
 
-- `../../EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` — shared engineering/Codex standard for controlled cleanup/refactor of existing working scripts.
+- `../../docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` — shared engineering/Codex standard for controlled cleanup/refactor of existing working scripts.
 - `ACCEPTANCE_CRITERIA.md`
 - `AGENTS.md`
 - `AI_OS_REFERENCE.md`
@@ -73,9 +73,9 @@ Do not upload:
 Task packages produced in this ChatGPT Project should be executable by `Codex APP`.
 Use `../../Codex APP/CODEX_APP_TASK_PACKAGE_CONTRACT.md` and `../../Codex APP/CODEX_APP_INTAKE_GATE.md` as the receiving-side contract.
 
-For complex/high-risk GitHub issue sequences, cite `../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` as the parent/child dependency gate reference. Do not use it to make child issues mandatory for simple Goal Mode tasks.
+For complex/high-risk GitHub issue sequences, cite `../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` as the parent/child dependency gate reference. Do not use it to make child issues mandatory for simple Goal Mode tasks.
 
-For existing working script or pipeline cleanup/refactor, cite `../../EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`; `[Codex]` applies it operationally after current behavior, output contract, and safety tests are pinned down.
+For existing working script or pipeline cleanup/refactor, cite `../../docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`; `[Codex]` applies it operationally after current behavior, output contract, and safety tests are pinned down.
 
 ## Что не делать
 

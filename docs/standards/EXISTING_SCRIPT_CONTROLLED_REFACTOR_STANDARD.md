@@ -156,7 +156,7 @@ This split is recommended, not mandatory. Use the smallest structure that makes 
 
 ## Parent/child decomposition for large risky refactors
 
-For large or risky refactors, use `Parent / Child Issue Gate Standard` from `PARENT_CHILD_ISSUE_GATE_STANDARD.md`.
+For large or risky refactors, use `Parent / Child Issue Gate Standard` from `docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md`.
 
 Do not duplicate the full parent/child standard here.
 

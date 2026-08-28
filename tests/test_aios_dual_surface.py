@@ -224,7 +224,7 @@ def test_missing_canonical_path_blocks_before_context_loading(tmp_path: Path) ->
 def test_orchestrator_is_the_default_goal_entrypoint() -> None:
     agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
     goal_mode = (REPO_ROOT / "GOAL_MODE.md").read_text(encoding="utf-8")
-    commands = (REPO_ROOT / "COMMAND_SURFACE.md").read_text(encoding="utf-8")
+    commands = (REPO_ROOT / "docs/standards/COMMAND_SURFACE.md").read_text(encoding="utf-8")
 
     assert "use `ai-os-orchestrator` as the default entrypoint" in agents
     assert "Simple local, reversible repository work" in agents

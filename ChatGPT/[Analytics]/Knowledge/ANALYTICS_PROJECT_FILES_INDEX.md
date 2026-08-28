@@ -33,7 +33,7 @@
 | `SMOKE_QA_FOR_ANALYTICS.md` | Проверка проекта | После загрузки пакета |
 | `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
-| `../../../PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
+| `../../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 
 ## Priority rules
 
