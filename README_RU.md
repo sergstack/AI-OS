@@ -117,6 +117,29 @@ ownership; `[Codex]` готовит implementation work, а Codex APP меняе
 | `[Codex]` | Implementation framing, code review, tests и release handoff. | Scoped execution package для repository work. |
 | `[Thinkers OS]` | Thinker corpus, provenance, synthesis и pattern status. | Source-aware synthesis без выдуманной attribution. |
 
+### Что можно показать снаружи
+
+AI-OS — не просто библиотека prompts. Его ценность можно показать через
+связанные рабочие поверхности:
+
+| Поверхность | Что она даёт | Наблюдаемый масштаб |
+|---|---|---|
+| Семь ChatGPT Projects | Разделяют входящий поток, AI-подходы, решения, аналитику, LLM, разработку и корпус источников. | Явные владельцы, границы и handoff. |
+| Analytics Factory | Ведёт от вопроса и data contract до расчёта, memo и QA. | Реестр из **22** аналитических методов. |
+| Проверка поведения | Не смешивает consistency репозитория с поведением живого ChatGPT Project. | 99 детерминированных проверок, включая **22** регрессионных кейса; live-каталог — 45 кейсов × 3 запуска. |
+| StreamDeck | Делает ежедневные маршруты и безопасные prompts доступными с двух устройств. | 16 переносимых профилей и 140 × 3 model-QA входов. |
+
+22 метода — это не «22 примера ради количества», а словарь способов проверить
+вопрос: изменение и структура, data quality и control, проверка объяснений и
+взгляд вперёд. Полный реестр с предпосылками, ограничениями и владельцами
+проверки находится в
+[ANALYTICAL_TECHNIQUES.md](<ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md>).
+
+В текущем репозитории нет вело-кейса: ни данных, ни готового анализа, ни
+пользовательского сценария про велосипеды. Поэтому он не должен выглядеть как
+уже готовая демонстрация. Такой кейс можно добавить отдельно в `[Analytics]`:
+исходные данные → выбранные методы → проверяемые выводы → memo/визуализация.
+
 Authoritative paths, instruction limits и AES applicability находятся в
 [project registry](PROJECT_REGISTRY.md). Project packages разделены намеренно:
 strategy discussion не должна молча становиться analytics calculation или
