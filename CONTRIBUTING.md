@@ -20,7 +20,7 @@ Run the repository checks before opening a pull request:
 
 ```bash
 python3 scripts/sync_aios.py
-python3 -m pytest tests/ -q
+python3 -m pytest tests/ -rA
 ```
 
 If a check cannot run, document the blocker instead of reporting it as passed.
