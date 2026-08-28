@@ -1,5 +1,7 @@
 # AI-OS
 
+[English](README.md) | [Русский](README_RU.md)
+
 [![Docs Safety](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml/badge.svg)](https://github.com/sergstack/AI-OS/actions/workflows/docs-safety.yml)
 
 AI-OS is a governed operating system for work that spans ChatGPT Projects,
@@ -66,6 +68,27 @@ was checked, and what still needs an owner decision.
 The two most important separations are deliberate: a generated artifact never
 becomes the semantic owner of its source, and a validated result never becomes
 an accepted decision without the appropriate human authority.
+
+### Candidate operational reliability layer
+
+The following layer documents four candidate contracts for making operational
+evidence and failures easier to inspect across runs. It is documentation only:
+it does not add a runtime service, persistent memory, automatic policy changes,
+or a production workflow. The detailed English contract is
+[Operational Reliability](docs/OPERATIONAL_RELIABILITY_EN.md).
+
+| Общая механика | Английское название | Русское название |
+| --- | --- | --- |
+| Жизненный цикл evidence | Evidence lifecycle ledger | Журнал жизненного цикла evidence |
+| Намерение запуска | Versioned run intent | Версионированное намерение запуска |
+| Наблюдаемость отказов | Typed fault telemetry | Типизированная телеметрия сбоев |
+| Превращение сбоя в проверку | Failure-to-regression harness | Контур «сбой → регрессия» |
+
+The exact names `EvidenceUnit`, `ACTIVE`, `SUPERSEDED`, `REVOKED`, `Candidate
+Gate`, `Human Gold`, `fail-closed`, and `digest` remain contract names. Their
+meaning may be explained in Russian, but the names must not be translated or
+silently substituted. Until explicit evaluation and owner acceptance, this
+layer remains `candidate` and does not change existing repository behavior.
 
 ## How the system works
 
