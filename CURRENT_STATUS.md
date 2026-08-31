@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-27 (repository and pilot evidence refresh)
+- last_checked: 2026-08-31 (durable-runtime gap evidence review)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -11,6 +11,7 @@
 - smoke_qa_status: pass
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
+- durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -156,6 +157,18 @@ use
 
 Ordinary work uses the current merged Dual Surface without a special Live Test
 protocol unless an eval is explicitly requested.
+
+## Durable runtime gap review
+
+Issue #342 Phase 0 reviewed the recorded Dual Surface/AES live evidence and the
+provider rate-limit, inaccessible-chat, and handoff-identity cases. The review
+did not find an observed material gap that requires durable runtime mechanics:
+existing routing/continuity cases passed, and the remaining friction has viable
+smaller controls or sits outside an authorized machine-callable boundary.
+
+Phase 0 verdict: `blocked`; Restate Phase 1/2: `not authorized`; implementation
+path: `not_planned`. Evidence and revisit conditions are recorded in
+`docs/evidence/DURABLE_RUNTIME_GAP_PHASE0_2026-08-31.md`.
 
 ## Next action
 
