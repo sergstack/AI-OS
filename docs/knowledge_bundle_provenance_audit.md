@@ -45,8 +45,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md`, `ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md`, `ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md`, `ChatGPT/[AI OS]/Knowledge/KB_USAGE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANALYTICAL_MEMO_FACTORY_CODEX_APP_WORKFLOW.md`, `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_01_ROUTING_AND_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 33095
-- Bundle bytes: 34415
+- Source bytes: 33733
+- Bundle bytes: 35053
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -58,9 +58,9 @@ Blocking record count: **0**
 ## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_02_GOVERNANCE_AND_EVIDENCE.md`
 
 - Project: [AI OS]
-- Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
-- Source bytes: 53154
-- Bundle bytes: 54204
+- Source paths: `ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md`, `ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `docs/standards/AUTONOMOUS_EXECUTION_EXTENSION_CONTRACT.md`, `docs/standards/AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md`, `docs/standards/LOCAL_FIRST_COMPUTE_POLICY.md`, `docs/standards/local_first_task_class_registry.json`, `ChatGPT/[AI OS]/Knowledge/AIOS_02_GOVERNANCE_AND_EVIDENCE_BUNDLE_SEMANTICS.md`
+- Source bytes: 66785
+- Bundle bytes: 68022
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

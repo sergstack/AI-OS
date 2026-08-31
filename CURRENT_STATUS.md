@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-31 (durable-runtime gap evidence review)
+- last_checked: 2026-08-31 (local-first compute P0 audit)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -12,6 +12,7 @@
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
+- local_first_compute_status: candidate policy; production allowlist empty; owner review pending
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -169,6 +170,20 @@ smaller controls or sits outside an authorized machine-callable boundary.
 Phase 0 verdict: `blocked`; Restate Phase 1/2: `not authorized`; implementation
 path: `not_planned`. Evidence and revisit conditions are recorded in
 `docs/evidence/DURABLE_RUNTIME_GAP_PHASE0_2026-08-31.md`.
+
+## Local-first compute policy
+
+Issue #345 defines the AI-OS policy/LDW mechanics boundary, a machine-readable
+task-class registry, progressive-disclosure and loss-aware compaction rules,
+promotion evidence, provenance, fallback, and rollback. P0 found current
+progressive disclosure, adaptive routing, and deterministic verification
+already sufficient; compaction, local offload, and promotion telemetry have
+partial evidence gaps.
+
+The production `local_first` allowlist remains empty. Synthetic evidence does
+not authorize task-class promotion, automated policy-assisted routing, owner
+authority, merge/deploy, or production use. See
+`docs/evidence/LOCAL_FIRST_COMPUTE_P0_AUDIT_2026-08-31.md`.
 
 ## Next action
 

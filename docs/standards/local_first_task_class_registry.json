@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "canonical_owner": "[AI OS]",
+  "mechanics_owner": "sergstack/local-developer-worker",
+  "production_promotion": false,
+  "default_fallback": "frontier_or_deterministic_owner",
+  "task_classes": [
+    {
+      "task_class_id": "semantic_terminal_triage",
+      "status": "candidate_review",
+      "task_patterns": ["high-volume log classification", "semantic terminal triage", "bounded clustering"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Use exact parsing and known signatures before semantic grouping.",
+      "verification": "A predefined deterministic schema and task-success verifier consumes the complete result.",
+      "promotion_evidence": "synthetic_only",
+      "evidence_refs": ["sergstack/local-developer-worker:docs/ollama-advisory-effect-study.md"],
+      "fallback": "deterministic triage or frontier review",
+      "rollback": "Disable the local advisory route for this task class."
+    },
+    {
+      "task_class_id": "bounded_text_extraction_and_classification",
+      "status": "candidate_review",
+      "task_patterns": ["bulk extraction from bounded text", "bounded document classification", "fixed-schema restructuring"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Use parsers or exact transformations whenever they can establish the result.",
+      "verification": "Validate the fixed schema and sample semantic correctness against source references.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "deterministic extraction or frontier review",
+      "rollback": "Remove the local route and retain the same schema and verifier."
+    },
+    {
+      "task_class_id": "non_authoritative_summarization",
+      "status": "candidate_review",
+      "task_patterns": ["context compaction", "non-authoritative summarization", "repetitive discussion compression"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Prefer source selection and facts-only evidence rendering before semantic summary.",
+      "verification": "Check the preservation contract and durable source references before downstream material use.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "bounded source context or frontier summarization",
+      "rollback": "Disable semantic compaction and use the bounded source package."
+    },
+    {
+      "task_class_id": "candidate_ranking_and_detection",
+      "status": "candidate_review",
+      "task_patterns": ["repository or file candidate ranking", "duplicate or similarity candidates", "first-pass anomaly candidates"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Use exact search, hashes, inventory, and deterministic thresholds first.",
+      "verification": "Review a representative labelled sample and preserve false positives, false negatives when measurable, and source refs.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "deterministic candidate set or frontier review",
+      "rollback": "Remove local ranking and restore deterministic ordering or the accepted control."
+    },
+    {
+      "task_class_id": "first_pass_hypotheses_and_review",
+      "status": "candidate_review",
+      "task_patterns": ["code-review first pass", "debugging hypothesis", "test-failure explanation", "architecture alternatives", "analytical narrative draft", "risk candidates"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Collect tests, traces, source facts, and contract violations before model inference.",
+      "verification": "The owning project or stronger model verifies every material conclusion.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "frontier reasoning by the routed owner",
+      "rollback": "Skip the local first pass and route the original evidence to the owner."
+    },
+    {
+      "task_class_id": "material_reasoning_and_acceptance",
+      "status": "frontier_floor",
+      "task_patterns": ["material architecture decision", "governance change", "Closure Review", "acceptance decision", "material financial conclusion"],
+      "output_authority": "candidate_only",
+      "deterministic_precheck": "Run all applicable deterministic evidence and calculation checks first.",
+      "verification": "Use frontier reasoning and retain every owner-only approval gate.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "frontier reasoning followed by the required owner decision",
+      "rollback": "Not applicable; local-first is not enabled for this class."
+    },
+    {
+      "task_class_id": "authority_and_external_actions",
+      "status": "blocked",
+      "task_patterns": ["owner-only business decision", "residual-risk acceptance", "merge authorization", "deploy authorization", "production authorization", "external side-effect authorization"],
+      "output_authority": "none",
+      "deterministic_precheck": "Resolve the canonical authority boundary and evidence references.",
+      "verification": "Only the required human or platform authority may decide.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "human owner or governed platform gate",
+      "rollback": "Not applicable; local-model authority is permanently absent."
+    },
+    {
+      "task_class_id": "deterministic_truth_establishment",
+      "status": "blocked",
+      "task_patterns": ["test status", "Git state", "schema validity", "exact calculation", "reconciliation", "authoritative file discovery"],
+      "output_authority": "none",
+      "deterministic_precheck": "Use the authoritative deterministic tool.",
+      "verification": "The deterministic tool result is the evidence; model interpretation cannot replace it.",
+      "promotion_evidence": "none",
+      "evidence_refs": [],
+      "fallback": "deterministic owner",
+      "rollback": "Not applicable; semantic substitution is not enabled."
+    }
+  ]
+}
