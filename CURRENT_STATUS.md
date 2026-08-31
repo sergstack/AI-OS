@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-31 (durable-runtime gap evidence review)
+- last_checked: 2026-08-31 (orchestration primitives P1 gap review)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -12,6 +12,7 @@
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
+- orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -169,6 +170,20 @@ smaller controls or sits outside an authorized machine-callable boundary.
 Phase 0 verdict: `blocked`; Restate Phase 1/2: `not authorized`; implementation
 path: `not_planned`. Evidence and revisit conditions are recorded in
 `docs/evidence/DURABLE_RUNTIME_GAP_PHASE0_2026-08-31.md`.
+
+## Orchestration primitives P1 gap review
+
+Issue #344 reviewed four framework-neutral P1 primitives against the current
+AES, continuation, external-action, validation, and live evidence contracts.
+P1.1 execution journal is `not needed`; P1.2 WAIT/RESUME and P1.4 control/effect
+separation are `already sufficient`; P1.3 side-effect idempotency is a
+`partial gap` because replay and duplicate-commit semantics are not explicit.
+
+This finding does not authorize a contract implementation. A bounded P1.3
+follow-up requires `[AI OS]` owner review. P2 remains `not_planned`, P3 remains
+`blocked`, and no framework, runtime, dependency, merge, deploy, or production
+promotion is authorized. Evidence and the exact future file/test scope are in
+`docs/evidence/ORCHESTRATION_PRIMITIVES_P1_GAP_REVIEW_2026-08-31.md`.
 
 ## Next action
 
