@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/sergstack/AI-OS/schemas/local_first_task_class_registry.schema.json",
+  "title": "AI-OS local-first task-class registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "canonical_owner", "mechanics_owner", "production_promotion", "default_fallback", "task_classes"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "canonical_owner": { "const": "[AI OS]" },
+    "mechanics_owner": { "const": "sergstack/local-developer-worker" },
+    "production_promotion": { "const": false },
+    "default_fallback": { "type": "string", "minLength": 1 },
+    "task_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_class_id", "status", "task_patterns", "output_authority", "deterministic_precheck", "verification", "promotion_evidence", "evidence_refs", "fallback", "rollback"],
+        "properties": {
+          "task_class_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "status": { "enum": ["local_first", "candidate_review", "frontier_floor", "blocked"] },
+          "task_patterns": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "output_authority": { "enum": ["candidate_only", "none"] },
+          "deterministic_precheck": { "type": "string", "minLength": 1 },
+          "verification": { "type": "string", "minLength": 1 },
+          "promotion_evidence": { "enum": ["none", "synthetic_only", "representative_real", "owner_accepted"] },
+          "evidence_refs": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "fallback": { "type": "string", "minLength": 1 },
+          "rollback": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -9,5 +9,8 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`LOCAL_FIRST_COMPUTE_P0_AUDIT_2026-08-31.md`](LOCAL_FIRST_COMPUTE_P0_AUDIT_2026-08-31.md)
+  records the Issue #345 capability/gap audit and why the initial production
+  local-first allowlist remains empty.
 - [`DURABLE_RUNTIME_GAP_PHASE0_2026-08-31.md`](DURABLE_RUNTIME_GAP_PHASE0_2026-08-31.md)
   records the Issue #342 Phase 0 gate and why no Restate fit test is authorized.
