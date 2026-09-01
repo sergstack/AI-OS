@@ -12,6 +12,9 @@ A result is accepted when:
 8. Findings are traceable to data.
 9. Limitations are explicit.
 10. Handoff package is complete if another project is needed.
+11. Before publication, every flagship metric in a quantitative report passes
+    `QUANTITATIVE_SANITY_GATE.md`; otherwise the result is `revise` or
+    `blocked` and is not published as a final quantitative conclusion.
 
 ## Main file acceptance
 
@@ -27,6 +30,7 @@ slices_from_mart_main_full: pass/fail/blocked/not_applicable
 ```text
 accepted: yes/no
 qa_status: pass/fail/blocked
+quantitative_sanity_gate_status: pass/revise/blocked/not_applicable
 confidence: high/medium/low
 residual_risks:
 known_limitations:
@@ -98,6 +102,7 @@ Use `blocked` when:
 - metric formulas undefined;
 - compact-only input is insufficient for requested conclusion;
 - implementation is required before result can be produced.
+- a required flagship metric has a blocked quantitative sanity gate.
 
 ## Not production-ready rule
 

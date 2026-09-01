@@ -227,8 +227,8 @@
         "ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 26507,
-      "bundle_bytes": 27564,
+      "source_bytes": 26755,
+      "bundle_bytes": 27812,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -245,8 +245,8 @@
         "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 5183,
-      "bundle_bytes": 6100,
+      "source_bytes": 5556,
+      "bundle_bytes": 6473,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -301,6 +301,7 @@
       "bundle_path": "ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md",
       "source_paths": [
         "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md",
+        "ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md",
         "ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md",
         "ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md",
         "ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md",
@@ -308,8 +309,8 @@
         "ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 31085,
-      "bundle_bytes": 32397,
+      "source_bytes": 40326,
+      "bundle_bytes": 41724,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

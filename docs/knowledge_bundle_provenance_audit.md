@@ -185,8 +185,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`, `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`, `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 26507
-- Bundle bytes: 27564
+- Source bytes: 26755
+- Bundle bytes: 27812
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -199,8 +199,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md`, `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 5183
-- Bundle bytes: 6100
+- Source bytes: 5556
+- Bundle bytes: 6473
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -240,9 +240,9 @@ Blocking record count: **0**
 ## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md`
 
 - Project: [Analytics]
-- Source paths: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`, `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 31085
-- Bundle bytes: 32397
+- Source paths: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md`, `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`, `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
+- Source bytes: 40326
+- Bundle bytes: 41724
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

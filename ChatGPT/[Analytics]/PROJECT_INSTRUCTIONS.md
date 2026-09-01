@@ -109,6 +109,9 @@ LLM не должен быть источником расчётной исти�
 - Key conclusions traceable to mart/evidence.
 - Limitations visible.
 - Recommendations do not exceed data.
+- Before publication of a quantitative report, apply
+  `QUANTITATIVE_SANITY_GATE.md` to every flagship metric. The gate is internal
+  evidence, not a reason to expand routine `quick` output.
 
 ## Internal artifacts and claim registry
 
