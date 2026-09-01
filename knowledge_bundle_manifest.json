@@ -310,6 +310,7 @@
       "output": "ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_05_QA_GOVERNANCE_ROUTING.md",
       "sources": [
         "ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md",
+        "ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md",
         "ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md",
         "ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md",
         "ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md",

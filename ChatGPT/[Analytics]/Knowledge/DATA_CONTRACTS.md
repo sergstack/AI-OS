@@ -33,6 +33,9 @@ Freshness rule:
 Mapping rules:
 Join rules:
 Metric rules:
+Flagship metrics:
+Source locators:
+Independent recalculation source locators:
 Classification rules:
 Validation checks:
 Known limitations:
@@ -72,6 +75,9 @@ mart_main_tz / compact:
 - No LLM package without curated facts.
 - No chart without source mart or mart slice.
 - No executive conclusion from raw data.
+- For a publishable quantitative conclusion, identify flagship metrics and
+  provide the reported-value and independent source-level locators required by
+  `QUANTITATIVE_SANITY_GATE.md`.
 
 ## Compact/full input
 
@@ -103,3 +109,5 @@ full_used_for: data contract and full mart
 - [ ] Freshness rule listed.
 - [ ] Expected outputs listed.
 - [ ] Main files listed.
+- [ ] Flagship metrics and their read-back-verifiable source locators listed
+  when publication is planned.

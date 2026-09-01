@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:784aa92b4a8c57bcb0ed63e3a1bb9cabfc2c9f6f966eadbe7d6a765429d8697a
+- source_fingerprint: sha256:c784244cb9b5d95c1105f0716811fd609054fe1baad1ead47945f6c48e8adfd7
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -58,6 +58,9 @@ Freshness rule:
 Mapping rules:
 Join rules:
 Metric rules:
+Flagship metrics:
+Source locators:
+Independent recalculation source locators:
 Classification rules:
 Validation checks:
 Known limitations:
@@ -90,6 +93,9 @@ mart_main_tz / compact:
 - No LLM package without curated facts.
 - No chart without source mart or mart slice.
 - No executive conclusion from raw data.
+- For a publishable quantitative conclusion, identify flagship metrics and
+  provide the reported-value and independent source-level locators required by
+  `QUANTITATIVE_SANITY_GATE.md`.
 ## Compact/full input
 When only `compact` exists:
 ```text
@@ -114,6 +120,8 @@ full_used_for: data contract and full mart
 - [ ] Freshness rule listed.
 - [ ] Expected outputs listed.
 - [ ] Main files listed.
+- [ ] Flagship metrics and their read-back-verifiable source locators listed
+  when publication is planned.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`
 

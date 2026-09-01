@@ -36,6 +36,26 @@
 - [ ] Grain explicit.
 - [ ] Period explicit.
 
+## Quantitative sanity gate
+
+For a published quantitative report with a `flagship_metric`, apply
+`QUANTITATIVE_SANITY_GATE.md` before publication:
+
+- [ ] Gate applicability is stated; unpublished scratch/exploratory work is
+  not treated as a published result.
+- [ ] Every flagship metric has a complete read-back-verifiable source locator
+  and an independent source-level locator.
+- [ ] Representation, plausibility, method applicability, population state,
+  censoring, independent recalculation, tolerance, evidence, and resolution
+  are recorded.
+- [ ] Duration/time-to-event metrics have storage semantics and censoring
+  checked when applicable.
+- [ ] `quantitative_sanity_gate_status` is `pass`, or publication is stopped
+  with `revise` / `blocked` and the required remediation.
+
+This is an extension of existing Analysis QA, not a second QA framework. Keep
+the record internal or in evidence/appendix so `quick` output remains compact.
+
 ## Analysis QA
 
 - [ ] Method stated.

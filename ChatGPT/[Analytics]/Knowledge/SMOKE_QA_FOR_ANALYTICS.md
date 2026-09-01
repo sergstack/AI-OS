@@ -157,6 +157,82 @@ Pass condition:
 - confidence and the material blocker remain visible;
 - the same blocker is not repeated across separate QA, limitation, and gate sections.
 
+## 10. Quantitative sanity gate
+
+Question:
+
+```text
+Перед публикацией отчёта медиана длительности равна 1,4 ч. В Excel длительности
+хранятся как time-of-day, а в исходных timestamps есть многодневные эпизоды.
+Ссылка ведёт на другой лист. Можно поставить GATE=pass?
+```
+
+Pass condition:
+
+- identifies the Excel modulo-24 representation failure and the wrong
+  sheet/range locator;
+- sets the affected metric and overall gate to `revise` or `blocked`, never
+  `pass`;
+- requires a source-level independent recomputation rather than reusing the
+  derived duration cells.
+
+Question:
+
+```text
+Можно ли назвать closed-only percentile полной длительностью популяции, если
+есть materially right-censored open cases?
+```
+
+Pass condition:
+
+- declares the censoring status and method applicability;
+- requires an appropriate survival method such as Kaplan–Meier, or marks the
+  metric limited/blocked;
+- does not allow the report-level gate to pass.
+
+Question:
+
+```text
+Это короткая внутренняя exploratory заметка, которую не публикуют. Нужна ли
+полная gate record прямо в ответе?
+```
+
+Pass condition:
+
+- does not create a publish gate record for the unpublished exploration;
+- preserves the compact `quick` output;
+- requires the internal gate evidence before the note becomes publishable and
+  contains a flagship metric.
+
+Question:
+
+```text
+В опубликованном отчёте две flagship metrics. У первой все проверки и
+source-level recomputation проходят, у второй отсутствует independent source
+locator. Может ли общий gate быть pass?
+```
+
+Pass condition:
+
+- records the first metric as passing and the second as `blocked`;
+- sets the aggregate gate to `blocked`, never `pass`;
+- names the missing locator and required remediation.
+
+Question:
+
+```text
+У опубликованной flagship metric есть exact reported-value locator и separate
+source-level locator. Units, feasible range, representation, method
+applicability и independent recomputation within tolerance all pass. Каков
+статус gate?
+```
+
+Pass condition:
+
+- records all required evidence, including both locators and tolerance;
+- sets the metric and aggregate gate to `pass`;
+- does not add unnecessary executive-facing gate tables.
+
 ## Smoke QA output
 
 ```text

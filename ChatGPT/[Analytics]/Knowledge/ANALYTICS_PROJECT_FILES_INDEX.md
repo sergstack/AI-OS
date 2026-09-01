@@ -14,6 +14,7 @@
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
+| `QUANTITATIVE_SANITY_GATE.md` | Mandatory pre-publish quantitative sanity gate | Published quantitative report has a flagship metric |
 | `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |
 | `MARTS_DESIGN.md` | Проектирование marts | Нужны метрики, витрины, cuts, dashboard |
 | `MEMO_FACTORY_DESIGN_HANDOFF.md` | Memo factory design handoff | Когда memo workflow требует implementation handoff |
@@ -40,7 +41,8 @@
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.
 2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`; для material Plan/Fact diagnostics — `VARIANCE_DIAGNOSTIC_CONTRACT.md`.
 3. Для memo/report используй `MEMO_PIPELINE.md`, `ANALYTICAL_MEMO_STRUCTURE.md`, `WORD_REPORT_STANDARD.md`, `TEXT_QA_AND_STYLE.md`.
-4. Для QA используй `QA_CHECKLIST.md` и `ACCEPTANCE_CRITERIA.md`.
+4. Для QA используй `QA_CHECKLIST.md` и `ACCEPTANCE_CRITERIA.md`; перед
+   публикацией quantitative report с flagship metric — `QUANTITATIVE_SANITY_GATE.md`.
 5. Для передачи в Codex используй `CODEX_TASK_PACKETS.md` и `ROUTING_AND_HANDOFF.md`.
 6. Для complex/high-risk analytics execution gates cite `Parent / Child Issue Gate Standard`; do not paste the full text.
 
