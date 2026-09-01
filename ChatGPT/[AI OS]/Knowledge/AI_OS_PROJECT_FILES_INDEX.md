@@ -38,6 +38,8 @@
 | `JUDGE_CALIBRATION.md` | judge rules | Как AI-OS использует LLM-as-a-Judge, не считая judge output объективной истиной | Перед использованием или изменением judge workflows |
 | `LOOP_ACCEPTANCE_CHECKLIST.md` | loop QA | Checklist для решения, безопасен ли supervised loop к запуску | Перед запуском или acceptance supervised loop |
 | `SKILLS_HOOKS_MCP_DECISION_MATRIX.md` | tooling governance | Decision matrix для skills, hooks, MCP tools и sub-agents как workflow aids | Когда нужно решить, добавлять или использовать workflow tooling |
+| `docs/standards/LOCAL_FIRST_COMPUTE_POLICY.md` | cross-project policy | Local-first eligibility, promotion evidence, provenance, fallback и rollback без передачи authority локальной модели | Когда нужно решить, допустим ли local-model offload и можно ли продвигать task class |
+| `docs/standards/local_first_task_class_registry.json` | policy registry | Machine-readable статусы `local_first` / `candidate_review` / `frontier_floor` / `blocked` | При проверке текущего статуса task class или подготовке matched pilot |
 | `docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md` | engineering / Codex standard | Controlled cleanup/refactor of existing working scripts without behavior loss | Когда рабочий скрипт надо почистить: сначала baseline, output contract, safety tests, затем refactor |
 
 ## Существующие KB-файлы, которые должны остаться основой
