@@ -5,6 +5,7 @@
 !StreamDeck/.env.example
 .claude/
 .codex/
+.serena/
 .pytest_cache/
 .repo_index/
 .coverage
