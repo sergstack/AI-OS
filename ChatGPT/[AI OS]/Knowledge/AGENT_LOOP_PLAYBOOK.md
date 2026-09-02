@@ -40,7 +40,10 @@ subagent to execute one bounded, already-routed capability slice, then resume.
 
 Mandatory bounds:
 
-- hub-and-spoke only: `root -> child -> root`; no `child -> child` delegation;
+- hub-and-spoke only: `root -> child -> root`; no `child -> child` delegation.
+  Structurally enforced: every executor `agent_type` is a built-in type whose
+  tool set excludes the `Agent` tool (`Plan`, `Explore`), so a child cannot
+  spawn a sub-agent. Only the root holds the `Agent` tool;
 - root `ai-os-orchestrator` is the only controller and the only canonical
   routing entrypoint; a child may return a `cross_domain_need` but never
   selects or invokes the next owner;
@@ -55,10 +58,13 @@ Mandatory bounds:
 - no Temporal / LangGraph / CrewAI / AutoGen / Mastra and no new
   runtime, service, or database;
 - `.claude/agents` is not a canonical source and `.gitignore` is unchanged;
-- shared filesystem is a known risk: do not give a write-capable child unless
-  the slice genuinely requires writes;
+- every dispatch uses `isolation: "worktree"` (`executor.workspace:
+  isolated_worktree`): the child works in a clean, locked git worktree at a
+  deterministic revision, never the parent working tree. No child is
+  `write_capable`; an implementation slice returns a patch and the root applies
+  and validates it. The root is the only writer;
 - no subagent timeout primitive exists; this is a recorded runtime limitation,
-  mitigated by explicit cancel and guard limits;
+  mitigated by `TaskStop` (explicit cancel) and guard limits;
 - every actual spawn, result, and failure must be observable evidence
   (`NOT RUN != PASS`); a runtime failure is registered as an AES defect, not
   hidden by retry.

@@ -14,6 +14,11 @@ Current decision evidence:
   surface (follow-up to #350): 3 multi-owner executions, verdict `PASS`,
   recommended **pilot-only** pending a separate standardization decision. It
   does not authorize standardization, merge, or production.
+- [`NATIVE_SUBAGENT_DISPATCH_STANDARDIZATION_2026-09-02.md`](NATIVE_SUBAGENT_DISPATCH_STANDARDIZATION_2026-09-02.md)
+  records the standardization decision memo after 3 more bounded executions:
+  blockers DEF-001 (workspace isolation) and native no-nesting closed
+  structurally; recommendation **STANDARDIZE BOUNDED (conditional)** on a
+  4-item punch-list. It does not authorize merge or production.
 - [`EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`](EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md)
   records the Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH` for executable
   dispatch, P1–P4 already owned by current canonical contracts, plus an
