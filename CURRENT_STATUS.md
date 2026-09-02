@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-08-31 (orchestration primitives P1 gap review; local-first compute P0 audit)
+- last_checked: 2026-09-02 (executable capability routing P0 audit for #350)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -14,6 +14,7 @@
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
 - local_first_compute_status: candidate policy; production allowlist empty; owner review pending
 - orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
+- executable_capability_routing_status: P0 audit complete; BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; MVP not implemented; owner decision pending
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -199,6 +200,30 @@ follow-up requires `[AI OS]` owner review. P2 remains `not_planned`, P3 remains
 `blocked`, and no framework, runtime, dependency, merge, deploy, or production
 promotion is authorized. Evidence and the exact future file/test scope are in
 `docs/evidence/ORCHESTRATION_PRIMITIVES_P1_GAP_REVIEW_2026-08-31.md`.
+
+## Executable capability routing MVP — P0 audit
+
+Issue #350 asked for an executable capability-routing MVP (one broad goal →
+dynamic canonical routing → bounded specialized executor → central return → AES
+continuation). P0 finding: `BLOCKED_FOR_NATIVE_DISPATCH`. The canonical target
+runtime (ChatGPT Project / Codex prompt surface) has no native executor
+creation, executor identity, per-executor tool restriction, timeout/cancel, or
+nested delegation; `Invoke AI-OS` is prompt-level orchestration by contract, not
+a runtime service. Simulating an executor via a prompt switch is disallowed by
+the issue and by AES §17 / `AGENT_LOOP_PLAYBOOK.md`.
+
+The P1–P4 semantics are already owned by current canonical contracts:
+`PROJECT_CAPABILITIES.yaml`, `HANDOFF_STYLE_STANDARD.md`, AES §5.5/§5.7/§15,
+`ai-os-orchestrator/SKILL.md`, `project-context/SKILL.md`, and
+`AUTONOMOUS_EXECUTION_CONTINUATION_CONTROL_PLANE_CONTRACT.md` plus the schema's
+`continuation.route_trace` and `guards`. Predecessors #342 (durable runtime
+`blocked`) and #344 (execution journal `not needed`, WAIT/RESUME and
+control/effect separation `already sufficient`) cover the same ground.
+
+No MVP was implemented. Governance change (any new "executor" concept) is class
+B/C and needs an `[AI OS]` owner decision. Merge and production remain
+unauthorized. Evidence and the owner-decision package are in
+`docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`.
 
 ## Next action
 
