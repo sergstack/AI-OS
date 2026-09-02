@@ -36,13 +36,14 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 - Goal Mode: default for broad repo/workflow goals; strict task packages remain
   available for high-risk, already-scoped, ultra-long, or explicitly requested work.
 - ChatGPT Project Knowledge upload: compact `Knowledge_Bundles` by default.
+- `[Analytics]` quantitative reports: `quantitative_sanity_gate` is a mandatory pre-publish gate for every `flagship_metric` (issue #348, shipped 2026-09-01). Contract: `ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md`.
 - StreamDeck: v3.0 Dual Deck repo candidate; v2.7 remains the physical rollback baseline until owner migration, device QA, export/import, and acceptance.
 
 ## Evidence Pointers
 
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
 - `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
-- `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md` — Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH`; P1–P4 already owned by canonical contracts; no MVP implemented. See `docs/evidence/README.md` for the other decision-evidence records (#342, #344, #345).
+- `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md` — Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH`; P1–P4 already owned by canonical contracts; no MVP implemented. Audit accepted by the owner; #350 closed as completed 2026-09-02. See `docs/evidence/README.md` for the other decision-evidence records (#342, #344, #345).
 - `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md` — manual sync status.
 - `docs/operations/PILOT_CASES.md` — pilot backlog; pilot completion still requires result evidence.
 - `StreamDeck/README.md` — StreamDeck active/candidate status.
