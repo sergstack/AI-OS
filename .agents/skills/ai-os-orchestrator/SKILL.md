@@ -53,29 +53,48 @@ does not generalize. This subsection adds a dispatch mechanism to step 2 of the
 canonical loop above; it does not add a second router, state machine, or
 execution record.
 
+Two structural invariants make this safe on the Claude Code surface without
+relying on prompt wording:
+
+- **No nested delegation.** Every `executor.agent_type` is a built-in type
+  whose tool set excludes the `Agent` tool (`Plan`, `Explore`). A child
+  therefore *cannot* spawn a further sub-agent — `child_dispatch: forbidden`
+  is enforced by the runtime, not by instruction. The root is the only agent
+  holding the `Agent` tool, and the only router.
+- **No child writes.** Those same agent types also exclude `Write`/`Edit`, so
+  `executor.write_capable` is `false` for every capability. A dispatched child
+  never mutates the repository. An implementation slice returns a unified diff
+  (or exact file contents) plus the validation commands; the **root applies the
+  patch and runs the validation**. The root is the only writer.
+
 Preconditions for one dispatched slice:
 
 - routing has already resolved exactly one owner capability for this stage
   (Steps 2–4 of Procedure);
 - that capability's `PROJECT_CAPABILITIES.yaml` entry has an `executor` block
-  with `backend: claude_code_subagent`;
+  with `backend: claude_code_subagent` and `workspace: isolated_worktree`;
 - the slice is reversible and policy-permitted, or its external action is
-  already authorized; a `write_capable: false` executor may not perform repository writes.
+  already authorized.
 
 Dispatch:
 
-1. Spawn one subagent of `executor.agent_type`. Pass a bounded prompt only:
-   the `original_goal`, the resolved capability id and `canonical_path`, the
-   `context_entrypoints` to load through `executor.context_loader`
-   (`project-context`), the single slice objective, the slice acceptance
-   criteria, and the relevant `authority_provenance` claims. Do not pass the
-   whole AES record, other projects, unrelated history, or secrets.
-2. Instruct the child explicitly: return result, evidence references, and any
-   `cross_domain_need`; do not choose or invoke the next owner; do not spawn
-   sub-subagents (`child_dispatch: forbidden`).
-3. The child runs in the same working tree. Treat shared filesystem as a risk:
-   only a `write_capable: true` executor (currently `codex`) may be asked to
-   modify files, and only when the slice genuinely requires it.
+1. Spawn one subagent of `executor.agent_type` **with `isolation: "worktree"`**
+   (mandatory — `workspace: isolated_worktree`). This gives the child a clean,
+   locked git worktree at a deterministic revision, isolated from the parent
+   working tree, so a child can never read or mutate stale parent branch state.
+   If the slice must run against a specific revision, name that revision in the
+   prompt and have the child `git fetch` and check it out inside its own
+   worktree.
+2. Pass a bounded prompt only: the `original_goal`, the resolved capability id
+   and `canonical_path`, the `context_entrypoints` to load through
+   `executor.context_loader` (`project-context`), the single slice objective,
+   the slice acceptance criteria, and the relevant `authority_provenance`
+   claims. Do not pass the whole AES record, other projects, unrelated history,
+   or secrets.
+3. Instruct the child explicitly: return result, evidence references, and any
+   `cross_domain_need`; do not choose or invoke the next owner. (It structurally
+   cannot spawn sub-agents or write; the instruction is a restatement, not the
+   enforcement.)
 
 On return, the root (and only the root):
 
@@ -107,12 +126,16 @@ guard; or (iv) all original acceptance criteria satisfied. Cross-domain routing
 after a child return still originates from the resolved owner's identified
 `cross_domain_need`.
 
-Failure handling: a spawn error, missing result, denied tool, or unusable
-output is registered as an AES defect (`classification: external_dependency`
-for a runtime/tool failure, `implementation` for a bad result), not retried
-silently or hidden. No subagent timeout primitive exists; rely on explicit
-cancel and the guard limits. A dispatched slice is never terminal goal
-completion — only Closure Review against the `original_goal` can close.
+Failure handling: a spawn error, missing result, denied tool, unusable output,
+or a slice that needs a capability the child structurally lacks (e.g. a write)
+is registered as an AES defect (`classification: external_dependency` for a
+runtime/tool failure, `implementation` for a bad result), not retried silently
+or hidden. Recovery is bounded: re-form the slice within the child's real
+capability (for a write, ask for a patch and apply it at the root) or stop as
+`BLOCKED` with the preserved state. No subagent timeout primitive exists;
+`TaskStop` gives explicit cancel; the guard limits bound the rest. A dispatched
+slice is never terminal goal completion — only Closure Review against the
+`original_goal` can close.
 
 ### Execution lifecycle and warm resume
 
