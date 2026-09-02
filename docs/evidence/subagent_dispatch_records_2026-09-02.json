@@ -210,6 +210,32 @@
       "telemetry": { "duration_ms": "not_captured", "subagent_tokens": "not_captured", "tool_uses": "not_captured" },
       "scenario_tags": ["routing"],
       "notes": "Per-capability coverage. Ownership + always-apply rule (deterministic calculation, never LLM-sourced) cited."
+    },
+    {
+      "dispatch_id": "J1",
+      "execution_id": "exec-commissionj-2026-09-02",
+      "owner_capability": "thinking",
+      "agent_type": "Plan",
+      "isolation": "worktree",
+      "workspace_observation": { "path": ".claude/worktrees/agent-a955680fa9018beac", "clean_tree": true, "head": "5a115c9" },
+      "outcome": "completed",
+      "defect_ref": null,
+      "telemetry": { "duration_ms": "not_captured", "subagent_tokens": "not_captured", "tool_uses": "not_captured" },
+      "scenario_tags": ["routing"],
+      "notes": "Adversarial Judge review of the commissioning PR against the 6 owner acceptance criteria. Verdict: revise — one blocking gap (status-inflation wording on the 2 deliberate-failure defects). Branch not fetchable at J1 time; reviewed via git show against the local ref."
+    },
+    {
+      "dispatch_id": "J2",
+      "execution_id": "exec-commissionj-2026-09-02",
+      "owner_capability": "thinking",
+      "agent_type": "Plan",
+      "isolation": "worktree",
+      "workspace_observation": { "path": ".claude/worktrees/agent-a599e9f73829bd5d9", "clean_tree": true, "head": "5a115c9" },
+      "outcome": "completed",
+      "defect_ref": null,
+      "telemetry": { "duration_ms": 84062, "subagent_tokens": 41801, "tool_uses": 15 },
+      "scenario_tags": ["routing"],
+      "notes": "Judge re-review of the corrected diff. Fetched origin/codex/native-subagent-dispatch-commissioning to 7b1f2c4 inside the isolated worktree. Verdict: pass — round-1 gap closed, no regression on criteria 1/2/4/5/6. First commissioning-campaign dispatch with a captured Agent usage footer."
     }
   ]
 }

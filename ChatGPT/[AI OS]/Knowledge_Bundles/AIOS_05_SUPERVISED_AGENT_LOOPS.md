@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[AI OS]`.
 - default_upload_mode: `Knowledge_Bundles`
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:255aeec53f2e8d94fb8011e2fe5647ad29dc6f72d65e4e142d73620f3efbbf85
+- source_fingerprint: sha256:033354daadc80f85eefc52b3dd59a0d40c27bf04d779c7418aa8c3a1fc5d353c
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -53,10 +53,14 @@ The loop is supervised when a human or explicit project gate controls scope, sto
 | Prompt QA Factory | `[AI OS]` -> owner project | candidate -> test -> judge -> revise -> selected, with human acceptance |
 | Supervised AI-OS subagent dispatch (pilot) | `[AI OS]` root `ai-os-orchestrator` | root re-routes only via `ROUTING_RULES.md`; a child never selects the next owner |
 ## Supervised AI-OS Subagent Dispatch (Pilot)
-Owner-approved bounded exception, dated 2026-09-02, for one MVP only. It is
-**not** a general permission for agentic workflows or autonomous agents, and it
-does not become a standard workflow automatically. Standardization requires a
-separate owner decision.
+Owner-approved bounded exception, dated 2026-09-02. It is **not** a general
+permission for agentic workflows or autonomous agents.
+Status 2026-09-02: `STANDARDIZED BOUNDED` (owner-approved direction; commissioning
+punch-list 4/4 closed; Judge round-2 `pass` — see
+`docs/evidence/NATIVE_SUBAGENT_DISPATCH_COMMISSIONING_2026-09-02.md`). It is a
+standardized **bounded** workflow within the scope below — not a default or
+unrestricted standard. Promoting it to a general/default workflow, and setting
+the `continuation.guards` thresholds, each remain a separate owner decision.
 Scope: the root `ai-os-orchestrator` may spawn a native built-in coding-agent
 subagent to execute one bounded, already-routed capability slice, then resume.
 Mandatory bounds:

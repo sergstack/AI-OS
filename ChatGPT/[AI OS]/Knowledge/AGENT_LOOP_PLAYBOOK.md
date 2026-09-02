@@ -30,10 +30,15 @@ The loop is supervised when a human or explicit project gate controls scope, sto
 
 ## Supervised AI-OS Subagent Dispatch (Pilot)
 
-Owner-approved bounded exception, dated 2026-09-02, for one MVP only. It is
-**not** a general permission for agentic workflows or autonomous agents, and it
-does not become a standard workflow automatically. Standardization requires a
-separate owner decision.
+Owner-approved bounded exception, dated 2026-09-02. It is **not** a general
+permission for agentic workflows or autonomous agents.
+
+Status 2026-09-02: `STANDARDIZED BOUNDED` (owner-approved direction; commissioning
+punch-list 4/4 closed; Judge round-2 `pass` — see
+`docs/evidence/NATIVE_SUBAGENT_DISPATCH_COMMISSIONING_2026-09-02.md`). It is a
+standardized **bounded** workflow within the scope below — not a default or
+unrestricted standard. Promoting it to a general/default workflow, and setting
+the `continuation.guards` thresholds, each remain a separate owner decision.
 
 Scope: the root `ai-os-orchestrator` may spawn a native built-in coding-agent
 subagent to execute one bounded, already-routed capability slice, then resume.
