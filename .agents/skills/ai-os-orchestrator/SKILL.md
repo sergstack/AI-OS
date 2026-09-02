@@ -57,10 +57,16 @@ Two structural invariants make this safe on the Claude Code surface without
 relying on prompt wording:
 
 - **No nested delegation.** Every `executor.agent_type` is a built-in type
-  whose tool set excludes the `Agent` tool (`Plan`, `Explore`). A child
-  therefore *cannot* spawn a further sub-agent — `child_dispatch: forbidden`
-  is enforced by the runtime, not by instruction. The root is the only agent
-  holding the `Agent` tool, and the only router.
+  whose tool set excludes the `Agent` tool (`Plan`, `Explore`). Stated
+  precisely: **a `Plan` child cannot use the native `Agent` tool**, so it
+  cannot spawn a further sub-agent through the supported mechanism. `child_dispatch:
+  forbidden` is enforced by the runtime tool set for that path, not by
+  instruction. The root is the only agent holding the `Agent` tool, and the
+  only router. Residual risk: a `Plan` child retains `Bash`, so
+  Bash-mediated spawning of an external agent process is not structurally
+  blocked; it is treated as a residual risk pending separate evidence, and is
+  made impractical (not impossible) by `write_capable: false` + worktree
+  isolation.
 - **No child writes.** Those same agent types also exclude `Write`/`Edit`, so
   `executor.write_capable` is `false` for every capability. A dispatched child
   never mutates the repository. An implementation slice returns a unified diff

@@ -28,3 +28,5 @@ jobs:
         run: python3 scripts/audit_bundle_provenance.py --check
       - name: Check index coverage
         run: python3 scripts/check_index_coverage.py
+      - name: Check subagent dispatch evidence
+        run: python3 scripts/check_subagent_dispatch_evidence.py
