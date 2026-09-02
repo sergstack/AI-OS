@@ -42,6 +42,7 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
 - `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
+- `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md` — Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH`; P1–P4 already owned by canonical contracts; no MVP implemented. See `docs/evidence/README.md` for the other decision-evidence records (#342, #344, #345).
 - `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md` — manual sync status.
 - `docs/operations/PILOT_CASES.md` — pilot backlog; pilot completion still requires result evidence.
 - `StreamDeck/README.md` — StreamDeck active/candidate status.
