@@ -6,49 +6,98 @@
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/AI_OS_PROJECT_FILES_INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     },
     "thinking": {
       "canonical_path": "ChatGPT/[Thinking]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     },
     "analytics": {
       "canonical_path": "ChatGPT/[Analytics]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     },
     "llm": {
       "canonical_path": "ChatGPT/[LLM]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/LLM_ROUTING.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     },
     "codex": {
       "canonical_path": "ChatGPT/[Codex]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "general-purpose",
+        "context_loader": "project-context",
+        "write_capable": true,
+        "child_dispatch": "forbidden"
+      }
     },
     "inbox_router": {
       "canonical_path": "ChatGPT/[Inbox Router]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/INBOX_ROUTER_FILES_INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     },
     "thinkers_os": {
       "canonical_path": "ChatGPT/[Thinkers OS]",
       "context_entrypoints": [
         "PROJECT_INSTRUCTIONS.md",
         "Knowledge/INDEX.md"
-      ]
+      ],
+      "executor": {
+        "backend": "claude_code_subagent",
+        "agent_type": "Plan",
+        "context_loader": "project-context",
+        "write_capable": false,
+        "child_dispatch": "forbidden"
+      }
     }
   }
 }

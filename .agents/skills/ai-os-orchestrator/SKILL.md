@@ -44,6 +44,76 @@ When the current owner identifies a concrete cross-domain need:
 
 Handoff completion is not goal completion. A prepared contract, identified owner, passing intermediate check, generated artifact, completed slice, or ready-for-review state is only an intermediate milestone unless it satisfies the original goal.
 
+### Native subagent dispatch (pilot)
+
+Owner-approved bounded pilot, dated 2026-09-02, governed by
+`ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md`
+("Supervised AI-OS Subagent Dispatch"). It is not a standard workflow and
+does not generalize. This subsection adds a dispatch mechanism to step 2 of the
+canonical loop above; it does not add a second router, state machine, or
+execution record.
+
+Preconditions for one dispatched slice:
+
+- routing has already resolved exactly one owner capability for this stage
+  (Steps 2–4 of Procedure);
+- that capability's `PROJECT_CAPABILITIES.yaml` entry has an `executor` block
+  with `backend: claude_code_subagent`;
+- the slice is reversible and policy-permitted, or its external action is
+  already authorized; a `write_capable: false` executor may not perform repository writes.
+
+Dispatch:
+
+1. Spawn one subagent of `executor.agent_type`. Pass a bounded prompt only:
+   the `original_goal`, the resolved capability id and `canonical_path`, the
+   `context_entrypoints` to load through `executor.context_loader`
+   (`project-context`), the single slice objective, the slice acceptance
+   criteria, and the relevant `authority_provenance` claims. Do not pass the
+   whole AES record, other projects, unrelated history, or secrets.
+2. Instruct the child explicitly: return result, evidence references, and any
+   `cross_domain_need`; do not choose or invoke the next owner; do not spawn
+   sub-subagents (`child_dispatch: forbidden`).
+3. The child runs in the same working tree. Treat shared filesystem as a risk:
+   only a `write_capable: true` executor (currently `codex`) may be asked to
+   modify files, and only when the slice genuinely requires it.
+
+On return, the root (and only the root):
+
+4. appends one `continuation.route_trace` entry — `from_owner:
+   ai-os-orchestrator`, `to_owner: <capability>`, `resume_stage`,
+   `criteria_addressed`, `route_signature`, `outcome` (`dispatched` →
+   `completed` or `refused`), `evidence_refs`; the same `execution_id` is kept;
+5. validates the child result against the slice acceptance criteria and folds
+   its evidence into the AES record;
+6. reassesses the `original_acceptance_criteria`;
+7. selects the next route only through `ROUTING_RULES.md`, honoring the existing
+   `continuation.guards` (`max_continuation_hops`, `max_retries_per_owner`,
+   `max_no_progress_hops`, `route_signature_history_window`). A repeat route
+   without a material `evidence_delta` is recorded as
+   `repeat_route_refused_missing_evidence_delta` and not dispatched.
+
+The after-child step is **mechanical, not discretionary** (preserves the AES
+§2.1 resolved-owner boundary; a discretionary root becomes a standing
+supervisor above the resolved owner and defeats warm resume). After a child
+returns, the root performs only continuation-layer functions — record the
+evidence delta, update progress against the original acceptance criteria,
+evaluate the four guards — then restores the resolved owner and its
+`resume_stage` and returns control to that owner. The root does not pick a new
+owner on its own judgment and does not perform or redo domain work. The root
+diverts from the resolved owner only on a closed trigger: (i) a cold-entry-level
+change to the original goal, resolved owner, scope, authority, or canonical
+routing state; (ii) an AES §2 `decide` trigger; (iii) a tripped continuation
+guard; or (iv) all original acceptance criteria satisfied. Cross-domain routing
+after a child return still originates from the resolved owner's identified
+`cross_domain_need`.
+
+Failure handling: a spawn error, missing result, denied tool, or unusable
+output is registered as an AES defect (`classification: external_dependency`
+for a runtime/tool failure, `implementation` for a bad result), not retried
+silently or hidden. No subagent timeout primitive exists; rely on explicit
+cancel and the guard limits. A dispatched slice is never terminal goal
+completion — only Closure Review against the `original_goal` can close.
+
 ### Execution lifecycle and warm resume
 
 Once `Invoke AI-OS` begins for an execution, this orchestration contract

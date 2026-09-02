@@ -9,6 +9,11 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md`](NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md)
+  records the bounded native-subagent-dispatch MVP pilot on the Claude Code
+  surface (follow-up to #350): 3 multi-owner executions, verdict `PASS`,
+  recommended **pilot-only** pending a separate standardization decision. It
+  does not authorize standardization, merge, or production.
 - [`EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`](EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md)
   records the Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH` for executable
   dispatch, P1–P4 already owned by current canonical contracts, plus an

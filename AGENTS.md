@@ -116,7 +116,7 @@ valid when the user explicitly supplies them.
 - Make the smallest necessary change.
 - Keep changes bounded and reversible.
 - Do not refactor unrelated content.
-- Do not add blocked promotion items: embeddings, semantic search, vector DB, web UI, autonomous retrieval, agentic workflows, autonomous agents, production deploys, secrets, credentials, or runtime artifacts.
+- Do not add blocked promotion items: embeddings, semantic search, vector DB, web UI, autonomous retrieval, agentic workflows, autonomous agents, production deploys, secrets, credentials, or runtime artifacts. One bounded, owner-approved, root-controlled exception exists — "Supervised AI-OS subagent dispatch (pilot)" in `ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md`; it is pilot-only and does not generalize.
 - Do not claim production readiness or `production_promotion=yes`.
 - Do not commit directly to `main`.
 - Follow the canonical merge policy in `GOAL_MODE.md`; Codex and agents must not manually merge pull requests.

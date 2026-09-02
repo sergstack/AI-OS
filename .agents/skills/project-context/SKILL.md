@@ -7,6 +7,8 @@ description: Load a bounded context pack after canonical routing resolves an exi
 
 Use after canonical routing resolves one capability. This skill loads context; it does not classify the request or define domain methodology.
 
+When a capability's `executor.context_loader` names this skill, it is also the context entrypoint for a dispatched subagent (`AGENT_LOOP_PLAYBOOK.md`, "Supervised AI-OS Subagent Dispatch"): load only the one resolved capability's bounded pack; the subagent must not load other projects, classify the request, or select the next owner.
+
 ## Procedure
 
 1. Read the resolved capability from `PROJECT_CAPABILITIES.yaml` and verify its `canonical_path` exists.
