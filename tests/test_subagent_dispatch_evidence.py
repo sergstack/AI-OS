@@ -5,7 +5,6 @@ Covers the commissioning gate for "Supervised AI-OS subagent dispatch (pilot)".
 
 from __future__ import annotations
 
-import copy
 import json
 from pathlib import Path
 
@@ -87,7 +86,8 @@ def test_non_worktree_isolation_rejected() -> None:
 
 def test_workspace_path_must_be_isolated_worktree() -> None:
     rec = _valid_record()
-    rec["workspace_observation"]["path"] = "/Users/sst/Documents/Артефакты/MAIN"
+    # a parent-tree checkout path, not a .claude/worktrees/agent- worktree
+    rec["workspace_observation"]["path"] = "/repo/main-checkout"
     assert _errors(_doc([rec])) != []
 
 
@@ -141,7 +141,30 @@ def test_commissioning_doc_enforces_min_records_owners_and_scenarios() -> None:
     assert any("scenario coverage" in p for p in problems)
 
 
+def test_acceptance_gate_applies_by_filename_not_only_free_text(tmp_path: Path) -> None:
+    # A file named like a dispatch-records file gets the gate even when
+    # `generated_for` does not contain the word "commissioning".
+    p = tmp_path / "subagent_dispatch_records_x.json"
+    p.write_text("{}", encoding="utf-8")
+    assert checker.acceptance_gate_applies(p, {"generated_for": "routine capture"})
+    # An unrelated filename only gets the gate via the free-text signal.
+    q = tmp_path / "something_else.json"
+    q.write_text("{}", encoding="utf-8")
+    assert not checker.acceptance_gate_applies(q, {"generated_for": "routine capture"})
+    assert checker.acceptance_gate_applies(q, {"generated_for": "commissioning run"})
+
+
+def test_check_file_returns_problems_and_doc() -> None:
+    problems, doc = checker.check_file(
+        EVIDENCE_PATH, _schema(), checker.registry_executors()
+    )
+    assert problems == [], f"commissioning evidence must be clean: {problems}"
+    assert isinstance(doc, dict) and len(doc["records"]) >= 15
+
+
 def test_committed_commissioning_evidence_passes_full_linter() -> None:
     assert EVIDENCE_PATH.is_file(), "commissioning evidence file must exist"
-    problems = checker.check_file(EVIDENCE_PATH, _schema(), checker.registry_executors())
+    problems, _ = checker.check_file(
+        EVIDENCE_PATH, _schema(), checker.registry_executors()
+    )
     assert problems == [], f"commissioning evidence must be clean: {problems}"

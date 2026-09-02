@@ -54,16 +54,26 @@ def load_json(path: Path) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+class EnvironmentError_(RuntimeError):
+    """Raised when the linter cannot run (missing dependency), as distinct from
+    an evidence file being invalid. Surfaces as exit code 2, not 1."""
+
+
 def registry_executors() -> dict[str, dict]:
     reg = load_json(REGISTRY_PATH)
-    return {cid: c["executor"] for cid, c in reg["capabilities"].items()}
+    # A capability with no executor block degrades to {} so cross_check reports
+    # a clean FAIL ("agent_type ... != registry 'None'") instead of a KeyError.
+    return {cid: (c.get("executor") or {}) for cid, c in reg["capabilities"].items()}
 
 
 def schema_validate(doc: object, schema: object) -> list[str]:
     try:
         import jsonschema
-    except ImportError:  # pragma: no cover - dev dependency, present in CI
-        return ["jsonschema not installed (see requirements-dev.txt)"]
+    except ImportError as exc:  # pragma: no cover - dev dependency, present in CI
+        raise EnvironmentError_(
+            "jsonschema is required to run this check "
+            "(pip install -r requirements-dev.txt)"
+        ) from exc
     validator = jsonschema.Draft7Validator(schema)
     return [
         f"{'/'.join(str(p) for p in e.path) or '<root>'}: {e.message}"
@@ -116,46 +126,63 @@ def acceptance_check(doc: dict) -> list[str]:
     return problems
 
 
-def check_file(path: Path, schema: object, executors: dict[str, dict]) -> list[str]:
+def acceptance_gate_applies(path: Path, doc: dict) -> bool:
+    """The commissioning acceptance gate (>=15 records, >=3 owners, scenario
+    coverage) applies to any file matched by DEFAULT_GLOB, or to any file whose
+    `generated_for` names it a commissioning record. Keying only on the
+    free-text field would let a rename silently drop the gate."""
+    from fnmatch import fnmatch
+
+    if fnmatch(path.name, "subagent_dispatch_records*.json"):
+        return True
+    return "commissioning" in str(doc.get("generated_for", "")).lower()
+
+
+def check_file(
+    path: Path, schema: object, executors: dict[str, dict]
+) -> tuple[list[str], dict | None]:
     try:
         doc = load_json(path)
     except json.JSONDecodeError as exc:
-        return [f"invalid JSON: {exc}"]
+        return [f"invalid JSON: {exc}"], None
     problems = schema_validate(doc, schema)
     if problems:
-        return problems  # cross-checks assume a schema-valid doc
+        return problems, None  # cross-checks assume a schema-valid doc
     problems += cross_check(doc, executors)
-    if isinstance(doc, dict) and "commissioning" in str(doc.get("generated_for", "")).lower():
+    if isinstance(doc, dict) and acceptance_gate_applies(path, doc):
         problems += acceptance_check(doc)
-    return problems
+    return problems, doc
 
 
 def main(argv: list[str]) -> int:
-    schema = load_json(SCHEMA_PATH)
-    executors = registry_executors()
-    targets = argv or sorted(glob.glob(str(REPO_ROOT / DEFAULT_GLOB)))
-    if not targets:
-        print(f"No dispatch-evidence files matched {DEFAULT_GLOB} (nothing to check).")
-        return 0
+    try:
+        schema = load_json(SCHEMA_PATH)
+        executors = registry_executors()
+        targets = argv or sorted(glob.glob(str(REPO_ROOT / DEFAULT_GLOB)))
+        if not targets:
+            print(f"No dispatch-evidence files matched {DEFAULT_GLOB} (nothing to check).")
+            return 0
 
-    failed = 0
-    for t in targets:
-        path = Path(t)
-        problems = check_file(path, schema, executors)
-        rel = path.relative_to(REPO_ROOT) if path.is_relative_to(REPO_ROOT) else path
-        if problems:
-            failed += 1
-            print(f"FAIL {rel}")
-            for p in problems:
-                print(f"  - {p}")
-        else:
-            doc = load_json(path)
-            n = len(doc["records"])
-            owners = sorted({r["owner_capability"] for r in doc["records"]})
-            print(f"PASS {rel} — {n} records, owners: {', '.join(owners)}")
+        failed = 0
+        for t in targets:
+            path = Path(t)
+            problems, doc = check_file(path, schema, executors)
+            rel = path.relative_to(REPO_ROOT) if path.is_relative_to(REPO_ROOT) else path
+            if problems:
+                failed += 1
+                print(f"FAIL {rel}")
+                for p in problems:
+                    print(f"  - {p}")
+            else:
+                n = len(doc["records"])
+                owners = sorted({r["owner_capability"] for r in doc["records"]})
+                print(f"PASS {rel} — {n} records, owners: {', '.join(owners)}")
 
-    print(f"\nSummary: {len(targets)} file(s) checked, {failed} failed.")
-    return 1 if failed else 0
+        print(f"\nSummary: {len(targets)} file(s) checked, {failed} failed.")
+        return 1 if failed else 0
+    except EnvironmentError_ as exc:
+        print(f"CANNOT CHECK: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
