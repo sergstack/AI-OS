@@ -17,8 +17,9 @@ Per record it checks (schema + cross-checks against `PROJECT_CAPABILITIES.yaml`)
     `not_captured` (a missing runtime metric is declared, never invented);
   - `outcome == "defect"` carries a non-null `defect_ref`.
 
-Commissioning acceptance (blocking) for a records file whose `generated_for`
-contains "commissioning":
+Commissioning acceptance (blocking) for any file matched by the
+`subagent_dispatch_records*.json` name, or whose `generated_for` names it a
+commissioning record (see `acceptance_gate_applies`):
   - >= 15 records;
   - >= 3 distinct `owner_capability` values;
   - scenario coverage: deliberate_failure, long_multi_hop, repeat_route_guard,
