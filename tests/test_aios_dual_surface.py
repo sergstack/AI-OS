@@ -46,7 +46,7 @@ def test_registry_is_location_resolver_only() -> None:
 
     for capability_id, canonical_path in EXPECTED_PROJECTS.items():
         capability = registry["capabilities"][capability_id]
-        assert set(capability) == {"canonical_path", "context_entrypoints"}
+        assert set(capability) == {"canonical_path", "context_entrypoints", "executor"}
         assert capability["canonical_path"] == canonical_path
 
 

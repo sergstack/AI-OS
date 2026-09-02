@@ -15,6 +15,7 @@
 - local_first_compute_status: candidate policy; production allowlist empty; owner review pending
 - orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
 - executable_capability_routing_status: resolved; P0 audit BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; no MVP implemented; owner accepted the audit and closed #350 as completed (2026-09-02)
+- native_subagent_dispatch_status: pilot MVP under bounded owner-approved carve-out (2026-09-02); hub-and-spoke, root-controlled, one AES execution_id, no parallel state model; pilot-only, not a standard workflow; evidence in docs/evidence/NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -23,7 +24,7 @@
   - semantic search
   - vector DB
   - web UI
-  - agentic workflows
+  - agentic workflows  # one bounded exception: supervised AI-OS subagent dispatch (pilot), root-controlled, pilot-only — see AGENT_LOOP_PLAYBOOK.md
   - autonomous retrieval
 
 ## Current state

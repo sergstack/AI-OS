@@ -26,6 +26,42 @@ The loop is supervised when a human or explicit project gate controls scope, sto
 | PR Judge loop | `[Thinking]` / `[Codex]` | revise PR until pass/revise/blocked is clear |
 | ChatGPT routing loop | `[Inbox Router]` | reroute when task type is unclear |
 | Prompt QA Factory | `[AI OS]` -> owner project | candidate -> test -> judge -> revise -> selected, with human acceptance |
+| Supervised AI-OS subagent dispatch (pilot) | `[AI OS]` root `ai-os-orchestrator` | root re-routes only via `ROUTING_RULES.md`; a child never selects the next owner |
+
+## Supervised AI-OS Subagent Dispatch (Pilot)
+
+Owner-approved bounded exception, dated 2026-09-02, for one MVP only. It is
+**not** a general permission for agentic workflows or autonomous agents, and it
+does not become a standard workflow automatically. Standardization requires a
+separate owner decision.
+
+Scope: the root `ai-os-orchestrator` may spawn a native built-in coding-agent
+subagent to execute one bounded, already-routed capability slice, then resume.
+
+Mandatory bounds:
+
+- hub-and-spoke only: `root -> child -> root`; no `child -> child` delegation;
+- root `ai-os-orchestrator` is the only controller and the only canonical
+  routing entrypoint; a child may return a `cross_domain_need` but never
+  selects or invokes the next owner;
+- one AES `execution_id` for the whole user goal;
+- reuse the existing AES state machine, `continuation`, `route_trace`, `guards`,
+  handoff, and `authority_provenance`; do not create a parallel model;
+- `PROJECT_CAPABILITIES.yaml` remains the only capability registry;
+- each child receives bounded `project-context` for its resolved capability
+  only;
+- the child gets no new authority; merge, deploy, production, destructive, and
+  external-action gates are unchanged;
+- no Temporal / LangGraph / CrewAI / AutoGen / Mastra and no new
+  runtime, service, or database;
+- `.claude/agents` is not a canonical source and `.gitignore` is unchanged;
+- shared filesystem is a known risk: do not give a write-capable child unless
+  the slice genuinely requires writes;
+- no subagent timeout primitive exists; this is a recorded runtime limitation,
+  mitigated by explicit cancel and guard limits;
+- every actual spawn, result, and failure must be observable evidence
+  (`NOT RUN != PASS`); a runtime failure is registered as an AES defect, not
+  hidden by retry.
 
 ## Not Autonomous Agents
 
@@ -37,7 +73,8 @@ Supervised loops are not:
 - background automation;
 - vector DB / embeddings / semantic search;
 - web UI;
-- uncontrolled multi-agent execution.
+- uncontrolled multi-agent execution (the pilot above is the only bounded,
+  owner-approved, root-controlled exception).
 
 ## Stop Conditions
 
@@ -48,7 +85,7 @@ Stop when:
 - production, runtime, deploy, or migration work appears;
 - formulas, schemas, output contracts, column names, metric definitions, or business logic may change;
 - autonomous retrieval is needed;
-- uncontrolled multi-agent work would be required;
+- uncontrolled multi-agent work would be required beyond the bounded pilot;
 - acceptance criteria conflict.
 
 ## Human Acceptance

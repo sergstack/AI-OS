@@ -101,8 +101,8 @@ Blocking record count: **0**
 
 - Project: [AI OS]
 - Source paths: `ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md`, `ChatGPT/[AI OS]/Knowledge/LOOP_ACCEPTANCE_CHECKLIST.md`, `ChatGPT/[AI OS]/Knowledge/AUTO_RESEARCH_BACKLOG.md`, `ChatGPT/[AI OS]/Knowledge/SKILLS_HOOKS_MCP_DECISION_MATRIX.md`
-- Source bytes: 7283
-- Bundle bytes: 8383
+- Source bytes: 9364
+- Bundle bytes: 10459
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
