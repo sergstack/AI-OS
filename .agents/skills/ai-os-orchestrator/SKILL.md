@@ -84,7 +84,13 @@ Dispatch:
    working tree, so a child can never read or mutate stale parent branch state.
    If the slice must run against a specific revision, name that revision in the
    prompt and have the child `git fetch` and check it out inside its own
-   worktree.
+   worktree. **Fail closed:** pass `executor.agent_type` and the `worktree`
+   isolation verbatim from the registry. A dispatch that would omit either, or
+   fall back to a shared/default workspace, is not performed — it is recorded as
+   an AES defect (`classification: contract`) and the slice stops. The child's
+   returned workspace facts (`pwd` under `.claude/worktrees/agent-<id>`, clean
+   tree) are recorded in the `route_trace` entry as the spawn observation;
+   a dispatch with no such observation is not counted as executed.
 2. Pass a bounded prompt only: the `original_goal`, the resolved capability id
    and `canonical_path`, the `context_entrypoints` to load through
    `executor.context_loader` (`project-context`), the single slice objective,
