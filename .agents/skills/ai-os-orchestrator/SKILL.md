@@ -92,6 +92,21 @@ On return, the root (and only the root):
    without a material `evidence_delta` is recorded as
    `repeat_route_refused_missing_evidence_delta` and not dispatched.
 
+The after-child step is **mechanical, not discretionary** (preserves the AES
+§2.1 resolved-owner boundary; a discretionary root becomes a standing
+supervisor above the resolved owner and defeats warm resume). After a child
+returns, the root performs only continuation-layer functions — record the
+evidence delta, update progress against the original acceptance criteria,
+evaluate the four guards — then restores the resolved owner and its
+`resume_stage` and returns control to that owner. The root does not pick a new
+owner on its own judgment and does not perform or redo domain work. The root
+diverts from the resolved owner only on a closed trigger: (i) a cold-entry-level
+change to the original goal, resolved owner, scope, authority, or canonical
+routing state; (ii) an AES §2 `decide` trigger; (iii) a tripped continuation
+guard; or (iv) all original acceptance criteria satisfied. Cross-domain routing
+after a child return still originates from the resolved owner's identified
+`cross_domain_need`.
+
 Failure handling: a spawn error, missing result, denied tool, or unusable
 output is registered as an AES defect (`classification: external_dependency`
 for a runtime/tool failure, `implementation` for a bad result), not retried

@@ -44,6 +44,7 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
 - `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
 - `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md` — Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH`; P1–P4 already owned by canonical contracts; no MVP implemented. Audit accepted by the owner; #350 closed as completed 2026-09-02. See `docs/evidence/README.md` for the other decision-evidence records (#342, #344, #345).
+- `docs/evidence/NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md` — bounded native-subagent-dispatch MVP pilot on the Claude Code surface (follow-up to #350), under the 2026-09-02 owner carve-out. 3 multi-owner executions, verdict `PASS`, recommended pilot-only. Not standardized; not merged; not production-authorized.
 - `docs/operations/CHATGPT_PROJECT_SYNC_CHECKLIST.md` — manual sync status.
 - `docs/operations/PILOT_CASES.md` — pilot backlog; pilot completion still requires result evidence.
 - `StreamDeck/README.md` — StreamDeck active/candidate status.
