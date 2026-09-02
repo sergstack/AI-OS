@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:d345e39209df2643666d8910d767fd2f93afd2b16f8954710f84ef3d4a08353d
+- source_fingerprint: sha256:ed25446081dce3ae01ffc6c79a4617105593f6f3293313b0f8b06cb5ae508503
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -137,6 +137,21 @@ the record internal or in evidence/appendix so `quick` output remains compact.
 - [ ] `analytics_extension_applied_without_duplication?`
 - [ ] `reasoning_control_not_treated_as_autonomous_execution_loop?`
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
+### Analytical Judge gate (post-findings)
+Explicit checkpoint after findings and before memo / report — an orchestration
+pass over the controls above, not a second QA framework. For
+`analytical_depth = material / decision_critical`, record an `ANALYTICAL_JUDGE`
+result; routine / no-trigger cases collapse to the compact QA note. See
+`ANALYTICAL_REASONING_STANDARD.md` §8.
+- [ ] `question_fit?` — analysis answered the declared business question and scope.
+- [ ] `method_adequacy?` — selected methods sufficient; every supporting method `execution_status: executed` with `prerequisites_met`.
+- [ ] `evidence_lineage_complete?` — each headline conclusion traces executed method → source mart/table/slice → metric/period/grain/filter/baseline → evidence.
+- [ ] `alternative_explanation_tested_or_visible?`
+- [ ] `contradicting_evidence_or_method_disagreement_not_silently_passed?`
+- [ ] `claim_strength <= final_evidence_sufficiency?` — including `driver != root cause`, `correlation != causation`, single-period != systemic.
+- [ ] `recommendation_risk_implication_within_verified_evidence?`
+- [ ] `ANALYTICAL_JUDGE` status recorded: `pass` / `revise` / `blocked`; `revise` resolved by one bounded correction + passing re-check; `blocked` stops publication.
+- [ ] `judge_did_not_become_autonomous_retry_loop?` — no silent self-retry; no method added without registry/trigger support; `blocked != executed`.
 ### Material variance diagnostic QA
 Apply `VARIANCE_DIAGNOSTIC_CONTRACT.md` only to material/decision-critical Plan/Fact cases or a material variance risk:
 - [ ] Source/raw formula and sign convention remain distinct from normalized management direction; unresolved KPI direction blocks normalization.
@@ -310,6 +325,15 @@ A result is accepted when:
 11. Before publication, every flagship metric in a quantitative report passes
     `QUANTITATIVE_SANITY_GATE.md`; otherwise the result is `revise` or
     `blocked` and is not published as a final quantitative conclusion.
+12. For `analytical_depth = material / decision_critical`, the Analytical Judge
+    gate (`ANALYTICAL_REASONING_STANDARD.md` §8) ran after findings and before
+    memo / report generation, and an `ANALYTICAL_JUDGE` result is recorded with
+    `status: pass` (or a `revise` resolved by one bounded correction and a
+    passing re-check). A `blocked` Judge status means the final management
+    conclusion is not published. `maximum_claim_strength` does not exceed
+    `FINAL_EVIDENCE_SUFFICIENCY`; `driver != root cause` and
+    `correlation != causation` hold. Routine / no-trigger cases satisfy this
+    through the compact QA note without a full Judge record.
 ## Main file acceptance
 ```text
 stage_main_full: pass/fail/blocked/not_applicable
@@ -322,6 +346,7 @@ slices_from_mart_main_full: pass/fail/blocked/not_applicable
 accepted: yes/no
 qa_status: pass/fail/blocked
 quantitative_sanity_gate_status: pass/revise/blocked/not_applicable
+analytical_judge_status: pass/revise/blocked/not_applicable
 confidence: high/medium/low
 residual_risks:
 known_limitations:
@@ -376,6 +401,9 @@ Use `blocked` when:
 - compact-only input is insufficient for requested conclusion;
 - implementation is required before result can be produced.
 - a required flagship metric has a blocked quantitative sanity gate.
+- the Analytical Judge gate returns `blocked` (required prerequisite,
+  reconciliation, grain, validation path, or discriminating evidence
+  unavailable).
 ## Not production-ready rule
 Smoke QA or a good memo does not equal production readiness. Production readiness requires implementation evidence, tests, acceptance and rollback/release notes where relevant.
 
@@ -490,6 +518,7 @@ AI OS gives evidence and patterns. `[Analytics]` applies them only when they aff
 - Method eligibility and triggers follow `ANALYTICAL_TECHNIQUES.md`; the LLM cannot silently override the registry.
 - Reasoning cannot substitute for deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
+- Every material / decision-critical analytical conclusion passes an explicit post-findings Analytical Judge gate (`ANALYTICAL_REASONING_STANDARD.md` §8) before narrative packaging; the gate orchestrates existing controls and adds no second QA framework.
 - `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
 ## Evidence labels
 Use:
@@ -512,7 +541,8 @@ Do not publish final management conclusion when:
 - unsupported cause;
 - risk without basis;
 - action without owner/due date;
-- no main mart for a mart-based conclusion.
+- no main mart for a mart-based conclusion;
+- the Analytical Judge gate returns `blocked`.
 ## Anti-patterns
 | Anti-pattern | Why bad | Correct action |
 |---|---|---|
@@ -557,6 +587,10 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Method catalog inflated by converting controls into methods | Require a distinct question, execution procedure, and material analytical effect before adding a method. |
 | Decision methods leak from `[Thinking]` into `[Analytics]` | Keep trade-offs, reversibility, premortem, risk appetite, choice, and decision in `[Thinking]`. |
 | Reasoning-control loop mistaken for an autonomous execution loop | Keep reasoning/method selection inside the AES-governed scope, checks, bounded correction, stop, rollback, acceptance, and authority boundaries. |
+| Analytical conclusion reaches memo without an explicit post-findings challenge | Run the Analytical Judge gate after findings; record `ANALYTICAL_JUDGE` `pass / revise / blocked` for material / decision-critical cases. |
+| Analytical Judge treated as an autonomous retry loop | Allow only `Judge finding → one bounded correction or deterministic rerun → Judge re-check`; no silent self-retry, no unrestricted iteration; AES limits and the `[Codex]` one-fix limit are unchanged. |
+| Analytical Judge used as a second QA framework or a new taxonomy | The gate only orchestrates `PRELIMINARY_EVIDENCE_CHECK`, explanation challenge, `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY`, Analysis QA, and variance diagnostic QA; it defines no new field. |
+| `blocked` method converted into evidence at the Judge step | Enforce `blocked != executed`; a `blocked` prerequisite forces Judge `blocked`, not a weaker `pass`. |
 ## Metric / artifact explosion
 Anti-pattern:
 A short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
@@ -749,6 +783,35 @@ Pass condition:
 - records all required evidence, including both locators and tolerance;
 - sets the metric and aggregate gate to `pass`;
 - does not add unnecessary executive-facing gate tables.
+## 11. Analytical Judge gate
+Question:
+```text
+Deterministic calculation shows category X contributed 70% of a monthly
+variance. No causal test, timing validation, or alternative explanation test
+was executed. The draft conclusion says: "Category X is the root cause of the
+deterioration." Каков результат Analytical Judge?
+```
+Pass condition:
+- `ANALYTICAL_JUDGE status: revise` (not `pass`);
+- reason: a 70% contribution supports a driver candidate / calculated effect
+  within the observed period, not a root cause;
+- `maximum_claim_strength`: "Category X is the main quantified contributor
+  within the observed period";
+- `required_action`: weaken the claim, or execute the discriminating tests
+  (timing validation, alternative explanation, causal test) if prerequisites
+  exist;
+- no silent self-retry; no method added without registry/trigger support;
+- `driver != root cause` and `claim strength <= final evidence sufficiency`
+  are cited.
+Question:
+```text
+Routine quick task, low uncertainty, no material trigger. Нужен полный
+семиквестионный ANALYTICAL_JUDGE record?
+```
+Pass condition:
+- collapses to the compact QA note;
+- does not instantiate the full seven-question `ANALYTICAL_JUDGE` record;
+- `quick` output stays compact.
 ## Smoke QA output
 ```text
 smoke_qa_status: pass/fail/blocked

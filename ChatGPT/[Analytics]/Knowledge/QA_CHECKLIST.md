@@ -116,6 +116,24 @@ the record internal or in evidence/appendix so `quick` output remains compact.
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
 
+### Analytical Judge gate (post-findings)
+
+Explicit checkpoint after findings and before memo / report — an orchestration
+pass over the controls above, not a second QA framework. For
+`analytical_depth = material / decision_critical`, record an `ANALYTICAL_JUDGE`
+result; routine / no-trigger cases collapse to the compact QA note. See
+`ANALYTICAL_REASONING_STANDARD.md` §8.
+
+- [ ] `question_fit?` — analysis answered the declared business question and scope.
+- [ ] `method_adequacy?` — selected methods sufficient; every supporting method `execution_status: executed` with `prerequisites_met`.
+- [ ] `evidence_lineage_complete?` — each headline conclusion traces executed method → source mart/table/slice → metric/period/grain/filter/baseline → evidence.
+- [ ] `alternative_explanation_tested_or_visible?`
+- [ ] `contradicting_evidence_or_method_disagreement_not_silently_passed?`
+- [ ] `claim_strength <= final_evidence_sufficiency?` — including `driver != root cause`, `correlation != causation`, single-period != systemic.
+- [ ] `recommendation_risk_implication_within_verified_evidence?`
+- [ ] `ANALYTICAL_JUDGE` status recorded: `pass` / `revise` / `blocked`; `revise` resolved by one bounded correction + passing re-check; `blocked` stops publication.
+- [ ] `judge_did_not_become_autonomous_retry_loop?` — no silent self-retry; no method added without registry/trigger support; `blocked != executed`.
+
 ### Material variance diagnostic QA
 
 Apply `VARIANCE_DIAGNOSTIC_CONTRACT.md` only to material/decision-critical Plan/Fact cases or a material variance risk:

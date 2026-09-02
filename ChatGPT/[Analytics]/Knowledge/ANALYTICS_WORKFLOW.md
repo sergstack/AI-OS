@@ -47,10 +47,13 @@ question / scope
 → deterministic calculation
 → findings
 → evidence challenge / calibration as required
+→ Analytical Judge (pass / revise / blocked)
+→ revise or rerun when required
+→ final findings
 → management synthesis when material and management-facing
 → LLM context package
 → memo / report
-→ judge / QA
+→ memo QA / judge
 → revise or rerun
 → acceptance
 → next run trigger
@@ -187,6 +190,8 @@ Select the deterministic-first minimum sufficient method set through the registr
 State method, metric, period, grain, data source and limitation.
 
 After deterministic findings, apply the preliminary evidence check, explanation challenge, claim calibration, and final evidence sufficiency from `ANALYTICAL_REASONING_STANDARD.md` only to the depth required by the case. Preserve `driver != root cause` and do not silently reconcile material method disagreement.
+
+Then run the **Analytical Judge gate** (`ANALYTICAL_REASONING_STANDARD.md` §8): a compact post-findings orchestration checkpoint over the controls above that returns `pass / revise / blocked` before the findings become narrative. For `analytical_depth = material / decision_critical` the explicit gate is mandatory and a recorded `ANALYTICAL_JUDGE` result (`pass`, or a `revise` resolved by one bounded correction and a passing re-check) is required before memo / report generation; `blocked` stops publication. For routine / low-uncertainty cases with no material trigger it collapses to the existing compact QA note. It adds no method, intent, taxonomy, or QA framework.
 
 ## Step 10 — Charts
 

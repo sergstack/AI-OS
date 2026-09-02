@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:fcc7572736f26e5950c33f53cf8e31ddb34e160679cb1fe2a7dd0a805d4e0336
+- source_fingerprint: sha256:60241aaddf4fce9f54d1857f6b33f521830b909cbdd39e97de8a6d212c3045f6
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -123,10 +123,13 @@ question / scope
 → deterministic calculation
 → findings
 → evidence challenge / calibration as required
+→ Analytical Judge (pass / revise / blocked)
+→ revise or rerun when required
+→ final findings
 → management synthesis when material and management-facing
 → LLM context package
 → memo / report
-→ judge / QA
+→ memo QA / judge
 → revise or rerun
 → acceptance
 → next run trigger
@@ -221,6 +224,7 @@ mart_main_full
 Select the deterministic-first minimum sufficient method set through the registry and intent mapping in `ANALYTICAL_TECHNIQUES.md`. Apply the prerequisite gate before execution. A blocked method is not an executed method and is not supporting evidence.
 State method, metric, period, grain, data source and limitation.
 After deterministic findings, apply the preliminary evidence check, explanation challenge, claim calibration, and final evidence sufficiency from `ANALYTICAL_REASONING_STANDARD.md` only to the depth required by the case. Preserve `driver != root cause` and do not silently reconcile material method disagreement.
+Then run the **Analytical Judge gate** (`ANALYTICAL_REASONING_STANDARD.md` §8): a compact post-findings orchestration checkpoint over the controls above that returns `pass / revise / blocked` before the findings become narrative. For `analytical_depth = material / decision_critical` the explicit gate is mandatory and a recorded `ANALYTICAL_JUDGE` result (`pass`, or a `revise` resolved by one bounded correction and a passing re-check) is required before memo / report generation; `blocked` stops publication. For routine / low-uncertainty cases with no material trigger it collapses to the existing compact QA note. It adds no method, intent, taxonomy, or QA framework.
 ## Step 10 — Charts
 Charts must be sourced from `mart_main_full` or a documented slice derived from it.
 ## Step 11 — Memo

@@ -11,6 +11,7 @@
 - Method eligibility and triggers follow `ANALYTICAL_TECHNIQUES.md`; the LLM cannot silently override the registry.
 - Reasoning cannot substitute for deterministic execution or missing prerequisites.
 - Claim strength cannot exceed final evidence sufficiency.
+- Every material / decision-critical analytical conclusion passes an explicit post-findings Analytical Judge gate (`ANALYTICAL_REASONING_STANDARD.md` §8) before narrative packaging; the gate orchestrates existing controls and adds no second QA framework.
 - `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
 
 ## Evidence labels
@@ -39,7 +40,8 @@ Do not publish final management conclusion when:
 - unsupported cause;
 - risk without basis;
 - action without owner/due date;
-- no main mart for a mart-based conclusion.
+- no main mart for a mart-based conclusion;
+- the Analytical Judge gate returns `blocked`.
 
 ## Anti-patterns
 
@@ -89,6 +91,10 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Method catalog inflated by converting controls into methods | Require a distinct question, execution procedure, and material analytical effect before adding a method. |
 | Decision methods leak from `[Thinking]` into `[Analytics]` | Keep trade-offs, reversibility, premortem, risk appetite, choice, and decision in `[Thinking]`. |
 | Reasoning-control loop mistaken for an autonomous execution loop | Keep reasoning/method selection inside the AES-governed scope, checks, bounded correction, stop, rollback, acceptance, and authority boundaries. |
+| Analytical conclusion reaches memo without an explicit post-findings challenge | Run the Analytical Judge gate after findings; record `ANALYTICAL_JUDGE` `pass / revise / blocked` for material / decision-critical cases. |
+| Analytical Judge treated as an autonomous retry loop | Allow only `Judge finding → one bounded correction or deterministic rerun → Judge re-check`; no silent self-retry, no unrestricted iteration; AES limits and the `[Codex]` one-fix limit are unchanged. |
+| Analytical Judge used as a second QA framework or a new taxonomy | The gate only orchestrates `PRELIMINARY_EVIDENCE_CHECK`, explanation challenge, `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY`, Analysis QA, and variance diagnostic QA; it defines no new field. |
+| `blocked` method converted into evidence at the Judge step | Enforce `blocked != executed`; a `blocked` prerequisite forces Judge `blocked`, not a weaker `pass`. |
 
 ## Metric / artifact explosion
 

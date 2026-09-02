@@ -15,6 +15,15 @@ A result is accepted when:
 11. Before publication, every flagship metric in a quantitative report passes
     `QUANTITATIVE_SANITY_GATE.md`; otherwise the result is `revise` or
     `blocked` and is not published as a final quantitative conclusion.
+12. For `analytical_depth = material / decision_critical`, the Analytical Judge
+    gate (`ANALYTICAL_REASONING_STANDARD.md` §8) ran after findings and before
+    memo / report generation, and an `ANALYTICAL_JUDGE` result is recorded with
+    `status: pass` (or a `revise` resolved by one bounded correction and a
+    passing re-check). A `blocked` Judge status means the final management
+    conclusion is not published. `maximum_claim_strength` does not exceed
+    `FINAL_EVIDENCE_SUFFICIENCY`; `driver != root cause` and
+    `correlation != causation` hold. Routine / no-trigger cases satisfy this
+    through the compact QA note without a full Judge record.
 
 ## Main file acceptance
 
@@ -31,6 +40,7 @@ slices_from_mart_main_full: pass/fail/blocked/not_applicable
 accepted: yes/no
 qa_status: pass/fail/blocked
 quantitative_sanity_gate_status: pass/revise/blocked/not_applicable
+analytical_judge_status: pass/revise/blocked/not_applicable
 confidence: high/medium/low
 residual_risks:
 known_limitations:
@@ -103,6 +113,9 @@ Use `blocked` when:
 - compact-only input is insufficient for requested conclusion;
 - implementation is required before result can be produced.
 - a required flagship metric has a blocked quantitative sanity gate.
+- the Analytical Judge gate returns `blocked` (required prerequisite,
+  reconciliation, grain, validation path, or discriminating evidence
+  unavailable).
 
 ## Not production-ready rule
 

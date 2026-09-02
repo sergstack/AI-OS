@@ -393,7 +393,74 @@ claim
 
 `formula_or_method` remains a human-readable description and does not replace `method_execution_id`. A claim that requires an actual method result cannot use an execution with status `blocked`, `planned`, or `not_needed` as supporting evidence.
 
-## 8. Runtime collapse
+## 8. Analytical Judge gate
+
+An explicit, bounded orchestration checkpoint that runs **after deterministic findings and before narrative packaging** (memo / report). It challenges the analytical conclusion itself. It does not add a QA framework, taxonomy, method, intent, or execution state: it reads the controls already defined in §4–§7 and the existing Analytics QA, and returns one visible result.
+
+```text
+deterministic calculation
+→ findings
+→ ANALYTICAL JUDGE
+→ pass / revise / blocked
+→ revise or rerun when required
+→ final findings
+→ memo / report
+→ existing Memo QA / Judge
+→ acceptance
+```
+
+### Seven checks (semantic, over existing controls — no new definitions)
+
+| # | Judge check | Reads |
+|---|---|---|
+| 1 | Question fit — did the analysis answer the declared business question and scope? | `TASK_PROFILE.question`, active intent classification (§1–§2), `expected_output` |
+| 2 | Method adequacy — were the selected methods sufficient, and was every supporting method actually executed with prerequisites met? | `METHOD_PLAN` (`status`, `prerequisites_met`, `execution_status`), the registry and triggers in `ANALYTICAL_TECHNIQUES.md`, `blocked != executed` (§4) |
+| 3 | Evidence lineage — can every headline conclusion be traced executed method → source mart / table / slice → metric → period → grain → filter / baseline → evidence? | the lineage in §7 and `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md` |
+| 4 | Alternative explanations — is a materially plausible alternative untested or not kept visible? | `COMPETING_EXPLANATIONS[]`, `DISCRIMINATING_EVIDENCE`, `FALSIFICATION_TEST` (§6) |
+| 5 | Contradicting evidence — does evidence or method disagreement materially weaken the conclusion? | `CONTRADICTING_EVIDENCE`, `RESIDUAL_UNCERTAINTY`, the method-disagreement rule (§6) |
+| 6 | Claim calibration — is any conclusion stronger than `FINAL_EVIDENCE_SUFFICIENCY` (driver → root cause, association → causation, single-period → systemic)? | claim ladder, `claim_support`, `causal_status`, `FINAL_EVIDENCE_SUFFICIENCY`, `claim strength <= final evidence sufficiency` (§7); `VARIANCE_DIAGNOSTIC_CONTRACT.md` for material Plan/Fact |
+| 7 | Decision proportionality — does any recommendation, risk statement, or management implication exceed the verified evidence? | the material management synthesis rule (`ANALYTICS_WORKFLOW.md` Step 11) and its acceptance criteria |
+
+The Judge introduces no competing definition for any concept it reads. It reuses `PRELIMINARY_EVIDENCE_CHECK`, the explanation-challenge record, `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`, Analysis QA, and the material variance diagnostic QA where applicable.
+
+### Output
+
+```text
+ANALYTICAL_JUDGE
+status: pass / revise / blocked
+failed_checks:
+material_findings:
+required_action:
+rerun_required: yes / no
+manual_review_required: yes / no
+maximum_claim_strength:
+```
+
+- **pass** — every material conclusion is supported at its stated claim strength; no material unresolved contradiction or missing analytical check remains.
+- **revise** — the conclusion or its wording can be corrected from existing evidence, or a bounded additional deterministic check / rerun is available.
+- **blocked** — a required prerequisite, reconciliation, grain, validation path, or discriminating evidence is unavailable; the final management conclusion must not be published.
+
+`maximum_claim_strength` cannot exceed `FINAL_EVIDENCE_SUFFICIENCY.maximum_claim_strength`. `manual_review_required` is the value set by §1; the Judge surfaces it and does not redefine it.
+
+### Bounded revise / rerun
+
+Allowed:
+
+```text
+Judge finding
+→ one explicit bounded correction or deterministic rerun
+→ Judge re-check
+```
+
+Forbidden: silent self-retry; unrestricted iterative analysis; adding a method without registry / trigger support; reasoning around a missing deterministic prerequisite; treating a `blocked` method as evidence. Correction count, stop conditions, and rollback remain those of the canonical `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` and the `[Codex]` one-fix limit where applicable; this gate does not widen them.
+
+### Runtime collapse
+
+`routine` + low uncertainty + no material trigger: collapse the Judge to the existing compact QA note on the compact path (Runtime collapse, §9). Do not instantiate the seven-question `ANALYTICAL_JUDGE` record.
+
+`material` / `decision_critical`: the explicit gate is mandatory. A recorded `ANALYTICAL_JUDGE` with `status: pass` — or a `revise` resolved by one bounded correction and a passing re-check — is required before final findings are handed to memo / report generation. A `blocked` status stops publication of the final management conclusion.
+
+## 9. Runtime collapse
 
 P0 is one workflow with conditional depth, not two independent workflows.
 
@@ -419,12 +486,13 @@ TASK PROFILE
 → EXPLANATION CHALLENGE
 → CLAIM CALIBRATION
 → FINAL EVIDENCE SUFFICIENCY
+→ ANALYTICAL JUDGE (pass / revise / blocked) → FINAL FINDINGS
 → FULL QA
 ```
 
-Without a material trigger, do not instantiate an unnecessary full Explanation Challenge, competing-explanations structure, falsification structure, expanded claim-registry state, or full evidence-sufficiency record. `quick` retains the existing quick-mode artifact and context budget and does not become a full governance artifact by default.
+Without a material trigger, do not instantiate an unnecessary full Explanation Challenge, competing-explanations structure, falsification structure, expanded claim-registry state, full evidence-sufficiency record, or the seven-question `ANALYTICAL_JUDGE` record. `quick` retains the existing quick-mode artifact and context budget and does not become a full governance artifact by default.
 
-## 9. Stop and escalation rules
+## 10. Stop and escalation rules
 
 Stop analytical deepening when:
 
