@@ -38,9 +38,9 @@ Honest capture status: the Claude Code `Agent` result emits a `usage` footer inc
 
 - **Distinct owner capabilities exercised: 7 / 7** (all of `PROJECT_CAPABILITIES.yaml`).
 - **Deliberate failures (2), both honest, no workaround, registered:**
-  - `DEF-commissionH-001` (`external_dependency` / capability-missing) — codex `Plan` child asked to write; it has no `Write`/`Edit` and Bash was read-only; it refused plainly, did not `sed -i` / heredoc / `git apply`, returned the exact diff. **Recovery:** re-formed as patch-return; H2 produced the patch; the root applied and validated it (this PR's `docs-safety.yml` wiring).
-  - `DEF-commissionH-002` (`external_dependency` / missing input) — analytics `Plan` child asked to read a non-existent CSV; it reported "slice blocked / file not found" with `ls`/`find`/`git ls-files` evidence, **did not fabricate** a row count or headers, **did not substitute** another file.
-  - No silent retry. Both defects are in the AES defect lifecycle.
+  - `def-commission-h-001` (`external_dependency` / capability-missing) — codex `Plan` child asked to write; it has no `Write`/`Edit` and Bash was read-only; it refused plainly, did not `sed -i` / heredoc / `git apply`, returned the exact diff. **Recovery:** re-formed as patch-return; H2 produced the patch; the root applied and validated it (this PR's `docs-safety.yml` wiring).
+  - `def-commission-h-002` (`external_dependency` / missing input) — analytics `Plan` child asked to read a non-existent CSV; it reported "slice blocked / file not found" with `ls`/`find`/`git ls-files` evidence, **did not fabricate** a row count or headers, **did not substitute** another file.
+  - Both are recorded in `subagent_dispatch_records_2026-09-02.json` as `outcome: refused` with a `defect_ref` and a described failure. They are **deliberate probes of the failure-handling path** (honest refusal, no silent retry, bounded recovery), not workflow defects that require a regression case under `ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md`. `FAILURE_REGISTRY.md` and the AES record schema are unchanged.
 - **Repeat-route guard (execution G):** the root first attempted a bare repeat route to `[LLM]` with no `evidence_delta` → recorded `repeat_route_refused_missing_evidence_delta`, **not dispatched**. After G3+G4+G5 produced a material `evidence_delta`, the repeat route to `[LLM]` (G6) was allowed and dispatched. Both branches observed.
 - **Long multi-hop (execution G):** `root → ai_os → root → llm → root → thinking → root → analytics → root → codex → root → (refused llm) → root → llm → root`. One `execution_id` throughout; root chose every hop via `ROUTING_RULES.md`; children returned only `cross_domain_need`; original acceptance criteria re-checked before each next route; Closure Review produced the single final result.
 
@@ -107,7 +107,7 @@ production_status: not_applicable
 |---|---|
 | punch-list 4/4 closed | **yes** — §1 linter, §2 telemetry contract, §3 sample + guard population, §4 cost owner |
 | ≥15 hardened dispatches with a valid evidence record | **yes** — 16 records, linter PASS, `test_committed_commissioning_evidence_passes_full_linter` green |
-| no silent retry / no status inflation | **yes** — 2 defects registered; telemetry gaps declared `not_captured`; guard thresholds not changed without evidence |
+| no silent retry / no status inflation | **yes** — the 2 deliberate induced failures are recorded in `subagent_dispatch_records_2026-09-02.json` (`outcome: refused` + `defect_ref`) with honest refusal and bounded recovery, not claimed as `FAILURE_REGISTRY.md` entries; telemetry gaps declared `not_captured` (16/16); guard thresholds unchanged (schema not touched) |
 | root-only routing and one `execution_id` preserved | **yes** — execution G (6 hops) and the prior long multi-hop both hold one id, root-only routing |
 | no new architectural layers | **yes** — evidence file + linter + one CI step + wording; no router / state machine / DB / framework / schema change |
 | rollback remains scoped | **yes** — see Rollback |
@@ -115,4 +115,14 @@ production_status: not_applicable
 
 ## Judge review
 
-> Filled in by the Judge review pass for this PR. If `judge_verdict: pass` and every row above is `yes`, the status line flips from `STANDARDIZE BOUNDED (conditional)` to `STANDARDIZED BOUNDED`; otherwise it stays conditional and the open items are listed.
+Two passes.
+
+**Round 1 — `revise`** (`exec-commissionj-2026-09-02` J1, adversarial). Criteria 1, 2, 4, 5, 6 passed with cited evidence (16 records trace clean through schema → cross-check → acceptance gate; one `execution_id` per execution; root-only routing; no schema/router/authority change; scoped rollback). One blocking gap on criterion 3 (status inflation): the memo and status line said the two deliberate-failure defects were "registered" / "in the AES defect lifecycle", but no `FAILURE_REGISTRY.md` entry or AES record existed — the IDs lived only in the JSON `notes` and prose — and `def-`/`DEF-` casing was inconsistent with `defect_ref`.
+
+**Fix applied:** IDs normalised to `def-commission-h-001` / `def-commission-h-002` in the JSON `defect_ref`, JSON `notes`, and the memo. Language corrected: the two induced failures are stated precisely as **recorded in `subagent_dispatch_records_2026-09-02.json` (`outcome: refused` + `defect_ref`)**, deliberate probes of the failure-handling path (honest refusal, no silent retry, bounded recovery), **not** `FAILURE_REGISTRY.md` regression cases. `FAILURE_REGISTRY.md` and the AES record schema remain unchanged. No other criterion was affected.
+
+**Round 2 — re-review of the corrected diff** (`exec-commissionj-2026-09-02` J2): _verdict recorded below from the observed Judge result._
+
+<!-- J2-RESULT -->
+
+Flip rule: `judge_verdict: pass` **and** every acceptance row `yes` → the status line flips from `STANDARDIZE BOUNDED (conditional)` to `STANDARDIZED BOUNDED` (bounded, pilot-scoped, read-plus-patch-return, hub-and-spoke). It does not become a default/unrestricted standard; that stays a separate owner decision, as does the guard-threshold proposal above. Any other verdict keeps the status conditional with the open items listed.
