@@ -41,9 +41,12 @@ subagent to execute one bounded, already-routed capability slice, then resume.
 Mandatory bounds:
 
 - hub-and-spoke only: `root -> child -> root`; no `child -> child` delegation.
-  Structurally enforced: every executor `agent_type` is a built-in type whose
-  tool set excludes the `Agent` tool (`Plan`, `Explore`), so a child cannot
-  spawn a sub-agent. Only the root holds the `Agent` tool;
+  Enforced by the runtime tool set: a `Plan` child cannot use the native
+  `Agent` tool, so it cannot spawn a sub-agent through the supported mechanism.
+  Only the root holds the `Agent` tool. Residual risk: a `Plan` child keeps
+  `Bash`, so Bash-mediated spawning of an external agent process is not
+  structurally blocked — residual risk pending separate evidence, made
+  impractical by `write_capable: false` + worktree isolation;
 - root `ai-os-orchestrator` is the only controller and the only canonical
   routing entrypoint; a child may return a `cross_domain_need` but never
   selects or invokes the next owner;
@@ -65,9 +68,26 @@ Mandatory bounds:
   and validates it. The root is the only writer;
 - no subagent timeout primitive exists; this is a recorded runtime limitation,
   mitigated by `TaskStop` (explicit cancel) and guard limits;
+- every executed dispatch has a machine-checkable evidence record
+  (`schemas/subagent_dispatch_evidence.schema.json`, linted by
+  `scripts/check_subagent_dispatch_evidence.py`): `agent_type`,
+  `isolation: "worktree"`, a workspace observation, execution/owner linkage,
+  and per-dispatch telemetry where the runtime emits it (missing metrics
+  recorded as `not_captured`, never invented or omitted);
+- the "`Plan` cannot use the native `Agent` tool" and worktree-isolation
+  properties are Claude Code runtime facts, not repo-testable; re-verify them
+  on any Claude Code runtime upgrade before relying on this pilot;
 - every actual spawn, result, and failure must be observable evidence
   (`NOT RUN != PASS`); a runtime failure is registered as an AES defect, not
   hidden by retry.
+
+Cost / latency budget owner: `[AI OS]`. A subagent dispatch is justified over
+inline root execution only when at least one holds: (a) the slice is
+independent of other in-flight slices; (b) its bounded `project-context` is
+materially smaller than the root's working context and isolation reduces
+cross-contamination; or (c) it needs a clean worktree at a specific revision.
+Otherwise the root executes the slice inline. Observed cost where captured:
+~90–150 s and ~40–55 k subagent tokens per dispatch, plus one git worktree.
 
 ## Not Autonomous Agents
 

@@ -137,14 +137,18 @@ def test_executor_without_a_verified_backend_cannot_claim_execution() -> None:
 
 
 def test_agent_loop_playbook_declares_the_hardened_bounds() -> None:
-    playbook = (
+    raw = (
         REPO_ROOT / "ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md"
     ).read_text(encoding="utf-8")
+    playbook = " ".join(raw.split())  # collapse line wrapping
     assert "Supervised AI-OS Subagent Dispatch (Pilot)" in playbook
     assert "hub-and-spoke only: `root -> child -> root`" in playbook
-    assert "excludes the `Agent` tool" in playbook
+    assert "a `Plan` child cannot use the native `Agent` tool" in playbook
+    assert "Bash-mediated spawning of an external agent process" in playbook
     assert 'every dispatch uses `isolation: "worktree"`' in playbook
     assert "one AES `execution_id` for the whole user goal" in playbook
+    assert "machine-checkable evidence record" in playbook
+    assert "re-verify them on any Claude Code runtime upgrade" in playbook
 
 
 def test_orchestrator_skill_binds_dispatch_to_isolation_and_root_only() -> None:

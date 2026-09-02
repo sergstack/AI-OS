@@ -19,6 +19,13 @@ Current decision evidence:
   blockers DEF-001 (workspace isolation) and native no-nesting closed
   structurally; recommendation **STANDARDIZE BOUNDED (conditional)** on a
   4-item punch-list. It does not authorize merge or production.
+- [`NATIVE_SUBAGENT_DISPATCH_COMMISSIONING_2026-09-02.md`](NATIVE_SUBAGENT_DISPATCH_COMMISSIONING_2026-09-02.md)
+  closes the commissioning punch-list 4/4 (dispatch-evidence schema + blocking
+  linter, enforced telemetry contract, 16-dispatch sample across 7 owners with
+  a guard-calibration proposal, `[AI OS]` cost/latency owner). Machine-checkable
+  records in `subagent_dispatch_records_2026-09-02.json`. Status flips to
+  `STANDARDIZED BOUNDED` only on a passing Judge review; otherwise stays
+  conditional. It does not authorize merge or production.
 - [`EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`](EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md)
   records the Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH` for executable
   dispatch, P1–P4 already owned by current canonical contracts, plus an
