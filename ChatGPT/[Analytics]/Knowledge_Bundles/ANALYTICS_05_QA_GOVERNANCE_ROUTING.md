@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:585dd80649e22d39563447f2968d9f13323c14156dcc7a27395a6b54622d66c5
+- source_fingerprint: sha256:dd8159a551edce7651ecff7186ac4e6f8036dfd1c6f5a427fc0e82a5edd3db9b
 
 ---
 
@@ -69,6 +69,29 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] Timing status not overstated.
 - [ ] Confirmed cause separated from hypothesis.
 - [ ] Confidence rationale stated.
+- [ ] Method selection adequate; no material omission or method bloat.
+- [ ] Registry mapping followed; deterministic trigger and trigger contract/evidence checked; no silent LLM override.
+- [ ] Selected prerequisites met; reasoning did not replace a deterministic claim.
+- [ ] Claim lineage is complete and references an executed method.
+- [ ] Baseline explicit; required baseline robustness assessed.
+- [ ] Population/denominator explained and scope change quantified.
+- [ ] Preliminary evidence sufficient to continue.
+- [ ] Alternative explanation, contradicting/discriminating evidence, and material falsification test assessed.
+- [ ] Material method disagreement recorded and unresolved conflict constrains claim strength.
+- [ ] Claim support, causal status, and confidence are not confused.
+- [ ] `manual_review_required` correctly set; when `yes`, review owner/status/resolution recorded before publication.
+- [ ] Final evidence sufficient for the claim; conclusion is not stronger than evidence.
+- [ ] Stop/escalation assessed; routine collapse applied; no unnecessary full reasoning record.
+- [ ] Exception and anomaly distinguished.
+- [ ] Unmatched analysis used when population mismatch is material.
+- [ ] Factor decomposition reconciled when applicable.
+- [ ] Timing/cut-off checked when material.
+- [ ] Data-layer artifact considered when material.
+- [ ] Leading-indicator relationship supported and not presented as causal without evidence.
+- [ ] New-method trigger contract and prerequisites satisfied.
+- [ ] New method added only for a distinct capability.
+
+Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. This extends existing Analysis QA and creates no separate QA framework.
 ## Chart QA
 - [ ] Chart source mart/slice listed.
 - [ ] Metric listed.
@@ -91,6 +114,14 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] No technical IDs in executive body.
 - [ ] Technical values such as `fact_only`, `plan_only`, `p_fact_adjusted`, `refund_only`, `source_mix`, `slice_*`, `mart_*`, `EV-*`, `CH_EXEC_*` appear only in appendix / evidence context.
 - [ ] Appendix is clearly separated from executive memo.
+### Material management synthesis QA
+Apply only to material / decision-critical management-facing output:
+- [ ] Business question is answered by an executive verdict; material findings are prioritized by business relevance rather than catalogued.
+- [ ] Supported business meaning is stated, or the evidence gap is explicit; any “main” issue has a supported criterion.
+- [ ] Material performance dimensions remain distinct; business effect and data/control artefact are separated where relevant.
+- [ ] Management implication and decision/action if any are evidence-constrained; material uncertainty remains visible.
+- [ ] What would materially change the conclusion is stated when relevant, and strategic choice is routed to `[Thinking]`.
+- [ ] Executive synthesis is materially shorter than supporting evidence; routine compact output is not expanded.
 ## Handoff QA
 - [ ] Handoff only if another project is needed.
 - [ ] Expected output clear.
@@ -147,6 +178,17 @@ For `standard` mode:
 
 For `full` mode:
 - workbook may be large, but must include README / index, compact front sheet, data dictionary, field groups and evidence appendix.
+## Material management synthesis acceptance
+For `analytical_depth = material / decision_critical` and management-facing output:
+- the business question is answered by an executive verdict;
+- the smallest sufficient set of material findings is prioritized by a supported business criterion;
+- headline business meaning is supported or its evidence gap is explicit;
+- materially different performance dimensions and data/control artefacts remain distinct where relevant;
+- management implication and decision/action if any do not exceed verified evidence;
+- material uncertainty remains visible, with what would change the view where applicable;
+- strategic choice is routed to `[Thinking]` when it depends on trade-offs, risk appetite, or preferences;
+- the executive layer is materially shorter than the supporting evidence.
+Routine compact tasks are excluded from expanded synthesis acceptance.
 ## Blocked status
 Use `blocked` when:
 - required data is missing;
@@ -281,6 +323,9 @@ AI OS gives evidence and patterns. `[Analytics]` applies them only when they aff
 - Evidence before conclusions.
 - Acceptance before production readiness.
 - Analysis inside `[Analytics]` before handoff.
+- Registry and trigger contracts govern method eligibility; no silent LLM override.
+- Reasoning cannot replace deterministic execution or missing prerequisites.
+- Claim strength cannot exceed final evidence sufficiency.
 ## Evidence labels
 ```text
 DATA FACT
@@ -308,6 +353,27 @@ Do not publish final management conclusion when:
 | Pretty memo before QA | Looks right, may be wrong | QA first |
 | Low Confidence as fact | Misleading | Label hypothesis |
 | Action without owner/date | Not actionable | Add owner/due date/status |
+## P0 analytical reasoning failure modes
+- Driver/root-cause and correlation/causation confusion → claim ladder and causal evidence gate.
+- Premature explanation → preliminary evidence stop gate.
+- Baseline, aggregation, selection/exclusion, population, denominator, timing/cut-off bias → explicit controls and triggered robustness tests.
+- False precision and narrative stronger than evidence → final evidence sufficiency cap.
+- Method bloat → minimum sufficient set and stop rules.
+- Confidence mistaken for causality → `confidence != claim_support != causal_status`.
+- Numerical magnitude mistaken for business materiality → separate task profile; no numerical reasoning score.
+- Reasoning substituted for deterministic execution → enforce deterministic boundary.
+- Silent registry override or undefined trigger → require trigger type/rule/evidence and existing QA review.
+- Blocked method used as evidence or execution lineage lost → `blocked != executed` and unique `method_execution_id`.
+- Conflicting methods silently reconciled → preserve contradiction, constrain claim, escalate if material.
+- Full reasoning applied to routine work without trigger → compact runtime collapse.
+- Anomaly mistaken for control exception → distinguish unusual observation from explicit rule violation.
+- Aggregate reconciliation replacing entity-level unmatched analysis → identify concrete one-sided elements when material.
+- Driver decomposition accepted without factor reconciliation → reconcile factor effects when applicable.
+- Timing shift interpreted as economic effect → run timing validation for material cut-off candidates.
+- Transformation artifact interpreted as source/business effect → trace `REPORT → MART → STAGE → RAW`.
+- Leading indicator treated as causal predictor → use signal/association/risk language without causal evidence.
+- Method catalog inflated by controls → require distinct question, execution, and material effect.
+- Decision methods leaking from `[Thinking]` → keep trade-offs, reversibility, premortem, risk appetite, choice, and decision in `[Thinking]`.
 ## metric / artifact explosion
 Anti-pattern: a short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
 

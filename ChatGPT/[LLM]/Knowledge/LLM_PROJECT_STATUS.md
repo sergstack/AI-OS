@@ -33,7 +33,9 @@ current score: 8.6/10
 - `Knowledge/LOCAL_AI_SECURITY_BOUNDARY.md`
 - `Knowledge/LOCAL_MODEL_EVAL_MATRIX.md`
 - `Knowledge/OLLAMA_OPENWEBUI_PILOT.md`
+- `Knowledge/LLM_EVAL_STANDARD.md`
 - `Knowledge/MODEL_ROUTING.md`
+- `Knowledge/PROMPT_LIFECYCLE_STANDARD.md`
 - `Knowledge/PROMPT_LIBRARY.md`
 - `Knowledge/PROMPT_REGISTRY.md`
 - `Knowledge/QUALITY_GATES.md`

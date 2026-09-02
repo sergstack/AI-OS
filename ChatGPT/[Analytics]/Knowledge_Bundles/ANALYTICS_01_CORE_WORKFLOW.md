@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:7523377cf22ac974882da261c56c461ccb675068652ae204158d99b0fd9969ee
+- source_fingerprint: sha256:8fd02cdaf70e98cfc953875751b855ef92a143c92b885d002f1102729d095f6f
 
 ---
 
@@ -37,6 +37,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `PROJECT_INSTRUCTIONS.md` | Главные инструкции проекта | Всегда; вставить в Project Instructions |
 | `ANALYTICS_PROJECT_FILES_INDEX.md` | Индекс пакета | Нужно понять, какой файл использовать |
 | `ANALYTICS_WORKFLOW.md` | End-to-end workflow | Любая аналитическая задача |
+| `ANALYTICAL_REASONING_STANDARD.md` | P0 reasoning-control layer | Нужны intent, method plan, prerequisites, explanation challenge или claim calibration |
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
@@ -64,7 +65,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 ## Priority rules
 
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.
-2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`.
+2. Для данных и расчётов используй `DATA_CONTRACTS.md`, `MARTS_DESIGN.md`, `ANALYTICAL_TECHNIQUES.md`; для adaptive reasoning control — `ANALYTICAL_REASONING_STANDARD.md`.
 3. Для memo/report используй `MEMO_PIPELINE.md`, `ANALYTICAL_MEMO_STRUCTURE.md`, `WORD_REPORT_STANDARD.md`, `TEXT_QA_AND_STYLE.md`.
 4. Для QA используй `QA_CHECKLIST.md` и `ACCEPTANCE_CRITERIA.md`.
 5. Для передачи в Codex используй `CODEX_TASK_PACKETS.md` и `ROUTING_AND_HANDOFF.md`.
@@ -98,6 +99,8 @@ If mode = `quick`, collapse to: question → minimal inputs → grain / period /
 
 Do not run full RAW/STAGE/MART/slices/charts/report workflow unless required by the task.
 
+`analytical_depth` and `output_mode` are independent. Use conditional reasoning depth from `ANALYTICAL_REASONING_STANDARD.md`; `quick` does not become a full reasoning artifact without a material trigger.
+
 ## Canonical workflow
 
 ```text
@@ -110,6 +113,8 @@ question / scope
 → compact mart
 → deterministic calculation
 → findings
+→ evidence challenge / calibration as required
+→ management synthesis when material and management-facing
 → LLM context package
 → memo / report
 → judge / QA
@@ -138,7 +143,7 @@ Analytics should define parent scope, child issue sequence, source/output layers
 
 ## Workflow steps
 
-1. Question / scope: business question, decision context, audience, period, grain, metrics, filters, owner, expected output.
+1. Question / scope: business question, decision context, audience, period, grain, metrics, filters, owner, expected output; classify analytical intent and create `TASK_PROFILE` unless eligible for the compact routine path.
 2. Inputs: available files, missing files, compact/full JSON, source systems, refresh date, required joins, directories/mappings, limitations.
 3. Data contract: no calculation without grain; no memo without method; no mart without expected output.
 4. RAW: original input only; no business logic, classifications, interpretations, or memo conclusions.
@@ -146,10 +151,10 @@ Analytics should define parent scope, child issue sequence, source/output layers
 6. `mart_main_full`: complete analysis-ready table with metrics, formulas, flags, risk/confidence, QA and evidence fields.
 7. `mart_main_tz` / compact: shortened mart for task, audience or executive memo.
 8. Slices: derive all slices from `mart_main_full`.
-9. Analysis: variance, driver, bridge, cohort, anomaly, reconciliation, segmentation, trend.
+9. Analysis: select the deterministic-first minimum sufficient method set from the registry, apply prerequisites, then use the preliminary evidence check, explanation challenge and claim calibration only to required depth. `blocked != executed`, `driver != root cause`, and material method conflict is not silently reconciled.
 10. Charts: source from `mart_main_full` or a documented derived slice.
-11. Memo: use verified analysis, not raw assumptions.
-12. QA and acceptance: run QA before final conclusion.
+11. Memo: use verified analysis, not raw assumptions. For material or decision-critical management-facing output, compress verified findings into the smallest sufficient executive synthesis: supported business meaning, business effect versus data/control artefact where relevant, management implication and decision/action if any, material uncertainty, and what changes the view. Do not create evidence or infer controllability or persistence without support. Keep routine output compact; strategic choices remain with `[Thinking]`.
+12. QA and acceptance: preserve existing QA/Judge/acceptance; `manual_review_required = yes` blocks automatic final publication until review resolution is recorded.
 
 ## Default output
 
@@ -161,7 +166,7 @@ Method:
 Findings:
 QA:
 Limitations:
-Decision / recommendation:
+Management implication / decision or action if any:
 Next step:
 ```
 

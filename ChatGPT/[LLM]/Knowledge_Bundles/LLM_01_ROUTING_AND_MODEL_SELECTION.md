@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:cd52ea369a2fefddc0e79389b09ab0068b137e6d85fc88a6a17dca1d464d9690
+- source_fingerprint: sha256:062e3e26fce6c17cab1ba3647d812baf6d3fb22a73862f3d2229d767545bae85
 
 ---
 
@@ -49,14 +49,36 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 ## Routing criteria
 ## Rule
 Model routing is guidance, not a factual claim about current model capabilities. For current prices, limits, API details or release status, verify with fresh sources.
+Route by model class rather than permanent model name.
+## Primary gates
+1. task type;
+2. risk / error cost;
+3. privacy;
+4. verification path.
+Use reasoning need, context length, latency, cost, and tool access as secondary factors or tie-breakers. Do not require a numerical scoring matrix.
+```text
+task type
+-> can deterministic/tool verification solve or constrain it?
+-> risk / error cost
+-> privacy constraint
+-> required verification path
+-> cheapest suitable model class
+-> Judge/escalation when required
+```
+Routing ownership remains:
+- deterministic calculation -> `[Analytics]`;
+- implementation and tests -> `[Codex]`;
+- AI KB evidence and canonical governance -> `[AI OS]`;
+- prompt, context, model-routing, and workflow eval -> `[LLM]`.
 ## Selection checklist
-- latency;
-- cost;
-- context length;
-- reasoning need;
+- task type;
+- risk / error cost;
 - privacy;
-- tool access;
-- quality gate.
+- verification path;
+- reasoning need;
+- context length;
+- latency and cost;
+- tool access and quality gate.
 
 
 ## From: `ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md`

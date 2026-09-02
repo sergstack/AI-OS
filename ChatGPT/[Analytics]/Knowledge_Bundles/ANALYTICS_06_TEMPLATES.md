@@ -31,7 +31,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - bundle_type: compact upload artifact
 - source_of_truth: granular files listed above
 - production_promotion: no, unless explicitly accepted elsewhere
-- source_fingerprint: sha256:b37e381619b2cc68714b3556c778f45732ca1c11c2ecfd474acf9ba1ed8ad151
+- source_fingerprint: sha256:1dbe1cd0ec6d69560e4b6d0b934b1c13e851f91bb4489ad4876e45adfda99301
 
 ---
 
@@ -306,7 +306,7 @@ Human acceptance:
 ## From: `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
 
 # Claim / Evidence Registry Template
-| claim_id | claim_text | claim_type | source_mart | source_table_or_slice | metric | period | grain | filter | formula_or_method | evidence_id | qa_status | confidence | limitation | allowed_in_executive | review_status |
+| claim_id | hypothesis_id | claim_text | claim_type | method_execution_id | method_status | source_mart | source_table_or_slice | metric | period | grain | filter | baseline | formula_or_method | evidence_id | alternative_explanations | contradicting_evidence | discriminating_evidence | falsification_test | qa_status | confidence | claim_support | causal_status | limitation | allowed_in_executive | review_status |
 ## Claim types
 - DATA FACT
 - CALCULATION RESULT
@@ -322,6 +322,10 @@ Human acceptance:
 - Low confidence cannot be presented as confirmed cause.
 - Executive claims must trace to `mart_main_tz` / `mart_main_compact`.
 - Deep claims must trace to `mart_main_full`.
+- `formula_or_method` does not replace `method_execution_id`.
+- Lineage: claim → executed method → source mart/table/slice → metric/period/grain/filter/baseline → evidence.
+- Blocked/planned/not-needed executions cannot support a claim requiring a method result.
+- `confidence`, `claim_support`, and `causal_status` are independent; claim strength cannot exceed evidence sufficiency.
 
 
 ## From: `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`

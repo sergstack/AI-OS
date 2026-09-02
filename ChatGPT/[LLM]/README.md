@@ -29,7 +29,7 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `GEMINI_DEEP_RESEARCH__KB_HUNTER.md` — Gemini KB hunter workflow.
 - `LLM_ROUTING.md` — выбор LLM workflow.
 - `LOCAL_LLM_WORKFLOW.md` — local/Ollama/Open WebUI workflow.
-- `MEMO_GENERATION_WORKFLOW.md` — draft → judge → revise.
+- `MEMO_GENERATION_WORKFLOW.md` — draft → deterministic QA → conditional judge/revise.
 - `RELATIONSHIP_CRM_LITE_TEMPLATE.md` — candidate relationship CRM-lite fields, no real contact data.
 - `WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md` — candidate weekly relationship review block.
 - `VALUE_FIRST_OUTREACH_TEMPLATE.md` — candidate value-first outreach draft.
@@ -49,7 +49,9 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `LOCAL_AI_SECURITY_BOUNDARY.md` — security boundary для local AI экспериментов.
 - `LOCAL_MODEL_EVAL_MATRIX.md` — checklist evals полезности локальных моделей.
 - `OLLAMA_OPENWEBUI_PILOT.md` — safe pilot Ollama / Open WebUI.
+- `LLM_EVAL_STANDARD.md` — risk-proportional evaluation reusable LLM assets.
 - `MODEL_ROUTING.md` — выбор модели.
+- `PROMPT_LIFECYCLE_STANDARD.md` — lifecycle, version lineage и promotion reusable assets.
 - `PROMPT_LIBRARY.md` — библиотека промптов.
 - `PROMPT_REGISTRY.md` — controlled registry for reusable prompts.
 - `QUALITY_GATES.md` — проверки качества.

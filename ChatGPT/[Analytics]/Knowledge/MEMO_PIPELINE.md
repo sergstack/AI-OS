@@ -12,10 +12,12 @@ mart_main_full
 → insight cards
 → evidence cards
 → mart_main_tz / compact
+→ management synthesis when material and management-facing
 → LLM context package, if needed
 → draft memo
-→ judge review
-→ revised memo
+→ deterministic memo QA
+→ judge review when material, evidence-sensitive, or QA-triggered
+→ revision only from explicit findings
 → final report
 ```
 
@@ -26,7 +28,7 @@ mart_main_full
 3. Main drivers.
 4. Exceptions / anomalies.
 5. Risks.
-6. Recommended actions.
+6. Management implication / decision or action if any.
 7. Limitations.
 8. Appendix / evidence.
 
@@ -40,8 +42,7 @@ For CFO / COO / руководители:
 - headline numbers;
 - where the money is;
 - main risks;
-- decisions needed;
-- actions;
+- decisions or actions if supported;
 - limitations.
 
 Uses:
@@ -81,7 +82,7 @@ Every important sentence must be backed by:
 
 ## Memo QA
 
-- [ ] Executive summary does not exceed evidence.
+- [ ] Executive summary is materially shorter than supporting evidence and does not exceed it.
 - [ ] Key numbers trace to mart.
 - [ ] Drivers are ranked by impact.
 - [ ] Risks have `risk_basis`.
