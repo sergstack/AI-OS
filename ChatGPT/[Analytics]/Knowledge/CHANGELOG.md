@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-09-02 — analytical-judge-gate (issue #357)
+
+Added:
+
+- Explicit `Analytical Judge` gate as `ANALYTICAL_REASONING_STANDARD.md` §8: a
+  compact post-findings orchestration checkpoint (`findings → Analytical Judge
+  → pass / revise / blocked → final findings → memo`). Seven semantic checks
+  mapped to existing controls; compact `ANALYTICAL_JUDGE` output record;
+  bounded revise/rerun rule; `quick` runtime collapse. No new QA framework,
+  taxonomy, method, or intent; §8→§9, §9→§10 renumbered.
+
+Updated:
+
+- `ANALYTICS_WORKFLOW.md` canonical workflow and Step 9 to make the gate
+  explicit before memo/report.
+- `QA_CHECKLIST.md` with a post-findings Analytical Judge gate block
+  (orchestration, not a second framework).
+- `ACCEPTANCE_CRITERIA.md` with criterion 12, `analytical_judge_status`, and a
+  blocked-status entry.
+- `GOVERNANCE_AND_ANTI_PATTERNS.md` with the gate principle, a blocker entry,
+  and anti-pattern rows (no autonomous retry loop, no second framework,
+  `blocked != executed`).
+- `SMOKE_QA_FOR_ANALYTICS.md` with a case forcing a plausible over-strong
+  "root cause" claim to `revise`, plus a `quick`-mode collapse case.
+
+Status:
+
+```text
+production_ready: not claimed
+pilot_case_required: yes
+smoke_qa_status: pass
+```
+
 ## 2026-05-25 — analytics-project-settings-minor-fix
 
 Added:

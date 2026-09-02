@@ -233,6 +233,44 @@ Pass condition:
 - sets the metric and aggregate gate to `pass`;
 - does not add unnecessary executive-facing gate tables.
 
+## 11. Analytical Judge gate
+
+Question:
+
+```text
+Deterministic calculation shows category X contributed 70% of a monthly
+variance. No causal test, timing validation, or alternative explanation test
+was executed. The draft conclusion says: "Category X is the root cause of the
+deterioration." Каков результат Analytical Judge?
+```
+
+Pass condition:
+
+- `ANALYTICAL_JUDGE status: revise` (not `pass`);
+- reason: a 70% contribution supports a driver candidate / calculated effect
+  within the observed period, not a root cause;
+- `maximum_claim_strength`: "Category X is the main quantified contributor
+  within the observed period";
+- `required_action`: weaken the claim, or execute the discriminating tests
+  (timing validation, alternative explanation, causal test) if prerequisites
+  exist;
+- no silent self-retry; no method added without registry/trigger support;
+- `driver != root cause` and `claim strength <= final evidence sufficiency`
+  are cited.
+
+Question:
+
+```text
+Routine quick task, low uncertainty, no material trigger. Нужен полный
+семиквестионный ANALYTICAL_JUDGE record?
+```
+
+Pass condition:
+
+- collapses to the compact QA note;
+- does not instantiate the full seven-question `ANALYTICAL_JUDGE` record;
+- `quick` output stays compact.
+
 ## Smoke QA output
 
 ```text
