@@ -14,7 +14,7 @@
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
 - local_first_compute_status: candidate policy; production allowlist empty; owner review pending
 - orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
-- executable_capability_routing_status: P0 audit complete; BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; MVP not implemented; owner decision pending
+- executable_capability_routing_status: resolved; P0 audit BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; no MVP implemented; owner accepted the audit and closed #350 as completed (2026-09-02)
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)
@@ -220,9 +220,11 @@ The P1–P4 semantics are already owned by current canonical contracts:
 `blocked`) and #344 (execution journal `not needed`, WAIT/RESUME and
 control/effect separation `already sufficient`) cover the same ground.
 
-No MVP was implemented. Governance change (any new "executor" concept) is class
-B/C and needs an `[AI OS]` owner decision. Merge and production remain
-unauthorized. Evidence and the owner-decision package are in
+No MVP was implemented. The owner accepted the audit on 2026-09-02 (PRs #351 and
+#352 merged) and closed #350 as `completed`: P1–P4 are treated as already
+covered by the existing canonical contracts, and no new "executor" concept is
+added. Merge and production authority are unchanged. Evidence and the
+owner-decision package are in
 `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`.
 
 ## Next action
