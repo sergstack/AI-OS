@@ -32,6 +32,17 @@
 - `SMOKE_QA_RESULT.md`
 - `CHANGELOG.md`
 - `MEMO_RUBRIC.md`
+- `MEMO_FACTORY_DESIGN_HANDOFF.md`
+
+## Bundle semantic migration sources
+
+- `ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
+- `ANALYTICS_07_CODEX_HANDOFF_OPTIONAL_BUNDLE_SEMANTICS.md`
 
 ## Included templates
 
@@ -63,10 +74,20 @@
 - `Codex_Tasks/06_TEXT_QA.md`
 - `Codex_Tasks/07_SMOKE_QA.md`
 
+`Codex_Tasks/` also holds newer working content (`fix-notes/`, `golden_memo_pack/`,
+`llm-text-standards/`, `workflow/`, and a few loose files) not listed here —
+disposition (archive, fold into current standards, or keep as a separate
+in-flight track) is a pending owner decision, not a manifest omission to
+mechanically close. See `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`.
+
+`Knowledge_Bundles/` is intentionally not listed here — it is the separate
+compact-upload artifact (see `README.md` → default upload mode), not part of
+this granular-paste package.
+
 ## Status
 
 ```text
 package_status: ready_to_upload
-acceptance_status: smoke_qa_pass
+acceptance_status: smoke_qa_partial_pass — sections 1-9 of 11 verified; see Knowledge/SMOKE_QA_RESULT.md
 production_promotion: not_claimed
 ```
