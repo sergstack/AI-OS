@@ -4,7 +4,75 @@
   "files": [
     {
       "path": "archive/legacy_manifest.md",
-      "sha256": "29dd2d5579b2c096d654d1655f601d3ce904a6b51c5f5d018f942ae3f20b4163"
+      "sha256": "57bcb6ad8fb8e46ea87c7d78a9456f404ad1266fd011a7561c641e63628994a1"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/README.md",
+      "sha256": "0795e4e85ac1c396796e8aa177adbb16372c5a31b0b678eba40c8ec5fba3ecbf"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
+      "sha256": "32eb472de893de38c38c879d35d1a4b3ae9ba0eb2dfbc323cd547582335e2800"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
+      "sha256": "37c76a8d85aef08b744a391df3e59a275c72c96c4dc793660c21d8dfbf7a8fcc"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
+      "sha256": "83d091b1904cda5fcba1810a831d10ee805737e261bc260732c08c2994a0e2b1"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
+      "sha256": "b7b8d671438c5df2c42c31894165f1343e2ce50ecc89ab75f4d22594de7f42a6"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
+      "sha256": "2ec744248389002ba6d2e0782f9f5431dfa060c2e30b455cb82065e44cc47515"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
+      "sha256": "0249a29356ac2383ab9faeca5324b659c541c14c7103a761bd7ee4f776879b9a"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
+      "sha256": "75f33d4e594f8f6a79f4650588687bcc793f20ff33ffd220d822bfd8cff6ccef"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
+      "sha256": "e4d015ca6fec544e4793480f866e949fb4fa81c6366fb7050a2e4390de5cae1a"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
+      "sha256": "f6398805a0b01e1bedae1c9d514b0b4698aad7ab148db30968eabbefe72e00b0"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
+      "sha256": "cb0e36c8a1475b5aae5ec8e20bf0f75360fe9dfcf1ad77306e61466eb5fb168a"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
+      "sha256": "c580eab8d0cf4ecd63962f9826a24c4c12bbf1942ff05c5b4039a755f4330438"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
+      "sha256": "4a09701dcbaf3847edc523b7da4a8ed152c68caecf29eb454d5dee9f70e71cbc"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
+      "sha256": "a64401d2e9c37fc0f283e73a76e9629907e477cdeb1cdb054b4b4bcdbf53c9af"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
+      "sha256": "bcb03a47bc1a9f21c1954a54f781fe792a05be3adcf8e93dd53a8097537f453f"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
+      "sha256": "9800f91b7b8b3fa07498e87f30b1fcb54f6713a5747cb2db815bdccf31aab184"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
+      "sha256": "aacecc66ca31a3e3726b278bd8b813d794eebd8ebaea83aa6057aee39f06b18f"
     },
     {
       "path": "archive/v2.7/ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.csv",
@@ -75,783 +143,783 @@
       "sha256": "1d595f420bd0f3ad504ea81bf91a110d36bca42663f73c1a1ea45150409bd908"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K10_memo.png",
+      "path": "archive/v2.8/icons/home/K10_memo.png",
       "sha256": "9196b4a286400741cf9777ef5d7b97e7d2b5dd9e53829c3f2c2651f255db5b23"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K11_ai_trend.png",
+      "path": "archive/v2.8/icons/home/K11_ai_trend.png",
       "sha256": "482aa63c4daaac92b9cbc3ad38ad5625ce959deb36726fa85398221cc2469359"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K12_sync.png",
+      "path": "archive/v2.8/icons/home/K12_sync.png",
       "sha256": "2d21861ea36d891015fcfd2a2c3fe4490aed0d88d38ff629b92db7015a9ad74e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K13_local_ai.png",
+      "path": "archive/v2.8/icons/home/K13_local_ai.png",
       "sha256": "55413b835fb63e5ab6234debcd5c423772e682099aea454267686d8a11446ec0"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K14_pilots.png",
+      "path": "archive/v2.8/icons/home/K14_pilots.png",
       "sha256": "402d014f882a39fcbb068692f6fdf090c15de9425b67650428e0aff99e3b2b47"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K15_kb.png",
+      "path": "archive/v2.8/icons/home/K15_kb.png",
       "sha256": "65825246e90df9a0ee29b4d0f88ccc74cbe93192bdfb90b0455c51b01ba46f5a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K1_route.png",
+      "path": "archive/v2.8/icons/home/K1_route.png",
       "sha256": "f9b33bbb5da2d742fb1258e6acb3a34d6068dd0147cc6a277e6e4be111824b11"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K2_ai_os.png",
+      "path": "archive/v2.8/icons/home/K2_ai_os.png",
       "sha256": "4e7c39a153ff1d182cd4d222dd2639160808fe341daaab1582aa93624af6dddb"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K3_thinking.png",
+      "path": "archive/v2.8/icons/home/K3_thinking.png",
       "sha256": "155f4a15dd6f474e79ff99d86e5656b4745ea14469e685484e7ca7a5c2a00e80"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K4_analytics.png",
+      "path": "archive/v2.8/icons/home/K4_analytics.png",
       "sha256": "5b82db1ca67f02f445b7d58ba5c5d3f1e5fd8e24cfc0a5068822fd6979b6d2aa"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K5_llm.png",
+      "path": "archive/v2.8/icons/home/K5_llm.png",
       "sha256": "f5fc97f9deb845c5bbe5de9883e70f936b79542acaa023d73f4d808e62df43a8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K6_codex.png",
+      "path": "archive/v2.8/icons/home/K6_codex.png",
       "sha256": "c4ee4063ed3c9d8b6623b5af70ec99304538d525a9d4a8a1c17b001c8544fda7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K7_judge.png",
+      "path": "archive/v2.8/icons/home/K7_judge.png",
       "sha256": "f75e3220deffa5fdb81f48d00990548b8f93f6ec43200ccab1c10a10110af551"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K8_revisor.png",
+      "path": "archive/v2.8/icons/home/K8_revisor.png",
       "sha256": "9115cbc9dc043e990654fb63bbec047b6527cabb3aaba632e06d9b1866880042"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K9_inbox.png",
+      "path": "archive/v2.8/icons/home/K9_inbox.png",
       "sha256": "f4eb56eacf76905d679cacde237c8692e8861a5a94a0112a7c1d5229a67900c0"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K10_agent_loop.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K10_agent_loop.png",
       "sha256": "73b9ad76479dd0715bc480a420da4332fded9df66b5fb16a516e90855d2eaed5"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K11_streamdeck.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K11_streamdeck.png",
       "sha256": "6eb4a096ac1bddbd6f50f65dcb4844ffb439682eb38f86eaad725bb8d49629ee"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K1_back.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K2_ai_trend.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K2_ai_trend.png",
       "sha256": "b6bf57695be20512643fb50f51b415bcfb8fd5bf2d71be0fb157fced020b8173"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K3_pattern_explain.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K3_pattern_explain.png",
       "sha256": "b1a35c66619182216b7453a28db86dee4cfe3890ded047065ee72df0a8e5ad2f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K4_use_case.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K4_use_case.png",
       "sha256": "bd18e00e1d860a8de873eeda12153426f7348de67854acb2f76b059be4ce3c85"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K5_evidence_check.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K5_evidence_check.png",
       "sha256": "763b13c32d01f3caef53960c132b9f5705ed7da602dc5ede7e9329b21b1c94f9"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K6_governance.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K6_governance.png",
       "sha256": "86d2d0f020bcf913320d9c69af25e937306901df846ba2ac3a05abab30ab9ce4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K7_to_thinking.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K7_to_thinking.png",
       "sha256": "3c55721d1782d8dc8fb804c0765dcf1978d5446820e706679b06979279408ea8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K8_to_llm.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K8_to_llm.png",
       "sha256": "6a0bb24fb516b283a6eae0e9146d9f4ea28d7f5e6223836f9bea3d5445d9e2a9"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K9_to_codex.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K9_to_codex.png",
       "sha256": "269a520dbfa3802c23ad11ed32cab2bbee7666153aae2cb0051834e07ffed2d8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K10_mart_spec.png",
+      "path": "archive/v2.8/icons/level2/analytics/K10_mart_spec.png",
       "sha256": "c53ee8bef13c10aa036d7c5ec0c3d1557496d43dce1ffeb402f03855a69607ba"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K11_formula_review.png",
+      "path": "archive/v2.8/icons/level2/analytics/K11_formula_review.png",
       "sha256": "72f2484d9e26c29e6a12aaa4fe845ce513994a0981a5425985051f33909e64b1"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K1_back.png",
+      "path": "archive/v2.8/icons/level2/analytics/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K2_data_contract.png",
+      "path": "archive/v2.8/icons/level2/analytics/K2_data_contract.png",
       "sha256": "3d9b29cfb3579f00d87b4efb76b52008d330c92dfc20b73f6e02d9b59b46b7cf"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K3_variance.png",
+      "path": "archive/v2.8/icons/level2/analytics/K3_variance.png",
       "sha256": "9da459af607fc2e0299fd4b48fd1e81a5d2f04a75fa2b7139058103d44193177"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K4_reconcile.png",
+      "path": "archive/v2.8/icons/level2/analytics/K4_reconcile.png",
       "sha256": "eba5ade6e9b18de60c5ff8833392fedd8c1925e611753c497e54b6918ac8b04f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K5_audit_anomaly.png",
+      "path": "archive/v2.8/icons/level2/analytics/K5_audit_anomaly.png",
       "sha256": "4fd19ecd60182910ebe3e265bb7a58e82b4997dceb54635a638d3dca726bfe92"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K6_memo_facts.png",
+      "path": "archive/v2.8/icons/level2/analytics/K6_memo_facts.png",
       "sha256": "88ea8470dcda78d6fcb92078f5b5e7cf0f16763d484393bc0a9dc560d8c7e901"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K7_qa_checks.png",
+      "path": "archive/v2.8/icons/level2/analytics/K7_qa_checks.png",
       "sha256": "a1bec12e8c546eb68e708f3f3e31d2a6eae797a0abf03c9c008fd52c9ebbc738"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K8_analytics_loop.png",
+      "path": "archive/v2.8/icons/level2/analytics/K8_analytics_loop.png",
       "sha256": "e978d0a601602c54d9e9d1e87c9046ca3c5f531cda205bcd3698b86ba13d455a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K9_supervised_loop.png",
+      "path": "archive/v2.8/icons/level2/analytics/K9_supervised_loop.png",
       "sha256": "41854ea2bccd1796669694861797e4e6dc0dbf0fcb437757c278123e9651f9f5"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K10_branch_pack.png",
+      "path": "archive/v2.8/icons/level2/codex/K10_branch_pack.png",
       "sha256": "b33cf525d69015f3bb6ea47a54b5a541c525af9bceb549f85f054fd474ca3e37"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K11_review_report.png",
+      "path": "archive/v2.8/icons/level2/codex/K11_review_report.png",
       "sha256": "b9b9948ce22f56e32ec39149336c6233d5b79df985363f8a96e8093040f27245"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K1_back.png",
+      "path": "archive/v2.8/icons/level2/codex/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K2_goal_issue.png",
+      "path": "archive/v2.8/icons/level2/codex/K2_goal_issue.png",
       "sha256": "d615293080abea4ddf0ddc0e9ce68729358d7732c7186e33cbee4a66fea57389"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K3_issue_pr.png",
+      "path": "archive/v2.8/icons/level2/codex/K3_issue_pr.png",
       "sha256": "ac89bdb9b8f816a4db4da5d84e180f0d868b568a6cb67890240ec68f41a7833e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K4_pr_judge.png",
+      "path": "archive/v2.8/icons/level2/codex/K4_pr_judge.png",
       "sha256": "b73accbe7cd21bdee166301d1777cc52eb714fec502b052218f378fc4910c82e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K5_sync_check.png",
+      "path": "archive/v2.8/icons/level2/codex/K5_sync_check.png",
       "sha256": "b6efa910c7a7c529402b23be4e187260f97ec59f64c8dad28885d439912245de"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K6_run_checks.png",
+      "path": "archive/v2.8/icons/level2/codex/K6_run_checks.png",
       "sha256": "76647598c68d60825d88652bd1bd225d63d1026fe067395cce4e3c127fadd495"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K7_fix_mismatch.png",
+      "path": "archive/v2.8/icons/level2/codex/K7_fix_mismatch.png",
       "sha256": "cacdd19859099c14d227862b99e1e43c97c2ec2b9f2388781cbc44823b90b644"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K8_release_notes.png",
+      "path": "archive/v2.8/icons/level2/codex/K8_release_notes.png",
       "sha256": "883d6883fef9c07af4a40c4cc35c8a21527650704852d50b1924f228986a81f0"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K9_no_auto_merge.png",
+      "path": "archive/v2.8/icons/level2/codex/K9_no_auto_merge.png",
       "sha256": "bce3e9f5b725593a5d9a4589eb811c53db00c64ac73ab3a485f80ee904331d07"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K10_route_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K10_route_judge.png",
       "sha256": "313a4ad6852d23b38c782c41c701b864d577be04dc83408ba60fa90510b2c13b"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K11_final_gate.png",
+      "path": "archive/v2.8/icons/level2/judge/K11_final_gate.png",
       "sha256": "8e34c2d6eaebb103d2941d6e29143a5a127d630ba7b4439afb51d8ab364ee119"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K1_back.png",
+      "path": "archive/v2.8/icons/level2/judge/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K2_universal.png",
+      "path": "archive/v2.8/icons/level2/judge/K2_universal.png",
       "sha256": "f22e4124306e51dad70e7e8247aa7221b8b2b5afba2775f5ad12523e92ba3e67"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K3_pr_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K3_pr_judge.png",
       "sha256": "99409a80af20b62e9f630f9fa27fb2ba009369755d7a9835df7f73eb23fb4c0e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K4_memo_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K4_memo_judge.png",
       "sha256": "1aa979bb8bdf2472a395124cdbf16f18637a3bf1aaf7d70a7b3a8a0953d858ca"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K5_analytics.png",
+      "path": "archive/v2.8/icons/level2/judge/K5_analytics.png",
       "sha256": "844668a5962f7a5d2192e366faffe80e8f1fc2eda7174b4d643aadc4c9965607"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K6_evidence.png",
+      "path": "archive/v2.8/icons/level2/judge/K6_evidence.png",
       "sha256": "1c09aa8c3e113c1f2c54f7903226b1607d335a41ca45112629dde2f13a89b6cf"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K7_risk.png",
+      "path": "archive/v2.8/icons/level2/judge/K7_risk.png",
       "sha256": "e018afe2494f7aa7840fd26906acb375d074cb33455ab07ddc7340ad25dec9c7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K8_blocker.png",
+      "path": "archive/v2.8/icons/level2/judge/K8_blocker.png",
       "sha256": "bf2c4a036c74dde05e57a2927f2df628bd52c2cf0198c407632acc395f72e94c"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K9_local_ai.png",
+      "path": "archive/v2.8/icons/level2/judge/K9_local_ai.png",
       "sha256": "a54f4db6b2f7cf2d4feae9bf6c0254faac015423d5f15ba3509fe4b40aac1422"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K10_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K10_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K11_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K1_back.png",
+      "path": "archive/v2.8/icons/level2/kb/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K2_kb_search.png",
+      "path": "archive/v2.8/icons/level2/kb/K2_kb_search.png",
       "sha256": "d8038aa5e43e9283b70c7e04c78fdc86505fd0c3318c23aa3fbbe3686ac8ec7f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K3_evidence_label.png",
+      "path": "archive/v2.8/icons/level2/kb/K3_evidence_label.png",
       "sha256": "ebadea11f5d207f2dc757b5b13bb140d9302ecd8380fce5668ec69b8aaddb60e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K4_review_item.png",
+      "path": "archive/v2.8/icons/level2/kb/K4_review_item.png",
       "sha256": "3696cf71cc75f85e2b2cb0b1beafb10504851cb02986a3bef4bcf02de9d70941"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K5_support_mix.png",
+      "path": "archive/v2.8/icons/level2/kb/K5_support_mix.png",
       "sha256": "6c80c4dcedf8d571e8ca98d3c31d0378d658d417101f2a646df8b918e763c77c"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K6_manifest.png",
+      "path": "archive/v2.8/icons/level2/kb/K6_manifest.png",
       "sha256": "c9d95c3549ec8b2b82275633a65825580508faad4d11cffd5ae3ef5b54b29ecf"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K7_source_truth.png",
+      "path": "archive/v2.8/icons/level2/kb/K7_source_truth.png",
       "sha256": "dbadcfb83cb15c108f4bb4901a6eaacf57d08c27ff4904283ac33c833a0f4014"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K8_bundle_sync.png",
+      "path": "archive/v2.8/icons/level2/kb/K8_bundle_sync.png",
       "sha256": "373a0c212857b8b2d569e7c005d9496cf3d143ea7b92e76a67711ac957f5e12d"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K9_upload_check.png",
+      "path": "archive/v2.8/icons/level2/kb/K9_upload_check.png",
       "sha256": "61180efcbc0918c7524f6d889e95987168c215c741bf88cffc93b50f16edee88"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K10_streamdeck.png",
+      "path": "archive/v2.8/icons/level2/llm/K10_streamdeck.png",
       "sha256": "ff6366dbee6fbb497075db416f0a92e9f885e99aaf7387571962ae261aa9eea7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K11_no_raw_dump.png",
+      "path": "archive/v2.8/icons/level2/llm/K11_no_raw_dump.png",
       "sha256": "68efe6acf8fbd5a87a1f2dd6276c13defb59af675ebe26735b64afa828ead999"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K1_back.png",
+      "path": "archive/v2.8/icons/level2/llm/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K2_prompt_build.png",
+      "path": "archive/v2.8/icons/level2/llm/K2_prompt_build.png",
       "sha256": "25ffb397bfcb80ef49a15ccfb1259b26b228b8a8bf7be176db840df22459230a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K3_context_pack.png",
+      "path": "archive/v2.8/icons/level2/llm/K3_context_pack.png",
       "sha256": "c7168bca3778861c79f676c13a4cfb0be5b7ad8727d5e842d31a5432449ad704"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K4_judge_screen.png",
+      "path": "archive/v2.8/icons/level2/llm/K4_judge_screen.png",
       "sha256": "f077b3776c245dd9a0406397afcde88e3644646f6a48951b09b48152a0eb194f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K5_revisor_screen.png",
+      "path": "archive/v2.8/icons/level2/llm/K5_revisor_screen.png",
       "sha256": "0208e96ace74ff172e9bbae34184859d740e613b4819cd6d319f3880847c53e8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K6_model_routing.png",
+      "path": "archive/v2.8/icons/level2/llm/K6_model_routing.png",
       "sha256": "eb7eb5042a73b1d13932f9792fdb331199e7569b2355dde1a6de81c211e88871"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K7_eval_rubric.png",
+      "path": "archive/v2.8/icons/level2/llm/K7_eval_rubric.png",
       "sha256": "f97e5ff6a747760182d396e8bea2bbe02d2722d796bab70019de42e058248038"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K8_workflow_design.png",
+      "path": "archive/v2.8/icons/level2/llm/K8_workflow_design.png",
       "sha256": "efb95c9ca008b03114bf0097799830cc9fce62fca393948def8677468e8702d7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K9_local_ai_prompt.png",
+      "path": "archive/v2.8/icons/level2/llm/K9_local_ai_prompt.png",
       "sha256": "1f1537cc270135fda88107beeb9c1475882f85d8becf96b7e93b27863dc41da0"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K10_judge_output.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K10_judge_output.png",
       "sha256": "c2db496ecaa5d6f5da9105c8342386baa7978c112fac3cab618d2f3bd9305fcd"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K11_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K1_back.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K2_ollama_smoke.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K2_ollama_smoke.png",
       "sha256": "e92eac64c90f9bf65536d172d4a1d5b529f1c9d91a81351394432b59e91aee45"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K3_model_compare.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K3_model_compare.png",
       "sha256": "ad2a4090a585416b575345a7da75db830fcec0c65c633ef17f67c828837d3cf6"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K4_open_webui.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K4_open_webui.png",
       "sha256": "41797c0e0c9c87d1520e955814e809724907aa62fb357dbcc94634ad09376570"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K5_draft_only.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K5_draft_only.png",
       "sha256": "0cf71282752c64db43c32df19f002ae048ab9c03ad482f61cf0fcca871975f99"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K6_safety.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K6_safety.png",
       "sha256": "c3fb60a82b61814712cda6550600268d9919974f735b5bd4bb7cb196c4551af3"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K7_record_pilot.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K7_record_pilot.png",
       "sha256": "21f3a8d3413e05d28dcadb4dfd42e4f4f71c4b33f44fbfcf8827fb85a03c152a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K8_candidate.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K8_candidate.png",
       "sha256": "f5afd9f51202564d7e15f754995ed90fae36a15d7fa8044848ab3b568b8137bc"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K9_no_sensitive.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K9_no_sensitive.png",
       "sha256": "9f057a6a38b96f1256c3d2ef1f7bf54bb9765c07b2c5d669a051077264d369be"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K10_judge_revise.png",
+      "path": "archive/v2.8/icons/level2/memo/K10_judge_revise.png",
       "sha256": "0ca5519c1f798e03fad263ece45ff2710ebd5f23f1c20446e129534eb5fb0580"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K11_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K1_back.png",
+      "path": "archive/v2.8/icons/level2/memo/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K2_finance_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K2_finance_memo.png",
       "sha256": "56a3bbd31f6aee8e16f6ff056a93bae058709a45251361e9496195a672ee273e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K3_exec_summary.png",
+      "path": "archive/v2.8/icons/level2/memo/K3_exec_summary.png",
       "sha256": "c4e2204f2f3d5074fa78353dca2e55869525ae2c7f3c1af1b95050be33023fa9"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K4_findings.png",
+      "path": "archive/v2.8/icons/level2/memo/K4_findings.png",
       "sha256": "4378007daabc6a91cdf687267bfff048c82d1aa07a14f62f263c4505b7e1f9a6"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K5_risks.png",
+      "path": "archive/v2.8/icons/level2/memo/K5_risks.png",
       "sha256": "026c3e121d3901b35aa476ce890f3a46ede0f9a34fc68930c12120d0baab3965"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K6_recommend.png",
+      "path": "archive/v2.8/icons/level2/memo/K6_recommend.png",
       "sha256": "18943fbbaac79f4056949652dad113a36149b1cbcf16867c6912d915d8b5e227"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K7_appendix.png",
+      "path": "archive/v2.8/icons/level2/memo/K7_appendix.png",
       "sha256": "528eb39d650acf707b8160897bfd256f723db5775450920299f317502ba72beb"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K8_final_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K8_final_memo.png",
       "sha256": "30b3f2fbcd95af59fda47ab3009ceb50a310a78934db9032a330ef51b269143b"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K9_mgmt_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K9_mgmt_memo.png",
       "sha256": "2791e0561bb4d724d83292c679304590cbadbde77e1375afcae332932784d0af"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K10_status_note.png",
+      "path": "archive/v2.8/icons/level2/pilots/K10_status_note.png",
       "sha256": "65162b21c544b4e8312bb94507b3ee26abcc58bb509bf6c3b977999747e3b1cc"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K11_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K1_back.png",
+      "path": "archive/v2.8/icons/level2/pilots/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K2_pilot_plan.png",
+      "path": "archive/v2.8/icons/level2/pilots/K2_pilot_plan.png",
       "sha256": "0e1ed60e1bc51899826d780a1e59e73524d0c1ce096f6418050b150c67e4ca0b"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K3_pilot_result.png",
+      "path": "archive/v2.8/icons/level2/pilots/K3_pilot_result.png",
       "sha256": "17f103e7489a5a7ba29fde435f0f4d8e35540f537a99e3f9d7df5a1411ef90c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K4_candidate.png",
+      "path": "archive/v2.8/icons/level2/pilots/K4_candidate.png",
       "sha256": "6b883e5c45a53af82341bee7c705296d1ef68aa3ab9ac7870a21138a67a1a83a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K5_acceptance.png",
+      "path": "archive/v2.8/icons/level2/pilots/K5_acceptance.png",
       "sha256": "e32a150aee80f0142f8de447a4c290414539932a6e89c166c38e8c7edb74f469"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K6_residual_risk.png",
+      "path": "archive/v2.8/icons/level2/pilots/K6_residual_risk.png",
       "sha256": "29a1785c48936165d149fb0520da5e8e259611b159e5830e4a7889596374bc2c"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K7_registry.png",
+      "path": "archive/v2.8/icons/level2/pilots/K7_registry.png",
       "sha256": "2cb854ca083def8642ad41a9c63d0f0055591aaf85c8b6caa3cdeafdcdb1b1fd"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K8_runtime_smoke.png",
+      "path": "archive/v2.8/icons/level2/pilots/K8_runtime_smoke.png",
       "sha256": "1697dee5c07cfafd192f8e8a5642b3dd7604ef0565e3f870b360da3acf89c853"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K9_rollback.png",
+      "path": "archive/v2.8/icons/level2/pilots/K9_rollback.png",
       "sha256": "070f94e0efd823e98a8447b5b99f4ea1de878dcbf2eb0a0d7ed8f65583d40502"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K10_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K10_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K11_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K1_back.png",
+      "path": "archive/v2.8/icons/level2/revisor/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K2_apply_notes.png",
+      "path": "archive/v2.8/icons/level2/revisor/K2_apply_notes.png",
       "sha256": "ac2ec3bf3cdaae3ca63cb5620d05b054494666900cc4b88c7dc21141da5fefd2"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K3_shorten.png",
+      "path": "archive/v2.8/icons/level2/revisor/K3_shorten.png",
       "sha256": "728bf4def5749aedf6c60fb461160d015701c2b51df12be8d97bac6152ec8d2a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K4_clearer.png",
+      "path": "archive/v2.8/icons/level2/revisor/K4_clearer.png",
       "sha256": "0af1964776b46c40f8d360e11c90b3c3d97d3962d1ffbaedf738713d48ab8394"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K5_exec_version.png",
+      "path": "archive/v2.8/icons/level2/revisor/K5_exec_version.png",
       "sha256": "88848976c788be59444da8873638100f0e0b1476ab597d6a45b6cde1170c7a8e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K6_file_ready.png",
+      "path": "archive/v2.8/icons/level2/revisor/K6_file_ready.png",
       "sha256": "e1368d1bc4ac029b0e274141dd6f553322e7db28cf26d8b95b167476a0d603c0"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K7_no_new_claims.png",
+      "path": "archive/v2.8/icons/level2/revisor/K7_no_new_claims.png",
       "sha256": "504784341b63b5ea74bf618d72cf0452eca90c654dc1a2c83873633639298455"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K8_memo_revise.png",
+      "path": "archive/v2.8/icons/level2/revisor/K8_memo_revise.png",
       "sha256": "9967a33dd5c78516cd22801981ed0dceebf63a4a298c1b72a793d07be37e2bf7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K9_prompt_qa.png",
+      "path": "archive/v2.8/icons/level2/revisor/K9_prompt_qa.png",
       "sha256": "58c369c0ae79be6b289bde16afe5800df997abb859c92e2f431db1949e40a167"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K10_codex.png",
+      "path": "archive/v2.8/icons/level2/route/K10_codex.png",
       "sha256": "bbe04180f04d127b45d5393c42f2f76e32dcecd1c2cdebf0cdfef3f9f2ca641f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K11_codex_app.png",
+      "path": "archive/v2.8/icons/level2/route/K11_codex_app.png",
       "sha256": "62bcd05adead78174119e921930dc87468ab0b4be49ac2bb4bc94faa5e274c09"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K12_handoff.png",
+      "path": "archive/v2.8/icons/level2/route/K12_handoff.png",
       "sha256": "19b22aa567f8424483d2237f4ac31f251fe5dd711263b473d50434fae6019a3c"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K13_clarify.png",
+      "path": "archive/v2.8/icons/level2/route/K13_clarify.png",
       "sha256": "8312f782dedb8e0eebd4b89e399706b5d74918d3496b2122bf7b9aec5c21bd96"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/route/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/route/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K1_back.png",
+      "path": "archive/v2.8/icons/level2/route/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K2_raw_route.png",
+      "path": "archive/v2.8/icons/level2/route/K2_raw_route.png",
       "sha256": "4b9fa76674e7de6488fc8d733b750196a7952814e9dff2bcc0dd57fba41847e9"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K3_things.png",
+      "path": "archive/v2.8/icons/level2/route/K3_things.png",
       "sha256": "7f03fcd1e5323969b71b7a5b002b61f2f46cc35b7e25b8c17f083563b8989094"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K4_calendar.png",
+      "path": "archive/v2.8/icons/level2/route/K4_calendar.png",
       "sha256": "3c0ef218e57cf97f348e8496cccdc5f13510fdc03b39d5a19a62cf657193b921"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K5_notes.png",
+      "path": "archive/v2.8/icons/level2/route/K5_notes.png",
       "sha256": "69e36952e99e08cb3024d8059a1ea6a0c9085eaf32ab91813b326ea0bcbbe1d7"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K6_ai_os.png",
+      "path": "archive/v2.8/icons/level2/route/K6_ai_os.png",
       "sha256": "822b599de5d686abdff43ccf42a4b928ca7cba44ac6368ff0556092a46b6ba29"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K7_thinking.png",
+      "path": "archive/v2.8/icons/level2/route/K7_thinking.png",
       "sha256": "d0beaeb75e2dced418da83db8d0379485efef9897c267de6da6fa857ee617f1a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K8_analytics.png",
+      "path": "archive/v2.8/icons/level2/route/K8_analytics.png",
       "sha256": "732a0b7a49a04e67e420ded6ea3829fa3f070b13f71a3a569abf1e1b8c38f74a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K9_llm.png",
+      "path": "archive/v2.8/icons/level2/route/K9_llm.png",
       "sha256": "729df5fedb373fc681f5db9ba05670f1175bf6112036ea996896012a598049f5"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K10_scenario.png",
+      "path": "archive/v2.8/icons/level2/thinking/K10_scenario.png",
       "sha256": "1724296c75b4256a5edaf20993551ea3348010270750c16eba36db34b2aa4468"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K11_next_step.png",
+      "path": "archive/v2.8/icons/level2/thinking/K11_next_step.png",
       "sha256": "082e94deae415e8283cf8b3750c66e140ad955e5717f5660b5d2cced8633350e"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K12_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K13_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K14_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K15_empty.png",
       "sha256": "ed03fcb47b31e49ece82b7d2f7b4895fc8ad6acac98581d30732ba7c7d07f3c4"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K1_back.png",
+      "path": "archive/v2.8/icons/level2/thinking/K1_back.png",
       "sha256": "3cf83d37457d679a2448f807fb6ceff2e3acede34a02f1f90a7cd372494790c8"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K2_decision_memo.png",
+      "path": "archive/v2.8/icons/level2/thinking/K2_decision_memo.png",
       "sha256": "0f74c7a355047757086b17531f20cc28b227b4b2fa4ec11cf3a15988c759ad3c"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K3_options.png",
+      "path": "archive/v2.8/icons/level2/thinking/K3_options.png",
       "sha256": "f3f74338453b4cab4c9b1d5b980df0342958b27d85a89b5fc9cbbc80107bc578"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K4_risks.png",
+      "path": "archive/v2.8/icons/level2/thinking/K4_risks.png",
       "sha256": "845853c163307adacf62fa4e6010b7cc9827b93d95ea8efe587593ba3a2b794a"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K5_assumptions.png",
+      "path": "archive/v2.8/icons/level2/thinking/K5_assumptions.png",
       "sha256": "5b649dec1bbc07a5e35826f544ec6c980590fe5769501deb3113b30254032b9d"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K6_reversible.png",
+      "path": "archive/v2.8/icons/level2/thinking/K6_reversible.png",
       "sha256": "d75e8c46c3b733168f386e90160a136fb11df97b5c923cbe0717015ced7ca461"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K7_judge_decision.png",
+      "path": "archive/v2.8/icons/level2/thinking/K7_judge_decision.png",
       "sha256": "5850573c83f1645202f97e558eb6bfa3c4e736d1de43a4f80652b1ecdb004d63"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K8_to_analytics.png",
+      "path": "archive/v2.8/icons/level2/thinking/K8_to_analytics.png",
       "sha256": "ef334240068056d4814a138c368bcf1775f9b06ccb56c720054859297b8af40f"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K9_to_codex.png",
+      "path": "archive/v2.8/icons/level2/thinking/K9_to_codex.png",
       "sha256": "e33f34d1b73ded5ab313170b2687ac6bdbe79d8f81de64797b8f9e69008679c1"
     },
     {
@@ -869,74 +937,6 @@
     {
       "path": "archive/v2.9/AIOS_StreamDeck_Setup_Instruction_v2.9.md",
       "sha256": "3becafb5eea1a32d9587f9a719905ad4eb1815b2f2917e956a4a5cef1118548a"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/README.md",
-      "sha256": "0795e4e85ac1c396796e8aa177adbb16372c5a31b0b678eba40c8ec5fba3ecbf"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
-      "sha256": "32eb472de893de38c38c879d35d1a4b3ae9ba0eb2dfbc323cd547582335e2800"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
-      "sha256": "37c76a8d85aef08b744a391df3e59a275c72c96c4dc793660c21d8dfbf7a8fcc"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
-      "sha256": "83d091b1904cda5fcba1810a831d10ee805737e261bc260732c08c2994a0e2b1"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
-      "sha256": "b7b8d671438c5df2c42c31894165f1343e2ce50ecc89ab75f4d22594de7f42a6"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
-      "sha256": "2ec744248389002ba6d2e0782f9f5431dfa060c2e30b455cb82065e44cc47515"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
-      "sha256": "0249a29356ac2383ab9faeca5324b659c541c14c7103a761bd7ee4f776879b9a"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
-      "sha256": "75f33d4e594f8f6a79f4650588687bcc793f20ff33ffd220d822bfd8cff6ccef"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
-      "sha256": "e4d015ca6fec544e4793480f866e949fb4fa81c6366fb7050a2e4390de5cae1a"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
-      "sha256": "f6398805a0b01e1bedae1c9d514b0b4698aad7ab148db30968eabbefe72e00b0"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
-      "sha256": "cb0e36c8a1475b5aae5ec8e20bf0f75360fe9dfcf1ad77306e61466eb5fb168a"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
-      "sha256": "c580eab8d0cf4ecd63962f9826a24c4c12bbf1942ff05c5b4039a755f4330438"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
-      "sha256": "4a09701dcbaf3847edc523b7da4a8ed152c68caecf29eb454d5dee9f70e71cbc"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
-      "sha256": "a64401d2e9c37fc0f283e73a76e9629907e477cdeb1cdb054b4b4bcdbf53c9af"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
-      "sha256": "bcb03a47bc1a9f21c1954a54f781fe792a05be3adcf8e93dd53a8097537f453f"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
-      "sha256": "9800f91b7b8b3fa07498e87f30b1fcb54f6713a5747cb2db815bdccf31aab184"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
-      "sha256": "aacecc66ca31a3e3726b278bd8b813d794eebd8ebaea83aa6057aee39f06b18f"
     }
   ]
 }

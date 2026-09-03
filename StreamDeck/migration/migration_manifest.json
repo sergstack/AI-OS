@@ -259,7 +259,7 @@
     },
     {
       "path": "qa/cleanup_inventory.json",
-      "sha256": "77ca20b20323f9bf301d7a2b576e619d25d2af79eb98a88d46b09bb2ce45f975"
+      "sha256": "00b6dff36fe3d6f0a16d3770945f87ea310098f28f0b01d21534cfd23c9f6451"
     },
     {
       "path": "qa/physical_qa_checklist.md",
