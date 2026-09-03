@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_experiment_record.schema.json",
+  "title": "AIOS AutoResearch v0.1 Experiment Record",
+  "description": "One canonical AutoResearch experiment record. Structure only: this schema does not run an experiment, invoke a provider, or grant any authority. One experiment record = one causal hypothesis and one minimal mutation (issue #391 Grain). Previous records are immutable; corrections use append-only 'correction_of' metadata, never in-place rewrites. Governed by docs/standards/AUTORESEARCH_V01_CONTRACT.md and docs/standards/autoresearch_v01_manifest.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "batch_id",
+    "baseline_revision",
+    "candidate_revision",
+    "candidate_patch_hash",
+    "research_surface",
+    "hypothesis",
+    "observed_failure",
+    "attribution_evidence",
+    "alternative_causes",
+    "attribution_status",
+    "mutation",
+    "affected_scope",
+    "protected_scope",
+    "expected_effect",
+    "eval_manifest",
+    "runtime_model_configuration",
+    "hard_gate_results",
+    "behavioral_results",
+    "efficiency_results",
+    "variance_notes",
+    "regressions",
+    "integrity_events",
+    "decision",
+    "decision_basis",
+    "learning",
+    "rollback",
+    "next_hypothesis",
+    "authority_status",
+    "merge_status",
+    "production_status",
+    "correction_of"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+
+    "experiment_id": {
+      "description": "AUTORESEARCH-<batch_id>-<sequence>, per autoresearch_v01_manifest.json's one_experiment_identity.id_format.",
+      "type": "string",
+      "pattern": "^AUTORESEARCH-[A-Za-z0-9._-]{1,64}-[0-9]{1,6}$"
+    },
+    "batch_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+
+    "baseline_revision": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "candidate_revision": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "candidate_patch_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+
+    "research_surface": {
+      "description": "Must be a surface_id declared in autoresearch_v01_manifest.json's mutable_surfaces[]. Enforces INV-01 at the schema layer; kept in lockstep with the manifest by test_autoresearch_manifest_matches_schema_enums.",
+      "type": "string",
+      "enum": [
+        "MUT-ROUTING-TIEBREAK",
+        "MUT-AIOS-CONTEXT-PRIORITY",
+        "MUT-AIOS-HANDOFF-WORDING",
+        "MUT-HANDOFF-PROJECT-ADDITIONS"
+      ]
+    },
+
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "observed_failure": { "type": "string", "minLength": 1 },
+
+    "attribution_evidence": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "alternative_causes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "attribution_status": {
+      "description": "Reuses FAILURE_REGISTRY.md's attribution_status vocabulary verbatim, per issue #391's explicit rule.",
+      "type": "string",
+      "enum": ["supported", "uncertain", "rejected"]
+    },
+
+    "mutation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mutation_class", "diff_ref", "description"],
+      "properties": {
+        "mutation_class": {
+          "description": "Reuses autoresearch_v01_manifest.json's allowed_mutation_classes verbatim.",
+          "type": "string",
+          "enum": ["semantic_change", "wording_clarification", "deletion", "ordering", "consolidation"]
+        },
+        "diff_ref": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "affected_scope": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "protected_scope": {
+      "description": "protected_surfaces[].surface_id values confirmed untouched by this experiment; may be empty.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "expected_effect": { "type": "string", "minLength": 1 },
+
+    "eval_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["batch_manifest_ref", "evaluator_hash", "split_hash", "threshold_hash"],
+      "properties": {
+        "batch_manifest_ref": { "type": "string", "minLength": 1 },
+        "evaluator_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "split_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "threshold_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+
+    "runtime_model_configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "transport"],
+      "properties": {
+        "model_id": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string" },
+        "transport": {
+          "description": "Left open pending child #393's transport decision (deliberately deferred by docs/standards/AUTORESEARCH_V01_CONTRACT.md section 5); not a closed enum yet.",
+          "type": "string",
+          "minLength": 1
+        },
+        "temperature": { "type": "number" },
+        "seed": { "type": ["integer", "null"] },
+        "thinking_effort": { "type": "string" }
+      }
+    },
+
+    "hard_gate_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["invariant_id", "status", "detail"],
+        "properties": {
+          "invariant_id": { "type": "string", "pattern": "^INV-[0-9]{2,3}$" },
+          "status": { "type": "string", "enum": ["pass", "violated"] },
+          "detail": { "type": "string" }
+        }
+      }
+    },
+
+    "behavioral_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verdict", "delta", "notes"],
+      "properties": {
+        "verdict": {
+          "description": "Reuses AI_EVAL_REGISTRY.md's judge/check verdict vocabulary (also AES 4.6 judge_verdict) verbatim.",
+          "type": "string",
+          "enum": ["pass", "revise", "blocked"]
+        },
+        "delta": {
+          "description": "Reuses ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md's delta vocabulary verbatim. Never an aggregate score.",
+          "type": "string",
+          "enum": ["improvement", "unchanged", "regression", "inconclusive"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "efficiency_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measured", "cost_delta", "latency_delta", "notes"],
+      "properties": {
+        "measured": { "type": "boolean" },
+        "cost_delta": { "type": ["number", "null"] },
+        "latency_delta": { "type": ["number", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "variance_notes": { "type": "string" },
+
+    "regressions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "integrity_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["invariant_id", "description"],
+        "properties": {
+          "invariant_id": { "type": "string", "pattern": "^INV-[0-9]{2,3}$" },
+          "description": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+
+    "decision": {
+      "description": "Reuses autoresearch_v01_manifest.json's decision_semantics vocabulary verbatim, per issue #391's explicit rule.",
+      "type": "string",
+      "enum": ["keep_candidate", "discard", "inconclusive"]
+    },
+    "decision_basis": {
+      "description": "Must cite the regression-matrix/hard-invariant vocabulary, never a bare scalar score (INV-07). The pattern rejects a value that is purely numeric/punctuation.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "[A-Za-z]{3,}"
+    },
+
+    "learning": { "type": "string" },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "verified"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1 },
+        "verified": { "type": "boolean" }
+      }
+    },
+    "next_hypothesis": { "type": ["string", "null"] },
+
+    "authority_status": {
+      "description": "Reuses AES 4.7 authority_status verbatim. Not a new state machine.",
+      "type": "string",
+      "enum": ["not_required", "owner_review_pending", "approved", "rejected"]
+    },
+    "merge_status": {
+      "description": "Reuses AES 4.8 merge_status verbatim. Not a new state machine.",
+      "type": "string",
+      "enum": ["not_applicable", "not_opened", "open", "checks_pending", "owner_review_pending", "merge_ready", "merged", "closed_without_merge"]
+    },
+    "production_status": {
+      "description": "Reuses AES 4.9 production_status verbatim. Not a new state machine.",
+      "type": "string",
+      "enum": ["not_applicable", "not_authorized", "authorized", "deployed", "rolled_back"]
+    },
+
+    "correction_of": {
+      "description": "experiment_id of the record this one corrects, or null for an original record. Append-only: the corrected record is never deleted or rewritten in place.",
+      "type": ["string", "null"],
+      "pattern": "^AUTORESEARCH-[A-Za-z0-9._-]{1,64}-[0-9]{1,6}$"
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "attribution_status": { "const": "supported" } } },
+      "then": { "properties": { "attribution_evidence": { "type": "array", "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "decision": { "const": "keep_candidate" } } },
+      "then": {
+        "properties": {
+          "authority_status": { "enum": ["not_required", "owner_review_pending"] },
+          "merge_status": { "enum": ["not_applicable", "not_opened", "open", "checks_pending", "owner_review_pending"] },
+          "production_status": { "const": "not_authorized" }
+        }
+      }
+    }
+  ]
+}

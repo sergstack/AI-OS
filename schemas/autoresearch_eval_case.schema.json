@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_eval_case.schema.json",
+  "title": "AIOS AutoResearch v0.1 Eval Case",
+  "description": "One canonical AutoResearch eval case. Structure only: this schema does not run an experiment, invent a semantic evaluator, or grant any authority. One eval case = one primary behavior (issue #391 Grain). Governed by docs/standards/AUTORESEARCH_V01_CONTRACT.md and docs/standards/autoresearch_v01_manifest.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "case_family",
+    "behavior_type",
+    "scenario_lineage_id",
+    "risk_class",
+    "provided_context_refs",
+    "expected_primary_owner",
+    "allowed_outcomes",
+    "required_behaviors",
+    "forbidden_behaviors",
+    "hard_invariant_ids",
+    "deterministic_assertions",
+    "semantic_rubric_ref",
+    "human_review_trigger",
+    "runtime_constraints",
+    "split",
+    "case_revision",
+    "content_hash"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{2,64}$"
+    },
+
+    "case_family": {
+      "description": "Parent taxonomy family from issue #388.",
+      "type": "string",
+      "enum": ["routing", "scope_execution", "evidence", "authority", "handoff", "adversarial"]
+    },
+
+    "behavior_type": {
+      "description": "Free-form snake_case label for the primary behavior under test (e.g. tie_break_wording, ambiguity_handling, context_priority_ordering). Not a closed enum: issue #391 does not enumerate one, and closing it prematurely would block legitimate new case families.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,63}$"
+    },
+
+    "scenario_lineage_id": {
+      "description": "Groups paraphrased/near-duplicate cases so split membership can be checked at the lineage level, not the case level (issue #391: 'Validation and holdout lineages cannot overlap train lineages').",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+    },
+
+    "risk_class": {
+      "description": "Reuses ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md's severity vocabulary verbatim.",
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+
+    "input": {
+      "description": "Inline case input. Forbidden when split=holdout (issue #391: holdout payload must not appear in Researcher-readable fixtures).",
+      "type": "string",
+      "minLength": 1
+    },
+    "input_ref": {
+      "description": "Opaque reference to case input stored outside Researcher-readable fixtures (id or hash only).",
+      "type": "string",
+      "minLength": 1
+    },
+
+    "provided_context_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "expected_primary_owner": {
+      "description": "Reuses ROUTING_RULES.md's registered capability ids verbatim (PROJECT_CAPABILITIES.yaml namespace).",
+      "type": "string",
+      "enum": ["ai_os", "thinking", "analytics", "llm", "codex", "inbox_router", "thinkers_os"]
+    },
+
+    "allowed_outcomes": {
+      "description": "Reuses ACT_OR_ABSTAIN_EVAL_GATE.md's act/abstain vocabulary plus REGRESSION_GATE.md's blocked and ROUTING_RULES.md's owner_escalation class, verbatim. No new outcome vocabulary is introduced.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["act", "abstain", "blocked", "owner_escalation"] }
+    },
+
+    "required_behaviors": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "forbidden_behaviors": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "hard_invariant_ids": {
+      "description": "References into docs/standards/autoresearch_v01_manifest.json's hard_invariants[].id.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^INV-[0-9]{2,3}$" }
+    },
+
+    "deterministic_assertions": {
+      "description": "Deterministic checks override semantic Judge (AI_EVAL_REGISTRY.md core rule). May be empty only when the case is explicitly semantic-only (semantic_rubric_ref is then required, still).",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "semantic_rubric_ref": {
+      "description": "Reference to a Judge rubric (e.g. JUDGE_CALIBRATION.md case id), or null when the case is fully deterministic.",
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+
+    "human_review_trigger": {
+      "description": "false when no human-review trigger applies; otherwise a non-empty description of the trigger condition (ACT_OR_ABSTAIN_EVAL_GATE.md: 'Require human review for high-risk boundary cases').",
+      "oneOf": [
+        { "const": false },
+        { "type": "string", "minLength": 1 }
+      ]
+    },
+
+    "runtime_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model_class": { "type": "string" },
+        "thinking_effort": { "type": "string" },
+        "timeout_s": { "type": "number", "exclusiveMinimum": 0 },
+        "max_tokens": { "type": "integer", "exclusiveMinimum": 0 }
+      }
+    },
+
+    "split": {
+      "type": "string",
+      "enum": ["train", "validation", "holdout"]
+    },
+
+    "case_revision": { "type": "integer", "minimum": 1 },
+
+    "content_hash": {
+      "description": "sha256 of the canonical case content, bare hex (matches benchmarks/*/freeze_manifest.json's hash convention).",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+
+  "oneOf": [
+    { "required": ["input"], "not": { "required": ["input_ref"] } },
+    { "required": ["input_ref"], "not": { "required": ["input"] } }
+  ],
+
+  "if": {
+    "properties": { "split": { "const": "holdout" } }
+  },
+  "then": {
+    "required": ["input_ref"],
+    "not": { "required": ["input"] }
+  }
+}

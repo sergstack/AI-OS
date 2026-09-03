@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1.0",
+  "batch_id": "batch-001",
+  "status": "frozen",
+  "baseline": {
+    "baseline_id": "baseline-2026-09-03",
+    "configuration_ref": "ROUTING_RULES.md@3f3a6b6",
+    "source_revision": "3f3a6b6a4a11c62b0ba70a9dccee5878a40e3ff6",
+    "accepted_by": "owner",
+    "acceptance_status": "accepted"
+  },
+  "frozen_hashes": {
+    "evaluator_hash": "27f6343f980c4c0ab821d9c72d211d0eb76b0853825cefd80476a05e43cab27e",
+    "split_hash": "ad1a64057f9ab34fecfe3f4ee78660bb0316dbda9370581ffbeb1e8bddf3d598",
+    "threshold_hash": "497e22fe854a24bcfb8aa568e454fa262cdb64a109e01dabf5793b46326144da",
+    "cases_hash": "352b84777d8dd96ac9c0b3c170ecb2c7cca7fc2dbae41a1ec1ed4286fb2c43db"
+  },
+  "eval_case_refs": [
+    "AR-CASE-ROUTING-001",
+    "AR-CASE-HANDOFF-HOLDOUT-001"
+  ],
+  "split_membership": {
+    "train": [
+      "routing_tiebreak_numbers_in_memo"
+    ],
+    "validation": [],
+    "holdout": [
+      "context_priority_conflict_kb_vs_settings"
+    ]
+  },
+  "thresholds": {
+    "minimal_meaningful_improvement": 0.05,
+    "tie_break_rule": "prefer_candidate_only_on_no_hard_regression",
+    "hard_fail_rules": [
+      "any INV-01..INV-10 violation forces discard"
+    ]
+  },
+  "variance_rule": "reject if rerun spread exceeds batch-declared bound (method owned by child #395)",
+  "runs_per_case": 3,
+  "holdout_sealed": true,
+  "holdout_hash": "d179b28cc8927b726d766bc0a22ed40ffc879d40f62a100e7d97dabb24253669",
+  "manifest_revision": 1,
+  "frozen_at": "2026-09-03"
+}

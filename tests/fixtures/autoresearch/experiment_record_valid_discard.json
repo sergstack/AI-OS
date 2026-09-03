@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1.0",
+  "experiment_id": "AUTORESEARCH-batch-001-2",
+  "batch_id": "batch-001",
+  "baseline_revision": "3f3a6b6a4a11c62b0ba70a9dccee5878a40e3ff6",
+  "candidate_revision": "abc1234",
+  "candidate_patch_hash": "f803315699fea5d3c5fa3e505bb3f3d979e1cf3760a9d4cd50248b222633cf5a",
+  "research_surface": "MUT-ROUTING-TIEBREAK",
+  "hypothesis": "Naming the exact tie-break row explicitly in the response reduces routing-split errors on case family routing.",
+  "observed_failure": "Cases in scenario_lineage_id routing_tiebreak_numbers_in_memo sometimes route the whole memo to one project instead of splitting calculation from decision.",
+  "attribution_evidence": [],
+  "alternative_causes": [
+    "model_variance: ruled out by rerun count under runs_per_case"
+  ],
+  "attribution_status": "uncertain",
+  "mutation": {
+    "mutation_class": "wording_clarification",
+    "diff_ref": "ar://diffs/batch-001/1.patch",
+    "description": "Add an explicit 'split calculation from decision' clause to the 'Numbers inside a strategy memo' tie-break row."
+  },
+  "affected_scope": [
+    "ROUTING_RULES.md#tie-break-rules"
+  ],
+  "protected_scope": [
+    "PROT-ROUTING-DESTINATIONS"
+  ],
+  "expected_effect": "Fewer whole-memo misroutes on scenario_lineage_id routing_tiebreak_numbers_in_memo without changing any destination.",
+  "eval_manifest": {
+    "batch_manifest_ref": "batch-001",
+    "evaluator_hash": "27f6343f980c4c0ab821d9c72d211d0eb76b0853825cefd80476a05e43cab27e",
+    "split_hash": "ad1a64057f9ab34fecfe3f4ee78660bb0316dbda9370581ffbeb1e8bddf3d598",
+    "threshold_hash": "497e22fe854a24bcfb8aa568e454fa262cdb64a109e01dabf5793b46326144da"
+  },
+  "runtime_model_configuration": {
+    "model_id": "placeholder-model",
+    "transport": "not_decided_pending_393",
+    "thinking_effort": "low"
+  },
+  "hard_gate_results": [
+    {
+      "invariant_id": "INV-06",
+      "status": "violated",
+      "detail": "uncertain attribution without discriminating-experiment frame"
+    }
+  ],
+  "behavioral_results": {
+    "verdict": "blocked",
+    "delta": "inconclusive",
+    "notes": "not evaluated; discarded on attribution gate"
+  },
+  "efficiency_results": {
+    "measured": true,
+    "cost_delta": -0.01,
+    "latency_delta": 0.0,
+    "notes": "no material efficiency change"
+  },
+  "variance_notes": "rerun variance within batch-001's variance_rule bound",
+  "regressions": [],
+  "integrity_events": [
+    {
+      "invariant_id": "INV-06",
+      "description": "uncertain attribution without discriminating-experiment frame"
+    }
+  ],
+  "decision": "discard",
+  "decision_basis": "attribution uncertain and experiment was not framed as a bounded discriminating experiment (INV-06)",
+  "learning": "explicit split-instruction wording generalizes to other tie-break rows worth testing next",
+  "rollback": {
+    "method": "revert candidate branch commit",
+    "verified": true
+  },
+  "next_hypothesis": "the same explicit-split wording pattern may help the 'Production readiness' tie-break row",
+  "authority_status": "rejected",
+  "merge_status": "not_opened",
+  "production_status": "not_authorized",
+  "correction_of": null
+}
