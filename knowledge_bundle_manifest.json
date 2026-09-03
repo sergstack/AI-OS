@@ -120,7 +120,12 @@
         "ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md",
         "ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md",
         "ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md",
-        "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md"
+        "ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md",
+        "ChatGPT/[AI OS]/Knowledge/ACT_OR_ABSTAIN_EVAL_GATE.md",
+        "ChatGPT/[AI OS]/Knowledge/GOAL_CONSISTENCY_CLOSURE_CHECK.md",
+        "ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md",
+        "ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md",
+        "ChatGPT/[AI OS]/Knowledge/INTERMEDIATE_STATE_ASSERTIONS.md"
       ],
       "contract": {
         "title": "[AI OS] — Cross-Project AI Evals",

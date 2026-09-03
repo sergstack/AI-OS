@@ -10,6 +10,18 @@ Final quality status: `candidate / ready for human review`
 Smoke QA is not production readiness.
 This report records repository checks and direct ChatGPT UI smoke QA evidence.
 
+**Coverage note (added 2026-09-03):** this record predates roughly 15
+`Knowledge/` additions/updates made 2026-08-25 through 2026-09-02, including
+the `ACT_OR_ABSTAIN_EVAL_GATE.md` / `GOAL_CONSISTENCY_CLOSURE_CHECK.md` /
+`FAILURE_REGISTRY.md` / `REGRESSION_GATE.md` / `INTERMEDIATE_STATE_ASSERTIONS.md`
+eval-gate family, `AI_OS_PROJECT_FILES_INDEX.md` (2026-08-31), and the
+Supervised AI-OS Subagent Dispatch pilot in `AGENT_LOOP_PLAYBOOK.md`
+(2026-09-02). None of that later content has been verified against the live
+ChatGPT UI. Re-running this smoke QA against current bundles (including the just-added
+`AIOS_06_CROSS_PROJECT_AI_EVALS.md` coverage of the eval-gate family, this
+same change) is the next action, not something this note substitutes for.
+See `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`.
+
 ## Browser UI Evidence
 
 - Project Instructions visible: yes. Project settings showed the project name `[AI OS]` and an Instructions field beginning with `# [AI OS] Project Instruction`.

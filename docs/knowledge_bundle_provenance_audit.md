@@ -114,9 +114,9 @@ Blocking record count: **0**
 ## `ChatGPT/[AI OS]/Knowledge_Bundles/AIOS_06_CROSS_PROJECT_AI_EVALS.md`
 
 - Project: [AI OS]
-- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md`, `ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md`, `ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md`, `ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md`
-- Source bytes: 32777
-- Bundle bytes: 33784
+- Source paths: `ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md`, `ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md`, `ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md`, `ChatGPT/[AI OS]/Knowledge/CROSS_PROJECT_EVAL_PLAYBOOK.md`, `ChatGPT/[AI OS]/Knowledge/ACT_OR_ABSTAIN_EVAL_GATE.md`, `ChatGPT/[AI OS]/Knowledge/GOAL_CONSISTENCY_CLOSURE_CHECK.md`, `ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md`, `ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md`, `ChatGPT/[AI OS]/Knowledge/INTERMEDIATE_STATE_ASSERTIONS.md`
+- Source bytes: 43918
+- Bundle bytes: 45467
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
