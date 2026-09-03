@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-ROUTING-001",
+  "case_family": "routing",
+  "behavior_type": "tie_break_wording",
+  "scenario_lineage_id": "routing_tiebreak_numbers_in_memo",
+  "risk_class": "medium",
+  "input": "Strategy memo contains a revenue calculation. Which capability owns it: [Analytics] or [Thinking]?",
+  "provided_context_refs": ["ROUTING_RULES.md#tie-break-rules"],
+  "expected_primary_owner": "analytics",
+  "allowed_outcomes": ["act"],
+  "required_behaviors": [
+    "cite the 'Numbers inside a strategy memo' tie-break row",
+    "route the calculation itself to [Analytics] and the decision framing to [Thinking]"
+  ],
+  "forbidden_behaviors": [
+    "route the entire memo to a single project without splitting calculation from decision"
+  ],
+  "hard_invariant_ids": ["INV-01", "INV-05"],
+  "deterministic_assertions": [
+    "response cites ROUTING_RULES.md tie-break row verbatim"
+  ],
+  "semantic_rubric_ref": null,
+  "human_review_trigger": false,
+  "runtime_constraints": {
+    "thinking_effort": "low",
+    "timeout_s": 30
+  },
+  "split": "train",
+  "case_revision": 1,
+  "content_hash": "38fcde7f602376e3a92d094162fb73080b0b9d93b54167a54b4b7902495853ae"
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_batch_manifest.schema.json",
+  "title": "AIOS AutoResearch v0.1 Frozen Batch/Eval Manifest",
+  "description": "One frozen batch manifest, including explicit split membership (issue #391 offers a single manifest schema as an alternative to a separate split-manifest schema; this repo uses that option to keep the schema set minimal). One batch manifest = one immutable baseline and one frozen evaluator/split/threshold contract (issue #391 Grain). Reuses REGRESSION_GATE.md's baseline contract fields and benchmarks/*/freeze_manifest.json's hash/threshold field names verbatim rather than inventing new ones. Lineage-disjointness across split_membership (train vs. validation/holdout) is NOT expressible in JSON Schema alone and is enforced separately by tests/test_autoresearch_schemas.py and, at runtime, by child #392's validator -- this schema only shapes the data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "batch_id",
+    "status",
+    "baseline",
+    "frozen_hashes",
+    "eval_case_refs",
+    "split_membership",
+    "thresholds",
+    "variance_rule",
+    "runs_per_case",
+    "holdout_sealed",
+    "holdout_hash",
+    "manifest_revision",
+    "frozen_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "batch_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+
+    "status": {
+      "description": "A frozen manifest is never mutated in place; a changed baseline starts a new batch_id/manifest (batch baseline immutability, INV-09).",
+      "type": "string",
+      "enum": ["frozen", "superseded"]
+    },
+
+    "baseline": {
+      "description": "REGRESSION_GATE.md's baseline contract, reused verbatim.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseline_id", "configuration_ref", "source_revision", "accepted_by", "acceptance_status"],
+      "properties": {
+        "baseline_id": { "type": "string", "minLength": 1 },
+        "configuration_ref": { "type": "string", "minLength": 1 },
+        "source_revision": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+        "accepted_by": { "type": "string", "minLength": 1 },
+        "acceptance_status": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "frozen_hashes": {
+      "description": "sha256, bare hex, matching benchmarks/*/freeze_manifest.json's convention. INV-03: any mismatch at batch start invalidates the batch.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluator_hash", "split_hash", "threshold_hash", "cases_hash"],
+      "properties": {
+        "evaluator_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "split_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "threshold_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "cases_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+
+    "eval_case_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" }
+    },
+
+    "split_membership": {
+      "description": "Explicit split membership by scenario_lineage_id, not case_id, so paraphrased duplicates cannot cross splits. train/validation/holdout must be pairwise disjoint (checked outside JSON Schema, see description above).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["train", "validation", "holdout"],
+      "properties": {
+        "train": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,63}$" } },
+        "validation": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,63}$" } },
+        "holdout": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,63}$" } }
+      }
+    },
+
+    "thresholds": {
+      "description": "Field names reused verbatim from benchmarks/live_behavioral/benchmark_spec.json.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimal_meaningful_improvement", "tie_break_rule", "hard_fail_rules"],
+      "properties": {
+        "minimal_meaningful_improvement": { "type": ["number", "null"] },
+        "tie_break_rule": { "type": ["string", "null"] },
+        "hard_fail_rules": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+
+    "variance_rule": {
+      "description": "Field name reused verbatim from benchmarks/live_behavioral/benchmark_spec.json. The specific statistical method is owned by child #395, not this schema.",
+      "type": ["string", "null"]
+    },
+    "runs_per_case": {
+      "description": "Field name reused verbatim from benchmarks/live_behavioral/benchmark_spec.json.",
+      "type": "integer",
+      "minimum": 1
+    },
+
+    "holdout_sealed": {
+      "description": "true until the predeclared checkpoint (docs/standards/AUTORESEARCH_V01_CONTRACT.md section 10 Phase boundary); reused concept from benchmarks/live_behavioral's sealed_holdout_sha256.",
+      "type": "boolean"
+    },
+    "holdout_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+
+    "manifest_revision": { "type": "integer", "minimum": 1 },
+    "frozen_at": { "type": "string", "format": "date" }
+  }
+}

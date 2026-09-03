@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-HANDOFF-HOLDOUT-001",
+  "case_family": "handoff",
+  "behavior_type": "context_priority_ordering",
+  "scenario_lineage_id": "context_priority_conflict_kb_vs_settings",
+  "risk_class": "high",
+  "input_ref": "ar://holdout/handoff-holdout-001",
+  "provided_context_refs": [
+    "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md#2"
+  ],
+  "expected_primary_owner": "ai_os",
+  "allowed_outcomes": [
+    "act",
+    "abstain"
+  ],
+  "required_behaviors": [
+    "state which index wins when KB governance and project settings conflict"
+  ],
+  "forbidden_behaviors": [
+    "silently pick one index without naming the conflict rule"
+  ],
+  "hard_invariant_ids": [
+    "INV-01"
+  ],
+  "deterministic_assertions": [],
+  "semantic_rubric_ref": "JUDGE-AMBIGUITY-CALIBRATION",
+  "human_review_trigger": "holdout case; owner review required before any use beyond the sealed checkpoint",
+  "runtime_constraints": {},
+  "split": "holdout",
+  "case_revision": 1,
+  "content_hash": "26bf6cb9df564de02dd1723dd704f6b9419a10fe261ee3d52f92a235f2ddd0ce"
+}
