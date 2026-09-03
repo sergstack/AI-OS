@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_semantic_finding.schema.json",
+  "title": "AIOS AutoResearch v0.1 Semantic Evaluator Finding",
+  "description": "One finding emitted by the blind A/B semantic evaluator (issue #394), governed by ChatGPT/[LLM]/Knowledge/AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md. One finding = one material behavior or invariant. This schema deliberately has NO field for authority_status, merge_status, production_status, candidate identity (which of A/B is baseline vs. candidate), Researcher rationale/hypothesis, or a numeric aggregate score -- the Judge cannot carry or leak any of these through its output, by construction, not by convention.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "case_family",
+    "finding",
+    "evidence",
+    "severity",
+    "affected_invariant_or_metric",
+    "verdict",
+    "confidence",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+
+    "case_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+    "case_family": {
+      "description": "Reuses autoresearch_eval_case.schema.json's case_family enum verbatim.",
+      "type": "string",
+      "enum": ["routing", "scope_execution", "evidence", "authority", "handoff", "adversarial"]
+    },
+
+    "finding": {
+      "description": "One material observation. Not a general summary of the whole comparison.",
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "description": "What in A and/or B actually supports this finding. Never a bare assertion.",
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "description": "Reuses FAILURE_REGISTRY.md's severity vocabulary verbatim.",
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "affected_invariant_or_metric": {
+      "description": "An INV-nn id (autoresearch_v01_manifest.json), a named rubric dimension from the case_family (e.g. 'routing_correctness'), or 'JUDGE_DISAGREEMENT' for a disagreement finding (contract section 9).",
+      "type": "string",
+      "minLength": 1
+    },
+    "verdict": {
+      "description": "Reuses AI_EVAL_REGISTRY.md's / AES 4.6's pass/revise/blocked vocabulary verbatim. No 'fail', no 'not_run': an unevaluable finding is 'blocked' with limitations stating why.",
+      "type": "string",
+      "enum": ["pass", "revise", "blocked"]
+    },
+    "confidence": {
+      "description": "Textual, not a calibrated probability or governance metric (LLM_EVAL_STANDARD.md: 'Self-reported LLM confidence is not a governance metric or a calibrated probability').",
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "limitations": {
+      "description": "Required even when empty-feeling; use an explicit short statement such as 'none material' rather than omitting the field.",
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

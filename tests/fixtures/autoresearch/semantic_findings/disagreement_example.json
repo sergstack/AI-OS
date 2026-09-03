@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-ROUTING-001",
+  "case_family": "routing",
+  "finding": "Order-reversed rerun materially changed the verdict from pass to revise without a rubric-grounded reason.",
+  "evidence": "run 1 (A=baseline,B=candidate): pass; run 2 (A=candidate,B=baseline): revise; same rubric, same case",
+  "severity": "high",
+  "affected_invariant_or_metric": "JUDGE_DISAGREEMENT",
+  "verdict": "revise",
+  "confidence": "medium",
+  "limitations": "unresolved disagreement; escalate per contract section 9"
+}

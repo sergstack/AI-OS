@@ -37,6 +37,9 @@ MANIFEST_PATH = REPO_ROOT / "docs" / "standards" / "autoresearch_v01_manifest.js
 EVAL_CASE_SCHEMA_PATH = SCHEMAS / "autoresearch_eval_case.schema.json"
 EXPERIMENT_SCHEMA_PATH = SCHEMAS / "autoresearch_experiment_record.schema.json"
 BATCH_MANIFEST_SCHEMA_PATH = SCHEMAS / "autoresearch_batch_manifest.schema.json"
+SEMANTIC_FINDING_SCHEMA_PATH = SCHEMAS / "autoresearch_semantic_finding.schema.json"
+
+VERDICT_PRECEDENCE = {"pass": 0, "revise": 1, "blocked": 2}  # higher wins in worst_verdict()
 
 # Ceiling on authority/merge/production a ledger append may ever carry.
 # The ledger only ever receives Researcher-authored records; a legitimate
@@ -139,6 +142,30 @@ def validate_batch_manifest(doc: dict) -> list[Finding]:
     if not findings:
         findings.extend(check_split_lineage_disjoint(doc))
     return findings
+
+
+# ---------------------------------------------------------------------------
+# Semantic evaluator findings (issue #394): schema validation and worst-case
+# aggregation only. The evaluator itself -- and any de-blinding of A/B back
+# to baseline/candidate -- is not implemented here; issue #394's contract
+# (ChatGPT/[LLM]/Knowledge/AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md)
+# explicitly routes a real runner integration to a separate [Codex] task.
+# ---------------------------------------------------------------------------
+
+
+def validate_semantic_finding(doc: dict) -> list[Finding]:
+    return _schema_findings(doc, SEMANTIC_FINDING_SCHEMA_PATH, "semantic_finding")
+
+
+def worst_verdict(findings: list[dict]) -> str:
+    """Deterministic aggregation across a set of semantic findings for one
+    case: blocked > revise > pass (AES precedence -- a single blocked or
+    revise finding is never silently outvoted by several pass findings).
+    Raises on an empty list: an evaluator run that produced zero findings is
+    a validator/caller bug, not a legitimate 'pass'."""
+    if not findings:
+        raise ContractError("worst_verdict() called with no findings; an empty result must never be treated as pass")
+    return max(findings, key=lambda f: VERDICT_PRECEDENCE[f["verdict"]])["verdict"]
 
 
 def check_split_lineage_disjoint(batch_manifest: dict) -> list[Finding]:

@@ -433,8 +433,8 @@
         "ChatGPT/[LLM]/Knowledge/LLM_EVAL_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 78054,
-      "bundle_bytes": 79248,
+      "source_bytes": 78112,
+      "bundle_bytes": 79306,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
