@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:f092971ab6fadda6a2dadcd4add135e26f6d5b2f81977a6d36e3ba28f3c05354
+- source_fingerprint: sha256:42845a00da415bfd8f1513c18bf4ee7aba1ca6728f4fda8557a89e95b6c8c1ee
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -144,6 +144,8 @@ Owner: Sergey / Thinking Lead
 Last updated: 2026-09-03
 Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
 Last pilot: `PILOT-THINKING-001` (2026-08-27) — one live decision memo, recorded `candidate` / `medium` confidence in root `docs/evidence/PILOT_RESULTS_2026-08-27_THINKING.md`; next step is owner review, then a further bounded pilot (see root `docs/operations/PILOT_CASES.md`)
+- status_scope: ChatGPT/[Thinking]
+- status_verified_revision: cddceb1f738191e67d03459e73dfa6c6a99db559
 ## Active canonical files
 | File | Status | Purpose |
 |---|---|---|

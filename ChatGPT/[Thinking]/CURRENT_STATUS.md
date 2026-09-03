@@ -5,6 +5,8 @@ Owner: Sergey / Thinking Lead
 Last updated: 2026-09-03
 Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
 Last pilot: `PILOT-THINKING-001` (2026-08-27) — one live decision memo, recorded `candidate` / `medium` confidence in root `docs/evidence/PILOT_RESULTS_2026-08-27_THINKING.md`; next step is owner review, then a further bounded pilot (see root `docs/operations/PILOT_CASES.md`)
+- status_scope: ChatGPT/[Thinking]
+- status_verified_revision: cddceb1f738191e67d03459e73dfa6c6a99db559
 
 ## Active canonical files
 

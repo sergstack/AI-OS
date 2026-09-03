@@ -84,7 +84,12 @@
             ]
           }
         },
-        "notes": { "type": "string" }
+        "notes": { "type": "string" },
+        "missing_required_knowledge": {
+          "description": "Optional. Populated from the child's structured evidence (not narrative summary) when it observes a canonical_path or declared entrypoint/dependency referenced but absent. See docs/standards/BOUNDED_PROJECT_CONTEXT_FRESHNESS.md. Not required, so existing records need no backfill.",
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     }
   }

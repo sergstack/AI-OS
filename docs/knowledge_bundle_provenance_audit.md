@@ -157,8 +157,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Thinking]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`, `ChatGPT/[Thinking]/CURRENT_STATUS.md`, `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`
-- Source bytes: 15047
-- Bundle bytes: 16257
+- Source bytes: 15151
+- Bundle bytes: 16361
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

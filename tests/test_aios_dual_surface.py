@@ -40,13 +40,15 @@ def registry_matches(registry: dict, routed_destination: str) -> list[str]:
 def test_registry_is_location_resolver_only() -> None:
     registry = load_registry()
 
-    assert registry["schema_version"] == 2
+    assert registry["schema_version"] == 3
     assert set(registry) == {"schema_version", "capabilities"}
     assert set(registry["capabilities"]) == set(EXPECTED_PROJECTS)
 
     for capability_id, canonical_path in EXPECTED_PROJECTS.items():
         capability = registry["capabilities"][capability_id]
-        assert set(capability) == {"canonical_path", "context_entrypoints", "executor"}
+        assert set(capability) == {
+            "canonical_path", "context_entrypoints", "executor", "required_knowledge",
+        }
         assert capability["canonical_path"] == canonical_path
 
 
