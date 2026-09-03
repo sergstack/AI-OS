@@ -7,6 +7,91 @@
       "rollback_role": "candidate/evidence baseline"
     },
     {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/README.md",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
+      "path": "archive/pre-releases/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
+      "disposition": "ARCHIVE_SUPERSEDED",
+      "rollback_role": "candidate/evidence baseline"
+    },
+    {
       "path": "archive/v2.7/ROUTING_FIXED_AIOS_StreamDeck_Button_Map_v2.7_PROJECT_ALIGNED_EN_LABELS.csv",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "active baseline"
@@ -92,977 +177,977 @@
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K10_memo.png",
+      "path": "archive/v2.8/icons/home/K10_memo.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K11_ai_trend.png",
+      "path": "archive/v2.8/icons/home/K11_ai_trend.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K12_sync.png",
+      "path": "archive/v2.8/icons/home/K12_sync.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K13_local_ai.png",
+      "path": "archive/v2.8/icons/home/K13_local_ai.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K14_pilots.png",
+      "path": "archive/v2.8/icons/home/K14_pilots.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K15_kb.png",
+      "path": "archive/v2.8/icons/home/K15_kb.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K1_route.png",
+      "path": "archive/v2.8/icons/home/K1_route.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K2_ai_os.png",
+      "path": "archive/v2.8/icons/home/K2_ai_os.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K3_thinking.png",
+      "path": "archive/v2.8/icons/home/K3_thinking.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K4_analytics.png",
+      "path": "archive/v2.8/icons/home/K4_analytics.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K5_llm.png",
+      "path": "archive/v2.8/icons/home/K5_llm.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K6_codex.png",
+      "path": "archive/v2.8/icons/home/K6_codex.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K7_judge.png",
+      "path": "archive/v2.8/icons/home/K7_judge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K8_revisor.png",
+      "path": "archive/v2.8/icons/home/K8_revisor.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/home/K9_inbox.png",
+      "path": "archive/v2.8/icons/home/K9_inbox.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K10_agent_loop.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K10_agent_loop.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K11_streamdeck.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K11_streamdeck.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K1_back.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K2_ai_trend.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K2_ai_trend.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K3_pattern_explain.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K3_pattern_explain.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K4_use_case.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K4_use_case.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K5_evidence_check.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K5_evidence_check.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K6_governance.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K6_governance.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K7_to_thinking.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K7_to_thinking.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K8_to_llm.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K8_to_llm.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/ai_os/K9_to_codex.png",
+      "path": "archive/v2.8/icons/level2/ai_os/K9_to_codex.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K10_mart_spec.png",
+      "path": "archive/v2.8/icons/level2/analytics/K10_mart_spec.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K11_formula_review.png",
+      "path": "archive/v2.8/icons/level2/analytics/K11_formula_review.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/analytics/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K1_back.png",
+      "path": "archive/v2.8/icons/level2/analytics/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K2_data_contract.png",
+      "path": "archive/v2.8/icons/level2/analytics/K2_data_contract.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K3_variance.png",
+      "path": "archive/v2.8/icons/level2/analytics/K3_variance.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K4_reconcile.png",
+      "path": "archive/v2.8/icons/level2/analytics/K4_reconcile.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K5_audit_anomaly.png",
+      "path": "archive/v2.8/icons/level2/analytics/K5_audit_anomaly.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K6_memo_facts.png",
+      "path": "archive/v2.8/icons/level2/analytics/K6_memo_facts.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K7_qa_checks.png",
+      "path": "archive/v2.8/icons/level2/analytics/K7_qa_checks.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K8_analytics_loop.png",
+      "path": "archive/v2.8/icons/level2/analytics/K8_analytics_loop.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/analytics/K9_supervised_loop.png",
+      "path": "archive/v2.8/icons/level2/analytics/K9_supervised_loop.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K10_branch_pack.png",
+      "path": "archive/v2.8/icons/level2/codex/K10_branch_pack.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K11_review_report.png",
+      "path": "archive/v2.8/icons/level2/codex/K11_review_report.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/codex/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K1_back.png",
+      "path": "archive/v2.8/icons/level2/codex/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K2_goal_issue.png",
+      "path": "archive/v2.8/icons/level2/codex/K2_goal_issue.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K3_issue_pr.png",
+      "path": "archive/v2.8/icons/level2/codex/K3_issue_pr.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K4_pr_judge.png",
+      "path": "archive/v2.8/icons/level2/codex/K4_pr_judge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K5_sync_check.png",
+      "path": "archive/v2.8/icons/level2/codex/K5_sync_check.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K6_run_checks.png",
+      "path": "archive/v2.8/icons/level2/codex/K6_run_checks.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K7_fix_mismatch.png",
+      "path": "archive/v2.8/icons/level2/codex/K7_fix_mismatch.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K8_release_notes.png",
+      "path": "archive/v2.8/icons/level2/codex/K8_release_notes.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/codex/K9_no_auto_merge.png",
+      "path": "archive/v2.8/icons/level2/codex/K9_no_auto_merge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K10_route_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K10_route_judge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K11_final_gate.png",
+      "path": "archive/v2.8/icons/level2/judge/K11_final_gate.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/judge/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K1_back.png",
+      "path": "archive/v2.8/icons/level2/judge/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K2_universal.png",
+      "path": "archive/v2.8/icons/level2/judge/K2_universal.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K3_pr_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K3_pr_judge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K4_memo_judge.png",
+      "path": "archive/v2.8/icons/level2/judge/K4_memo_judge.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K5_analytics.png",
+      "path": "archive/v2.8/icons/level2/judge/K5_analytics.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K6_evidence.png",
+      "path": "archive/v2.8/icons/level2/judge/K6_evidence.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K7_risk.png",
+      "path": "archive/v2.8/icons/level2/judge/K7_risk.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K8_blocker.png",
+      "path": "archive/v2.8/icons/level2/judge/K8_blocker.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/judge/K9_local_ai.png",
+      "path": "archive/v2.8/icons/level2/judge/K9_local_ai.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K10_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K10_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K11_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/kb/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K1_back.png",
+      "path": "archive/v2.8/icons/level2/kb/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K2_kb_search.png",
+      "path": "archive/v2.8/icons/level2/kb/K2_kb_search.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K3_evidence_label.png",
+      "path": "archive/v2.8/icons/level2/kb/K3_evidence_label.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K4_review_item.png",
+      "path": "archive/v2.8/icons/level2/kb/K4_review_item.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K5_support_mix.png",
+      "path": "archive/v2.8/icons/level2/kb/K5_support_mix.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K6_manifest.png",
+      "path": "archive/v2.8/icons/level2/kb/K6_manifest.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K7_source_truth.png",
+      "path": "archive/v2.8/icons/level2/kb/K7_source_truth.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K8_bundle_sync.png",
+      "path": "archive/v2.8/icons/level2/kb/K8_bundle_sync.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/kb/K9_upload_check.png",
+      "path": "archive/v2.8/icons/level2/kb/K9_upload_check.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K10_streamdeck.png",
+      "path": "archive/v2.8/icons/level2/llm/K10_streamdeck.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K11_no_raw_dump.png",
+      "path": "archive/v2.8/icons/level2/llm/K11_no_raw_dump.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/llm/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K1_back.png",
+      "path": "archive/v2.8/icons/level2/llm/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K2_prompt_build.png",
+      "path": "archive/v2.8/icons/level2/llm/K2_prompt_build.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K3_context_pack.png",
+      "path": "archive/v2.8/icons/level2/llm/K3_context_pack.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K4_judge_screen.png",
+      "path": "archive/v2.8/icons/level2/llm/K4_judge_screen.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K5_revisor_screen.png",
+      "path": "archive/v2.8/icons/level2/llm/K5_revisor_screen.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K6_model_routing.png",
+      "path": "archive/v2.8/icons/level2/llm/K6_model_routing.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K7_eval_rubric.png",
+      "path": "archive/v2.8/icons/level2/llm/K7_eval_rubric.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K8_workflow_design.png",
+      "path": "archive/v2.8/icons/level2/llm/K8_workflow_design.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/llm/K9_local_ai_prompt.png",
+      "path": "archive/v2.8/icons/level2/llm/K9_local_ai_prompt.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K10_judge_output.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K10_judge_output.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K11_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K1_back.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K2_ollama_smoke.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K2_ollama_smoke.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K3_model_compare.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K3_model_compare.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K4_open_webui.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K4_open_webui.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K5_draft_only.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K5_draft_only.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K6_safety.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K6_safety.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K7_record_pilot.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K7_record_pilot.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K8_candidate.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K8_candidate.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/local_ai/K9_no_sensitive.png",
+      "path": "archive/v2.8/icons/level2/local_ai/K9_no_sensitive.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K10_judge_revise.png",
+      "path": "archive/v2.8/icons/level2/memo/K10_judge_revise.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K11_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/memo/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K1_back.png",
+      "path": "archive/v2.8/icons/level2/memo/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K2_finance_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K2_finance_memo.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K3_exec_summary.png",
+      "path": "archive/v2.8/icons/level2/memo/K3_exec_summary.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K4_findings.png",
+      "path": "archive/v2.8/icons/level2/memo/K4_findings.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K5_risks.png",
+      "path": "archive/v2.8/icons/level2/memo/K5_risks.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K6_recommend.png",
+      "path": "archive/v2.8/icons/level2/memo/K6_recommend.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K7_appendix.png",
+      "path": "archive/v2.8/icons/level2/memo/K7_appendix.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K8_final_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K8_final_memo.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/memo/K9_mgmt_memo.png",
+      "path": "archive/v2.8/icons/level2/memo/K9_mgmt_memo.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K10_status_note.png",
+      "path": "archive/v2.8/icons/level2/pilots/K10_status_note.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K11_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/pilots/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K1_back.png",
+      "path": "archive/v2.8/icons/level2/pilots/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K2_pilot_plan.png",
+      "path": "archive/v2.8/icons/level2/pilots/K2_pilot_plan.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K3_pilot_result.png",
+      "path": "archive/v2.8/icons/level2/pilots/K3_pilot_result.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K4_candidate.png",
+      "path": "archive/v2.8/icons/level2/pilots/K4_candidate.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K5_acceptance.png",
+      "path": "archive/v2.8/icons/level2/pilots/K5_acceptance.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K6_residual_risk.png",
+      "path": "archive/v2.8/icons/level2/pilots/K6_residual_risk.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K7_registry.png",
+      "path": "archive/v2.8/icons/level2/pilots/K7_registry.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K8_runtime_smoke.png",
+      "path": "archive/v2.8/icons/level2/pilots/K8_runtime_smoke.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/pilots/K9_rollback.png",
+      "path": "archive/v2.8/icons/level2/pilots/K9_rollback.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K10_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K10_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K11_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K11_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/revisor/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K1_back.png",
+      "path": "archive/v2.8/icons/level2/revisor/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K2_apply_notes.png",
+      "path": "archive/v2.8/icons/level2/revisor/K2_apply_notes.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K3_shorten.png",
+      "path": "archive/v2.8/icons/level2/revisor/K3_shorten.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K4_clearer.png",
+      "path": "archive/v2.8/icons/level2/revisor/K4_clearer.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K5_exec_version.png",
+      "path": "archive/v2.8/icons/level2/revisor/K5_exec_version.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K6_file_ready.png",
+      "path": "archive/v2.8/icons/level2/revisor/K6_file_ready.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K7_no_new_claims.png",
+      "path": "archive/v2.8/icons/level2/revisor/K7_no_new_claims.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K8_memo_revise.png",
+      "path": "archive/v2.8/icons/level2/revisor/K8_memo_revise.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/revisor/K9_prompt_qa.png",
+      "path": "archive/v2.8/icons/level2/revisor/K9_prompt_qa.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K10_codex.png",
+      "path": "archive/v2.8/icons/level2/route/K10_codex.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K11_codex_app.png",
+      "path": "archive/v2.8/icons/level2/route/K11_codex_app.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K12_handoff.png",
+      "path": "archive/v2.8/icons/level2/route/K12_handoff.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K13_clarify.png",
+      "path": "archive/v2.8/icons/level2/route/K13_clarify.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/route/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/route/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K1_back.png",
+      "path": "archive/v2.8/icons/level2/route/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K2_raw_route.png",
+      "path": "archive/v2.8/icons/level2/route/K2_raw_route.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K3_things.png",
+      "path": "archive/v2.8/icons/level2/route/K3_things.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K4_calendar.png",
+      "path": "archive/v2.8/icons/level2/route/K4_calendar.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K5_notes.png",
+      "path": "archive/v2.8/icons/level2/route/K5_notes.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K6_ai_os.png",
+      "path": "archive/v2.8/icons/level2/route/K6_ai_os.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K7_thinking.png",
+      "path": "archive/v2.8/icons/level2/route/K7_thinking.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K8_analytics.png",
+      "path": "archive/v2.8/icons/level2/route/K8_analytics.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/route/K9_llm.png",
+      "path": "archive/v2.8/icons/level2/route/K9_llm.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K10_scenario.png",
+      "path": "archive/v2.8/icons/level2/thinking/K10_scenario.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K11_next_step.png",
+      "path": "archive/v2.8/icons/level2/thinking/K11_next_step.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K12_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K12_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K13_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K13_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K14_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K14_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K15_empty.png",
+      "path": "archive/v2.8/icons/level2/thinking/K15_empty.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K1_back.png",
+      "path": "archive/v2.8/icons/level2/thinking/K1_back.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K2_decision_memo.png",
+      "path": "archive/v2.8/icons/level2/thinking/K2_decision_memo.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K3_options.png",
+      "path": "archive/v2.8/icons/level2/thinking/K3_options.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K4_risks.png",
+      "path": "archive/v2.8/icons/level2/thinking/K4_risks.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K5_assumptions.png",
+      "path": "archive/v2.8/icons/level2/thinking/K5_assumptions.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K6_reversible.png",
+      "path": "archive/v2.8/icons/level2/thinking/K6_reversible.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K7_judge_decision.png",
+      "path": "archive/v2.8/icons/level2/thinking/K7_judge_decision.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K8_to_analytics.png",
+      "path": "archive/v2.8/icons/level2/thinking/K8_to_analytics.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
     {
-      "path": "archive/v2.8/icons/v2.8/level2/thinking/K9_to_codex.png",
+      "path": "archive/v2.8/icons/level2/thinking/K9_to_codex.png",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
@@ -1083,91 +1168,6 @@
     },
     {
       "path": "archive/v2.9/AIOS_StreamDeck_Setup_Instruction_v2.9.md",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/README.md",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/A00_CONTROL.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B00_DAILY.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B10_ROUTE.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B20_AI_OS.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B30_THINKING.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B40_ANALYTICS.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B50_LLM.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B60_CODEX.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B70_JUDGE.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B80_REVISOR.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/B90_MEMO.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BA0_LOCAL_AI.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BB0_PILOTS.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BC0_KB.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BD0_MCP.streamDeckProfile",
-      "disposition": "ARCHIVE_SUPERSEDED",
-      "rollback_role": "candidate/evidence baseline"
-    },
-    {
-      "path": "archive/v3.0-pre-v3.1.2/exports/BE0_DECK_QA.streamDeckProfile",
       "disposition": "ARCHIVE_SUPERSEDED",
       "rollback_role": "candidate/evidence baseline"
     },
