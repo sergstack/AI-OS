@@ -7,7 +7,7 @@
 - status: v06-thinkers-os-route-active
 - production_promotion: no
 - smoke_qa_status: pass_external_thinkers_os_route
-- last_checked: 2026-07-31
+- last_checked: 2026-07-31 (smoke QA / overall status — still accurate; not re-run 2026-09-03); docs touched 2026-09-03: `PROJECT_INSTRUCTIONS.md` reconciled with root `ROUTING_RULES.md` and `Knowledge/ROUTER_ANTI_PATTERNS.md` gained a thinker-routing entry, per `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` — this is a docs fix, not a fresh smoke-QA pass
 
 ## Current state
 
