@@ -668,8 +668,8 @@
         "ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md",
         "ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md"
       ],
-      "source_bytes": 5630,
-      "bundle_bytes": 6558,
+      "source_bytes": 6316,
+      "bundle_bytes": 7242,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

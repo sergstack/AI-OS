@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:4235b8fe00f1939eb0f9a3a277ea7d0982398f219fc2d2e2dfc67a6b6279b660
+- source_fingerprint: sha256:b8c8df2af86a04e098bfc00897f2f7786aba550d1277791e03157ad119f7f42a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -116,6 +116,10 @@ Run these tests after updating the ChatGPT Project.
 - Problem: Router omits information needed by the destination project.
 - Why it is bad: The handoff becomes ambiguous or unusable.
 - Correct behavior: List missing data and open questions explicitly.
+## Router sends thinker corpus work to `[Thinking]`
+- Problem: Router routes thinker corpus, source intake, author artifacts, or synthesis maintenance to `[Thinking]`.
+- Why it is bad: `[Thinking]` applies existing patterns to real decisions; `[Thinkers OS]` owns the corpus, provenance, and synthesis maintenance. This distinction predates v05/legacy content (added to `PROJECT_INSTRUCTIONS.md`'s live Anti-patterns section for v06) and is the router's one smoke-QA case actually run and passed (`SMOKE_QA_RESULTS.md`, row 6).
+- Correct behavior: Route thinker corpus/provenance/synthesis-maintenance to `[Thinkers OS]`; route pattern application to a real decision to `[Thinking]`.
 ## Boundary Reminder
 Router routes.
 Router clarifies.

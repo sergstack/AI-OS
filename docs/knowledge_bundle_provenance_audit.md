@@ -465,8 +465,8 @@ Blocking record count: **0**
 
 - Project: [Inbox Router]
 - Source paths: `ChatGPT/[Inbox Router]/Knowledge/HANDOFF_PROTOCOL.md`, `ChatGPT/[Inbox Router]/Knowledge/SMOKE_QA_FOR_INBOX_ROUTER.md`, `ChatGPT/[Inbox Router]/Knowledge/ROUTER_ANTI_PATTERNS.md`
-- Source bytes: 5630
-- Bundle bytes: 6558
+- Source bytes: 6316
+- Bundle bytes: 7242
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
