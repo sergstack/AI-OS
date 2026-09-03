@@ -1,0 +1,204 @@
+{
+  "manifest_version": "0.1.0",
+  "defining_contract": "docs/standards/AUTORESEARCH_V01_CONTRACT.md",
+  "parent_issue": 388,
+  "defining_issue": 390,
+  "status": "candidate contract; frozen pending explicit owner authorization at each phase gate (see phase_boundary)",
+  "notes": "Machine-readable companion to AUTORESEARCH_V01_CONTRACT.md. Any change to this file is itself a protected-surface change: it requires a new #390-style owner-reviewed PR, never an AutoResearch experiment.",
+
+  "one_experiment_identity": {
+    "owner_reference": "issue #388 'Grain' section (not restated here)",
+    "id_format": "AUTORESEARCH-<batch_id>-<sequence>",
+    "required_fields": [
+      "observed_failure_class",
+      "candidate_cause",
+      "falsifiable_hypothesis",
+      "mutation_class",
+      "target_surface_id",
+      "minimal_reversible_diff_ref"
+    ]
+  },
+
+  "allowed_mutation_classes": [
+    "semantic_change",
+    "wording_clarification",
+    "deletion",
+    "ordering",
+    "consolidation"
+  ],
+
+  "mutable_surfaces": [
+    {
+      "surface_id": "MUT-ROUTING-TIEBREAK",
+      "path": "ROUTING_RULES.md",
+      "anchor": "## Tie-break rules (table body only)",
+      "scope_note": "Wording of each existing tie-break row, including the 'Still ambiguous' row. Adding, removing, or reordering rows that change which capability wins a tie is a mutation_class of 'semantic_change' and still requires an unchanged destination set; it must not alter the 'Registered capability destinations' table.",
+      "allowed_mutation_classes": ["semantic_change", "wording_clarification", "ordering", "consolidation"],
+      "canonical_owner_reference": "ROUTING_RULES.md (self-declared single owner of destination selection)",
+      "rollback_path": "revert the single commit touching this anchor; ROUTING_RULES.md carries no external sync step"
+    },
+    {
+      "surface_id": "MUT-AIOS-CONTEXT-PRIORITY",
+      "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+      "anchor": "## 2. Индексы и источники",
+      "scope_note": "This is #388's 'selected context-selection wording' surface: KB-priority-list wording and index-selection guidance. Must not change which files are indexes, add a new index, or alter 'Если конфликт: KB governance выше project settings.'",
+      "allowed_mutation_classes": ["wording_clarification", "ordering", "consolidation"],
+      "canonical_owner_reference": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md (project owner: Sergey / AI OS)",
+      "rollback_path": "revert the single commit; re-sync PROJECT_INSTRUCTIONS.md to the live Project only after explicit owner acceptance, per HANDOFF_STYLE_STANDARD.md Merge And Acceptance"
+    },
+    {
+      "surface_id": "MUT-AIOS-HANDOFF-WORDING",
+      "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+      "anchor": "## 7. Routing > ### Goal Mode handoff, ### Quick Goal Mode",
+      "scope_note": "#388's 'bounded handoff wording' surface, scoped to these two subsections only. Must not change the 'Маршруты:' destination list or the '[LLM] ownership rule' paragraph in the same section 7, and must not redefine fields already owned by HANDOFF_STYLE_STANDARD.md's Default Style.",
+      "allowed_mutation_classes": ["wording_clarification", "ordering", "consolidation"],
+      "canonical_owner_reference": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md (project owner: Sergey / AI OS)",
+      "rollback_path": "revert the single commit; re-sync only after explicit owner acceptance"
+    },
+    {
+      "surface_id": "MUT-HANDOFF-PROJECT-ADDITIONS",
+      "path": "HANDOFF_STYLE_STANDARD.md",
+      "anchor": "## Project-Specific Additions",
+      "scope_note": "Per-project handoff-field wording only. Must not touch '## Default Style' (the canonical field set), '## Merge And Acceptance', or '## Forbidden As Handoff Inputs'.",
+      "allowed_mutation_classes": ["wording_clarification", "ordering", "consolidation"],
+      "canonical_owner_reference": "HANDOFF_STYLE_STANDARD.md (self-declared canonical handoff field set)",
+      "rollback_path": "revert the single commit touching this anchor"
+    }
+  ],
+
+  "protected_surfaces": [
+    { "surface_id": "PROT-MAIN", "path": "main (git branch)", "reason": "production/live branch; #388 Safety boundaries: 'main are never experimental mutation targets'", "canonical_owner_reference": "GOAL_MODE.md Merge Policy" },
+    { "surface_id": "PROT-AIOS-PROJECT-ACTIVE", "path": "the live ChatGPT [AI OS] Project configuration (as actually loaded in ChatGPT, not the repo copy)", "reason": "#388 Safety boundaries: 'Active ChatGPT Project configuration ... are never experimental mutation targets'", "canonical_owner_reference": "HANDOFF_STYLE_STANDARD.md Merge And Acceptance" },
+    { "surface_id": "PROT-ROUTING-DESTINATIONS", "path": "ROUTING_RULES.md", "anchor": "## Registered capability destinations, ## External destinations, ## Boundary", "reason": "core routing/business logic; ROUTING_RULES.md's own header: 'No other file redefines these rows'", "canonical_owner_reference": "ROUTING_RULES.md" },
+    { "surface_id": "PROT-AIOS-GOVERNANCE", "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md", "anchor": "## 5. Governance", "reason": "safety/authority gate list (blocked capabilities, promotion-gate precedence) — not stylistic wording", "canonical_owner_reference": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md" },
+    { "surface_id": "PROT-AIOS-ROUTING-TABLE", "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md", "anchor": "## 7. Routing > 'Маршруты:' list, '[LLM] ownership rule' paragraph", "reason": "duplicates ROUTING_RULES.md's protected destination table; single canonical owner is ROUTING_RULES.md, not this file", "canonical_owner_reference": "ROUTING_RULES.md" },
+    { "surface_id": "PROT-AIOS-OUTPUT-CONTRACT", "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md", "anchor": "## 3, ## 4, ## 6 (standard section labels), ## 9, ## 10", "reason": "mandatory response header, evidence/confidence label definitions, standard section labels, mode definitions, and mandatory closing format function as an output contract; GOAL_MODE.md forbids output-contract changes without explicit approval", "canonical_owner_reference": "GOAL_MODE.md Forbidden list" },
+    { "surface_id": "PROT-HANDOFF-DEFAULT-STYLE", "path": "HANDOFF_STYLE_STANDARD.md", "anchor": "## Default Style, ## Merge And Acceptance, ## Forbidden As Handoff Inputs", "reason": "canonical handoff field set and merge/authority boundary; not a wording surface", "canonical_owner_reference": "HANDOFF_STYLE_STANDARD.md" },
+    { "surface_id": "PROT-AES", "path": "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md", "reason": "#388/#390: do not change AES state/status semantics", "canonical_owner_reference": "AUTONOMOUS_EXECUTION_STANDARD.md" },
+    { "surface_id": "PROT-EVAL-REGISTRY", "path": "ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md", "reason": "eval definitions registry; #390: do not change eval cases or thresholds; #389 audit: must stay separate from any AutoResearch run-results ledger", "canonical_owner_reference": "AI_EVAL_REGISTRY.md" },
+    { "surface_id": "PROT-REGRESSION-GATE", "path": "ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md", "reason": "regression/hard-veto vocabulary reused, not modified, by this contract", "canonical_owner_reference": "REGRESSION_GATE.md" },
+    { "surface_id": "PROT-FAILURE-REGISTRY", "path": "ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md", "reason": "causal-attribution vocabulary reused, not modified, by this contract", "canonical_owner_reference": "FAILURE_REGISTRY.md" },
+    { "surface_id": "PROT-BENCHMARKS", "path": "benchmarks/live_behavioral/, benchmarks/supermanager/", "reason": "existing frozen benchmarks, their freeze manifests, and sealed holdouts; AutoResearch may reuse their pattern but must not touch their frozen artifacts", "canonical_owner_reference": "benchmarks/*/freeze_manifest.json" },
+    { "surface_id": "PROT-JUDGE-CALIBRATION", "path": "ChatGPT/[AI OS]/Knowledge/JUDGE_CALIBRATION.md, ChatGPT/[AI OS]/Knowledge/GOLDEN_EVAL_CASES.md", "reason": "Judge bias-calibration cases; a candidate mutation or a Judge run must never alter its own calibration cases", "canonical_owner_reference": "JUDGE_CALIBRATION.md" },
+    { "surface_id": "PROT-EXPERIMENT-HISTORY", "path": "(future) AutoResearch experiment ledger, once #391/#392 create it", "reason": "append-only; #390 required rule: history integrity violations invalidate the batch", "canonical_owner_reference": "this manifest (INV-04)" },
+    { "surface_id": "PROT-THIS-MANIFEST", "path": "docs/standards/autoresearch_v01_manifest.json, docs/standards/AUTORESEARCH_V01_CONTRACT.md", "reason": "the contract cannot amend itself from inside an experiment", "canonical_owner_reference": "this manifest" }
+  ],
+
+  "hard_invariants": [
+    {
+      "id": "INV-01",
+      "description": "Mutation diff touches any path/anchor not listed in mutable_surfaces, or touches a mutable file outside its declared anchor.",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "discard"
+    },
+    {
+      "id": "INV-02",
+      "description": "Candidate patch is applied to main or to the active ChatGPT Project configuration directly, bypassing isolated-worktree review.",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "discard"
+    },
+    {
+      "id": "INV-03",
+      "description": "Evaluator, eval-case split, holdout, or threshold content hash does not match its frozen manifest at batch start.",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "batch invalidated"
+    },
+    {
+      "id": "INV-04",
+      "description": "Experiment ledger entry is mutated, deleted, or reordered after being written (append-only violation).",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "batch invalidated"
+    },
+    {
+      "id": "INV-05",
+      "description": "One experiment's diff spans more than one target_surface_id, or its stated mutation_class does not match the actual diff shape (e.g. claimed wording_clarification is actually a semantic_change).",
+      "detection_owner": "hybrid",
+      "severity": "high",
+      "consequence": "discard"
+    },
+    {
+      "id": "INV-06",
+      "description": "Causal attribution is missing, or is 'ineligible'/'uncertain' per FAILURE_REGISTRY.md's attribution_status vocabulary, and the experiment is not explicitly framed and labeled as a bounded discriminating experiment.",
+      "detection_owner": "hybrid",
+      "severity": "high",
+      "consequence": "discard"
+    },
+    {
+      "id": "INV-07",
+      "description": "A decision record uses an opaque scalar/weighted aggregate score as its basis instead of the regression-matrix/hard-invariant vocabulary.",
+      "detection_owner": "hybrid",
+      "severity": "critical",
+      "consequence": "discard; the scoring mechanism itself is blocked pending a #390 amendment"
+    },
+    {
+      "id": "INV-08",
+      "description": "'keep_candidate' is recorded, reported, or summarized anywhere as accepted, active, merge-ready, or production-authorized.",
+      "detection_owner": "hybrid",
+      "severity": "critical",
+      "consequence": "discard the mislabeled record; correct the status; treat any downstream claim already made as a separate AES defect"
+    },
+    {
+      "id": "INV-09",
+      "description": "The declared baseline_id/source_revision changes between experiments inside the same batch.",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "batch invalidated"
+    },
+    {
+      "id": "INV-10",
+      "description": "The Researcher role modifies the evaluator, thresholds, holdout, ledger, or authority semantics instead of only proposing hypotheses and mutations.",
+      "detection_owner": "deterministic",
+      "severity": "critical",
+      "consequence": "discard; escalate to human review"
+    }
+  ],
+
+  "decision_semantics": {
+    "keep_candidate": "No hard-invariant violation occurred; the frozen eval shows a supported, distinguishable, non-harmful behavioral result and a non-regressive efficiency result under matched conditions. Explicitly NOT accepted, active, merge-ready, or production-authorized (INV-08). Status advances only inside Prompt QA Factory's existing lifecycle (candidate/test/judge/revise/selected — see 'Semantic ownership'), pending owner review.",
+    "discard": "Any hard-invariant violation (INV-01..INV-10 as applicable), or a supported harmful/regression result under REGRESSION_GATE.md's matrix, or unresolved causal attribution without a valid bounded-discriminating-experiment frame (INV-06).",
+    "inconclusive": "Mandatory whenever the frozen eval and the batch's chosen statistical method (owned by child #395; not defined by this contract) cannot distinguish candidate from baseline. Never silently rounds to keep_candidate or discard."
+  },
+
+  "batch_baseline_immutability": {
+    "rule": "One accepted baseline per batch, reusing REGRESSION_GATE.md's baseline_id / configuration_ref / source_revision / accepted_by / acceptance_status contract verbatim, not a new one. The baseline may not change mid-batch (INV-09); a new baseline starts a new batch.",
+    "canonical_owner_reference": "ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md"
+  },
+
+  "authority_separation": {
+    "researcher": "proposes hypothesis, mutation, and target_surface_id; runs Phase 0/1 experiments inside isolated worktrees; cannot modify evaluator, thresholds, holdout, ledger, or this manifest (INV-10)",
+    "evaluator": "frozen per batch; applies deterministic checks first, semantic Judge only where explicitly non-deterministic, per AI_EVAL_REGISTRY.md's core rule",
+    "owner": "the only role that can accept a keep_candidate result, merge a PR, or authorize a phase gate",
+    "merge_authority": "owner only; AutoResearch adds no new merge authority; a kept candidate is exactly a Codex-style 'candidate / ready for owner review' PR, per GOAL_MODE.md Merge Policy and HANDOFF_STYLE_STANDARD.md Merge And Acceptance",
+    "production_authority": "owner only; keep_candidate has no production or active-configuration side effect (#388 Grain section)"
+  },
+
+  "stop_conditions_reference": {
+    "note": "Not restated in full; AutoResearch reuses these verbatim as stop conditions.",
+    "owner_reference": [
+      "ChatGPT/[AI OS]/Knowledge/AGENT_LOOP_PLAYBOOK.md 'Stop Conditions'",
+      "issue #388 'Forbidden actions'",
+      "issue #388 'Revisit triggers'"
+    ]
+  },
+
+  "rollback_ownership": {
+    "rule": "Each experiment's mutation is a single, revertible diff to one declared target_surface_id. Rollback authority is the human owner, never AutoResearch itself. keep_candidate changes no baseline, active Project configuration, merge state, or production state (#388 Grain section) and therefore needs no rollback of its own beyond reverting the candidate branch.",
+    "canonical_owner_reference": "GOAL_MODE.md Merge Policy; ChatGPT/[AI OS]/Knowledge/REGRESSION_GATE.md Boundaries"
+  },
+
+  "phase_boundary": {
+    "phase_0": "calibration only (child #396); requires #391/#392/#393/#394/#395 accepted or merged first, per #388's dependency graph",
+    "phase_1": "up to 10 bounded one-mutation experiments (child #397); requires explicit owner authorization after Phase 0, per #388's dependency graph",
+    "phase_3_excluded": "broader search across other projects is explicitly out of scope for #388's parent and requires a separate parent issue and separate owner decision, per #388 Scope boundaries"
+  },
+
+  "semantic_ownership": {
+    "prompt_qa_factory_relationship": "AutoResearch v0.1 does not define a second candidate-lifecycle status vocabulary. A kept candidate is reported and reviewed using docs/standards/PROMPT_QA_FACTORY.md's existing statuses (candidate/test/judge/revise/selected) for the 'ChatGPT Project prompts' row that already owns this mutation class. AutoResearch supplies the added rigor (frozen eval, hard invariants, blind A/B comparison, causal attribution, statistical distinguishability) that feeds Prompt QA Factory's 'test' and 'judge' stages for this one class; it does not replace or duplicate that lifecycle.",
+    "ux_score_exclusion": "Prompt QA Factory's 1-5 UX Score, if carried at all in a kept-candidate record, is descriptive metadata only and is explicitly excluded from decision_semantics (INV-07 forbids any scalar score as a decision basis).",
+    "eval_registry_relationship": "Any AutoResearch eval_id added to ChatGPT/[AI OS]/Knowledge/AI_EVAL_REGISTRY.md must be a definition row only (as BASELINE-REGRESSION/FAILURE-REGRESSION/GOAL-CLOSURE already are); run results live only in the separate experiment ledger built in #391/#392, never in the registry."
+  }
+}
