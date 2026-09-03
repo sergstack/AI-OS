@@ -43,17 +43,22 @@ ChatGPT/[Inbox Router]/
 ├── PROJECT_INSTRUCTIONS.md
 ├── CURRENT_STATUS.md
 ├── SMOKE_QA_RESULTS.md
-└── Knowledge/
-    ├── INBOX_ROUTER_FILES_INDEX.md
-    ├── INDEX.md
-    ├── ROUTING_RULES.md
-    ├── THINGS_OUTPUT_SCHEMA.md
-    ├── HANDOFF_PROTOCOL.md
-    ├── SMOKE_QA_FOR_INBOX_ROUTER.md
-    ├── ROUTER_WORKFLOW.md
-    ├── ROUTER_HANDOFF_PROTOCOL.md
-    ├── ROUTER_SMOKE_QA.md
-    └── ROUTER_ANTI_PATTERNS.md
+├── Knowledge/
+│   ├── INBOX_ROUTER_FILES_INDEX.md
+│   ├── INDEX.md
+│   ├── ROUTING_RULES.md
+│   ├── THINGS_OUTPUT_SCHEMA.md
+│   ├── HANDOFF_PROTOCOL.md
+│   ├── SMOKE_QA_FOR_INBOX_ROUTER.md
+│   ├── ROUTER_WORKFLOW.md
+│   ├── ROUTER_HANDOFF_PROTOCOL.md
+│   ├── ROUTER_SMOKE_QA.md
+│   └── ROUTER_ANTI_PATTERNS.md
+└── Knowledge_Bundles/
+    ├── README.md
+    ├── UPLOAD_LIST.md
+    ├── INBOX_01_ROUTING_WORKFLOW.md
+    └── INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md
 ```
 
 ## How to configure ChatGPT Project
