@@ -16,3 +16,9 @@ Current cross-project policy standards include:
   fallback, provenance, and rollback rules for local-model offload;
 - `local_first_task_class_registry.json` — machine-readable initial class
   registry; its production `local_first` allowlist is empty.
+- `AUTORESEARCH_V01_CONTRACT.md` — frozen v0.1 research boundary for issue
+  [#388](https://github.com/sergstack/AI-OS/issues/388) (AIOS AutoResearch):
+  mutable/protected surfaces, hard invariants, decision semantics, and role
+  separation. Not authorized for Phase 0 or Phase 1 execution on its own.
+- `autoresearch_v01_manifest.json` — its machine-readable protected-surface
+  and hard-invariant manifest.
