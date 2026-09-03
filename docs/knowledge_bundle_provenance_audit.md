@@ -324,9 +324,9 @@ Blocking record count: **0**
 ## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_04_WORKFLOWS_AND_HANDOFF.md`
 
 - Project: [LLM]
-- Source paths: `ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`, `ChatGPT/[LLM]/Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/MEETING_RECAP_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`, `ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/CHART_COMMENTARY_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/SLIDE_STORYLINE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/EXTERNAL_AI_HANDOFF_PROTOCOL.md`, `ChatGPT/[LLM]/Knowledge/GEMINI_DEEP_RESEARCH__KB_HUNTER.md`, `ChatGPT/[LLM]/Knowledge/AI_OS_REFERENCE.md`
-- Source bytes: 17790
-- Bundle bytes: 20144
+- Source paths: `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`, `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`, `ChatGPT/[LLM]/Knowledge/VALUE_FIRST_OUTREACH_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/MEETING_RECAP_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/ASK_FOR_ADVICE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/NO_SPAM_HUMAN_REVIEW_RULE.md`, `ChatGPT/[LLM]/Knowledge/EXECUTIVE_SUMMARY_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/COMMUNICATION_QA_CHECKLIST.md`, `ChatGPT/[LLM]/Knowledge/CHART_COMMENTARY_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/AUDIT_FINDING_WORDING_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/SLIDE_STORYLINE_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/EXTERNAL_AI_HANDOFF_PROTOCOL.md`, `ChatGPT/[LLM]/Knowledge/GEMINI_DEEP_RESEARCH__KB_HUNTER.md`, `ChatGPT/[LLM]/Knowledge/AI_OS_REFERENCE.md`
+- Source bytes: 17246
+- Bundle bytes: 19497
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
