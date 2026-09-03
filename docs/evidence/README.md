@@ -9,6 +9,14 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_PHASE0_CALIBRATION_2026-09-03.md`](AUTORESEARCH_PHASE0_CALIBRATION_2026-09-03.md)
+  records the Issue #396 Phase 0 calibration for Issue #388 (AIOS
+  AutoResearch v0.1): 23 cases across all 10 required calibration classes,
+  verdict `pass`, exercising the real deterministic pipeline (#392/#393/
+  #395) against calibration-owner-authored fixtures. Explicitly scoped: no
+  live semantic Judge was invoked (`NOT_RUN`); does not authorize Phase 1
+  (#397) on its own — two explicit owner decisions are named as required
+  first.
 - [`AUTORESEARCH_V01_BASELINE_AUDIT_2026-09-03.md`](AUTORESEARCH_V01_BASELINE_AUDIT_2026-09-03.md)
   records the Issue #389 read-only baseline/collision audit for Issue #388
   (AIOS AutoResearch v0.1): 27 inventoried artifacts, a reuse/extend/add/
