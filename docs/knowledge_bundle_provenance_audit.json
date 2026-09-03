@@ -401,10 +401,11 @@
       "source_paths": [
         "ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md",
         "ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md",
+        "ChatGPT/[LLM]/Knowledge/PROMPT_LIFECYCLE_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 7587,
-      "bundle_bytes": 8475,
+      "source_bytes": 11625,
+      "bundle_bytes": 12609,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -424,10 +425,11 @@
         "ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md",
         "ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md",
         "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
+        "ChatGPT/[LLM]/Knowledge/LLM_EVAL_STANDARD.md",
         "ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 72892,
-      "bundle_bytes": 74035,
+      "source_bytes": 77816,
+      "bundle_bytes": 79014,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
