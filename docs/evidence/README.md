@@ -9,6 +9,19 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_PHASE1_PILOT_2026-09-03.md`](AUTORESEARCH_PHASE1_PILOT_2026-09-03.md)
+  records the Issue #397 Phase 1 bounded pilot for Issue #388 (AIOS
+  AutoResearch v0.1): 4 of a maximum 10 shadow experiments (fewer explicitly
+  permitted — no evidence-backed hypothesis was available beyond the two
+  mandatory controls, a real-time protected-surface rejection test, and one
+  bounded discriminating experiment) run against one immutable baseline
+  revision. 0 `keep_candidate`, 1 `discard` (negative control correctly
+  caught), 2 `inconclusive`, 1 rejected pre-application (protected-surface
+  violation correctly caught by real anchor-scope enforcement against real
+  file content). No live model call; explicitly scoped per owner
+  authorization carried forward from #396. Does not justify Phase 2 — names
+  that "the harness is ready; real evidence is not yet available" as the
+  actual finding.
 - [`AUTORESEARCH_PHASE0_CALIBRATION_2026-09-03.md`](AUTORESEARCH_PHASE0_CALIBRATION_2026-09-03.md)
   records the Issue #396 Phase 0 calibration for Issue #388 (AIOS
   AutoResearch v0.1): 23 cases across all 10 required calibration classes,
