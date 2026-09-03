@@ -2,7 +2,7 @@
 
 - log_policy: append_only
 - pattern_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (this file's schema is uploaded as part of `THINKING_04_THINKERS_SYNTHESIS.md`) — distinct from logged-case status below, which remains genuinely `NOT RUN`
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 
@@ -55,4 +55,4 @@ pattern_feedback:
 
 ## Entries
 
-No entries recorded in the AI-OS repository at integration time. External ChatGPT behavioral use is `NOT RUN`.
+No entries recorded in the AI-OS repository at integration time. Logging of a real, materially-affecting application case is `NOT RUN` — this is separate from the schema's own bundle deployment, which is uploaded and smoke-tested (see `deployment_status` above); no real case has been recorded here yet.

@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_status: NOT AUTHORIZED
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:70efb729c5030e3292db7a21f93ecf1104f1572246f38866cf58f4ad50e7d54d
+- source_fingerprint: sha256:170ef773ec5ea161b4e764fdc029afce3b97f0f1df63a21a397692a9228951a5
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -129,7 +129,7 @@ Never export raw source payloads, normalized books, source manifests, logs, loca
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md`
 
 # Thinkers Lens Router
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": lens anti-bloat, Conflict Map review, and case-evidence-precedence cases all `pass`)
 - synthesis_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
@@ -183,7 +183,7 @@ Thinker patterns cannot override facts, routing, governance, project instruction
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md`
 
 # Thinkers Conflict Map
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": Conflict Map review case `pass`)
 - evidence_scope: Judge-pass author patterns only
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
@@ -228,7 +228,7 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 # Thinkers Synthesis Patterns
 - synthesis_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
 - status_write_policy: statuses below are read-only mirrors; `[Thinking]` cannot promote or revise them
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": simple-task and cross-project-routing cases `pass`)
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 ### `SYN-001-REPEATED-FAILURE-DIAGNOSIS`
@@ -316,7 +316,7 @@ After lens selection, inspect every Conflict Map entry involving a selected lens
 # Thinkers Application Log
 - log_policy: append_only
 - pattern_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (this file's schema is uploaded as part of `THINKING_04_THINKERS_SYNTHESIS.md`) — distinct from logged-case status below, which remains genuinely `NOT RUN`
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 Record only meaningful real `[Thinking]` cases in which a synthesis pattern materially affected analysis. Application count never promotes, validates, revises, or rejects a pattern; status changes belong to `[Thinkers OS]` evidence review.
@@ -360,4 +360,4 @@ pattern_feedback:
   evidence_for_status_review:
 ```
 ## Entries
-No entries recorded in the AI-OS repository at integration time. External ChatGPT behavioral use is `NOT RUN`.
+No entries recorded in the AI-OS repository at integration time. Logging of a real, materially-affecting application case is `NOT RUN` — this is separate from the schema's own bundle deployment, which is uploaded and smoke-tested (see `deployment_status` above); no real case has been recorded here yet.

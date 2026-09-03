@@ -2,7 +2,7 @@
 
 - synthesis_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
 - status_write_policy: statuses below are read-only mirrors; `[Thinking]` cannot promote or revise them
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": simple-task and cross-project-routing cases `pass`)
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED
 

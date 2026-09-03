@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:2356c9676def66453372f742692179cc70bf4807a6d077f698f1b0eca97924e5
+- source_fingerprint: sha256:557242fd9ee2a0deeb3618848e84b2c36db9d4cfb067a2cf5ea674685e50a1de
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -199,6 +199,12 @@ Acceptance criteria:
 ## From: `ChatGPT/[Thinking]/DECISION_LOG.md`
 
 # [Thinking] Decision Log
+Rows prefixed `AIOS-` are `[AI OS]` repo-governance decisions, mirrored here
+because no dedicated `[AI OS]`-owned decision-log artifact exists yet
+(revision review 2026-09-03, `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`
+flagged this as scope creep to fix on the `[AI OS]` side — this note marks
+them as an intentional cross-reference in the meantime, not `[Thinking]`'s
+own decisions). Rows prefixed `TH-` are genuine `[Thinking]` decisions.
 | Decision ID | Date | Decision | Status | Confidence | Owner | Revisit trigger | Next review | Handoff | Accepted by | Acceptance evidence | Supersedes | Superseded by | Outcome | Link |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | TH-2026-05-25-01 | 2026-05-25 | Add standalone status, QA, decision, and revisor governance files for [Thinking] | recommended | strong | Sergey / Thinking Lead | new data; routing conflict; judge/revisor failure; smoke QA fail | on next governance update | none | Sergey | `SMOKE_QA_RESULTS.md` pass | none | none | active | `CURRENT_STATUS.md` |

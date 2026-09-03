@@ -146,8 +146,8 @@
         "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 43511,
-      "bundle_bytes": 44658,
+      "source_bytes": 43971,
+      "bundle_bytes": 45117,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -187,8 +187,8 @@
         "ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md",
         "ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 14268,
-      "bundle_bytes": 15478,
+      "source_bytes": 14943,
+      "bundle_bytes": 16153,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -207,8 +207,8 @@
         "ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md",
         "ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md"
       ],
-      "source_bytes": 26189,
-      "bundle_bytes": 27594,
+      "source_bytes": 26996,
+      "bundle_bytes": 28401,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
