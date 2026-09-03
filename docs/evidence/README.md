@@ -9,6 +9,16 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md`](AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md)
+  records the Issue #410 read-only baseline/transport-feasibility audit for
+  Issue #409 (AIOS AutoResearch v0.2 — live behavioral autotuning loop): a
+  full v0.1 reuse/extend/replace/protected matrix (nearly everything reuses
+  unchanged), the exact blocker in `autoresearch_phase1_pilot.py` (every
+  observation is hand-authored, no external call of any kind), and a
+  transport-candidate matrix recommending **browser automation (Playwright
+  MCP)** over an API transport, per an explicit, verbatim-recorded owner
+  instruction received during the audit. Does not authorize any live call,
+  credential use, or spending — that remains #411's and the owner's decision.
 - [`AUTORESEARCH_PARENT_FINAL_QA_2026-09-03.md`](AUTORESEARCH_PARENT_FINAL_QA_2026-09-03.md)
   records the Issue #398 parent final QA closing Issue #388 (AIOS
   AutoResearch v0.1): all 10 children (#389-#398) reconciled against the
