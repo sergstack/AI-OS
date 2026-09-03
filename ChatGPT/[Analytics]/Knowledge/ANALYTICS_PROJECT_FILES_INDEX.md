@@ -15,6 +15,7 @@
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
 | `QUANTITATIVE_SANITY_GATE.md` | Mandatory pre-publish quantitative sanity gate | Published quantitative report has a flagship metric |
+| `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md` | AIOS AutoResearch v0.1 (issue #395) stochasticity/non-inferiority/decision-comparator method; candidate, provisional thresholds | Working on AutoResearch batch decision logic |
 | `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |
 | `MARTS_DESIGN.md` | Проектирование marts | Нужны метрики, витрины, cuts, dashboard |
 | `MEMO_FACTORY_DESIGN_HANDOFF.md` | Memo factory design handoff | Когда memo workflow требует implementation handoff |

@@ -185,8 +185,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`, `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`, `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 27535
-- Bundle bytes: 28591
+- Source bytes: 27770
+- Bundle bytes: 28826
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
