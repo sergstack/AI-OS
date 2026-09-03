@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history required by check_project_context_contract.py's
+          # status-artifact freshness check (git log against an older
+          # verified revision). A shallow checkout would make that check
+          # report unverifiable rather than a wrong current/stale — safe
+          # either way, but full history makes it actually informative.
+          fetch-depth: 0
       - name: Install development dependencies
         run: python3 -m pip install -r requirements-dev.txt
       - name: Run pytest
@@ -28,5 +35,7 @@ jobs:
         run: python3 scripts/audit_bundle_provenance.py --check
       - name: Check index coverage
         run: python3 scripts/check_index_coverage.py
+      - name: Check bounded project-context contract (advisory)
+        run: python3 scripts/check_project_context_contract.py --advisory
       - name: Check subagent dispatch evidence
         run: python3 scripts/check_subagent_dispatch_evidence.py

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "capabilities": {
     "ai_os": {
       "canonical_path": "ChatGPT/[AI OS]",
@@ -14,7 +14,26 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md", "delivery": "bundle", "reason": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set, PROJECT_INSTRUCTIONS.md Goal Mode handoff section" },
+        { "path": "ChatGPT/[AI OS]/KB__00_INDEX.md", "delivery": "external", "reason": "governed KB index; MANIFEST.json do_not_reupload_existing_kb=true, lives only in the live ChatGPT Project" },
+        { "path": "ChatGPT/[AI OS]/KB__03_WORKFLOWS_TRACEABILITY.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__05_CANONICAL_CONCEPTS.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__06_OPERATIONAL_FRAMEWORKS.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__07_PATTERNS_AND_FAILURES.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__08_USE_CASES_FOR_SERGEY.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__USE_CASE_ROUTING.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__CONFIDENCE_RULES.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__REVIEW_QUEUE.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" },
+        { "path": "ChatGPT/[AI OS]/KB__RELEASE_MANIFEST.md", "delivery": "external", "reason": "governed KB; MANIFEST.json do_not_reupload_existing_kb=true" }
+      ]
     },
     "thinking": {
       "canonical_path": "ChatGPT/[Thinking]",
@@ -29,7 +48,14 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md", "delivery": "bundle", "reason": "named in Базовый workflow step 3 (Lens gate)" },
+        { "path": "ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md", "delivery": "bundle", "reason": "named in Базовый workflow step 5 (Conflict check)" },
+        { "path": "ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md", "delivery": "bundle", "reason": "named in Базовый workflow step 10 (Log)" },
+        { "path": "ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md", "delivery": "bundle", "reason": "named as full definitions source for Decision status and Revisit trigger" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set, Базовый workflow step 11" }
+      ]
     },
     "analytics": {
       "canonical_path": "ChatGPT/[Analytics]",
@@ -44,7 +70,16 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md", "delivery": "bundle", "reason": "named in 'Main files and input depth'" },
+        { "path": "ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md", "delivery": "bundle", "reason": "named in 'Main files and input depth'" },
+        { "path": "ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md", "delivery": "bundle", "reason": "named in 'Main files and input depth'" },
+        { "path": "ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md", "delivery": "bundle", "reason": "named in 'Минимальные QA checks' as mandatory before publication" },
+        { "path": "ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md", "delivery": "bundle", "reason": "named in 'Формат ответа по умолчанию' for Plan/Fact material cases" },
+        { "path": "docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md", "delivery": "repo_only", "reason": "referenced by reference for large/risky analytics tasks; shared root standard, not duplicated per-project" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for handoff fields when leaving analytics scope" }
+      ]
     },
     "llm": {
       "canonical_path": "ChatGPT/[LLM]",
@@ -59,7 +94,11 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ChatGPT/[LLM]/Knowledge/LLM_EVAL_STANDARD.md", "delivery": "bundle", "reason": "cited by name in 'Evidence and quality' for uncertainty reporting" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set, Базовый workflow step 9" }
+      ]
     },
     "codex": {
       "canonical_path": "ChatGPT/[Codex]",
@@ -74,7 +113,25 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ChatGPT/[Codex]/Knowledge/TASK_TEMPLATE.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' task/handoff/autonomy group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/CODEX_HANDOFF_WORKFLOW.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' task/handoff/autonomy group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' and 'Autonomy and hard blockers' as the canonical hard-blocker source" },
+        { "path": "ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' and 'Autonomy and hard blockers'" },
+        { "path": "ChatGPT/[Codex]/Knowledge/AGENTS.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' agent/testing/reporting group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/TESTING_WORKFLOW.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' agent/testing/reporting group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/ACCEPTANCE_CRITERIA.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' agent/testing/reporting group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' agent/testing/reporting group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' and 'Execution and reporting' as canonical final response format" },
+        { "path": "ChatGPT/[Codex]/Knowledge/REFACTORING_WORKFLOW.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' implementation workflows group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/CODEX_TDD_WORKFLOW.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' implementation workflows group" },
+        { "path": "docs/standards/EXISTING_SCRIPT_CONTROLLED_REFACTOR_STANDARD.md", "delivery": "repo_only", "reason": "named in 'Knowledge usage' and 'Главный принцип'; shared root standard, not duplicated per-project" },
+        { "path": "ChatGPT/[Codex]/Knowledge/AI_OS_REFERENCE.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' domain/GitHub/App group" },
+        { "path": "ChatGPT/[Codex]/Knowledge/LOCAL_GITHUB_SYNC_WORKFLOW.md", "delivery": "bundle", "reason": "named in 'Knowledge usage' and 'Local GitHub sync'" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set" },
+        { "path": "GOAL_MODE.md", "delivery": "repo_only", "reason": "cited for the canonical Merge Policy; Tier-2 root standard, not duplicated per-project" }
+      ]
     },
     "inbox_router": {
       "canonical_path": "ChatGPT/[Inbox Router]",
@@ -89,7 +146,11 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "ROUTING_RULES.md", "delivery": "repo_only", "reason": "PROJECT_INSTRUCTIONS.md states this is the canonical destination-selection source it mirrors" },
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set" }
+      ]
     },
     "thinkers_os": {
       "canonical_path": "ChatGPT/[Thinkers OS]",
@@ -104,7 +165,10 @@
         "workspace": "isolated_worktree",
         "write_capable": false,
         "child_dispatch": "forbidden"
-      }
+      },
+      "required_knowledge": [
+        { "path": "HANDOFF_STYLE_STANDARD.md", "delivery": "bundle", "reason": "cited for the canonical handoff field set and exactly one receiving project" }
+      ]
     }
   }
 }
