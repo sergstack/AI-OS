@@ -5,7 +5,7 @@
 - [ ] Does the output answer the task?
 - [ ] Are facts separated from interpretations?
 - [ ] Are unsupported claims marked?
-- [ ] Is confidence stated?
+- [ ] Is uncertainty stated as a textual limitation (not a confidence score — see `LLM_EVAL_STANDARD.md`)?
 - [ ] Are sources/evidence referenced when available?
 - [ ] Are limitations visible?
 - [ ] Is routing correct?
