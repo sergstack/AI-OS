@@ -91,14 +91,17 @@ For every important conclusion, assign one status (full definitions and revisit 
 
 ## Revisit trigger
 
-For important decisions, state when the decision should be revisited:
+For important decisions, state when the decision should be revisited (full
+list: `Knowledge/DECISION_STATUS_AND_REVISIT.md`):
 
 - new data appears;
 - cost, risk, timing, or scope changes;
 - QA fails;
 - assumptions are invalidated;
 - a blocker appears;
-- implementation feedback from `[Analytics]`, `[LLM]`, or `[Codex]` contradicts the decision.
+- implementation feedback from `[Analytics]`, `[LLM]`, or `[Codex]` contradicts the decision;
+- owner rejects the hypothesis;
+- the decision becomes irreversible.
 
 ## Anti-patterns
 
