@@ -17,7 +17,7 @@
 ## Verdict
 
 ```text
-REVIEW COMPLETE — 34 findings across 7 projects (7 high / 13 medium / 14 low)
+REVIEW COMPLETE — 40 findings across 7 projects (12 high / 11 medium / 17 low)
 No blocking defect found. No schema/business-logic/output-contract issue found.
 ```
 
@@ -75,19 +75,21 @@ navigable. Each project section below is the ranked summary; consult the
 dispatch evidence records (see Method) for full citations before acting on a
 specific finding.
 
-**`[AI OS]`** — 2 high (bundle-coverage gap for 5 eval-gate files; stale smoke QA), 2 medium (bundle-02 scope-table mismatch), 2 low (long-candidate files; unverifiable external KB).
+**`[AI OS]`** — 2 high (bundle-coverage gap for 5 eval-gate files; stale smoke QA), 1 medium (bundle-02 scope-table mismatch), 2 low (long-candidate files; unverifiable external KB). 5 findings.
 
-**`[Thinking]`** — 3 high (stale status vs. pilot evidence; deployment-status contradiction; misplaced AI-OS decisions), 2 medium (decision-status enum drift; missing bundle-04 semantics file), 3 low (workflow-file drift; stray status bullet; duplicated revisit-trigger wording).
+**`[Thinking]`** — 3 high (stale status vs. pilot evidence; deployment-status contradiction; misplaced AI-OS decisions), 2 medium (decision-status enum drift; missing bundle-04 semantics file), 3 low (workflow-file drift; stray status bullet; duplicated revisit-trigger wording). 8 findings.
 
-**`[Analytics]`** — 2 high (stale smoke QA; dual unenforced manifests), 2 medium (confirmed-closed duplicate finding; stale `Codex_Tasks/` content), 2 low (dangling operational note; clean link-integrity spot-check) — plus 2 cross-domain notes (`[LLM]`-owned doctrine file misplaced; `[Codex]` task-archiving convention question).
+**`[Analytics]`** — 2 high (stale smoke QA; dual unenforced manifests), 2 medium (confirmed-closed duplicate finding; stale `Codex_Tasks/` content), 2 low (dangling operational note; clean link-integrity spot-check) — plus 2 cross-domain notes (`[LLM]`-owned doctrine file misplaced; `[Codex]` task-archiving convention question). 6 findings.
 
-**`[LLM]`** — 1 high (confidence-reporting contradiction), 2 medium (eval standard not wired into `EVAL_RUN_TEMPLATE.md`; registry/library identifier mismatch), 2 low (duplicated bundle content; pre-existing stale eval-matrix cases). Confirms PR #364's two new files are correctly wired, not orphaned.
+**`[LLM]`** — 1 high (confidence-reporting contradiction), 2 medium (eval standard not wired into `EVAL_RUN_TEMPLATE.md`; registry/library identifier mismatch), 2 low (duplicated bundle content; pre-existing stale eval-matrix cases). Confirms PR #364's two new files are correctly wired, not orphaned. 5 findings.
 
-**`[Codex]`** — 1 high (README omits 9 real Knowledge files, 3 required-reading), 3 low (duplicate report-format definitions; `CLAUDE.md`/`AGENTS.md` duplication — intentional; minor LDW wording nuance). Otherwise clean: bundle pipeline, index, and all cross-references verified intact.
+**`[Codex]`** — 1 high (README omits 9 real Knowledge files, 3 required-reading), 0 medium, 3 low (duplicate report-format definitions; `CLAUDE.md`/`AGENTS.md` duplication — intentional; minor LDW wording nuance). Otherwise clean: bundle pipeline, index, and all cross-references verified intact. 4 findings.
 
-**`[Inbox Router]`** — 2 high (`PROJECT_INSTRUCTIONS.md` destinations table diverged from root `ROUTING_RULES.md`; v05/v06 version-label conflict), 3 medium (mostly-unexecuted smoke QA; duplicate/diverged index files; README omits Knowledge_Bundles), 2 low (legacy files silent on Thinkers-OS anti-pattern; stale `last_checked`) — plus 1 cross-domain note (`HANDOFF_STYLE_STANDARD.md` missing a `[Thinkers OS]` row).
+**`[Inbox Router]`** — 2 high (`PROJECT_INSTRUCTIONS.md` destinations table diverged from root `ROUTING_RULES.md`; v05/v06 version-label conflict), 3 medium (mostly-unexecuted smoke QA; duplicate/diverged index files; README omits Knowledge_Bundles), 2 low (legacy files silent on Thinkers-OS anti-pattern; stale `last_checked`) — plus 1 cross-domain note (`HANDOFF_STYLE_STANDARD.md` missing a `[Thinkers OS]` row). 7 findings.
 
-**`[Thinkers OS]`** — 1 high (portfolio-count contradiction: 12 vs. 15 authors), 1 medium (4 authors' patterns claimed export-ready with no content), 2 low/no-action (bundle freshness and `PROJECT_INSTRUCTIONS.md` length both verified correct — flagged only to avoid being mistaken for staleness).
+**`[Thinkers OS]`** — 1 high (portfolio-count contradiction: 12 vs. 15 authors), 1 medium (4 authors' patterns claimed export-ready with no content), 3 low (1 real — phrasing asymmetry; 2 no-action — bundle freshness and `PROJECT_INSTRUCTIONS.md` length both verified correct, flagged only to avoid being mistaken for staleness). 5 findings.
+
+Sum: 5+8+6+5+4+7+5 = 40, matching the verdict total above.
 
 ## Next action
 

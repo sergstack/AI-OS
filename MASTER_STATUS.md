@@ -41,7 +41,7 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 ## Evidence Pointers
 
-- `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` — 7-project revision review dispatched via 7 parallel bounded `Plan` subagents (one per `PROJECT_CAPABILITIES.yaml` capability). 34 findings (7 high / 13 medium / 14 low); no schema or business-logic issue; dominant pattern is stale status/evidence files vs. actual current Knowledge content. Review-and-plan record only — does not itself apply any fix.
+- `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` — 7-project revision review dispatched via 7 parallel bounded `Plan` subagents (one per `PROJECT_CAPABILITIES.yaml` capability). 40 findings (12 high / 11 medium / 17 low); no schema or business-logic issue; dominant pattern is stale status/evidence files vs. actual current Knowledge content. Review-and-plan record only — does not itself apply any fix.
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
 - `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
 - `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md` — Issue #350 P0 audit: `BLOCKED_FOR_NATIVE_DISPATCH`; P1–P4 already owned by canonical contracts; no MVP implemented. Audit accepted by the owner; #350 closed as completed 2026-09-02. See `docs/evidence/README.md` for the other decision-evidence records (#342, #344, #345).
