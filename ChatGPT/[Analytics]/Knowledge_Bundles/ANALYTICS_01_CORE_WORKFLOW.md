@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:60241aaddf4fce9f54d1857f6b33f521830b909cbdd39e97de8a6d212c3045f6
+- source_fingerprint: sha256:63c5274532d866c0e3ef9dfd9bf3b5a9fa4a0a1d287471befad1da0150e55f79
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -44,6 +44,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
 | `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
 | `QUANTITATIVE_SANITY_GATE.md` | Mandatory pre-publish quantitative sanity gate | Published quantitative report has a flagship metric |
+| `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md` | AIOS AutoResearch v0.1 (issue #395) stochasticity/non-inferiority/decision-comparator method; candidate, provisional thresholds | Working on AutoResearch batch decision logic |
 | `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |
 | `MARTS_DESIGN.md` | Проектирование marts | Нужны метрики, витрины, cuts, dashboard |
 | `MEMO_FACTORY_DESIGN_HANDOFF.md` | Memo factory design handoff | Когда memo workflow требует implementation handoff |

@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_observation_row.schema.json",
+  "title": "AIOS AutoResearch v0.1 Deterministic Observation Row",
+  "description": "One observation row per issue #395's Grain: one case_id, run_id, baseline_or_candidate side, configuration, and evaluator version. Governed by ChatGPT/[Analytics]/Knowledge/AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md. This is the deterministic input/output contract #392's comparator consumes; it carries no p-value, confidence interval, or aggregate score field -- issue #395 forbids any such claim unless actually computed under an explicit method, and this method's own method is exact/rule-based, not asymptotic (see the doc's own rationale section).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "case_family",
+    "run_id",
+    "baseline_or_candidate",
+    "model_provider_runtime_hash",
+    "evaluator_version_hash",
+    "hard_gate_status",
+    "normalized_behavior_result",
+    "target_family_flag",
+    "paired_delta",
+    "run_variance_or_disagreement",
+    "non_inferiority_result",
+    "material_regression_flag",
+    "missingness_reason",
+    "decision_contribution",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+
+    "case_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+    "case_family": {
+      "description": "Reuses autoresearch_eval_case.schema.json's case_family enum verbatim.",
+      "type": "string",
+      "enum": ["routing", "scope_execution", "evidence", "authority", "handoff", "adversarial"]
+    },
+    "run_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$" },
+    "baseline_or_candidate": { "type": "string", "enum": ["baseline", "candidate"] },
+
+    "model_provider_runtime_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "evaluator_version_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+
+    "hard_gate_status": {
+      "description": "Reuses scripts/autoresearch_validator.py's hard_gate_results status vocabulary verbatim (issue #392, widened by #392 with not_run).",
+      "type": "string",
+      "enum": ["pass", "violated", "not_run"]
+    },
+
+    "normalized_behavior_result": {
+      "description": "Reuses VERDICT_PRECEDENCE's pass/revise/blocked severity mapping (issue #391/#392/#394), or null when the row is missing (missingness_reason must then be set).",
+      "type": ["string", "null"],
+      "enum": ["pass", "revise", "blocked", null]
+    },
+
+    "target_family_flag": {
+      "description": "true for the one case_family this experiment's mutation targets (autoresearch_experiment_record.research_surface's family); false for every other (non-target) family observed for regression purposes.",
+      "type": "boolean"
+    },
+
+    "paired_delta": {
+      "description": "normalized severity(baseline) - normalized severity(candidate) for this row's matched pair, positive meaning candidate is better; null when unmatched (missingness_reason set) or not yet paired.",
+      "type": ["integer", "null"],
+      "minimum": -2,
+      "maximum": 2
+    },
+
+    "run_variance_or_disagreement": {
+      "description": "true if this case's (case_id, baseline_or_candidate) rerun group shows more than one distinct normalized_behavior_result value.",
+      "type": "boolean"
+    },
+
+    "non_inferiority_result": {
+      "type": "string",
+      "enum": ["pass", "fail", "inconclusive", "not_applicable"]
+    },
+
+    "material_regression_flag": { "type": "boolean" },
+
+    "missingness_reason": {
+      "description": "null when the row is complete; otherwise the specific reason it could not contribute a full paired observation.",
+      "type": ["string", "null"],
+      "enum": ["no_observation", "configuration_changed", "evaluator_disagreement_unresolved", "hard_gate_violated", null]
+    },
+
+    "decision_contribution": {
+      "description": "This row's own vote toward the case's decision -- never itself the batch decision.",
+      "type": "string",
+      "enum": ["keep", "discard", "inconclusive", "not_applicable"]
+    },
+
+    "limitations": { "type": "string", "minLength": 1 }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "missingness_reason": { "const": null } } },
+      "then": { "properties": { "normalized_behavior_result": { "enum": ["pass", "revise", "blocked"] } } }
+    },
+    {
+      "if": { "properties": { "normalized_behavior_result": { "const": null } } },
+      "then": { "not": { "properties": { "missingness_reason": { "const": null } } } }
+    },
+    {
+      "if": { "properties": { "missingness_reason": { "not": { "const": null } } } },
+      "then": { "properties": { "normalized_behavior_result": { "const": null } } }
+    }
+  ]
+}
