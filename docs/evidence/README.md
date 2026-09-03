@@ -9,6 +9,19 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_PARENT_FINAL_QA_2026-09-03.md`](AUTORESEARCH_PARENT_FINAL_QA_2026-09-03.md)
+  records the Issue #398 parent final QA closing Issue #388 (AIOS
+  AutoResearch v0.1): all 10 children (#389-#398) reconciled against the
+  original parent acceptance criteria; 0 finalists existed from #397, so
+  finalist/holdout evaluation is `not_applicable` (not blocked — nothing to
+  authorize); recommendation `simplify_to_manual_regression_suite` (the one
+  falsification criterion that actually fired: manual review currently
+  yields equivalent value at materially lower complexity, given no real
+  evidence source exists yet); parent gate `pass` — the harness was
+  responsibly built, calibrated, piloted, and correctly declined to promote
+  anything under insufficient evidence. The harness remains available to
+  re-engage once a live-Judge integration or a genuine field-observed
+  failure exists.
 - [`AUTORESEARCH_PHASE1_PILOT_2026-09-03.md`](AUTORESEARCH_PHASE1_PILOT_2026-09-03.md)
   records the Issue #397 Phase 1 bounded pilot for Issue #388 (AIOS
   AutoResearch v0.1): 4 of a maximum 10 shadow experiments (fewer explicitly
