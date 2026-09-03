@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_context_manifest.schema.json",
+  "title": "AIOS AutoResearch v0.2 Context-Pack Manifest",
+  "description": "Machine-readable manifest emitted by scripts/autoresearch_context_pack_compiler.py (issue #412, parent #409). One manifest per (role, project, source_revision, eval_case, candidate_patch_hash) combination. Governs docs/standards/AUTORESEARCH_V02_LIVE_CONTRACT.md's context_manifest_hash field (issue #411, reused unchanged).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_manifest_version",
+    "context_id",
+    "role",
+    "project",
+    "source_revision",
+    "candidate_patch_hash",
+    "ordered_sources",
+    "rendering_rules",
+    "model_message_structure",
+    "excluded_sources",
+    "forbidden_source_classes",
+    "context_hash",
+    "created_by_version",
+    "fidelity_mode",
+    "limitations"
+  ],
+  "properties": {
+    "context_manifest_version": { "const": "0.2.0" },
+
+    "context_id": {
+      "description": "Deterministic id: sha256('{role}:{project}:{source_revision}:{candidate_patch_hash}') truncated to 16 hex chars, human-legible and stable for identical inputs.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{16}$"
+    },
+
+    "role": {
+      "type": "string",
+      "enum": ["subject_baseline", "subject_candidate", "researcher", "semantic_judge"]
+    },
+
+    "project": {
+      "description": "Reuses PROJECT_CAPABILITIES.yaml's namespace verbatim (same enum as schemas/autoresearch_eval_case.schema.json's expected_primary_owner).",
+      "type": "string",
+      "enum": ["ai_os", "thinking", "analytics", "llm", "codex", "inbox_router", "thinkers_os"]
+    },
+
+    "source_revision": {
+      "description": "The exact Git revision (full sha) the context was compiled from.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+
+    "candidate_patch_hash": {
+      "description": "null for subject_baseline/researcher/semantic_judge-without-a-candidate-under-review; the sha256 of the applied patch for subject_candidate.",
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+
+    "ordered_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "canonical_owner", "purpose", "content_hash", "bytes", "inclusion_reason", "source_class"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "canonical_owner": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string", "minLength": 1 },
+          "content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "inclusion_reason": { "type": "string", "minLength": 1 },
+          "source_class": {
+            "type": "string",
+            "enum": ["canonical_routing", "project_instructions", "governed_knowledge_bundle", "eval_case_input", "blinded_output", "frozen_rubric", "failure_registry_entry", "regression_gate"]
+          }
+        }
+      }
+    },
+
+    "rendering_rules": {
+      "type": "object",
+      "required": ["ordering", "delimiter_style"],
+      "properties": {
+        "ordering": { "type": "string", "enum": ["declared_order_stable"] },
+        "delimiter_style": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "model_message_structure": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["turn", "source_paths"],
+        "properties": {
+          "turn": { "type": "string", "enum": ["system", "user"] },
+          "source_paths": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "excluded_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "reason"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+
+    "forbidden_source_classes": {
+      "description": "The source classes this role's compiler run refused to include, by construction -- e.g. semantic_judge always forbids project_instructions.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+
+    "context_hash": {
+      "description": "sha256 over the concatenation of every ordered_sources[].content_hash in order, plus role and candidate_patch_hash -- the single deterministic fingerprint of this exact context.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+
+    "created_by_version": { "type": "string", "minLength": 1 },
+
+    "fidelity_mode": { "const": "repo_replay" },
+
+    "limitations": {
+      "type": "string",
+      "const": "This context is a reproducible repository-derived replay of AI-OS instructions and governed sources. It is not evidence of exact equivalence to proprietary ChatGPT Project runtime assembly unless separately validated."
+    }
+  }
+}
