@@ -42,7 +42,7 @@ The package should infer objective, route, scope, files to inspect, allowed file
 
 LLM-output должен:
 - отделять facts от interpretation;
-- показывать confidence;
+- называть uncertainty как textual limitation, не как confidence score (см. `Knowledge/LLM_EVAL_STANDARD.md` — self-reported confidence не governance-метрика);
 - не придумывать источники;
 - указывать missing evidence;
 - не превращать weak evidence в supported fact;
