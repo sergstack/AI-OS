@@ -1,0 +1,36 @@
+{
+  "artifact_version": "0.1.0",
+  "batch_id": "batch-001",
+  "baseline_revision": "3f3a6b6a4a11c62b0ba70a9dccee5878a40e3ff6",
+  "candidate_revision": "abc1234",
+  "experiment_id": "AUTORESEARCH-batch-001-1",
+  "research_surface": "MUT-ROUTING-TIEBREAK",
+  "hard_gate_results": [
+    {
+      "invariant_id": "INV-01",
+      "status": "pass",
+      "detail": "diff confined to MUT-ROUTING-TIEBREAK anchor"
+    },
+    {
+      "invariant_id": "INV-05",
+      "status": "pass",
+      "detail": "single mechanism, single target_surface_id"
+    }
+  ],
+  "behavioral_vector": {
+    "verdict": "pass",
+    "delta": "improvement",
+    "notes": "candidate reduced whole-memo misroutes on the frozen eval set"
+  },
+  "efficiency_vector": {
+    "measured": true,
+    "cost_delta": -0.01,
+    "latency_delta": 0.0,
+    "notes": "no material efficiency change"
+  },
+  "regressions": [],
+  "variance_notes": "rerun variance within batch-001's variance_rule bound",
+  "integrity_events": [],
+  "decision": "keep_candidate",
+  "decision_basis": "no hard-invariant violation; behavioral delta improvement under REGRESSION_GATE.md matrix; efficiency unchanged"
+}

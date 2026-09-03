@@ -70,7 +70,7 @@
     "verified": true
   },
   "next_hypothesis": "the same explicit-split wording pattern may help the 'Production readiness' tie-break row",
-  "authority_status": "rejected",
+  "authority_status": "not_required",
   "merge_status": "not_opened",
   "production_status": "not_authorized",
   "correction_of": null
