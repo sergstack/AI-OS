@@ -8,7 +8,7 @@
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
 - default_upload_mode: Knowledge_Bundles
 - default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
-- smoke_qa_status: pass
+- smoke_qa_status: pass (as of 2026-07-06, `docs/evidence/SMOKE_QA_RESULTS.md`); that record predates ~15 Knowledge additions made 2026-08-25 through 2026-09-02 (including the eval-gate family and the subagent-dispatch pilot) which have not been re-verified against the live ChatGPT UI — see the coverage note added there 2026-09-03
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
@@ -16,6 +16,7 @@
 - orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
 - executable_capability_routing_status: resolved; P0 audit BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; no MVP implemented; owner accepted the audit and closed #350 as completed (2026-09-02)
 - native_subagent_dispatch_status: STANDARDIZED BOUNDED (2026-09-02; owner-approved, Judge round-2 pass). Bounded, pilot-scoped: root -> bounded routed slice -> Plan child + isolation:"worktree" -> evidence/patch -> root -> validation/AES continuation. Plan child cannot use the native Agent tool; no write-capable child; root is sole router + writer; no child->child; one execution_id per user goal. Commissioning punch-list 4/4 closed — dispatch-evidence schema + blocking linter (scripts/check_subagent_dispatch_evidence.py in docs-safety), enforced telemetry contract, 18 hardened dispatches across 7 owners, guard-calibration proposal (thresholds unchanged), [AI OS] cost/latency owner. NOT a default/unrestricted standard; general promotion + guard thresholds remain separate owner decisions. Evidence: docs/evidence/NATIVE_SUBAGENT_DISPATCH_{PILOT,STANDARDIZATION,COMMISSIONING}_2026-09-02.md + subagent_dispatch_records_2026-09-02.json
+- project_wide_revision_review_status: reviewed 2026-09-03 via 7 parallel bounded subagent dispatches (one per `PROJECT_CAPABILITIES.yaml` capability); 40 findings (12 high / 11 medium / 17 low), no schema/business-logic issue, dominant pattern is stale status/evidence files across `[Thinking]`, `[AI OS]`, `[Analytics]`, `[Thinkers OS]`, `[Inbox Router]`. Review-and-plan record only; fixes tracked and applied separately. Evidence: docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
 - validation_gates: see `MASTER_STATUS.md` — "Validation Gates" and "Operational Gates" (canonical lists; do not copy them here)

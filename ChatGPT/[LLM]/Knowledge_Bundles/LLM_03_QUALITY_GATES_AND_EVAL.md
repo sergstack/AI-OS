@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c34c7a54752cf01365bd42eb0a7e990eea6da824481ce2ff5547dc74515ff80c
+- source_fingerprint: sha256:2471ad59160e8ea1e120ea1ee626957b4e71bec3767eb7aacc0ed0a6d8e1a521
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -39,7 +39,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - [ ] Does the output answer the task?
 - [ ] Are facts separated from interpretations?
 - [ ] Are unsupported claims marked?
-- [ ] Is confidence stated?
+- [ ] Is uncertainty stated as a textual limitation (not a confidence score — see `LLM_EVAL_STANDARD.md`)?
 - [ ] Are sources/evidence referenced when available?
 - [ ] Are limitations visible?
 - [ ] Is routing correct?

@@ -1,19 +1,23 @@
 # Smoke QA Result — Analytics
 
-Date: 2026-08-21
+Date: 2026-08-21 (sections 1-9); coverage note added 2026-09-03
 Scope: `analytics-live-response-optimization`
 Source checklist: `Knowledge/SMOKE_QA_FOR_ANALYTICS.md`
 
 ## Result
 
 ```text
-smoke_qa_status: pass
-failed_questions: none
+smoke_qa_status: partial_pass — sections 1-9 pass; sections 10-11 not_run
+failed_questions: none (of the sections actually run)
 residual_risks:
 - Smoke QA checks documentation behavior only; it is not production readiness.
 - The focused live rerun used a small supplied fixture, not an owner data source.
 - A real source-backed pilot is still required before production readiness.
-next_step: run a bounded real-data pilot while keeping production status NOT AUTHORIZED
+- Section 10 (Quantitative sanity gate) and section 11 (Analytical Judge gate) were
+  added to the checklist 2026-09-01/02, after this run, and have not been exercised
+  against the live ChatGPT project. This file's "pass" previously read as full
+  coverage; corrected 2026-09-03 to make the gap explicit rather than implied.
+next_step: run a bounded real-data pilot while keeping production status NOT AUTHORIZED; separately, run sections 10-11 against the live project and record their result here
 ```
 
 ## Question checks
@@ -27,6 +31,8 @@ next_step: run a bounded real-data pilot while keeping production status NOT AUT
 - [x] Acceptance question passes.
 - [x] Short-task / anti-bloat question passes.
 - [x] Missing-data compact fast path passes.
+- [ ] Quantitative sanity gate question — NOT RUN (checklist section added after this smoke QA record).
+- [ ] Analytical Judge gate question — NOT RUN (checklist section added after this smoke QA record).
 
 ## Evidence
 

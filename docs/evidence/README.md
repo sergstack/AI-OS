@@ -9,6 +9,12 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`](PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md)
+  records a 7-project revision review dispatched via the native subagent
+  mechanism (one bounded `Plan` dispatch per `PROJECT_CAPABILITIES.yaml`
+  capability): 34 findings (7 high / 13 medium / 14 low), no schema or
+  business-logic issue, dominant pattern is stale status/evidence files. This
+  is a review-and-plan record only; it does not itself apply any fix.
 - [`NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md`](NATIVE_SUBAGENT_DISPATCH_PILOT_2026-09-02.md)
   records the bounded native-subagent-dispatch MVP pilot on the Claude Code
   surface (follow-up to #350): 3 multi-owner executions, verdict `PASS`,

@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Inbox Router]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:a9fc1bdb784533f3a7b4927fc64c39a95e0b498bbb5ee2a4d3ec46221e33af87
+- source_fingerprint: sha256:edbe1e46eefd9154991be31bc8a7b3c91f866ebcd5e8451fbf6684c531ab07b9
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -41,12 +41,13 @@ Canonical repository path: `ChatGPT/[Inbox Router]`.
 - `ROUTING_RULES.md` — front-door destination rules.
 - `THINGS_OUTPUT_SCHEMA.md` — Things task output schema.
 - `HANDOFF_PROTOCOL.md` — standard project handoff format.
-- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v05 smoke QA.
+- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v06 smoke QA.
 ## Reference material
 - `ROUTER_WORKFLOW.md` — legacy/support operating workflow and destination rules.
 - `ROUTER_HANDOFF_PROTOCOL.md` — legacy/support handoff formats for target projects.
 - `ROUTER_SMOKE_QA.md` — legacy/support smoke test examples.
 - `ROUTER_ANTI_PATTERNS.md` — legacy/support failure modes and corrections.
+If files conflict, the active behavior sources above override the legacy `ROUTER_*` files.
 ## Bundle coverage
 - `INBOX_01_ROUTING_WORKFLOW.md` covers active index, routing rules, Things output schema, and workflow reference.
 - `INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md` covers active handoff, active smoke QA, and anti-pattern reference.
@@ -71,7 +72,7 @@ ChatGPT Project display name may remain `[Inbox / Router]`.
 - `ROUTING_RULES.md` — front-door destination rules.
 - `THINGS_OUTPUT_SCHEMA.md` — Things task output schema.
 - `HANDOFF_PROTOCOL.md` — standard project handoff format.
-- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v05 smoke QA.
+- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v06 smoke QA.
 ## Reference material
 - `INBOX_ROUTER_FILES_INDEX.md` — file map and bundle coverage.
 - `ROUTER_WORKFLOW.md` — legacy/support operating workflow.
@@ -79,7 +80,7 @@ ChatGPT Project display name may remain `[Inbox / Router]`.
 - `ROUTER_SMOKE_QA.md` — legacy/support smoke examples.
 - `ROUTER_ANTI_PATTERNS.md` — legacy/support anti-patterns.
 ## Source priority
-For v05 front-door behavior use:
+For v06 front-door behavior use:
 1. `ROUTING_RULES.md`
 2. `THINGS_OUTPUT_SCHEMA.md`
 3. `HANDOFF_PROTOCOL.md`
@@ -89,7 +90,7 @@ Legacy/support files remain available for context:
 - `ROUTER_HANDOFF_PROTOCOL.md`
 - `ROUTER_SMOKE_QA.md`
 - `ROUTER_ANTI_PATTERNS.md`
-If files conflict, v05 files override legacy router files.
+If files conflict, v06 files override legacy router files.
 ## Bundle coverage
 - `INBOX_01_ROUTING_WORKFLOW.md` covers active routing and Things schema sources.
 - `INBOX_02_HANDOFF_QA_ANTI_PATTERNS.md` covers active handoff and smoke QA sources.
