@@ -20,7 +20,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:26f779feada27b16242c5237b27e14bbba88f0ca0ecfee70eb4fa34910bed96b
+- source_fingerprint: sha256:ce35333c340799ceab589d4ad88979878aa3aa4b7951249817e3d1e8cfb795c8
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -31,6 +31,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 
 # Prompt Library
 ## @analyst
+`prompt_id: analyst` (see `PROMPT_REGISTRY.md`)
 ```text
 Act as @analyst.
 Analyze the task using:
@@ -43,18 +44,21 @@ Analyze the task using:
 Separate supported facts from interpretation.
 ```
 ## @judge
+`prompt_id: judge_review` (see `PROMPT_REGISTRY.md`)
 ```text
 Act as @judge.
 Find hallucinations, unsupported claims, weak evidence, missing constraints, and wrong routing.
 Return verdict: pass / revise / blocked.
 ```
 ## @revisor
+`prompt_id: revisor_final` (see `PROMPT_REGISTRY.md`)
 ```text
 Act as @revisor.
 Rewrite the draft to be clearer, shorter, more structured, and evidence-aware.
 Do not add new claims.
 ```
 ## @ai_operator
+`prompt_id: ai_operator_codex_task` (see `PROMPT_REGISTRY.md`)
 ```text
 Act as @ai_operator.
 Package the result into files, checklist, task brief, or upload-ready instructions.
@@ -78,6 +82,7 @@ Return:
 Keep the user-facing summary short.
 ```
 ## Context package prompt
+`prompt_id: context_package_builder` (see `PROMPT_REGISTRY.md`)
 ```text
 Use only the provided context.
 Do not invent facts.
@@ -118,6 +123,7 @@ Prompts are controlled assets, not one-off chat text.
 ## Registry
 | prompt_id | task_type | purpose | input_requirements | output_schema | model_class | quality_gate | known_failure_modes | last_reviewed | owner_project | status | version | eval_status | acceptance_status | eval_refs |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| analyst | analyze | separate facts, assumptions, constraints, options, and risks; recommend a next step | task description | facts, assumptions, constraints, options, risks, recommended next step | reasoning | facts separated from interpretation | not_recorded | 2026-09-03 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | judge_review | judge | detect unsupported claims and weak evidence | curated context, claims, evidence, limits | findings, risks, verdict | judge | unsupported claims listed; evidence checked | misses hidden assumptions; overconfident approval | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | revisor_final | revise | tighten draft without adding facts | judge output, supported facts, limitations | shorter decision-ready rewrite | reasoning | no new facts; support preserved | adds facts; deletes uncertainty | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | ai_operator_codex_task | orchestrate | package Codex handoff | objective, files, constraints, acceptance | Goal Mode handoff or scoped task package | reasoning | files and acceptance criteria present | vague task; missing scope | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
@@ -137,6 +143,7 @@ Priority migration scope:
 - `context_package_builder`
 - `model_router`
 - `revisor_final`
+- `analyst`
 Existing active entries may remain usable as explicit legacy debt. A new or
 materially revised reusable asset must receive an identifiable candidate
 version, risk-appropriate eval evidence, and an acceptance decision before it

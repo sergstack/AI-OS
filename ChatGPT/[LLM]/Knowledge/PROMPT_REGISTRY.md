@@ -10,6 +10,7 @@ Prompts are controlled assets, not one-off chat text.
 
 | prompt_id | task_type | purpose | input_requirements | output_schema | model_class | quality_gate | known_failure_modes | last_reviewed | owner_project | status | version | eval_status | acceptance_status | eval_refs |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| analyst | analyze | separate facts, assumptions, constraints, options, and risks; recommend a next step | task description | facts, assumptions, constraints, options, risks, recommended next step | reasoning | facts separated from interpretation | not_recorded | 2026-09-03 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | judge_review | judge | detect unsupported claims and weak evidence | curated context, claims, evidence, limits | findings, risks, verdict | judge | unsupported claims listed; evidence checked | misses hidden assumptions; overconfident approval | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | revisor_final | revise | tighten draft without adding facts | judge output, supported facts, limitations | shorter decision-ready rewrite | reasoning | no new facts; support preserved | adds facts; deletes uncertainty | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
 | ai_operator_codex_task | orchestrate | package Codex handoff | objective, files, constraints, acceptance | Goal Mode handoff or scoped task package | reasoning | files and acceptance criteria present | vague task; missing scope | 2026-05-25 | [LLM] | active | unversioned | not_recorded | not_recorded | not_recorded |
@@ -32,6 +33,7 @@ Priority migration scope:
 - `context_package_builder`
 - `model_router`
 - `revisor_final`
+- `analyst`
 
 Existing active entries may remain usable as explicit legacy debt. A new or
 materially revised reusable asset must receive an identifiable candidate

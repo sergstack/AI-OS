@@ -2,6 +2,8 @@
 
 ## @analyst
 
+`prompt_id: analyst` (see `PROMPT_REGISTRY.md`)
+
 ```text
 Act as @analyst.
 Analyze the task using:
@@ -17,6 +19,8 @@ Separate supported facts from interpretation.
 
 ## @judge
 
+`prompt_id: judge_review` (see `PROMPT_REGISTRY.md`)
+
 ```text
 Act as @judge.
 Find hallucinations, unsupported claims, weak evidence, missing constraints, and wrong routing.
@@ -25,6 +29,8 @@ Return verdict: pass / revise / blocked.
 
 ## @revisor
 
+`prompt_id: revisor_final` (see `PROMPT_REGISTRY.md`)
+
 ```text
 Act as @revisor.
 Rewrite the draft to be clearer, shorter, more structured, and evidence-aware.
@@ -32,6 +38,8 @@ Do not add new claims.
 ```
 
 ## @ai_operator
+
+`prompt_id: ai_operator_codex_task` (see `PROMPT_REGISTRY.md`)
 
 ```text
 Act as @ai_operator.
@@ -62,6 +70,8 @@ Keep the user-facing summary short.
 ```
 
 ## Context package prompt
+
+`prompt_id: context_package_builder` (see `PROMPT_REGISTRY.md`)
 
 ```text
 Use only the provided context.

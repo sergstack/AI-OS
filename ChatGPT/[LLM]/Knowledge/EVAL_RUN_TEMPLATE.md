@@ -6,6 +6,14 @@
 
 ## task_type
 
+## risk_level
+
+LIGHT / CONTROLLED / HIGH-RISK (see `LLM_EVAL_STANDARD.md`)
+
+## eval_type
+
+pre_promotion / regression / runtime (see `LLM_EVAL_STANDARD.md`)
+
 ## input_summary
 
 ## context_package_used
