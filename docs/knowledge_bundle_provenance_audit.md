@@ -296,9 +296,9 @@ Blocking record count: **0**
 ## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_02_PROMPT_LIBRARY_AND_REGISTRY.md`
 
 - Project: [LLM]
-- Source paths: `ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md`, `ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md`, `ChatGPT/[LLM]/Knowledge/LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md`
-- Source bytes: 7587
-- Bundle bytes: 8475
+- Source paths: `ChatGPT/[LLM]/Knowledge/PROMPT_LIBRARY.md`, `ChatGPT/[LLM]/Knowledge/PROMPT_REGISTRY.md`, `ChatGPT/[LLM]/Knowledge/PROMPT_LIFECYCLE_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_02_PROMPT_LIBRARY_AND_REGISTRY_BUNDLE_SEMANTICS.md`
+- Source bytes: 11625
+- Bundle bytes: 12609
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -310,9 +310,9 @@ Blocking record count: **0**
 ## `ChatGPT/[LLM]/Knowledge_Bundles/LLM_03_QUALITY_GATES_AND_EVAL.md`
 
 - Project: [LLM]
-- Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
-- Source bytes: 72892
-- Bundle bytes: 74035
+- Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_EVAL_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
+- Source bytes: 77816
+- Bundle bytes: 79014
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
