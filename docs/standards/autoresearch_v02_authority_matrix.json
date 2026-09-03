@@ -1,0 +1,52 @@
+{
+  "contract_version": "0.2.0",
+  "purpose": "AIOS AutoResearch v0.2 (issue #409) authority boundary. Fixed policy declaration, not a per-batch record -- see schemas/autoresearch_v02_live_batch_config.schema.json for the per-batch machine-readable contract. 'No implicit conversion is permitted': an available/configured credential, an installed transport, or a passing deterministic check never itself grants any of these authorities.",
+  "authority_levels": {
+    "owner_only": "Requires Sergey's explicit, per-instance decision. Never delegated, never inferred from a prior approval of a different instance.",
+    "bounded_delegate": "May be exercised by Codex/an agent, but only strictly inside a numeric/scope envelope Sergey has already, explicitly, separately authorized (e.g. a frozen budget cap, a frozen manifest). Exceeding the envelope reverts to owner_only for that instance.",
+    "not_granted": "No path exists yet in v0.2; attempting to exercise this authority is a hard stop, not a request."
+  },
+  "authorities": {
+    "implementation_authority": {
+      "level": "bounded_delegate",
+      "scope": "Writing/extending schemas, scripts, tests, and documentation inside the child issues' own Allowed files sections. Never active Project Instructions, routing, or protected surfaces.",
+      "basis": "Consistent with v0.1's GOAL_MODE.md Merge Policy and the Codex role boundary already exercised throughout #389-#420."
+    },
+    "live_call_authority": {
+      "level": "owner_only",
+      "scope": "Any actual external model/provider/Judge invocation of any kind, on any transport, for any purpose (subject run, Judge run, or smoke test).",
+      "basis": "Issue #409's own External-action and budget boundary: 'Before any live batch, freeze and authorize... No authorized transport/budget means blocked; synthetic output is not a substitute.' Not granted by this document -- this document only defines the SHAPE that authorization must take when it is later given."
+    },
+    "usage_budget_authority": {
+      "level": "owner_only",
+      "scope": "Setting max_provider_calls / max_input_tokens / max_output_tokens / max_wall_clock_minutes / max_cost_amount / max_cost_currency for any live batch.",
+      "basis": "Issue #411's own Authority decision: 'The selected transport and numeric batch budget must have explicit authority evidence before #413 performs its live smoke.' No default paid budget is set anywhere in this contract (Forbidden actions)."
+    },
+    "candidate_acceptance_authority": {
+      "level": "owner_only",
+      "scope": "Treating any keep_candidate result as anything beyond research evidence.",
+      "basis": "Reuses v0.1's REGRESSION_GATE.md / AES authority separation unchanged: 'keep_candidate remains owner_review_pending and cannot mutate active Project Instructions/routing.'"
+    },
+    "active_configuration_authority": {
+      "level": "not_granted",
+      "scope": "Any edit to a live ChatGPT Project's actual configuration, Project Instructions, or Knowledge files.",
+      "basis": "Issue #409 Safety boundaries: 'Active ChatGPT Project settings and main are not experiment targets.' No v0.2 child issue requests this authority; it stays not_granted for the life of this contract version."
+    },
+    "merge_authority": {
+      "level": "not_granted",
+      "scope": "Merging any pull request.",
+      "basis": "Absolute repository rule, independent of AutoResearch: agents must never merge PRs (GOAL_MODE.md Merge Policy, reinforced by the platform's own permission classifier). Not a decision this contract could grant even if it wanted to."
+    },
+    "production_authority": {
+      "level": "not_granted",
+      "scope": "Any production deployment or promotion claim.",
+      "basis": "Same as merge_authority; also explicitly out of scope for AutoResearch entirely per issue #388's and #409's own Forbidden actions."
+    }
+  },
+  "no_implicit_conversion_examples": [
+    "An installed/connected transport (e.g. Playwright MCP showing 'Connected') does NOT itself grant live_call_authority.",
+    "A frozen context_manifest_hash does NOT itself grant usage_budget_authority.",
+    "usage_budget_authority being granted for one numeric envelope does NOT extend to a larger or different envelope without a new, separate owner decision.",
+    "implementation_authority to write the live adapter code does NOT include live_call_authority to actually run it against a real target."
+  ]
+}

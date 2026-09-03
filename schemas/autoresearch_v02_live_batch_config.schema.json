@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_v02_live_batch_config.schema.json",
+  "title": "AIOS AutoResearch v0.2 Live Batch/Run Contract",
+  "description": "Machine-readable companion to docs/standards/AUTORESEARCH_V02_LIVE_CONTRACT.md (issue #411, parent #409). Every live batch must be describable by one instance of this schema before any external call is made. A missing/null numeric budget field or an authority_status other than 'authorized' fails a live batch closed -- see the accompanying validator in scripts/autoresearch_v02_live_contract_validator.py, which enforces the cross-field rules this schema alone cannot express (JSON Schema conditionals here cover the direct ones; the rest -- e.g. 'authorized requires max_cost_amount > 0' -- are enforced in code, tested, and cited from the contract doc).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "execution_mode",
+    "transport_id",
+    "transport_version",
+    "credential_source_class",
+    "transport_authority_status",
+    "provider",
+    "model",
+    "model_version_or_snapshot",
+    "runtime_version",
+    "context_manifest_hash",
+    "evaluator_contract_hash",
+    "evaluator_model_identity",
+    "sampling_configuration",
+    "max_provider_calls",
+    "max_input_tokens",
+    "max_output_tokens",
+    "max_wall_clock_minutes",
+    "max_cost_amount",
+    "max_cost_currency",
+    "retry_limit",
+    "call_timeout_seconds",
+    "redaction_policy_ref",
+    "raw_payload_retention",
+    "usage_metadata_policy",
+    "field_trace_provenance",
+    "live_evidence_required",
+    "synthetic_evidence_allowed_for",
+    "abort_conditions",
+    "authority_status"
+  ],
+  "properties": {
+    "contract_version": { "const": "0.2.0" },
+
+    "execution_mode": {
+      "description": "issue #409's two canonical live-evidence-producing modes. field_observation is intake, not an execution_mode of a batch -- a batch always executes as either a fresh repo_replay run, or a field_reproduction re-run of a previously-observed field trace.",
+      "type": "string",
+      "enum": ["repo_replay", "field_reproduction"]
+    },
+
+    "transport_id": {
+      "description": "Free-text but must match a transport documented in docs/evidence/AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md's candidate matrix (issue #410) or a later equivalent audit; the validator cross-checks this, the schema alone cannot.",
+      "type": "string",
+      "minLength": 1
+    },
+    "transport_version": { "type": "string", "minLength": 1 },
+
+    "credential_source_class": {
+      "type": "string",
+      "enum": ["browser_session_cookie", "oauth_keychain", "api_key_env", "none"]
+    },
+
+    "transport_authority_status": {
+      "description": "Whether THIS transport has been explicitly authorized for a live call -- deliberately separate from whether it is merely available/configured (issue #411's own core rule: 'An available/configured credential does not itself authorize a live call').",
+      "type": "string",
+      "enum": ["not_authorized", "authorized_pending_budget", "authorized"]
+    },
+
+    "provider": { "type": "string", "minLength": 1 },
+    "model": { "type": "string", "minLength": 1 },
+    "model_version_or_snapshot": {
+      "description": "'not_captured' is a legitimate, honest value when the transport (e.g. a chat UI) cannot expose an exact model snapshot identity -- never invent one.",
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_version": { "type": "string", "minLength": 1 },
+
+    "context_manifest_hash": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evaluator_contract_hash": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evaluator_model_identity": { "type": ["string", "null"] },
+
+    "sampling_configuration": {
+      "description": "Whatever sampling controls the transport actually exposes (e.g. {} for a chat UI with none observable). Never fabricate a temperature/top_p value the transport does not actually let you set or observe.",
+      "type": "object"
+    },
+
+    "max_provider_calls": { "type": ["integer", "null"], "minimum": 0 },
+    "max_input_tokens": {
+      "description": "Integer, or the literal string 'not_captured' when the transport cannot expose it.",
+      "type": ["integer", "string", "null"]
+    },
+    "max_output_tokens": {
+      "type": ["integer", "string", "null"]
+    },
+    "max_wall_clock_minutes": { "type": ["number", "null"], "minimum": 0 },
+
+    "max_cost_amount": {
+      "description": "REQUIRED to be a positive number before transport_authority_status/authority_status may be 'authorized' for a usage_billed transport (enforced by the validator, not expressible in JSON Schema alone). null is the correct, honest value before an owner sets it -- never a fabricated default.",
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "max_cost_currency": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{3}$"
+    },
+
+    "retry_limit": { "type": "integer", "minimum": 0, "maximum": 5 },
+    "call_timeout_seconds": { "type": "integer", "minimum": 1 },
+
+    "redaction_policy_ref": {
+      "description": "Pointer into the contract doc's Privacy and field-trace boundary section, e.g. 'AUTORESEARCH_V02_LIVE_CONTRACT.md#8-privacy-redaction-retention-and-forbidden-input-rules'.",
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_payload_retention": {
+      "type": "string",
+      "enum": ["not_retained", "sanitized_excerpt_only", "hash_only"]
+    },
+    "usage_metadata_policy": {
+      "description": "'estimated_disallowed' is the default and the only policy this contract permits for a missing metric -- an estimate must never be presented as observed (issue #411's own non-acceptance example).",
+      "type": "string",
+      "enum": ["captured", "not_captured", "estimated_disallowed"]
+    },
+
+    "field_trace_provenance": {
+      "type": "string",
+      "enum": ["none", "sanitized", "synthetic", "raw_restricted"]
+    },
+
+    "live_evidence_required": { "type": "boolean" },
+    "synthetic_evidence_allowed_for": {
+      "description": "The ONLY legitimate uses of hand-authored/synthetic evidence in a v0.2 context -- never a live gate.",
+      "type": "array",
+      "items": { "type": "string", "enum": ["unit_test", "contract_test", "negative_control", "calibration_deterministic_layer"] }
+    },
+
+    "abort_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "authority_status": {
+      "description": "Reuses v0.1's candidate/owner_review_pending vocabulary rather than inventing a new one.",
+      "type": "string",
+      "enum": ["owner_review_pending", "authorized", "rejected"]
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "execution_mode": { "const": "field_reproduction" } } },
+      "then": { "properties": { "field_trace_provenance": { "enum": ["sanitized", "raw_restricted"] } } }
+    },
+    {
+      "if": { "properties": { "field_trace_provenance": { "const": "raw_restricted" } } },
+      "then": { "properties": { "raw_payload_retention": { "const": "not_retained" } } }
+    }
+  ]
+}

@@ -22,3 +22,13 @@ Current cross-project policy standards include:
   separation. Not authorized for Phase 0 or Phase 1 execution on its own.
 - `autoresearch_v01_manifest.json` — its machine-readable protected-surface
   and hard-invariant manifest.
+- `AUTORESEARCH_V02_LIVE_CONTRACT.md` — additive v0.2 live-execution,
+  privacy, budget, and evidence contract for issue
+  [#409](https://github.com/sergstack/AI-OS/issues/409) (AIOS AutoResearch
+  v0.2): evidence states, transport/evaluator identity, budget/retry/
+  privacy rules, authority boundaries, and hard stop conditions. Extends
+  v0.1 without rewriting it; not authorized for any live call on its own.
+- `autoresearch_v02_authority_matrix.json` — its fixed authority-boundary
+  declaration (`live_call_authority`, `usage_budget_authority`,
+  `merge_authority`, etc.), each `owner_only` / `bounded_delegate` /
+  `not_granted`.
