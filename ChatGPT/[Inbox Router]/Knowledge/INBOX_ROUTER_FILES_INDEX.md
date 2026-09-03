@@ -16,7 +16,7 @@ Canonical repository path: `ChatGPT/[Inbox Router]`.
 - `ROUTING_RULES.md` — front-door destination rules.
 - `THINGS_OUTPUT_SCHEMA.md` — Things task output schema.
 - `HANDOFF_PROTOCOL.md` — standard project handoff format.
-- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v05 smoke QA.
+- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v06 smoke QA.
 
 ## Reference material
 
@@ -24,6 +24,8 @@ Canonical repository path: `ChatGPT/[Inbox Router]`.
 - `ROUTER_HANDOFF_PROTOCOL.md` — legacy/support handoff formats for target projects.
 - `ROUTER_SMOKE_QA.md` — legacy/support smoke test examples.
 - `ROUTER_ANTI_PATTERNS.md` — legacy/support failure modes and corrections.
+
+If files conflict, the active behavior sources above override the legacy `ROUTER_*` files.
 
 ## Bundle coverage
 

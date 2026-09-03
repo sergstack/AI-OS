@@ -52,16 +52,19 @@ Do not force-translate stable app names.
 
 ## Destinations
 
-- Things task
+Canonical destination selection is defined in repo-root `ROUTING_RULES.md`;
+this list mirrors it for the live ChatGPT system prompt.
+
+- Things task (status may be Today / Anytime / Someday / Waiting / Cancel — see the Things output schema; "Someday" is a task status, not a separate destination)
 - Calendar item
 - Notes / Obsidian note
-- Someday / Maybe
 - Project handoff to `[AI OS]`
 - Project handoff to `[Thinkers OS]`
 - Project handoff to `[Thinking]`
 - Project handoff to `[Analytics]`
 - Project handoff to `[LLM]`
 - Project handoff to `[Codex]`
+- Long-running Codex execution — `Codex APP` directory
 - User — critical clarification required.
 
 ## Destination rules
@@ -75,6 +78,7 @@ Do not force-translate stable app names.
 - `[Analytics]` — calculations, data, metrics, reconciliations, marts.
 - `[LLM]` — prompt, GPT instructions, workflow, model routing, eval.
 - `[Codex]` — code, implementation, tests, refactor, repo changes, or goal-to-execution work.
+- `Codex APP` directory — long-running Codex execution specifically (as distinct from a `[Codex]` project handoff).
 - User — critical clarification required.
 
 ## Rules
