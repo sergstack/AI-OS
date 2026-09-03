@@ -8,7 +8,7 @@
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
 - default_upload_mode: Knowledge_Bundles
 - default_upload_list: ChatGPT/[AI OS]/Knowledge_Bundles/UPLOAD_LIST.md
-- smoke_qa_status: pass
+- smoke_qa_status: pass (as of 2026-07-06, `docs/evidence/SMOKE_QA_RESULTS.md`); that record predates ~15 Knowledge additions made 2026-08-25 through 2026-09-02 (including the eval-gate family and the subagent-dispatch pilot) which have not been re-verified against the live ChatGPT UI — see the coverage note added there 2026-09-03
 - runtime_smoke_status: candidate
 - realistic_pilot_status: candidate (AI OS, Thinking, Analytics, and one cross-project routing/resume pilot passed; broader pilot set not run)
 - durable_runtime_gap_status: not proven; Restate Phase 1 not authorized
