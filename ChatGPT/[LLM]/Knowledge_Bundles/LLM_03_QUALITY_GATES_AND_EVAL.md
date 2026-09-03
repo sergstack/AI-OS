@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:2471ad59160e8ea1e120ea1ee626957b4e71bec3767eb7aacc0ed0a6d8e1a521
+- source_fingerprint: sha256:a51b3807462d042c423d80a6451a03565cc0661442a1c113f214abf06fdaadd2
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -64,6 +64,10 @@ required_revision:
 ## eval_id
 ## date
 ## task_type
+## risk_level
+LIGHT / CONTROLLED / HIGH-RISK (see `LLM_EVAL_STANDARD.md`)
+## eval_type
+pre_promotion / regression / runtime (see `LLM_EVAL_STANDARD.md`)
 ## input_summary
 ## context_package_used
 ## model_class
