@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:557242fd9ee2a0deeb3618848e84b2c36db9d4cfb067a2cf5ea674685e50a1de
+- source_fingerprint: sha256:9ef824411e9085b88270d53abae40b68974d6c5f0aa22dd73b10858e2c88b94d
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -73,6 +73,14 @@ It must not absorb their responsibilities.
 - `THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
 - `THINKING_02_JUDGE_REVISOR_RISK_BUNDLE_SEMANTICS.md`
 - `THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`
+`THINKING_04_THINKERS_SYNTHESIS.md` (bundle 04) has no matching
+`_BUNDLE_SEMANTICS.md` file — noted 2026-09-03
+(`docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`). Bundle 04
+already existed (2026-07-31) before the Issue #285 migration commit that
+created these three files (2026-08-27), but that commit did not add a
+fourth one; whether that was deliberate (bundle 04 carried no legacy
+section needing migration) or an oversight is not established from repo
+history alone — flagged for owner confirmation rather than assumed.
 
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`
 
