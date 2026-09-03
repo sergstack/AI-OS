@@ -10,7 +10,7 @@ ChatGPT Project display name may remain `[Inbox / Router]`.
 - `ROUTING_RULES.md` — front-door destination rules.
 - `THINGS_OUTPUT_SCHEMA.md` — Things task output schema.
 - `HANDOFF_PROTOCOL.md` — standard project handoff format.
-- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v05 smoke QA.
+- `SMOKE_QA_FOR_INBOX_ROUTER.md` — v06 smoke QA.
 
 ## Reference material
 
@@ -22,7 +22,7 @@ ChatGPT Project display name may remain `[Inbox / Router]`.
 
 ## Source priority
 
-For v05 front-door behavior use:
+For v06 front-door behavior use:
 
 1. `ROUTING_RULES.md`
 2. `THINGS_OUTPUT_SCHEMA.md`
@@ -36,7 +36,7 @@ Legacy/support files remain available for context:
 - `ROUTER_SMOKE_QA.md`
 - `ROUTER_ANTI_PATTERNS.md`
 
-If files conflict, v05 files override legacy router files.
+If files conflict, v06 files override legacy router files.
 
 ## Bundle coverage
 

@@ -645,8 +645,8 @@
         "ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md",
         "ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md"
       ],
-      "source_bytes": 5710,
-      "bundle_bytes": 6815,
+      "source_bytes": 5802,
+      "bundle_bytes": 6906,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

@@ -451,8 +451,8 @@ Blocking record count: **0**
 
 - Project: [Inbox Router]
 - Source paths: `ChatGPT/[Inbox Router]/Knowledge/INBOX_ROUTER_FILES_INDEX.md`, `ChatGPT/[Inbox Router]/Knowledge/INDEX.md`, `ChatGPT/[Inbox Router]/Knowledge/ROUTING_RULES.md`, `ChatGPT/[Inbox Router]/Knowledge/THINGS_OUTPUT_SCHEMA.md`, `ChatGPT/[Inbox Router]/Knowledge/ROUTER_WORKFLOW.md`
-- Source bytes: 5710
-- Bundle bytes: 6815
+- Source bytes: 5802
+- Bundle bytes: 6906
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
