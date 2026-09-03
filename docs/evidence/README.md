@@ -9,6 +9,15 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V01_BASELINE_AUDIT_2026-09-03.md`](AUTORESEARCH_V01_BASELINE_AUDIT_2026-09-03.md)
+  records the Issue #389 read-only baseline/collision audit for Issue #388
+  (AIOS AutoResearch v0.1): 27 inventoried artifacts, a reuse/extend/add/
+  protected matrix, and 6 duplicate-or-conflicting-owner findings (most
+  notably `PROMPT_QA_FACTORY.md`'s existing candidate lifecycle already
+  governs Project-Instructions-wording changes, and `AI_EVAL_REGISTRY.md`
+  must stay definitions-only, separate from any new experiment ledger). It
+  does not implement the harness or authorize child #390 onward beyond
+  starting.
 - [`PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`](PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md)
   records a 7-project revision review dispatched via the native subagent
   mechanism (one bounded `Plan` dispatch per `PROJECT_CAPABILITIES.yaml`
