@@ -1,6 +1,6 @@
 # Current Status — [Thinkers OS]
 
-- status_date: 2026-08-21
+- status_date: 2026-09-03
 - repository_package_status: refreshed_candidate_ready_for_owner_review
 - external_project_status: UPDATED — the previously uploaded package remains active; the latest Simon/Goldratt bundle refresh requires manual owner upload after repository merge
 - external_sources_sync_status: UPDATED WITH DISPLAY-NAME LIMITATION — the previously uploaded sources remain active; replace both Thinkers OS bundles and Thinking bundle 04 from the authoritative upload lists after merge
@@ -12,18 +12,21 @@
 
 ## Portfolio snapshot
 
-- registered authors: 12
-- complete core packages: 10
-- partial core packages: 2 — Elinor Ostrom and Taiichi Ohno
-- Judge-pass author packages: 12, including bounded partial packages for Ostrom and Ohno
+- registered authors: 15
+- complete core packages: 11
+- partial core packages: 4 — Elinor Ostrom (two P1 gaps), Taiichi Ohno (one P1 gap), Richard P. Rumelt (one P1 gap), Everett M. Rogers (two P1 gaps)
+- Judge-pass author packages: 15, including bounded partial packages for Ostrom, Ohno, Rumelt, and Rogers
 - unresolved P0 requests: 0
-- unresolved P1 requests: 3
+- unresolved P1 requests: 6
+- status source: recomputed from `Knowledge/SYNTHESIS_AND_EXPORT.md`'s portfolio table (`## Portfolio snapshot — 2026-08-21`), which added Rumelt/Rogers/Norman on 2026-08-21 without this file being updated in the same change — corrected 2026-09-03.
 
 ## Unresolved P1 sources
 
 - Taiichi Ohno — *Just-in-Time for Today and Tomorrow* — `THINKERS-OHNO-SOURCE-JUST-IN-TIME-TODAY-TOMORROW`
 - Elinor Ostrom — *The Institutional Analysis and Development Framework: An Application to the Study of Common-Pool Resources in Sub-Saharan Africa* — `THINKERS-OSTROM-SOURCE-IAD-FRAMEWORK`
 - Elinor Ostrom — *Understanding Institutional Diversity* — `THINKERS-OSTROM-SOURCE-UNDERSTANDING-INSTITUTIONAL-DIVERSITY`
+- Richard P. Rumelt — one P1 work missing (specific source title/ID not yet recorded in the repository; see `Knowledge/SYNTHESIS_AND_EXPORT.md` bounded-evidence note)
+- Everett M. Rogers — two P1 works missing (specific source titles/IDs not yet recorded in the repository; see `Knowledge/SYNTHESIS_AND_EXPORT.md` bounded-evidence note)
 
 ## Synthesis snapshot
 
@@ -31,7 +34,7 @@
 - preferred lenses per case: 2–3
 - maximum lenses per case: 4
 - status source: repository-side Thinkers OS registry
-- current limitation: Drucker, Boyd, Munger, Ohno, Simon, and Goldratt have Judge-pass isolated author patterns but are not incorporated into the active cross-author synthesis set.
+- current limitation: Drucker, Boyd, Munger, Ohno, Simon, Goldratt, Rumelt, Rogers, and Norman have Judge-pass isolated author patterns but are not incorporated into the active cross-author synthesis set. Of these, only Simon, Goldratt, Rumelt, Rogers, and Norman have a published isolated-pattern entry (`Knowledge/SYNTHESIS_AND_EXPORT.md` § "Available isolated Judge-pass patterns"); Drucker, Boyd, Munger, and Ohno are marked export-ready with no isolated-pattern content published yet — flagged as a separate open gap, not fixed by this status correction.
 
 ## Next resumable stage
 

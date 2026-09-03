@@ -4,7 +4,7 @@
 
 | Author | Coverage | Artifact/Judge state | Cross-author state |
 |---|---|---|---|
-| Peter Drucker | complete | Judge pass, export ready | isolated author pattern |
+| Peter Drucker | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 | W. Edwards Deming | complete | Judge pass, export ready | active synthesis lens |
 | Daniel Kahneman | complete | Judge pass, export ready | active synthesis lens |
 | Vladimir Lenin | complete | Judge pass, export ready | active synthesis lens |
