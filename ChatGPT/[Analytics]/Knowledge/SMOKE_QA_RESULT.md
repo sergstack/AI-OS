@@ -41,7 +41,7 @@ next_step: run a bounded real-data pilot while keeping production status NOT AUT
 - Main file rules are defined in `Knowledge/MAIN_FILES_STANDARD.md`, `Knowledge/ANALYTICS_WORKFLOW.md`, and `Knowledge/MARTS_DESIGN.md`.
 - QA and acceptance are defined in `Knowledge/QA_CHECKLIST.md` and `Knowledge/ACCEPTANCE_CRITERIA.md`.
 - External `[ANALYTICS]` instructions were updated and verified after reload at 7,703 characters.
-- Refreshed `ANALYTICS_05_QA_GOVERNANCE_ROUTING.md` was uploaded; the prior same-name source remains visible pending an explicit deletion decision.
+- Refreshed `ANALYTICS_05_QA_GOVERNANCE_ROUTING.md` was uploaded; the prior same-name source remains visible pending an explicit deletion decision. **Unresolved as of 2026-09-03** (flagged by `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` as a dangling note with no owner/date): this describes external ChatGPT Project Sources state that cannot be verified or resolved from the repository. Resolve by manually deleting the duplicate-named source in the live ChatGPT UI, then update this line.
 - The same no-data prompt decreased from 1,850 to 1,034 visible characters (44.1%), removed the placeholder Top-3 table, and retained `NOT CALCULABLE`, confidence, minimum input, and next action.
 - The supplied-data regression case retained ranking, the zero-denominator guard, the root-cause boundary, QA/limitations, and the `[Analytics]` → `[Codex]` handoff boundary.
 - Targeted repository validation: 38 tests passed; Local Developer Worker test parse `RUN-7f1bcfa5e1e24979` independently recorded `run_status: passed` with observed exit code `0`.
