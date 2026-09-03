@@ -1,6 +1,6 @@
 # Thinkers Conflict Map
 
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": Conflict Map review case `pass`)
 - evidence_scope: Judge-pass author patterns only
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED

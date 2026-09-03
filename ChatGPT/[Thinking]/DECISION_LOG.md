@@ -1,5 +1,12 @@
 # [Thinking] Decision Log
 
+Rows prefixed `AIOS-` are `[AI OS]` repo-governance decisions, mirrored here
+because no dedicated `[AI OS]`-owned decision-log artifact exists yet
+(revision review 2026-09-03, `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`
+flagged this as scope creep to fix on the `[AI OS]` side — this note marks
+them as an intentional cross-reference in the meantime, not `[Thinking]`'s
+own decisions). Rows prefixed `TH-` are genuine `[Thinking]` decisions.
+
 | Decision ID | Date | Decision | Status | Confidence | Owner | Revisit trigger | Next review | Handoff | Accepted by | Acceptance evidence | Supersedes | Superseded by | Outcome | Link |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | TH-2026-05-25-01 | 2026-05-25 | Add standalone status, QA, decision, and revisor governance files for [Thinking] | recommended | strong | Sergey / Thinking Lead | new data; routing conflict; judge/revisor failure; smoke QA fail | on next governance update | none | Sergey | `SMOKE_QA_RESULTS.md` pass | none | none | active | `CURRENT_STATUS.md` |

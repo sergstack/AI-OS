@@ -129,8 +129,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinking]/Knowledge/INDEX.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_STATUS_AND_REVISIT.md`, `ChatGPT/[Thinking]/Knowledge/DECISION_MEMO_TEMPLATE.md`, `ChatGPT/[Thinking]/DECISION_LOG.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_01_WORKFLOW_AND_DECISIONS_BUNDLE_SEMANTICS.md`
-- Source bytes: 43511
-- Bundle bytes: 44658
+- Source bytes: 43971
+- Bundle bytes: 45117
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -157,8 +157,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinking]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Thinking]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Thinking]/Knowledge/SCENARIO_ANALYSIS_TEMPLATE.md`, `ChatGPT/[Thinking]/CURRENT_STATUS.md`, `ChatGPT/[Thinking]/SMOKE_QA_RESULTS.md`, `ChatGPT/[Thinking]/Knowledge/THINKING_03_ROUTING_AND_TEMPLATES_BUNDLE_SEMANTICS.md`
-- Source bytes: 14268
-- Bundle bytes: 15478
+- Source bytes: 14943
+- Bundle bytes: 16153
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -171,8 +171,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md`
-- Source bytes: 26215
-- Bundle bytes: 27620
+- Source bytes: 27022
+- Bundle bytes: 28427
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

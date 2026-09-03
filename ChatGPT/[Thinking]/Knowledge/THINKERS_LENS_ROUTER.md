@@ -1,6 +1,6 @@
 # Thinkers Lens Router
 
-- deployment_status: repository_candidate_not_uploaded
+- deployment_status: bundled_and_uploaded_2026-07-31; external behavioral smoke passed (`SMOKE_QA_RESULTS.md` "External behavioral smoke": lens anti-bloat, Conflict Map review, and case-evidence-precedence cases all `pass`)
 - synthesis_status_source: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`
 - owner_acceptance: pending
 - production_status: NOT AUTHORIZED

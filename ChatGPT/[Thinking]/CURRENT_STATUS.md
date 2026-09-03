@@ -2,8 +2,9 @@
 
 Status: active
 Owner: Sergey / Thinking Lead
-Last updated: 2026-07-31
+Last updated: 2026-09-03
 Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass after 2 targeted reruns
+Last pilot: `PILOT-THINKING-001` (2026-08-27) — one live decision memo, recorded `candidate` / `medium` confidence in root `docs/evidence/PILOT_RESULTS_2026-08-27_THINKING.md`; next step is owner review, then a further bounded pilot (see root `docs/operations/PILOT_CASES.md`)
 
 ## Active canonical files
 
@@ -54,13 +55,13 @@ Last smoke QA: 2026-07-31 — repository contract pass; external behavior pass a
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 - External ChatGPT sync is complete for Project Instructions and all four authoritative bundles.
 - External behavioral smoke initially found two missing explicit fields; the Project Instructions gate was clarified and both targeted reruns passed.
-- No prospective `[Thinking]` application entry exists; application effectiveness is unverified.
+- One prospective `[Thinking]` application pilot ran 2026-08-27 (`PILOT-THINKING-001`, see "Last pilot" above) with `candidate`/`medium`-confidence result; broader application effectiveness beyond this one pilot remains unverified.
 
 ## Thinkers synthesis status
 
 - repository bundle: synchronized to external `[Thinking]`; follow-up instruction fix verified
 - pattern count: 5 active provisional read-only mirrors
-- isolated patterns excluded: Boyd, Drucker, Munger, Ohno
+- isolated patterns excluded: Drucker, Boyd, Munger, Ohno, Simon, Goldratt, Rumelt, Rogers, Norman (corrected 2026-09-03 to match `[Thinkers OS]`'s current portfolio — Rumelt/Rogers/Norman were added there 2026-08-21 and this list had not been updated; see `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`)
 - pilot candidate revisions: excluded pending separate Judge authorization
 - owner acceptance: pending
 - production status: NOT AUTHORIZED
