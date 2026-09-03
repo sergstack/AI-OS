@@ -74,11 +74,12 @@
 - `Codex_Tasks/06_TEXT_QA.md`
 - `Codex_Tasks/07_SMOKE_QA.md`
 
-`Codex_Tasks/` also holds newer working content (`fix-notes/`, `golden_memo_pack/`,
-`llm-text-standards/`, `workflow/`, and a few loose files) not listed here —
-disposition (archive, fold into current standards, or keep as a separate
-in-flight track) is a pending owner decision, not a manifest omission to
-mechanically close. See `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`.
+`Codex_Tasks/` previously also held stale working content (`fix-notes/`,
+`golden_memo_pack/`, `llm-text-standards/`, `workflow/`, and a few loose
+files); by owner decision 2026-09-03 it was archived to
+`archive/implementation_evidence/analytics_codex_tasks_legacy/` and is no
+longer part of this package. See that folder's `README.md` and
+`docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md`.
 
 `Knowledge_Bundles/` is intentionally not listed here — it is the separate
 compact-upload artifact (see `README.md` → default upload mode), not part of

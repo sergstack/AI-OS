@@ -12,6 +12,7 @@ acceptance records for audit and rollback context.
 | `aios_dual_surface_phase1/` | `PASS_WITH_LIMITATIONS`; repository implementation delivered | Production promotion remained `no` |
 | `thinkers_os_integration/` | Repository-side acceptance complete | External owner acceptance remained pending |
 | `thinkers_thinking_integration/` | Repository implementation passed | Manual ChatGPT sync remained an owner handoff |
+| `analytics_codex_tasks_legacy/` | No formal acceptance/closure record — stale working content archived by explicit owner decision 2026-09-03, not a completed-and-accepted package (see its own `README.md`) | Not externally uploaded/referenced |
 
 ## Archive Rules
 
