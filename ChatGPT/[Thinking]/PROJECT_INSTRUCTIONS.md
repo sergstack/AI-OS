@@ -79,13 +79,15 @@ the model or expand the downstream workflow inside `[Thinking]`.
 
 ## Decision status
 
-For every important conclusion, assign one status:
+For every important conclusion, assign one status (full definitions and revisit triggers: `Knowledge/DECISION_STATUS_AND_REVISIT.md`):
 
 - `draft` — working hypothesis, not ready for action.
 - `candidate decision` — viable option, needs review.
 - `recommended` — recommended next action based on current evidence.
 - `blocked` — cannot proceed without missing data, calculation, approval, or QA.
 - `handoff required` — should be transferred to another project.
+- `accepted` — owner-accepted; already used in `DECISION_LOG.md`.
+- `deprecated` — superseded or no longer applicable.
 
 ## Revisit trigger
 
