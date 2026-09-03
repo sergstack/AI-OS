@@ -6,7 +6,6 @@ Compact upload artifact for [LLM] covering workflows and handoff.
 
 ## Source files
 
-- `ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md`
 - `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`
 - `ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md`
 - `ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md`
@@ -32,31 +31,12 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:236291cadfdfc4f7d733e1ba622744632cdb7611b156f68e42ec1ffaf63d2f8f
+- source_fingerprint: sha256:b988a1ffe3686b28ce305f9ebb10e0eb85c6be6a31d6d56cb6761df5df284851
 - generator: scripts/build_knowledge_bundles.py
 
 ---
 
 # Content
-
-## From: `ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md`
-
-# Local LLM Workflow
-## Purpose
-Use local/Ollama/Open WebUI for drafts, retrieval experiments, private context exploration, or non-critical generation.
-## Workflow
-1. Prepare compact context.
-2. Run retrieval or draft locally.
-3. Copy relevant retrieved excerpts.
-4. Send curated excerpts to ChatGPT for reasoning/synthesis if needed.
-5. Judge output.
-6. Record limitations.
-## Do not
-- treat local retrieval as final truth;
-- upload secrets;
-- rely on raw dump;
-- skip source grounding;
-- use local output as production fact without QA.
 
 ## From: `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`
 

@@ -460,7 +460,6 @@
       "project": "[LLM]",
       "output": "ChatGPT/[LLM]/Knowledge_Bundles/LLM_04_WORKFLOWS_AND_HANDOFF.md",
       "sources": [
-        "ChatGPT/[LLM]/Knowledge/LOCAL_LLM_WORKFLOW.md",
         "ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md",
         "ChatGPT/[LLM]/Knowledge/RELATIONSHIP_CRM_LITE_TEMPLATE.md",
         "ChatGPT/[LLM]/Knowledge/WEEKLY_RELATIONSHIP_REVIEW_BLOCK.md",
