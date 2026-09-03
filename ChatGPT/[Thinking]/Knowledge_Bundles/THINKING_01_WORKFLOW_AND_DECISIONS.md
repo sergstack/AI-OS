@@ -23,7 +23,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:9ef824411e9085b88270d53abae40b68974d6c5f0aa22dd73b10858e2c88b94d
+- source_fingerprint: sha256:1d1965d54f588c98d897fad3a5daf12dd43233f81aea4bc23967c758c3f5b040
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -85,6 +85,12 @@ history alone — flagged for owner confirmation rather than assumed.
 ## From: `ChatGPT/[Thinking]/Knowledge/THINKING_WORKFLOW.md`
 
 # Thinking Workflow
+Status: candidate reference (see `CURRENT_STATUS.md`), not the governing
+workflow. For a material complex case, `PROJECT_INSTRUCTIONS.md`'s "Базовый
+workflow" is canonical — it adds a Lens gate (`THINKERS_LENS_ROUTER.md`),
+Conflict check (`THINKERS_CONFLICT_MAP.md`), and an application-Log step that
+this simplified 7-step version omits. Use this file only for the general
+shape; use `PROJECT_INSTRUCTIONS.md` for anything thinker-pattern-related.
 ## Purpose
 Использовать для сложных решений, стратегии, рисков и выбора маршрута.
 ## Workflow

@@ -1,5 +1,12 @@
 # Thinking Workflow
 
+Status: candidate reference (see `CURRENT_STATUS.md`), not the governing
+workflow. For a material complex case, `PROJECT_INSTRUCTIONS.md`'s "Базовый
+workflow" is canonical — it adds a Lens gate (`THINKERS_LENS_ROUTER.md`),
+Conflict check (`THINKERS_CONFLICT_MAP.md`), and an application-Log step that
+this simplified 7-step version omits. Use this file only for the general
+shape; use `PROJECT_INSTRUCTIONS.md` for anything thinker-pattern-related.
+
 ## Purpose
 
 Использовать для сложных решений, стратегии, рисков и выбора маршрута.

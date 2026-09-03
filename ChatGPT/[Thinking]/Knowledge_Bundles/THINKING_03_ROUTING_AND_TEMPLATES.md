@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:60888f31f33349da137a6ed25e7ae39ce78acb8423426721bd3839cc9f1576ae
+- source_fingerprint: sha256:f092971ab6fadda6a2dadcd4add135e26f6d5b2f81977a6d36e3ba28f3c05354
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -178,8 +178,8 @@ Last pilot: `PILOT-THINKING-001` (2026-08-27) — one live decision memo, record
 - Smoke QA results file added.
 - Explicit status/revisit standard added in a standalone canonical file.
 - README now points to the canonical index file.
+- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md` (moved here 2026-09-03 — was miscategorized under "Current gaps" despite reading as already resolved).
 ## Current gaps
-- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 - External ChatGPT sync is complete for Project Instructions and all four authoritative bundles.

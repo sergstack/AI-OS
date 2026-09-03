@@ -47,10 +47,10 @@ Last pilot: `PILOT-THINKING-001` (2026-08-27) — one live decision memo, record
 - Smoke QA results file added.
 - Explicit status/revisit standard added in a standalone canonical file.
 - README now points to the canonical index file.
+- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md` (moved here 2026-09-03 — was miscategorized under "Current gaps" despite reading as already resolved).
 
 ## Current gaps
 
-- Scenario analysis template exists and is covered by `THINKING_03_ROUTING_AND_TEMPLATES.md`.
 - Smoke QA remains documentation-level and does not replace a pilot case.
 - Root path decision remains canonicalized to `ChatGPT/[Thinking]`.
 - External ChatGPT sync is complete for Project Instructions and all four authoritative bundles.
