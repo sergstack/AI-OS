@@ -171,8 +171,8 @@ Blocking record count: **0**
 
 - Project: [Thinking]
 - Source paths: `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_LENS_ROUTER.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_CONFLICT_MAP.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md`, `ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md`
-- Source bytes: 26189
-- Bundle bytes: 27594
+- Source bytes: 26215
+- Bundle bytes: 27620
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -479,8 +479,8 @@ Blocking record count: **0**
 
 - Project: [Thinkers OS]
 - Source paths: `ChatGPT/[Thinkers OS]/Knowledge/INDEX.md`, `ChatGPT/[Thinkers OS]/Knowledge/THINKERS_OS_WORKFLOW.md`, `ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md`, `ChatGPT/[Thinkers OS]/CURRENT_STATUS.md`
-- Source bytes: 10582
-- Bundle bytes: 11603
+- Source bytes: 11664
+- Bundle bytes: 12685
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -493,8 +493,8 @@ Blocking record count: **0**
 
 - Project: [Thinkers OS]
 - Source paths: `ChatGPT/[Thinkers OS]/Knowledge/ARTIFACT_CONTRACTS.md`, `ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md`, `ChatGPT/[Thinkers OS]/Knowledge/ROUTING_AND_HANDOFF.md`
-- Source bytes: 11927
-- Bundle bytes: 12888
+- Source bytes: 11953
+- Bundle bytes: 12914
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

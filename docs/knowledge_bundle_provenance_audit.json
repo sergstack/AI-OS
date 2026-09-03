@@ -207,8 +207,8 @@
         "ChatGPT/[Thinking]/Knowledge/THINKERS_SYNTHESIS_PATTERNS.md",
         "ChatGPT/[Thinking]/Knowledge/THINKERS_APPLICATION_LOG.md"
       ],
-      "source_bytes": 26189,
-      "bundle_bytes": 27594,
+      "source_bytes": 26215,
+      "bundle_bytes": 27620,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -682,8 +682,8 @@
         "ChatGPT/[Thinkers OS]/Knowledge/CORPUS_AND_SOURCE_RULES.md",
         "ChatGPT/[Thinkers OS]/CURRENT_STATUS.md"
       ],
-      "source_bytes": 10582,
-      "bundle_bytes": 11603,
+      "source_bytes": 11664,
+      "bundle_bytes": 12685,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -700,8 +700,8 @@
         "ChatGPT/[Thinkers OS]/Knowledge/SYNTHESIS_AND_EXPORT.md",
         "ChatGPT/[Thinkers OS]/Knowledge/ROUTING_AND_HANDOFF.md"
       ],
-      "source_bytes": 11927,
-      "bundle_bytes": 12888,
+      "source_bytes": 11953,
+      "bundle_bytes": 12914,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

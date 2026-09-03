@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 - production_status: NOT AUTHORIZED
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:70efb729c5030e3292db7a21f93ecf1104f1572246f38866cf58f4ad50e7d54d
+- source_fingerprint: sha256:eb9ff5a0d83a37a45df1288947fa66bea5a6b19db8ff26a890936656dc11fdc6
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -38,7 +38,7 @@ ChatGPT Project Sources / Knowledge for `[Thinking]`.
 ## Portfolio snapshot — 2026-08-21
 | Author | Coverage | Artifact/Judge state | Cross-author state |
 |---|---|---|---|
-| Peter Drucker | complete | Judge pass, export ready | isolated author pattern |
+| Peter Drucker | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 | W. Edwards Deming | complete | Judge pass, export ready | active synthesis lens |
 | Daniel Kahneman | complete | Judge pass, export ready | active synthesis lens |
 | Vladimir Lenin | complete | Judge pass, export ready | active synthesis lens |

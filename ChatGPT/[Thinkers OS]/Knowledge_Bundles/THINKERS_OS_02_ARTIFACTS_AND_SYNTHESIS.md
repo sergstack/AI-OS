@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Thinkers OS]`.
 - default_upload_mode: Knowledge_Bundles
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c1e98fd04870879f42ac0ac95a6191024c4c5f274b4afec91bac388744df6a06
+- source_fingerprint: sha256:0bb25be27d57428fb856b5346a8f4970ae384386f6e5b851b25e896424f4c15a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -69,7 +69,7 @@ Export one functionally relevant bounded output to one receiving project. Never 
 ## Portfolio snapshot — 2026-08-21
 | Author | Coverage | Artifact/Judge state | Cross-author state |
 |---|---|---|---|
-| Peter Drucker | complete | Judge pass, export ready | isolated author pattern |
+| Peter Drucker | complete | Judge pass, export ready | isolated author pattern pending synthesis refresh |
 | W. Edwards Deming | complete | Judge pass, export ready | active synthesis lens |
 | Daniel Kahneman | complete | Judge pass, export ready | active synthesis lens |
 | Vladimir Lenin | complete | Judge pass, export ready | active synthesis lens |
