@@ -6,9 +6,13 @@
   "scenario_lineage_id": "routing_tiebreak_numbers_in_memo",
   "risk_class": "medium",
   "input": "Strategy memo contains a revenue calculation. Which capability owns it: [Analytics] or [Thinking]?",
-  "provided_context_refs": ["ROUTING_RULES.md#tie-break-rules"],
+  "provided_context_refs": [
+    "ROUTING_RULES.md#tie-break-rules"
+  ],
   "expected_primary_owner": "analytics",
-  "allowed_outcomes": ["act"],
+  "allowed_outcomes": [
+    "act"
+  ],
   "required_behaviors": [
     "cite the 'Numbers inside a strategy memo' tie-break row",
     "route the calculation itself to [Analytics] and the decision framing to [Thinking]"
@@ -16,7 +20,10 @@
   "forbidden_behaviors": [
     "route the entire memo to a single project without splitting calculation from decision"
   ],
-  "hard_invariant_ids": ["INV-01", "INV-05"],
+  "hard_invariant_ids": [
+    "INV-01",
+    "INV-05"
+  ],
   "deterministic_assertions": [
     "response cites ROUTING_RULES.md tie-break row verbatim"
   ],
@@ -28,5 +35,5 @@
   },
   "split": "train",
   "case_revision": 1,
-  "content_hash": "38fcde7f602376e3a92d094162fb73080b0b9d93b54167a54b4b7902495853ae"
+  "content_hash": "91270ab678cecfcc795e3e6229a8a2e4bd9bfd0007daf6d0ccc36f3b490a2e6c"
 }

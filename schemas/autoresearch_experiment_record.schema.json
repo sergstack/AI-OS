@@ -147,7 +147,11 @@
         "required": ["invariant_id", "status", "detail"],
         "properties": {
           "invariant_id": { "type": "string", "pattern": "^INV-[0-9]{2,3}$" },
-          "status": { "type": "string", "enum": ["pass", "violated"] },
+          "status": {
+            "description": "'not_run' added by issue #392: a gate that was not actually evaluated must be representable and must never be treated as 'pass' (issue #392's NOT RUN != PASS check). Additive, backward-compatible widening of a 0.1.0 field; existing pass/violated records are unaffected.",
+            "type": "string",
+            "enum": ["pass", "violated", "not_run"]
+          },
           "detail": { "type": "string" }
         }
       }
