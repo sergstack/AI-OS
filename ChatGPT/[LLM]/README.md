@@ -59,6 +59,8 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `CROSS_PROJECT_LIVE_EVAL_MATRIX.md` — versioned live test of the LLM boundary across all seven ChatGPT Projects.
 - `LLM_PROJECT_STATUS.md` — current project status.
 - `EVAL_RUN_TEMPLATE.md` — eval run template.
+- `LLM_EVAL_STANDARD.md` — risk-proportional evaluation levels for reusable `[LLM]` assets.
+- `PROMPT_LIFECYCLE_STANDARD.md` — lifecycle stages for reusable prompt/workflow assets.
 
 ## Что не делать
 

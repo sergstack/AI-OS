@@ -80,6 +80,8 @@ prompt-registry debt below.
 - `Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`
 - `Knowledge/LLM_PROJECT_STATUS.md`
 - `Knowledge/EVAL_RUN_TEMPLATE.md`
+- `Knowledge/LLM_EVAL_STANDARD.md`
+- `Knowledge/PROMPT_LIFECYCLE_STANDARD.md`
 
 ## Known gaps
 
