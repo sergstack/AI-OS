@@ -26,6 +26,11 @@ This file gives persistent engineering context for Codex / Claude Code tasks.
 
 ## Preferred final answer
 
+A shorter variant of the canonical schema in `EXECUTION_REPORTING_RULES.md`
+(`AGENTS.md` names that file canonical), for contexts where the fuller
+14-field schema is unnecessary bureaucracy. Use the canonical schema when in
+doubt.
+
 ```text
 Summary
 Files changed

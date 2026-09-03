@@ -423,8 +423,8 @@ Blocking record count: **0**
 
 - Project: [Codex]
 - Source paths: `ChatGPT/[Codex]/Knowledge/AGENTS.md`, `ChatGPT/[Codex]/Knowledge/CLAUDE_CODE_HANDOFF.md`, `ChatGPT/[Codex]/Knowledge/SUBAGENT_DECOMPOSITION.md`, `ChatGPT/[Codex]/Knowledge/PROMPT_LIBRARY_CODEX.md`, `ChatGPT/[Codex]/Knowledge/PROJECT_CONTEXT.md`
-- Source bytes: 6613
-- Bundle bytes: 7621
+- Source bytes: 6845
+- Bundle bytes: 7852
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

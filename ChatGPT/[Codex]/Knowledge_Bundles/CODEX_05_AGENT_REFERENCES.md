@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:c8298924458e5a4edd6db42d3154f4ba480b3b6b73cd18988d7e466f9ef98eb8
+- source_fingerprint: sha256:ba0d7141df9dde25493b040f19a620ae2c529c133b0b2c20b2aedeebf9feb08d
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -200,6 +200,10 @@ This file gives persistent engineering context for Codex / Claude Code tasks.
 - changing output contracts without explicit acceptance;
 - adding vector DB / embeddings / web UI / agentic automation before governance approval.
 ## Preferred final answer
+A shorter variant of the canonical schema in `EXECUTION_REPORTING_RULES.md`
+(`AGENTS.md` names that file canonical), for contexts where the fuller
+14-field schema is unnecessary bureaucracy. Use the canonical schema when in
+doubt.
 ```text
 Summary
 Files changed
