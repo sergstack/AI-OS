@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-ROUTING-001",
+  "case_family": "routing",
+  "finding": "B omits the explicit split-calculation-from-decision instruction that A includes.",
+  "evidence": "A explicitly separates '[Analytics] calculates; [Thinking] decides'; B routes the whole memo to [Analytics] only.",
+  "severity": "medium",
+  "affected_invariant_or_metric": "routing_correctness",
+  "verdict": "revise",
+  "confidence": "medium",
+  "limitations": "single case observation; not yet reproduced across reruns"
+}

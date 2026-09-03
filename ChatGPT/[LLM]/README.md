@@ -61,6 +61,7 @@ Granular файлы из `ChatGPT/[LLM]/Knowledge/` загружай тольк�
 - `EVAL_RUN_TEMPLATE.md` — eval run template.
 - `LLM_EVAL_STANDARD.md` — risk-proportional evaluation levels for reusable `[LLM]` assets.
 - `PROMPT_LIFECYCLE_STANDARD.md` — lifecycle stages for reusable prompt/workflow assets.
+- `AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md` — frozen blind A/B Judge contract for AIOS AutoResearch v0.1 (issue #394); `candidate` status, not active.
 
 ## Что не делать
 

@@ -82,6 +82,7 @@ prompt-registry debt below.
 - `Knowledge/EVAL_RUN_TEMPLATE.md`
 - `Knowledge/LLM_EVAL_STANDARD.md`
 - `Knowledge/PROMPT_LIFECYCLE_STANDARD.md`
+- `Knowledge/AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md`
 
 ## Known gaps
 

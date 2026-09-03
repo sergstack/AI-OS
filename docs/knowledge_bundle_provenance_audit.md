@@ -311,8 +311,8 @@ Blocking record count: **0**
 
 - Project: [LLM]
 - Source paths: `ChatGPT/[LLM]/Knowledge/QUALITY_GATES.md`, `ChatGPT/[LLM]/Knowledge/EVAL_RUN_TEMPLATE.md`, `ChatGPT/[LLM]/Knowledge/CANDIDATE_GATE_SAMPLED_QA.md`, `ChatGPT/[LLM]/Knowledge/SMOKE_QA_FOR_LLM.md`, `ChatGPT/[LLM]/Knowledge/CROSS_PROJECT_LIVE_EVAL_MATRIX.md`, `ChatGPT/[LLM]/Knowledge/LLM_PROJECT_STATUS.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_EVAL_STANDARD.md`, `ChatGPT/[LLM]/Knowledge/LLM_03_QUALITY_GATES_AND_EVAL_BUNDLE_SEMANTICS.md`
-- Source bytes: 78054
-- Bundle bytes: 79248
+- Source bytes: 78112
+- Bundle bytes: 79306
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

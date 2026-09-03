@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-HANDOFF-HOLDOUT-001",
+  "case_family": "handoff",
+  "finding": "Cannot evaluate: required rubric context (provided_context_refs) was not supplied to this evaluator run.",
+  "evidence": "prompt context block for provided_context_refs was empty",
+  "severity": "high",
+  "affected_invariant_or_metric": "context_completeness",
+  "verdict": "blocked",
+  "confidence": "low",
+  "limitations": "missing evidence; rerun with full context before drawing a conclusion"
+}

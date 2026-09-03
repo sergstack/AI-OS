@@ -25,7 +25,7 @@ ChatGPT Project Sources / Knowledge for `[LLM]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:a51b3807462d042c423d80a6451a03565cc0661442a1c113f214abf06fdaadd2
+- source_fingerprint: sha256:c34817d0be9554319d63ba69e3c8ea78a9a4ef6571a719be32509b8129fba3e2
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -599,6 +599,7 @@ prompt-registry debt below.
 - `Knowledge/EVAL_RUN_TEMPLATE.md`
 - `Knowledge/LLM_EVAL_STANDARD.md`
 - `Knowledge/PROMPT_LIFECYCLE_STANDARD.md`
+- `Knowledge/AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md`
 ## Known gaps
 - README still remains a lightweight setup file rather than a full operating manual.
 - No formal decision archive exists in `[LLM]`; that should stay in the relevant project or handoff record.

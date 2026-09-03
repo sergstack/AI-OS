@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "AR-CASE-ROUTING-001",
+  "case_family": "routing",
+  "finding": "Both A and B correctly cite the 'Numbers inside a strategy memo' tie-break row and split calculation from decision framing.",
+  "evidence": "A: 'per the Numbers inside a strategy memo rule...'; B: same rule cited with identical routing split.",
+  "severity": "low",
+  "affected_invariant_or_metric": "routing_correctness",
+  "verdict": "pass",
+  "confidence": "high",
+  "limitations": "none material"
+}
