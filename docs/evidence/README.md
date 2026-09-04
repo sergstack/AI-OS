@@ -9,6 +9,23 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`](AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md)
+  records the Issue #417 Phase 0 live calibration & discovery gate for Issue
+  #409, executed in a coordinated live session (owner signed in to the
+  dedicated Playwright MCP profile). **12 real `gpt-5-6-thinking` calls**
+  (10 subject, 2 blind A/B Judge, 0 Researcher), $0 / plan-included, 0
+  retries/timeouts/invalid outputs. Part A: a harmful shadow tie-break
+  mutation regressed the routing outcome from `blocked` to `[Codex]` as
+  designed (CAL-2b vs baseline CAL-4b); the live blind Judge flagged the
+  harmful output `revise` and the baseline `pass` **order-consistently** in
+  both A/B orders; deterministic hard-gate dominance is proven in code (0
+  Judge calls on a `discard` precheck). Part B: all 6 behavioral families
+  answered correctly on a single run each. **`measurement_verdict: pass`**;
+  **`failure_discovery_result: no_failure_found`** → **#418 (Phase 1) remains
+  `blocked`** (no reproducible, attribution-eligible baseline failure; a fake
+  failure must not be manufactured). Machine-readable per-call records in
+  `autoresearch_v02_phase0_records_2026-09-04.json`. No candidate generated or
+  applied; no active configuration touched.
 - [`AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`](AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md)
   records Issue #416 (integrate matched live runs, hard gates, ledger, stable
   CLI) for Issue #409. One documented 9-verb command surface
