@@ -4,14 +4,35 @@ Parent: [#409](https://github.com/sergstack/AI-OS/issues/409).
 Child: [#413](https://github.com/sergstack/AI-OS/issues/413) (Implement authorized Playwright MCP
 browser-session live transport and smoke proof).
 
-Status: **implementation + automated checks complete; the live browser smoke is `blocked`**
-pending one owner action (§ Blockers). Per #413's own Stop/blocker rule, implementation and
-tests may be prepared while the child stays `blocked` and is not accepted as complete until a
-real browser-produced model response has entered the pipeline without manual substitution.
+Status: **implementation + automated checks complete; the live browser smoke was subsequently
+executed on 2026-09-04** (see "Update — 2026-09-04" below). The body of this document from
+"Final response format" onward is the pre-execution snapshot recorded while the smoke was still
+`blocked`; it is retained for history and is superseded by the Update section and by
+`AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md` §2.
 
-No live model/provider/Judge call was made in producing this document. No credential value was
+No live model/provider/Judge call was made in producing *this document*. No credential value was
 read, printed, exported, or transmitted. No cookies, storage state, or browser profile were
 read or committed.
+
+---
+
+## Update — 2026-09-04 — live smoke executed
+
+The single predeclared #413 transport smoke ran in the coordinated 2026-09-04 live session,
+after PR #423 merged, using the owner-authenticated dedicated persistent Playwright MCP profile:
+
+- **1** real `gpt-5-6-thinking` subject call over the `playwright_mcp` transport; `$0` /
+  plan-included; 0 retries, 0 timeouts.
+- Context: `context_hash c5a1c5b0…` over `ROUTING_RULES.md` + `HANDOFF_STYLE_STANDARD.md` at
+  source revision `662686e…`; `role: subject_baseline`, no candidate mutation.
+- Capture: one real 607-char answer; non-placeholder `response_hash b2539ec2…`; model identity
+  `ui_observed` from `data-message-model-slug` on the assistant message node.
+- Sanitization scan on the captured answer: clean (no secret-shaped content).
+
+These facts are also recorded in `AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md` §2 and are
+counted in that document's 13-call reconciliation (this smoke + the 12 Phase 0 calls). A
+standalone structured `autoresearch_v02_413_smoke_record.json` was **not** committed; the smoke
+evidence lives in these two Markdown documents.
 
 ---
 
@@ -44,8 +65,8 @@ Target UI/product:              OpenAI ChatGPT web UI, dedicated signed-in Playw
 Observed model identity status: not_observable by default; ui_observed only when a visible model selector is read; never guessed from default/plan/URL. Comparator can distinguish verified | ui_observed | not_observable.
 Authority/budget evidence:      This document's envelope section is the authority_evidence_ref. invoke() refuses to submit without a non-empty ref, without a numeric call ceiling, or without a cost cap + currency ($0 + USD is a valid authorised cap).
 Adapter paths:                  scripts/autoresearch_live_browser_adapter.py (interface + FakeBrowserTransport + PlaywrightMcpBrowserTransport); schemas/autoresearch_live_invocation.schema.json (additive; no v0.1 schema edited); tests/test_autoresearch_live_browser_adapter.py (35 tests).
-Live smoke browser submission count: 0 so far — BLOCKED (see Blockers). Predeclared smoke = exactly 1 submission + at most 1 bounded retry.
-Live response evidence:         none yet. On execution: one sanitized normalised answer + a non-placeholder sha256 response_hash, plus transport/context/authority/model-identity-status record validating against the new schema.
+Live smoke browser submission count: 1 (executed 2026-09-04 — see "Update — 2026-09-04" above; pre-execution snapshot read 0/BLOCKED). Predeclared smoke = exactly 1 submission + at most 1 bounded retry.
+Live response evidence:         captured 2026-09-04 (see "Update — 2026-09-04" above): one sanitized 607-char answer, non-placeholder response_hash b2539ec2…, model identity ui_observed. Recorded in this document and AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md §2; no standalone JSON record committed.
 Usage/cost metadata status:     input_tokens/output_tokens = not_observable (never estimated from length); usage_metadata_status = not_observable; cost_amount = 0.0; cost_currency = USD.
 Privacy/session/secret checks:  fail-closed sanitization scan on every captured answer before persistence (cookie/authorization/bearer/sk-/token kv/storage-state/PEM shapes); a secret-shaped capture is dropped to validation_error, never persisted or hashed as PASS. No credential automation, no cookie/storage/profile export, no unrelated-tab inspection, no environment enumeration.
 Automated checks:               35 focused tests pass; full suite 531 passed (496 baseline + 35). check_manifest_paths 189/189, check_repo_public_safety PASS, check_index_coverage 9/9. New schema is valid draft-07. No real browser/network/model call in any test.
