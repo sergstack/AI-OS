@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_failure_record.schema.json",
+  "title": "AIOS AutoResearch v0.2 Failure / Reproduction Record",
+  "description": "One AutoResearch-linkage record for a failure being routed toward (or away from) an experiment proposal (issue #415, parent #409). This is NOT a second failure registry: attribution vocabulary reuses ChatGPT/[AI OS]/Knowledge/FAILURE_REGISTRY.md ('supported' here == that doc's 'attributable'); source_refs points at the canonical record. Keeps observation / reproduction / attribution / eligibility as separate machine-checkable states. Unknown revision/model/context stay null -- never fabricated replay equivalence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "failure_id",
+    "source_type",
+    "source_refs",
+    "observed_at",
+    "project",
+    "user_task_or_ref",
+    "observed_response_or_ref",
+    "sanitization_status",
+    "sensitivity_class",
+    "field_trace_provenance",
+    "source_revision_if_known",
+    "reproduction_status",
+    "reproduction_run_refs",
+    "reproduction_context_hash",
+    "reproduction_model_hash",
+    "expected_contract",
+    "actual_failure_signal",
+    "candidate_cause",
+    "cause_target",
+    "attribution_evidence",
+    "plausible_alternative_causes",
+    "minimal_discriminating_test",
+    "attribution_status",
+    "repair_eligibility",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.2.0" },
+    "failure_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{2,96}$" },
+    "source_type": { "type": "string", "enum": ["field_observation", "live_baseline", "calibration_fixture"] },
+    "source_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "observed_at": { "type": "string", "minLength": 4 },
+    "project": {
+      "type": "string",
+      "enum": ["ai_os", "thinking", "analytics", "llm", "codex", "inbox_router", "thinkers_os"]
+    },
+    "user_task_or_ref": { "type": "string", "minLength": 1 },
+    "observed_response_or_ref": { "type": "string", "minLength": 1 },
+    "sanitization_status": { "type": "string", "enum": ["sanitized", "not_required", "pending"] },
+    "sensitivity_class": {
+      "type": "string",
+      "enum": ["none", "low", "business_sensitive", "personal", "restricted"]
+    },
+    "field_trace_provenance": { "type": "string", "enum": ["none", "sanitized", "synthetic", "raw_restricted"] },
+    "field_runtime_metadata": { "type": ["object", "null"] },
+    "source_revision_if_known": { "type": ["string", "null"], "pattern": "^[0-9a-f]{7,40}$" },
+    "reproduction_status": {
+      "type": "string",
+      "enum": ["not_attempted", "reproduced", "not_reproduced", "reproduction_inconclusive"]
+    },
+    "reproduction_run_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "reproduction_context_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "reproduction_model_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "expected_contract": { "type": "string", "minLength": 1 },
+    "actual_failure_signal": { "type": "string", "minLength": 1 },
+    "candidate_cause": { "type": "string" },
+    "cause_target": { "type": "string" },
+    "attribution_evidence": { "type": "string" },
+    "plausible_alternative_causes": { "type": "array", "items": { "type": "string" } },
+    "minimal_discriminating_test": { "type": "string" },
+    "attribution_status": { "type": "string", "enum": ["supported", "uncertain", "rejected"] },
+    "attribution_explicitly_rejected": { "type": "boolean" },
+    "repair_eligibility": {
+      "type": "string",
+      "enum": ["proposal_eligible", "discriminating_experiment_only", "ineligible"]
+    },
+    "limitations": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "description": "A field observation with unknown context cannot claim 'reproduced'.",
+      "if": {
+        "properties": {
+          "source_type": { "const": "field_observation" },
+          "reproduction_context_hash": { "type": "null" }
+        }
+      },
+      "then": { "properties": { "reproduction_status": { "enum": ["not_attempted", "not_reproduced", "reproduction_inconclusive"] } } }
+    },
+    {
+      "description": "'reproduced' requires a single agreed context and model hash.",
+      "if": { "properties": { "reproduction_status": { "const": "reproduced" } } },
+      "then": {
+        "properties": {
+          "reproduction_context_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "reproduction_model_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    {
+      "description": "'supported' attribution is only eligible for a full proposal; 'uncertain' -> discriminating only; 'rejected' -> ineligible.",
+      "if": { "properties": { "attribution_status": { "const": "rejected" } } },
+      "then": { "properties": { "repair_eligibility": { "const": "ineligible" } } }
+    }
+  ]
+}

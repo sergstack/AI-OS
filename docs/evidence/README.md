@@ -9,6 +9,20 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`](AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md)
+  records Issue #415 (real failure intake, attribution, bounded Researcher
+  proposal flow) for Issue #409. `scripts/autoresearch_failure_intake.py` +
+  additive `schemas/autoresearch_failure_record.schema.json` /
+  `autoresearch_researcher_proposal.schema.json` (no v0.1 schema modified) +
+  frozen `docs/standards/autoresearch_v02_researcher_contract.json`.
+  Observation / reproduction / attribution / eligibility are separate
+  machine-checkable states; a field observation is never `reproduced` on
+  intake; reproduced-without-causal-evidence stays `uncertain`; `rejected`
+  attribution blocks any mutation proposal. `deterministic_preflight` reuses
+  the v0.1 shadow-runner machinery unchanged and does not decide the
+  candidate is good. In the 2026-09-04 live Phase 0 (#417) no failure
+  candidate arose to route through this intake. Authorizes no candidate
+  acceptance, active Project edit, merge, or production.
 - [`AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md`](AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md)
   records the Issue #419 parent final-QA gate for Issue #409 (AIOS
   AutoResearch v0.2 — live behavioral autotuning loop), re-run after the
