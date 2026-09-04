@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_run_manifest.schema.json",
+  "title": "AIOS AutoResearch v0.2 CLI Run Manifest",
+  "description": "Durable per-run state for scripts/autoresearch_cli.py (issue #416, parent #409): which canonical-sequence steps are done / pending / failed, which ephemeral worktrees this run registered, and which live invocation ids it produced. Enables bounded resume WITHOUT a daemon or a second lifecycle -- step names and statuses reuse a plain done/pending/failed vocabulary, not a parallel state machine. Additive: modifies no v0.1 schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "batch_id",
+    "source_revision",
+    "context_manifest_hash",
+    "evaluator_version_hash",
+    "authority_evidence_ref",
+    "steps",
+    "registered_worktrees",
+    "live_invocation_ids"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,96}$" },
+    "batch_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{2,96}$" },
+    "source_revision": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "context_manifest_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "evaluator_version_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "authority_evidence_ref": { "type": "string", "minLength": 1 },
+    "steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(loaded|doctor|preview|baseline_context|baseline_runs|candidate_worktree|candidate_patch|candidate_context|candidate_runs|hard_gates|judge|comparator|decision|ledger|report|cleanup)$": {
+          "type": "string",
+          "enum": ["pending", "done", "failed"]
+        }
+      }
+    },
+    "registered_worktrees": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "live_invocation_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  }
+}
