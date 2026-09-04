@@ -27,7 +27,7 @@ run. This revision supersedes that draft on the same branch; the git history pre
 | #410 | Audit v0.1 reuse & live-transport feasibility | merged (PR #420) | `AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md` |
 | #411 | Freeze live-execution/privacy/budget/authority/evidence contract | merged (PR #421) | `AUTORESEARCH_V02_LIVE_CONTRACT.md`, authority matrix, batch-config schema |
 | #412 | Deterministic AI-OS context-pack compiler | merged (PR #422) | `autoresearch_context_pack_compiler.py`, `autoresearch_context_manifest.schema.json` |
-| #413 | Playwright MCP browser-session live transport + smoke | merged (PR #423); **smoke executed** | `AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md` + `autoresearch_v02_413_smoke_record.json` — 1 real `gpt-5-6-thinking` call, `response_hash b2539ec2…`, model `ui_observed` |
+| #413 | Playwright MCP browser-session live transport + smoke | merged (PR #423); **smoke executed** | `AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md` (§ "Update — 2026-09-04") — 1 real `gpt-5-6-thinking` call, `response_hash b2539ec2…`, model `ui_observed`; smoke facts recorded inline, no standalone JSON record committed |
 | #414 | Live blind A/B semantic Judge + de-blinding | PR #425 (review) | `AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`; live blind Judge exercised in #417 |
 | #415 | Real failure intake, attribution, bounded Researcher proposal | PR #426 (review) | `AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`; no failure candidate arose to route through it |
 | #416 | Matched live runs, hard gates, ledger, stable CLI | PR #427 (review) | `AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`; 9-verb CLI, dry-run, resume, cleanup |
