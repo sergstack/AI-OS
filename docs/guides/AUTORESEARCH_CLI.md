@@ -139,6 +139,54 @@ Removes **only** the ephemeral worktrees registered in that run manifest
 (`autoresearch_shadow_runner.remove_shadow_worktree`), preserves all evidence,
 and never touches `main`, the parent working tree, or any unregistered path.
 
+## Coordinated-session seam (`experiment`, non-dry-run — issue #433)
+
+A bare shell `autoresearch_cli.py experiment` has **no live transport** and
+cannot get one (a shell process has no MCP access), so it still exits `4`
+(`blocked`) with a reason pointing here. A live run happens only through the
+**coordinated-session** entrypoint, driven by an operator/agent that holds the
+`mcp__playwright__browser_*` tools:
+
+```python
+import autoresearch_coordinated_session as acs
+
+def mcp_call(tool_name, arguments):
+    # forward to the real mcp__playwright__browser_* tool and return its dict
+    ...
+
+result = acs.run_manual_candidate_evaluation(
+    mcp_call=mcp_call,
+    batch_config=json.load(open("batch.json")),      # #411 schema; authority_status == "authorized",
+                                                     # authority_evidence_ref set, call_timeout_seconds set
+    spec=acs.load_spec("spec.json"),                 # ManualCandidateSpec: one frozen human-authored candidate
+    budget=cli.RoleBudget(max_provider_calls=40, max_cost_amount=0.0, max_cost_currency="USD"),
+    evidence_dir=Path("docs/evidence/…"),
+)
+```
+
+`mcp_call` is the **only** new privilege. Everything downstream is the frozen
+pipeline: `PlaywrightMcpBrowserTransport` (#413) → `run_shadow_experiment`
+(#393, isolated worktree + scope gate) → deterministic hard gates (#392) →
+blind A/B `run_blind_ab` in both orders (#414) → `aggregate_decision` (#395) →
+sanitized evidence package. `Controller.run_experiment` is a **sequencer with
+no decision logic of its own**.
+
+Outcome is exactly one of `reject | inconclusive | candidate_for_owner_review`
+— never `keep_candidate`. `candidate_for_owner_review` is research evidence
+only: it is not owner acceptance, merge, or promotion authority.
+
+Fail-closed is unchanged: missing transport binding, missing/`!= "authorized"`
+batch authority, unauthorized budget, missing `authority_evidence_ref`, patch
+scope violation, or context drift outside the one declared mutation all stop
+the run before or at the first gate.
+
+Method-sensitive glue — rerun orchestration (**MD-1**), the
+`CaseSemanticEvidence → CaseObservation` mapping (**MD-2**), and the decision
+label (**MD-4**) — is isolated in `autoresearch_cli` and **requires
+[AI OS] / [Analytics] sign-off** against `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md`
+and `AUTORESEARCH_SEMANTIC_EVALUATOR_CONTRACT.md` before it drives a paid/live
+call. It does not modify either document or the comparator method.
+
 ## What the CLI never does
 
 Phase 0/1 batches; hard-coded observations in a live path; active Project

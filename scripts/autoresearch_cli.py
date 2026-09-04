@@ -365,6 +365,205 @@ class Controller:
             ),
         }
 
+    # -- run_experiment (issue #433: the sequencer #416 never committed) --
+
+    def run_experiment(
+        self,
+        *,
+        spec: "ManualCandidateSpec",
+        batch_config: dict,
+        budget: RoleBudget,
+        evidence_dir: Optional[Path] = None,
+    ) -> dict:
+        """Sequence the already-frozen live components into ONE matched
+        baseline/candidate evaluation. This method invents NO decision logic:
+        every gate, comparison, and verdict comes from an existing function
+        (`cpc.*`, `asr.run_shadow_experiment`, `lj.run_blind_ab`,
+        `adc.evaluate_case` / `adc.aggregate_decision`). It is reachable only
+        when a real transport + judge binding has been injected into this
+        Controller by `autoresearch_coordinated_session` under a coordinated
+        live session; a bare CLI invocation keeps `transport is None` and is
+        still structurally blocked.
+
+        Method-sensitive glue (rerun orchestration, live-evidence -> comparator
+        input) is isolated in `_semantic_to_case_observation` /
+        `_matched_reruns` below and is flagged for [AI OS] / [Analytics]
+        sign-off per issue #433 -- it does not alter the #395 comparator
+        method or the #394 evaluator contract.
+        """
+        # -- fail-closed guards (reuse the same predicates doctor uses) --
+        if self.transport is None:
+            return {
+                "status": "blocked",
+                "reason": "no live transport binding; run via autoresearch_coordinated_session "
+                "under a coordinated live session (issue #433). A bare CLI process cannot hold one.",
+            }
+        if self.judge_model is None:
+            return {"status": "blocked", "reason": "no live judge binding"}
+        if not budget.authorized():
+            return {"status": "blocked", "reason": "budget not authorized (numeric call ceiling + cost cap + currency required)"}
+        if str(batch_config.get("authority_status") or "") != "authorized":
+            return {"status": "blocked", "reason": "batch authority_status is not 'authorized'"}
+
+        manifest = av.load_manifest()
+        shared_budget = budget.as_shared_state()
+        evidence: dict = {
+            "schema_note": "sanitized manual_candidate_evaluation evidence package (issue #433); NOT a failure-driven experiment ledger record",
+            "mode": spec.mode,
+            "experiment_id": spec.experiment_id,
+            "baseline_revision": spec.baseline_revision,
+            "research_surface": spec.research_surface,
+            "target_file": spec.target_file,
+            "candidate_patch_hash": spec.candidate_patch_hash,
+            "run_count": spec.run_count,
+            "reruns": [],
+            "limitations": [
+                "repo_replay via a fresh chat is a lower-fidelity approximation of the real configured Project runtime; no UI-equivalence claim.",
+                "subject and Judge share a model class (limited_same_model_class); Judge agreement is not independent corroboration.",
+                "rerun orchestration (MD-1) and live-evidence->CaseObservation mapping (MD-2) are pending [AI OS]/[Analytics] sign-off per issue #433.",
+            ],
+        }
+
+        # -- deterministic context + hard-gate layer (all reused, unchanged) --
+        try:
+            baseline_ctx = cpc.compile_subject_baseline(
+                repo_root=self.repo_root, source_revision=spec.baseline_revision, project=spec.project
+            )
+            # compile_subject_candidate runs asr.reject_patch_scope (the #388/#390
+            # hard scope gate) inside an isolated worktree BEFORE rendering.
+            candidate_ctx = cpc.compile_subject_candidate(
+                repo_root=self.repo_root,
+                source_revision=spec.baseline_revision,
+                project=spec.project,
+                candidate_patch_text=spec.patch_text,
+                research_surface=spec.research_surface,
+            )
+        except cpc.ContextCompilerError as exc:
+            evidence["hard_gate"] = {"status": "violated", "detail": str(exc)}
+            return _finalize_pilot(evidence, raw_decision="discard",
+                                   reason=f"deterministic hard gate (patch scope / apply): {exc}",
+                                   evidence_dir=evidence_dir, budget=budget)
+
+        equiv = cpc.equivalence_report(baseline_ctx, candidate_ctx)
+        evidence["context_equivalence"] = equiv
+        if not equiv.get("equivalent") or set(equiv.get("differences", [])) - {spec.target_file}:
+            return _finalize_pilot(evidence, raw_decision="discard",
+                                   reason=f"context drift outside the declared mutation: {equiv}",
+                                   evidence_dir=evidence_dir, budget=budget)
+        evidence["baseline_context_hash"] = baseline_ctx["context_hash"]
+        evidence["candidate_context_hash"] = candidate_ctx["context_hash"]
+
+        case_ids = [c["case_id"] for c in spec.cases]
+
+        # -- MD-1: rerun orchestration = repeat the frozen matched-run --
+        # `asr.run_shadow_experiment` N times against the ONE immutable
+        # baseline revision + the ONE patch. Each call = 1 baseline + 1
+        # candidate live subject call per case, through the injected transport.
+        rerun_outputs: dict = {cid: {"baseline": [], "candidate": []} for cid in case_ids}
+        for k in range(spec.run_count):
+            exp_id_k = f"{spec.experiment_id}-r{k}"
+            requests_by_key = _build_requests(
+                spec=spec, experiment_id=exp_id_k, case_ids=case_ids,
+                baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx,
+                authority_evidence_ref=str(batch_config.get("authority_evidence_ref", "")),
+            )
+            policy = _transport_policy(batch_config)
+            sink: list = []
+            adapter = lba.live_browser_adapter_callable(
+                requests_by_key=requests_by_key, policy=policy, budget=shared_budget,
+                transport=self.transport, results_sink=sink,
+            )
+            min_record = {
+                "experiment_id": exp_id_k,
+                "baseline_revision": spec.baseline_revision,
+                "candidate_patch_hash": spec.candidate_patch_hash,
+                "research_surface": spec.research_surface,
+            }
+            rr = asr.run_shadow_experiment(
+                repo_root=self.repo_root, experiment_record=min_record, manifest=manifest,
+                patch_text=spec.patch_text, adapter=adapter, case_ids=case_ids,
+            )
+            evidence["reruns"].append({
+                "rerun": k, "experiment_id": exp_id_k, "shadow_status": rr.status,
+                "notes": rr.notes,
+                "invocations": [lba.to_live_invocation_record(r) for r in sink],
+                "findings": [f.evidence for f in rr.findings],
+            })
+            if rr.status == "rejected":
+                return _finalize_pilot(evidence, raw_decision="discard",
+                                       reason=f"deterministic hard gate inside run_shadow_experiment: {rr.notes}",
+                                       evidence_dir=evidence_dir, budget=budget)
+            for cid in case_ids:
+                bl = (rr.baseline_observations or {}).get(cid)
+                cd = (rr.candidate_observations or {}).get(cid)
+                rerun_outputs[cid]["baseline"].append(bl["response"] if bl else None)
+                rerun_outputs[cid]["candidate"].append(cd["response"] if cd else None)
+
+        # -- blind A/B Judge (frozen #414 path, unchanged) --
+        evaluator_config = lj.EvaluatorConfig.load(
+            self.repo_root / "docs/standards/autoresearch_v02_evaluator_config.json"
+        )
+        finding_schema = _load_json(
+            str(self.repo_root / "schemas/autoresearch_live_semantic_finding.schema.json")
+        )
+        case_results = []
+        evidence["cases"] = []
+        for c in spec.cases:
+            cid = c["case_id"]
+            outs = rerun_outputs[cid]
+            first_bl = next((x for x in outs["baseline"] if x), None)
+            first_cd = next((x for x in outs["candidate"] if x), None)
+            if first_bl is None or first_cd is None:
+                # no usable subject output on any rerun -> inconclusive by construction
+                obs = adc.CaseObservation(
+                    case_id=cid, case_family=c["case_family"],
+                    baseline_verdicts=tuple([None] * spec.run_count),
+                    candidate_verdicts=tuple([None] * spec.run_count),
+                    model_provider_runtime_hash="not_observable",
+                    evaluator_version_hash=evaluator_config.frozen_hash(),
+                )
+                case_results.append(adc.evaluate_case(obs, target_family_flag=c["target_family_flag"]))
+                evidence["cases"].append({"case_id": cid, "semantic": "skipped: no subject output", "case_observation": _obs_dump(obs)})
+                continue
+            sem = lj.run_blind_ab(
+                case={"case_id": cid, "case_family": c["case_family"], "input": c.get("input")},
+                baseline_output=first_bl, candidate_output=first_cd,
+                evaluator_config=evaluator_config, judge=self.judge_model,
+                finding_schema=finding_schema, experiment_id=spec.experiment_id,
+                seed=spec.seed, deterministic_precheck="none",
+                retry_limit=int(batch_config.get("retry_limit", 1)),
+            )
+            obs = _semantic_to_case_observation(
+                sem=sem, case=c, rerun_outputs=outs, run_count=spec.run_count,
+                evaluator_version_hash=evaluator_config.frozen_hash(),
+            )
+            case_results.append(adc.evaluate_case(obs, target_family_flag=c["target_family_flag"]))
+            evidence["cases"].append({
+                "case_id": cid,
+                "semantic": {
+                    "consistency": sem.consistency, "aggregate_verdict": sem.aggregate_verdict,
+                    "contributes": sem.contributes, "independence_level": sem.independence_level,
+                    "judge_invocation_ids": sem.judge_invocation_ids, "deblinding": sem.deblinding,
+                    "limitations": sem.limitations,
+                },
+                "case_observation": _obs_dump(obs),
+            })
+
+        raw = adc.aggregate_decision(case_results)
+        evidence["comparator"] = raw
+        evidence["case_results"] = [
+            {
+                "case_id": r.case_id, "case_family": r.case_family,
+                "non_inferiority_result": r.non_inferiority_result,
+                "material_regression_flag": r.material_regression_flag,
+                "material_improvement_result": r.material_improvement_result,
+                "missingness_reason": r.missingness_reason,
+            }
+            for r in case_results
+        ]
+        return _finalize_pilot(evidence, raw_decision=raw["decision"], reason=raw["reason"],
+                               evidence_dir=evidence_dir, budget=budget)
+
 
 # ---------------------------------------------------------------------------
 # CLI wiring
@@ -384,6 +583,199 @@ def _budget_from_args(args) -> RoleBudget:
         max_cost_currency=args.cost_currency,
         max_wall_clock_minutes=args.max_minutes,
     )
+
+
+# ---------------------------------------------------------------------------
+# run_experiment support (issue #433) -- pure glue over frozen components
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class ManualCandidateSpec:
+    """One human-authored, pre-frozen candidate for a bounded
+    `manual_candidate_evaluation` (issue #433). Not a Researcher proposal and
+    not a failure-driven experiment: `research_surface` must still be a
+    declared mutable surface id, `patch_text` must still pass the frozen
+    scope gate, and the outcome maps to reject | inconclusive |
+    candidate_for_owner_review -- never keep_candidate."""
+
+    experiment_id: str
+    baseline_revision: str
+    project: str
+    research_surface: str
+    target_file: str
+    patch_text: str
+    candidate_patch_hash: str
+    cases: list  # [{case_id, case_family, target_family_flag, input}]
+    run_count: int = 3
+    seed: int = 0
+    mode: str = "manual_candidate_evaluation"
+
+
+def _transport_policy(batch_config: dict) -> "lba.TransportPolicy":
+    """Build the frozen per-batch browser policy from the #411 batch config.
+    `call_timeout_seconds` is threaded through as an attribute the adapter's
+    `_timeout_seconds` already looks for; there is no default invented here."""
+    policy = lba.TransportPolicy(
+        transport_id=batch_config.get("transport_id", "playwright_mcp"),
+        transport_version=str(batch_config.get("transport_version", "unversioned")),
+        transport_mode="dedicated_persistent_profile",
+        target_product=batch_config.get("target_product", "openai_chatgpt_ui"),
+        target_url_prefix=batch_config.get("target_url_prefix", "https://chatgpt.com/"),
+        session_policy=batch_config.get("session_policy", "fresh_conversation"),
+        expected_model_selector=batch_config.get("expected_model_selector") or None,
+        expected_context_hash=None,  # each request carries its own; baseline != candidate by design
+    )
+    ts = batch_config.get("call_timeout_seconds")
+    if isinstance(ts, int) and ts > 0:
+        object.__setattr__(policy, "call_timeout_seconds", ts)
+    return policy
+
+
+def _build_requests(*, spec: ManualCandidateSpec, experiment_id: str, case_ids: list,
+                    baseline_ctx: dict, candidate_ctx: dict, authority_evidence_ref: str) -> dict:
+    out: dict = {}
+    for cid in case_ids:
+        for condition, ctx in (("baseline", baseline_ctx), ("candidate", candidate_ctx)):
+            payload = _case_payload(spec, cid, ctx)
+            out[(experiment_id, condition, cid)] = lba.LiveInvocationRequest(
+                invocation_id=f"{experiment_id}:{condition}:{cid}",
+                experiment_id=experiment_id, condition=condition, case_id=cid,
+                context_id=ctx["context_id"], context_hash=ctx["context_hash"],
+                payload_text=payload, authority_evidence_ref=authority_evidence_ref,
+                external_action_preview_ref=f"preview:{experiment_id}:{condition}:{cid}",
+            )
+    return out
+
+
+def _case_payload(spec: ManualCandidateSpec, case_id: str, ctx: dict) -> str:
+    """The subject prompt: the compiled repo-replay context summary followed
+    by the frozen case task text. Deterministic; no candidate identity or
+    hypothesis is ever included (both conditions get the same case text; only
+    the context differs, by exactly the one mutated file)."""
+    case = next((c for c in spec.cases if c["case_id"] == case_id), {})
+    task = case.get("input") or "[no case input provided]"
+    return f"{cpc.render_summary(ctx)}\n\n---\nTASK:\n{task}\n"
+
+
+# --- METHOD DECISION MD-2 (requires [AI OS] / [Analytics] sign-off, issue #433) ---
+# `lj.run_blind_ab` yields ONE relative A/B verdict per case (`contributes` in
+# {pass, revise, blocked, inconclusive}). `adc.CaseObservation` wants per-SIDE
+# absolute verdicts across >=3 matched reruns. This adapter maps the two,
+# conservatively (bias toward inconclusive / reject), WITHOUT touching the
+# #395 comparator method:
+#   contributes == "pass"            -> (baseline="pass",  candidate="pass")
+#   contributes in {revise, blocked} -> (baseline="pass",  candidate=<that>)   # attribute the material finding to the candidate
+#   contributes == "inconclusive"    -> (None, None)                            # comparator -> no_observation / inconclusive
+# The single Judge verdict is held constant only across reruns whose subject
+# outputs were textually stable AND present; a variant/missing rerun yields a
+# null pair for that index. This ties the comparator's >=3-rerun requirement
+# to reruns that actually happened, while never fabricating a semantic verdict.
+def _semantic_to_case_observation(*, sem, case: dict, rerun_outputs: dict, run_count: int,
+                                  evaluator_version_hash: str) -> "adc.CaseObservation":
+    if sem.contributes == "pass":
+        pair = ("pass", "pass")
+    elif sem.contributes in ("revise", "blocked"):
+        pair = ("pass", sem.contributes)
+    else:  # "inconclusive" / anything unexpected
+        pair = (None, None)
+
+    def _norm(v):
+        return lj_normalize(v) if v else None
+
+    stable_baseline = len({_norm(x) for x in rerun_outputs["baseline"] if x}) <= 1
+    stable_candidate = len({_norm(x) for x in rerun_outputs["candidate"] if x}) <= 1
+
+    b_verdicts, c_verdicts = [], []
+    for k in range(run_count):
+        bl = rerun_outputs["baseline"][k] if k < len(rerun_outputs["baseline"]) else None
+        cd = rerun_outputs["candidate"][k] if k < len(rerun_outputs["candidate"]) else None
+        if bl and cd and stable_baseline and stable_candidate:
+            b_verdicts.append(pair[0])
+            c_verdicts.append(pair[1])
+        else:
+            b_verdicts.append(None)
+            c_verdicts.append(None)
+
+    return adc.CaseObservation(
+        case_id=case["case_id"], case_family=case["case_family"],
+        baseline_verdicts=tuple(b_verdicts), candidate_verdicts=tuple(c_verdicts),
+        model_provider_runtime_hash=av.sha256_hex(
+            json.dumps({"transport": "playwright_mcp", "case": case["case_id"]}, sort_keys=True).encode()
+        ),
+        evaluator_version_hash=evaluator_version_hash,
+        hard_gate_status="pass",
+    )
+
+
+def lj_normalize(text: str) -> str:
+    return lba.normalize_response(text or "")
+
+
+def _obs_dump(obs) -> dict:
+    return {
+        "case_id": obs.case_id, "case_family": obs.case_family,
+        "baseline_verdicts": list(obs.baseline_verdicts),
+        "candidate_verdicts": list(obs.candidate_verdicts),
+        "hard_gate_status": obs.hard_gate_status,
+    }
+
+
+_PILOT_DECISION = {
+    "keep_candidate": "candidate_for_owner_review",
+    "discard": "reject",
+    "inconclusive": "inconclusive",
+}
+
+
+def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str,
+                    evidence_dir: Optional[Path], budget: RoleBudget) -> dict:
+    # METHOD DECISION MD-4: keep_candidate -> candidate_for_owner_review (research
+    # evidence only, never acceptance/merge/promotion). reject/inconclusive pass through.
+    pilot_decision = _PILOT_DECISION.get(raw_decision, "inconclusive")
+    evidence["raw_decision"] = raw_decision
+    evidence["pilot_decision"] = pilot_decision
+    evidence["decision_reason"] = reason
+    evidence["budget"] = budget.summary()
+    result = {
+        "status": "completed",
+        "pilot_decision": pilot_decision,
+        "raw_decision": raw_decision,
+        "reason": reason,
+        "authority_note": "candidate_for_owner_review != keep_candidate != owner acceptance != merge/promotion authority",
+    }
+    if evidence_dir is not None:
+        evidence_dir = Path(evidence_dir)
+        evidence_dir.mkdir(parents=True, exist_ok=True)
+        p = evidence_dir / f"{evidence['experiment_id']}_evidence.json"
+        p.write_text(json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        result["evidence_path"] = str(p)
+    return result
+
+
+def _spec_from_args(args, batch_config: dict, budget: RoleBudget) -> Optional["ManualCandidateSpec"]:
+    if not getattr(args, "spec_file", None):
+        return None
+    raw = json.loads(Path(args.spec_file).read_text(encoding="utf-8"))
+    return ManualCandidateSpec(
+        experiment_id=raw["experiment_id"],
+        baseline_revision=raw["baseline_revision"],
+        project=raw["project"],
+        research_surface=raw["research_surface"],
+        target_file=raw["target_file"],
+        patch_text=raw["patch_text"] if "patch_text" in raw else Path(raw["patch_file"]).read_text(encoding="utf-8"),
+        candidate_patch_hash=raw["candidate_patch_hash"],
+        cases=raw["cases"],
+        run_count=int(raw.get("run_count", args.run_count)),
+        seed=int(raw.get("seed", 0)),
+    )
+
+
+#: Indirection so a coordinated live session / test can supply a Controller
+#: that already has a real (or fake) transport + judge binding. `main()` uses
+#: the bare default, so a plain shell `autoresearch_cli experiment` still has
+#: `transport is None` and stays structurally blocked.
+_CONTROLLER_FACTORY = Controller
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -431,6 +823,9 @@ def build_parser() -> argparse.ArgumentParser:
         e.add_argument("--cases", default="", help="comma-separated case ids")
         e.add_argument("--run-count", type=int, default=3)
         e.add_argument("--run-manifest", default=None, help="path to write/resume the durable run manifest")
+        e.add_argument("--spec-file", default=None,
+                       help="JSON ManualCandidateSpec for a bound live 'experiment' run (issue #433)")
+        e.add_argument("--evidence-dir", default=None, help="directory to write the sanitized evidence package")
         e.add_argument("--dry-run", action="store_true", help="preview calls/budget/worktrees/outputs; zero external calls")
 
     r = sub.add_parser("reproduce", parents=[common_budget], help="attempt reproduction of one accepted field failure")
@@ -464,7 +859,7 @@ def _git_rev(repo_root: Path, rev: str) -> str:
 def main(argv: Optional[list] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    controller = Controller()
+    controller = _CONTROLLER_FACTORY()
 
     try:
         if args.verb == "doctor":
@@ -493,20 +888,42 @@ def main(argv: Optional[list] = None) -> int:
             if not doctor.ok:
                 print(doctor.render(), file=sys.stderr)
                 return EXIT_PREFLIGHT
-            print(
-                json.dumps(
-                    {
-                        "verb": args.verb,
-                        "status": "blocked",
-                        "reason": "no authorized live PlaywrightMcpBrowserTransport binding is wired into this CLI invocation; "
-                        "per live-contract §5/§10 a live batch needs an explicit owner-authorized transport. "
-                        "Use --dry-run to preview, or run under the coordinated live session (#417).",
-                        "preview": preview,
-                    },
-                    indent=2,
+            if controller.transport is None:
+                # Unchanged fail-closed default: a bare shell invocation holds no
+                # live transport (and cannot -- it has no MCP access). The seam
+                # is `autoresearch_coordinated_session`, which injects a real
+                # transport + judge and calls `Controller.run_experiment`
+                # directly (issue #433).
+                print(
+                    json.dumps(
+                        {
+                            "verb": args.verb,
+                            "status": "blocked",
+                            "reason": "no authorized live PlaywrightMcpBrowserTransport binding is wired into this CLI invocation; "
+                            "per live-contract §5/§10 a live batch needs an explicit owner-authorized transport. "
+                            "Use --dry-run to preview, or run under the coordinated live session "
+                            "(autoresearch_coordinated_session, issue #433).",
+                            "preview": preview,
+                        },
+                        indent=2,
+                    )
                 )
-            )
-            return EXIT_BLOCKED
+                return EXIT_BLOCKED
+            if args.verb != "experiment":
+                print(json.dumps({"verb": args.verb, "status": "blocked",
+                                  "reason": "only 'experiment' is wired for a bound live run in issue #433; "
+                                            "'baseline'/'batch' remain preview/dry-run only."}, indent=2))
+                return EXIT_BLOCKED
+            spec = _spec_from_args(args, batch_config, budget)
+            if spec is None:
+                print(json.dumps({"verb": args.verb, "status": "blocked",
+                                  "reason": "a bound experiment run needs a fully specified ManualCandidateSpec "
+                                            "(--spec-file); none was supplied."}, indent=2))
+                return EXIT_BLOCKED
+            result = controller.run_experiment(spec=spec, batch_config=batch_config, budget=budget,
+                                               evidence_dir=Path(args.evidence_dir) if args.evidence_dir else None)
+            print(json.dumps({"verb": args.verb, **result}, indent=2))
+            return EXIT_OK if result.get("status") == "completed" else EXIT_BLOCKED
 
         if args.verb == "reproduce":
             rec = _load_json(args.failure_record)
