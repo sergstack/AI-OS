@@ -1,0 +1,23 @@
+{
+  "experiment_id": "c1r1-routing-tiebreak-2026-09-04",
+  "candidate_id": "C1-R1",
+  "baseline_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "project": "ai_os",
+  "research_surface": "MUT-ROUTING-TIEBREAK",
+  "target_file": "ROUTING_RULES.md",
+  "patch_file": "candidate.patch",
+  "candidate_patch_hash": "9e7d0a1ea07f4b626b7be9a5bbd42b3df950b3481016fddf43d86d26bc45509c",
+  "mutation_class": "wording_clarification",
+  "run_count": 3,
+  "seed": 0,
+  "mode": "manual_candidate_evaluation",
+  "cases": [
+    {
+      "case_id": "c1-routing-tiebreak-coding-task-prep",
+      "case_family": "routing",
+      "target_family_flag": true,
+      "input": "Using the routing rules above, resolve this tie-break: a teammate needs a coding task prepared and asks which capability should own it, [Codex] or [LLM]. Apply the 'Coding task preparation' row under Tie-break rules. State the destination you would route to, and quote the exact tie-break rule text you applied."
+    }
+  ],
+  "_identity_note": "C1-R1 is a DISTINCT candidate identity, not a restoration of the original C1. The prior C1's exact patch bytes (declared hash 44505534bf2f910e70725a4244f98347324a7cb1d4af00d8120e501e643c3c87) were lost with an ephemeral temp worktree and are unrecoverable from git history or the test suite. C1-R1 carries the same semantic mutation intent (ROUTING_RULES.md 'Coding task preparation' tie-break row: 'a prompt or workflow deliverable' -> 'a prompt/workflow deliverable') but its own freshly-computed patch hash (candidate_patch_hash above) and its own newly-authored case text -- confirmed by owner 2026-09-04 as the working candidate going forward under this identity."
+}
