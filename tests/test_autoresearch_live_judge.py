@@ -52,6 +52,7 @@ def _finding(**overrides) -> dict:
         "evidence": "B names Analytics and includes a context pack; A routes to 'the research team' with no hand-off.",
         "severity": "high",
         "affected_invariant_or_metric": "routing_correctness",
+        "subject": "both",
         "verdict": "revise",
         "confidence": "medium",
         "limitations": "none material",

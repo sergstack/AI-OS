@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://ai-os/schemas/autoresearch_live_semantic_finding.schema.json",
   "title": "AIOS AutoResearch v0.2 Live Blind A/B Judge Finding",
-  "description": "One finding emitted by the LIVE blind A/B semantic Judge (issue #414, parent #409). Additive to the frozen v0.1 schema schemas/autoresearch_semantic_finding.schema.json (issue #394), which is NOT modified. Reuses that schema's verdict (pass|revise|blocked), severity, and confidence vocabularies verbatim and adds only the live-invocation provenance fields #414 requires (finding_id, invocation_id, evaluator_version_hash, presentation_order_hash, response_hash, validation_status). Like the v0.1 schema it has NO field for authority_status/merge_status/production_status, candidate identity (which of A/B is baseline vs candidate), Researcher rationale, or a numeric aggregate score -- a Judge output cannot carry or leak any of these, by construction.",
+  "description": "One finding emitted by the LIVE blind A/B semantic Judge (issue #414, parent #409, directional extension issue #435/MD-2 decision, 2026-09-05). Additive to the frozen v0.1 schema schemas/autoresearch_semantic_finding.schema.json (issue #394), which is NOT modified. Reuses that schema's verdict (pass|revise|blocked), severity, and confidence vocabularies verbatim and adds the live-invocation provenance fields #414 requires (finding_id, invocation_id, evaluator_version_hash, presentation_order_hash, response_hash, validation_status) plus the #435 directional field `subject`. `subject` is POSITIONAL ONLY (A/B/both) -- it never names baseline/candidate identity, so the Judge remains blind; de-blinding still happens only in the privileged evidence layer after both presentation orders validate. Like the v0.1 schema it has NO field for authority_status/merge_status/production_status, candidate identity (which of A/B is baseline vs candidate), Researcher rationale, or a numeric aggregate score -- a Judge output cannot carry or leak any of these, by construction.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -17,6 +17,7 @@
     "evidence",
     "severity",
     "affected_invariant_or_metric",
+    "subject",
     "verdict",
     "confidence",
     "limitations",
@@ -24,7 +25,7 @@
     "validation_status"
   ],
   "properties": {
-    "schema_version": { "const": "0.2.0" },
+    "schema_version": { "const": "0.3.0" },
 
     "finding_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,128}$" },
     "case_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
@@ -40,6 +41,11 @@
     "evidence": { "type": "string", "minLength": 1 },
     "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
     "affected_invariant_or_metric": { "type": "string", "minLength": 1 },
+    "subject": {
+      "description": "Which anonymized output this finding is about, POSITIONALLY -- never baseline/candidate identity. 'both' only when the finding applies equally to both outputs (e.g., both satisfy the rubric equally); a real difference must be attributed to 'A' or 'B', not hidden behind 'both'.",
+      "type": "string",
+      "enum": ["A", "B", "both"]
+    },
     "verdict": {
       "description": "Reuses AI_EVAL_REGISTRY.md / AES §4.6 pass|revise|blocked verbatim. No 'fail', no 'not_run'.",
       "type": "string",

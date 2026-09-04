@@ -1,0 +1,13 @@
+diff --git a/ROUTING_RULES.md b/ROUTING_RULES.md
+index 0faf84d..6668e4c 100644
+--- a/ROUTING_RULES.md
++++ b/ROUTING_RULES.md
+@@ -33,7 +33,7 @@ These are not registry capabilities. A non-match is expected; do not create a ca
+ 
+ | Case | Rule |
+ | --- | --- |
+-| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |
++| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt/workflow deliverable |
+ | Production readiness | `[Codex]` repository/release; `[LLM]` prompt/workflow; `[AI OS]` governance promotion; earliest unfinished stage wins |
+ | Production workflow rollout | `[Codex]` implementation; `[LLM]` prior workflow design |
+ | Thinker patterns in a decision | `[Thinking]` decision; `[Thinkers OS]` corpus/artifacts |

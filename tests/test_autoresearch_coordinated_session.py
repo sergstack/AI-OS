@@ -198,7 +198,7 @@ def test_run_experiment_end_to_end_with_fakes(tmp_path):
     assert all("tiebreak-c1" in rr["cases"] for rr in evidence["reruns"])
     assert "contributes" in evidence["reruns"][0]["cases"]["tiebreak-c1"]
     assert evidence["case_results"] and evidence["case_results"][0]["case_id"] == "tiebreak-c1"
-    assert "minimal-for-C1 scope" in " ".join(evidence["limitations"])
+    assert "issue #435" in " ".join(evidence["limitations"])
     # a schema-valid manual_candidate_evaluation record was ledgered (MD-3)
     record = json.loads((tmp_path / "AR-433-TEST_record.json").read_text())
     assert record["record_kind"] == "manual_candidate_evaluation"
@@ -322,16 +322,32 @@ def test_run_experiment_blocked_when_run_count_is_not_min_matched_reruns():
 # --------------------------------------------------------------------------
 
 
-def test_md2_contributes_to_pair_mapping():
-    """Issue #433 owner ruling, minimal-for-C1 scope: the ONLY MD-2 mapping is
-    a one-branch, non-directional relabel of the existing comparative
-    `contributes` verdict onto the comparator's per-side inputs. No
-    directional per-side guessing for revise/blocked/inconclusive."""
-    assert cli._contributes_to_pair("pass") == ("pass", "pass")
-    assert cli._contributes_to_pair("revise") == (None, None)
-    assert cli._contributes_to_pair("blocked") == (None, None)
-    assert cli._contributes_to_pair("inconclusive") == (None, None)
-    assert cli._contributes_to_pair("some_unexpected_value") == (None, None)
+def test_md2_directional_pair_passes_through_and_defaults_to_none():
+    """Issue #435 MD-2 decision (2026-09-05): `_directional_pair` invents no
+    direction of its own -- it passes through exactly whatever
+    `lj.run_blind_ab` already validated and de-blinded as
+    `sem.directional_verdicts`, and returns (None, None) when the two
+    presentation orders disagreed (directional_verdicts is None)."""
+    sem_with_direction = lj.CaseSemanticEvidence(
+        case_id="tiebreak-c1", evaluator_version_hash="e" * 64,
+        consistency="order_consistent", aggregate_verdict="blocked",
+        contributes="blocked", directional_verdicts=("pass", "blocked"),
+    )
+    assert cli._directional_pair(sem_with_direction) == ("pass", "blocked")
+
+    sem_improvement = lj.CaseSemanticEvidence(
+        case_id="tiebreak-c1", evaluator_version_hash="e" * 64,
+        consistency="order_consistent", aggregate_verdict="pass",
+        contributes="pass", directional_verdicts=("blocked", "pass"),
+    )
+    assert cli._directional_pair(sem_improvement) == ("blocked", "pass")
+
+    sem_disagreement = lj.CaseSemanticEvidence(
+        case_id="tiebreak-c1", evaluator_version_hash="e" * 64,
+        consistency="judge_disagreement", aggregate_verdict="blocked",
+        contributes="inconclusive", directional_verdicts=None,
+    )
+    assert cli._directional_pair(sem_disagreement) == (None, None)
 
 
 def test_md1_escalation_trigger_detected_but_not_escalated_stays_inconclusive():
