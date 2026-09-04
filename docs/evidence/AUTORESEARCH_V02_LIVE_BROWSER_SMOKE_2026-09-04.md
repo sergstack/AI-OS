@@ -4,14 +4,35 @@ Parent: [#409](https://github.com/sergstack/AI-OS/issues/409).
 Child: [#413](https://github.com/sergstack/AI-OS/issues/413) (Implement authorized Playwright MCP
 browser-session live transport and smoke proof).
 
-Status: **implementation + automated checks complete; the live browser smoke is `blocked`**
-pending one owner action (§ Blockers). Per #413's own Stop/blocker rule, implementation and
-tests may be prepared while the child stays `blocked` and is not accepted as complete until a
-real browser-produced model response has entered the pipeline without manual substitution.
+Status: **implementation + automated checks complete; the live browser smoke was EXECUTED
+2026-09-04** (owner signed in to the dedicated Playwright profile; one real subject-model
+submission). Machine-readable result: [`autoresearch_v02_413_smoke_record.json`](autoresearch_v02_413_smoke_record.json).
 
-No live model/provider/Judge call was made in producing this document. No credential value was
-read, printed, exported, or transmitted. No cookies, storage state, or browser profile were
-read or committed.
+No credential value was read, typed, printed, exported, or transmitted by the automation. No
+cookies, storage state, or browser profile were read or committed. Only the assistant message
+text and its `data-message-model-slug` attribute were read from the page.
+
+## Live smoke result (2026-09-04)
+
+- Transport: `playwright_mcp`, `dedicated_persistent_profile` (owner-authenticated), fresh
+  non-Project `chatgpt.com` conversation (`repo_replay`, lower fidelity than the real Project).
+- Context: `context_hash c5a1c5b0…` over two committed sources (`ROUTING_RULES.md`,
+  `HANDOFF_STYLE_STANDARD.md`) at revision `662686e…`; `request_hash 7ac9ed80…`.
+- **1** browser submission, **0** retries. `termination_status: completed`.
+- **Model identity: `ui_observed`** — `gpt-5-6-thinking` (read from the assistant message's
+  `data-message-model-slug`; exact snapshot still `not_observable`).
+- **`response_hash b2539ec2…`** — a real, non-placeholder sha256 over the normalised 607-char
+  answer. `sanitization_flags: []`.
+- Usage/cost: `input_tokens`/`output_tokens`/`usage_metadata_status` = `not_observable`;
+  `cost_amount 0.0 USD` (owner's existing ChatGPT Pro plan; within the `$0` / plan-included
+  Phase-0 envelope).
+- The answer was substantively consistent with the supplied context (routed a pure quantitative
+  backtest to `[Analytics]`, required the canonical `HANDOFF_STYLE_STANDARD.md` field set, and
+  correctly declined to invent a destination) — recorded as an observation, not as a fidelity
+  claim.
+
+A trimmed 2-source pack was used for this bounded smoke; the full 10-source `subject_baseline`
+pack is exercised in #417 Phase 0.
 
 ---
 
@@ -41,16 +62,16 @@ Dependencies:                   #410 (merged), #411 (merged), #412 (merged) — 
 Selected transport mode:        dedicated_persistent_profile (Playwright MCP), owner-selected. Exactly one mode implemented.
 Browser/session policy:         predeclared TransportPolicy (frozen): target_product openai_chatgpt_ui, target_url_prefix https://chatgpt.com/, session_policy fresh_conversation, browser_session_ref = non-secret profile hash. Untrusted case text cannot mutate it (frozen dataclass; test-proven).
 Target UI/product:              OpenAI ChatGPT web UI, dedicated signed-in Playwright profile.
-Observed model identity status: not_observable by default; ui_observed only when a visible model selector is read; never guessed from default/plan/URL. Comparator can distinguish verified | ui_observed | not_observable.
+Observed model identity status: gpt-5-6-thinking, ui_observed (from data-message-model-slug); exact snapshot not_observable. Comparator can distinguish verified | ui_observed | not_observable.
 Authority/budget evidence:      This document's envelope section is the authority_evidence_ref. invoke() refuses to submit without a non-empty ref, without a numeric call ceiling, or without a cost cap + currency ($0 + USD is a valid authorised cap).
 Adapter paths:                  scripts/autoresearch_live_browser_adapter.py (interface + FakeBrowserTransport + PlaywrightMcpBrowserTransport); schemas/autoresearch_live_invocation.schema.json (additive; no v0.1 schema edited); tests/test_autoresearch_live_browser_adapter.py (35 tests).
-Live smoke browser submission count: 0 so far — BLOCKED (see Blockers). Predeclared smoke = exactly 1 submission + at most 1 bounded retry.
-Live response evidence:         none yet. On execution: one sanitized normalised answer + a non-placeholder sha256 response_hash, plus transport/context/authority/model-identity-status record validating against the new schema.
-Usage/cost metadata status:     input_tokens/output_tokens = not_observable (never estimated from length); usage_metadata_status = not_observable; cost_amount = 0.0; cost_currency = USD.
-Privacy/session/secret checks:  fail-closed sanitization scan on every captured answer before persistence (cookie/authorization/bearer/sk-/token kv/storage-state/PEM shapes); a secret-shaped capture is dropped to validation_error, never persisted or hashed as PASS. No credential automation, no cookie/storage/profile export, no unrelated-tab inspection, no environment enumeration.
+Live smoke browser submission count: 1 submission, 0 retries (2026-09-04). Conversation https://chatgpt.com/c/6a9a9272-e5c8-83ed-b020-fce204690b0b.
+Live response evidence:         one sanitized normalised 607-char answer; response_hash b2539ec297259a36a95ac1c2bf31c72222dfa22620f680ce6ed0c7139c7b85c8 (non-placeholder); context_hash c5a1c5b0…, request_hash 7ac9ed80…, source_revision 662686e…. Full record: autoresearch_v02_413_smoke_record.json.
+Usage/cost metadata status:     input_tokens/output_tokens = not_observable (never estimated from length); usage_metadata_status = not_observable; cost_amount = 0.0; cost_currency = USD (plan-included).
+Privacy/session/secret checks:  fail-closed sanitization scan on the captured answer (sanitization_flags: []); no credential automation, no cookie/storage/profile export, no unrelated-tab inspection, no environment enumeration.
 Automated checks:               35 focused tests pass; full suite 531 passed (496 baseline + 35). check_manifest_paths 189/189, check_repo_public_safety PASS, check_index_coverage 9/9. New schema is valid draft-07. No real browser/network/model call in any test.
-Acceptance status:              BLOCKED. Artifact/code acceptance criteria met; business acceptance (a real browser answer in the pipeline) not met until the smoke runs.
-Blockers/limitations:           see below.
+Acceptance status:              Artifact/code acceptance met; business acceptance met — one real browser-produced model response entered the pipeline without manual substitution, with a verifiable non-placeholder hash and full transport/context/model-identity record. Owner acceptance of the child remains pending.
+Blockers/limitations:           smoke executed; see Limitations below.
 Rollback:                       remove scripts/autoresearch_live_browser_adapter.py, schemas/autoresearch_live_invocation.schema.json, tests/test_autoresearch_live_browser_adapter.py, this doc, and the README index line. No v0.1 file, Project config, or browser profile is touched by rollback.
 ```
 
