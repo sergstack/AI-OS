@@ -9,6 +9,18 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`](AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md)
+  records Issue #416 (integrate matched live runs, hard gates, ledger, stable
+  CLI) for Issue #409. One documented 9-verb command surface
+  (`scripts/autoresearch_cli.py`, `autoresearch_cli 0.2.0`; guide
+  `docs/guides/AUTORESEARCH_CLI.md`) integrating the v0.1 validator / shadow
+  runner / comparator / ledger and the v0.2 #412–#415 components through real
+  import points. Every external-calling verb has a no-network `--dry-run`;
+  `doctor` fails (exit 3) before any call when authority / budget / context /
+  evaluator identity is missing; a real run without a wired transport reports
+  `blocked` (exit 4). `RunManifest` (additive schema) is the durable
+  bounded-resume state; `cleanup` removes only registered ephemeral
+  worktrees. Runs no Phase 0/1 batch; changes no active configuration.
 - [`AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`](AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md)
   records Issue #415 (real failure intake, attribution, bounded Researcher
   proposal flow) for Issue #409. `scripts/autoresearch_failure_intake.py` +
