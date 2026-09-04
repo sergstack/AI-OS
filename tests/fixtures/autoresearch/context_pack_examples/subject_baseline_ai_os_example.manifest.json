@@ -2,8 +2,8 @@
   "candidate_patch_hash": null,
   "context_hash": "4120f19b219eccd89108f4cb42a55dc420fb60f31bdb7b2a19f1f08e8223eb39",
   "context_id": "94b49a568697ce22",
-  "context_manifest_version": "0.2.0",
-  "created_by_version": "autoresearch_context_pack_compiler/0.2.0",
+  "context_manifest_version": "0.3.0",
+  "created_by_version": "autoresearch_context_pack_compiler/0.3.0",
   "excluded_sources": [
     {
       "path": "ChatGPT/[AI OS]/KB__00_INDEX.md",
@@ -70,6 +70,7 @@
       "turn": "system"
     }
   ],
+  "mutable_surface_excerpt": null,
   "ordered_sources": [
     {
       "bytes": 2596,

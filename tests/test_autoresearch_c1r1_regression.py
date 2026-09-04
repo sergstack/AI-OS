@@ -209,32 +209,50 @@ def test_first_order_failure_short_circuits_second_order():
 
 
 # ---------------------------------------------------------------------------
-# MD-2 structural regression (see AUTORESEARCH_MD2_DECISION_PACKAGE_2026-09-05.md)
+# MD-2 structural regression (see AUTORESEARCH_MD2_DECISION_PACKAGE_2026-09-05.md
+# and the issue #435 decision implementing Option A, 2026-09-05)
 # ---------------------------------------------------------------------------
 
 
-def test_md2_mapping_can_never_yield_material_improvement():
-    """Structural proof, not a probabilistic sample: _contributes_to_pair
-    only ever emits (pass, pass) or (None, None), and
-    evaluate_case_material_improvement requires severity(candidate) <
-    severity(baseline) in every matched pair. Equal severities can never
-    satisfy a strict '<'. This test is EXPECTED to fail once a directional
-    mapping (MD-2 decision package, Option A/B/C) is implemented -- update
-    or remove it then, don't silently skip it."""
-    # Every possible contributes value, mapped through the current MD-2 rule.
-    pairs = [cli._contributes_to_pair(c) for c in ("pass", "revise", "blocked", "inconclusive")]
-    assert pairs == [("pass", "pass"), (None, None), (None, None), (None, None)]
+def test_md2_directional_mapping_can_now_yield_material_improvement():
+    """Supersedes test_md2_mapping_can_never_yield_material_improvement (the
+    symmetric MD-2 mapping this proved structurally blind to improvement is
+    gone). `_directional_pair` now passes through a real, de-blinded
+    (baseline_verdict, candidate_verdict) pair when `lj.run_blind_ab`
+    produced one -- and the comparator, UNCHANGED, can now genuinely return
+    "keep" when every matched rerun shows a strict improvement."""
+    obs_all_improved = adc.CaseObservation(
+        case_id="c1r1-case", case_family="routing",
+        baseline_verdicts=("blocked", "blocked", "blocked"),
+        candidate_verdicts=("pass", "pass", "pass"),
+        model_provider_runtime_hash="a" * 16, evaluator_version_hash="b" * 16,
+    )
+    result, reason = adc.evaluate_case_material_improvement(obs_all_improved)
+    assert result == "keep"
 
-    # Even in the best case (3 matched "pass" reruns, baseline consistent),
-    # the comparator cannot return "keep".
-    obs = adc.CaseObservation(
+    # The comparator's own strictness is untouched: a symmetric (pass,pass)
+    # pair -- still a legitimate real-world outcome when the Judge finds no
+    # material difference -- correctly stays inconclusive, not "keep".
+    obs_no_op = adc.CaseObservation(
         case_id="c1r1-case", case_family="routing",
         baseline_verdicts=("pass", "pass", "pass"),
         candidate_verdicts=("pass", "pass", "pass"),
         model_provider_runtime_hash="a" * 16, evaluator_version_hash="b" * 16,
     )
-    result, reason = adc.evaluate_case_material_improvement(obs)
-    assert result == "inconclusive"
+    result_no_op, _ = adc.evaluate_case_material_improvement(obs_no_op)
+    assert result_no_op == "inconclusive"
+
+    # A real regression (candidate worse) is caught by non-inferiority,
+    # independent of MD-2, exactly as before.
+    obs_regressed = adc.CaseObservation(
+        case_id="c1r1-case", case_family="routing",
+        baseline_verdicts=("pass", "pass", "pass"),
+        candidate_verdicts=("blocked", "blocked", "blocked"),
+        model_provider_runtime_hash="a" * 16, evaluator_version_hash="b" * 16,
+    )
+    ni_result, regression_flag, _ = adc.evaluate_case_non_inferiority(obs_regressed)
+    assert ni_result == "fail"
+    assert regression_flag is True
 
 
 # ---------------------------------------------------------------------------
@@ -243,13 +261,13 @@ def test_md2_mapping_can_never_yield_material_improvement():
 # ---------------------------------------------------------------------------
 
 
-def test_case_payload_does_not_currently_include_mutated_row_text():
-    """Documents CURRENT (manifest-only) behavior: the literal changed text
-    of a mutable surface never reaches _case_payload's output, only the
-    containing file's name and byte count. This is expected to change once
-    the subject-content memo's Option 2 (or an alternative) is accepted --
-    update this test then, don't treat its current pass as evidence the gap
-    is fine to leave forever."""
+def test_case_payload_now_includes_the_bounded_mutable_surface_excerpt():
+    """Supersedes test_case_payload_does_not_currently_include_mutated_row_text
+    (issue #435 subject-content-propagation decision, Option 2, implemented
+    2026-09-05): when the compiled context carries a `mutable_surface_excerpt`,
+    _case_payload's render (via cpc.render_summary) now includes the literal
+    excerpted text of the declared mutable surface -- not the whole file, just
+    its anchored section."""
     spec = cli.ManualCandidateSpec(
         experiment_id="regression-test", baseline_revision="HEAD",
         project="ai_os", research_surface="MUT-ROUTING-TIEBREAK",
@@ -266,8 +284,67 @@ def test_case_payload_does_not_currently_include_mutated_row_text():
              "purpose": "canonical routing/tie-break rules"},
         ],
         "excluded_sources": [], "limitations": "test fixture",
+        "mutable_surface_excerpt": {
+            "path": "ROUTING_RULES.md", "surface_id": "MUT-ROUTING-TIEBREAK",
+            "anchor": "## Tie-break rules (table body only)",
+            "excerpt_text": (
+                "## Tie-break rules\n\n| Case | Rule |\n| --- | --- |\n"
+                "| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |"
+            ),
+            "excerpt_hash": "a" * 64,
+        },
     }
     payload = cli._case_payload(spec, "c", fake_ctx)
     assert "2596 bytes" in payload
-    assert "a prompt or workflow deliverable" not in payload
-    assert "a prompt/workflow deliverable" not in payload
+    # the point of the fix: the literal declared-surface text now reaches
+    # the effective subject stimulus, not just a byte-count difference.
+    assert "a prompt or workflow deliverable" in payload
+    assert "Coding task preparation" in payload
+
+
+def test_mutable_surface_excerpt_reader_extracts_exact_anchored_text():
+    """Direct test of the new excerpt mechanism against the real
+    ROUTING_RULES.md content, reusing the existing
+    autoresearch_shadow_runner.mutable_surface_line_ranges anchor resolution
+    -- not a second content-selection mechanism."""
+    real_text = (REPO_ROOT / "ROUTING_RULES.md").read_text(encoding="utf-8")
+    excerpt = cpc.mutable_surface_excerpt(
+        reader=lambda _rel: real_text.encode("utf-8"), research_surface="MUT-ROUTING-TIEBREAK",
+    )
+    assert excerpt is not None
+    assert excerpt["surface_id"] == "MUT-ROUTING-TIEBREAK"
+    assert "Coding task preparation" in excerpt["excerpt_text"]
+    assert excerpt["excerpt_text"].startswith("## Tie-break rules")
+    # the destinations table (a different, protected surface) must NOT leak in
+    assert "Registered capability destinations" not in excerpt["excerpt_text"]
+
+
+def test_mutable_surface_excerpt_none_when_no_research_surface():
+    assert cpc.mutable_surface_excerpt(reader=lambda _r: b"", research_surface=None) is None
+
+
+def test_baseline_and_candidate_excerpts_never_cross_contaminate():
+    """Anti-leakage requirement (issue #435): baseline's excerpt must never
+    contain candidate-only text and vice versa -- proven here by asserting
+    each excerpt only ever reflects the reader it was actually read through
+    (distinct baseline vs. shadow-worktree readers, as compile_subject_baseline/
+    compile_subject_candidate already use)."""
+    baseline_text = (
+        "## Tie-break rules\n\n| Case | Rule |\n| --- | --- |\n"
+        "| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |\n"
+    )
+    candidate_text = (
+        "## Tie-break rules\n\n| Case | Rule |\n| --- | --- |\n"
+        "| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt/workflow deliverable |\n"
+    )
+    baseline_excerpt = cpc.mutable_surface_excerpt(
+        reader=lambda _r: baseline_text.encode("utf-8"), research_surface="MUT-ROUTING-TIEBREAK",
+    )
+    candidate_excerpt = cpc.mutable_surface_excerpt(
+        reader=lambda _r: candidate_text.encode("utf-8"), research_surface="MUT-ROUTING-TIEBREAK",
+    )
+    assert "a prompt or workflow deliverable" in baseline_excerpt["excerpt_text"]
+    assert "a prompt or workflow deliverable" not in candidate_excerpt["excerpt_text"]
+    assert "a prompt/workflow deliverable" in candidate_excerpt["excerpt_text"]
+    assert "a prompt/workflow deliverable" not in baseline_excerpt["excerpt_text"]
+    assert baseline_excerpt["excerpt_hash"] != candidate_excerpt["excerpt_hash"]

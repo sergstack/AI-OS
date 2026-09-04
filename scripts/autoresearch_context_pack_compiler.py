@@ -41,7 +41,7 @@ import autoresearch_validator as av  # noqa: E402  (reuse Finding/manifest loade
 
 REPO_ROOT = av.REPO_ROOT
 CAPABILITIES_PATH = REPO_ROOT / "PROJECT_CAPABILITIES.yaml"
-CREATED_BY_VERSION = "autoresearch_context_pack_compiler/0.2.0"
+CREATED_BY_VERSION = "autoresearch_context_pack_compiler/0.3.0"
 
 FIDELITY_LIMITATION = (
     "This context is a reproducible repository-derived replay of AI-OS "
@@ -199,6 +199,48 @@ def canonical_subject_sources(reader, capabilities: dict, project: str) -> tuple
 # ---------------------------------------------------------------------------
 
 
+def mutable_surface_excerpt(*, reader, research_surface: Optional[str]) -> Optional[dict]:
+    """Bounded literal excerpt of one declared mutable surface's own
+    anchored section (issue #435 subject-content-propagation decision,
+    Option 2). Reuses `autoresearch_shadow_runner.mutable_surface_line_ranges`
+    -- the same anchor-resolution mechanism the hard scope gate already
+    depends on -- rather than inventing a second content-selection
+    mechanism. `reader` is `read_committed(...)` or `read_working_tree(...)`,
+    pre-bound by the caller, exactly like `canonical_subject_sources`.
+
+    Returns None (fail-closed) when no `research_surface` was supplied, the
+    surface isn't declared in the v0.1 manifest, or its anchor can't be
+    resolved in the source text -- the caller must not treat a None here as
+    license to fall back to sending the whole file."""
+    if research_surface is None:
+        return None
+    manifest_v01 = av.load_manifest()
+    declared = {s["surface_id"]: s for s in manifest_v01["mutable_surfaces"]}.get(research_surface)
+    if declared is None:
+        return None
+    path = declared["path"]
+    try:
+        text = reader(path).decode("utf-8")
+    except Exception:
+        return None
+    ranges = sr.mutable_surface_line_ranges(text, declared.get("anchor", ""))
+    if ranges is None:
+        return None
+    lines = text.splitlines()
+    excerpt_lines: list[str] = []
+    for start, end in ranges:
+        # mutable_surface_line_ranges returns 1-indexed [start, end) ranges.
+        excerpt_lines.extend(lines[start - 1 : end - 1])
+    excerpt_text = "\n".join(excerpt_lines)
+    return {
+        "path": path,
+        "surface_id": research_surface,
+        "anchor": declared.get("anchor", ""),
+        "excerpt_text": excerpt_text,
+        "excerpt_hash": sha256_hex(excerpt_text.encode("utf-8")),
+    }
+
+
 def _context_id(role: str, project: str, source_revision: str, candidate_patch_hash: Optional[str]) -> str:
     key = f"{role}:{project}:{source_revision}:{candidate_patch_hash}"
     return sha256_hex(key.encode("utf-8"))[:16]
@@ -212,9 +254,10 @@ def _context_hash(role: str, candidate_patch_hash: Optional[str], sources: list[
 def _assemble_manifest(
     *, role: str, project: str, source_revision: str, candidate_patch_hash: Optional[str],
     sources: list[dict], excluded: list[dict], forbidden_source_classes: list[str],
+    mutable_surface_excerpt_value: Optional[dict] = None,
 ) -> dict:
     manifest = {
-        "context_manifest_version": "0.2.0",
+        "context_manifest_version": "0.3.0",
         "context_id": _context_id(role, project, source_revision, candidate_patch_hash),
         "role": role,
         "project": project,
@@ -229,6 +272,7 @@ def _assemble_manifest(
         "created_by_version": CREATED_BY_VERSION,
         "fidelity_mode": "repo_replay",
         "limitations": FIDELITY_LIMITATION,
+        "mutable_surface_excerpt": mutable_surface_excerpt_value,
     }
     findings = av._schema_findings(manifest, CONTEXT_MANIFEST_SCHEMA_PATH, "context_manifest")
     if findings:
@@ -241,15 +285,18 @@ def _assemble_manifest(
 # ---------------------------------------------------------------------------
 
 
-def compile_subject_baseline(*, repo_root: Path, source_revision: str, project: str) -> dict:
+def compile_subject_baseline(
+    *, repo_root: Path, source_revision: str, project: str, research_surface: Optional[str] = None,
+) -> dict:
+    reader = lambda rel: read_committed(repo_root, source_revision, rel)  # noqa: E731
     capabilities = load_capabilities(repo_root, source_revision)
-    sources, excluded = canonical_subject_sources(
-        lambda rel: read_committed(repo_root, source_revision, rel), capabilities, project
-    )
+    sources, excluded = canonical_subject_sources(reader, capabilities, project)
+    excerpt = mutable_surface_excerpt(reader=reader, research_surface=research_surface)
     return _assemble_manifest(
         role="subject_baseline", project=project, source_revision=source_revision, candidate_patch_hash=None,
         sources=sources, excluded=excluded,
         forbidden_source_classes=["blinded_output", "frozen_rubric", "failure_registry_entry"],
+        mutable_surface_excerpt_value=excerpt,
     )
 
 
@@ -279,12 +326,15 @@ def compile_subject_candidate(
         sr.apply_patch(shadow, candidate_patch_text)
 
         capabilities = load_capabilities(repo_root, source_revision)  # capability registry itself is not mutable-surface content
-        sources, excluded = canonical_subject_sources(lambda rel: read_working_tree(shadow, rel), capabilities, project)
+        shadow_reader = lambda rel: read_working_tree(shadow, rel)  # noqa: E731
+        sources, excluded = canonical_subject_sources(shadow_reader, capabilities, project)
+        excerpt = mutable_surface_excerpt(reader=shadow_reader, research_surface=research_surface)
         candidate_patch_hash = sha256_hex(candidate_patch_text.encode("utf-8"))
         return _assemble_manifest(
             role="subject_candidate", project=project, source_revision=source_revision, candidate_patch_hash=candidate_patch_hash,
             sources=sources, excluded=excluded,
             forbidden_source_classes=["blinded_output", "frozen_rubric", "failure_registry_entry"],
+            mutable_surface_excerpt_value=excerpt,
         )
     finally:
         if shadow is not None:
@@ -430,12 +480,29 @@ def equivalence_report(baseline: dict, candidate: dict) -> dict:
     c_by_path = {s["path"]: s for s in candidate["ordered_sources"]}
     changed_paths = [p for p in b_paths if b_by_path[p]["content_hash"] != c_by_path[p]["content_hash"]]
 
+    b_excerpt = baseline.get("mutable_surface_excerpt")
+    c_excerpt = candidate.get("mutable_surface_excerpt")
+    excerpt_report: dict = {"present": b_excerpt is not None and c_excerpt is not None}
+    if excerpt_report["present"]:
+        if b_excerpt["surface_id"] != c_excerpt["surface_id"] or b_excerpt["path"] != c_excerpt["path"]:
+            return {
+                "equivalent": False,
+                "differences": [f"mutable_surface_excerpt identity differs: baseline={b_excerpt}, candidate={c_excerpt}"],
+            }
+        excerpt_report["excerpt_differs"] = b_excerpt["excerpt_hash"] != c_excerpt["excerpt_hash"]
+        excerpt_report["excerpt_is_within_declared_surface"] = b_excerpt["path"] in changed_paths or not excerpt_report["excerpt_differs"]
+
     return {
         "equivalent": True,
         "differences": changed_paths,
+        "mutable_surface_excerpt": excerpt_report,
         "note": (
             "differences[] lists every content-changed source path; a valid candidate context "
-            "has exactly one entry here, matching the declared mutable surface's own file."
+            "has exactly one entry here, matching the declared mutable surface's own file. "
+            "mutable_surface_excerpt.excerpt_is_within_declared_surface being False while "
+            "excerpt_differs is True would mean the excerpt changed without its containing file "
+            "being flagged as changed -- a contradiction that should never occur and must be "
+            "treated as a hard-gate failure, not silently accepted."
         ),
     }
 
@@ -463,5 +530,16 @@ def render_summary(manifest: dict) -> str:
     lines += ["", "## Excluded sources", ""]
     for e in manifest["excluded_sources"]:
         lines.append(f"- `{e['path']}` — {e['reason']}")
+    excerpt = manifest.get("mutable_surface_excerpt")
+    if excerpt:
+        lines += [
+            "",
+            f"## Declared mutable surface excerpt ({excerpt['surface_id']}, `{excerpt['path']}`)",
+            "",
+            "The literal current text of the declared mutable surface only -- not the whole file",
+            f"(anchor: `{excerpt['anchor']}`):",
+            "",
+            excerpt["excerpt_text"],
+        ]
     lines += ["", "## Limitations", "", manifest["limitations"]]
     return "\n".join(lines) + "\n"

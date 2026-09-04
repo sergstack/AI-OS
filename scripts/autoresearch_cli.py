@@ -407,13 +407,16 @@ class Controller:
           yields "inconclusive" for that case, and an explicit limitation
           string is recorded (see `_ESCALATION_TRIGGER_LIMITATION_PREFIX`
           below). That path never produces `keep_candidate` / PASS.
-        - MD-2: minimal, conservative mapping from the existing comparative
-          `contributes` field (already order-consistency-resolved by
-          `lj.run_blind_ab`) to the comparator's per-side inputs, applied per
-          matched rerun -- NO directional per-side guessing, no Judge schema
-          or prompt change:
-              contributes == "pass"  -> (baseline="pass", candidate="pass")
-              anything else          -> (None, None)   # no_observation
+        - MD-2 (issue #435 decision, 2026-09-05, supersedes the earlier
+          minimal-for-C1 symmetric mapping): `lj.run_blind_ab` now returns
+          `sem.directional_verdicts`, a de-blinded `(baseline_verdict,
+          candidate_verdict)` pair computed from the Judge's blind, POSITIONAL
+          `subject` attribution (A/B/both -- never baseline/candidate
+          identity) on each finding, only when both presentation orders
+          agree on it after de-blinding. `_directional_pair` below passes
+          this straight through -- it invents no direction itself, and
+          `adc.evaluate_case_material_improvement` /
+          `adc.aggregate_decision` are UNCHANGED by this decision.
         - MD-3: the outcome is written as a schema-valid
           `manual_candidate_evaluation` record appended to the shared
           tamper-evident hash-chained ledger (a distinct research-evidence
@@ -467,14 +470,15 @@ class Controller:
             "limitations": [
                 "repo_replay via a fresh chat is a lower-fidelity approximation of the real configured Project runtime; no UI-equivalence claim.",
                 "subject and Judge share a model class (limited_same_model_class); Judge agreement is not independent corroboration.",
-                "minimal-for-C1 scope (issue #433 owner ruling): MD-2 uses only the frozen comparative `contributes` field (pass -> pass/pass, anything else -> no_observation); no directional per-side Judge extension. Full §8 3->5 escalation is deferred to a follow-up and never runs here.",
+                "issue #435 decision (2026-09-05): MD-2 directional Judge extension is live -- blind A/B, positional subject attribution (A/B/both) de-blinded only after both orders validate; order-disagreement still maps to inconclusive, never averaged. Full §8 3->5 escalation remains out of scope and is explicitly blocked by the run_count guard below, not silently skipped.",
             ],
         }
 
         # -- deterministic context + hard-gate layer (all reused, unchanged) --
         try:
             baseline_ctx = cpc.compile_subject_baseline(
-                repo_root=self.repo_root, source_revision=spec.baseline_revision, project=spec.project
+                repo_root=self.repo_root, source_revision=spec.baseline_revision, project=spec.project,
+                research_surface=spec.research_surface,
             )
             # compile_subject_candidate runs asr.reject_patch_scope (the #388/#390
             # hard scope gate) inside an isolated worktree BEFORE rendering.
@@ -584,7 +588,7 @@ class Controller:
                     finding_schema=finding_schema, experiment_id=f"{exp_id_k}",
                     seed=spec.seed, deterministic_precheck="none", retry_limit=retry_limit,
                 )
-                bv, cv = _contributes_to_pair(sem.contributes)
+                bv, cv = _directional_pair(sem)
                 per_case[cid]["baseline_verdicts"].append(bv)
                 per_case[cid]["candidate_verdicts"].append(cv)
                 per_case[cid]["b_hashes"].append(bl_h)
@@ -774,26 +778,26 @@ def _obs_dump(obs) -> dict:
     }
 
 
-# --- METHOD DECISION MD-2 (owner ruling, issue #433 -- MINIMAL-FOR-C1 scope) ---
-# `lj.run_blind_ab` yields ONE existing comparative A/B verdict per matched
-# rerun (`contributes` in {pass, revise, blocked, inconclusive}), already
-# order-consistency-resolved: when the two presentation orders disagree,
-# `run_blind_ab` already forces `contributes` to "inconclusive", so no extra
-# order-check belongs in this mapping. This is the ONLY mapping from that
-# comparative finding onto `adc.CaseObservation`'s per-side (baseline,
-# candidate) inputs, for exactly one matched rerun. It is deliberately
-# conservative -- NO directional per-side guessing about which side a
-# revise/blocked verdict belongs to:
-#   contributes == "pass"  -> (baseline="pass", candidate="pass")
-#   anything else          -> (None, None)   # no_observation / unresolved
-# This does not modify the #395 comparator method or the #394 evaluator
-# contract; the full 3->5 §8 escalation loop and any directional per-side
-# Judge extension are explicitly out of scope here (see run_experiment
-# docstring) and deferred to a follow-up issue.
-def _contributes_to_pair(contributes: str) -> tuple:
-    if contributes == "pass":
-        return ("pass", "pass")
-    return (None, None)
+# --- METHOD DECISION MD-2 (owner decision on issue #435, 2026-09-05) ---
+# `lj.run_blind_ab` now computes a directional, de-blinded
+# `(baseline_verdict, candidate_verdict)` pair itself (see
+# CaseSemanticEvidence.directional_verdicts in autoresearch_live_judge.py):
+# each finding carries a POSITIONAL `subject` (A/B/both -- never baseline/
+# candidate identity), the per-side worst verdict is computed from that
+# attribution independently for each presentation order, and the two orders
+# must agree on the RESULT after de-blinding or the pair is discarded
+# (order disagreement -> inconclusive, exactly as before -- never averaged).
+# This function does not invent any direction of its own; it passes through
+# exactly what `run_blind_ab` already validated and de-blinded. It does not
+# modify the #395 comparator method or the #394 evaluator contract's
+# vocabulary -- `adc.CaseObservation`/`adc.evaluate_case_material_improvement`
+# are byte-for-byte unchanged. The full 3->5 §8 escalation loop remains out
+# of scope and is explicitly blocked by the `run_count` guard above, not
+# silently skipped.
+def _directional_pair(sem: "lj.CaseSemanticEvidence") -> tuple:
+    if sem.directional_verdicts is None:
+        return (None, None)
+    return sem.directional_verdicts
 
 
 _ESCALATION_TRIGGER_LIMITATION_PREFIX = (
@@ -912,7 +916,7 @@ def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str, spec: "Ma
         # case (missing subject output) and its position in the list would
         # otherwise no longer line up with the rerun number.
         for k, sem in pc.get("sems", []):
-            bv, cv = _contributes_to_pair(sem.contributes)
+            bv, cv = _directional_pair(sem)
             judge_findings.append({
                 "case_id": cid, "rerun": k, "consistency": sem.consistency,
                 "baseline_verdict": bv, "candidate_verdict": cv,

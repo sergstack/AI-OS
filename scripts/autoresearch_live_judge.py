@@ -265,8 +265,14 @@ def build_judge_prompt(
         f"OUTPUTS:\nA: {output_a}\nB: {output_b}\n\n"
         f"TASK:\nCompare A and B strictly against the rubric. Emit one finding "
         f"object per material observation, matching finding schema "
-        f"{evaluator_config.finding_schema_version}. Return ONLY a JSON array "
-        f"of finding objects, no prose outside it."
+        f"{evaluator_config.finding_schema_version}. Each finding MUST name "
+        f"which output it concerns in a \"subject\" field: \"A\" if the "
+        f"observation is specific to output A, \"B\" if specific to output B, "
+        f"or \"both\" ONLY when it applies equally to both (for example, both "
+        f"satisfy the rubric equally well). Never use \"both\" to avoid "
+        f"naming which output a real difference belongs to -- if A and B "
+        f"differ on a point, say which one. Return ONLY a JSON array of "
+        f"finding objects, no prose outside it."
     )
     return prompt
 
@@ -430,7 +436,7 @@ def validate_live_finding(
         errors.append(f"forbidden field(s) in Judge finding: {bad}")
 
     record = {
-        "schema_version": "0.2.0",
+        "schema_version": "0.3.0",
         "finding_id": finding.get("finding_id") or f"{invocation_id}:{sha256_hex(json.dumps(finding, sort_keys=True).encode()) [:12]}",
         "case_id": case_id,
         "case_family": finding.get("case_family", ""),
@@ -441,6 +447,7 @@ def validate_live_finding(
         "evidence": finding.get("evidence", ""),
         "severity": finding.get("severity", ""),
         "affected_invariant_or_metric": finding.get("affected_invariant_or_metric", ""),
+        "subject": finding.get("subject", ""),
         "verdict": finding.get("verdict", ""),
         "confidence": finding.get("confidence", ""),
         "limitations": finding.get("limitations") or "none material",
@@ -468,6 +475,7 @@ class CaseSemanticEvidence:
     consistency: str
     aggregate_verdict: Optional[str]
     contributes: str
+    directional_verdicts: Optional[tuple] = None  # (baseline_verdict, candidate_verdict), de-blinded; issue #435 MD-2 decision
     order_findings: list = field(default_factory=list)  # [order0_records, order1_records]
     judge_invocation_ids: list = field(default_factory=list)
     independence_level: str = "unknown"
@@ -484,12 +492,32 @@ def _worst_verdict(records: list[dict]) -> Optional[str]:
 
 
 def _material(records: list[dict]) -> tuple[Optional[str], Optional[str]]:
-    """(worst_verdict, worst_severity) across a pass's records."""
+    """(worst_verdict, worst_severity) across a pass's records. Kept for the
+    human-readable aggregate_verdict field; the directional per-side
+    computation below (_verdict_for_side) is what actually feeds the
+    comparator as of the issue #435 MD-2 decision."""
     sev_rank = {"low": 0, "medium": 1, "high": 2, "critical": 3}
     wv = _worst_verdict(records)
     sevs = [r["severity"] for r in records if r.get("severity") in sev_rank]
     ws = max(sevs, key=lambda s: sev_rank[s]) if sevs else None
     return wv, ws
+
+
+def _verdict_for_side(records: list[dict], side: str) -> str:
+    """Worst verdict among findings whose POSITIONAL `subject` (issue #435)
+    is `side` ('A' or 'B') or 'both'. No applicable finding -> 'pass': the
+    Judge is instructed to flag every material issue it finds (`build_judge_prompt`),
+    so silence about a side is evidence none was found there, not a
+    fabricated direction. This never sees or uses baseline/candidate
+    identity -- `side` is purely positional; de-blinding happens only in
+    the caller, after this is computed for both presentation orders."""
+    applicable = [
+        r["verdict"] for r in records
+        if r.get("subject") in (side, "both") and r.get("verdict") in _VERDICT_PRECEDENCE
+    ]
+    if not applicable:
+        return "pass"
+    return max(applicable, key=lambda v: _VERDICT_PRECEDENCE[v])
 
 
 def run_blind_ab(
@@ -590,24 +618,52 @@ def run_blind_ab(
             )
         order_records.append(records)
 
-    # --- both orders produced valid findings: compare, then de-blind ---
+    # --- both orders produced valid findings: de-blind directionally, then
+    # check the two orders agree (issue #435 MD-2 decision, 2026-09-05) ---
+    # _verdict_for_side never sees baseline/candidate identity -- it operates
+    # purely on the positional 'A'/'B' subject attribution the Judge itself
+    # emitted (blind, per build_judge_prompt). De-blinding happens ONLY here,
+    # in the privileged post-validation step, exactly where the pre-existing
+    # `deblinding` dict already did its (until now cosmetic) de-blinding.
+    prim_a_side = "baseline" if prim.a_is == "baseline" else "candidate"
+    prim_b_side = "candidate" if prim_a_side == "baseline" else "baseline"
+    rev_a_side = "baseline" if rev.a_is == "baseline" else "candidate"
+    rev_b_side = "candidate" if rev_a_side == "baseline" else "baseline"
+
+    def _side_verdicts(records: list[dict], a_side: str, b_side: str) -> dict:
+        va = _verdict_for_side(records, "A")
+        vb = _verdict_for_side(records, "B")
+        return {a_side: va, b_side: vb}
+
+    prim_by_condition = _side_verdicts(order_records[0], prim_a_side, prim_b_side)
+    rev_by_condition = _side_verdicts(order_records[1], rev_a_side, rev_b_side)
+
     v0, s0 = _material(order_records[0])
     v1, s1 = _material(order_records[1])
-    consistent = (v0 == v1) and (s0 == s1)
-    consistency = "order_consistent" if consistent else "judge_disagreement"
     aggregate = _worst_verdict(order_records[0] + order_records[1])
+
+    consistent = prim_by_condition == rev_by_condition
+    consistency = "order_consistent" if consistent else "judge_disagreement"
+
+    directional_verdicts: Optional[tuple] = None
     if consistency == "judge_disagreement":
         contributes = "inconclusive"
         limitations.append(
-            f"material order disagreement: order0=({v0},{s0}) order1=({v1},{s1}); contributes inconclusive, not averaged."
+            f"material order disagreement after de-blinding: order0={prim_by_condition} "
+            f"order1={rev_by_condition}; contributes inconclusive, not averaged."
         )
     else:
+        directional_verdicts = (prim_by_condition["baseline"], prim_by_condition["candidate"])
         contributes = aggregate if aggregate in CONTRIBUTION_VALUES else "inconclusive"
 
     deblinding = {
         "order0": {"A_was": prim.a_is, "B_was": prim.b_is},
         "order1": {"A_was": rev.a_is, "B_was": rev.b_is},
         "deblinded_after": "both order findings validated",
+        "directional_verdicts": (
+            {"baseline": directional_verdicts[0], "candidate": directional_verdicts[1]}
+            if directional_verdicts else None
+        ),
     }
 
     return CaseSemanticEvidence(
@@ -616,6 +672,7 @@ def run_blind_ab(
         consistency=consistency,
         aggregate_verdict=aggregate,
         contributes=contributes,
+        directional_verdicts=directional_verdicts,
         order_findings=order_records,
         judge_invocation_ids=invocation_ids,
         independence_level=getattr(judge, "independence_level", "unknown"),
