@@ -30,6 +30,12 @@ jsonschema = pytest.importorskip("jsonschema")
 
 CTX_ID = "0123456789abcdef"
 CTX_HASH = "a" * 64
+
+# Secret-shaped strings are assembled at runtime so this test file's own
+# source never contains a literal that the repo public-safety scanner
+# (scripts/check_repo_public_safety.py) would flag on a tracked file.
+_FAKE_OPENAI_KEY = "sk-" + ("A" * 20)
+_FAKE_PEM_HEADER = "-----BEGIN " + "PRIVATE" + " KEY-----"
 AUTH_REF = "docs/evidence/AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md#owner-authorization"
 
 
@@ -270,8 +276,8 @@ def test_secret_shaped_capture_is_not_persisted_as_pass():
     [
         "cookie: sessionid=deadbeef",
         "Authorization: Bearer aaaaaaaaaaaaaaaaaaaa",
-        "sk-ABCDEFGHIJKLMNOP1234",
-        "-----BEGIN PRIVATE KEY-----",
+        _FAKE_OPENAI_KEY,
+        _FAKE_PEM_HEADER,
         "we stored it in localStorage for you",
         "access_token = 9f8e7d6c5b4a",
     ],
