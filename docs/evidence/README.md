@@ -9,6 +9,23 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`](AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md)
+  records Issue #414 (live blind A/B semantic Judge + de-blinding boundary)
+  for Issue #409. Implementation and 19 focused tests are complete
+  (`scripts/autoresearch_live_judge.py`; additive
+  `schemas/autoresearch_live_semantic_finding.schema.json` — the frozen #394
+  schema is not modified; frozen
+  `docs/standards/autoresearch_v02_evaluator_config.json` with a
+  self-consistent `evaluator_version_hash`). Blinding reuses
+  `alternation_order` unchanged; the reversed second pass is mandatory;
+  de-blinding happens only after both orders yield schema-valid findings and
+  only in the evidence layer; material order disagreement contributes
+  `inconclusive` (never averaged); a `discard`-consequence deterministic
+  precheck bypasses the Judge entirely. Each Judge call routes through the
+  #413 transport and consumes the shared budget. The **live calibration proof
+  is `blocked`** pending the coordinated live session (obvious + ambiguous +
+  reversed + deterministic-hard-fail pairs with real Judge calls). Authorizes
+  no candidate acceptance, merge, or production.
 - [`AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md`](AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md)
   records Issue #413 (Playwright MCP browser-session live transport) for Issue
   #409. Implementation and 35 focused tests are complete

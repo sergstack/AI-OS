@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_live_semantic_finding.schema.json",
+  "title": "AIOS AutoResearch v0.2 Live Blind A/B Judge Finding",
+  "description": "One finding emitted by the LIVE blind A/B semantic Judge (issue #414, parent #409). Additive to the frozen v0.1 schema schemas/autoresearch_semantic_finding.schema.json (issue #394), which is NOT modified. Reuses that schema's verdict (pass|revise|blocked), severity, and confidence vocabularies verbatim and adds only the live-invocation provenance fields #414 requires (finding_id, invocation_id, evaluator_version_hash, presentation_order_hash, response_hash, validation_status). Like the v0.1 schema it has NO field for authority_status/merge_status/production_status, candidate identity (which of A/B is baseline vs candidate), Researcher rationale, or a numeric aggregate score -- a Judge output cannot carry or leak any of these, by construction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "finding_id",
+    "case_id",
+    "case_family",
+    "invocation_id",
+    "evaluator_version_hash",
+    "presentation_order_hash",
+    "finding",
+    "evidence",
+    "severity",
+    "affected_invariant_or_metric",
+    "verdict",
+    "confidence",
+    "limitations",
+    "response_hash",
+    "validation_status"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.2.0" },
+
+    "finding_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,128}$" },
+    "case_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+    "case_family": {
+      "type": "string",
+      "enum": ["routing", "scope_execution", "evidence", "authority", "handoff", "adversarial"]
+    },
+    "invocation_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,128}$" },
+    "evaluator_version_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "presentation_order_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+
+    "finding": { "type": "string", "minLength": 1 },
+    "evidence": { "type": "string", "minLength": 1 },
+    "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "affected_invariant_or_metric": { "type": "string", "minLength": 1 },
+    "verdict": {
+      "description": "Reuses AI_EVAL_REGISTRY.md / AES §4.6 pass|revise|blocked verbatim. No 'fail', no 'not_run'.",
+      "type": "string",
+      "enum": ["pass", "revise", "blocked"]
+    },
+    "confidence": {
+      "description": "Textual, not a calibrated probability or governance metric.",
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "limitations": { "type": "string", "minLength": 1 },
+
+    "response_hash": {
+      "description": "sha256 of the normalised Judge response the finding was parsed from. null only when the response itself was empty (that maps to a non-pass Judge outcome, never a finding this schema would accept as valid).",
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "validation_status": { "type": "string", "enum": ["valid", "invalid", "pending"] }
+  },
+
+  "not": {
+    "anyOf": [
+      { "required": ["authority_status"] },
+      { "required": ["merge_status"] },
+      { "required": ["production_status"] },
+      { "required": ["candidate_identity"] },
+      { "required": ["which_is_candidate"] },
+      { "required": ["expected_winner"] },
+      { "required": ["researcher_rationale"] },
+      { "required": ["aggregate_score"] },
+      { "required": ["numeric_score"] }
+    ]
+  }
+}
