@@ -9,6 +9,22 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md`](AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md)
+  records the Issue #419 parent final-QA gate for Issue #409 (AIOS
+  AutoResearch v0.2 — live behavioral autotuning loop), re-run after the
+  live session. Children #410–#417 are delivered (PRs #420–#428) and #417's
+  Phase 0 was executed live: `measurement_verdict: pass`,
+  `failure_discovery_result: no_failure_found`. #418 (Phase 1) is `blocked`
+  by that result — no reproducible, attribution-eligible baseline failure —
+  so finalist/holdout evaluation is `not_applicable` (Branch B). **Parent
+  gate `pass`**: the v0.2 live loop was built, calibrated against real model
+  output (live transport + blind order-consistent Judge + deterministic-gate
+  dominance), and correctly declined to promote anything under insufficient
+  evidence — mirroring v0.1's #398. Recommendation: keep the harness
+  available and re-engage only when a genuine field-observed failure exists;
+  do not run Phase 1; manual bounded review remains sufficient. 0 finalists,
+  0 candidates; promotes nothing; authorizes no merge or production. #409 may
+  close on owner review.
 - [`AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`](AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md)
   records Issue #414 (live blind A/B semantic Judge + de-blinding boundary)
   for Issue #409. Implementation and 19 focused tests are complete
