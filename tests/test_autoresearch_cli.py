@@ -131,8 +131,13 @@ def test_experiment_dry_run_makes_zero_calls_and_previews_counts(tmp_path, capsy
     payload = json.loads(out)
     assert payload["dry_run"] is True
     ec = payload["preview"]["external_calls"]
-    assert ec["subject"] == 2 * 3 * 3 and ec["judge"] == 2 * 3
+    # issue #433 minimal-for-C1 scope: run_experiment always performs exactly
+    # adc.MIN_MATCHED_RERUNS (3) matched reruns per case, and the Judge runs a
+    # blind A/B pass (both orders) on EVERY matched rerun, not just once --
+    # so both legs scale with reruns * cases, regardless of --run-count.
+    assert ec["subject"] == 2 * 3 * 3 and ec["judge"] == 2 * 3 * 3
     assert ec["total"] == ec["subject"] + ec["judge"] + ec["researcher"]
+    assert set(ec) == {"subject", "researcher", "judge", "total"}
     assert "not authorization" in payload["preview"]["note"]
 
 

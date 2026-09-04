@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_manual_candidate_evaluation.schema.json",
+  "title": "AIOS AutoResearch v0.2 Manual Candidate Evaluation Record",
+  "description": "One bounded, human-authored `manual_candidate_evaluation` (issue #433, owner MD-3 decision; parent #409). A DISTINCT research-evidence class -- NOT a Phase 1 autotuning experiment and NOT a failure-driven experiment. It therefore does NOT reuse schemas/autoresearch_experiment_record.schema.json (which requires observed_failure / attribution and is governed by manifest INV-06). This record IS appended to the same tamper-evident hash-chained append-only ledger mechanism (autoresearch_validator.manual_evaluation_ledger_append, sharing _ledger_line_hash / read_ledger / verify_ledger), never a second ledger or state machine. Like the Judge finding schema it has NO authority_status / merge_status / production_status field: `pilot_decision: candidate_for_owner_review` is research evidence only and carries no acceptance / merge / promotion authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_kind",
+    "experiment_id",
+    "batch_id",
+    "created_at",
+    "baseline_revision",
+    "baseline_file_hash",
+    "baseline_file_hash_status",
+    "candidate_patch_ref",
+    "candidate_patch_hash",
+    "target_file",
+    "research_surface",
+    "authority_evidence_ref",
+    "budget",
+    "context_identities",
+    "rerun_policy",
+    "matched_observations",
+    "judge_findings",
+    "comparator_raw_decision",
+    "pilot_decision",
+    "limitations",
+    "rollback",
+    "evidence_hashes"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.2.0" },
+    "record_kind": { "const": "manual_candidate_evaluation" },
+
+    "experiment_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,96}$" },
+    "batch_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{2,96}$" },
+    "created_at": { "type": "string", "minLength": 4 },
+    "correction_of": {
+      "description": "experiment_id of the record this one corrects, or absent for an original. Append-only: the corrected record is never rewritten in place.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._:-]{4,96}$"
+    },
+
+    "baseline_revision": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "baseline_file_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "baseline_file_hash_status": {
+      "description": "Honest capture-status flag paired with baseline_file_hash: 'captured' only when a real content hash was computed; 'not_captured' means baseline_file_hash is null (never a fabricated zero-hash or filename hash).",
+      "type": "string", "enum": ["captured", "not_captured"]
+    },
+    "candidate_patch_ref": { "type": "string", "minLength": 1 },
+    "candidate_patch_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "target_file": { "type": "string", "minLength": 1 },
+    "research_surface": {
+      "description": "A declared mutable-surface id from autoresearch_v01_manifest.json.",
+      "type": "string",
+      "pattern": "^MUT-[A-Z0-9-]{2,60}$"
+    },
+
+    "authority_evidence_ref": { "type": "string", "minLength": 1 },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_provider_calls", "max_cost_amount", "max_cost_currency", "calls_used", "call_timeout_seconds"],
+      "properties": {
+        "max_provider_calls": { "type": "integer", "minimum": 1 },
+        "max_cost_amount": { "type": "number", "minimum": 0 },
+        "max_cost_currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "calls_used": { "type": "integer", "minimum": 0 },
+        "call_timeout_seconds": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "context_identities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_context_hash", "candidate_context_hash", "context_equivalence",
+        "transport_id", "subject_model_identity", "subject_model_identity_status",
+        "evaluator_version_hash", "evaluator_contract_version", "context_capture_status"
+      ],
+      "properties": {
+        "baseline_context_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "candidate_context_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "context_capture_status": {
+          "description": "Honest capture-status flag shared by baseline_context_hash, candidate_context_hash, and evaluator_version_hash: these three are always captured together (or not at all) in this codebase's control flow. 'captured' only when all three are real computed hashes; 'not_captured' means all three are null (never a fabricated zero-hash).",
+          "type": "string", "enum": ["captured", "not_captured"]
+        },
+        "context_equivalence": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["equivalent", "differences"],
+          "properties": {
+            "equivalent": { "type": "boolean" },
+            "differences": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "transport_id": { "type": "string", "minLength": 1 },
+        "subject_model_identity": { "type": "string", "minLength": 1 },
+        "subject_model_identity_status": { "type": "string", "enum": ["ui_observed", "not_observable", "declared"] },
+        "evaluator_version_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "evaluator_contract_version": { "type": "string", "minLength": 3 }
+      }
+    },
+
+    "rerun_policy": {
+      "description": "MD-1: canonical #395 §8 matched-rerun / escalation traceability.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_matched_reruns", "ceiling", "escalation_trigger", "per_case_reruns_used", "escalated_cases", "budget_limited_cases"],
+      "properties": {
+        "min_matched_reruns": { "type": "integer", "const": 3 },
+        "ceiling": { "type": "integer", "const": 5 },
+        "escalation_trigger": { "type": "string", "minLength": 1 },
+        "per_case_reruns_used": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "escalated_cases": { "type": "array", "items": { "type": "string" } },
+        "budget_limited_cases": {
+          "description": "Cases whose mandatory escalation could not run within the authorized budget; these MUST NOT be reported pass (#395: inconclusive/blocked, never PASS).",
+          "type": "array", "items": { "type": "string" }
+        }
+      }
+    },
+
+    "matched_observations": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "case_family", "rerun", "baseline_response_hash", "candidate_response_hash", "baseline_verdict", "candidate_verdict", "baseline_invocation_id", "candidate_invocation_id", "judge_invocation_ids", "judge_consistency"],
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "case_family": { "type": "string", "enum": ["routing", "scope_execution", "evidence", "authority", "handoff", "adversarial"] },
+          "rerun": { "type": "integer", "minimum": 0, "maximum": 4 },
+          "baseline_response_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+          "candidate_response_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+          "baseline_verdict": { "type": ["string", "null"], "enum": ["pass", "revise", "blocked", "inconclusive", null] },
+          "candidate_verdict": { "type": ["string", "null"], "enum": ["pass", "revise", "blocked", "inconclusive", null] },
+          "baseline_invocation_id": { "type": ["string", "null"] },
+          "candidate_invocation_id": { "type": ["string", "null"] },
+          "judge_invocation_ids": { "type": "array", "items": { "type": "string" } },
+          "judge_consistency": { "type": "string", "enum": ["order_consistent", "judge_disagreement", "deterministic_bypass", "not_run"] }
+        }
+      }
+    },
+
+    "judge_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["case_id", "consistency", "baseline_verdict", "candidate_verdict", "rerun"],
+        "properties": {
+          "case_id": { "type": "string" },
+          "consistency": { "type": "string" },
+          "baseline_verdict": { "type": ["string", "null"] },
+          "candidate_verdict": { "type": ["string", "null"] },
+          "rerun": { "type": "integer", "minimum": 0, "maximum": 4 }
+        }
+      }
+    },
+
+    "comparator_raw_decision": {
+      "description": "The UNMODIFIED autoresearch_decision_comparator.aggregate_decision output. Preserved verbatim; the pilot_decision below only relabels/lowers it.",
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["decision", "reason"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["keep_candidate", "discard", "inconclusive"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "pilot_decision": {
+      "description": "MD-4: authority-lowering relabel of comparator_raw_decision.decision. keep_candidate -> candidate_for_owner_review; discard -> reject; inconclusive -> inconclusive. Never keep_candidate. Carries NO acceptance / merge / promotion authority.",
+      "type": "string",
+      "enum": ["reject", "inconclusive", "candidate_for_owner_review"]
+    },
+
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "rollback": { "type": "string", "minLength": 1 },
+    "evidence_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_package_sha256"],
+      "properties": {
+        "evidence_package_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "patch_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "description": "keep_candidate from the comparator maps to candidate_for_owner_review; discard -> reject; inconclusive -> inconclusive.",
+      "if": { "properties": { "comparator_raw_decision": { "properties": { "decision": { "const": "discard" } } } } },
+      "then": { "properties": { "pilot_decision": { "const": "reject" } } }
+    },
+    {
+      "if": { "properties": { "comparator_raw_decision": { "properties": { "decision": { "const": "keep_candidate" } } } } },
+      "then": { "properties": { "pilot_decision": { "const": "candidate_for_owner_review" } } }
+    },
+    {
+      "if": { "properties": { "comparator_raw_decision": { "properties": { "decision": { "const": "inconclusive" } } } } },
+      "then": { "properties": { "pilot_decision": { "const": "inconclusive" } } }
+    }
+  ],
+
+  "not": {
+    "anyOf": [
+      { "required": ["authority_status"] },
+      { "required": ["merge_status"] },
+      { "required": ["production_status"] },
+      { "required": ["owner_acceptance"] },
+      { "required": ["keep_candidate"] },
+      { "required": ["quality_score"] },
+      { "required": ["numeric_score"] }
+    ]
+  }
+}

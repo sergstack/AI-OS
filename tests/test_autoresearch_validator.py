@@ -414,3 +414,96 @@ def test_committed_comparison_artifact_example_matches_builder(keep_record, batc
     rebuilt = av.build_comparison_artifact(keep_record, batch_manifest)
     assert committed == rebuilt
     assert av.assert_no_scalar_score(committed) == []
+
+
+# ---------------------------------------------------------------------------
+# manual_candidate_evaluation ledger (issue #433, MD-3): distinct evidence
+# class, SAME hash-chained append-only ledger mechanism as the failure-driven
+# experiment_record ledger above -- not a second ledger or state machine.
+# ---------------------------------------------------------------------------
+
+
+def _manual_evaluation_record(**ov) -> dict:
+    base = {
+        "schema_version": "0.2.0",
+        "record_kind": "manual_candidate_evaluation",
+        "experiment_id": "AR-433-PILOT-1",
+        "batch_id": "AR-433-BATCH-1",
+        "created_at": "2026-09-04T00:00:00Z",
+        "baseline_revision": "a" * 40,
+        "baseline_file_hash": "b" * 64,
+        "baseline_file_hash_status": "captured",
+        "candidate_patch_ref": "sha256:" + "c" * 64,
+        "candidate_patch_hash": "c" * 64,
+        "target_file": "ROUTING_RULES.md",
+        "research_surface": "MUT-ROUTING-TIEBREAK",
+        "authority_evidence_ref": "docs/evidence/TEST.md#owner",
+        "budget": {
+            "max_provider_calls": 40, "max_cost_amount": 0.0, "max_cost_currency": "USD",
+            "calls_used": 18, "call_timeout_seconds": 180,
+        },
+        "context_identities": {
+            "baseline_context_hash": "d" * 64, "candidate_context_hash": "e" * 64,
+            "context_equivalence": {"equivalent": True, "differences": ["ROUTING_RULES.md"]},
+            "transport_id": "playwright_mcp", "subject_model_identity": "not_observable",
+            "subject_model_identity_status": "not_observable",
+            "evaluator_version_hash": "f" * 64, "evaluator_contract_version": "0.2.0",
+            "context_capture_status": "captured",
+        },
+        "rerun_policy": {
+            "min_matched_reruns": 3, "ceiling": 5,
+            "escalation_trigger": "#395 §8 escalation trigger (run_variance_or_disagreement) fired for",
+            "per_case_reruns_used": {"tiebreak-c1": 3}, "escalated_cases": [], "budget_limited_cases": [],
+        },
+        "matched_observations": [
+            {"case_id": "tiebreak-c1", "case_family": "routing", "rerun": k,
+             "baseline_response_hash": "1" * 64, "candidate_response_hash": "2" * 64,
+             "baseline_verdict": "pass", "candidate_verdict": "pass",
+             "baseline_invocation_id": f"AR-433-PILOT-1-r{k}:baseline:tiebreak-c1",
+             "candidate_invocation_id": f"AR-433-PILOT-1-r{k}:candidate:tiebreak-c1",
+             "judge_invocation_ids": [f"AR-433-PILOT-1-r{k}:tiebreak-c1:0"],
+             "judge_consistency": "order_consistent"}
+            for k in range(3)
+        ],
+        "judge_findings": [
+            {"case_id": "tiebreak-c1", "rerun": k, "consistency": "order_consistent",
+             "baseline_verdict": "pass", "candidate_verdict": "pass"}
+            for k in range(3)
+        ],
+        "comparator_raw_decision": {"decision": "inconclusive", "reason": "no material improvement shown"},
+        "pilot_decision": "inconclusive",
+        "limitations": ["repo_replay is a lower-fidelity approximation; no UI-equivalence claim."],
+        "rollback": "Candidate exists only in ephemeral shadow worktrees; nothing applied to main.",
+        "evidence_hashes": {"evidence_package_sha256": "9" * 64, "patch_sha256": "c" * 64},
+    }
+    base.update(ov)
+    return base
+
+
+def test_manual_evaluation_record_round_trips_through_verify_ledger(tmp_path):
+    ledger = tmp_path / "manual_evaluations.jsonl"
+    record = _manual_evaluation_record()
+    assert av.manual_evaluation_ledger_append(ledger, record) == []
+    assert av.verify_ledger(ledger) == []
+    lines = av.read_ledger(ledger)
+    assert [line["record"]["experiment_id"] for line in lines] == ["AR-433-PILOT-1"]
+
+    # tamper-evidence: an in-place edit to the appended record breaks the chain,
+    # exactly like the failure-driven ledger above (same mechanism, not a
+    # second one).
+    raw_lines = ledger.read_text(encoding="utf-8").splitlines()
+    tampered = json.loads(raw_lines[0])
+    tampered["record"]["pilot_decision"] = "candidate_for_owner_review"
+    raw_lines[0] = json.dumps(tampered)
+    ledger.write_text("\n".join(raw_lines) + "\n", encoding="utf-8")
+    findings = av.verify_ledger(ledger)
+    assert any(f.rule == "LEDGER_TAMPERED" for f in findings)
+
+
+def test_manual_evaluation_record_never_allows_keep_candidate_pilot_decision():
+    bad = _manual_evaluation_record(
+        pilot_decision="keep_candidate",
+        comparator_raw_decision={"decision": "keep_candidate", "reason": "x"},
+    )
+    findings = av.validate_manual_evaluation_record(bad)
+    assert findings != []

@@ -192,8 +192,54 @@ def test_run_experiment_end_to_end_with_fakes(tmp_path):
     assert evidence["mode"] == "manual_candidate_evaluation"
     assert evidence["context_equivalence"]["equivalent"] is True
     assert evidence["context_equivalence"]["differences"] == ["ROUTING_RULES.md"]
-    assert evidence["cases"] and "semantic" in evidence["cases"][0]
-    assert "pending [AI OS]/[Analytics] sign-off" in " ".join(evidence["limitations"])
+    # issue #433 minimal-for-C1 scope: exactly MIN_MATCHED_RERUNS (3) reruns,
+    # each with a per-case Judge pass recorded under evidence["reruns"].
+    assert len(evidence["reruns"]) == 3
+    assert all("tiebreak-c1" in rr["cases"] for rr in evidence["reruns"])
+    assert "contributes" in evidence["reruns"][0]["cases"]["tiebreak-c1"]
+    assert evidence["case_results"] and evidence["case_results"][0]["case_id"] == "tiebreak-c1"
+    assert "minimal-for-C1 scope" in " ".join(evidence["limitations"])
+    # a schema-valid manual_candidate_evaluation record was ledgered (MD-3)
+    record = json.loads((tmp_path / "AR-433-TEST_record.json").read_text())
+    assert record["record_kind"] == "manual_candidate_evaluation"
+    assert record["pilot_decision"] != "keep_candidate"
+    # issue #433 fix #2: real captured hashes, honest status flags (no
+    # fabricated placeholders now that context did compile).
+    assert record["baseline_file_hash_status"] == "captured"
+    assert record["context_identities"]["context_capture_status"] == "captured"
+    assert record["context_identities"]["baseline_context_hash"] is not None
+    assert record["context_identities"]["evaluator_version_hash"] is not None
+    # issue #433 fix #4: a Judge finding for EVERY matched rerun (3), not
+    # just the first.
+    assert len(record["judge_findings"]) == 3
+    assert sorted(f["rerun"] for f in record["judge_findings"]) == [0, 1, 2]
+    assert all(f["case_id"] == "tiebreak-c1" for f in record["judge_findings"])
+    # issue #433 fix #5: honestly-labeled judge_invocation_ids (not a generic
+    # live_invocation_ids) plus the subject's own baseline/candidate
+    # invocation ids, actually recorded (not reconstructed).
+    assert len(record["matched_observations"]) == 3
+    for obs in record["matched_observations"]:
+        assert "judge_invocation_ids" in obs and "live_invocation_ids" not in obs
+        assert obs["baseline_invocation_id"] is not None
+        assert obs["candidate_invocation_id"] is not None
+        assert "baseline" in obs["baseline_invocation_id"]
+        assert "candidate" in obs["candidate_invocation_id"]
+    ledger = tmp_path / "autoresearch_manual_evaluations.jsonl"
+    assert ledger.exists()
+    assert cli.av.verify_ledger(ledger) == []
+
+
+def test_preview_experiment_c1_shaped_single_case_yields_exactly_12_calls():
+    """issue #433 fix #7: the exact planned C1 live call count, verified via
+    the real preview_experiment output (not just claimed arithmetic). C1 is
+    one case; with adc.MIN_MATCHED_RERUNS == 3: subject = 2*3*1 = 6,
+    judge = 2*3*1 = 6, total = 12."""
+    c = cli.Controller()
+    preview = c.preview_experiment(
+        batch_config=_batch_config(), case_ids=["tiebreak-c1"], run_count=3,
+        budget=_authorized_budget(),
+    )
+    assert preview["external_calls"] == {"subject": 6, "researcher": 0, "judge": 6, "total": 12}
 
 
 def test_run_experiment_identical_outputs_never_reach_candidate_for_owner_review(tmp_path):
@@ -220,6 +266,55 @@ def test_run_experiment_rejects_protected_scope_patch():
     assert res["status"] == "completed"
     assert res["pilot_decision"] == "reject"
     assert "hard gate" in res["reason"].lower()
+    # issue #433 fix #1: a hard gate that fires BEFORE any matched rerun
+    # (compile_subject_candidate raises before baseline/candidate context
+    # both exist) must record zero observations honestly -- never a
+    # synthetic placeholder row.
+    record = res["record"]
+    assert record["matched_observations"] == []
+    assert record["judge_findings"] == []
+    # issue #433 fix #2: no fabricated zero-hash / filename-hash anywhere;
+    # honest null + explicit not_captured status instead.
+    assert record["baseline_file_hash"] is None
+    assert record["baseline_file_hash_status"] == "not_captured"
+    assert record["context_identities"]["baseline_context_hash"] is None
+    assert record["context_identities"]["candidate_context_hash"] is None
+    assert record["context_identities"]["evaluator_version_hash"] is None
+    assert record["context_identities"]["context_capture_status"] == "not_captured"
+
+
+def test_run_experiment_blocked_when_call_timeout_seconds_missing():
+    """issue #433 fix #3: a missing/invalid call_timeout_seconds must block
+    before any call, not silently default to 180 (or any other value)."""
+    patch, h = _tiebreak_patch()
+    bc = _batch_config()
+    bc.pop("call_timeout_seconds")
+    res = _fake_controller().run_experiment(
+        spec=_spec(patch, h), batch_config=bc, budget=_authorized_budget(),
+    )
+    assert res["status"] == "blocked"
+    assert "call_timeout_seconds" in res["reason"]
+
+
+def test_run_experiment_blocked_when_call_timeout_seconds_not_positive_int():
+    patch, h = _tiebreak_patch()
+    res = _fake_controller().run_experiment(
+        spec=_spec(patch, h), batch_config=_batch_config(call_timeout_seconds=0), budget=_authorized_budget(),
+    )
+    assert res["status"] == "blocked"
+    assert "call_timeout_seconds" in res["reason"]
+
+
+def test_run_experiment_blocked_when_run_count_is_not_min_matched_reruns():
+    """issue #433 fix #6: run_count must not be silently ignored -- a
+    spec.run_count != adc.MIN_MATCHED_RERUNS is fail-closed blocked rather
+    than silently running MIN_MATCHED_RERUNS reruns anyway."""
+    patch, h = _tiebreak_patch()
+    res = _fake_controller().run_experiment(
+        spec=_spec(patch, h, run_count=5), batch_config=_batch_config(), budget=_authorized_budget(),
+    )
+    assert res["status"] == "blocked"
+    assert "run_count" in res["reason"]
 
 
 # --------------------------------------------------------------------------
@@ -227,33 +322,46 @@ def test_run_experiment_rejects_protected_scope_patch():
 # --------------------------------------------------------------------------
 
 
-class _Sem:
-    def __init__(self, contributes):
-        self.contributes = contributes
+def test_md2_contributes_to_pair_mapping():
+    """Issue #433 owner ruling, minimal-for-C1 scope: the ONLY MD-2 mapping is
+    a one-branch, non-directional relabel of the existing comparative
+    `contributes` verdict onto the comparator's per-side inputs. No
+    directional per-side guessing for revise/blocked/inconclusive."""
+    assert cli._contributes_to_pair("pass") == ("pass", "pass")
+    assert cli._contributes_to_pair("revise") == (None, None)
+    assert cli._contributes_to_pair("blocked") == (None, None)
+    assert cli._contributes_to_pair("inconclusive") == (None, None)
+    assert cli._contributes_to_pair("some_unexpected_value") == (None, None)
 
 
-def test_md2_semantic_to_case_observation_mapping():
-    case = {"case_id": "c", "case_family": "routing"}
-    stable = {"baseline": ["same", "same", "same"], "candidate": ["same", "same", "same"]}
+def test_md1_escalation_trigger_detected_but_not_escalated_stays_inconclusive():
+    """Issue #433 owner ruling, minimal-for-C1 scope: if the canonical #395
+    §8 trigger fires (baseline itself has variance across matched reruns for
+    a target-family case -> `missingness_reason ==
+    "evaluator_disagreement_unresolved"`), this scope does NOT run any extra
+    reruns. adc's own fallback already yields "inconclusive" for that case
+    and the batch decision must never be "keep_candidate"; an explicit,
+    honest limitation string must be recorded."""
+    obs = cli.adc.CaseObservation(
+        case_id="tiebreak-c1", case_family="routing",
+        baseline_verdicts=("pass", "revise", "pass"),  # baseline itself disagrees across reruns
+        candidate_verdicts=("pass", "pass", "pass"),
+        model_provider_runtime_hash="h" * 64, evaluator_version_hash="e" * 64,
+    )
+    result = cli.adc.evaluate_case(obs, target_family_flag=True)
+    assert result.missingness_reason == "evaluator_disagreement_unresolved"
+    assert result.run_variance_baseline is True
 
-    o_pass = cli._semantic_to_case_observation(sem=_Sem("pass"), case=case, rerun_outputs=stable,
-                                               run_count=3, evaluator_version_hash="e" * 64)
-    assert o_pass.baseline_verdicts == ("pass", "pass", "pass")
-    assert o_pass.candidate_verdicts == ("pass", "pass", "pass")
+    decision = cli.adc.aggregate_decision([result])
+    assert decision["decision"] != "keep_candidate"
+    assert decision["decision"] == "inconclusive"
 
-    o_block = cli._semantic_to_case_observation(sem=_Sem("blocked"), case=case, rerun_outputs=stable,
-                                                run_count=3, evaluator_version_hash="e" * 64)
-    assert o_block.candidate_verdicts == ("blocked", "blocked", "blocked")
-    assert o_block.baseline_verdicts == ("pass", "pass", "pass")
-
-    o_inc = cli._semantic_to_case_observation(sem=_Sem("inconclusive"), case=case, rerun_outputs=stable,
-                                              run_count=3, evaluator_version_hash="e" * 64)
-    assert o_inc.baseline_verdicts == (None, None, None)
-
-    variant = {"baseline": ["a", "b", "c"], "candidate": ["x", "x", "x"]}
-    o_var = cli._semantic_to_case_observation(sem=_Sem("pass"), case=case, rerun_outputs=variant,
-                                              run_count=3, evaluator_version_hash="e" * 64)
-    assert o_var.baseline_verdicts == (None, None, None)  # subject flakiness -> null pairs
+    limitations = cli._escalation_trigger_limitations([result])
+    assert len(limitations) == 1
+    assert "#395 §8 escalation trigger" in limitations[0]
+    assert "tiebreak-c1" in limitations[0]
+    assert "deferred to a follow-up" in limitations[0]
+    assert "never upgraded" in limitations[0]
 
 
 def test_md4_pilot_decision_map_never_emits_keep_candidate():

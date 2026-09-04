@@ -38,6 +38,7 @@ EVAL_CASE_SCHEMA_PATH = SCHEMAS / "autoresearch_eval_case.schema.json"
 EXPERIMENT_SCHEMA_PATH = SCHEMAS / "autoresearch_experiment_record.schema.json"
 BATCH_MANIFEST_SCHEMA_PATH = SCHEMAS / "autoresearch_batch_manifest.schema.json"
 SEMANTIC_FINDING_SCHEMA_PATH = SCHEMAS / "autoresearch_semantic_finding.schema.json"
+MANUAL_EVALUATION_SCHEMA_PATH = SCHEMAS / "autoresearch_manual_candidate_evaluation.schema.json"
 
 VERDICT_PRECEDENCE = {"pass": 0, "revise": 1, "blocked": 2}  # higher wins in worst_verdict()
 
@@ -589,6 +590,60 @@ def ledger_append(ledger_path: Path, record: dict, manifest: dict, batch_manifes
     record was REJECTED and nothing was written (fail-closed, read-only
     until a record actually clears every gate)."""
     findings = validate_experiment_record(record, manifest, batch_manifest)
+    if findings:
+        return findings
+
+    existing = read_ledger(ledger_path)
+    seen_ids = {line["record"].get("experiment_id") for line in existing}
+    exp_id = record.get("experiment_id")
+    correction_of = record.get("correction_of")
+    if exp_id in seen_ids and not correction_of:
+        return [
+            Finding(
+                path="experiment_id",
+                rule="DUPLICATE_WITHOUT_CORRECTION",
+                severity="critical",
+                evidence=f"experiment_id {exp_id!r} already exists in the ledger without correction_of",
+                consequence="reject",
+            )
+        ]
+    if correction_of and correction_of not in seen_ids:
+        return [
+            Finding(
+                path="correction_of",
+                rule="CORRECTION_WITHOUT_VALID_TARGET",
+                severity="critical",
+                evidence=f"correction_of {correction_of!r} does not reference an existing ledger entry",
+                consequence="reject",
+            )
+        ]
+
+    seq = len(existing)
+    prev_hash = existing[-1]["line_hash"] if existing else GENESIS_HASH
+    line_hash = _ledger_line_hash(seq, prev_hash, record)
+    line = {"seq": seq, "prev_hash": prev_hash, "record": record, "line_hash": line_hash}
+    with ledger_path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(line, sort_keys=True, separators=(",", ":")) + "\n")
+    return []
+
+
+def validate_manual_evaluation_record(doc: dict) -> list[Finding]:
+    """Schema check for a `manual_candidate_evaluation` record (issue #433,
+    MD-3). A distinct research-evidence class -- NOT an experiment_record, so
+    INV-06 / failure-attribution do not apply -- but it is still appended to
+    the SAME tamper-evident hash-chained ledger below."""
+    return _schema_findings(doc, MANUAL_EVALUATION_SCHEMA_PATH, "manual_candidate_evaluation")
+
+
+def manual_evaluation_ledger_append(ledger_path: Path, record: dict) -> list[Finding]:
+    """Validate a manual_candidate_evaluation record, then append it to the
+    JSONL ledger with the EXACT same {seq, prev_hash, record, line_hash}
+    envelope, hash chain, and duplicate/correction rules `ledger_append`
+    uses (`_ledger_line_hash`, `read_ledger`, `verify_ledger`). This is the
+    same mechanism, not a second ledger or state machine (issue #433 MD-3).
+    A non-empty finding list means the record was REJECTED and nothing was
+    written (fail-closed)."""
+    findings = validate_manual_evaluation_record(record)
     if findings:
         return findings
 

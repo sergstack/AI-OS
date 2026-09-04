@@ -18,12 +18,17 @@ Current decision evidence:
   injection point), and 14 fakes-only tests; full suite **606 passed**. A bare
   shell `experiment` stays `EXIT_BLOCKED`; a live run happens only through the
   coordinated session. Outcome vocabulary is `reject | inconclusive |
-  candidate_for_owner_review` — never `keep_candidate`. Method glue MD-1/MD-2/
-  MD-3/MD-4 is isolated and **pending [AI OS]/[Analytics] sign-off** against
-  the #394/#395 contracts before any paid/live call; new batch identity fixes
+  candidate_for_owner_review` — never `keep_candidate`. A formal method
+  review of MD-1..4 found MD-2/MD-3 `blocked` and MD-1 `revise`; a
+  subsequent **owner scoping ruling narrowed the harness to a
+  minimal-for-C1 pilot** (MD-1/MD-2 resolved narrowly, not as general
+  reusable semantics; full #395 §8 escalation and a directional per-side
+  Judge extension deferred to a follow-up) — see the "Owner scoping ruling:
+  minimal-for-C1" section in this same doc. New batch identity fixes
   `call_timeout_seconds = 180` and does not inherit the Phase 0 authorization.
   No admission/comparator/evaluator/schema semantics change; no Phase 1; no
-  active-config change.
+  active-config change. A live run of C1 still requires a separate, fresh
+  owner authorization.
 - [`AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`](AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md)
   records the Issue #417 Phase 0 live calibration & discovery gate for Issue
   #409, executed in a coordinated live session (owner signed in to the

@@ -254,6 +254,161 @@ decision. Per the review instruction, no new semantics were chosen here and
 and issue #433). #434 must not merge until MD-2 and MD-3 are resolved and
 MD-1 is implemented or explicitly waived.
 
+## Owner scoping ruling: minimal-for-C1 (supersedes full MD-1..4 WIP) — 2026-09-04
+
+After the "Formal method review" above (MD-2/MD-3 `blocked`, MD-1 `revise`), a
+first WIP attempted to resolve all four decisions at once into general,
+reusable MD-1..4 semantics (per-side de-blinded Judge verdicts added to the
+#394-additive schema, a full #395 §8 3→5 escalation loop, plus the MD-3
+ledgered evidence record). Before that WIP was finished or merged, the owner
+issued a **new, narrower ruling** that explicitly supersedes it: scope down to
+the smallest harness that can carry out **one bounded manual evaluation of the
+already-frozen candidate C1**, not a general-purpose reusable method. The WIP
+was reduced back to this minimal-for-C1 scope; nothing beyond it was kept.
+
+This is **not** the general reusable MD-1..4 semantics the earlier review was
+asking for, and it does not resolve MD-1/MD-2 in the reusable sense the
+"Required change" notes above described. It resolves them narrowly, for this
+one bounded pilot only:
+
+- **MD-1 (minimal scope): pass.** Exactly `adc.MIN_MATCHED_RERUNS` (3) matched
+  reruns per case, always — no more, no fewer. The canonical #395 §8 3→5
+  escalation loop is **explicitly out of scope and not implemented**; it is
+  deferred to a follow-up issue. If the §8 trigger condition fires anyway
+  (a target-family case's `missingness_reason ==
+  "evaluator_disagreement_unresolved"`, equivalently `run_variance_baseline`
+  True at 3 matched reruns), the harness does not improvise extra reruns or a
+  fix: `adc.evaluate_case_material_improvement`'s own fallback already yields
+  `("inconclusive", "evaluator_disagreement_unresolved")` for that case, and
+  `adc.aggregate_decision` turns any non-`"keep"` target result into a batch
+  `"inconclusive"` — never `keep_candidate`. `run_experiment` additionally
+  records an explicit, honest limitation string
+  (`_escalation_trigger_limitations` in `scripts/autoresearch_cli.py`) so this
+  under-powered-but-safe outcome is never silent.
+- **MD-2 (minimal scope): pass.** Only the unambiguous half of the review's
+  option (a) above is implemented, with NO directional per-side guessing:
+  `contributes == "pass"` → `(baseline="pass", candidate="pass")`; anything
+  else (`revise`, `blocked`, `inconclusive`, or an unexpected value) →
+  `(None, None)` (no_observation). This uses only the existing, frozen
+  comparative `contributes` field — already order-consistency-resolved by
+  `lj.run_blind_ab` (when the two presentation orders disagree, `contributes`
+  is already forced to `"inconclusive"`, so no extra order-check belongs in
+  this mapping). No change to the Judge schema, the Judge prompt, or
+  `evaluator_contract_version`. The earlier WIP's per-side de-blinded
+  `side_a_verdict` / `side_b_verdict` schema fields and judge-side machinery
+  (`_worst_side_verdict`, `_SIDE_PRECEDENCE`, etc.) were reverted in full —
+  `schemas/autoresearch_live_semantic_finding.schema.json`,
+  `docs/standards/autoresearch_v02_evaluator_config.json`, and
+  `scripts/autoresearch_live_judge.py` are back to their pre-WIP `HEAD`
+  state; the #394 evaluator contract is unchanged (still `0.2.0`). Options
+  (b)/(c)/(d) from the review (a directional-attribution schema field, a
+  per-side absolute-scoring Judge mode, or a canonical #395 comparative→
+  absolute mapping rule) remain undecided and are deferred to a follow-up.
+- **MD-3: pass (unchanged from the review's required-change option (a)).** A
+  distinct `manual_candidate_evaluation` record/schema
+  (`schemas/autoresearch_manual_candidate_evaluation.schema.json`) is appended
+  to the **same** tamper-evident, hash-chained, append-only ledger mechanism
+  the failure-driven `experiment_record` ledger already uses
+  (`autoresearch_validator._ledger_line_hash` / `read_ledger` /
+  `verify_ledger`, via the new `validate_manual_evaluation_record` /
+  `manual_evaluation_ledger_append`) — not a second ledger or state machine,
+  not a reuse of the failure-shaped `experiment_record` path, and no
+  `failure_id` is fabricated. The schema forbids any
+  `authority_status`/`merge_status`/`production_status`/`owner_acceptance`
+  field and binds `pilot_decision` to `comparator_raw_decision.decision` via
+  an `allOf`, so `keep_candidate` can never legally appear as
+  `pilot_decision`.
+- **MD-4: pass (unchanged).** `keep_candidate` → `candidate_for_owner_review`
+  is a pure authority-lowering relabel; the raw `adc.aggregate_decision`
+  value is preserved verbatim in the record's `comparator_raw_decision` and
+  in `result["raw_decision"]`. `keep_candidate` is never surfaced as
+  `pilot_decision`.
+
+Full #395 §8 escalation and any directional per-side Judge extension
+(options (b)/(c)/(d) above) are **deferred to a follow-up issue**, which
+would only be opened if this bounded pilot shows the harness gives a
+decision-useful answer for a real candidate edit.
+
+**A live run of candidate C1 through this harness is still NOT authorized by
+this change.** It requires a separate, fresh owner authorization (live
+transport binding, budget, and batch authority) and is explicitly out of
+scope here — this change only reduces the harness code itself to the smaller,
+honest, fakes-only-tested state described above.
+
+Validation for this reduction (fakes only, no live/network/model call):
+`pytest tests/ -q` → 609 passed; `check_manifest_paths.py` → 189/189;
+`check_repo_public_safety.py` → pass; `check_index_coverage.py` → 9/9;
+`check_knowledge_bundles.py` → 0 failed.
+
+## Evidence-integrity corrections to the minimal-for-C1 harness (owner review) — 2026-09-04
+
+The owner reviewed the minimal-for-C1 reduction above and found 7 concrete
+evidence-integrity defects in `scripts/autoresearch_cli.py` and
+`schemas/autoresearch_manual_candidate_evaluation.schema.json`. These are
+correctness fixes to the **same** minimal-for-C1 scope — no MD-1..4
+escalation/directional-Judge machinery was re-added, and none of the seven
+touch the #395 comparator, the #394 evaluator contract, or any decision
+vocabulary.
+
+1. **No fake `matched_observations` row on a pre-live/hard-gate stop.** When a
+   deterministic hard gate (patch scope / context drift) fires before any
+   matched rerun happens, `matched_observations` is now honestly `[]` —
+   never a synthetic placeholder row with null verdict/hash fields.
+   `schemas/...schema.json`'s `matched_observations.minItems` is now `0`
+   (was `1`).
+2. **No zero-hash / filename-hash used as a real content hash.** Every
+   previously-fabricated fallback (`_ZERO_HASH`, or a hash of the target
+   file's NAME string) is gone. `baseline_file_hash`,
+   `context_identities.baseline_context_hash` /
+   `candidate_context_hash` / `evaluator_version_hash` are now `null` when
+   not captured, paired with two new required honesty flags:
+   `baseline_file_hash_status` and `context_identities.context_capture_status`
+   (each `"captured"` / `"not_captured"`). `run_experiment` now loads the
+   evaluator config and computes its frozen hash immediately once both
+   contexts are known to have compiled — before the context-drift check —
+   so the three context-identity hashes are always captured (or not
+   captured) together, keeping the single shared status flag honest.
+3. **No invented budget values.** `record["budget"]` now uses
+   `budget.max_provider_calls` / `budget.max_cost_currency` directly (no
+   `or 0 or 1` / `or "USD"` fallback) — safe because `run_experiment`'s
+   existing `budget.authorized()` guard already requires both to be truthy
+   before any of this code runs. `call_timeout_seconds` is no longer
+   defaulted to `180`: `run_experiment` now has a new fail-closed guard that
+   blocks (`status: "blocked"`) whenever `batch_config.call_timeout_seconds`
+   is missing or not a positive integer, so every downstream use reads the
+   real, explicitly owner-authorized value with no default anywhere.
+4. **Judge finding kept for every matched rerun, not just the first.** The
+   `[:1]` truncation that discarded reruns 2 and 3's Judge findings is
+   removed; `judge_findings` now has one entry per matched rerun per case,
+   each carrying an explicit `"rerun"` index (also added to the schema).
+5. **Subject invocation ids separated from Judge invocation ids.**
+   `matched_observations[].live_invocation_ids` (which was actually the
+   Judge's ids, mislabeled) is renamed to `judge_invocation_ids`, and the
+   SUBJECT's own `baseline_invocation_id` / `candidate_invocation_id` — the
+   real ids recorded for that rerun/case/condition, never reconstructed —
+   are now included too.
+6. **`run_count` is no longer silently ignored.** `run_experiment` now
+   rejects (`status: "blocked"`) any spec whose `run_count` is not exactly
+   `adc.MIN_MATCHED_RERUNS` (3), instead of accepting the field/flag and then
+   silently always running 3 reruns regardless of its value.
+7. **Exact C1 live call plan, verified (not just claimed).** With
+   `adc.MIN_MATCHED_RERUNS == 3` and C1's one case (`case_ids` of length 1):
+   1 case × 3 matched reruns × (2 subject conditions + 2 Judge presentation
+   orders) = 6 subject calls + 6 Judge calls = **12 total**. Verified via a
+   real `preview_experiment(case_ids=["<c1-case-id>"], run_count=3, ...)`
+   call, whose `external_calls` output is exactly
+   `{"subject": 6, "researcher": 0, "judge": 6, "total": 12}` (also pinned by
+   a regression test,
+   `test_preview_experiment_c1_shaped_single_case_yields_exactly_12_calls`).
+   A fresh owner authorization request for a bounded C1 live run must be made
+   against exactly this count (`call_timeout_seconds` must be the
+   owner-authorized value, not any code default — see fix #3).
+
+Validation for these 7 fixes (fakes only, no live/network/model call):
+`pytest tests/ -q` → 613 passed (609 + 4 new/adjusted); `check_manifest_paths.py`
+→ 189/189; `check_repo_public_safety.py` → pass; `check_index_coverage.py` →
+9/9; `check_knowledge_bundles.py` → 0 failed.
+
 ## Rollback
 
 Revert `scripts/autoresearch_cli.py`; delete

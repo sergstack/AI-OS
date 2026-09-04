@@ -299,8 +299,17 @@ class Controller:
     # -- preview (PLAN -> PREVIEW EFFECT) -------------------------------
 
     def preview_experiment(self, *, batch_config: dict, case_ids: list, run_count: int, budget: RoleBudget) -> dict:
-        subject = 2 * run_count * len(case_ids)  # baseline + candidate, per case, per run
-        judge = 2 * len(case_ids)  # blind A/B both orders, per case
+        # issue #433, minimal-for-C1 scope: run_experiment always performs
+        # exactly `adc.MIN_MATCHED_RERUNS` matched reruns per case (no §8
+        # 3->5 escalation in this scope), regardless of the `run_count`
+        # argument/spec field -- so the preview reflects the ACTUAL call
+        # count using the constant, not the requested run_count. The Judge
+        # runs a blind A/B pass (both orders) on every one of those matched
+        # reruns, not just once, because the MD-2 minimal mapping needs one
+        # verdict pair per rerun to fill the comparator's per-rerun tuples.
+        reruns = adc.MIN_MATCHED_RERUNS
+        subject = 2 * reruns * len(case_ids)  # baseline + candidate, per case, per matched rerun
+        judge = 2 * reruns * len(case_ids)  # blind A/B both orders, per case, per matched rerun
         return {
             "action_class": "matched_live_experiment",
             "external_calls": {"subject": subject, "researcher": 0, "judge": judge, "total": subject + judge},
@@ -385,11 +394,36 @@ class Controller:
         live session; a bare CLI invocation keeps `transport is None` and is
         still structurally blocked.
 
-        Method-sensitive glue (rerun orchestration, live-evidence -> comparator
-        input) is isolated in `_semantic_to_case_observation` /
-        `_matched_reruns` below and is flagged for [AI OS] / [Analytics]
-        sign-off per issue #433 -- it does not alter the #395 comparator
-        method or the #394 evaluator contract.
+        Method semantics (owner ruling, issue #433 -- MINIMAL-FOR-C1 scope,
+        supersedes an earlier, broader MD-1..4 WIP; NOT the general reusable
+        MD-1..4 semantics):
+        - MD-1: exactly `adc.MIN_MATCHED_RERUNS` (3) matched reruns per case,
+          always -- no more, no fewer. The canonical #395 §8 3->5 escalation
+          loop is explicitly OUT OF SCOPE and NOT implemented here (deferred
+          to a follow-up). If the §8 trigger condition fires anyway (a
+          target-family case's `missingness_reason ==
+          "evaluator_disagreement_unresolved"`), this code does not improvise
+          extra reruns or a fix -- the comparator's own fallback already
+          yields "inconclusive" for that case, and an explicit limitation
+          string is recorded (see `_ESCALATION_TRIGGER_LIMITATION_PREFIX`
+          below). That path never produces `keep_candidate` / PASS.
+        - MD-2: minimal, conservative mapping from the existing comparative
+          `contributes` field (already order-consistency-resolved by
+          `lj.run_blind_ab`) to the comparator's per-side inputs, applied per
+          matched rerun -- NO directional per-side guessing, no Judge schema
+          or prompt change:
+              contributes == "pass"  -> (baseline="pass", candidate="pass")
+              anything else          -> (None, None)   # no_observation
+        - MD-3: the outcome is written as a schema-valid
+          `manual_candidate_evaluation` record appended to the shared
+          tamper-evident hash-chained ledger (a distinct research-evidence
+          class, not a failure-driven experiment_record).
+        - MD-4: `keep_candidate` from the comparator is relabelled to
+          `candidate_for_owner_review` (authority-lowering only); the raw
+          comparator decision is preserved verbatim.
+        The #395 comparator method and the frozen #394 evaluator contract are
+        used UNCHANGED (no schema, prompt, or evaluator_contract_version
+        change for this scope).
         """
         # -- fail-closed guards (reuse the same predicates doctor uses) --
         if self.transport is None:
@@ -404,11 +438,24 @@ class Controller:
             return {"status": "blocked", "reason": "budget not authorized (numeric call ceiling + cost cap + currency required)"}
         if str(batch_config.get("authority_status") or "") != "authorized":
             return {"status": "blocked", "reason": "batch authority_status is not 'authorized'"}
+        ts_guard = batch_config.get("call_timeout_seconds")
+        if not (isinstance(ts_guard, int) and not isinstance(ts_guard, bool) and ts_guard > 0):
+            return {
+                "status": "blocked",
+                "reason": "call_timeout_seconds missing/invalid in batch_config; an explicit "
+                "owner-authorized positive integer value is required",
+            }
+        if spec.run_count != adc.MIN_MATCHED_RERUNS:
+            return {
+                "status": "blocked",
+                "reason": f"run_count must equal adc.MIN_MATCHED_RERUNS ({adc.MIN_MATCHED_RERUNS}) in this "
+                f"minimal-for-C1 scope; got {spec.run_count}",
+            }
 
         manifest = av.load_manifest()
         shared_budget = budget.as_shared_state()
         evidence: dict = {
-            "schema_note": "sanitized manual_candidate_evaluation evidence package (issue #433); NOT a failure-driven experiment ledger record",
+            "schema_note": "human-readable companion to the schema-valid, ledgered manual_candidate_evaluation record (issue #433); NOT a failure-driven experiment_record",
             "mode": spec.mode,
             "experiment_id": spec.experiment_id,
             "baseline_revision": spec.baseline_revision,
@@ -420,7 +467,7 @@ class Controller:
             "limitations": [
                 "repo_replay via a fresh chat is a lower-fidelity approximation of the real configured Project runtime; no UI-equivalence claim.",
                 "subject and Judge share a model class (limited_same_model_class); Judge agreement is not independent corroboration.",
-                "rerun orchestration (MD-1) and live-evidence->CaseObservation mapping (MD-2) are pending [AI OS]/[Analytics] sign-off per issue #433.",
+                "minimal-for-C1 scope (issue #433 owner ruling): MD-2 uses only the frozen comparative `contributes` field (pass -> pass/pass, anything else -> no_observation); no directional per-side Judge extension. Full §8 3->5 escalation is deferred to a follow-up and never runs here.",
             ],
         }
 
@@ -440,32 +487,56 @@ class Controller:
             )
         except cpc.ContextCompilerError as exc:
             evidence["hard_gate"] = {"status": "violated", "detail": str(exc)}
-            return _finalize_pilot(evidence, raw_decision="discard",
+            return _finalize_pilot(evidence, raw_decision="discard", spec=spec, batch_config=batch_config,
                                    reason=f"deterministic hard gate (patch scope / apply): {exc}",
-                                   evidence_dir=evidence_dir, budget=budget)
+                                   evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
+
+        # Loaded here (immediately once both contexts are known to have
+        # compiled) so that `baseline_ctx`/`candidate_ctx`/`evh` are always
+        # captured TOGETHER -- both on the context-drift early exit below and
+        # on the full success path. This keeps `context_identities`'s single
+        # `context_capture_status` flag (fix #2, issue #433) honest: it never
+        # has to describe a state where only some of the three were captured.
+        evaluator_config = lj.EvaluatorConfig.load(
+            self.repo_root / "docs/standards/autoresearch_v02_evaluator_config.json"
+        )
+        evh = evaluator_config.frozen_hash()
 
         equiv = cpc.equivalence_report(baseline_ctx, candidate_ctx)
         evidence["context_equivalence"] = equiv
         if not equiv.get("equivalent") or set(equiv.get("differences", [])) - {spec.target_file}:
-            return _finalize_pilot(evidence, raw_decision="discard",
+            return _finalize_pilot(evidence, raw_decision="discard", spec=spec, batch_config=batch_config,
+                                   baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
+                                   evaluator_config=evaluator_config,
                                    reason=f"context drift outside the declared mutation: {equiv}",
-                                   evidence_dir=evidence_dir, budget=budget)
+                                   evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
         evidence["baseline_context_hash"] = baseline_ctx["context_hash"]
         evidence["candidate_context_hash"] = candidate_ctx["context_hash"]
 
         case_ids = [c["case_id"] for c in spec.cases]
+        finding_schema = _load_json(
+            str(self.repo_root / "schemas/autoresearch_live_semantic_finding.schema.json")
+        )
+        retry_limit = int(batch_config.get("retry_limit", 1))
+        authority_evidence_ref = str(batch_config.get("authority_evidence_ref", ""))
 
-        # -- MD-1: rerun orchestration = repeat the frozen matched-run --
-        # `asr.run_shadow_experiment` N times against the ONE immutable
-        # baseline revision + the ONE patch. Each call = 1 baseline + 1
-        # candidate live subject call per case, through the injected transport.
-        rerun_outputs: dict = {cid: {"baseline": [], "candidate": []} for cid in case_ids}
-        for k in range(spec.run_count):
+        # per-case accumulators
+        per_case: dict = {
+            cid: {"baseline_verdicts": [], "candidate_verdicts": [], "b_hashes": [], "c_hashes": [],
+                  "obs_rows": [], "sems": []}
+            for cid in case_ids
+        }
+
+        def _one_matched_rerun(k: int) -> Optional[dict]:
+            """One matched rerun = 1 shadow experiment (subject baseline+candidate
+            per case) + a blind A/B Judge pass per case. Returns None on a
+            deterministic hard-gate rejection (caller -> reject)."""
+            cids = case_ids
             exp_id_k = f"{spec.experiment_id}-r{k}"
             requests_by_key = _build_requests(
-                spec=spec, experiment_id=exp_id_k, case_ids=case_ids,
+                spec=spec, experiment_id=exp_id_k, case_ids=cids,
                 baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx,
-                authority_evidence_ref=str(batch_config.get("authority_evidence_ref", "")),
+                authority_evidence_ref=authority_evidence_ref,
             )
             policy = _transport_policy(batch_config)
             sink: list = []
@@ -474,95 +545,124 @@ class Controller:
                 transport=self.transport, results_sink=sink,
             )
             min_record = {
-                "experiment_id": exp_id_k,
-                "baseline_revision": spec.baseline_revision,
-                "candidate_patch_hash": spec.candidate_patch_hash,
-                "research_surface": spec.research_surface,
+                "experiment_id": exp_id_k, "baseline_revision": spec.baseline_revision,
+                "candidate_patch_hash": spec.candidate_patch_hash, "research_surface": spec.research_surface,
             }
             rr = asr.run_shadow_experiment(
                 repo_root=self.repo_root, experiment_record=min_record, manifest=manifest,
-                patch_text=spec.patch_text, adapter=adapter, case_ids=case_ids,
+                patch_text=spec.patch_text, adapter=adapter, case_ids=cids,
             )
-            evidence["reruns"].append({
-                "rerun": k, "experiment_id": exp_id_k, "shadow_status": rr.status,
-                "notes": rr.notes,
-                "invocations": [lba.to_live_invocation_record(r) for r in sink],
-                "findings": [f.evidence for f in rr.findings],
-            })
+            rec = {"rerun": k, "experiment_id": exp_id_k, "shadow_status": rr.status, "notes": rr.notes,
+                   "invocations": [lba.to_live_invocation_record(r) for r in sink],
+                   "shadow_findings": [f.evidence for f in rr.findings], "cases": {}}
             if rr.status == "rejected":
-                return _finalize_pilot(evidence, raw_decision="discard",
-                                       reason=f"deterministic hard gate inside run_shadow_experiment: {rr.notes}",
-                                       evidence_dir=evidence_dir, budget=budget)
-            for cid in case_ids:
+                evidence["reruns"].append(rec)
+                return None
+
+            for cid in cids:
+                c = next(x for x in spec.cases if x["case_id"] == cid)
                 bl = (rr.baseline_observations or {}).get(cid)
                 cd = (rr.candidate_observations or {}).get(cid)
-                rerun_outputs[cid]["baseline"].append(bl["response"] if bl else None)
-                rerun_outputs[cid]["candidate"].append(cd["response"] if cd else None)
+                bl_txt = bl["response"] if bl else None
+                cd_txt = cd["response"] if cd else None
+                bl_h = bl.get("response_hash") if bl else None
+                cd_h = cd.get("response_hash") if cd else None
+                if not bl_txt or not cd_txt:
+                    # missing subject output this rerun -> null verdict pair (#395 §10 no_observation)
+                    per_case[cid]["baseline_verdicts"].append(None)
+                    per_case[cid]["candidate_verdicts"].append(None)
+                    per_case[cid]["b_hashes"].append(bl_h)
+                    per_case[cid]["c_hashes"].append(cd_h)
+                    rec["cases"][cid] = {"baseline_verdict": None, "candidate_verdict": None,
+                                         "baseline_response_hash": bl_h, "candidate_response_hash": cd_h,
+                                         "judge_consistency": "not_run", "reason": "missing subject output"}
+                    continue
+                sem = lj.run_blind_ab(
+                    case={"case_id": cid, "case_family": c["case_family"], "input": c.get("input")},
+                    baseline_output=bl_txt, candidate_output=cd_txt,
+                    evaluator_config=evaluator_config, judge=self.judge_model,
+                    finding_schema=finding_schema, experiment_id=f"{exp_id_k}",
+                    seed=spec.seed, deterministic_precheck="none", retry_limit=retry_limit,
+                )
+                bv, cv = _contributes_to_pair(sem.contributes)
+                per_case[cid]["baseline_verdicts"].append(bv)
+                per_case[cid]["candidate_verdicts"].append(cv)
+                per_case[cid]["b_hashes"].append(bl_h)
+                per_case[cid]["c_hashes"].append(cd_h)
+                per_case[cid]["sems"].append((k, sem))
+                rec["cases"][cid] = {
+                    "baseline_verdict": bv, "candidate_verdict": cv,
+                    "baseline_response_hash": bl_h, "candidate_response_hash": cd_h,
+                    "judge_consistency": sem.consistency, "contributes": sem.contributes,
+                    "judge_invocation_ids": sem.judge_invocation_ids, "deblinding": sem.deblinding,
+                }
+            evidence["reruns"].append(rec)
+            return rec
 
-        # -- blind A/B Judge (frozen #414 path, unchanged) --
-        evaluator_config = lj.EvaluatorConfig.load(
-            self.repo_root / "docs/standards/autoresearch_v02_evaluator_config.json"
-        )
-        finding_schema = _load_json(
-            str(self.repo_root / "schemas/autoresearch_live_semantic_finding.schema.json")
-        )
-        case_results = []
-        evidence["cases"] = []
+        # -- MD-1 (minimal-for-C1 scope, issue #433 owner ruling): exactly
+        # `adc.MIN_MATCHED_RERUNS` matched reruns per case, always -- no §8
+        # 3->5 escalation loop in this scope (deferred to a follow-up).
+        for k in range(adc.MIN_MATCHED_RERUNS):
+            if _one_matched_rerun(k) is None:
+                return _finalize_pilot(
+                    evidence, raw_decision="discard", spec=spec, batch_config=batch_config,
+                    baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
+                    evaluator_config=evaluator_config, per_case=per_case, case_results=[],
+                    reason="deterministic hard gate inside run_shadow_experiment",
+                    evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
+
+        case_results: list = []
         for c in spec.cases:
             cid = c["case_id"]
-            outs = rerun_outputs[cid]
-            first_bl = next((x for x in outs["baseline"] if x), None)
-            first_cd = next((x for x in outs["candidate"] if x), None)
-            if first_bl is None or first_cd is None:
-                # no usable subject output on any rerun -> inconclusive by construction
-                obs = adc.CaseObservation(
-                    case_id=cid, case_family=c["case_family"],
-                    baseline_verdicts=tuple([None] * spec.run_count),
-                    candidate_verdicts=tuple([None] * spec.run_count),
-                    model_provider_runtime_hash="not_observable",
-                    evaluator_version_hash=evaluator_config.frozen_hash(),
-                )
-                case_results.append(adc.evaluate_case(obs, target_family_flag=c["target_family_flag"]))
-                evidence["cases"].append({"case_id": cid, "semantic": "skipped: no subject output", "case_observation": _obs_dump(obs)})
-                continue
-            sem = lj.run_blind_ab(
-                case={"case_id": cid, "case_family": c["case_family"], "input": c.get("input")},
-                baseline_output=first_bl, candidate_output=first_cd,
-                evaluator_config=evaluator_config, judge=self.judge_model,
-                finding_schema=finding_schema, experiment_id=spec.experiment_id,
-                seed=spec.seed, deterministic_precheck="none",
-                retry_limit=int(batch_config.get("retry_limit", 1)),
+            pc = per_case[cid]
+            obs = adc.CaseObservation(
+                case_id=cid, case_family=c["case_family"],
+                baseline_verdicts=tuple(v if v in ("pass", "revise", "blocked") else None
+                                       for v in pc["baseline_verdicts"]),
+                candidate_verdicts=tuple(v if v in ("pass", "revise", "blocked") else None
+                                         for v in pc["candidate_verdicts"]),
+                model_provider_runtime_hash=av.sha256_hex(
+                    json.dumps({"transport": batch_config.get("transport_id"), "case": cid},
+                               sort_keys=True).encode()),
+                evaluator_version_hash=evh,
+                hard_gate_status="pass",
             )
-            obs = _semantic_to_case_observation(
-                sem=sem, case=c, rerun_outputs=outs, run_count=spec.run_count,
-                evaluator_version_hash=evaluator_config.frozen_hash(),
-            )
+            pc["obs_rows"] = [_obs_dump(obs)]
             case_results.append(adc.evaluate_case(obs, target_family_flag=c["target_family_flag"]))
-            evidence["cases"].append({
-                "case_id": cid,
-                "semantic": {
-                    "consistency": sem.consistency, "aggregate_verdict": sem.aggregate_verdict,
-                    "contributes": sem.contributes, "independence_level": sem.independence_level,
-                    "judge_invocation_ids": sem.judge_invocation_ids, "deblinding": sem.deblinding,
-                    "limitations": sem.limitations,
-                },
-                "case_observation": _obs_dump(obs),
-            })
+
+        # MD-1 (minimal-for-C1 scope): if the canonical #395 §8 trigger fires
+        # anyway (a target-family case is inconclusive because of unresolved
+        # evaluator/run-variance disagreement at MIN_MATCHED_RERUNS), do NOT
+        # improvise extra reruns or a fix -- adc's own fallback already
+        # yields "inconclusive" for that case and `aggregate_decision` turns
+        # any non-"keep" target result into a batch "inconclusive". Just
+        # record an honest, explicit annotation; never upgrade this to PASS.
+        evidence["limitations"].extend(_escalation_trigger_limitations(case_results))
+
+        evidence["rerun_policy"] = {
+            "min_matched_reruns": adc.MIN_MATCHED_RERUNS, "ceiling": 5,
+            "escalation_trigger": _ESCALATION_TRIGGER_LIMITATION_PREFIX,
+            "per_case_reruns_used": {cid: len(per_case[cid]["baseline_verdicts"]) for cid in case_ids},
+            "escalated_cases": [], "budget_limited_cases": [],
+        }
 
         raw = adc.aggregate_decision(case_results)
         evidence["comparator"] = raw
         evidence["case_results"] = [
-            {
-                "case_id": r.case_id, "case_family": r.case_family,
-                "non_inferiority_result": r.non_inferiority_result,
-                "material_regression_flag": r.material_regression_flag,
-                "material_improvement_result": r.material_improvement_result,
-                "missingness_reason": r.missingness_reason,
-            }
+            {"case_id": r.case_id, "case_family": r.case_family,
+             "non_inferiority_result": r.non_inferiority_result,
+             "material_regression_flag": r.material_regression_flag,
+             "material_improvement_result": r.material_improvement_result,
+             "run_variance_baseline": r.run_variance_baseline,
+             "run_variance_candidate": r.run_variance_candidate,
+             "missingness_reason": r.missingness_reason}
             for r in case_results
         ]
-        return _finalize_pilot(evidence, raw_decision=raw["decision"], reason=raw["reason"],
-                               evidence_dir=evidence_dir, budget=budget)
+        return _finalize_pilot(
+            evidence, raw_decision=raw["decision"], reason=raw["reason"], spec=spec,
+            batch_config=batch_config, baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx,
+            evh=evh, evaluator_config=evaluator_config, per_case=per_case, case_results=case_results,
+            evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
 
 
 # ---------------------------------------------------------------------------
@@ -615,7 +715,16 @@ class ManualCandidateSpec:
 def _transport_policy(batch_config: dict) -> "lba.TransportPolicy":
     """Build the frozen per-batch browser policy from the #411 batch config.
     `call_timeout_seconds` is threaded through as an attribute the adapter's
-    `_timeout_seconds` already looks for; there is no default invented here."""
+    `_timeout_seconds` already looks for. issue #433 fix #3: no default is
+    invented here -- when this is reached from `run_experiment`'s own rerun
+    loop, `call_timeout_seconds` is already guaranteed to be a valid,
+    owner-authorized positive integer by the fail-closed guard at the top of
+    `run_experiment` (it runs before any of this code, and before any
+    external call). A caller outside that guarded path (e.g. a coordinated
+    session building a judge binding ahead of time) may still pass an
+    unvalidated `batch_config`; this function performs no I/O itself, so a
+    missing/invalid value here is caught by `run_experiment`'s guard before
+    any live call is made."""
     policy = lba.TransportPolicy(
         transport_id=batch_config.get("transport_id", "playwright_mcp"),
         transport_version=str(batch_config.get("transport_version", "unversioned")),
@@ -626,9 +735,7 @@ def _transport_policy(batch_config: dict) -> "lba.TransportPolicy":
         expected_model_selector=batch_config.get("expected_model_selector") or None,
         expected_context_hash=None,  # each request carries its own; baseline != candidate by design
     )
-    ts = batch_config.get("call_timeout_seconds")
-    if isinstance(ts, int) and ts > 0:
-        object.__setattr__(policy, "call_timeout_seconds", ts)
+    object.__setattr__(policy, "call_timeout_seconds", batch_config.get("call_timeout_seconds"))
     return policy
 
 
@@ -658,60 +765,6 @@ def _case_payload(spec: ManualCandidateSpec, case_id: str, ctx: dict) -> str:
     return f"{cpc.render_summary(ctx)}\n\n---\nTASK:\n{task}\n"
 
 
-# --- METHOD DECISION MD-2 (requires [AI OS] / [Analytics] sign-off, issue #433) ---
-# `lj.run_blind_ab` yields ONE relative A/B verdict per case (`contributes` in
-# {pass, revise, blocked, inconclusive}). `adc.CaseObservation` wants per-SIDE
-# absolute verdicts across >=3 matched reruns. This adapter maps the two,
-# conservatively (bias toward inconclusive / reject), WITHOUT touching the
-# #395 comparator method:
-#   contributes == "pass"            -> (baseline="pass",  candidate="pass")
-#   contributes in {revise, blocked} -> (baseline="pass",  candidate=<that>)   # attribute the material finding to the candidate
-#   contributes == "inconclusive"    -> (None, None)                            # comparator -> no_observation / inconclusive
-# The single Judge verdict is held constant only across reruns whose subject
-# outputs were textually stable AND present; a variant/missing rerun yields a
-# null pair for that index. This ties the comparator's >=3-rerun requirement
-# to reruns that actually happened, while never fabricating a semantic verdict.
-def _semantic_to_case_observation(*, sem, case: dict, rerun_outputs: dict, run_count: int,
-                                  evaluator_version_hash: str) -> "adc.CaseObservation":
-    if sem.contributes == "pass":
-        pair = ("pass", "pass")
-    elif sem.contributes in ("revise", "blocked"):
-        pair = ("pass", sem.contributes)
-    else:  # "inconclusive" / anything unexpected
-        pair = (None, None)
-
-    def _norm(v):
-        return lj_normalize(v) if v else None
-
-    stable_baseline = len({_norm(x) for x in rerun_outputs["baseline"] if x}) <= 1
-    stable_candidate = len({_norm(x) for x in rerun_outputs["candidate"] if x}) <= 1
-
-    b_verdicts, c_verdicts = [], []
-    for k in range(run_count):
-        bl = rerun_outputs["baseline"][k] if k < len(rerun_outputs["baseline"]) else None
-        cd = rerun_outputs["candidate"][k] if k < len(rerun_outputs["candidate"]) else None
-        if bl and cd and stable_baseline and stable_candidate:
-            b_verdicts.append(pair[0])
-            c_verdicts.append(pair[1])
-        else:
-            b_verdicts.append(None)
-            c_verdicts.append(None)
-
-    return adc.CaseObservation(
-        case_id=case["case_id"], case_family=case["case_family"],
-        baseline_verdicts=tuple(b_verdicts), candidate_verdicts=tuple(c_verdicts),
-        model_provider_runtime_hash=av.sha256_hex(
-            json.dumps({"transport": "playwright_mcp", "case": case["case_id"]}, sort_keys=True).encode()
-        ),
-        evaluator_version_hash=evaluator_version_hash,
-        hard_gate_status="pass",
-    )
-
-
-def lj_normalize(text: str) -> str:
-    return lba.normalize_response(text or "")
-
-
 def _obs_dump(obs) -> dict:
     return {
         "case_id": obs.case_id, "case_family": obs.case_family,
@@ -721,6 +774,57 @@ def _obs_dump(obs) -> dict:
     }
 
 
+# --- METHOD DECISION MD-2 (owner ruling, issue #433 -- MINIMAL-FOR-C1 scope) ---
+# `lj.run_blind_ab` yields ONE existing comparative A/B verdict per matched
+# rerun (`contributes` in {pass, revise, blocked, inconclusive}), already
+# order-consistency-resolved: when the two presentation orders disagree,
+# `run_blind_ab` already forces `contributes` to "inconclusive", so no extra
+# order-check belongs in this mapping. This is the ONLY mapping from that
+# comparative finding onto `adc.CaseObservation`'s per-side (baseline,
+# candidate) inputs, for exactly one matched rerun. It is deliberately
+# conservative -- NO directional per-side guessing about which side a
+# revise/blocked verdict belongs to:
+#   contributes == "pass"  -> (baseline="pass", candidate="pass")
+#   anything else          -> (None, None)   # no_observation / unresolved
+# This does not modify the #395 comparator method or the #394 evaluator
+# contract; the full 3->5 §8 escalation loop and any directional per-side
+# Judge extension are explicitly out of scope here (see run_experiment
+# docstring) and deferred to a follow-up issue.
+def _contributes_to_pair(contributes: str) -> tuple:
+    if contributes == "pass":
+        return ("pass", "pass")
+    return (None, None)
+
+
+_ESCALATION_TRIGGER_LIMITATION_PREFIX = (
+    "#395 §8 escalation trigger (run_variance_or_disagreement) fired for"
+)
+
+
+def _escalation_trigger_limitations(case_results: list) -> list:
+    """MD-1 (minimal-for-C1 scope, issue #433 owner ruling): if the canonical
+    #395 §8 trigger fires for a case (`missingness_reason ==
+    "evaluator_disagreement_unresolved"`, equivalently `run_variance_baseline`
+    True at MIN_MATCHED_RERUNS), never improvise extra reruns or a fix --
+    `adc`'s own fallback already yields "inconclusive" for that case and
+    `aggregate_decision` turns any non-"keep" target result into a batch
+    "inconclusive". Just return an explicit, honest limitation string per
+    such case; the caller never upgrades this path to PASS."""
+    out = []
+    for r in case_results:
+        if r.missingness_reason == "evaluator_disagreement_unresolved":
+            out.append(
+                f"{_ESCALATION_TRIGGER_LIMITATION_PREFIX} case_id={r.case_id!r}; "
+                "full 3->5 escalation is out of scope for this minimal pilot and deferred to a "
+                "follow-up; result recorded as inconclusive, never upgraded."
+            )
+    return out
+
+
+# MD-4 (owner decision, issue #433): authority-LOWERING relabel only. The raw
+# adc.aggregate_decision value is preserved verbatim in the ledger record and
+# the result. candidate_for_owner_review carries no acceptance / merge /
+# promotion authority; keep_candidate is never surfaced.
 _PILOT_DECISION = {
     "keep_candidate": "candidate_for_owner_review",
     "discard": "reject",
@@ -728,15 +832,157 @@ _PILOT_DECISION = {
 }
 
 
-def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str,
-                    evidence_dir: Optional[Path], budget: RoleBudget) -> dict:
-    # METHOD DECISION MD-4: keep_candidate -> candidate_for_owner_review (research
-    # evidence only, never acceptance/merge/promotion). reject/inconclusive pass through.
+def _first_hashes(baseline_ctx: Optional[dict], spec: "ManualCandidateSpec") -> Optional[str]:
+    """The real content hash of `spec.target_file` inside the compiled
+    baseline context, or `None` if it was never captured. NEVER a fabricated
+    zero-hash or a hash of the file NAME string -- `None` is the honest value
+    when no real content hash exists (paired with the record's
+    `baseline_file_hash_status`, issue #433 fix #2). `baseline_ctx` is `None`
+    on an early fail-closed exit (context never compiled). The target file can
+    also legitimately be absent from `ordered_sources` if
+    `canonical_subject_sources` excludes it for this project's capability
+    declarations -- that is also `None`/`not_captured`, never a fallback
+    hash."""
+    if baseline_ctx is None:
+        return None
+    src = next((s for s in baseline_ctx.get("ordered_sources", []) if spec.target_file in s.get("path", "")), None)
+    return src["content_hash"] if src else None
+
+
+def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str, spec: "ManualCandidateSpec",
+                    batch_config: dict, evidence_dir: Optional[Path], budget: RoleBudget, shared_budget,
+                    baseline_ctx: Optional[dict] = None, candidate_ctx: Optional[dict] = None,
+                    evh: Optional[str] = None, evaluator_config=None,
+                    per_case: Optional[dict] = None, case_results: Optional[list] = None) -> dict:
+    per_case = per_case or {}
+    case_results = case_results or []
+    # issue #433 fix #2: `baseline_ctx`/`candidate_ctx`/`evh` are always
+    # captured together in `run_experiment`'s current control flow (the
+    # evaluator config + its frozen hash are loaded immediately once both
+    # contexts are known to have compiled, before either the context-drift
+    # early exit or the full success path) -- so ONE shared status flag
+    # covers all three honestly.
+    context_captured = baseline_ctx is not None and candidate_ctx is not None and evh is not None
+    if not context_captured:
+        evidence["limitations"].append(
+            "context compilation did not complete for this experiment (a deterministic hard gate fired "
+            "before both baseline and candidate context could be compiled); the context hashes below are "
+            "null (not_captured), never a fabricated placeholder hash."
+        )
     pilot_decision = _PILOT_DECISION.get(raw_decision, "inconclusive")
     evidence["raw_decision"] = raw_decision
     evidence["pilot_decision"] = pilot_decision
     evidence["decision_reason"] = reason
     evidence["budget"] = budget.summary()
+
+    # ---- MD-3: build the schema-valid, ledgered manual_candidate_evaluation record ----
+    matched_observations = []
+    judge_findings = []
+    for rr in evidence.get("reruns", []):
+        invocations_by_key = {
+            (inv.get("case_id"), inv.get("condition")): inv.get("invocation_id")
+            for inv in rr.get("invocations", [])
+        }
+        for cid, cd in rr.get("cases", {}).items():
+            matched_observations.append({
+                "case_id": cid,
+                "case_family": next((c["case_family"] for c in spec.cases if c["case_id"] == cid), "routing"),
+                "rerun": rr["rerun"],
+                "baseline_response_hash": cd.get("baseline_response_hash"),
+                "candidate_response_hash": cd.get("candidate_response_hash"),
+                "baseline_verdict": cd.get("baseline_verdict"),
+                "candidate_verdict": cd.get("candidate_verdict"),
+                # issue #433 fix #5: the SUBJECT's own recorded invocation ids
+                # for this rerun/case/condition -- looked up from the actually
+                # recorded `rr["invocations"]`, never reconstructed/guessed;
+                # `None` when no matching subject invocation was recorded
+                # (e.g. the call was never attempted after an earlier
+                # failure).
+                "baseline_invocation_id": invocations_by_key.get((cid, "baseline")),
+                "candidate_invocation_id": invocations_by_key.get((cid, "candidate")),
+                # honestly labeled: these are the JUDGE's invocation ids, not
+                # a generic "live_invocation_ids" (issue #433 fix #5).
+                "judge_invocation_ids": cd.get("judge_invocation_ids", []),
+                "judge_consistency": cd.get("judge_consistency", "not_run"),
+            })
+    for cid, pc in per_case.items():
+        # issue #433 fix #4: keep the Judge finding for EVERY matched rerun
+        # (not just the first) -- `sems` now stores (rerun_index, sem) pairs
+        # so the true rerun index survives even when a rerun is skipped for a
+        # case (missing subject output) and its position in the list would
+        # otherwise no longer line up with the rerun number.
+        for k, sem in pc.get("sems", []):
+            bv, cv = _contributes_to_pair(sem.contributes)
+            judge_findings.append({
+                "case_id": cid, "rerun": k, "consistency": sem.consistency,
+                "baseline_verdict": bv, "candidate_verdict": cv,
+                "contributes": sem.contributes, "deblinding": sem.deblinding,
+            })
+
+    rp = evidence.get("rerun_policy", {
+        "min_matched_reruns": adc.MIN_MATCHED_RERUNS, "ceiling": 5,
+        "escalation_trigger": "#395 §8 (n/a: hard gate fired before any matched rerun)",
+        "per_case_reruns_used": {}, "escalated_cases": [], "budget_limited_cases": [],
+    })
+    baseline_file_hash = _first_hashes(baseline_ctx, spec)
+    record = {
+        "schema_version": "0.2.0",
+        "record_kind": "manual_candidate_evaluation",
+        "experiment_id": spec.experiment_id,
+        "batch_id": str(batch_config.get("batch_id", spec.experiment_id)),
+        "created_at": _now_iso(),
+        "baseline_revision": spec.baseline_revision,
+        # issue #433 fix #2: honest nullable hash + explicit status -- never a
+        # fabricated zero-hash or filename hash.
+        "baseline_file_hash": baseline_file_hash,
+        "baseline_file_hash_status": "captured" if baseline_file_hash is not None else "not_captured",
+        "candidate_patch_ref": f"sha256:{spec.candidate_patch_hash}",
+        "candidate_patch_hash": spec.candidate_patch_hash,
+        "target_file": spec.target_file,
+        "research_surface": spec.research_surface,
+        "authority_evidence_ref": str(batch_config.get("authority_evidence_ref", "")),
+        "budget": {
+            # issue #433 fix #3: no invented defaults. `run_experiment`'s
+            # fail-closed guards (budget.authorized(), call_timeout_seconds
+            # validity) already guarantee these are real, owner-authorized
+            # values by the time `_finalize_pilot` is ever reached.
+            "max_provider_calls": int(budget.max_provider_calls),
+            "max_cost_amount": float(budget.max_cost_amount if budget.max_cost_amount is not None else 0.0),
+            "max_cost_currency": budget.max_cost_currency,
+            "calls_used": shared_budget.calls_used,
+            "call_timeout_seconds": int(batch_config["call_timeout_seconds"]),
+        },
+        "context_identities": {
+            "baseline_context_hash": baseline_ctx["context_hash"] if baseline_ctx else None,
+            "candidate_context_hash": candidate_ctx["context_hash"] if candidate_ctx else None,
+            "context_equivalence": evidence.get("context_equivalence", {"equivalent": False, "differences": []}),
+            "transport_id": str(batch_config.get("transport_id", "playwright_mcp")),
+            "subject_model_identity": str(batch_config.get("model", "not_observable")),
+            "subject_model_identity_status": "declared" if batch_config.get("model") else "not_observable",
+            "evaluator_version_hash": evh,
+            "context_capture_status": "captured" if context_captured else "not_captured",
+            "evaluator_contract_version": (
+                evaluator_config.evaluator_contract_version if evaluator_config else "n/a-context-not-compiled"
+            ),
+        },
+        "rerun_policy": rp,
+        # issue #433 fix #1: zero observations means an empty list -- never a
+        # synthetic placeholder row pretending an observation occurred.
+        "matched_observations": matched_observations,
+        "judge_findings": judge_findings,
+        "comparator_raw_decision": {"decision": raw_decision, "reason": reason},
+        "pilot_decision": pilot_decision,
+        "limitations": evidence["limitations"],
+        "rollback": ("Candidate exists only in ephemeral shadow worktrees; nothing applied to main, active "
+                     "Project config, or the ledger baseline. Revert is: discard the shadow worktrees. This "
+                     "record and its evidence package are append-only."),
+        "evidence_hashes": {
+            "evidence_package_sha256": av.sha256_hex(
+                json.dumps(evidence, sort_keys=True, separators=(",", ":")).encode()),
+            "patch_sha256": spec.candidate_patch_hash,
+        },
+    }
+
     result = {
         "status": "completed",
         "pilot_decision": pilot_decision,
@@ -744,13 +990,38 @@ def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str,
         "reason": reason,
         "authority_note": "candidate_for_owner_review != keep_candidate != owner acceptance != merge/promotion authority",
     }
+
+    schema_findings = av.validate_manual_evaluation_record(record)
+    if schema_findings:
+        result["status"] = "blocked"
+        result["reason"] = "manual_candidate_evaluation record failed schema validation: " + \
+            "; ".join(f"{f.path}: {f.evidence}" for f in schema_findings[:5])
+        evidence["record_validation_errors"] = [f"{f.path}: {f.evidence}" for f in schema_findings]
+
     if evidence_dir is not None:
         evidence_dir = Path(evidence_dir)
         evidence_dir.mkdir(parents=True, exist_ok=True)
-        p = evidence_dir / f"{evidence['experiment_id']}_evidence.json"
-        p.write_text(json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        result["evidence_path"] = str(p)
+        pkg = evidence_dir / f"{spec.experiment_id}_evidence.json"
+        pkg.write_text(json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        result["evidence_path"] = str(pkg)
+        rec_path = evidence_dir / f"{spec.experiment_id}_record.json"
+        rec_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        result["record_path"] = str(rec_path)
+        if result["status"] == "completed":
+            ledger = evidence_dir / "autoresearch_manual_evaluations.jsonl"
+            led_findings = av.manual_evaluation_ledger_append(ledger, record)
+            if led_findings:
+                result["status"] = "blocked"
+                result["reason"] = "ledger append rejected: " + "; ".join(f.evidence for f in led_findings[:3])
+            else:
+                result["ledger_path"] = str(ledger)
+    result["record"] = record
     return result
+
+
+def _now_iso() -> str:
+    import datetime
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _spec_from_args(args, batch_config: dict, budget: RoleBudget) -> Optional["ManualCandidateSpec"]:
