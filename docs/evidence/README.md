@@ -9,6 +9,26 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md`](AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md)
+  records Issue #433 (follow-up to #416): the transport-binding seam that lets
+  the committed harness run a bounded live `manual_candidate_evaluation`.
+  **Implementation only — no live call.** Adds `Controller.run_experiment` (a
+  sequencer over the frozen #392–#395/#412–#415 components, no new decision
+  logic), `scripts/autoresearch_coordinated_session.py` (the one `mcp_call`
+  injection point), and 14 fakes-only tests; full suite **606 passed**. A bare
+  shell `experiment` stays `EXIT_BLOCKED`; a live run happens only through the
+  coordinated session. Outcome vocabulary is `reject | inconclusive |
+  candidate_for_owner_review` — never `keep_candidate`. A formal method
+  review of MD-1..4 found MD-2/MD-3 `blocked` and MD-1 `revise`; a
+  subsequent **owner scoping ruling narrowed the harness to a
+  minimal-for-C1 pilot** (MD-1/MD-2 resolved narrowly, not as general
+  reusable semantics; full #395 §8 escalation and a directional per-side
+  Judge extension deferred to a follow-up) — see the "Owner scoping ruling:
+  minimal-for-C1" section in this same doc. New batch identity fixes
+  `call_timeout_seconds = 180` and does not inherit the Phase 0 authorization.
+  No admission/comparator/evaluator/schema semantics change; no Phase 1; no
+  active-config change. A live run of C1 still requires a separate, fresh
+  owner authorization.
 - [`AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`](AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md)
   records the Issue #417 Phase 0 live calibration & discovery gate for Issue
   #409, executed in a coordinated live session (owner signed in to the
