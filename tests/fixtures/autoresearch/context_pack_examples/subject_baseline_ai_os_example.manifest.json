@@ -1,0 +1,172 @@
+{
+  "candidate_patch_hash": null,
+  "context_hash": "4120f19b219eccd89108f4cb42a55dc420fb60f31bdb7b2a19f1f08e8223eb39",
+  "context_id": "94b49a568697ce22",
+  "context_manifest_version": "0.2.0",
+  "created_by_version": "autoresearch_context_pack_compiler/0.2.0",
+  "excluded_sources": [
+    {
+      "path": "ChatGPT/[AI OS]/KB__00_INDEX.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__03_WORKFLOWS_TRACEABILITY.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__05_CANONICAL_CONCEPTS.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__06_OPERATIONAL_FRAMEWORKS.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__07_PATTERNS_AND_FAILURES.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__08_USE_CASES_FOR_SERGEY.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__USE_CASE_ROUTING.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__CONFIDENCE_RULES.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__REVIEW_QUEUE.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__RELEASE_MANIFEST.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    }
+  ],
+  "fidelity_mode": "repo_replay",
+  "forbidden_source_classes": [
+    "blinded_output",
+    "frozen_rubric",
+    "failure_registry_entry"
+  ],
+  "limitations": "This context is a reproducible repository-derived replay of AI-OS instructions and governed sources. It is not evidence of exact equivalence to proprietary ChatGPT Project runtime assembly unless separately validated.",
+  "model_message_structure": [
+    {
+      "source_paths": [
+        "ROUTING_RULES.md",
+        "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
+        "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md",
+        "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
+        "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
+        "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
+        "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md",
+        "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
+        "HANDOFF_STYLE_STANDARD.md"
+      ],
+      "turn": "system"
+    }
+  ],
+  "ordered_sources": [
+    {
+      "bytes": 2596,
+      "canonical_owner": "inbox_router",
+      "content_hash": "e157237d3720ec7e6b2cfd3b8a0d91eab88a2502a438424d288f50dd8c67cd57",
+      "inclusion_reason": "canonical routing table, present exactly once",
+      "path": "ROUTING_RULES.md",
+      "purpose": "canonical routing/tie-break rules",
+      "source_class": "canonical_routing"
+    },
+    {
+      "bytes": 10261,
+      "canonical_owner": "ai_os",
+      "content_hash": "202553ac71742c62efa2b534dacbfb0e6198e44fbd8f95c32ff975ab421b1c3b",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml context_entrypoints",
+      "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+      "purpose": "declared context entrypoint",
+      "source_class": "project_instructions"
+    },
+    {
+      "bytes": 8803,
+      "canonical_owner": "ai_os",
+      "content_hash": "b22dbbb5c3fa94bde1c15664c379612e0df275f8db3fa1ca187a7966785e0a62",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml context_entrypoints",
+      "path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
+      "purpose": "declared context entrypoint",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 2143,
+      "canonical_owner": "ai_os",
+      "content_hash": "a2c731e36ee21f414be74082c70113d101393660b530a9456738147f07da85ea",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 3731,
+      "canonical_owner": "ai_os",
+      "content_hash": "73a2f6ca12f511bacd26d8aaf5556879c84cb3bb5aa8c5aea1142ef3497cdcb5",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 2908,
+      "canonical_owner": "ai_os",
+      "content_hash": "420ea4edaf6463b127a20ea4a1df602f82c05fd9b46e0e1df67250533ae7018d",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 5303,
+      "canonical_owner": "ai_os",
+      "content_hash": "63fc8bc23b00797d67addba475e8962860eabdcb486ebf6fdf88d4a8e5b4c42c",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 4673,
+      "canonical_owner": "ai_os",
+      "content_hash": "064c4ba716ee9e04e8b8fe7631a32c5785a3267478351d19baa8271b1c6842f8",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 2638,
+      "canonical_owner": "ai_os",
+      "content_hash": "859195550aca36fa8aca6dcd57ec3e4e0ea5fef72ab4b419c6c932589e1e47e0",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "bytes": 3163,
+      "canonical_owner": "ai_os",
+      "content_hash": "c612423c6c8010a494ab79b3619f241383d871e5f0e6a2c8ff62f9dd576a6d27",
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "path": "HANDOFF_STYLE_STANDARD.md",
+      "purpose": "cited for the canonical handoff field set, PROJECT_INSTRUCTIONS.md Goal Mode handoff section",
+      "source_class": "governed_knowledge_bundle"
+    }
+  ],
+  "project": "ai_os",
+  "rendering_rules": {
+    "delimiter_style": "markdown_heading_per_source",
+    "ordering": "declared_order_stable"
+  },
+  "role": "subject_baseline",
+  "source_revision": "03bef83e4e17d818bc4d937b94ef620fec6fe42b"
+}
