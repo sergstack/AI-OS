@@ -96,12 +96,13 @@ Current decision evidence:
   outcomes that never become a live PASS. One connection mode is implemented
   (owner-selected **dedicated persistent Playwright profile**); the concrete
   transport refuses to fabricate a response with no live `mcp_call` binding.
-  The **live browser smoke is `blocked`** pending the owner's interactive
-  sign-in to that profile, a live `mcp_call` binding, and one predeclared
-  harmless repo-replay submission — per #413's Stop/blocker rule the child is
-  not accepted as complete until a real browser answer with a non-placeholder
-  hash enters the pipeline. Authorizes no candidate acceptance, merge, or
-  production.
+  The **live browser smoke was executed on 2026-09-04** (see that document's
+  "Update — 2026-09-04" section): one real `gpt-5-6-thinking` call over the
+  `playwright_mcp` transport, `response_hash b2539ec2…`, model `ui_observed`,
+  `$0` / plan-included — a real browser answer with a non-placeholder hash in
+  the pipeline. The pre-execution "blocked pending owner sign-in" body of the
+  document is retained as a historical snapshot. Authorizes no candidate
+  acceptance, merge, or production.
 - [`AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md`](AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md)
   records the Issue #410 read-only baseline/transport-feasibility audit for
   Issue #409 (AIOS AutoResearch v0.2 — live behavioral autotuning loop): a
