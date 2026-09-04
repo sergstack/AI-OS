@@ -3,7 +3,7 @@
 ## Repository Governance
 
 - status: governance-validation-added
-- last_checked: 2026-08-12
+- last_checked: 2026-09-04
 - production_promotion: no
 
 ## Validation Gates
@@ -41,6 +41,7 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 ## Evidence Pointers
 
+- `docs/evidence/AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md` (+ `AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`, `AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md`, `AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`, `AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`, `AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`, and the `autoresearch_v02_*_records_2026-09-04.json` files) — AutoResearch v0.2 live behavioral autotuning loop (parent #409, closed `completed` 2026-09-04). Children #410–#417 merged (PRs #420–#428): live browser transport, live blind A/B Judge, failure intake + bounded Researcher, one documented CLI. Phase 0 (#417) executed live: 13 real `gpt-5-6-thinking` calls, $0 / plan-included, `measurement_verdict: pass`, `failure_discovery_result: no_failure_found`. Phase 1 autotuning pilot (#418) is `blocked` and was not run (no reproducible baseline failure; manufacturing one is forbidden). Parent gate `pass` — harness built and calibrated against real model output, nothing to promote (mirrors v0.1 #398). No candidate generated/applied; no active Project Instructions/routing/`main` change. Harness kept available; re-engage only on a genuine field-observed failure. See `CURRENT_STATUS.md` — "AutoResearch v0.2 — live behavioral autotuning loop".
 - `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` — 7-project revision review dispatched via 7 parallel bounded `Plan` subagents (one per `PROJECT_CAPABILITIES.yaml` capability). 40 findings (12 high / 11 medium / 17 low); no schema or business-logic issue; dominant pattern is stale status/evidence files vs. actual current Knowledge content. Review-and-plan record only — does not itself apply any fix.
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.
 - `docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md` — cross-project smoke QA evidence from 2026-07-06.
