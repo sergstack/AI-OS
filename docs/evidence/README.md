@@ -9,6 +9,23 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md`](AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md)
+  records Issue #413 (Playwright MCP browser-session live transport) for Issue
+  #409. Implementation and 35 focused tests are complete
+  (`scripts/autoresearch_live_browser_adapter.py`, additive
+  `schemas/autoresearch_live_invocation.schema.json` — no v0.1 schema edited);
+  the transport-neutral `invoke()` interface enforces the
+  authority/budget/context/target/model-selector gates before any submission
+  and maps timeout/session-loss/empty/secret-shaped captures to non-pass
+  outcomes that never become a live PASS. One connection mode is implemented
+  (owner-selected **dedicated persistent Playwright profile**); the concrete
+  transport refuses to fabricate a response with no live `mcp_call` binding.
+  The **live browser smoke is `blocked`** pending the owner's interactive
+  sign-in to that profile, a live `mcp_call` binding, and one predeclared
+  harmless repo-replay submission — per #413's Stop/blocker rule the child is
+  not accepted as complete until a real browser answer with a non-placeholder
+  hash enters the pipeline. Authorizes no candidate acceptance, merge, or
+  production.
 - [`AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md`](AUTORESEARCH_V02_BASELINE_TRANSPORT_AUDIT_2026-09-03.md)
   records the Issue #410 read-only baseline/transport-feasibility audit for
   Issue #409 (AIOS AutoResearch v0.2 — live behavioral autotuning loop): a

@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-os/schemas/autoresearch_live_invocation.schema.json",
+  "title": "AIOS AutoResearch v0.2 Live Browser-Session Invocation Record",
+  "description": "One record per actual live browser-session model call made by scripts/autoresearch_live_browser_adapter.py (issue #413, parent #409). Additive to v0.1: it does NOT modify schemas/autoresearch_observation_row.schema.json or schemas/autoresearch_experiment_record.schema.json (both frozen, additionalProperties:false, version const). The shadow runner (scripts/autoresearch_shadow_runner.py) only needs `response` + `runtime_model_configuration` on an adapter row, so live-provenance fields ride alongside without a v0.1 schema change. Governed by docs/standards/AUTORESEARCH_V02_LIVE_CONTRACT.md (issue #411, reused unchanged): browser UI execution exposes very little, so unobservable fields are the literal strings `not_observable` / `not_captured`, never guessed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "invocation_id",
+    "experiment_id",
+    "condition",
+    "case_id",
+    "transport_id",
+    "transport_version",
+    "transport_mode",
+    "browser_channel",
+    "browser_session_ref",
+    "target_product",
+    "provider",
+    "model",
+    "model_version_or_snapshot",
+    "model_identity_status",
+    "runtime_version",
+    "context_id",
+    "context_hash",
+    "request_hash",
+    "sampling_configuration",
+    "latency_ms",
+    "termination_status",
+    "response_text_or_ref",
+    "response_hash",
+    "input_tokens",
+    "output_tokens",
+    "usage_metadata_status",
+    "cost_amount",
+    "cost_currency",
+    "retry_of",
+    "external_action_preview_ref",
+    "authority_evidence_ref",
+    "redaction_status",
+    "capture_method",
+    "fidelity_mode",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.2.0" },
+
+    "invocation_id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{4,96}$" },
+    "experiment_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+    "condition": { "type": "string", "enum": ["baseline", "candidate"] },
+    "case_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{2,64}$" },
+
+    "transport_id": {
+      "description": "`playwright_mcp` for a real live call; `fake_browser` for the deterministic test double (which can never be labelled live).",
+      "type": "string",
+      "enum": ["playwright_mcp", "fake_browser"]
+    },
+    "transport_version": { "type": "string", "minLength": 1 },
+    "transport_mode": {
+      "description": "Exactly one connection mode is implemented for v0.2.",
+      "type": "string",
+      "enum": ["dedicated_persistent_profile"]
+    },
+    "browser_channel": { "type": "string", "minLength": 1 },
+    "browser_session_ref": {
+      "description": "Non-secret logical identifier/hash only. Never a cookie, token, storage-state blob, or a profile path containing user information.",
+      "type": "string",
+      "minLength": 1
+    },
+    "target_product": { "type": "string", "minLength": 1 },
+    "provider": { "type": "string", "minLength": 1 },
+
+    "model": {
+      "description": "The UI-observed model selector value when the target UI exposes one; otherwise the literal `not_observable`. Never inferred from a default selector, account plan, product name, or URL.",
+      "type": "string",
+      "minLength": 1
+    },
+    "model_version_or_snapshot": { "type": "string", "minLength": 1 },
+    "model_identity_status": {
+      "description": "The comparator must distinguish these three. `verified` = an authoritative integration surface confirmed identity; `ui_observed` = read from a visible selector; `not_observable` = the UI/runtime did not expose it.",
+      "type": "string",
+      "enum": ["verified", "ui_observed", "not_observable"]
+    },
+    "runtime_version": { "type": "string", "minLength": 1 },
+
+    "context_id": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "context_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "request_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "sampling_configuration": { "type": "object" },
+
+    "latency_ms": { "type": "integer", "minimum": 0 },
+
+    "termination_status": {
+      "description": "Only `completed` can support a live observation PASS. Every other value preserves a sanitized record and maps downstream to inconclusive/rejected.",
+      "type": "string",
+      "enum": [
+        "completed",
+        "timeout",
+        "cancelled",
+        "navigation_error",
+        "session_lost",
+        "authority_missing",
+        "budget_exhausted",
+        "context_mismatch",
+        "wrong_target",
+        "selector_unverified",
+        "empty_response",
+        "validation_error"
+      ]
+    },
+
+    "response_text_or_ref": {
+      "description": "Sanitized captured answer (or an external reference to it). null for any non-`completed` termination.",
+      "type": ["string", "null"]
+    },
+    "response_hash": {
+      "description": "sha256 of the normalised captured answer. null for any non-`completed` termination. Never a placeholder hash.",
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+
+    "input_tokens": { "type": "string", "enum": ["not_observable", "not_captured"] },
+    "output_tokens": { "type": "string", "enum": ["not_observable", "not_captured"] },
+    "usage_metadata_status": { "type": "string", "enum": ["available", "not_observable", "not_captured"] },
+    "cost_amount": {
+      "description": "0 for a browser-session transport under the owner's $0 / plan-included Phase 0 authorization. AutoResearch adds no per-call fee; target-account usage is tracked separately by the owner.",
+      "type": "number",
+      "minimum": 0
+    },
+    "cost_currency": { "type": "string", "minLength": 1 },
+
+    "retry_of": {
+      "description": "null unless this invocation is the one explicitly-allowed bounded retry of a prior invocation_id.",
+      "type": ["string", "null"]
+    },
+    "external_action_preview_ref": { "type": "string" },
+    "authority_evidence_ref": {
+      "description": "Pointer to the recorded owner authorization envelope for this batch. Required and non-empty; `invoke` refuses to submit without it.",
+      "type": "string",
+      "minLength": 1
+    },
+    "redaction_status": { "type": "string", "enum": ["sanitized", "not_applicable"] },
+
+    "capture_method": { "type": "string", "enum": ["browser_automation", "test_double"] },
+    "fidelity_mode": { "const": "repo_replay" },
+    "limitations": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Always begins with the fixed repo_replay non-equivalence statement; may append the specific non-pass reason."
+    }
+  },
+
+  "allOf": [
+    {
+      "description": "A non-completed termination carries no response and no hash.",
+      "if": { "properties": { "termination_status": { "not": { "const": "completed" } } } },
+      "then": {
+        "properties": {
+          "response_text_or_ref": { "type": "null" },
+          "response_hash": { "type": "null" }
+        }
+      }
+    },
+    {
+      "description": "A completed termination must carry a real captured answer and a real hash.",
+      "if": { "properties": { "termination_status": { "const": "completed" } } },
+      "then": {
+        "properties": {
+          "response_text_or_ref": { "type": "string", "minLength": 1 },
+          "response_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        },
+        "required": ["response_text_or_ref", "response_hash"]
+      }
+    },
+    {
+      "description": "A test-double capture is never labelled as a live provider transport.",
+      "if": { "properties": { "capture_method": { "const": "test_double" } } },
+      "then": { "properties": { "transport_id": { "const": "fake_browser" } } }
+    },
+    {
+      "description": "The one real live transport always captures by browser automation.",
+      "if": { "properties": { "transport_id": { "const": "playwright_mcp" } } },
+      "then": { "properties": { "capture_method": { "const": "browser_automation" } } }
+    }
+  ]
+}
