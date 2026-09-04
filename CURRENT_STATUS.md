@@ -2,7 +2,7 @@
 
 - repo_version: v05
 - project: AI-OS repository
-- last_checked: 2026-09-02 (executable capability routing P0 audit for #350)
+- last_checked: 2026-09-04 (AutoResearch v0.2 live behavioral autotuning loop — #409 closed completed)
 - production_promotion: no
 - project_instructions_path: ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
 - knowledge_path: ChatGPT/[AI OS]/Knowledge/
@@ -16,6 +16,7 @@
 - orchestration_primitives_p1_status: review complete; P1.3 partial gap; implementation owner review pending
 - executable_capability_routing_status: resolved; P0 audit BLOCKED_FOR_NATIVE_DISPATCH; P1–P4 already owned by canonical contracts; no MVP implemented; owner accepted the audit and closed #350 as completed (2026-09-02)
 - native_subagent_dispatch_status: STANDARDIZED BOUNDED (2026-09-02; owner-approved, Judge round-2 pass). Bounded, pilot-scoped: root -> bounded routed slice -> Plan child + isolation:"worktree" -> evidence/patch -> root -> validation/AES continuation. Plan child cannot use the native Agent tool; no write-capable child; root is sole router + writer; no child->child; one execution_id per user goal. Commissioning punch-list 4/4 closed — dispatch-evidence schema + blocking linter (scripts/check_subagent_dispatch_evidence.py in docs-safety), enforced telemetry contract, 18 hardened dispatches across 7 owners, guard-calibration proposal (thresholds unchanged), [AI OS] cost/latency owner. NOT a default/unrestricted standard; general promotion + guard thresholds remain separate owner decisions. Evidence: docs/evidence/NATIVE_SUBAGENT_DISPATCH_{PILOT,STANDARDIZATION,COMMISSIONING}_2026-09-02.md + subagent_dispatch_records_2026-09-02.json
+- autoresearch_v02_status: `pass` / harness available, Phase 1 deferred (2026-09-04; owner closed parent #409 as completed). AutoResearch v0.2 (live behavioral autotuning loop) children #410–#417 built and merged (PRs #420–#428): live browser transport (#413), live blind A/B semantic Judge (#414), failure intake + bounded Researcher proposal flow (#415), one documented CLI (#416). Phase 0 live calibration (#417) executed 2026-09-04 in a coordinated session (owner-authenticated dedicated Playwright MCP profile): 13 real `gpt-5-6-thinking` calls, $0 / plan-included, `measurement_verdict: pass` (a harmful shadow tie-break mutation regressed the routing outcome as designed; the live blind Judge flagged it order-consistently; deterministic hard gates dominate), `failure_discovery_result: no_failure_found` (all six behavioral families answered correctly). Phase 1 bounded autotuning pilot (#418) is `blocked` and was NOT run — no reproducible, attribution-eligible baseline failure exists and manufacturing one is forbidden. No candidate was generated or applied; no active Project Instructions / routing / `main` behaviour changed. `repo_replay` via a fresh non-Project chat is a lower-fidelity approximation of the real ChatGPT Project runtime — no UI-equivalence claim. Recommendation (mirrors v0.1 #398): keep the harness available and re-engage only when a genuine field-observed AI-OS failure appears; manual bounded regression review remains sufficient. Issues #417/#418/#419 left open by the owner as the re-engagement anchor. Evidence: docs/evidence/AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md, AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md (+ autoresearch_v02_phase0_records_2026-09-04.json), AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md (+ autoresearch_v02_413_smoke_record.json), AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md, AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md, AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md.
 - project_wide_revision_review_status: reviewed 2026-09-03 via 7 parallel bounded subagent dispatches (one per `PROJECT_CAPABILITIES.yaml` capability); 40 findings (12 high / 11 medium / 17 low), no schema/business-logic issue, dominant pattern is stale status/evidence files across `[Thinking]`, `[AI OS]`, `[Analytics]`, `[Thinkers OS]`, `[Inbox Router]`. Review-and-plan record only; fixes tracked and applied separately. Evidence: docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md
 - acceptance_status: candidate / ready for human review
 - smoke_qa_evidence: docs/evidence/SMOKE_QA_RESULTS.md; docs/evidence/CROSS_PROJECT_SMOKE_QA_RESULTS.md
@@ -228,6 +229,71 @@ covered by the existing canonical contracts, and no new "executor" concept is
 added. Merge and production authority are unchanged. Evidence and the
 owner-decision package are in
 `docs/evidence/EXECUTABLE_CAPABILITY_ROUTING_P0_AUDIT_2026-09-02.md`.
+
+## AutoResearch v0.2 — live behavioral autotuning loop
+
+Issue #409 asked for a live behavioral autotuning loop over selected AI-OS
+Project-Instructions / routing / handoff / context-loading wording: real
+model outputs → observed/reproduced failure → causal attribution → one
+minimal reversible shadow mutation → matched live runs → blind live Judge →
+deterministic gates → `keep_candidate | discard | inconclusive` → immutable
+evidence → separate owner promotion.
+
+Delivered and merged (children #410–#417, PRs #420–#428):
+
+- `#413` — one authorized Playwright MCP browser-session live transport
+  (`scripts/autoresearch_live_browser_adapter.py`) with a transport-neutral
+  `invoke()` that enforces authority / budget / context / target /
+  model-selector gates before any submission; a transport smoke ran on
+  2026-09-04 (1 real call, non-placeholder response hash).
+- `#414` — live blind A/B semantic Judge (`scripts/autoresearch_live_judge.py`)
+  built on #394's frozen contract: mandatory reversed second pass, de-blinding
+  only after both orders validate, order disagreement → `inconclusive`.
+- `#415` — failure intake + attribution + bounded Researcher proposal
+  (`scripts/autoresearch_failure_intake.py`); observation / reproduction /
+  attribution / eligibility are separate machine-checkable states; the
+  deterministic preflight reuses the v0.1 shadow-runner machinery unchanged
+  and never decides a candidate is good.
+- `#416` — one documented CLI (`scripts/autoresearch_cli.py`,
+  `docs/guides/AUTORESEARCH_CLI.md`) with a no-network `--dry-run`, bounded
+  resume, and scoped cleanup; integrates the v0.1 validator / shadow runner /
+  comparator / ledger and the v0.2 components through real import points.
+- `#417` — Phase 0 live calibration, executed 2026-09-04.
+
+Phase 0 result: **`measurement_verdict: pass`**, **`failure_discovery_result:
+no_failure_found`**. 13 real `gpt-5-6-thinking` calls total (with the #413
+smoke), $0 / plan-included, 0 retries / timeouts / invalid outputs. A harmful
+shadow tie-break mutation changed the routing outcome from `blocked` to
+`[Codex]` as designed; the live blind Judge flagged it `revise` and the
+baseline `pass` order-consistently in both A/B orders; deterministic
+hard-gate dominance is proven in code. All six behavioral families (routing,
+scope/execution, evidence, authority, handoff, adversarial) answered
+correctly on a single run each — no reproducible baseline failure.
+
+Phase 1 bounded autotuning pilot (#418) is **`blocked` and was not run**: its
+precondition is at least one reproducible, attribution-eligible Phase 0
+failure, and none exists. Per #417's own rules a failure must not be
+manufactured to proceed.
+
+Parent gate (#419): **`pass`**. The v0.2 live loop is built and calibrated
+against real model output and correctly declined to promote anything under
+insufficient evidence — mirroring v0.1's #398 result. No candidate was
+generated or applied; no active Project Instructions, routing, or `main`
+behaviour was changed by any live run. `repo_replay` via a fresh non-Project
+chat is a lower-fidelity approximation of the real ChatGPT Project runtime;
+no UI-equivalence claim is made.
+
+The owner closed #409 as `completed` on 2026-09-04 and left #417 / #418 /
+#419 open as the re-engagement anchor. Recommendation: keep the harness
+available and re-engage the loop only when a genuine field-observed AI-OS
+failure appears; until then manual bounded regression review is sufficient.
+`production_promotion: no` and all blocked items are unchanged. Evidence:
+`docs/evidence/AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md`,
+`AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`,
+`AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md`,
+`AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`,
+`AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`,
+`AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`.
 
 ## Next action
 
