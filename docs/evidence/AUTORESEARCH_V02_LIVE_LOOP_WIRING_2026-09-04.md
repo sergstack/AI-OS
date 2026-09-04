@@ -4,9 +4,12 @@ Issue: [#433](https://github.com/sergstack/AI-OS/issues/433) (follow-up to
 [#416](https://github.com/sergstack/AI-OS/issues/416); parent
 [#409](https://github.com/sergstack/AI-OS/issues/409), closed).
 
-Status: **implementation only.** No live model / provider / Judge call was
-made in producing this change. Automated tests use `FakeBrowserTransport` /
-`FakeJudgeModel` and injected `mcp_call` stubs that raise if invoked.
+Status: **implementation done; formal method review returned MD-2 `blocked`,
+MD-3 `blocked`, MD-1 `revise`, MD-4 `pass` — #434 must NOT merge** until the
+accompanying owner / `[Analytics]` / `[LLM]` / `[AI OS]` decisions are made
+(see "Formal method review" below). No live model / provider / Judge call was
+made. Automated tests use `FakeBrowserTransport` / `FakeJudgeModel` and
+injected `mcp_call` stubs that raise if invoked.
 
 This does **not** change #417→#418 admission semantics, the #395 comparator
 method, the #394 evaluator contract, any schema's semantics, or the closed
@@ -128,6 +131,128 @@ subject and Judge share a model class (`limited_same_model_class`).
 
 No Phase 1 (#418) launch. No holdout access. No active Project Instructions /
 routing change. No auto PR / merge / deploy / promotion.
+
+## Formal method review of MD-1…MD-4 (pre-merge, 2026-09-04)
+
+Routing: MD-1/MD-2 → `[Analytics]` vs `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md` / #395;
+MD-2 Judge semantics → `[LLM]` / #394; MD-3/MD-4/authority/lineage → `[AI OS]`.
+
+```
+MD-1: revise
+Evidence:
+  - #395 §15: >=3 matched reruns is the mandatory minimum before any
+    non-inferiority / material-improvement determination; below it the case is
+    inconclusive unconditionally. run_count default 3 satisfies this.
+  - #395 §8: the 3->5 escalation is a CONDITIONAL step but, once its trigger
+    holds ("at 3 matched reruns, a target-family case's material-improvement
+    determination is inconclusive because of unresolved
+    run_variance_or_disagreement"), it is mandatory ("escalate to up to 2
+    additional reruns ... for that case only"), with a hard ceiling at 5.
+  - Controller.run_experiment implements a fixed `for k in range(run_count)`
+    loop and NO escalation. A case that would resolve to keep/discard at 5
+    reruns instead terminates at inconclusive.
+  - For candidate C1 specifically (near-cosmetic punctuation change) the
+    trigger cannot fire (no variance-ambiguous target gain), but the harness
+    is meant to be reusable and MD-1 would under-power any future
+    variance-ambiguous edit. A method-incomplete loop must not merge on the
+    accident that the first candidate does not exercise the gap.
+Required change:
+  Implement the #395 §8 per-case 3->5 escalation (bounded, per-case, hard
+  ceiling 5, no further), OR add a tested hard guard that returns
+  status="blocked" with an explicit "escalation unimplemented" reason
+  whenever a target case hits the escalation trigger, so the harness never
+  silently returns an under-powered determination. Preferred: implement the
+  escalation (it is bounded and fully specified). Deferred here because the
+  correct rerun shape depends on the MD-2 decision below.
+
+MD-2: blocked
+Evidence:
+  - #394 / autoresearch_v02_evaluator_config.json produce a *comparative*
+    blind A/B finding ("compare exactly two anonymized outputs A and B");
+    lj.run_blind_ab returns one aggregate `contributes` value
+    (pass|revise|blocked|inconclusive) over both orders, NOT a per-side
+    absolute verdict, and does not attribute a material finding to
+    baseline-vs-candidate.
+  - #395 §1/§13 model each SIDE as its own observation row with its own
+    absolute `normalized_behavior_result`; §1 explicitly defers "built from
+    collected semantic findings" to "issue #392/#393 territory, not this
+    issue" -- that bridge was never built.
+  - No frozen contract specifies the relative->absolute conversion.
+    `_semantic_to_case_observation` invents it: `contributes in
+    {revise,blocked}` -> (baseline="pass", candidate=<that>). This assumes the
+    material finding is ALWAYS against the candidate. An order-consistent
+    `revise` could equally mean the BASELINE is the worse side (candidate is
+    an improvement) or that both share the issue -- the mapping would then
+    record a candidate regression that does not exist.
+  - "Conservative enough" is not the bar: the mapping does not follow from
+    the frozen method, so per the review instruction this is not `revise`.
+Required change (owner / [LLM] / [Analytics] decision -- NOT chosen here):
+  (a) keep only the unambiguous step -- order-consistent `pass` ->
+      (pass,pass); every other `contributes` -> (None,None) [no fabricated
+      direction; a Judge-found regression then maps to inconclusive, not
+      reject]; OR
+  (b) [LLM]/#394: add a directional-attribution field to the finding schema /
+      evaluator contract so a finding names the worse side; OR
+  (c) [LLM]/#414: run the Judge in a per-side absolute-scoring mode instead of
+      (or alongside) blind A/B; OR
+  (d) [Analytics]/#395: define canonically how a comparative finding maps to
+      per-side `normalized_behavior_result`.
+
+MD-3: blocked
+Evidence:
+  - `manual_candidate_evaluation` is a new experiment class introduced by the
+    owner's task instructions; it appears in NO canonical doc
+    (AGENTS.md, GOAL_MODE.md, AUTORESEARCH_V0*_CONTRACT.md, #418).
+  - The hash-chained ledger (av.ledger_append) provides append-only,
+    tamper-evident, duplicate-checked, correction-only traceability. The MD-3
+    sanitized JSON package is immutable only by git/convention -- not
+    hash-chained, not tamper-evident, not schema-validated on write.
+  - It cannot be represented in the canonical `experiment_record` /
+    `av.ledger_append` path without a change: the schema requires
+    `observed_failure`, `attribution_evidence`, and an `attribution_status`
+    in {supported,uncertain,rejected}; a manual pilot has no failure, and
+    manifest INV-06 discards a keep_candidate-class record whose attribution
+    is uncertain/ineligible and that is "not explicitly framed ... as a
+    bounded discriminating experiment".
+  - The justification currently lives only in code comments + this doc, not a
+    governance rule -- exactly the gap the review flags.
+Required change (owner / [AI OS] decision -- NOT chosen here):
+  (a) add an additive governance rule (e.g. an AUTORESEARCH_V02_LIVE_CONTRACT
+      section) defining `manual_candidate_evaluation` as a distinct
+      non-ledgered evidence class, its required package fields, and its
+      immutability basis; OR
+  (b) also emit a hash-chained ledger entry using a representable `decision`
+      (discard | inconclusive only; the candidate_for_owner_review label
+      stays in the companion package), so the audit chain is preserved; OR
+  (c) require every manual pilot to be reframed as a bounded discriminating
+      experiment so the existing schema/ledger apply unchanged.
+
+MD-4: pass
+Evidence:
+  - `_PILOT_DECISION` is a pure relabel: keep_candidate ->
+    candidate_for_owner_review, discard -> reject, inconclusive ->
+    inconclusive. The raw adc.aggregate_decision dict is preserved verbatim
+    in evidence["comparator"], evidence["raw_decision"], and
+    result["raw_decision"]; aggregate_decision runs unchanged.
+  - candidate_for_owner_review carries <= the authority of keep_candidate:
+    both are "pending owner review", neither grants acceptance / merge /
+    active-config / production; the code emits an explicit authority_note to
+    that effect and keep_candidate is never surfaced.
+  - The pilot vocabulary (reject | inconclusive | candidate_for_owner_review)
+    is owner-specified in the task instructions, not agent-invented.
+Required change:
+  None for MD-4 itself. Note: the reliability of the relabelled value still
+  depends on MD-2 (comparator input) being sound -- tracked under MD-2.
+```
+
+### Review outcome
+
+MD-2 and MD-3 are `blocked`; MD-1 is `revise` and is entangled with the MD-2
+decision. Per the review instruction, no new semantics were chosen here and
+**no further code change was made to #434**. An owner / `[Analytics]` /
+`[LLM]` / `[AI OS]` decision request accompanies this review (PR #434 thread
+and issue #433). #434 must not merge until MD-2 and MD-3 are resolved and
+MD-1 is implemented or explicitly waived.
 
 ## Rollback
 
