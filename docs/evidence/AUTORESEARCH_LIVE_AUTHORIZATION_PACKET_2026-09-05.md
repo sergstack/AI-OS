@@ -39,20 +39,42 @@ authority this program needs before Stage L1 begins.
 ## The 5 candidate/case identities
 
 Two different kinds of "evidence directory" apply here, kept distinct
-rather than conflated: the **identity/freeze directory** (the candidate's
+rather than conflated: the **identity/freeze directory** (each candidate's
 patch, hashes, and spec — already committed, immutable, append-only) and
-the **run-output directory** (this specific live re-run's ledger and
-`manual_candidate_evaluation` record — does not exist yet; created only
-when that case-run actually executes, per this program's evidence-path
-convention).
+the **run-output directory** — where `Controller.run_experiment`'s own
+`evidence_dir` argument actually writes.
 
-| # | Stage | Candidate ID | Surface | Case ID(s) | Patch SHA-256 | Identity/freeze directory (exists now) | Run-output directory (created at execution) |
-|---|---|---|---|---|---|---|---|
-| 1 | L1 | `C1-R1` | `MUT-ROUTING-TIEBREAK` | `c1-routing-tiebreak-coding-task-prep` | `9e7d0a1ea07f4b626b7be9a5bbd42b3df950b3481016fddf43d86d26bc45509c` | `docs/evidence/autoresearch_c1r1_freeze/` (unchanged, not moved — already an accepted append-only record of the 2026-09-04 run) | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l1_c1r1_smoke/` |
-| 2 | L2 beneficial | `L2-BEN-1` | `MUT-ROUTING-TIEBREAK` | `l2-ben-1-rollout-tiebreak` | `7941ec48800b5ebb751b491bd9154a344d1ba1e5b5e766ebdfa7bc4e024f0506` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_beneficial/` | same directory (spec/patch/gates and run output share one directory for the L2 controls, since — unlike C1-R1 — they have no separate pre-existing freeze location) |
-| 3 | L2 harmful | `L2-HARM-1` | `MUT-AIOS-HANDOFF-WORDING` | `l2-harm-1-codex-handoff-fields` | `ea0084bfe80c25f56fd4b2c952e941ad022e61d6c67a130bd5e78e7e02834a9c` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_harmful/` | same directory |
-| 4 | L2 no-op | `L2-NOOP-1` | `MUT-HANDOFF-PROJECT-ADDITIONS` | `l2-noop-1-codex-fields-list` | `3132ecf427996be18987b5a9261e68d45805d61a0f32bafd256a8e3d4c7a1586` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_noop/` | same directory |
-| 5 | L2 mixed | `L2-MIXED-1` | `MUT-AIOS-CONTEXT-PRIORITY` | `l2-mixed-1-conflict-priority` (target), `l2-mixed-1-checklist-completeness` (non-target) | `c88596959994f4aeca3a079156080475c28d40ed10b6fc05bbf31a69d37d4976` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_mixed/` | same directory |
+**Run-output directory is shared across all 5 case-runs, deliberately,
+not split per control**: `autoresearch_cli.py`'s `run_experiment` names its
+per-case artifacts by `spec.experiment_id`
+(`{experiment_id}_evidence.json`, `{experiment_id}_record.json` — no
+collision risk, all 5 experiment_ids are already distinct) but appends
+every completed run's record to one single file,
+`evidence_dir/autoresearch_manual_evaluations.jsonl`, verified as one
+hash chain by `av.verify_ledger` (confirmed against the real code, not
+assumed — this is exactly the mechanism
+`test_all_four_controls_ledger_hash_chain_verifies` already proves for 4
+runs into one shared `tmp_path`). Pointing all 5 case-runs at the same
+`evidence_dir` therefore gives this program **one continuous, verifiable,
+append-only ledger across L1 and all 4 L2 controls**, instead of 5
+disconnected ledgers that would each only prove their own single entry.
+This corrects an earlier draft of this packet, which would have given
+each control its own separate run-output directory — caught and fixed
+before authorization, not left as a live-time surprise.
+
+**Shared run-output directory for the whole program**:
+`docs/evidence/autoresearch_live_l1_l2_2026-09-05/` (the program's own
+root — created already, holding the L2 controls' identity subfolders
+below; the ledger and per-experiment evidence/record files land directly
+in this root at execution time).
+
+| # | Stage | Candidate ID | Surface | Case ID(s) | Patch SHA-256 | Identity/freeze directory (exists now) |
+|---|---|---|---|---|---|---|
+| 1 | L1 | `C1-R1` | `MUT-ROUTING-TIEBREAK` | `c1-routing-tiebreak-coding-task-prep` | `9e7d0a1ea07f4b626b7be9a5bbd42b3df950b3481016fddf43d86d26bc45509c` | `docs/evidence/autoresearch_c1r1_freeze/` (unchanged, not moved — already an accepted append-only record of the 2026-09-04 run) |
+| 2 | L2 beneficial | `L2-BEN-1` | `MUT-ROUTING-TIEBREAK` | `l2-ben-1-rollout-tiebreak` | `7941ec48800b5ebb751b491bd9154a344d1ba1e5b5e766ebdfa7bc4e024f0506` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_beneficial/` |
+| 3 | L2 harmful | `L2-HARM-1` | `MUT-AIOS-HANDOFF-WORDING` | `l2-harm-1-codex-handoff-fields` | `ea0084bfe80c25f56fd4b2c952e941ad022e61d6c67a130bd5e78e7e02834a9c` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_harmful/` |
+| 4 | L2 no-op | `L2-NOOP-1` | `MUT-HANDOFF-PROJECT-ADDITIONS` | `l2-noop-1-codex-fields-list` | `3132ecf427996be18987b5a9261e68d45805d61a0f32bafd256a8e3d4c7a1586` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_noop/` |
+| 5 | L2 mixed | `L2-MIXED-1` | `MUT-AIOS-CONTEXT-PRIORITY` | `l2-mixed-1-conflict-priority` (target), `l2-mixed-1-checklist-completeness` (non-target) | `c88596959994f4aeca3a079156080475c28d40ed10b6fc05bbf31a69d37d4976` | `docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_mixed/` |
 
 Candidates #2–#5 were built and gate-verified against the real repository
 code this session (patch scope, context equivalence, literal
@@ -61,8 +83,8 @@ subject-content propagation, schema validation, evaluator hash — see
 control). Candidate #1 is unchanged from its own prior freeze — not moved,
 per this contract's own append-only rule for prior records — only re-run
 under the pinned current runtime revision, with its new run's own output
-written to a fresh directory rather than overwriting the 2026-09-04
-record.
+appended to the shared program ledger above rather than overwriting the
+2026-09-04 record.
 
 ## Call/budget envelope
 
@@ -158,12 +180,18 @@ to `authorized`.
 **Program-level**: hard-stop the whole L1+L2 program, do not start the
 next case-run, if the running total of actually-consumed external calls
 across completed case-runs plus the next case-run's worst case would
-exceed **90**. This is an operator/reporting discipline, not an
-automatically-enforced code guarantee — `RoleBudget.as_shared_state()`
-gives each case-run invocation an independent pool (documented in the
-batch-preview doc's budget-wiring note), so nothing in the existing code
-sums consumption across case-runs; it must be tracked against each
-case-run's recorded evidence as the program proceeds.
+exceed **90**. Consumption *counting* is an operator/reporting discipline,
+not an automatically-enforced code guarantee — `RoleBudget.as_shared_state()`
+gives each case-run invocation an independent call-budget pool (documented
+in the batch-preview doc's budget-wiring note), so nothing in the existing
+code sums call consumption across case-runs; it must be tracked against
+each case-run's recorded evidence as the program proceeds. Ledger
+*integrity*, separately, is verified for real by code, not just tracked by
+hand: `av.verify_ledger()` on the shared
+`docs/evidence/autoresearch_live_l1_l2_2026-09-05/autoresearch_manual_evaluations.jsonl`
+after every case-run must return no findings before the next case-run
+starts — a hash-chain break on any entry stops the program immediately, per
+manifest invariant INV-04.
 
 ## Sequencing rules
 
