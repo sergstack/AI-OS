@@ -23,6 +23,8 @@ mart_main_full
 
 `[Analytics]` owns verified inputs and deterministic memo QA. `[LLM]` owns Judge/revise triggers in `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`; this pipeline references that contract rather than redefining it.
 
+This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDARD.md` §14): it controls that memo wording is no stronger than the verified claim from Gate 2. A headline conclusion with `allowed_in_executive = no` (missing Claim/Evidence Registry lineage, or `analytical_depth = material/decision_critical` without a resolved `METRIC_DEFINITION_CARD`) does not enter the memo/executive layer; state the limitation instead.
+
 ## Memo structure
 
 1. Executive summary.
@@ -91,3 +93,7 @@ Every important sentence must be backed by:
 - [ ] Actions have owner / due date / status.
 - [ ] Limitations visible.
 - [ ] Hypotheses are not presented as confirmed causes.
+- [ ] No headline claim with `allowed_in_executive = no` appears in the
+  executive body.
+- [ ] Ambiguous or unresolved metric definitions (no `METRIC_DEFINITION_CARD`)
+  are not presented as flagship conclusions.

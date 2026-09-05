@@ -12,6 +12,9 @@
 - [ ] Freshness checked.
 - [ ] Mapping tables checked.
 - [ ] Unmatched rows listed.
+- [ ] `VALUE_STATE` distinctions (`KNOWN`/`UNKNOWN`/`NOT_REPORTED`/
+  `NOT_APPLICABLE`/`PARSE_FAILED`/`MISSING_SOURCE`/`UNMATCHED`/`BLOCKED`) are
+  not collapsed into a generic null where material.
 
 ## Main files QA
 
@@ -21,6 +24,8 @@
 - [ ] `stage_main_full` is portable to DB / BI / Excel.
 - [ ] `mart_main_full` exists or is designed.
 - [ ] `mart_main_full` contains metrics and formulas.
+- [ ] Material/flagship/ratio-like metrics have a `METRIC_DEFINITION_CARD`
+  with `status: approved`, or the conclusion is limited/blocked.
 - [ ] `mart_main_tz` or `mart_main_compact` exists or is designed.
 - [ ] Mart slices are derived from `mart_main_full`.
 
@@ -113,6 +118,22 @@ the record internal or in evidence/appendix so `quick` output remains compact.
 - [ ] `aes_execution_governance_preserved?`
 - [ ] `analytics_extension_applied_without_duplication?`
 - [ ] `reasoning_control_not_treated_as_autonomous_execution_loop?`
+- [ ] `material_metric_definition_card_resolved?` — material/flagship/
+  ratio-like metric has an approved `METRIC_DEFINITION_CARD`, or the
+  conclusion is limited/blocked (`ANALYTICAL_REASONING_STANDARD.md` §11).
+- [ ] `value_state_not_collapsed?` — `VALUE_STATE` distinctions are preserved
+  where material; uncertainty coverage is reflected in denominator/coverage
+  before a claim is `SUPPORTED` (§12).
+- [ ] `headline_claim_lineage_complete?` — every headline claim for
+  `analytical_depth = material/decision_critical` has a complete registry
+  lineage (§13); missing lineage sets `allowed_in_executive = no`.
+- [ ] `promotion_not_exceeding_evidence?` — `observation -> cause`,
+  `contribution -> root cause`, `association -> causation`, and
+  `single-period -> systemic/recurring/persistent` are not asserted without
+  the required evidence level.
+- [ ] `three_gates_not_conflated?` — Gate 1 (data/calculation), Gate 2
+  (analytical claim), and Gate 3 (narrative) are kept distinct (§14);
+  `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`.
 
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
 

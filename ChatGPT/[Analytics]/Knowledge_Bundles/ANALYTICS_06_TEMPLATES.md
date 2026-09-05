@@ -21,6 +21,7 @@ Compact upload artifact for [Analytics] covering templates.
 - `ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md`
 - `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
 - `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
+- `ChatGPT/[Analytics]/Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`
 - `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
 
 ## Upload target
@@ -32,7 +33,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:95b1ced477ae7fefb647d7cf97a76e14ac428adf8170c11015ea6939c9c186b6
+- source_fingerprint: sha256:22e825a9d96e257b9f7ba70b3185a6874fad09396c21be14db467e273f6a18b0
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -75,12 +76,13 @@ Column types:
 Allowed values:
 Date logic:
 Currency / units:
-Null policy:
+Null policy (use canonical VALUE_STATE: KNOWN/UNKNOWN/NOT_REPORTED/NOT_APPLICABLE/PARSE_FAILED/MISSING_SOURCE/UNMATCHED/BLOCKED):
 Duplicate policy:
 Freshness rule:
 Mapping rules:
 Join rules:
 Metric rules:
+Metric definition cards (material/flagship/ratio-like metrics): see Templates/METRIC_DEFINITION_CARD_TEMPLATE.md
 Classification rules:
 Validation checks:
 Known limitations:
@@ -115,11 +117,13 @@ source stage files:
 source stage main file:
 metrics:
 formulas:
+metric_definition_cards (material/flagship/ratio-like): see Templates/METRIC_DEFINITION_CARD_TEMPLATE.md
 dimensions:
 classifiers:
 filters:
 QA totals:
 evidence fields:
+value_state_preserved: yes/no (VALUE_STATE not collapsed to generic null where material)
 limitations:
 ## Required main mart files
 mart_main_full:
@@ -753,6 +757,37 @@ Status: candidate template / checklist only.
 - `confidence` (`high / medium / low`), `claim_support` (`SUPPORTED / PARTIALLY_SUPPORTED / HYPOTHESIS / UNSUPPORTED`), and `causal_status` (`not_applicable / association_only / explanation_supported / causal_evidence`) are independent.
 - Claim strength must not exceed final evidence sufficiency. Driver evidence alone does not establish root cause.
 - `generalization_scope` states the observed and claimed period/population boundary. `generalization_evidence` is required before one-period evidence is generalized as systemic, non-systemic, structural, persistent, recurring, isolated, or one-off.
+## Mandatory Headline Claim Gate
+For `analytical_depth = material / decision_critical`, every headline claim
+requires a registry row with complete lineage: headline claim -> claim
+registry row -> `method_execution_id` -> `method_status = executed` (aligned
+with `ANALYTICAL_REASONING_STANDARD.md` `METHOD_PLAN.execution_status`) ->
+source mart/table/slice -> metric/period/grain/filter/baseline ->
+`evidence_id` -> `claim_support` -> `causal_status` -> `confidence` ->
+`generalization_scope` -> `qa_status`.
+```text
+lineage missing -> allowed_in_executive = no
+```
+Do not promote a claim beyond its evidence:
+- `observation -> cause` requires causal evidence, not association alone.
+- `contribution -> supported explanation` may rely on discriminating /
+  alternative-explanation evidence (competing explanations tested and
+  ruled out); a quantified contribution alone, with no discriminating
+  evidence, supports at most "main quantified contributor within observed
+  scope".
+- `supported explanation -> root cause` requires causal evidence or a
+  causal-capable analytical design (`causal_status = causal_evidence`) —
+  alternative-explanation evidence alone does not reach `root cause`.
+- `association -> causation` requires `causal_status = causal_evidence`.
+- `single-period -> systemic / recurring / persistent` requires
+  `generalization_evidence`.
+`method_status = blocked / planned / not_needed` can never support a claim
+(`blocked != executed`). Narrative claim strength (memo/executive wording)
+must not exceed `FINAL_EVIDENCE_SUFFICIENCY.maximum_claim_strength`. This
+gate is the claim-level (Gate 2) checkpoint; it does not replace Gate 1
+(data/calculation correctness) or Gate 3 (narrative wording), and it is read,
+not reimplemented, by the Analytical Judge (`ANALYTICAL_REASONING_STANDARD.md`
+§8) and the memo/narrative QA (`MEMO_PIPELINE.md`, `MEMO_RUBRIC.md`).
 
 ## From: `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
 
@@ -769,12 +804,113 @@ filter:
 calculation_method:
 formula:
 reconciliation_status:
+value_state: KNOWN/UNKNOWN/NOT_REPORTED/NOT_APPLICABLE/PARSE_FAILED/MISSING_SOURCE/UNMATCHED/BLOCKED
 dq_status:
 qa_status:
 confidence:
 limitation:
 used_in_claims:
 review_status:
+
+## From: `ChatGPT/[Analytics]/Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`
+
+# Metric Definition Card Template
+## Purpose
+A formula alone is not a sufficient metric definition. Use this card for
+material, flagship, or ratio-like metrics before a strong management
+conclusion is published. It extends the existing Data Contract / mart
+metric-formula rule (`DATA_CONTRACTS.md`, `MAIN_FILES_STANDARD.md`); it is not
+a parallel metric framework and does not replace `QUANTITATIVE_SANITY_GATE.md`
+or the 22-method registry.
+## Card
+```text
+METRIC_DEFINITION_CARD
+metric_id:
+metric_name:
+business_question:
+metric_type: amount / count / ratio / rate / duration / share / index
+formula:
+numerator:
+denominator:
+aggregation_rule:
+higher_is: favorable / adverse / context_dependent
+unit:
+currency:
+time_basis:
+population:
+inclusions:
+exclusions:
+zero_denominator_rule:
+null_semantics:
+sign_convention:
+allowed_comparisons:
+forbidden_interpretations:
+source_fields:
+owner:
+status: approved / provisional / blocked
+```
+## Field notes
+- `numerator` / `denominator` are required whenever `metric_type` is `ratio`,
+  `rate`, or `share`; otherwise record `not_applicable`.
+- `aggregation_rule` states how the metric aggregates across grain (sum,
+  weighted average, last value, distinct count, etc.); it is never inferred
+  from the formula alone.
+- `population` states the entity/record population the metric is computed
+  over, consistent with `MAIN_FILES_STANDARD.md` grain and `DATA_CONTRACTS.md`
+  scope rules. Population comparability across periods is the responsibility
+  of this field, not a separate framework.
+- `zero_denominator_rule` and `null_semantics` must use the canonical
+  `VALUE_STATE` vocabulary (`DATA_CONTRACTS.md`) where the null/undefined case
+  is materially different from zero.
+- `allowed_comparisons` states permitted comparison scope (e.g. same
+  population, same period type, same denominator definition).
+  `forbidden_interpretations` states conclusions the metric must not be used
+  to support (e.g. "not a causal driver", "not comparable across the
+  population change on <date>").
+- `status: approved` is required before the metric supports a material or
+  flagship management conclusion. `provisional` or `blocked` metrics may be
+  shown with an explicit limitation but cannot anchor a strong conclusion.
+## Required behavior
+- A formula alone (`formula:` populated, remaining fields empty) is not a
+  sufficient metric definition for a material/flagship/ratio-like metric.
+- Before any material conclusion, numerator/denominator, aggregation
+  semantics, population, units/currency, sign/direction, zero-denominator
+  behavior, allowed comparison scope, and forbidden interpretations must be
+  defined where applicable to the `metric_type`.
+- An unresolved material metric definition (`status: provisional / blocked`,
+  or a required field left undefined) blocks a strong management conclusion:
+  the claim is limited to `HYPOTHESIS` / `LIMITATION`, not a flagship finding.
+## Acceptance
+- [ ] Metric semantics documented separately from formula.
+- [ ] Aggregation rule explicit.
+- [ ] Numerator / denominator explicit when applicable.
+- [ ] Population explicit.
+- [ ] Zero-denominator rule explicit.
+- [ ] Forbidden interpretations stated.
+- [ ] Unresolved material metric definition blocks a strong management
+  conclusion.
+## P1 extension point (not implemented in this version)
+`POPULATION_CONTRACT` — a future, more detailed population/denominator
+comparability contract for ratio/rate/share/average/margin/conversion/
+productivity/frequency metrics:
+```text
+population_definition
+numerator_population
+denominator_population
+period
+grain
+filters
+exclusions
+population_changed_vs_baseline
+denominator_changed_vs_baseline
+scope_change_amount
+scope_change_pct
+interpretation_allowed
+```
+P1, not active in this version. Until it lands, `population`, `inclusions`,
+`exclusions`, and the existing `population_constant_or_explained?` /
+`denominator_constant_or_explained?` / `scope_change_quantified?` controls in
+`ANALYTICAL_REASONING_STANDARD.md` §5 remain the active mechanism.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
 

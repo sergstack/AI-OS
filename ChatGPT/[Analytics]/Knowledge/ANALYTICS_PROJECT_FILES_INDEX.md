@@ -13,7 +13,7 @@
 | `VARIANCE_DIAGNOSTIC_CONTRACT.md` | Material Plan/Fact variance runtime/output contract | Нужны sign normalization, gross bridge, attribution, coverage или evidence-constrained CFO synthesis |
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
-| `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
+| `DATA_CONTRACTS.md` | Data contract; canonical `VALUE_STATE` and `METRIC_DEFINITION_CARD` reference | Перед расчётами и marts; нужна семантика метрики или value-state |
 | `QUANTITATIVE_SANITY_GATE.md` | Mandatory pre-publish quantitative sanity gate | Published quantitative report has a flagship metric |
 | `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md` | AIOS AutoResearch v0.1 (issue #395) stochasticity/non-inferiority/decision-comparator method; candidate, provisional thresholds | Working on AutoResearch batch decision logic |
 | `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |

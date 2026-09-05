@@ -12,6 +12,7 @@ filter:
 calculation_method:
 formula:
 reconciliation_status:
+value_state: KNOWN/UNKNOWN/NOT_REPORTED/NOT_APPLICABLE/PARSE_FAILED/MISSING_SOURCE/UNMATCHED/BLOCKED
 dq_status:
 qa_status:
 confidence:

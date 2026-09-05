@@ -319,6 +319,8 @@ correlation != causation
 
 `ROOT CAUSE` is allowed only when the evidence and analytical design support causal language.
 
+Discriminating alternative-explanation evidence (competing explanations tested and narrowed, per §6's `EXPLANATION CHALLENGE`) may promote a claim to `SUPPORTED EXPLANATION`; it does not by itself reach `ROOT CAUSE`. Promotion to `ROOT CAUSE` additionally requires causal evidence or a causal-capable analytical design (`causal_status: causal_evidence`) — for example a controlled comparison, natural experiment, or a registry method able to isolate cause from association. Absent that, the maximum claim strength stops at `SUPPORTED EXPLANATION` / driver candidate, even when alternative explanations have been ruled out.
+
 ### Method disagreement
 
 When materially relevant methods produce incompatible interpretations or conclusions:
@@ -521,6 +523,143 @@ Preserve the decision boundary:
 ```
 
 `thinking_handoff_possible = yes` identifies a possible boundary; it does not silently transfer ownership. `manual_review_required = yes` applies when the escalation materially affects the conclusion.
+
+## 11. Metric semantics gate
+
+A formula alone is not a sufficient metric definition. For material,
+flagship, or ratio-like metrics, use
+`../Templates/METRIC_DEFINITION_CARD_TEMPLATE.md` (`METRIC_DEFINITION_CARD`)
+to fix numerator, denominator, aggregation semantics, population,
+units/currency, sign/direction, zero-denominator behavior, allowed
+comparison scope, and forbidden interpretations before a material
+conclusion. `METRIC_DEFINITION_CARD.status: provisional / blocked`, or a
+required field left undefined, still permits reporting the underlying
+`DATA FACT` / `CALCULATION RESULT` with an explicit limitation attached; it
+blocks a strong `INTERPRETATION` / `RECOMMENDATION` or flagship management
+conclusion built on that metric. The interpretive layer is limited to
+`HYPOTHESIS` / `LIMITATION` at most until the card reaches
+`status: approved`. This gate does not add a metric to the 22-method
+registry and does not redefine any business metric; it fixes the
+definition-card mechanism only.
+
+## 12. Canonical `VALUE_STATE` and claim strength
+
+`DATA_CONTRACTS.md` owns the canonical `VALUE_STATE` vocabulary (`KNOWN`,
+`UNKNOWN`, `NOT_REPORTED`, `NOT_APPLICABLE`, `PARSE_FAILED`,
+`MISSING_SOURCE`, `UNMATCHED`, `BLOCKED`) and its invariants (`UNKNOWN != 0`,
+`UNKNOWN != NOT_REPORTED`, `PARSE_FAILED != MISSING_SOURCE`,
+`NOT_APPLICABLE != FALSE`). `RAW -> STAGE -> MART` must not collapse
+materially different states into one generic null when that could change
+denominator, population, reconciliation, classification coverage, metric
+result, claim strength, or management conclusion.
+
+```text
+unresolved material uncertainty coverage -> claim_support <= PARTIALLY_SUPPORTED
+```
+
+A claim built on a mart where a material share of the relevant population
+carries `UNKNOWN`, `PARSE_FAILED`, `MISSING_SOURCE`, or `UNMATCHED` cannot be
+recorded as `SUPPORTED` with `confidence: high` unless the uncertainty
+coverage is itself declared and quantified, and that quantification
+demonstrably does not change the conclusion. Once resolved this way, the
+uncertainty is no longer "unresolved" and the `<= PARTIALLY_SUPPORTED` cap
+does not apply.
+
+## 13. Mandatory Headline Claim Gate
+
+For `analytical_depth = material / decision_critical`, every headline claim
+requires a `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md` row with complete lineage:
+
+```text
+headline claim
+-> claim registry row
+-> method_execution_id
+-> execution_status = executed
+-> source mart/table/slice
+-> metric/period/grain/filter/baseline
+-> evidence_id
+-> claim_support
+-> causal_status
+-> confidence
+-> generalization_scope
+-> qa_status
+```
+
+```text
+lineage missing -> allowed_in_executive = no
+```
+
+This restates and enforces, at the headline-claim level, rules already
+present in §4 (`blocked != executed`), §6 (claim ladder,
+`driver != root cause`), and §7 (`claim strength <= final evidence
+sufficiency`); it adds no new taxonomy. `manual_review_required` (§1) and the
+Analytical Judge (§8, check 3 and 6) read this gate; they do not duplicate
+it.
+
+## 14. Three control gates
+
+`[Analytics]` separates three gates. They are already implemented by
+existing mechanics; this section names them so they are not conflated.
+
+```text
+GATE 1 - DATA / CALCULATION
+Are the data, formulas, units, grain, and reconciliation correct?
+Owned by: Data Contract, stage/mart QA, Contract QA, Calculation QA.
+
+GATE 2 - ANALYTICAL CLAIM
+What does the executed evidence permit asserting?
+Owned by: METHOD_PLAN, PRELIMINARY_EVIDENCE_CHECK, claim ladder,
+FINAL_EVIDENCE_SUFFICIENCY, CLAIM_EVIDENCE_REGISTRY, Analytical Judge (§8).
+
+GATE 3 - NARRATIVE
+Is the memo/executive wording no stronger than the verified claim?
+Owned by: MEMO_PIPELINE.md, MEMO_RUBRIC.md, and the canonical [LLM] memo
+Judge/QA gate.
+```
+
+Invariant:
+
+```text
+DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE
+```
+
+Passing Gate 1 does not authorize a claim; passing Gate 2 does not authorize
+narrative wording stronger than `maximum_claim_strength`. The Analytical
+Judge remains the post-findings Gate 2 checkpoint; Memo QA / the `[LLM]`
+Judge remains the Gate 3 checkpoint. Neither gate is redefined or
+duplicated by this section.
+
+## 15. P1 extension points (design only, not implemented in this version)
+
+The following are forward-compatible placeholders only. They are not wired
+into any active gate, QA check, or acceptance criterion in this version.
+
+- `POPULATION_CONTRACT` - future population/denominator comparability detail
+  for ratio/rate/share/average/margin/conversion/productivity/frequency
+  metrics (`population_definition`, `numerator_population`,
+  `denominator_population`, `period`, `grain`, `filters`, `exclusions`,
+  `population_changed_vs_baseline`, `denominator_changed_vs_baseline`,
+  `scope_change_amount`, `scope_change_pct`, `interpretation_allowed`). See
+  `../Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`. P1, not active in this
+  version; §5's `population_constant_or_explained?` /
+  `denominator_constant_or_explained?` / `scope_change_quantified?` remain
+  the active controls.
+- `RECONCILIATION_CONTRACT` - a future contract distinguishing total
+  reconciliation, row-count reconciliation, matched population,
+  only-left/only-right population, amount reconciliation, classification
+  coverage, and residual/tolerance, so that an aggregate total match is not
+  read as population integrity. P1, not active in this version; existing
+  RAW/STAGE/MART reconciliation and unmatched-row QA remain the active
+  controls.
+- `ANALYSIS_CONTINUATION_GATE` - a future control on whether to continue,
+  stop, block, or hand off further analysis
+  (`current_question_answered`, `current_claim_strength`,
+  `remaining_uncertainty`, `material_unresolved_question`,
+  `next_method_candidate`, `what_can_it_change`,
+  `required_evidence_available`, `expected_decision_value`,
+  `decision: CONTINUE / STOP / BLOCK / HANDOFF`). P1, not active in this
+  version; §10 stop/escalation rules remain the active controls. This is not
+  an autonomous loop and must not be implemented as one.
 
 ## P1 and P2 status
 

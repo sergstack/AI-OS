@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:63c5274532d866c0e3ef9dfd9bf3b5a9fa4a0a1d287471befad1da0150e55f79
+- source_fingerprint: sha256:c10928a0f87e9e025f4f71f6308ffdbe5542a3b4dc6694cd90de55cd4d6548bb
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -42,7 +42,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `VARIANCE_DIAGNOSTIC_CONTRACT.md` | Material Plan/Fact variance runtime/output contract | Нужны sign normalization, gross bridge, attribution, coverage или evidence-constrained CFO synthesis |
 | `IN_PROJECT_ANALYSIS_MODE.md` | Правило “анализ внутри проекта” | Есть риск преждевременного handoff |
 | `MAIN_FILES_STANDARD.md` | Стандарт главных stage/mart файлов | Любые данные, marts, slices, BI/Excel |
-| `DATA_CONTRACTS.md` | Data contract | Перед расчётами и marts |
+| `DATA_CONTRACTS.md` | Data contract; canonical `VALUE_STATE` and `METRIC_DEFINITION_CARD` reference | Перед расчётами и marts; нужна семантика метрики или value-state |
 | `QUANTITATIVE_SANITY_GATE.md` | Mandatory pre-publish quantitative sanity gate | Published quantitative report has a flagship metric |
 | `AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md` | AIOS AutoResearch v0.1 (issue #395) stochasticity/non-inferiority/decision-comparator method; candidate, provisional thresholds | Working on AutoResearch batch decision logic |
 | `MANIFEST.md` | Package manifest | Когда нужно проверить состав Analytics package |
@@ -389,7 +389,10 @@ stage_main_full
 - mapped IDs;
 - currency / unit;
 - technical lineage fields;
-- row status for technical issues.
+- row status for technical issues, using the canonical `VALUE_STATE`
+  vocabulary (`DATA_CONTRACTS.md`: `KNOWN` / `UNKNOWN` / `NOT_REPORTED` /
+  `NOT_APPLICABLE` / `PARSE_FAILED` / `MISSING_SOURCE` / `UNMATCHED` /
+  `BLOCKED`) instead of a generic null whenever the distinction is material.
 ### Does not contain
 - business metrics;
 - classification labels;
@@ -421,7 +424,11 @@ mart_main_compact
 Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions and evidence.
 Contains:
 - all metrics required for analysis;
-- all metric formulas documented;
+- all metric formulas documented, with a `METRIC_DEFINITION_CARD` for
+  material/flagship/ratio-like metrics (`DATA_CONTRACTS.md`);
+- `VALUE_STATE` preserved in coverage/denominator fields whenever collapsing
+  it could change denominator, population, reconciliation, classification
+  coverage, metric result, claim strength, or management conclusion;
 - all business dimensions;
 - grain and keys;
 - classification flags;
@@ -501,6 +508,8 @@ mart_slice_<purpose>__<domain>__<period>__v<version>
 - [ ] `mart_main_full` exists or is explicitly designed.
 - [ ] `mart_main_tz` or `mart_main_compact` exists or is explicitly designed.
 - [ ] Mart metrics and formulas documented.
+- [ ] Material/flagship/ratio-like metrics have a `METRIC_DEFINITION_CARD`.
+- [ ] `VALUE_STATE` is not collapsed into a generic null where material.
 - [ ] Slices are derived from `mart_main_full`.
 - [ ] Charts and memo reference mart/slice source.
 - [ ] QA totals available.

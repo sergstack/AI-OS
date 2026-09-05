@@ -132,7 +132,8 @@ For each key conclusion record claim, source mart/table, metric, period, grain, 
 - timing candidate подаётся как confirmed timing.
 - risk указан без `risk_basis`.
 - action указан без owner / due date / status.
-- INOUT используется без Definition Card.
+- INOUT или material metric используется без Definition Card.
+- headline claim без registry lineage (`allowed_in_executive = no`).
 - chart caption сильнее данных.
 
 ## Формат ответа по умолчанию

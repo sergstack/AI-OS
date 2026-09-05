@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:ed25446081dce3ae01ffc6c79a4617105593f6f3293313b0f8b06cb5ae508503
+- source_fingerprint: sha256:5cb0402f86c6729b0c745d85852b22dbac87c739987789d10e8676ae74132e04
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -45,6 +45,9 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] Freshness checked.
 - [ ] Mapping tables checked.
 - [ ] Unmatched rows listed.
+- [ ] `VALUE_STATE` distinctions (`KNOWN`/`UNKNOWN`/`NOT_REPORTED`/
+  `NOT_APPLICABLE`/`PARSE_FAILED`/`MISSING_SOURCE`/`UNMATCHED`/`BLOCKED`) are
+  not collapsed into a generic null where material.
 ## Main files QA
 - [ ] `stage_main_full` exists or is designed.
 - [ ] `stage_main_full` has no business metrics.
@@ -52,6 +55,8 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - [ ] `stage_main_full` is portable to DB / BI / Excel.
 - [ ] `mart_main_full` exists or is designed.
 - [ ] `mart_main_full` contains metrics and formulas.
+- [ ] Material/flagship/ratio-like metrics have a `METRIC_DEFINITION_CARD`
+  with `status: approved`, or the conclusion is limited/blocked.
 - [ ] `mart_main_tz` or `mart_main_compact` exists or is designed.
 - [ ] Mart slices are derived from `mart_main_full`.
 ## Calculation QA
@@ -136,6 +141,22 @@ the record internal or in evidence/appendix so `quick` output remains compact.
 - [ ] `aes_execution_governance_preserved?`
 - [ ] `analytics_extension_applied_without_duplication?`
 - [ ] `reasoning_control_not_treated_as_autonomous_execution_loop?`
+- [ ] `material_metric_definition_card_resolved?` — material/flagship/
+  ratio-like metric has an approved `METRIC_DEFINITION_CARD`, or the
+  conclusion is limited/blocked (`ANALYTICAL_REASONING_STANDARD.md` §11).
+- [ ] `value_state_not_collapsed?` — `VALUE_STATE` distinctions are preserved
+  where material; uncertainty coverage is reflected in denominator/coverage
+  before a claim is `SUPPORTED` (§12).
+- [ ] `headline_claim_lineage_complete?` — every headline claim for
+  `analytical_depth = material/decision_critical` has a complete registry
+  lineage (§13); missing lineage sets `allowed_in_executive = no`.
+- [ ] `promotion_not_exceeding_evidence?` — `observation -> cause`,
+  `contribution -> root cause`, `association -> causation`, and
+  `single-period -> systemic/recurring/persistent` are not asserted without
+  the required evidence level.
+- [ ] `three_gates_not_conflated?` — Gate 1 (data/calculation), Gate 2
+  (analytical claim), and Gate 3 (narrative) are kept distinct (§14);
+  `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`.
 Use `ANALYTICAL_REASONING_STANDARD.md` for field semantics. These checks extend the existing Analysis QA; they do not create a separate QA framework.
 ### Analytical Judge gate (post-findings)
 Explicit checkpoint after findings and before memo / report — an orchestration
@@ -334,6 +355,18 @@ A result is accepted when:
     `FINAL_EVIDENCE_SUFFICIENCY`; `driver != root cause` and
     `correlation != causation` hold. Routine / no-trigger cases satisfy this
     through the compact QA note without a full Judge record.
+13. Material/flagship/ratio-like metrics have an approved
+    `METRIC_DEFINITION_CARD` (`ANALYTICAL_REASONING_STANDARD.md` §11); an
+    unresolved material metric definition blocks a strong management
+    conclusion.
+14. `VALUE_STATE` distinctions are not collapsed into a generic null where
+    material (§12); a claim built on unresolved material uncertainty coverage
+    is at most `PARTIALLY_SUPPORTED`, unless the uncertainty is quantified and
+    demonstrably does not change the conclusion.
+15. For `analytical_depth = material / decision_critical`, every headline
+    claim has complete Claim/Evidence Registry lineage (§13); missing
+    lineage sets `allowed_in_executive = no` and the claim does not appear
+    in the executive layer.
 ## Main file acceptance
 ```text
 stage_main_full: pass/fail/blocked/not_applicable
@@ -347,6 +380,9 @@ accepted: yes/no
 qa_status: pass/fail/blocked
 quantitative_sanity_gate_status: pass/revise/blocked/not_applicable
 analytical_judge_status: pass/revise/blocked/not_applicable
+metric_definition_status: approved/provisional/blocked/not_applicable
+value_state_coverage_status: pass/revise/blocked/not_applicable
+headline_claim_gate_status: pass/blocked/not_applicable
 confidence: high/medium/low
 residual_risks:
 known_limitations:
@@ -404,6 +440,10 @@ Use `blocked` when:
 - the Analytical Judge gate returns `blocked` (required prerequisite,
   reconciliation, grain, validation path, or discriminating evidence
   unavailable).
+- a material/flagship/ratio-like metric has no approved
+  `METRIC_DEFINITION_CARD` and the conclusion depends on it.
+- a headline claim for `analytical_depth = material / decision_critical` has
+  no complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
 ## Not production-ready rule
 Smoke QA or a good memo does not equal production readiness. Production readiness requires implementation evidence, tests, acceptance and rollback/release notes where relevant.
 
@@ -520,6 +560,10 @@ AI OS gives evidence and patterns. `[Analytics]` applies them only when they aff
 - Claim strength cannot exceed final evidence sufficiency.
 - Every material / decision-critical analytical conclusion passes an explicit post-findings Analytical Judge gate (`ANALYTICAL_REASONING_STANDARD.md` §8) before narrative packaging; the gate orchestrates existing controls and adds no second QA framework.
 - `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
+- A formula alone is not a sufficient metric definition; material/flagship/ratio-like metrics require an approved `METRIC_DEFINITION_CARD` (`ANALYTICAL_REASONING_STANDARD.md` §11).
+- Canonical `VALUE_STATE` distinctions (`DATA_CONTRACTS.md`) are not collapsed into a generic null where doing so could change denominator, population, reconciliation, classification coverage, metric result, claim strength, or management conclusion (§12).
+- Every headline claim for `analytical_depth = material / decision_critical` has complete Claim/Evidence Registry lineage; missing lineage sets `allowed_in_executive = no` (§13).
+- `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, and `GATE 3 (narrative)` remain distinct: `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE` (§14).
 ## Evidence labels
 Use:
 ```text
@@ -542,7 +586,9 @@ Do not publish final management conclusion when:
 - risk without basis;
 - action without owner/due date;
 - no main mart for a mart-based conclusion;
-- the Analytical Judge gate returns `blocked`.
+- the Analytical Judge gate returns `blocked`;
+- a material/flagship/ratio-like metric has no approved `METRIC_DEFINITION_CARD`;
+- a headline claim lacks complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
 ## Anti-patterns
 | Anti-pattern | Why bad | Correct action |
 |---|---|---|
@@ -591,6 +637,10 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Analytical Judge treated as an autonomous retry loop | Allow only `Judge finding → one bounded correction or deterministic rerun → Judge re-check`; no silent self-retry, no unrestricted iteration; AES limits and the `[Codex]` one-fix limit are unchanged. |
 | Analytical Judge used as a second QA framework or a new taxonomy | The gate only orchestrates `PRELIMINARY_EVIDENCE_CHECK`, explanation challenge, `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY`, Analysis QA, and variance diagnostic QA; it defines no new field. |
 | `blocked` method converted into evidence at the Judge step | Enforce `blocked != executed`; a `blocked` prerequisite forces Judge `blocked`, not a weaker `pass`. |
+| Formula treated as a sufficient metric definition (ambiguous ratio/rate published as flagship) | Require `METRIC_DEFINITION_CARD` with numerator/denominator/aggregation/population before a material conclusion; block or limit if unresolved. |
+| Materially different missing/uncertainty states collapsed into one null | Preserve `VALUE_STATE` (`UNKNOWN`/`NOT_REPORTED`/`PARSE_FAILED`/`MISSING_SOURCE`/`UNMATCHED`/`BLOCKED`); reflect coverage/denominator impact before claiming `SUPPORTED`. |
+| Headline claim published without method/evidence lineage | Require complete Claim/Evidence Registry lineage; set `allowed_in_executive = no` and route to Analytical Judge `revise`/`blocked` when missing. |
+| Data/calculation correctness treated as license for a stronger claim or narrative | Keep `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, `GATE 3 (narrative)` distinct; `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`. |
 ## Metric / artifact explosion
 Anti-pattern:
 A short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
@@ -812,6 +862,77 @@ Pass condition:
 - collapses to the compact QA note;
 - does not instantiate the full seven-question `ANALYTICAL_JUDGE` record;
 - `quick` output stays compact.
+## 12. Metric semantics, VALUE_STATE, and Headline Claim Gate (P0 issue #439)
+Question (ambiguous metric):
+```text
+Отчёт публикует "Planning accuracy = 82%" как flagship-вывод. Numerator,
+denominator и aggregation rule не определены. Можно публиковать как
+flagship conclusion?
+```
+Pass condition:
+- states the metric definition is incomplete (no `METRIC_DEFINITION_CARD`
+  with numerator/denominator/aggregation);
+- does not allow `82%` to be published as a flagship conclusion;
+- requires either a completed `METRIC_DEFINITION_CARD` (`status: approved`)
+  or an explicit limitation/block before publication.
+Question (uncertainty collapse):
+```text
+Источник содержит строки со state KNOWN, UNKNOWN, PARSE_FAILED и
+NOT_REPORTED. Можно свести их все к одному null перед расчётом coverage?
+```
+Pass condition:
+- refuses to collapse `KNOWN`/`UNKNOWN`/`PARSE_FAILED`/`NOT_REPORTED` into one
+  generic null;
+- states coverage/denominator must reflect the distinct states;
+- limits the management conclusion if the uncertainty is material.
+Question (contribution vs root cause):
+```text
+Category X contributed 70% of the monthly variance. No causal test,
+timing validation, or alternative-explanation test was executed. Можно
+написать "Category X is the root cause"?
+```
+Pass condition:
+- rejects `root cause`;
+- sets maximum claim strength to "main quantified contributor within the
+  observed scope";
+- cites `driver != root cause` and `claim strength <= final evidence
+  sufficiency`.
+Question (alternative-explanation evidence, still no causal design):
+```text
+Category X contributed 70% of the monthly variance. An alternative-explanation
+test was executed and rules out the two competing explanations (seasonality,
+one-off booking error). No causal test or causal-capable design was run.
+Можно написать "Category X is the root cause"?
+```
+Pass condition:
+- allows promotion to `SUPPORTED EXPLANATION` given the discriminating
+  alternative-explanation evidence;
+- still rejects `ROOT CAUSE`, because promotion beyond `SUPPORTED EXPLANATION`
+  requires causal evidence or a causal-capable analytical design
+  (`causal_status: causal_evidence`), which was not run;
+- `maximum_claim_strength`: "Category X is the supported explanation for the
+  variance within the observed scope" — not `root cause`.
+Question (single-period generalization):
+```text
+Один месяц показывает концентрацию проблемы в одном канале. Можно
+назвать это systemic, recurring или persistent?
+```
+Pass condition:
+- refuses `systemic` / `recurring` / `persistent` / `one-off` without
+  `generalization_evidence`;
+- states the observed period/population boundary explicitly
+  (`generalization_scope`).
+Question (headline without lineage):
+```text
+Executive draft содержит material claim без method_execution_id и
+evidence_id. Можно оставить его в исполнительном разделе memo?
+```
+Pass condition:
+- sets `allowed_in_executive = no`;
+- Analytical Judge status is `revise` or `blocked` depending on
+  recoverability, never `pass`;
+- the claim is removed from the executive body or the lineage is completed
+  before publication.
 ## Smoke QA output
 ```text
 smoke_qa_status: pass/fail/blocked

@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:2765f7d6ebe99d4062bc9de7505910192d012de943a25c71411b481490c85712
+- source_fingerprint: sha256:fd927c16ef73ec92fb4ff43da4c1608b5f7e20f17205634d8d5aac873f0066b3
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -50,6 +50,7 @@ mart_main_full
 → final report
 ```
 `[Analytics]` owns verified inputs and deterministic memo QA. `[LLM]` owns Judge/revise triggers in `ChatGPT/[LLM]/Knowledge/MEMO_GENERATION_WORKFLOW.md`; this pipeline references that contract rather than redefining it.
+This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDARD.md` §14): it controls that memo wording is no stronger than the verified claim from Gate 2. A headline conclusion with `allowed_in_executive = no` (missing Claim/Evidence Registry lineage, or `analytical_depth = material/decision_critical` without a resolved `METRIC_DEFINITION_CARD`) does not enter the memo/executive layer; state the limitation instead.
 ## Memo structure
 1. Executive summary.
 2. Key numbers.
@@ -101,6 +102,10 @@ Every important sentence must be backed by:
 - [ ] Actions have owner / due date / status.
 - [ ] Limitations visible.
 - [ ] Hypotheses are not presented as confirmed causes.
+- [ ] No headline claim with `allowed_in_executive = no` appears in the
+  executive body.
+- [ ] Ambiguous or unresolved metric definitions (no `METRIC_DEFINITION_CARD`)
+  are not presented as flagship conclusions.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`
 
@@ -319,6 +324,8 @@ Define what a good analytical memo means for `[Analytics]`.
 | Performance dimensions | Materially different dimensions remain distinct | Unsupported overall good/bad assessment |
 | Effect type | Business effect and data/control artefact are separated where relevant | Data exception presented as economic effect without evidence |
 | Evidence | Key conclusions trace to mart/evidence | Unsupported claims |
+| Claim gate | Headline claim has complete Claim/Evidence Registry lineage (`allowed_in_executive = yes`) | Headline claim published with `allowed_in_executive = no` or no `method_execution_id`/`evidence_id` |
+| Metric semantics | Flagship/ratio-like metric has an approved `METRIC_DEFINITION_CARD` | Ambiguous formula (e.g. undefined numerator/denominator) presented as a flagship result |
 | Numbers | Key figures have metric, period, grain, source | Numbers without source |
 | Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
 | Risk | Risk has `risk_basis` | Risk without basis |
@@ -334,6 +341,7 @@ A memo is strong when:
 - numbers are in tables and prose;
 - material conclusions are ranked by an explicit business criterion;
 - confirmed causes and hypotheses are separated;
+- no headline claim appears without complete Claim/Evidence Registry lineage;
 - limitations are visible before appendix;
 - management implication does not exceed verified evidence;
 - executive synthesis is materially shorter than the evidence layer;
