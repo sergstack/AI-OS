@@ -45,9 +45,14 @@ lineage missing -> allowed_in_executive = no
 Do not promote a claim beyond its evidence:
 
 - `observation -> cause` requires causal evidence, not association alone.
-- `contribution -> root cause` requires causal/alternative-explanation
-  evidence; a quantified contribution alone supports at most "main quantified
-  contributor within observed scope".
+- `contribution -> supported explanation` may rely on discriminating /
+  alternative-explanation evidence (competing explanations tested and
+  ruled out); a quantified contribution alone, with no discriminating
+  evidence, supports at most "main quantified contributor within observed
+  scope".
+- `supported explanation -> root cause` requires causal evidence or a
+  causal-capable analytical design (`causal_status = causal_evidence`) —
+  alternative-explanation evidence alone does not reach `root cause`.
 - `association -> causation` requires `causal_status = causal_evidence`.
 - `single-period -> systemic / recurring / persistent` requires
   `generalization_evidence`.

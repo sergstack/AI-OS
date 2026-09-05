@@ -33,7 +33,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:907bf0e14d4159a4da26043032f6f5ecf880efe94962516ff68b4bbf5eb6538a
+- source_fingerprint: sha256:22e825a9d96e257b9f7ba70b3185a6874fad09396c21be14db467e273f6a18b0
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -770,9 +770,14 @@ lineage missing -> allowed_in_executive = no
 ```
 Do not promote a claim beyond its evidence:
 - `observation -> cause` requires causal evidence, not association alone.
-- `contribution -> root cause` requires causal/alternative-explanation
-  evidence; a quantified contribution alone supports at most "main quantified
-  contributor within observed scope".
+- `contribution -> supported explanation` may rely on discriminating /
+  alternative-explanation evidence (competing explanations tested and
+  ruled out); a quantified contribution alone, with no discriminating
+  evidence, supports at most "main quantified contributor within observed
+  scope".
+- `supported explanation -> root cause` requires causal evidence or a
+  causal-capable analytical design (`causal_status = causal_evidence`) —
+  alternative-explanation evidence alone does not reach `root cause`.
 - `association -> causation` requires `causal_status = causal_evidence`.
 - `single-period -> systemic / recurring / persistent` requires
   `generalization_evidence`.
