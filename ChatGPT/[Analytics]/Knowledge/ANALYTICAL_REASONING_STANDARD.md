@@ -253,6 +253,12 @@ Check additions, removals, filter changes, entity changes, cut-off changes, and 
 ratio interpretation requires numerator + denominator + population
 ```
 
+```text
+population/denominator materially unexplained -> claim_support <= PARTIALLY_SUPPORTED
+```
+
+If `population_constant_or_explained?` or `denominator_constant_or_explained?` is `no` and the underlying change is material and not quantified (`scope_change_quantified?` not satisfied), the ratio/rate/margin/mix claim cannot be recorded as `SUPPORTED`; a headline or management conclusion built on it is capped at `claim_support <= PARTIALLY_SUPPORTED` until the population/denominator shift is quantified and shown not to change the conclusion. Once so quantified, the cap does not apply.
+
 ### Material Plan/Fact and variance diagnostics
 
 `VARIANCE_DIAGNOSTIC_CONTRACT.md` owns the bounded runtime/output controls for material Plan/Fact cases: source-sign preservation, explicit management-direction normalization, gross bridge, reconciled primary attribution, separate gross classification coverage, declared materiality, evidence-constrained secondary attributes, reported-versus-adjusted views, and CFO synthesis order.

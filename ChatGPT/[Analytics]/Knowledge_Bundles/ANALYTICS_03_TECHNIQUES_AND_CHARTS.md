@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:67374b5da3380141ab25e9d5bfa4a7c23a56227f69a4a14695b0c1cf1c06cf68
+- source_fingerprint: sha256:a5bfd150da34db5093b251b71ef8ed37b1d0c50251f19a683cfbfdf0f863a314
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -375,6 +375,10 @@ Check additions, removals, filter changes, entity changes, cut-off changes, and 
 ```text
 ratio interpretation requires numerator + denominator + population
 ```
+```text
+population/denominator materially unexplained -> claim_support <= PARTIALLY_SUPPORTED
+```
+If `population_constant_or_explained?` or `denominator_constant_or_explained?` is `no` and the underlying change is material and not quantified (`scope_change_quantified?` not satisfied), the ratio/rate/margin/mix claim cannot be recorded as `SUPPORTED`; a headline or management conclusion built on it is capped at `claim_support <= PARTIALLY_SUPPORTED` until the population/denominator shift is quantified and shown not to change the conclusion. Once so quantified, the cap does not apply.
 ### Material Plan/Fact and variance diagnostics
 `VARIANCE_DIAGNOSTIC_CONTRACT.md` owns the bounded runtime/output controls for material Plan/Fact cases: source-sign preservation, explicit management-direction normalization, gross bridge, reconciled primary attribution, separate gross classification coverage, declared materiality, evidence-constrained secondary attributes, reported-versus-adjusted views, and CFO synthesis order.
 It reuses the existing `diagnose_variance` mapping and approved methods. It does not add an intent, method, registry, or workflow. Activate the full diagnostic only for material/decision-critical cases or a material variance risk; routine/quick cases keep the compact path.
