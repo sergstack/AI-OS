@@ -774,6 +774,7 @@ def _transport_policy(batch_config: dict) -> "lba.TransportPolicy":
         session_policy=batch_config.get("session_policy", "fresh_conversation"),
         expected_model_selector=batch_config.get("expected_model_selector") or None,
         expected_context_hash=None,  # each request carries its own; baseline != candidate by design
+        subject_context_scope=batch_config.get("subject_context_scope", "non_project_controlled"),
     )
     object.__setattr__(policy, "call_timeout_seconds", batch_config.get("call_timeout_seconds"))
     return policy
@@ -1012,6 +1013,19 @@ def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str, spec: "Ma
         "judge_findings": judge_findings,
         "comparator_raw_decision": {"decision": raw_decision, "reason": reason},
         "pilot_decision": pilot_decision,
+        # Owner revise, 2026-09-05: the two controlled-L1 preconditions are
+        # NOT equally verifiable today. subject_context_scope is now
+        # machine-checked per call against the observed URL (see
+        # matched_observations' invocation records / limitations above,
+        # threaded from LiveInvocationResult.observed_page_url) --
+        # memory_personalization_isolation_status has no such mechanism in
+        # this codebase and remains a self-declared batch-config string.
+        # This field states that split honestly on every record produced,
+        # rather than letting a clean pilot_decision imply both are proven.
+        "causal_validity_status": {
+            "subject_context_scope_verification": "machine_verified_per_call_observed_url",
+            "memory_personalization_isolation_verification": "self_declared_not_machine_verified",
+        },
         "limitations": evidence["limitations"],
         "rollback": ("Candidate exists only in ephemeral shadow worktrees; nothing applied to main, active "
                      "Project config, or the ledger baseline. Revert is: discard the shadow worktrees. This "

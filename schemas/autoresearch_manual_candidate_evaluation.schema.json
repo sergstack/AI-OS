@@ -26,6 +26,7 @@
     "judge_findings",
     "comparator_raw_decision",
     "pilot_decision",
+    "causal_validity_status",
     "limitations",
     "rollback",
     "evidence_hashes"
@@ -179,6 +180,23 @@
       "description": "MD-4: authority-lowering relabel of comparator_raw_decision.decision. keep_candidate -> candidate_for_owner_review; discard -> reject; inconclusive -> inconclusive. Never keep_candidate. Carries NO acceptance / merge / promotion authority.",
       "type": "string",
       "enum": ["reject", "inconclusive", "candidate_for_owner_review"]
+    },
+
+    "causal_validity_status": {
+      "description": "Owner revise, 2026-09-05: the two controlled-L1 preconditions are not equally verifiable, so a clean pilot_decision must never imply both are proven. subject_context_scope is machine-checked per call against the transport's own observed URL (LiveInvocationResult.observed_page_url); memory_personalization_isolation_status has no implemented verification mechanism in this codebase and remains a self-declared batch-config string. Present on every record so a consumer can never mistake a completed run for a fully causally-validated one on the memory/personalization dimension.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject_context_scope_verification", "memory_personalization_isolation_verification"],
+      "properties": {
+        "subject_context_scope_verification": {
+          "type": "string",
+          "enum": ["machine_verified_per_call_observed_url"]
+        },
+        "memory_personalization_isolation_verification": {
+          "type": "string",
+          "enum": ["self_declared_not_machine_verified"]
+        }
+      }
     },
 
     "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },

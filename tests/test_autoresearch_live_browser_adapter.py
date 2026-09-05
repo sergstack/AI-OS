@@ -185,6 +185,33 @@ def test_navigation_error_before_submission_is_non_pass_and_preserves_record():
     assert result.limitations  # preserved
 
 
+def test_observed_project_url_refused_when_scope_declares_non_project(tmp_path):
+    """Owner revise, 2026-09-05: subject_context_scope must be cross-checked
+    against the ACTUALLY OBSERVED url, not merely trusted as declared. A
+    call that lands on a named-Project-shaped URL is refused, not silently
+    accepted, even though target_url_prefix still matches (chatgpt.com/
+    covers both a bare chat and a named Project)."""
+    transport = lba.FakeBrowserTransport(page_url="https://chatgpt.com/g/g-p-fakeprojectid-ai-os/c/abc123")
+    result = lba.invoke(_request(), _policy(subject_context_scope="non_project_controlled"), _budget(), transport)
+    assert result.termination_status == "scope_violation"
+    assert not result.is_pass
+    assert result.response_text_or_ref is None
+    assert result.observed_page_url == "https://chatgpt.com/g/g-p-fakeprojectid-ai-os/c/abc123"
+    assert "named ChatGPT Project pattern" in result.limitations
+
+
+def test_observed_bare_chat_url_passes_scope_check():
+    transport = lba.FakeBrowserTransport(page_url="https://chatgpt.com/c/plain-chat-id")
+    result = lba.invoke(_request(), _policy(subject_context_scope="non_project_controlled"), _budget(), transport)
+    assert result.termination_status == "completed"
+    assert result.observed_page_url == "https://chatgpt.com/c/plain-chat-id"
+
+
+def test_unknown_subject_context_scope_rejected_at_construction():
+    with pytest.raises(lba.LiveTransportError):
+        _policy(subject_context_scope="something_else")
+
+
 def test_model_selector_mismatch_maps_to_selector_unverified_without_submission():
     transport = lba.FakeBrowserTransport(observed_selector="GPT-4o mini")
     result = lba.invoke(

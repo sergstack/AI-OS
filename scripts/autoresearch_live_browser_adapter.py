@@ -89,6 +89,7 @@ TERMINATION_STATUSES = frozenset(
         "selector_unverified",
         "empty_response",
         "validation_error",
+        "scope_violation",
     }
 )
 
@@ -197,6 +198,16 @@ class TransportPolicy:
     #: False; a True here with a non-positive cost cap makes `invoke` refuse to
     #: submit.
     incremental_paid_cost: bool = False
+    #: Controlled-L1 context boundary ([LLM]->[Codex] handoff, 2026-09-05;
+    #: owner revise, same day: "verifiably bound to the execution record").
+    #: `invoke()` cross-checks this DECLARED value against the ACTUALLY
+    #: OBSERVED page URL from the live transport on every call -- a
+    #: `non_project_controlled` batch whose observed URL matches a named
+    #: ChatGPT Project pattern is refused (`termination_status:
+    #: scope_violation`), not silently trusted. This turns the batch-config
+    #: field from a self-declared claim into a per-call, machine-verified,
+    #: ledgered one.
+    subject_context_scope: str = "non_project_controlled"
 
     def __post_init__(self) -> None:
         if self.transport_mode not in TRANSPORT_MODES:
@@ -206,6 +217,8 @@ class TransportPolicy:
             )
         if self.session_policy not in {"fresh_conversation", "reuse_conversation"}:
             raise LiveTransportError(f"unknown session_policy {self.session_policy!r}")
+        if self.subject_context_scope not in {"non_project_controlled", "native_project"}:
+            raise LiveTransportError(f"unknown subject_context_scope {self.subject_context_scope!r}")
 
 
 @dataclass
@@ -323,6 +336,12 @@ class LiveInvocationResult:
     capture_method: str
     fidelity_mode: str
     limitations: str
+    #: The actual URL observed live from the transport at call time (via
+    #: browser_snapshot), threaded through to the ledgered record -- real,
+    #: per-call evidence of where the call actually landed, not merely the
+    #: batch's own declared subject_context_scope. `None` when no navigation
+    #: was reached (an authority/budget/context gate fired first).
+    observed_page_url: Optional[str] = None
 
     @property
     def is_pass(self) -> bool:
@@ -546,6 +565,7 @@ def _result(
     observed_selector: Optional[str] = None,
     cost_currency: str = "not_applicable",
     limitations_extra: str = "",
+    page_url: Optional[str] = None,
 ) -> LiveInvocationResult:
     if termination_status not in TERMINATION_STATUSES:
         raise LiveTransportError(f"unknown termination_status {termination_status!r}")
@@ -596,6 +616,7 @@ def _result(
         capture_method=transport.capture_method,
         fidelity_mode="repo_replay",
         limitations=limitations,
+        observed_page_url=page_url,
     )
 
 
@@ -727,12 +748,33 @@ def invoke(
             )
 
         # --- VERIFY ---
+        # Controlled-L1 scope check (owner revise, 2026-09-05): the declared
+        # subject_context_scope is now cross-checked against the ACTUALLY
+        # OBSERVED URL from this real submission, not merely trusted as a
+        # self-declared batch-config flag. "/g/g-p-" is the confirmed,
+        # observed URL shape of a named ChatGPT Project
+        # (chatgpt.com/g/g-p-<id>-<slug>/...); a bare chat never has it.
+        if (
+            policy.subject_context_scope == "non_project_controlled"
+            and capture.page_url
+            and "/g/g-p-" in capture.page_url
+        ):
+            return _result(
+                request=req, policy=policy, transport=transport,
+                termination_status="scope_violation", started_at=capture.started_at, completed_at=capture.completed_at,
+                observed_selector=observed_selector, page_url=capture.page_url,
+                limitations_extra=(
+                    f"observed URL {capture.page_url!r} matches a named ChatGPT Project pattern "
+                    "but subject_context_scope declares non_project_controlled; call refused, "
+                    "not silently trusted"
+                ),
+            )
         normalized = normalize_response(capture.response_text or "")
         if not normalized.strip():
             return _result(
                 request=req, policy=policy, transport=transport,
                 termination_status="empty_response", started_at=capture.started_at, completed_at=capture.completed_at,
-                observed_selector=observed_selector,
+                observed_selector=observed_selector, page_url=capture.page_url,
                 limitations_extra="captured response was empty after normalisation",
             )
         flags = sanitization_flags(normalized)
@@ -740,7 +782,7 @@ def invoke(
             return _result(
                 request=req, policy=policy, transport=transport,
                 termination_status="validation_error", started_at=capture.started_at, completed_at=capture.completed_at,
-                observed_selector=observed_selector,
+                observed_selector=observed_selector, page_url=capture.page_url,
                 limitations_extra=f"secret-shaped content in capture ({','.join(flags)}); not persisted",
             )
         return _result(
@@ -749,6 +791,7 @@ def invoke(
             response_text=normalized, response_hash_hex=response_hash(normalized),
             observed_selector=observed_selector or capture.observed_model_selector,
             cost_currency=budget.max_cost_currency or "not_applicable",
+            page_url=capture.page_url,
         )
     finally:
         try:
@@ -846,6 +889,7 @@ def to_live_invocation_record(result: LiveInvocationResult) -> dict:
         "capture_method": result.capture_method,
         "fidelity_mode": result.fidelity_mode,
         "limitations": result.limitations,
+        "observed_page_url": result.observed_page_url,
     }
 
 
