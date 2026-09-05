@@ -319,6 +319,25 @@ Pass condition:
 - cites `driver != root cause` and `claim strength <= final evidence
   sufficiency`.
 
+Question (alternative-explanation evidence, still no causal design):
+
+```text
+Category X contributed 70% of the monthly variance. An alternative-explanation
+test was executed and rules out the two competing explanations (seasonality,
+one-off booking error). No causal test or causal-capable design was run.
+Можно написать "Category X is the root cause"?
+```
+
+Pass condition:
+
+- allows promotion to `SUPPORTED EXPLANATION` given the discriminating
+  alternative-explanation evidence;
+- still rejects `ROOT CAUSE`, because promotion beyond `SUPPORTED EXPLANATION`
+  requires causal evidence or a causal-capable analytical design
+  (`causal_status: causal_evidence`), which was not run;
+- `maximum_claim_strength`: "Category X is the supported explanation for the
+  variance within the observed scope" — not `root cause`.
+
 Question (single-period generalization):
 
 ```text

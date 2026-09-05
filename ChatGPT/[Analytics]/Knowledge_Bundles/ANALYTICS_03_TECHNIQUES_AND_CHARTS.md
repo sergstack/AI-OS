@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:9c662ab2b131fd941799ff3bfa45f58ddb0d0887b952261185826e536abec045
+- source_fingerprint: sha256:67374b5da3380141ab25e9d5bfa4a7c23a56227f69a4a14695b0c1cf1c06cf68
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -424,6 +424,7 @@ driver != root cause
 correlation != causation
 ```
 `ROOT CAUSE` is allowed only when the evidence and analytical design support causal language.
+Discriminating alternative-explanation evidence (competing explanations tested and narrowed, per §6's `EXPLANATION CHALLENGE`) may promote a claim to `SUPPORTED EXPLANATION`; it does not by itself reach `ROOT CAUSE`. Promotion to `ROOT CAUSE` additionally requires causal evidence or a causal-capable analytical design (`causal_status: causal_evidence`) — for example a controlled comparison, natural experiment, or a registry method able to isolate cause from association. Absent that, the maximum claim strength stops at `SUPPORTED EXPLANATION` / driver candidate, even when alternative explanations have been ruled out.
 ### Method disagreement
 When materially relevant methods produce incompatible interpretations or conclusions:
 ```text
@@ -583,10 +584,14 @@ to fix numerator, denominator, aggregation semantics, population,
 units/currency, sign/direction, zero-denominator behavior, allowed
 comparison scope, and forbidden interpretations before a material
 conclusion. `METRIC_DEFINITION_CARD.status: provisional / blocked`, or a
-required field left undefined, blocks a strong management conclusion; the
-claim is limited to `HYPOTHESIS` / `LIMITATION` at most. This gate does not
-add a metric to the 22-method registry and does not redefine any business
-metric; it fixes the definition-card mechanism only.
+required field left undefined, still permits reporting the underlying
+`DATA FACT` / `CALCULATION RESULT` with an explicit limitation attached; it
+blocks a strong `INTERPRETATION` / `RECOMMENDATION` or flagship management
+conclusion built on that metric. The interpretive layer is limited to
+`HYPOTHESIS` / `LIMITATION` at most until the card reaches
+`status: approved`. This gate does not add a metric to the 22-method
+registry and does not redefine any business metric; it fixes the
+definition-card mechanism only.
 ## 12. Canonical `VALUE_STATE` and claim strength
 `DATA_CONTRACTS.md` owns the canonical `VALUE_STATE` vocabulary (`KNOWN`,
 `UNKNOWN`, `NOT_REPORTED`, `NOT_APPLICABLE`, `PARSE_FAILED`,
@@ -597,12 +602,15 @@ materially different states into one generic null when that could change
 denominator, population, reconciliation, classification coverage, metric
 result, claim strength, or management conclusion.
 ```text
-material uncertainty coverage unresolved -> claim_support <= PARTIALLY_SUPPORTED
+unresolved material uncertainty coverage -> claim_support <= PARTIALLY_SUPPORTED
 ```
 A claim built on a mart where a material share of the relevant population
 carries `UNKNOWN`, `PARSE_FAILED`, `MISSING_SOURCE`, or `UNMATCHED` cannot be
 recorded as `SUPPORTED` with `confidence: high` unless the uncertainty
-coverage is itself declared and shown not to change the conclusion.
+coverage is itself declared and quantified, and that quantification
+demonstrably does not change the conclusion. Once resolved this way, the
+uncertainty is no longer "unresolved" and the `<= PARTIALLY_SUPPORTED` cap
+does not apply.
 ## 13. Mandatory Headline Claim Gate
 For `analytical_depth = material / decision_critical`, every headline claim
 requires a `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md` row with complete lineage:

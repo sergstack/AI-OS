@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:346de04d3f82230e82a52e263f65d34e3d7530a33d1b06be26eaf7f3ff641276
+- source_fingerprint: sha256:5cb0402f86c6729b0c745d85852b22dbac87c739987789d10e8676ae74132e04
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -360,8 +360,9 @@ A result is accepted when:
     unresolved material metric definition blocks a strong management
     conclusion.
 14. `VALUE_STATE` distinctions are not collapsed into a generic null where
-    material (§12); a claim built on materially uncertain coverage is at
-    most `PARTIALLY_SUPPORTED`.
+    material (§12); a claim built on unresolved material uncertainty coverage
+    is at most `PARTIALLY_SUPPORTED`, unless the uncertainty is quantified and
+    demonstrably does not change the conclusion.
 15. For `analytical_depth = material / decision_critical`, every headline
     claim has complete Claim/Evidence Registry lineage (§13); missing
     lineage sets `allowed_in_executive = no` and the claim does not appear
@@ -896,6 +897,21 @@ Pass condition:
   observed scope";
 - cites `driver != root cause` and `claim strength <= final evidence
   sufficiency`.
+Question (alternative-explanation evidence, still no causal design):
+```text
+Category X contributed 70% of the monthly variance. An alternative-explanation
+test was executed and rules out the two competing explanations (seasonality,
+one-off booking error). No causal test or causal-capable design was run.
+Можно написать "Category X is the root cause"?
+```
+Pass condition:
+- allows promotion to `SUPPORTED EXPLANATION` given the discriminating
+  alternative-explanation evidence;
+- still rejects `ROOT CAUSE`, because promotion beyond `SUPPORTED EXPLANATION`
+  requires causal evidence or a causal-capable analytical design
+  (`causal_status: causal_evidence`), which was not run;
+- `maximum_claim_strength`: "Category X is the supported explanation for the
+  variance within the observed scope" — not `root cause`.
 Question (single-period generalization):
 ```text
 Один месяц показывает концентрацию проблемы в одном канале. Можно

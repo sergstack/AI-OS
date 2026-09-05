@@ -29,8 +29,9 @@ A result is accepted when:
     unresolved material metric definition blocks a strong management
     conclusion.
 14. `VALUE_STATE` distinctions are not collapsed into a generic null where
-    material (§12); a claim built on materially uncertain coverage is at
-    most `PARTIALLY_SUPPORTED`.
+    material (§12); a claim built on unresolved material uncertainty coverage
+    is at most `PARTIALLY_SUPPORTED`, unless the uncertainty is quantified and
+    demonstrably does not change the conclusion.
 15. For `analytical_depth = material / decision_critical`, every headline
     claim has complete Claim/Evidence Registry lineage (§13); missing
     lineage sets `allowed_in_executive = no` and the claim does not appear
