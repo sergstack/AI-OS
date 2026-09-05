@@ -16,12 +16,15 @@ Current decision evidence:
   2026-09-05. Both live cases produced `GATE: revise` and rejected the
   requested false/overstated CFO headline, matching the paper-trace
   predictions — no contradiction found, no new finding raised. Also records
-  PR [#443](https://github.com/sergstack/AI-OS/pull/443) (Finding A: one
-  §5 rule + one sentence capping `claim_support <= PARTIALLY_SUPPORTED`
-  when population/denominator is materially unexplained; no new
-  `METHOD_ID`, no registry change) — not yet merged/ingested by the live
-  Project at the time these two scenarios ran, so this record does not
-  itself validate #443.
+  that Finding A has a bounded fix implemented in open PR
+  [#443](https://github.com/sergstack/AI-OS/pull/443) (one §5 rule + one
+  sentence capping `claim_support <= PARTIALLY_SUPPORTED` when
+  population/denominator is materially unexplained; no new `METHOD_ID`, no
+  registry change) — canonical closure of Finding A remains pending owner
+  review and merge. PR #443 was not merged, not synced/deployed to the
+  live Project's Knowledge Bundle, and not behaviorally revalidated at the
+  time these two scenarios ran, so this record does not itself validate
+  #443.
 - [`AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md`](AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md)
   records Issue #433 (follow-up to #416): the transport-binding seam that lets
   the committed harness run a bounded live `manual_candidate_evaluation`.

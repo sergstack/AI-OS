@@ -303,14 +303,18 @@ all 5 bounded, plus one real drafting gap ("Finding A" — §5 named the
 population/denominator/scope self-report fields but, unlike §11–§13, stated
 no consequence for a material "no"/unexplained answer).
 
-Finding A is closed via PR #443: one rule line + one sentence in §5 capping
-`claim_support <= PARTIALLY_SUPPORTED` when population/denominator is
-materially unexplained. No new `METHOD_ID`, no registry expansion, no P1
-`RECONCILIATION_CONTRACT` activation. Governance checks
-(`check_project_instructions_length`, `check_manifest_paths`,
-`check_repo_public_safety`, `check_knowledge_bundles`, `check_index_coverage`)
-pass; `Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` was
-regenerated via `scripts/build_knowledge_bundles.py --write`.
+Finding A has a bounded fix **implemented** in open PR #443 (`state: OPEN`,
+not merged): one rule line + one sentence in §5 capping `claim_support <=
+PARTIALLY_SUPPORTED` when population/denominator is materially unexplained.
+No new `METHOD_ID`, no registry expansion, no P1 `RECONCILIATION_CONTRACT`
+activation. Governance checks (`check_project_instructions_length`,
+`check_manifest_paths`, `check_repo_public_safety`, `check_knowledge_bundles`,
+`check_index_coverage`) pass on that branch;
+`Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` was regenerated via
+`scripts/build_knowledge_bundles.py --write`. PR #443 is **not** merged to
+the repository, **not** synced/deployed to the live `[Analytics]` Project's
+Knowledge Bundle, and **not** behaviorally revalidated live — canonical
+closure of Finding A remains pending owner review and merge.
 
 2 of the 5 audited scenarios (denominator drift; population/ЦФО
 restructuring) were additionally run **live** against the real `[Analytics]`

@@ -19,12 +19,16 @@ and material, unlike the existing consequence pattern in §11–§13).
 
 This record covers two follow-up actions, both performed in this session:
 
-1. Finding A closed via a minimal contract edit — PR
-   [sergstack/AI-OS#443](https://github.com/sergstack/AI-OS/pull/443) (not
-   yet merged at the time of this record). One rule line + one sentence in
-   §5 capping `claim_support <= PARTIALLY_SUPPORTED` when population/
-   denominator is materially unexplained. No new `METHOD_ID`, no registry
-   change, no P1 `RECONCILIATION_CONTRACT` activation.
+1. Finding A has a bounded fix **implemented** in open PR
+   [sergstack/AI-OS#443](https://github.com/sergstack/AI-OS/pull/443): one
+   rule line + one sentence in §5 capping `claim_support <=
+   PARTIALLY_SUPPORTED` when population/denominator is materially
+   unexplained. No new `METHOD_ID`, no registry change, no P1
+   `RECONCILIATION_CONTRACT` activation. As of this record, PR #443 is
+   **open / owner review pending** — not merged to the repository, not
+   synced/deployed to the live `[Analytics]` Project's Knowledge Bundle,
+   and not behaviorally revalidated live. Canonical closure of Finding A
+   remains pending owner review and merge.
 2. **Live validation** of 2 of the 5 paper-traced scenarios (denominator
    drift; population/ЦФО restructuring) run against the real `[Analytics]`
    ChatGPT Project (the currently deployed contract — PR #440's state; PR

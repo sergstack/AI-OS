@@ -43,8 +43,10 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 - `docs/evidence/ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md` —
   `[Analytics]` P0 adversarial audit follow-up (PR #440). Finding A (§5
-  missing consequence for unexplained population/denominator) closed via PR
-  #443 (one rule line + one sentence, no registry change). 2 of 5 audited
+  missing consequence for unexplained population/denominator) has a bounded
+  fix implemented in open PR #443 (one rule line + one sentence, no
+  registry change) — not merged, not synced to the live Project, canonical
+  closure pending owner review. 2 of 5 audited
   scenarios (denominator drift; population/ЦФО restructuring) run live
   against the real `[Analytics]` Project: both `GATE: revise`, false CFO
   headline rejected in both, matching the paper-trace prediction — no
