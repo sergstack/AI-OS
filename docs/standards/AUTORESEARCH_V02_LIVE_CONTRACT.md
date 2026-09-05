@@ -128,12 +128,13 @@ rule):
   (below). `run_experiment` blocks with zero calls if this is anything but
   `non_project_controlled`.
 - `memory_personalization_isolation_status`: `verified_disabled | unverifiable | not_applicable`.
-  Account-level ChatGPT memory/personalization/custom-instruction influence
-  on the Subject transport must be proven excluded, not merely assumed
-  absent because the chat isn't inside a named Project folder. Only
-  `verified_disabled` satisfies the precondition; `unverifiable` fails
-  closed exactly like an unset budget field does in §6 — it is never
-  silently treated as `verified_disabled`.
+  Declared for forward-compatibility with a future real verifier, but see
+  the second owner-revise entry below: this field currently has **no**
+  value that unblocks a real, non-test-double transport. Account-level
+  ChatGPT memory/personalization/custom-instruction influence on the
+  Subject transport must be proven excluded, not merely assumed absent
+  because the chat isn't inside a named Project folder, and no proof
+  mechanism exists yet.
 
 **Owner revise, 2026-09-05 — a self-declared string is not evidence.** The
 first review of this section correctly rejected it: both fields above are
@@ -162,7 +163,10 @@ open for `memory_personalization_isolation_status`:
   have (e.g. a confirmed technical signature for ChatGPT's own
   "Temporary Chat" mode, not verified live in this session and therefore
   not invented as a check). Every record `Controller.run_experiment`
-  produces now carries a mandatory `causal_validity_status` object
+  produces (on the rare path where one is still produced — see the second
+  owner-revise entry immediately below, which now makes that path
+  unreachable for any real transport) carries a mandatory
+  `causal_validity_status` object
   (`schemas/autoresearch_manual_candidate_evaluation.schema.json`) stating
   this split plainly:
   `subject_context_scope_verification: machine_verified_per_call_observed_url`,
@@ -174,6 +178,26 @@ open for `memory_personalization_isolation_status`:
   causally-valid on this axis, consistent with this contract's own original
   rule that an undemonstrated precondition blocks a causal claim rather
   than downgrading to a weaker one.
+
+**Second owner-revise, same day — causal L1 is hard-blocked, not
+soft-gated, on memory/personalization isolation.** Flagged as insufficient
+even after the fix above: `memory_personalization_isolation_status` was
+still a string a batch could set to `verified_disabled` and pass, which is
+not evidence regardless of how the sibling field is enforced.
+`Controller.run_experiment` now blocks **unconditionally** on this
+precondition — regardless of the declared value — for any run on a real,
+non-test-double transport (`self.transport.capture_method != "test_double"`;
+`FakeBrowserTransport.capture_method` is the fixed, non-spoofable literal
+`"test_double"`, per its own docstring: "a fake result can never be
+mistaken for live"). No verifier, no "Temporary Chat" signature, and no
+other unconfirmed mechanism is introduced to lift this block — none is
+implemented, so none is claimed. This is a deliberate, permanent-until-
+superseded block: it does not gate the deterministic four-control
+calibration harness (`FakeBrowserTransport`, zero external calls, no
+isolation concern to verify in the first place), only a run that could
+actually reach a live provider. **A causal L1 comparison cannot currently
+run to completion on any real transport, by design, until a real
+verification mechanism for this dimension exists as separate work.**
 
 **Mutation-visibility gate**: a patch existing in Git is not itself
 experimental treatment. `Controller.run_experiment` now requires
@@ -199,5 +223,5 @@ claim. Defining and authorizing L2 is separate, later work.
 - `python3 -m json.tool schemas/autoresearch_v02_live_batch_config.schema.json` and the authority matrix — both parse.
 - `jsonschema.Draft7Validator.check_schema(...)` — schema is a valid draft-07 document.
 - `tests/test_autoresearch_v02_live_contract.py` proves, with fixtures, every one of this issue's own "Checks" bullets: a `synthetic`-only batch cannot validate as satisfying `live_evidence_required: true`; an `authorized` batch without a positive `max_cost_amount` fails; a Judge finding (`schemas/autoresearch_semantic_finding.schema.json`, reused unchanged) still structurally cannot carry an authority/merge/production field (re-confirms #394's existing guarantee under the new contract); `raw_restricted` + any `raw_payload_retention` other than `not_retained` fails the schema's own conditional; the authority matrix has exactly the 7 required authorities, each with exactly one of the 3 defined levels, and `merge_authority`/`production_authority`/`active_configuration_authority` are all `not_granted`.
-- `tests/test_autoresearch_md2_calibration.py` proves §17's three batch-level gates through the real `Controller.run_experiment`, not by inspection alone: `subject_context_scope: native_project` blocks with zero calls; `memory_personalization_isolation_status` other than `verified_disabled` blocks with zero calls; a declared mutation whose `mutable_surface_excerpt.excerpt_differs` is `false` (patch in Git, absent from the rendered payload) is discarded with zero calls. The same file's existing four-control calibration (beneficial/harmful/no-op/mixed) still passes with the two new required fields present, unchanged in outcome.
+- `tests/test_autoresearch_md2_calibration.py` proves §17's gates through the real `Controller.run_experiment`, not by inspection alone: `subject_context_scope: native_project` blocks with zero calls; a real (non-test-double) transport is hard-blocked on `memory_personalization_isolation_status` with zero calls **even when it declares `verified_disabled`**; the deterministic four-control calibration harness (`FakeBrowserTransport`) is confirmed NOT swept up by that same block, since it has no isolation concern to verify; a declared mutation whose `mutable_surface_excerpt.excerpt_differs` is `false` (patch in Git, absent from the rendered payload) is discarded with zero calls. The existing four-control calibration (beneficial/harmful/no-op/mixed) still passes with the two new required fields present, unchanged in outcome.
 - `tests/test_autoresearch_live_browser_adapter.py` proves the per-call transport-scope verification directly against `invoke()`: an observed URL matching the named-Project pattern is refused (`scope_violation`) even though it satisfies `target_url_prefix`; an observed bare-chat URL passes and is persisted in the record via `observed_page_url`; an unknown `subject_context_scope` value is rejected at `TransportPolicy` construction, before any call is possible.

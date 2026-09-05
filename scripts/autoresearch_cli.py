@@ -470,12 +470,25 @@ class Controller:
                 "causal comparison; a native-Project-scoped transport is a separate, "
                 "not-yet-implemented L2 transfer contract and must never be used for this comparison.",
             }
-        if str(batch_config.get("memory_personalization_isolation_status") or "") != "verified_disabled":
+        # Owner ruling, 2026-09-05 (hard block, not a value check): this
+        # codebase has NO implemented machine-verification mechanism for
+        # memory/personalization isolation -- none is invented here either.
+        # A self-declared 'verified_disabled' string is not evidence, so a
+        # causal L1 run (any real, non-test-double transport -- fake_browser
+        # is fixed and cannot be mistaken for one) is hard-blocked
+        # UNCONDITIONALLY on this precondition, regardless of what
+        # batch_config declares, until a real verifier exists as separate,
+        # not-yet-started work. This deliberately does NOT gate the
+        # deterministic four-control calibration harness (FakeBrowserTransport,
+        # capture_method == 'test_double'): that harness makes zero external
+        # calls and has no isolation concern to verify in the first place.
+        if self.transport.capture_method != "test_double":
             return {
                 "status": "blocked",
-                "reason": "memory_personalization_isolation_status must be 'verified_disabled'; "
-                "account-level memory/personalization/custom-instruction influence on the Subject "
-                "transport must be proven excluded before a causal L1 comparison can run.",
+                "reason": "memory_personalization_isolation_status has no machine-verifiable evidence "
+                "mechanism implemented in this codebase; causal L1 is hard-blocked on this "
+                f"precondition regardless of the declared value ({batch_config.get('memory_personalization_isolation_status')!r}) "
+                "until a real verifier exists (owner ruling 2026-09-05) -- self-declaration is not evidence.",
             }
 
         manifest = av.load_manifest()

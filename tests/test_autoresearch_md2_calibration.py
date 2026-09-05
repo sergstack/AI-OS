@@ -251,19 +251,46 @@ def test_native_project_subject_context_scope_blocked_zero_calls(tmp_path):
     assert "record" not in result
 
 
-def test_unverified_memory_isolation_blocked_zero_calls(tmp_path):
+def test_memory_isolation_hard_blocks_real_transport_regardless_of_declared_value(tmp_path):
+    """Owner ruling, 2026-09-05: no machine-verifiable evidence mechanism
+    exists for memory/personalization isolation, so causal L1 (any run on a
+    real, non-test-double transport) is hard-blocked UNCONDITIONALLY on
+    this precondition -- even when the batch declares the 'correct' value.
+    Self-declaration is not evidence. Uses the real PlaywrightMcpBrowserTransport
+    class with mcp_call=None to prove the block fires before any live call
+    could even be attempted (no network/browser call happens in this test;
+    the class's own _require_mcp guard is never reached)."""
     patch, h = _tiebreak_patch()
     spec = _spec(patch, h, cases=[_case("isolation-case")], experiment_id="CAL-ISOLATION")
-    ctrl = _controller({})
+    real_shaped_transport = cli.lba.PlaywrightMcpBrowserTransport(mcp_call=None)
+    ctrl = cli.Controller(transport=real_shaped_transport, judge_model=_make_ground_truth_judge({}))
+    result = ctrl.run_experiment(
+        spec=spec,
+        batch_config=_batch_config(memory_personalization_isolation_status="verified_disabled"),
+        budget=_authorized_budget(),
+        evidence_dir=tmp_path,
+    )
+    assert result["status"] == "blocked"
+    assert "memory_personalization_isolation" in result["reason"]
+    assert "no machine-verifiable evidence mechanism" in result["reason"]
+    assert "record" not in result
+
+
+def test_fake_transport_calibration_is_not_swept_up_by_the_isolation_block(tmp_path):
+    """The deterministic four-control calibration harness (FakeBrowserTransport)
+    makes zero external calls and has no isolation concern to verify --
+    confirms it is deliberately exempt from the hard block above, not
+    accidentally exempt."""
+    patch, h = _tiebreak_patch()
+    spec = _spec(patch, h, cases=[_case("fake-transport-case")], experiment_id="CAL-FAKE-TRANSPORT")
+    ctrl = _controller({"fake-transport-case": ("pass", "pass")})
     result = ctrl.run_experiment(
         spec=spec,
         batch_config=_batch_config(memory_personalization_isolation_status="unverifiable"),
         budget=_authorized_budget(),
         evidence_dir=tmp_path,
     )
-    assert result["status"] == "blocked"
-    assert "memory_personalization_isolation_status" in result["reason"]
-    assert "record" not in result
+    assert result["status"] == "completed"
 
 
 def test_mutation_not_rendered_in_payload_discarded_zero_calls(tmp_path, monkeypatch):
