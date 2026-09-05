@@ -41,6 +41,17 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 ## Evidence Pointers
 
+- `docs/evidence/ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md` —
+  `[Analytics]` P0 adversarial audit follow-up (PR #440). Finding A (§5
+  missing consequence for unexplained population/denominator) has a bounded
+  fix implemented in open PR #443 (one rule line + one sentence, no
+  registry change) — not merged, not synced to the live Project, canonical
+  closure pending owner review. 2 of 5 audited
+  scenarios (denominator drift; population/ЦФО restructuring) run live
+  against the real `[Analytics]` Project: both `GATE: revise`, false CFO
+  headline rejected in both, matching the paper-trace prediction — no
+  contradiction, no new finding. See `CURRENT_STATUS.md` — "`[Analytics]`
+  P0 adversarial audit — live validation".
 - `docs/evidence/AUTORESEARCH_V02_PARENT_FINAL_QA_2026-09-04.md` (+ `AUTORESEARCH_V02_PHASE0_LIVE_2026-09-04.md`, `AUTORESEARCH_V02_LIVE_BROWSER_SMOKE_2026-09-04.md`, `AUTORESEARCH_V02_LIVE_JUDGE_CALIBRATION_2026-09-04.md`, `AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`, `AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`, and the `autoresearch_v02_*_records_2026-09-04.json` files) — AutoResearch v0.2 live behavioral autotuning loop (parent #409, closed `completed` 2026-09-04). Children #410–#417 merged (PRs #420–#428): live browser transport, live blind A/B Judge, failure intake + bounded Researcher, one documented CLI. Phase 0 (#417) executed live: 13 real `gpt-5-6-thinking` calls, $0 / plan-included, `measurement_verdict: pass`, `failure_discovery_result: no_failure_found`. Phase 1 autotuning pilot (#418) is `blocked` and was not run (no reproducible baseline failure; manufacturing one is forbidden). Parent gate `pass` — harness built and calibrated against real model output, nothing to promote (mirrors v0.1 #398). No candidate generated/applied; no active Project Instructions/routing/`main` change. Harness kept available; re-engage only on a genuine field-observed failure. See `CURRENT_STATUS.md` — "AutoResearch v0.2 — live behavioral autotuning loop".
 - `docs/evidence/PROJECT_WIDE_REVISION_REVIEW_2026-09-03.md` — 7-project revision review dispatched via 7 parallel bounded `Plan` subagents (one per `PROJECT_CAPABILITIES.yaml` capability). 40 findings (12 high / 11 medium / 17 low); no schema or business-logic issue; dominant pattern is stale status/evidence files vs. actual current Knowledge content. Review-and-plan record only — does not itself apply any fix.
 - `docs/evidence/SMOKE_QA_RESULTS.md` — `[AI OS]` smoke QA evidence from 2026-07-06.

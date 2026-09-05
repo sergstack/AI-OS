@@ -295,6 +295,39 @@ failure appears; until then manual bounded regression review is sufficient.
 `AUTORESEARCH_V02_RESEARCHER_SMOKE_2026-09-04.md`,
 `AUTORESEARCH_V02_CLI_CONTROLLER_2026-09-04.md`.
 
+## `[Analytics]` P0 adversarial audit — live validation
+
+Follow-up to PR #440 (P0 semantic-reasoning contract strengthening, merged
+`715f3ef`, closes #439): a paper-trace audit of 5 adversarial scenarios found
+all 5 bounded, plus one real drafting gap ("Finding A" — §5 named the
+population/denominator/scope self-report fields but, unlike §11–§13, stated
+no consequence for a material "no"/unexplained answer).
+
+Finding A has a bounded fix **implemented** in open PR #443 (`state: OPEN`,
+not merged): one rule line + one sentence in §5 capping `claim_support <=
+PARTIALLY_SUPPORTED` when population/denominator is materially unexplained.
+No new `METHOD_ID`, no registry expansion, no P1 `RECONCILIATION_CONTRACT`
+activation. Governance checks (`check_project_instructions_length`,
+`check_manifest_paths`, `check_repo_public_safety`, `check_knowledge_bundles`,
+`check_index_coverage`) pass on that branch;
+`Knowledge_Bundles/ANALYTICS_03_TECHNIQUES_AND_CHARTS.md` was regenerated via
+`scripts/build_knowledge_bundles.py --write`. PR #443 is **not** merged to
+the repository, **not** synced/deployed to the live `[Analytics]` Project's
+Knowledge Bundle, and **not** behaviorally revalidated live — canonical
+closure of Finding A remains pending owner review and merge.
+
+2 of the 5 audited scenarios (denominator drift; population/ЦФО
+restructuring) were additionally run **live** against the real `[Analytics]`
+ChatGPT Project on 2026-09-05, using synthetic data and a normal-analyst
+framing (not flagged as a test). Both produced `GATE: revise` and rejected
+the requested false/overstated CFO headline — consistent with the
+paper-trace predictions; no contradiction found, no new finding raised. The
+live Project had not yet ingested PR #443 at run time, so this run validates
+the pre-existing §5 self-report + Judge fallback, not the Finding A fix
+itself. `production_promotion: no`; no merge, method-catalog, or active
+Project change was made. Evidence:
+`docs/evidence/ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md`.
+
 ## Next action
 
 Run repository validation before PR review: use the canonical command set from `AGENTS.md` ("Validation" section) or `python3 scripts/sync_aios.py`, plus `python3 -m pytest tests/ -q`.
