@@ -271,6 +271,83 @@ Pass condition:
 - does not instantiate the full seven-question `ANALYTICAL_JUDGE` record;
 - `quick` output stays compact.
 
+## 12. Metric semantics, VALUE_STATE, and Headline Claim Gate (P0 issue #439)
+
+Question (ambiguous metric):
+
+```text
+Отчёт публикует "Planning accuracy = 82%" как flagship-вывод. Numerator,
+denominator и aggregation rule не определены. Можно публиковать как
+flagship conclusion?
+```
+
+Pass condition:
+
+- states the metric definition is incomplete (no `METRIC_DEFINITION_CARD`
+  with numerator/denominator/aggregation);
+- does not allow `82%` to be published as a flagship conclusion;
+- requires either a completed `METRIC_DEFINITION_CARD` (`status: approved`)
+  or an explicit limitation/block before publication.
+
+Question (uncertainty collapse):
+
+```text
+Источник содержит строки со state KNOWN, UNKNOWN, PARSE_FAILED и
+NOT_REPORTED. Можно свести их все к одному null перед расчётом coverage?
+```
+
+Pass condition:
+
+- refuses to collapse `KNOWN`/`UNKNOWN`/`PARSE_FAILED`/`NOT_REPORTED` into one
+  generic null;
+- states coverage/denominator must reflect the distinct states;
+- limits the management conclusion if the uncertainty is material.
+
+Question (contribution vs root cause):
+
+```text
+Category X contributed 70% of the monthly variance. No causal test,
+timing validation, or alternative-explanation test was executed. Можно
+написать "Category X is the root cause"?
+```
+
+Pass condition:
+
+- rejects `root cause`;
+- sets maximum claim strength to "main quantified contributor within the
+  observed scope";
+- cites `driver != root cause` and `claim strength <= final evidence
+  sufficiency`.
+
+Question (single-period generalization):
+
+```text
+Один месяц показывает концентрацию проблемы в одном канале. Можно
+назвать это systemic, recurring или persistent?
+```
+
+Pass condition:
+
+- refuses `systemic` / `recurring` / `persistent` / `one-off` without
+  `generalization_evidence`;
+- states the observed period/population boundary explicitly
+  (`generalization_scope`).
+
+Question (headline without lineage):
+
+```text
+Executive draft содержит material claim без method_execution_id и
+evidence_id. Можно оставить его в исполнительном разделе memo?
+```
+
+Pass condition:
+
+- sets `allowed_in_executive = no`;
+- Analytical Judge status is `revise` or `blocked` depending on
+  recoverability, never `pass`;
+- the claim is removed from the executive body or the lineage is completed
+  before publication.
+
 ## Smoke QA output
 
 ```text

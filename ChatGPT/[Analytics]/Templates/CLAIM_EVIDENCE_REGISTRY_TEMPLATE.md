@@ -27,3 +27,35 @@
 - `confidence` (`high / medium / low`), `claim_support` (`SUPPORTED / PARTIALLY_SUPPORTED / HYPOTHESIS / UNSUPPORTED`), and `causal_status` (`not_applicable / association_only / explanation_supported / causal_evidence`) are independent.
 - Claim strength must not exceed final evidence sufficiency. Driver evidence alone does not establish root cause.
 - `generalization_scope` states the observed and claimed period/population boundary. `generalization_evidence` is required before one-period evidence is generalized as systemic, non-systemic, structural, persistent, recurring, isolated, or one-off.
+
+## Mandatory Headline Claim Gate
+
+For `analytical_depth = material / decision_critical`, every headline claim
+requires a registry row with complete lineage: headline claim -> claim
+registry row -> `method_execution_id` -> `method_status = executed` (aligned
+with `ANALYTICAL_REASONING_STANDARD.md` `METHOD_PLAN.execution_status`) ->
+source mart/table/slice -> metric/period/grain/filter/baseline ->
+`evidence_id` -> `claim_support` -> `causal_status` -> `confidence` ->
+`generalization_scope` -> `qa_status`.
+
+```text
+lineage missing -> allowed_in_executive = no
+```
+
+Do not promote a claim beyond its evidence:
+
+- `observation -> cause` requires causal evidence, not association alone.
+- `contribution -> root cause` requires causal/alternative-explanation
+  evidence; a quantified contribution alone supports at most "main quantified
+  contributor within observed scope".
+- `association -> causation` requires `causal_status = causal_evidence`.
+- `single-period -> systemic / recurring / persistent` requires
+  `generalization_evidence`.
+
+`method_status = blocked / planned / not_needed` can never support a claim
+(`blocked != executed`). Narrative claim strength (memo/executive wording)
+must not exceed `FINAL_EVIDENCE_SUFFICIENCY.maximum_claim_strength`. This
+gate is the claim-level (Gate 2) checkpoint; it does not replace Gate 1
+(data/calculation correctness) or Gate 3 (narrative wording), and it is read,
+not reimplemented, by the Analytical Judge (`ANALYTICAL_REASONING_STANDARD.md`
+§8) and the memo/narrative QA (`MEMO_PIPELINE.md`, `MEMO_RUBRIC.md`).

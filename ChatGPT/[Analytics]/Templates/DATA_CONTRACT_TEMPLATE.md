@@ -17,12 +17,13 @@ Column types:
 Allowed values:
 Date logic:
 Currency / units:
-Null policy:
+Null policy (use canonical VALUE_STATE: KNOWN/UNKNOWN/NOT_REPORTED/NOT_APPLICABLE/PARSE_FAILED/MISSING_SOURCE/UNMATCHED/BLOCKED):
 Duplicate policy:
 Freshness rule:
 Mapping rules:
 Join rules:
 Metric rules:
+Metric definition cards (material/flagship/ratio-like metrics): see Templates/METRIC_DEFINITION_CARD_TEMPLATE.md
 Classification rules:
 Validation checks:
 Known limitations:

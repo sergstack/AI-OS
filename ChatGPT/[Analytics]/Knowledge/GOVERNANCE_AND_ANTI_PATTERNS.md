@@ -13,6 +13,10 @@
 - Claim strength cannot exceed final evidence sufficiency.
 - Every material / decision-critical analytical conclusion passes an explicit post-findings Analytical Judge gate (`ANALYTICAL_REASONING_STANDARD.md` §8) before narrative packaging; the gate orchestrates existing controls and adds no second QA framework.
 - `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md` remains canonical execution governance; `ANALYTICS_EXTENSION.md` supplies domain-specific constraints without creating a second execution framework.
+- A formula alone is not a sufficient metric definition; material/flagship/ratio-like metrics require an approved `METRIC_DEFINITION_CARD` (`ANALYTICAL_REASONING_STANDARD.md` §11).
+- Canonical `VALUE_STATE` distinctions (`DATA_CONTRACTS.md`) are not collapsed into a generic null where doing so could change denominator, population, reconciliation, classification coverage, metric result, claim strength, or management conclusion (§12).
+- Every headline claim for `analytical_depth = material / decision_critical` has complete Claim/Evidence Registry lineage; missing lineage sets `allowed_in_executive = no` (§13).
+- `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, and `GATE 3 (narrative)` remain distinct: `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE` (§14).
 
 ## Evidence labels
 
@@ -41,7 +45,9 @@ Do not publish final management conclusion when:
 - risk without basis;
 - action without owner/due date;
 - no main mart for a mart-based conclusion;
-- the Analytical Judge gate returns `blocked`.
+- the Analytical Judge gate returns `blocked`;
+- a material/flagship/ratio-like metric has no approved `METRIC_DEFINITION_CARD`;
+- a headline claim lacks complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
 
 ## Anti-patterns
 
@@ -95,6 +101,10 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Analytical Judge treated as an autonomous retry loop | Allow only `Judge finding → one bounded correction or deterministic rerun → Judge re-check`; no silent self-retry, no unrestricted iteration; AES limits and the `[Codex]` one-fix limit are unchanged. |
 | Analytical Judge used as a second QA framework or a new taxonomy | The gate only orchestrates `PRELIMINARY_EVIDENCE_CHECK`, explanation challenge, `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY`, Analysis QA, and variance diagnostic QA; it defines no new field. |
 | `blocked` method converted into evidence at the Judge step | Enforce `blocked != executed`; a `blocked` prerequisite forces Judge `blocked`, not a weaker `pass`. |
+| Formula treated as a sufficient metric definition (ambiguous ratio/rate published as flagship) | Require `METRIC_DEFINITION_CARD` with numerator/denominator/aggregation/population before a material conclusion; block or limit if unresolved. |
+| Materially different missing/uncertainty states collapsed into one null | Preserve `VALUE_STATE` (`UNKNOWN`/`NOT_REPORTED`/`PARSE_FAILED`/`MISSING_SOURCE`/`UNMATCHED`/`BLOCKED`); reflect coverage/denominator impact before claiming `SUPPORTED`. |
+| Headline claim published without method/evidence lineage | Require complete Claim/Evidence Registry lineage; set `allowed_in_executive = no` and route to Analytical Judge `revise`/`blocked` when missing. |
+| Data/calculation correctness treated as license for a stronger claim or narrative | Keep `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, `GATE 3 (narrative)` distinct; `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`. |
 
 ## Metric / artifact explosion
 

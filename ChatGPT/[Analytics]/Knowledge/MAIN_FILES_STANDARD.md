@@ -63,7 +63,10 @@ stage_main_full
 - mapped IDs;
 - currency / unit;
 - technical lineage fields;
-- row status for technical issues.
+- row status for technical issues, using the canonical `VALUE_STATE`
+  vocabulary (`DATA_CONTRACTS.md`: `KNOWN` / `UNKNOWN` / `NOT_REPORTED` /
+  `NOT_APPLICABLE` / `PARSE_FAILED` / `MISSING_SOURCE` / `UNMATCHED` /
+  `BLOCKED`) instead of a generic null whenever the distinction is material.
 
 ### Does not contain
 
@@ -110,7 +113,11 @@ Purpose: full analysis-ready table for Sergey, Finance Team, deep conclusions an
 Contains:
 
 - all metrics required for analysis;
-- all metric formulas documented;
+- all metric formulas documented, with a `METRIC_DEFINITION_CARD` for
+  material/flagship/ratio-like metrics (`DATA_CONTRACTS.md`);
+- `VALUE_STATE` preserved in coverage/denominator fields whenever collapsing
+  it could change denominator, population, reconciliation, classification
+  coverage, metric result, claim strength, or management conclusion;
 - all business dimensions;
 - grain and keys;
 - classification flags;
@@ -218,6 +225,8 @@ mart_slice_<purpose>__<domain>__<period>__v<version>
 - [ ] `mart_main_full` exists or is explicitly designed.
 - [ ] `mart_main_tz` or `mart_main_compact` exists or is explicitly designed.
 - [ ] Mart metrics and formulas documented.
+- [ ] Material/flagship/ratio-like metrics have a `METRIC_DEFINITION_CARD`.
+- [ ] `VALUE_STATE` is not collapsed into a generic null where material.
 - [ ] Slices are derived from `mart_main_full`.
 - [ ] Charts and memo reference mart/slice source.
 - [ ] QA totals available.

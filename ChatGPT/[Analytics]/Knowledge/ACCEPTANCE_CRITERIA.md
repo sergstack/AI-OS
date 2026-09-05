@@ -24,6 +24,17 @@ A result is accepted when:
     `FINAL_EVIDENCE_SUFFICIENCY`; `driver != root cause` and
     `correlation != causation` hold. Routine / no-trigger cases satisfy this
     through the compact QA note without a full Judge record.
+13. Material/flagship/ratio-like metrics have an approved
+    `METRIC_DEFINITION_CARD` (`ANALYTICAL_REASONING_STANDARD.md` §11); an
+    unresolved material metric definition blocks a strong management
+    conclusion.
+14. `VALUE_STATE` distinctions are not collapsed into a generic null where
+    material (§12); a claim built on materially uncertain coverage is at
+    most `PARTIALLY_SUPPORTED`.
+15. For `analytical_depth = material / decision_critical`, every headline
+    claim has complete Claim/Evidence Registry lineage (§13); missing
+    lineage sets `allowed_in_executive = no` and the claim does not appear
+    in the executive layer.
 
 ## Main file acceptance
 
@@ -41,6 +52,9 @@ accepted: yes/no
 qa_status: pass/fail/blocked
 quantitative_sanity_gate_status: pass/revise/blocked/not_applicable
 analytical_judge_status: pass/revise/blocked/not_applicable
+metric_definition_status: approved/provisional/blocked/not_applicable
+value_state_coverage_status: pass/revise/blocked/not_applicable
+headline_claim_gate_status: pass/blocked/not_applicable
 confidence: high/medium/low
 residual_risks:
 known_limitations:
@@ -116,6 +130,10 @@ Use `blocked` when:
 - the Analytical Judge gate returns `blocked` (required prerequisite,
   reconciliation, grain, validation path, or discriminating evidence
   unavailable).
+- a material/flagship/ratio-like metric has no approved
+  `METRIC_DEFINITION_CARD` and the conclusion depends on it.
+- a headline claim for `analytical_depth = material / decision_critical` has
+  no complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
 
 ## Not production-ready rule
 

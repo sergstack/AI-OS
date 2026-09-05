@@ -62,6 +62,7 @@
 - `Templates/CODEX_HANDOFF_TEMPLATE.md`
 - `Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`
 - `Templates/EVIDENCE_CARD_TEMPLATE.md`
+- `Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`
 
 ## Included Codex task files
 

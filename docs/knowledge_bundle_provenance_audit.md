@@ -185,8 +185,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_PROJECT_FILES_INDEX.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_WORKFLOW.md`, `ChatGPT/[Analytics]/Knowledge/IN_PROJECT_ANALYSIS_MODE.md`, `ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md`
-- Source bytes: 27770
-- Bundle bytes: 28826
+- Source bytes: 28622
+- Bundle bytes: 29678
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -199,8 +199,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/DATA_CONTRACTS.md`, `ChatGPT/[Analytics]/Knowledge/MARTS_DESIGN.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_02_DATA_CONTRACTS_AND_MARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 5556
-- Bundle bytes: 6473
+- Source bytes: 8794
+- Bundle bytes: 9701
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -213,8 +213,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`, `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 73824
-- Bundle bytes: 74827
+- Source bytes: 79449
+- Bundle bytes: 80430
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -227,8 +227,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/MEMO_PIPELINE.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`, `ChatGPT/[Analytics]/Knowledge/WORD_REPORT_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/TEXT_QA_AND_STYLE.md`, `ChatGPT/[Analytics]/Knowledge/MEMO_RUBRIC.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_04_MEMO_AND_TEXT_STANDARDS_BUNDLE_SEMANTICS.md`
-- Source bytes: 14580
-- Bundle bytes: 15837
+- Source bytes: 15704
+- Bundle bytes: 16960
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -241,8 +241,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md`, `ChatGPT/[Analytics]/Knowledge/ACCEPTANCE_CRITERIA.md`, `ChatGPT/[Analytics]/Knowledge/ROUTING_AND_HANDOFF.md`, `ChatGPT/[Analytics]/Knowledge/AI_OS_REFERENCE.md`, `ChatGPT/[Analytics]/Knowledge/GOVERNANCE_AND_ANTI_PATTERNS.md`, `ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 45150
-- Bundle bytes: 46536
+- Source bytes: 52111
+- Bundle bytes: 53476
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -254,9 +254,9 @@ Blocking record count: **0**
 ## `ChatGPT/[Analytics]/Knowledge_Bundles/ANALYTICS_06_TEMPLATES.md`
 
 - Project: [Analytics]
-- Source paths: `ChatGPT/[Analytics]/Templates/ANALYSIS_RESPONSE_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MART_SPEC_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MEMO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/VARIANCE_ANALYSIS_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AUDIT_ANOMALY_IO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/FINANCE_MEMO_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_CONTEXT_PACK.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_RISK_LIBRARY.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_EXCEPTION_REGISTER_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_AUDIT_FINDING_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
-- Source bytes: 35048
-- Bundle bytes: 37530
+- Source paths: `ChatGPT/[Analytics]/Templates/ANALYSIS_RESPONSE_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/DATA_CONTRACT_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MART_SPEC_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/MEMO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/ANALYTICS_CONTEXT_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/VARIANCE_ANALYSIS_PACK_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AUDIT_ANOMALY_IO_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/FINANCE_MEMO_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_CONTEXT_PACK.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_RISK_LIBRARY.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_EXCEPTION_REGISTER_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_AUDIT_FINDING_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md`, `ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`, `ChatGPT/[Analytics]/Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
+- Source bytes: 41182
+- Bundle bytes: 43790
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

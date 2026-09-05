@@ -352,7 +352,8 @@
         "ChatGPT/[Analytics]/Templates/AP_P2P_AUDIT_FINDING_TEMPLATE.md",
         "ChatGPT/[Analytics]/Templates/AP_P2P_QA_CHECKLIST.md",
         "ChatGPT/[Analytics]/Templates/CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md",
-        "ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md"
+        "ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md",
+        "ChatGPT/[Analytics]/Templates/METRIC_DEFINITION_CARD_TEMPLATE.md"
       ],
       "contract": {
         "title": "[Analytics] — Templates",

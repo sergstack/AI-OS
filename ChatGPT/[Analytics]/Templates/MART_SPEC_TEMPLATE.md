@@ -17,11 +17,13 @@ source stage files:
 source stage main file:
 metrics:
 formulas:
+metric_definition_cards (material/flagship/ratio-like): see Templates/METRIC_DEFINITION_CARD_TEMPLATE.md
 dimensions:
 classifiers:
 filters:
 QA totals:
 evidence fields:
+value_state_preserved: yes/no (VALUE_STATE not collapsed to generic null where material)
 limitations:
 
 ## Required main mart files

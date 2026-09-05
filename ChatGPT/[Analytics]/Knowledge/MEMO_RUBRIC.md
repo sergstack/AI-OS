@@ -14,6 +14,8 @@ Define what a good analytical memo means for `[Analytics]`.
 | Performance dimensions | Materially different dimensions remain distinct | Unsupported overall good/bad assessment |
 | Effect type | Business effect and data/control artefact are separated where relevant | Data exception presented as economic effect without evidence |
 | Evidence | Key conclusions trace to mart/evidence | Unsupported claims |
+| Claim gate | Headline claim has complete Claim/Evidence Registry lineage (`allowed_in_executive = yes`) | Headline claim published with `allowed_in_executive = no` or no `method_execution_id`/`evidence_id` |
+| Metric semantics | Flagship/ratio-like metric has an approved `METRIC_DEFINITION_CARD` | Ambiguous formula (e.g. undefined numerator/denominator) presented as a flagship result |
 | Numbers | Key figures have metric, period, grain, source | Numbers without source |
 | Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
 | Risk | Risk has `risk_basis` | Risk without basis |
@@ -32,6 +34,7 @@ A memo is strong when:
 - numbers are in tables and prose;
 - material conclusions are ranked by an explicit business criterion;
 - confirmed causes and hypotheses are separated;
+- no headline claim appears without complete Claim/Evidence Registry lineage;
 - limitations are visible before appendix;
 - management implication does not exceed verified evidence;
 - executive synthesis is materially shorter than the evidence layer;
