@@ -9,6 +9,19 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md`](ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md)
+  records live-Project validation of 2 of the 5 scenarios from the PR #440
+  P0 adversarial paper-trace audit (denominator drift; population/ЦФО
+  restructuring), run against the real `[Analytics]` ChatGPT Project on
+  2026-09-05. Both live cases produced `GATE: revise` and rejected the
+  requested false/overstated CFO headline, matching the paper-trace
+  predictions — no contradiction found, no new finding raised. Also records
+  PR [#443](https://github.com/sergstack/AI-OS/pull/443) (Finding A: one
+  §5 rule + one sentence capping `claim_support <= PARTIALLY_SUPPORTED`
+  when population/denominator is materially unexplained; no new
+  `METHOD_ID`, no registry change) — not yet merged/ingested by the live
+  Project at the time these two scenarios ran, so this record does not
+  itself validate #443.
 - [`AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md`](AUTORESEARCH_V02_LIVE_LOOP_WIRING_2026-09-04.md)
   records Issue #433 (follow-up to #416): the transport-binding seam that lets
   the committed harness run a bounded live `manual_candidate_evaluation`.
