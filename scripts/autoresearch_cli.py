@@ -454,6 +454,29 @@ class Controller:
                 "reason": f"run_count must equal adc.MIN_MATCHED_RERUNS ({adc.MIN_MATCHED_RERUNS}) in this "
                 f"minimal-for-C1 scope; got {spec.run_count}",
             }
+        # Controlled-L1 context-boundary guards ([LLM]->[Codex] handoff, 2026-09-05):
+        # a causal repo_replay comparison requires the Subject to run in a
+        # neutral, non-Project-scoped transport (native Project instructions
+        # are an uncontrolled concurrent treatment competing with the
+        # candidate) and requires account-level memory/personalization/
+        # custom-instruction influence to be proven excluded. Both fail
+        # closed -- 'unproven' is never treated as 'excluded'. Native-Project
+        # execution is reserved for a separate, not-yet-implemented,
+        # owner-gated L2 transfer contract; no code path here ever runs one.
+        if str(batch_config.get("subject_context_scope") or "") != "non_project_controlled":
+            return {
+                "status": "blocked",
+                "reason": "subject_context_scope must be 'non_project_controlled' for a repo_replay "
+                "causal comparison; a native-Project-scoped transport is a separate, "
+                "not-yet-implemented L2 transfer contract and must never be used for this comparison.",
+            }
+        if str(batch_config.get("memory_personalization_isolation_status") or "") != "verified_disabled":
+            return {
+                "status": "blocked",
+                "reason": "memory_personalization_isolation_status must be 'verified_disabled'; "
+                "account-level memory/personalization/custom-instruction influence on the Subject "
+                "transport must be proven excluded before a causal L1 comparison can run.",
+            }
 
         manifest = av.load_manifest()
         shared_budget = budget.as_shared_state()
@@ -513,6 +536,19 @@ class Controller:
                                    baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
                                    evaluator_config=evaluator_config,
                                    reason=f"context drift outside the declared mutation: {equiv}",
+                                   evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
+        # Mutation-visibility gate ([LLM]->[Codex] handoff, 2026-09-05): a
+        # patch existing in Git is not itself experimental treatment -- the
+        # declared mutation must actually be rendered into the Subject's
+        # final payload (via mutable_surface_excerpt), or the comparison
+        # never actually tested what it claims to. Zero Judge/Subject calls
+        # happen past this point when the gate fires.
+        excerpt_info = equiv.get("mutable_surface_excerpt") or {}
+        if not excerpt_info.get("present") or not excerpt_info.get("excerpt_differs"):
+            return _finalize_pilot(evidence, raw_decision="discard", spec=spec, batch_config=batch_config,
+                                   baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
+                                   evaluator_config=evaluator_config,
+                                   reason=f"declared mutation is not visible in the rendered subject payload: {excerpt_info}",
                                    evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
         evidence["baseline_context_hash"] = baseline_ctx["context_hash"]
         evidence["candidate_context_hash"] = candidate_ctx["context_hash"]

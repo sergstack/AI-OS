@@ -101,8 +101,62 @@ Mirrors v0.1's own successful pattern (#396 → #397) rather than inventing a ne
 | `scripts/autoresearch_validator.py`, `autoresearch_shadow_runner.py`, `autoresearch_decision_comparator.py` | Unchanged; all three are provenance-agnostic per #410's audit and require no v0.2-specific edit |
 | AES `authority_status`/`execution_state`/etc. | Unchanged; this contract's own `authority_status` enum (`owner_review_pending \| authorized \| rejected`) is a narrower, batch-scoped value that maps onto AES's broader vocabulary without redefining it |
 
+## 17. Controlled-L1 subject-context boundary and native-Project transfer (L2)
+
+Additive tightening ([LLM]→[Codex] handoff, 2026-09-05), triggered by a real
+session finding: a `repo_replay` batch that pastes its rendered context into
+a chat opened *inside* a named, live ChatGPT Project (e.g. `[AI OS]`) is not
+a clean baseline/candidate comparison. The Project's own real, already-live
+instructions and knowledge apply **on top of** the pasted text for both
+arms, so the comparison actually measured `[Project] + pasted-baseline` vs.
+`[Project] + pasted-candidate` — a real observation, but not evidence about
+the effect of replacing the Project's own instructions, and not something
+this contract's §12 fidelity-limitation language alone made clear enough to
+prevent.
+
+**Two new required batch-config fields** (`schemas/autoresearch_v02_live_batch_config.schema.json`),
+both enforced fail-closed by `Controller.run_experiment` itself (not
+expressible in JSON Schema conditionals alone, same pattern as §6's cost
+rule):
+
+- `subject_context_scope`: `non_project_controlled | native_project`. A
+  `repo_replay` causal comparison MUST declare `non_project_controlled` — a
+  neutral transport with no named-Project instructions/knowledge active.
+  `native_project` is declared but not runnable by any code path this
+  contract version implements; it exists only to name the field's opposite
+  value honestly, reserved for a future, separately-authorized L2 contract
+  (below). `run_experiment` blocks with zero calls if this is anything but
+  `non_project_controlled`.
+- `memory_personalization_isolation_status`: `verified_disabled | unverifiable | not_applicable`.
+  Account-level ChatGPT memory/personalization/custom-instruction influence
+  on the Subject transport must be proven excluded, not merely assumed
+  absent because the chat isn't inside a named Project folder. Only
+  `verified_disabled` satisfies the precondition; `unverifiable` fails
+  closed exactly like an unset budget field does in §6 — it is never
+  silently treated as `verified_disabled`.
+
+**Mutation-visibility gate**: a patch existing in Git is not itself
+experimental treatment. `Controller.run_experiment` now requires
+`equivalence_report(...)`'s `mutable_surface_excerpt.excerpt_differs` to be
+`true` (and the excerpt `present`) before any Subject/Judge call — if the
+declared mutation is absent from the rendered Subject payload, the batch is
+discarded, not silently trusted. Zero calls occur past either new gate or
+this one.
+
+**L2 — native `[AI OS]` transfer validation — is named here as a future
+contract shape only.** It re-tests whether an L1-qualified candidate's
+behavior survives inside the real, native Project once actually applied to
+the intended Project Instruction/routing surface, under separate owner
+authorization for the temporary mutation, with exact settings read-back and
+mandatory rollback. **No code path in this repository implements L2.** It
+does not re-estimate causal effect, does not re-open a passed L1 result, and
+a transfer failure vetoes promotion even when L1 passed; a transfer
+`inconclusive` leaves L1's own evidence intact but blocks any native-adoption
+claim. Defining and authorizing L2 is separate, later work.
+
 ## Checks
 
 - `python3 -m json.tool schemas/autoresearch_v02_live_batch_config.schema.json` and the authority matrix — both parse.
 - `jsonschema.Draft7Validator.check_schema(...)` — schema is a valid draft-07 document.
 - `tests/test_autoresearch_v02_live_contract.py` proves, with fixtures, every one of this issue's own "Checks" bullets: a `synthetic`-only batch cannot validate as satisfying `live_evidence_required: true`; an `authorized` batch without a positive `max_cost_amount` fails; a Judge finding (`schemas/autoresearch_semantic_finding.schema.json`, reused unchanged) still structurally cannot carry an authority/merge/production field (re-confirms #394's existing guarantee under the new contract); `raw_restricted` + any `raw_payload_retention` other than `not_retained` fails the schema's own conditional; the authority matrix has exactly the 7 required authorities, each with exactly one of the 3 defined levels, and `merge_authority`/`production_authority`/`active_configuration_authority` are all `not_granted`.
+- `tests/test_autoresearch_md2_calibration.py` proves §17's three new gates through the real `Controller.run_experiment`, not by inspection alone: `subject_context_scope: native_project` blocks with zero calls; `memory_personalization_isolation_status` other than `verified_disabled` blocks with zero calls; a declared mutation whose `mutable_surface_excerpt.excerpt_differs` is `false` (patch in Git, absent from the rendered payload) is discarded with zero calls. The same file's existing four-control calibration (beneficial/harmful/no-op/mixed) still passes with the two new required fields present, unchanged in outcome.

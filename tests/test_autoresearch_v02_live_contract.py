@@ -64,6 +64,8 @@ def _base_batch_config(**overrides) -> dict:
         "synthetic_evidence_allowed_for": ["unit_test"],
         "abort_conditions": ["no_authorized_reproducible_live_transport"],
         "authority_status": "owner_review_pending",
+        "subject_context_scope": "non_project_controlled",
+        "memory_personalization_isolation_status": "verified_disabled",
     }
     doc.update(overrides)
     return doc
