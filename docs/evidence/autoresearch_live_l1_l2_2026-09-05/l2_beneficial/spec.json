@@ -1,0 +1,27 @@
+{
+  "experiment_id": "l2-beneficial-2026-09-05",
+  "candidate_id": "L2-BEN-1",
+  "baseline_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "project": "ai_os",
+  "research_surface": "MUT-ROUTING-TIEBREAK",
+  "target_file": "ROUTING_RULES.md",
+  "patch_file": "candidate.patch",
+  "candidate_patch_hash": "7941ec48800b5ebb751b491bd9154a344d1ba1e5b5e766ebdfa7bc4e024f0506",
+  "mutation_class": "semantic_change",
+  "run_count": 3,
+  "seed": 0,
+  "mode": "manual_candidate_evaluation",
+  "cases": [
+    {
+      "case_id": "l2-ben-1-rollout-tiebreak",
+      "case_family": "routing",
+      "target_family_flag": true,
+      "input": "A production workflow rollout needs both a completed [Codex] implementation update and a not-yet-finished [LLM] prompt/workflow design revision. Per the Tie-break rules, which capability does it route to first, and what exact rule text did you apply?"
+    }
+  ],
+  "control_type": "beneficial",
+  "expected_directional_outcome": "keep_candidate / candidate_for_owner_review (improvement)",
+  "forbidden_outcome": "discard / reject",
+  "rollback": "No active state is touched by preparing or freezing this control: the patch exists only as candidate.patch, applied only inside disposable shadow worktrees during gate checks (each removed immediately after, per autoresearch_shadow_runner.remove_shadow_worktree). If executed live and rejected/discarded, rollback is: discard the ephemeral shadow worktree (automatic) and do not act on the finding further -- main, the active ChatGPT Project configuration, and this repo's tracked files are never mutation targets.",
+  "evidence_path": "docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_beneficial/"
+}

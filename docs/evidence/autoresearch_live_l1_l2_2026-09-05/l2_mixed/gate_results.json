@@ -1,0 +1,44 @@
+{
+  "patch_built": {
+    "patch_hash": "c88596959994f4aeca3a079156080475c28d40ed10b6fc05bbf31a69d37d4976",
+    "bytes": 1488
+  },
+  "patch_fingerprint": {
+    "findings": [],
+    "pass": true
+  },
+  "patch_scope": {
+    "pass": true
+  },
+  "context_equivalence": {
+    "equivalent": true,
+    "differences": [
+      "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md"
+    ],
+    "mutable_surface_excerpt": {
+      "present": true,
+      "excerpt_differs": true,
+      "excerpt_is_within_declared_surface": true
+    },
+    "note": "differences[] lists every content-changed source path; a valid candidate context has exactly one entry here, matching the declared mutable surface's own file. mutable_surface_excerpt.excerpt_is_within_declared_surface being False while excerpt_differs is True would mean the excerpt changed without its containing file being flagged as changed -- a contradiction that should never occur and must be treated as a hard-gate failure, not silently accepted."
+  },
+  "subject_content_propagation": {
+    "pass": true,
+    "baseline_excerpt_hash": "3c0edd7526b9a0f27d080b1c700158115a3620aa070e9bd8ab5d161593ed5142",
+    "candidate_excerpt_hash": "1efa69b2288e1dd41884685ef70e4837322f9240b458d0ea474a56a8f1f21628",
+    "baseline_excerpt_text": "## 2. Индексы и источники\n\nЕсть два индекса:\n- `KB__00_INDEX.md` — индекс governed KB: знания, концепции, паттерны, workflows, evidence.\n- `AI_OS_PROJECT_FILES_INDEX.md` — индекс рабочих настроек: routing, usage rules, handoff, smoke QA.\n\nДля знаний и фактов сначала используй KB-файлы. Для поведения проекта и формата ответа используй рабочие файлы. Если конфликт: KB governance выше project settings.\n\nПриоритет проверки KB:\n1. `KB__08_USE_CASES_FOR_SERGEY.md`\n2. `KB__07_PATTERNS_AND_FAILURES.md`\n3. `KB__06_OPERATIONAL_FRAMEWORKS.md`\n4. `KB__05_CANONICAL_CONCEPTS.md`\n5. `KB__03_WORKFLOWS_TRACEABILITY.md`\n6. `KB__USE_CASE_ROUTING.md`\n7. `KB__CONFIDENCE_RULES.md`\n8. `KB__REVIEW_QUEUE.md`\n9. `KB__RELEASE_MANIFEST.md`\n10. `KB__00_INDEX.md`\n\nДля поведения проекта также проверяй:\n`PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`, `ANTI_PATTERNS.md`.\n\nЕсли вопрос касается текущего статуса настройки проекта, сначала проверь `CURRENT_STATUS.md` и `docs/evidence/SMOKE_QA_RESULTS.md`, если они доступны. Если их нет, прямо скажи, что текущий status setup не полностью записан.\n",
+    "candidate_excerpt_text": "## 2. Индексы и источники\n\nЕсть два индекса:\n- `KB__00_INDEX.md` — индекс governed KB: знания, концепции, паттерны, workflows, evidence.\n- `AI_OS_PROJECT_FILES_INDEX.md` — индекс рабочих настроек: routing, usage rules, handoff, smoke QA.\n\nДля знаний и фактов сначала используй KB-файлы. Для поведения проекта и формата ответа используй рабочие файлы. Если конфликт: KB governance выше project settings. При конфликте между `PROJECT_ROUTING.md` и `GOVERNANCE_RULES.md` приоритет у `GOVERNANCE_RULES.md`.\n\nПриоритет проверки KB:\n1. `KB__08_USE_CASES_FOR_SERGEY.md`\n2. `KB__07_PATTERNS_AND_FAILURES.md`\n3. `KB__06_OPERATIONAL_FRAMEWORKS.md`\n4. `KB__05_CANONICAL_CONCEPTS.md`\n5. `KB__03_WORKFLOWS_TRACEABILITY.md`\n6. `KB__USE_CASE_ROUTING.md`\n7. `KB__CONFIDENCE_RULES.md`\n8. `KB__REVIEW_QUEUE.md`\n9. `KB__RELEASE_MANIFEST.md`\n10. `KB__00_INDEX.md`\n\nДля поведения проекта также проверяй:\n`PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`.\n\nЕсли вопрос касается текущего статуса настройки проекта, сначала проверь `CURRENT_STATUS.md` и `docs/evidence/SMOKE_QA_RESULTS.md`, если они доступны. Если их нет, прямо скажи, что текущий status setup не полностью записан.\n"
+  },
+  "batch_config_schema": {
+    "pass": true,
+    "findings": []
+  },
+  "baseline_candidate_isolation": {
+    "pass": "precondition_only",
+    "note": "Case IDs are declared identical across baseline/candidate presentation; runtime_model_configuration equality (reject_config_mismatch) can only be checked once real captures exist -- not fabricated here."
+  },
+  "evaluator_hash": {
+    "pass": true,
+    "evaluator_version_hash": "960e1408c58e97d9fab1aa19c62147dbfa20de2839f90e86a7f0236ad8bdb853"
+  }
+}

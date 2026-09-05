@@ -1,0 +1,13 @@
+diff --git a/HANDOFF_STYLE_STANDARD.md b/HANDOFF_STYLE_STANDARD.md
+index dbc9766..145b6c5 100644
+--- a/HANDOFF_STYLE_STANDARD.md
++++ b/HANDOFF_STYLE_STANDARD.md
+@@ -55,7 +55,7 @@ not itself an authorization. This field complements, and never replaces,
+ - `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.
+ - `[Analytics]`: include question/scope, data status, grain/period/filters, method, QA, limitations, and decision or recommendation.
+ - `[LLM]`: include context boundaries, prompt or model-routing goal, judge/revise gate, and forbidden raw inputs.
+-- `[Codex]`: include branch expectation, allowed files/actions, checks, rollback, PR summary needs, and merge/gate status.
++- `[Codex]`: include branch expectation, allowed files/actions, checks, PR summary needs, rollback, and merge/gate status.
+ - `[Inbox Router]`: include classification, target project, urgency, confidence, and first safe action.
+ 
+ ## Merge And Acceptance

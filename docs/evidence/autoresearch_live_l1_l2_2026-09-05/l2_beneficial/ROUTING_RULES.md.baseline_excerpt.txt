@@ -1,0 +1,12 @@
+## Tie-break rules
+
+| Case | Rule |
+| --- | --- |
+| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |
+| Production readiness | `[Codex]` repository/release; `[LLM]` prompt/workflow; `[AI OS]` governance promotion; earliest unfinished stage wins |
+| Production workflow rollout | `[Codex]` implementation; `[LLM]` prior workflow design |
+| Thinker patterns in a decision | `[Thinking]` decision; `[Thinkers OS]` corpus/artifacts |
+| Numbers inside a strategy memo | `[Analytics]` calculation; `[Thinking]` decision |
+| AI governance question | `[AI OS]`, including reusable rule promotion candidates arriving from `[Thinking]` |
+| Still ambiguous | `blocked`; state candidates and missing deciding fact |
+

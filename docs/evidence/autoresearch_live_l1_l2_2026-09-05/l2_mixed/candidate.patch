@@ -1,0 +1,22 @@
+diff --git a/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md b/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
+index 01dc1ae..4a11bb0 100644
+--- a/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md	
++++ b/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md	
+@@ -31,7 +31,7 @@
+ - `KB__00_INDEX.md` — индекс governed KB: знания, концепции, паттерны, workflows, evidence.
+ - `AI_OS_PROJECT_FILES_INDEX.md` — индекс рабочих настроек: routing, usage rules, handoff, smoke QA.
+ 
+-Для знаний и фактов сначала используй KB-файлы. Для поведения проекта и формата ответа используй рабочие файлы. Если конфликт: KB governance выше project settings.
++Для знаний и фактов сначала используй KB-файлы. Для поведения проекта и формата ответа используй рабочие файлы. Если конфликт: KB governance выше project settings. При конфликте между `PROJECT_ROUTING.md` и `GOVERNANCE_RULES.md` приоритет у `GOVERNANCE_RULES.md`.
+ 
+ Приоритет проверки KB:
+ 1. `KB__08_USE_CASES_FOR_SERGEY.md`
+@@ -46,7 +46,7 @@
+ 10. `KB__00_INDEX.md`
+ 
+ Для поведения проекта также проверяй:
+-`PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`, `ANTI_PATTERNS.md`.
++`PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`.
+ 
+ Если вопрос касается текущего статуса настройки проекта, сначала проверь `CURRENT_STATUS.md` и `docs/evidence/SMOKE_QA_RESULTS.md`, если они доступны. Если их нет, прямо скажи, что текущий status setup не полностью записан.
+ 

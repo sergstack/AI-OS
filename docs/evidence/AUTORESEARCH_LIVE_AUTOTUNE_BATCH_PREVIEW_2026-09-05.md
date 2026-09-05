@@ -4,6 +4,17 @@ Status: **PREVIEW ONLY. This document is not a live-call authorization.**
 Numbers below must be explicitly reviewed and accepted, envelope by envelope,
 before any external call. Nothing in this document has been executed.
 
+**Superseded as the final owner gate by
+`AUTORESEARCH_LIVE_AUTHORIZATION_PACKET_2026-09-05.md`** (2026-09-05,
+same session): that document consolidates this preview's L1 shape, the
+four newly-frozen L2 controls (`AUTORESEARCH_L2_CONTROLS_FREEZE_2026-09-05.md`),
+and a corrected, code-verified `max_cost_amount` (`1.00 USD`, not the `0`
+proposed below — see the packet's own "Why $1.00" section for the
+real validator-vs-runtime split this discovered) into the single envelope
+the owner needs to accept. This document remains valid as L1's own
+detailed shape and as the record of the `$0` proposal's correction; it is
+no longer itself the thing to authorize against.
+
 Parent: [#409](https://github.com/sergstack/AI-OS/issues/409). Decision:
 [#435](https://github.com/sergstack/AI-OS/issues/435). Implementation PR:
 [#436](https://github.com/sergstack/AI-OS/pull/436).

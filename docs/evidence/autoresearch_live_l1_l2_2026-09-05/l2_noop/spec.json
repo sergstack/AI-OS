@@ -1,0 +1,27 @@
+{
+  "experiment_id": "l2-noop-2026-09-05",
+  "candidate_id": "L2-NOOP-1",
+  "baseline_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "project": "ai_os",
+  "research_surface": "MUT-HANDOFF-PROJECT-ADDITIONS",
+  "target_file": "HANDOFF_STYLE_STANDARD.md",
+  "patch_file": "candidate.patch",
+  "candidate_patch_hash": "3132ecf427996be18987b5a9261e68d45805d61a0f32bafd256a8e3d4c7a1586",
+  "mutation_class": "ordering",
+  "run_count": 3,
+  "seed": 0,
+  "mode": "manual_candidate_evaluation",
+  "cases": [
+    {
+      "case_id": "l2-noop-1-codex-fields-list",
+      "case_family": "handoff",
+      "target_family_flag": true,
+      "input": "Per HANDOFF_STYLE_STANDARD.md's 'Project-Specific Additions', what fields must a [Codex] handoff include?"
+    }
+  ],
+  "control_type": "noop",
+  "expected_directional_outcome": "inconclusive (same field set, order-only change; no stable improvement/regression signal)",
+  "forbidden_outcome": "keep_candidate or discard on the strength of this candidate alone",
+  "rollback": "No active state is touched by preparing or freezing this control: the patch exists only as candidate.patch, applied only inside disposable shadow worktrees during gate checks (each removed immediately after, per autoresearch_shadow_runner.remove_shadow_worktree). If executed live and rejected/discarded, rollback is: discard the ephemeral shadow worktree (automatic) and do not act on the finding further -- main, the active ChatGPT Project configuration, and this repo's tracked files are never mutation targets.",
+  "evidence_path": "docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_noop/"
+}

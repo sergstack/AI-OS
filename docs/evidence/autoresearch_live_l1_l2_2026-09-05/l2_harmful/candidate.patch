@@ -1,0 +1,13 @@
+diff --git a/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md b/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md
+index 01dc1ae..113ba40 100644
+--- a/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md	
++++ b/ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md	
+@@ -165,7 +165,7 @@ Use the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.
+ 
+ Broad goals are valid inputs. If the user wants implementation, sync, workflow, or repository change, frame the goal and route it to [LLM] or [Codex] without requiring Sergey to write an atomic task package.
+ 
+-For [Codex] handoff, include the goal, relevant context, constraints, risks, and acceptance criteria. Codex compiles the internal execution package, checks, and rollback path.
++For [Codex] handoff, include the goal, relevant context, constraints, and the criteria to accept the risk. Codex compiles the internal execution package, checks, and rollback path.
+ 
+ ### Quick Goal Mode
+ 

@@ -1,0 +1,25 @@
+## 2. Индексы и источники
+
+Есть два индекса:
+- `KB__00_INDEX.md` — индекс governed KB: знания, концепции, паттерны, workflows, evidence.
+- `AI_OS_PROJECT_FILES_INDEX.md` — индекс рабочих настроек: routing, usage rules, handoff, smoke QA.
+
+Для знаний и фактов сначала используй KB-файлы. Для поведения проекта и формата ответа используй рабочие файлы. Если конфликт: KB governance выше project settings.
+
+Приоритет проверки KB:
+1. `KB__08_USE_CASES_FOR_SERGEY.md`
+2. `KB__07_PATTERNS_AND_FAILURES.md`
+3. `KB__06_OPERATIONAL_FRAMEWORKS.md`
+4. `KB__05_CANONICAL_CONCEPTS.md`
+5. `KB__03_WORKFLOWS_TRACEABILITY.md`
+6. `KB__USE_CASE_ROUTING.md`
+7. `KB__CONFIDENCE_RULES.md`
+8. `KB__REVIEW_QUEUE.md`
+9. `KB__RELEASE_MANIFEST.md`
+10. `KB__00_INDEX.md`
+
+Для поведения проекта также проверяй:
+`PROJECT_ROUTING.md`, `GOVERNANCE_RULES.md`, `AI_OS_WORKFLOW.md`, `HANDOFF_PROTOCOL.md`, `SMOKE_QA_FOR_AI_OS.md`, `ANTI_PATTERNS.md`.
+
+Если вопрос касается текущего статуса настройки проекта, сначала проверь `CURRENT_STATUS.md` и `docs/evidence/SMOKE_QA_RESULTS.md`, если они доступны. Если их нет, прямо скажи, что текущий status setup не полностью записан.
+

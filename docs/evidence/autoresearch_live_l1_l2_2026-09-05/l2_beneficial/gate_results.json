@@ -1,0 +1,44 @@
+{
+  "patch_built": {
+    "patch_hash": "7941ec48800b5ebb751b491bd9154a344d1ba1e5b5e766ebdfa7bc4e024f0506",
+    "bytes": 985
+  },
+  "patch_fingerprint": {
+    "findings": [],
+    "pass": true
+  },
+  "patch_scope": {
+    "pass": true
+  },
+  "context_equivalence": {
+    "equivalent": true,
+    "differences": [
+      "ROUTING_RULES.md"
+    ],
+    "mutable_surface_excerpt": {
+      "present": true,
+      "excerpt_differs": true,
+      "excerpt_is_within_declared_surface": true
+    },
+    "note": "differences[] lists every content-changed source path; a valid candidate context has exactly one entry here, matching the declared mutable surface's own file. mutable_surface_excerpt.excerpt_is_within_declared_surface being False while excerpt_differs is True would mean the excerpt changed without its containing file being flagged as changed -- a contradiction that should never occur and must be treated as a hard-gate failure, not silently accepted."
+  },
+  "subject_content_propagation": {
+    "pass": true,
+    "baseline_excerpt_hash": "af5a3521fc43326d98bc8af2636d6784c28161d74fe5f629bb38e10e76383521",
+    "candidate_excerpt_hash": "ba701ef18c0aef363a540d4c459a6ca2457a97d6f16810f4095be3eaabfeb5bd",
+    "baseline_excerpt_text": "## Tie-break rules\n\n| Case | Rule |\n| --- | --- |\n| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |\n| Production readiness | `[Codex]` repository/release; `[LLM]` prompt/workflow; `[AI OS]` governance promotion; earliest unfinished stage wins |\n| Production workflow rollout | `[Codex]` implementation; `[LLM]` prior workflow design |\n| Thinker patterns in a decision | `[Thinking]` decision; `[Thinkers OS]` corpus/artifacts |\n| Numbers inside a strategy memo | `[Analytics]` calculation; `[Thinking]` decision |\n| AI governance question | `[AI OS]`, including reusable rule promotion candidates arriving from `[Thinking]` |\n| Still ambiguous | `blocked`; state candidates and missing deciding fact |\n",
+    "candidate_excerpt_text": "## Tie-break rules\n\n| Case | Rule |\n| --- | --- |\n| Coding task preparation | `[Codex]`; `[LLM]` only for a prompt or workflow deliverable |\n| Production readiness | `[Codex]` repository/release; `[LLM]` prompt/workflow; `[AI OS]` governance promotion; earliest unfinished stage wins |\n| Production workflow rollout | `[Codex]` implementation; `[LLM]` prior workflow design; earliest unfinished stage wins |\n| Thinker patterns in a decision | `[Thinking]` decision; `[Thinkers OS]` corpus/artifacts |\n| Numbers inside a strategy memo | `[Analytics]` calculation; `[Thinking]` decision |\n| AI governance question | `[AI OS]`, including reusable rule promotion candidates arriving from `[Thinking]` |\n| Still ambiguous | `blocked`; state candidates and missing deciding fact |\n"
+  },
+  "batch_config_schema": {
+    "pass": true,
+    "findings": []
+  },
+  "baseline_candidate_isolation": {
+    "pass": "precondition_only",
+    "note": "Case IDs are declared identical across baseline/candidate presentation; runtime_model_configuration equality (reject_config_mismatch) can only be checked once real captures exist -- not fabricated here."
+  },
+  "evaluator_hash": {
+    "pass": true,
+    "evaluator_version_hash": "960e1408c58e97d9fab1aa19c62147dbfa20de2839f90e86a7f0236ad8bdb853"
+  }
+}
