@@ -454,6 +454,42 @@ class Controller:
                 "reason": f"run_count must equal adc.MIN_MATCHED_RERUNS ({adc.MIN_MATCHED_RERUNS}) in this "
                 f"minimal-for-C1 scope; got {spec.run_count}",
             }
+        # Controlled-L1 context-boundary guards ([LLM]->[Codex] handoff, 2026-09-05):
+        # a causal repo_replay comparison requires the Subject to run in a
+        # neutral, non-Project-scoped transport (native Project instructions
+        # are an uncontrolled concurrent treatment competing with the
+        # candidate) and requires account-level memory/personalization/
+        # custom-instruction influence to be proven excluded. Both fail
+        # closed -- 'unproven' is never treated as 'excluded'. Native-Project
+        # execution is reserved for a separate, not-yet-implemented,
+        # owner-gated L2 transfer contract; no code path here ever runs one.
+        if str(batch_config.get("subject_context_scope") or "") != "non_project_controlled":
+            return {
+                "status": "blocked",
+                "reason": "subject_context_scope must be 'non_project_controlled' for a repo_replay "
+                "causal comparison; a native-Project-scoped transport is a separate, "
+                "not-yet-implemented L2 transfer contract and must never be used for this comparison.",
+            }
+        # Owner ruling, 2026-09-05 (hard block, not a value check): this
+        # codebase has NO implemented machine-verification mechanism for
+        # memory/personalization isolation -- none is invented here either.
+        # A self-declared 'verified_disabled' string is not evidence, so a
+        # causal L1 run (any real, non-test-double transport -- fake_browser
+        # is fixed and cannot be mistaken for one) is hard-blocked
+        # UNCONDITIONALLY on this precondition, regardless of what
+        # batch_config declares, until a real verifier exists as separate,
+        # not-yet-started work. This deliberately does NOT gate the
+        # deterministic four-control calibration harness (FakeBrowserTransport,
+        # capture_method == 'test_double'): that harness makes zero external
+        # calls and has no isolation concern to verify in the first place.
+        if self.transport.capture_method != "test_double":
+            return {
+                "status": "blocked",
+                "reason": "memory_personalization_isolation_status has no machine-verifiable evidence "
+                "mechanism implemented in this codebase; causal L1 is hard-blocked on this "
+                f"precondition regardless of the declared value ({batch_config.get('memory_personalization_isolation_status')!r}) "
+                "until a real verifier exists (owner ruling 2026-09-05) -- self-declaration is not evidence.",
+            }
 
         manifest = av.load_manifest()
         shared_budget = budget.as_shared_state()
@@ -513,6 +549,19 @@ class Controller:
                                    baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
                                    evaluator_config=evaluator_config,
                                    reason=f"context drift outside the declared mutation: {equiv}",
+                                   evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
+        # Mutation-visibility gate ([LLM]->[Codex] handoff, 2026-09-05): a
+        # patch existing in Git is not itself experimental treatment -- the
+        # declared mutation must actually be rendered into the Subject's
+        # final payload (via mutable_surface_excerpt), or the comparison
+        # never actually tested what it claims to. Zero Judge/Subject calls
+        # happen past this point when the gate fires.
+        excerpt_info = equiv.get("mutable_surface_excerpt") or {}
+        if not excerpt_info.get("present") or not excerpt_info.get("excerpt_differs"):
+            return _finalize_pilot(evidence, raw_decision="discard", spec=spec, batch_config=batch_config,
+                                   baseline_ctx=baseline_ctx, candidate_ctx=candidate_ctx, evh=evh,
+                                   evaluator_config=evaluator_config,
+                                   reason=f"declared mutation is not visible in the rendered subject payload: {excerpt_info}",
                                    evidence_dir=evidence_dir, budget=budget, shared_budget=shared_budget)
         evidence["baseline_context_hash"] = baseline_ctx["context_hash"]
         evidence["candidate_context_hash"] = candidate_ctx["context_hash"]
@@ -738,6 +787,7 @@ def _transport_policy(batch_config: dict) -> "lba.TransportPolicy":
         session_policy=batch_config.get("session_policy", "fresh_conversation"),
         expected_model_selector=batch_config.get("expected_model_selector") or None,
         expected_context_hash=None,  # each request carries its own; baseline != candidate by design
+        subject_context_scope=batch_config.get("subject_context_scope", "non_project_controlled"),
     )
     object.__setattr__(policy, "call_timeout_seconds", batch_config.get("call_timeout_seconds"))
     return policy
@@ -976,6 +1026,19 @@ def _finalize_pilot(evidence: dict, *, raw_decision: str, reason: str, spec: "Ma
         "judge_findings": judge_findings,
         "comparator_raw_decision": {"decision": raw_decision, "reason": reason},
         "pilot_decision": pilot_decision,
+        # Owner revise, 2026-09-05: the two controlled-L1 preconditions are
+        # NOT equally verifiable today. subject_context_scope is now
+        # machine-checked per call against the observed URL (see
+        # matched_observations' invocation records / limitations above,
+        # threaded from LiveInvocationResult.observed_page_url) --
+        # memory_personalization_isolation_status has no such mechanism in
+        # this codebase and remains a self-declared batch-config string.
+        # This field states that split honestly on every record produced,
+        # rather than letting a clean pilot_decision imply both are proven.
+        "causal_validity_status": {
+            "subject_context_scope_verification": "machine_verified_per_call_observed_url",
+            "memory_personalization_isolation_verification": "self_declared_not_machine_verified",
+        },
         "limitations": evidence["limitations"],
         "rollback": ("Candidate exists only in ephemeral shadow worktrees; nothing applied to main, active "
                      "Project config, or the ledger baseline. Revert is: discard the shadow worktrees. This "

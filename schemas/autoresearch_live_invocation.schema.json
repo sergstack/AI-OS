@@ -41,7 +41,8 @@
     "redaction_status",
     "capture_method",
     "fidelity_mode",
-    "limitations"
+    "limitations",
+    "observed_page_url"
   ],
   "properties": {
     "schema_version": { "const": "0.2.0" },
@@ -106,7 +107,8 @@
         "wrong_target",
         "selector_unverified",
         "empty_response",
-        "validation_error"
+        "validation_error",
+        "scope_violation"
       ]
     },
 
@@ -148,6 +150,10 @@
       "type": "string",
       "minLength": 1,
       "description": "Always begins with the fixed repo_replay non-equivalence statement; may append the specific non-pass reason."
+    },
+    "observed_page_url": {
+      "description": "Controlled-L1 owner-revise, 2026-09-05: the actual URL observed live from the transport at call time, threaded through unmodified from RawCapture -- real, per-call evidence of where the call landed, bound to this record rather than trusted only via the batch's own declared subject_context_scope. null when no navigation was reached (an authority/budget/context gate fired first).",
+      "type": ["string", "null"]
     }
   },
 

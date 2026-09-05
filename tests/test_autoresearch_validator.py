@@ -472,6 +472,10 @@ def _manual_evaluation_record(**ov) -> dict:
         ],
         "comparator_raw_decision": {"decision": "inconclusive", "reason": "no material improvement shown"},
         "pilot_decision": "inconclusive",
+        "causal_validity_status": {
+            "subject_context_scope_verification": "machine_verified_per_call_observed_url",
+            "memory_personalization_isolation_verification": "self_declared_not_machine_verified",
+        },
         "limitations": ["repo_replay is a lower-fidelity approximation; no UI-equivalence claim."],
         "rollback": "Candidate exists only in ephemeral shadow worktrees; nothing applied to main.",
         "evidence_hashes": {"evidence_package_sha256": "9" * 64, "patch_sha256": "c" * 64},

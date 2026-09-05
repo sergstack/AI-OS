@@ -66,6 +66,8 @@ def _batch_config(**ov) -> dict:
         "target_url_prefix": "https://chatgpt.com/",
         "target_product": "openai_chatgpt_ui",
         "session_policy": "fresh_conversation",
+        "subject_context_scope": "non_project_controlled",
+        "memory_personalization_isolation_status": "verified_disabled",
     }
     base.update(ov)
     return base
@@ -224,6 +226,95 @@ def test_control_mixed_candidate_regression_vetoes_local_gain(tmp_path):
     assert result["raw_decision"] == "discard"
     assert result["pilot_decision"] == "reject"
     assert result["reason"].startswith("material regression")
+
+
+# ---------------------------------------------------------------------------
+# Controlled-L1 context-boundary guards ([LLM]->[Codex] handoff, 2026-09-05)
+# ---------------------------------------------------------------------------
+
+
+def test_native_project_subject_context_scope_blocked_zero_calls(tmp_path):
+    """Blocked by the top-of-function guard, before budget.as_shared_state()
+    is ever called -- structurally zero Subject/Judge calls, not merely
+    zero observed on a freshly-constructed BudgetState."""
+    patch, h = _tiebreak_patch()
+    spec = _spec(patch, h, cases=[_case("scope-case")], experiment_id="CAL-SCOPE")
+    ctrl = _controller({})
+    result = ctrl.run_experiment(
+        spec=spec,
+        batch_config=_batch_config(subject_context_scope="native_project"),
+        budget=_authorized_budget(),
+        evidence_dir=tmp_path,
+    )
+    assert result["status"] == "blocked"
+    assert "subject_context_scope" in result["reason"]
+    assert "record" not in result
+
+
+def test_memory_isolation_hard_blocks_real_transport_regardless_of_declared_value(tmp_path):
+    """Owner ruling, 2026-09-05: no machine-verifiable evidence mechanism
+    exists for memory/personalization isolation, so causal L1 (any run on a
+    real, non-test-double transport) is hard-blocked UNCONDITIONALLY on
+    this precondition -- even when the batch declares the 'correct' value.
+    Self-declaration is not evidence. Uses the real PlaywrightMcpBrowserTransport
+    class with mcp_call=None to prove the block fires before any live call
+    could even be attempted (no network/browser call happens in this test;
+    the class's own _require_mcp guard is never reached)."""
+    patch, h = _tiebreak_patch()
+    spec = _spec(patch, h, cases=[_case("isolation-case")], experiment_id="CAL-ISOLATION")
+    real_shaped_transport = cli.lba.PlaywrightMcpBrowserTransport(mcp_call=None)
+    ctrl = cli.Controller(transport=real_shaped_transport, judge_model=_make_ground_truth_judge({}))
+    result = ctrl.run_experiment(
+        spec=spec,
+        batch_config=_batch_config(memory_personalization_isolation_status="verified_disabled"),
+        budget=_authorized_budget(),
+        evidence_dir=tmp_path,
+    )
+    assert result["status"] == "blocked"
+    assert "memory_personalization_isolation" in result["reason"]
+    assert "no machine-verifiable evidence mechanism" in result["reason"]
+    assert "record" not in result
+
+
+def test_fake_transport_calibration_is_not_swept_up_by_the_isolation_block(tmp_path):
+    """The deterministic four-control calibration harness (FakeBrowserTransport)
+    makes zero external calls and has no isolation concern to verify --
+    confirms it is deliberately exempt from the hard block above, not
+    accidentally exempt."""
+    patch, h = _tiebreak_patch()
+    spec = _spec(patch, h, cases=[_case("fake-transport-case")], experiment_id="CAL-FAKE-TRANSPORT")
+    ctrl = _controller({"fake-transport-case": ("pass", "pass")})
+    result = ctrl.run_experiment(
+        spec=spec,
+        batch_config=_batch_config(memory_personalization_isolation_status="unverifiable"),
+        budget=_authorized_budget(),
+        evidence_dir=tmp_path,
+    )
+    assert result["status"] == "completed"
+
+
+def test_mutation_not_rendered_in_payload_discarded_zero_calls(tmp_path, monkeypatch):
+    """A patch existing in Git is not itself experimental treatment -- if the
+    declared mutation never actually reaches the rendered Subject payload
+    (mutable_surface_excerpt absent or unchanged), the comparison must be
+    discarded before any Subject/Judge call, not silently trusted."""
+    patch, h = _tiebreak_patch()
+    spec = _spec(patch, h, cases=[_case("invisible-mutation-case")], experiment_id="CAL-INVISIBLE")
+    ctrl = _controller({})
+
+    real_equivalence_report = cli.cpc.equivalence_report
+
+    def _fake_equivalence_report(baseline_ctx, candidate_ctx):
+        real = real_equivalence_report(baseline_ctx, candidate_ctx)
+        real["mutable_surface_excerpt"] = {"present": True, "excerpt_differs": False}
+        return real
+
+    monkeypatch.setattr(cli.cpc, "equivalence_report", _fake_equivalence_report)
+    result = ctrl.run_experiment(spec=spec, batch_config=_batch_config(), budget=_authorized_budget(), evidence_dir=tmp_path)
+    assert result["status"] == "completed"
+    assert result["raw_decision"] == "discard"
+    assert "not visible in the rendered subject payload" in result["reason"]
+    assert result["record"]["budget"]["calls_used"] == 0
 
 
 # ---------------------------------------------------------------------------

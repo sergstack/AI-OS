@@ -107,6 +107,8 @@ def _batch_config(**ov) -> dict:
         "target_url_prefix": "https://chatgpt.com/",
         "target_product": "openai_chatgpt_ui",
         "session_policy": "fresh_conversation",
+        "subject_context_scope": "non_project_controlled",
+        "memory_personalization_isolation_status": "verified_disabled",
     }
     base.update(ov)
     return base

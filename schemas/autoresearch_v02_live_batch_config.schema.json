@@ -35,7 +35,9 @@
     "live_evidence_required",
     "synthetic_evidence_allowed_for",
     "abort_conditions",
-    "authority_status"
+    "authority_status",
+    "subject_context_scope",
+    "memory_personalization_isolation_status"
   ],
   "properties": {
     "contract_version": { "const": "0.2.0" },
@@ -148,6 +150,17 @@
       "description": "Reuses v0.1's candidate/owner_review_pending vocabulary rather than inventing a new one.",
       "type": "string",
       "enum": ["owner_review_pending", "authorized", "rejected"]
+    },
+
+    "subject_context_scope": {
+      "description": "Controlled-L1 context boundary ([LLM]->[Codex] handoff, 2026-09-05): whether this batch's Subject role runs in a neutral, non-Project-scoped transport ('non_project_controlled' -- the only mode a causal repo_replay comparison may use, since native Project instructions would otherwise be an uncontrolled concurrent treatment) or inside a named, live ChatGPT Project ('native_project' -- reserved for a future, separately-authorized L2 native-transfer contract; this contract version implements no code path for it). Enforced fail-closed by Controller.run_experiment, not expressible in JSON Schema alone.",
+      "type": "string",
+      "enum": ["non_project_controlled", "native_project"]
+    },
+    "memory_personalization_isolation_status": {
+      "description": "Whether account-level memory/personalization/custom-instruction influence on the Subject transport has been verified disabled for this batch. 'verified_disabled' is the only value that satisfies the controlled-L1 fail-closed precondition; 'unverifiable' or 'not_applicable' block a repo_replay causal batch from proceeding (enforced by Controller.run_experiment, not expressible in JSON Schema alone). 'unverifiable' must never be silently treated as 'excluded'.",
+      "type": "string",
+      "enum": ["verified_disabled", "unverifiable", "not_applicable"]
     }
   },
 
