@@ -1,0 +1,44 @@
+{
+  "patch_built": {
+    "patch_hash": "3132ecf427996be18987b5a9261e68d45805d61a0f32bafd256a8e3d4c7a1586",
+    "bytes": 975
+  },
+  "patch_fingerprint": {
+    "findings": [],
+    "pass": true
+  },
+  "patch_scope": {
+    "pass": true
+  },
+  "context_equivalence": {
+    "equivalent": true,
+    "differences": [
+      "HANDOFF_STYLE_STANDARD.md"
+    ],
+    "mutable_surface_excerpt": {
+      "present": true,
+      "excerpt_differs": true,
+      "excerpt_is_within_declared_surface": true
+    },
+    "note": "differences[] lists every content-changed source path; a valid candidate context has exactly one entry here, matching the declared mutable surface's own file. mutable_surface_excerpt.excerpt_is_within_declared_surface being False while excerpt_differs is True would mean the excerpt changed without its containing file being flagged as changed -- a contradiction that should never occur and must be treated as a hard-gate failure, not silently accepted."
+  },
+  "subject_content_propagation": {
+    "pass": true,
+    "baseline_excerpt_hash": "645665fd6d5f41c1825bf61e915d16ae571adcfe492c7a864e3e11a79ecfa8a5",
+    "candidate_excerpt_hash": "1f0eed23fa5c386f793fbf1755dbfbb0d60f2bffa2637ea38e9bf42c6bfdad9a",
+    "baseline_excerpt_text": "## Project-Specific Additions\n\n- `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.\n- `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.\n- `[Analytics]`: include question/scope, data status, grain/period/filters, method, QA, limitations, and decision or recommendation.\n- `[LLM]`: include context boundaries, prompt or model-routing goal, judge/revise gate, and forbidden raw inputs.\n- `[Codex]`: include branch expectation, allowed files/actions, checks, rollback, PR summary needs, and merge/gate status.\n- `[Inbox Router]`: include classification, target project, urgency, confidence, and first safe action.\n",
+    "candidate_excerpt_text": "## Project-Specific Additions\n\n- `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.\n- `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.\n- `[Analytics]`: include question/scope, data status, grain/period/filters, method, QA, limitations, and decision or recommendation.\n- `[LLM]`: include context boundaries, prompt or model-routing goal, judge/revise gate, and forbidden raw inputs.\n- `[Codex]`: include branch expectation, allowed files/actions, checks, PR summary needs, rollback, and merge/gate status.\n- `[Inbox Router]`: include classification, target project, urgency, confidence, and first safe action.\n"
+  },
+  "batch_config_schema": {
+    "pass": true,
+    "findings": []
+  },
+  "baseline_candidate_isolation": {
+    "pass": "precondition_only",
+    "note": "Case IDs are declared identical across baseline/candidate presentation; runtime_model_configuration equality (reject_config_mismatch) can only be checked once real captures exist -- not fabricated here."
+  },
+  "evaluator_hash": {
+    "pass": true,
+    "evaluator_version_hash": "960e1408c58e97d9fab1aa19c62147dbfa20de2839f90e86a7f0236ad8bdb853"
+  }
+}

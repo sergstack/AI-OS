@@ -1,0 +1,179 @@
+{
+  "context_manifest_version": "0.3.0",
+  "context_id": "3d187de49eab34df",
+  "role": "subject_candidate",
+  "project": "ai_os",
+  "source_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "candidate_patch_hash": "3132ecf427996be18987b5a9261e68d45805d61a0f32bafd256a8e3d4c7a1586",
+  "ordered_sources": [
+    {
+      "path": "ROUTING_RULES.md",
+      "canonical_owner": "inbox_router",
+      "purpose": "canonical routing/tie-break rules",
+      "content_hash": "e157237d3720ec7e6b2cfd3b8a0d91eab88a2502a438424d288f50dd8c67cd57",
+      "bytes": 2596,
+      "inclusion_reason": "canonical routing table, present exactly once",
+      "source_class": "canonical_routing"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+      "canonical_owner": "ai_os",
+      "purpose": "declared context entrypoint",
+      "content_hash": "202553ac71742c62efa2b534dacbfb0e6198e44fbd8f95c32ff975ab421b1c3b",
+      "bytes": 10261,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml context_entrypoints",
+      "source_class": "project_instructions"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
+      "canonical_owner": "ai_os",
+      "purpose": "declared context entrypoint",
+      "content_hash": "b22dbbb5c3fa94bde1c15664c379612e0df275f8db3fa1ca187a7966785e0a62",
+      "bytes": 8803,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml context_entrypoints",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "a2c731e36ee21f414be74082c70113d101393660b530a9456738147f07da85ea",
+      "bytes": 2143,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "73a2f6ca12f511bacd26d8aaf5556879c84cb3bb5aa8c5aea1142ef3497cdcb5",
+      "bytes": 3731,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "420ea4edaf6463b127a20ea4a1df602f82c05fd9b46e0e1df67250533ae7018d",
+      "bytes": 2908,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "63fc8bc23b00797d67addba475e8962860eabdcb486ebf6fdf88d4a8e5b4c42c",
+      "bytes": 5303,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "064c4ba716ee9e04e8b8fe7631a32c5785a3267478351d19baa8271b1c6842f8",
+      "bytes": 4673,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
+      "canonical_owner": "ai_os",
+      "purpose": "named as required behavior check in PROJECT_INSTRUCTIONS.md #2",
+      "content_hash": "859195550aca36fa8aca6dcd57ec3e4e0ea5fef72ab4b419c6c932589e1e47e0",
+      "bytes": 2638,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    },
+    {
+      "path": "HANDOFF_STYLE_STANDARD.md",
+      "canonical_owner": "ai_os",
+      "purpose": "cited for the canonical handoff field set, PROJECT_INSTRUCTIONS.md Goal Mode handoff section",
+      "content_hash": "421c882e7902ae12fc212d1b3914969259a935300ab06a7ecb5cdf8b8c455f85",
+      "bytes": 3163,
+      "inclusion_reason": "PROJECT_CAPABILITIES.yaml required_knowledge (delivery=bundle)",
+      "source_class": "governed_knowledge_bundle"
+    }
+  ],
+  "rendering_rules": {
+    "ordering": "declared_order_stable",
+    "delimiter_style": "markdown_heading_per_source"
+  },
+  "model_message_structure": [
+    {
+      "turn": "system",
+      "source_paths": [
+        "ROUTING_RULES.md",
+        "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+        "ChatGPT/[AI OS]/Knowledge/AI_OS_PROJECT_FILES_INDEX.md",
+        "ChatGPT/[AI OS]/Knowledge/PROJECT_ROUTING.md",
+        "ChatGPT/[AI OS]/Knowledge/GOVERNANCE_RULES.md",
+        "ChatGPT/[AI OS]/Knowledge/AI_OS_WORKFLOW.md",
+        "ChatGPT/[AI OS]/Knowledge/HANDOFF_PROTOCOL.md",
+        "ChatGPT/[AI OS]/Knowledge/SMOKE_QA_FOR_AI_OS.md",
+        "ChatGPT/[AI OS]/Knowledge/ANTI_PATTERNS.md",
+        "HANDOFF_STYLE_STANDARD.md"
+      ]
+    }
+  ],
+  "excluded_sources": [
+    {
+      "path": "ChatGPT/[AI OS]/KB__00_INDEX.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__03_WORKFLOWS_TRACEABILITY.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__05_CANONICAL_CONCEPTS.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__06_OPERATIONAL_FRAMEWORKS.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__07_PATTERNS_AND_FAILURES.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__08_USE_CASES_FOR_SERGEY.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__USE_CASE_ROUTING.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__CONFIDENCE_RULES.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__REVIEW_QUEUE.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    },
+    {
+      "path": "ChatGPT/[AI OS]/KB__RELEASE_MANIFEST.md",
+      "reason": "delivery='external'; not a repo-tracked source (governed KB lives only in the live ChatGPT Project)"
+    }
+  ],
+  "forbidden_source_classes": [
+    "blinded_output",
+    "frozen_rubric",
+    "failure_registry_entry"
+  ],
+  "context_hash": "3bc2d7d6f4f45af1b4cf843a48b951c1468d47e4e288b20ce19d84f62f851305",
+  "created_by_version": "autoresearch_context_pack_compiler/0.3.0",
+  "fidelity_mode": "repo_replay",
+  "limitations": "This context is a reproducible repository-derived replay of AI-OS instructions and governed sources. It is not evidence of exact equivalence to proprietary ChatGPT Project runtime assembly unless separately validated.",
+  "mutable_surface_excerpt": {
+    "path": "HANDOFF_STYLE_STANDARD.md",
+    "surface_id": "MUT-HANDOFF-PROJECT-ADDITIONS",
+    "anchor": "## Project-Specific Additions",
+    "excerpt_text": "## Project-Specific Additions\n\n- `[AI OS]`: include evidence status, confidence, routing decision, and unsupported claims.\n- `[Thinking]`: include decision options, assumptions, tradeoffs, and recommended next step.\n- `[Analytics]`: include question/scope, data status, grain/period/filters, method, QA, limitations, and decision or recommendation.\n- `[LLM]`: include context boundaries, prompt or model-routing goal, judge/revise gate, and forbidden raw inputs.\n- `[Codex]`: include branch expectation, allowed files/actions, checks, PR summary needs, rollback, and merge/gate status.\n- `[Inbox Router]`: include classification, target project, urgency, confidence, and first safe action.\n",
+    "excerpt_hash": "1f0eed23fa5c386f793fbf1755dbfbb0d60f2bffa2637ea38e9bf42c6bfdad9a"
+  }
+}

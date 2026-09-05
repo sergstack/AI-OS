@@ -1,0 +1,44 @@
+{
+  "patch_built": {
+    "patch_hash": "ea0084bfe80c25f56fd4b2c952e941ad022e61d6c67a130bd5e78e7e02834a9c",
+    "bytes": 906
+  },
+  "patch_fingerprint": {
+    "findings": [],
+    "pass": true
+  },
+  "patch_scope": {
+    "pass": true
+  },
+  "context_equivalence": {
+    "equivalent": true,
+    "differences": [
+      "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md"
+    ],
+    "mutable_surface_excerpt": {
+      "present": true,
+      "excerpt_differs": true,
+      "excerpt_is_within_declared_surface": true
+    },
+    "note": "differences[] lists every content-changed source path; a valid candidate context has exactly one entry here, matching the declared mutable surface's own file. mutable_surface_excerpt.excerpt_is_within_declared_surface being False while excerpt_differs is True would mean the excerpt changed without its containing file being flagged as changed -- a contradiction that should never occur and must be treated as a hard-gate failure, not silently accepted."
+  },
+  "subject_content_propagation": {
+    "pass": true,
+    "baseline_excerpt_hash": "074e726e212de2937601b3e77adcbbe2f77a27435010e0fcaa57aa22c593a8da",
+    "candidate_excerpt_hash": "3ad52dc3beb87a0c23c721ae42dc519d43cfdee24bfd78155c56d7ff8683778a",
+    "baseline_excerpt_text": "### Goal Mode handoff\n\nUse the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.\n\nBroad goals are valid inputs. If the user wants implementation, sync, workflow, or repository change, frame the goal and route it to [LLM] or [Codex] without requiring Sergey to write an atomic task package.\n\nFor [Codex] handoff, include the goal, relevant context, constraints, risks, and acceptance criteria. Codex compiles the internal execution package, checks, and rollback path.\n\n### Quick Goal Mode\n\nIf the user asks to check, improve, or update repo settings, workflow, sync, GitHub/Codex/ChatGPT behavior, or AI-OS UX:\n- treat broad goals as valid;\n- do not over-expand governance unless risk requires it;\n- separate confirmed repo facts from recommendations;\n- give a short verdict, concrete fixes, and a Codex goal handoff if implementation is needed;\n- do not require atomic task wording from Sergey.\n\nЕсли задача выходит за scope, дай compact handoff по\n`HANDOFF_STYLE_STANDARD.md`. Добавь AI OS-specific fields only when needed:\nKB evidence used, confidence, routing decision, unsupported claims.\n\nНе передавай как факт weak evidence, unsupported claims, production-ready без acceptance, новые инструменты без свежей проверки.\n",
+    "candidate_excerpt_text": "### Goal Mode handoff\n\nUse the canonical handoff field set from `HANDOFF_STYLE_STANDARD.md`.\n\nBroad goals are valid inputs. If the user wants implementation, sync, workflow, or repository change, frame the goal and route it to [LLM] or [Codex] without requiring Sergey to write an atomic task package.\n\nFor [Codex] handoff, include the goal, relevant context, constraints, and the criteria to accept the risk. Codex compiles the internal execution package, checks, and rollback path.\n\n### Quick Goal Mode\n\nIf the user asks to check, improve, or update repo settings, workflow, sync, GitHub/Codex/ChatGPT behavior, or AI-OS UX:\n- treat broad goals as valid;\n- do not over-expand governance unless risk requires it;\n- separate confirmed repo facts from recommendations;\n- give a short verdict, concrete fixes, and a Codex goal handoff if implementation is needed;\n- do not require atomic task wording from Sergey.\n\nЕсли задача выходит за scope, дай compact handoff по\n`HANDOFF_STYLE_STANDARD.md`. Добавь AI OS-specific fields only when needed:\nKB evidence used, confidence, routing decision, unsupported claims.\n\nНе передавай как факт weak evidence, unsupported claims, production-ready без acceptance, новые инструменты без свежей проверки.\n"
+  },
+  "batch_config_schema": {
+    "pass": true,
+    "findings": []
+  },
+  "baseline_candidate_isolation": {
+    "pass": "precondition_only",
+    "note": "Case IDs are declared identical across baseline/candidate presentation; runtime_model_configuration equality (reject_config_mismatch) can only be checked once real captures exist -- not fabricated here."
+  },
+  "evaluator_hash": {
+    "pass": true,
+    "evaluator_version_hash": "960e1408c58e97d9fab1aa19c62147dbfa20de2839f90e86a7f0236ad8bdb853"
+  }
+}

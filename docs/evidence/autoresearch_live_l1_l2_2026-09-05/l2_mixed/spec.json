@@ -1,0 +1,33 @@
+{
+  "experiment_id": "l2-mixed-2026-09-05",
+  "candidate_id": "L2-MIXED-1",
+  "baseline_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "project": "ai_os",
+  "research_surface": "MUT-AIOS-CONTEXT-PRIORITY",
+  "target_file": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+  "patch_file": "candidate.patch",
+  "candidate_patch_hash": "c88596959994f4aeca3a079156080475c28d40ed10b6fc05bbf31a69d37d4976",
+  "mutation_class": "consolidation",
+  "run_count": 3,
+  "seed": 0,
+  "mode": "manual_candidate_evaluation",
+  "cases": [
+    {
+      "case_id": "l2-mixed-1-conflict-priority",
+      "case_family": "scope_execution",
+      "target_family_flag": true,
+      "input": "If PROJECT_ROUTING.md and GOVERNANCE_RULES.md give conflicting operational guidance, which one wins per section 2 of PROJECT_INSTRUCTIONS.md, and where is that stated?"
+    },
+    {
+      "case_id": "l2-mixed-1-checklist-completeness",
+      "case_family": "scope_execution",
+      "target_family_flag": false,
+      "input": "Per section 2 of PROJECT_INSTRUCTIONS.md, list every working file that should also be checked for project behavior and response format, besides the KB index files."
+    }
+  ],
+  "control_type": "mixed",
+  "expected_directional_outcome": "target case (conflict-priority): keep_candidate-shaped improvement signal; non-target case (checklist-completeness): regression (ANTI_PATTERNS.md silently dropped from the list) -- regression veto should force overall reject despite the local gain",
+  "forbidden_outcome": "keep_candidate / candidate_for_owner_review (regression veto must win)",
+  "rollback": "No active state is touched by preparing or freezing this control: the patch exists only as candidate.patch, applied only inside disposable shadow worktrees during gate checks (each removed immediately after, per autoresearch_shadow_runner.remove_shadow_worktree). If executed live and rejected/discarded, rollback is: discard the ephemeral shadow worktree (automatic) and do not act on the finding further -- main, the active ChatGPT Project configuration, and this repo's tracked files are never mutation targets.",
+  "evidence_path": "docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_mixed/"
+}

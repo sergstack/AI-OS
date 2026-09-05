@@ -1,0 +1,27 @@
+{
+  "experiment_id": "l2-harmful-2026-09-05",
+  "candidate_id": "L2-HARM-1",
+  "baseline_revision": "0b1ce29386342ef4e1884d8a58b574445572575e",
+  "project": "ai_os",
+  "research_surface": "MUT-AIOS-HANDOFF-WORDING",
+  "target_file": "ChatGPT/[AI OS]/PROJECT_INSTRUCTIONS.md",
+  "patch_file": "candidate.patch",
+  "candidate_patch_hash": "ea0084bfe80c25f56fd4b2c952e941ad022e61d6c67a130bd5e78e7e02834a9c",
+  "mutation_class": "consolidation",
+  "run_count": 3,
+  "seed": 0,
+  "mode": "manual_candidate_evaluation",
+  "cases": [
+    {
+      "case_id": "l2-harm-1-codex-handoff-fields",
+      "case_family": "handoff",
+      "target_family_flag": true,
+      "input": "You are handing a goal to [Codex] and it carries a known implementation risk the implementer must know before starting. Per PROJECT_INSTRUCTIONS.md section 7 'Goal Mode handoff', list every field this handoff must include."
+    }
+  ],
+  "control_type": "harmful",
+  "expected_directional_outcome": "discard / reject (regression: dropped 'risks' field, garbled into 'acceptance criteria')",
+  "forbidden_outcome": "keep_candidate / candidate_for_owner_review",
+  "rollback": "No active state is touched by preparing or freezing this control: the patch exists only as candidate.patch, applied only inside disposable shadow worktrees during gate checks (each removed immediately after, per autoresearch_shadow_runner.remove_shadow_worktree). If executed live and rejected/discarded, rollback is: discard the ephemeral shadow worktree (automatic) and do not act on the finding further -- main, the active ChatGPT Project configuration, and this repo's tracked files are never mutation targets.",
+  "evidence_path": "docs/evidence/autoresearch_live_l1_l2_2026-09-05/l2_harmful/"
+}
