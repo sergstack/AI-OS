@@ -58,7 +58,7 @@ Status:
 ```text
 production_ready: repository package ready (bundles regenerated); live
   ChatGPT Project sync not performed (separate owner-gated step)
-promotion: DONE for the 7 items listed above (owner-authorized 2026-09-06)
+promotion: DONE — 2 P1 controls + 6 P1-B controls promoted to standard/active (owner-authorized 2026-09-06)
 gate_verdict: see docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md
 ```
 

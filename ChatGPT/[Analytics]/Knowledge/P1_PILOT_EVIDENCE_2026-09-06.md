@@ -5,7 +5,7 @@
 controls (owner-authorized); `ANALYSIS_CONTINUATION_GATE` (§15.3) remains
 deferred, not activated. See
 `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the promotion
-decision and real end-to-end acceptance evidence. The rest of this document
+decision and repository-side validation evidence. The rest of this document
 is preserved unchanged as the original pilot record.
 
 Status (historical, at time of writing): **bounded pilot evidence only**. `owner review required` before any

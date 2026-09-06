@@ -4,7 +4,7 @@
 (§16.1–§16.6) are now active/standard controls (owner-authorized), with
 their differentiated evidence-strength verdicts below unchanged by
 promotion. See `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the
-promotion decision and real end-to-end acceptance evidence. The rest of this
+promotion decision and repository-side validation evidence. The rest of this
 document is preserved unchanged as the original pilot record.
 
 Status (historical, at time of writing): **bounded pilot evidence only**. `owner review required` before any

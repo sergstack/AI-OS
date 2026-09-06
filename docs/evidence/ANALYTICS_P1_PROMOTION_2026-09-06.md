@@ -24,21 +24,22 @@ point.
 
 ## What was promoted (owner's list, verbatim scope — nothing added, nothing dropped)
 
-Promoted to **standard, active** status (no longer "bounded pilot, owner
-review required before use"):
+**2 P1 controls + 6 P1-B controls promoted to standard/active** (no longer
+"bounded pilot, owner review required before use"):
 
-1. `POPULATION_CONTRACT` (§15.1, issue #445).
-2. `RECONCILIATION_CONTRACT` (§15.2, issue #445).
-3. Strengthened material Explanation Challenge (§16.1, issue #449).
-4. `RECOMMENDATION_EVIDENCE` (§16.2, issue #449).
-5. Material stability/persistence check (§16.3, issue #449).
-6. `FORECAST_METHOD_COMPARISON` out-of-sample validation (§16.4, issue #449).
-7. `effect_type` economic-vs-process diagnosis boundary (§16.5, issue #449).
-8. `what_would_change_the_view` (§16.6, issue #449).
+P1 (issue #445), 2 controls:
 
-(Owner's list groups #16.1–#16.6 as "six items" under #449 plus the two P1
-items under #445 — 8 subsections / 7 named mechanisms in total; no
-discrepancy, just a counting-convention note.)
+1. `POPULATION_CONTRACT` (§15.1).
+2. `RECONCILIATION_CONTRACT` (§15.2).
+
+P1-B (issue #449), 6 controls:
+
+3. Strengthened material Explanation Challenge (§16.1).
+4. `RECOMMENDATION_EVIDENCE` (§16.2).
+5. Material stability/persistence check (§16.3).
+6. `FORECAST_METHOD_COMPARISON` out-of-sample validation (§16.4).
+7. `effect_type` economic-vs-process diagnosis boundary (§16.5).
+8. `what_would_change_the_view` (§16.6).
 
 EDA-to-claim calibration (issue #451, this same branch, commit `d671e2a`)
 was **already plain regression coverage, not pilot-gated** — nothing to
@@ -287,7 +288,7 @@ Sources, replacing the currently-uploaded versions.
 repo implementation:                PASS
 repo tests:                          PASS (635/635; 8 repo validation scripts PASS)
 package ready:                       YES
-controls accepted (standard/active):
+controls accepted (standard/active): 2 P1 controls + 6 P1-B controls
   - POPULATION_CONTRACT (§15.1, issue #445)
   - RECONCILIATION_CONTRACT (§15.2, issue #445)
   - Strengthened Explanation Challenge (§16.1, issue #449)
@@ -303,8 +304,8 @@ external Analytics behavioral acceptance: NOT RUN
 Deferred, unchanged, not promoted: `ANALYSIS_CONTINUATION_GATE` (§15.3);
 P2/autonomous-learning/self-improvement work; 22-method registry expansion.
 
-- delivery: `pass` — all 7 named items promoted per the owner's explicit
-  list; `ANALYSIS_CONTINUATION_GATE` verified untouched.
+- delivery: `pass` — 2 P1 controls + 6 P1-B controls promoted per the
+  owner's explicit list; `ANALYSIS_CONTINUATION_GATE` verified untouched.
 - tests: `pass` — 635/635 (real output above), plus all 7 repo validation
   scripts observed `PASS`/`WROTE`+`PASS`.
 - review: `not_run` — this PR is not self-merged; owner review of this
