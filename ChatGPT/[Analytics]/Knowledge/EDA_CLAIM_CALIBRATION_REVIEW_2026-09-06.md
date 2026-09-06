@@ -338,7 +338,13 @@ service, agent, or repo-wide routing redesign**. `confidence: high / medium
 / low` and every other existing Analytics enum are unchanged.
 `ANALYSIS_CONTINUATION_GATE` (§15.3) remains deferred, not activated, and was
 not revisited. The bounded pilots from #445 and #449 remain bounded-pilot,
-owner-review-pending; this issue does not promote them.
+owner-review-pending; this issue does not promote them. **Forward pointer
+(later, same branch):** the owner subsequently authorized promotion of the
+specific #445/#449 items (excluding `ANALYSIS_CONTINUATION_GATE`) to
+standard, active status as a deliberate scope extension beyond this issue's
+own text — see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`. This
+review's own historical statement above remains accurate for what issue
+#451 itself did (nothing promoted by #451).
 
 ## 14. Final verdict
 

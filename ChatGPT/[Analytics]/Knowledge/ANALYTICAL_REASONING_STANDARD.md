@@ -635,14 +635,17 @@ Judge remains the post-findings Gate 2 checkpoint; Memo QA / the `[LLM]`
 Judge remains the Gate 3 checkpoint. Neither gate is redefined or
 duplicated by this section.
 
-## 15. P1 activated controls (bounded pilot, issue #445)
+## 15. P1 controls (issue #445) — `POPULATION_CONTRACT` / `RECONCILIATION_CONTRACT` standard; `ANALYSIS_CONTINUATION_GATE` deferred
 
-Status: bounded pilot activation only. `owner review required` before any
-promotion decision; this section does not authorize production adoption,
-merge, deployment, or Project-sync of the pilot. These three controls extend
-the existing P0 mechanics named below; they do not fork, replace, or
-duplicate them, add a new `METHOD_ID`, add a new analytical intent, or change
-the 22-method registry in `ANALYTICAL_TECHNIQUES.md`.
+Status: `POPULATION_CONTRACT` (§15.1) and `RECONCILIATION_CONTRACT` (§15.2)
+are **promoted to standard, active status** — see "P1 status (issue #445)"
+below and `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the
+promotion decision. `ANALYSIS_CONTINUATION_GATE` (§15.3) is **not** promoted
+by this change and remains deferred, not activated, exactly as designed in
+the original bounded pilot. These three controls extend the existing P0
+mechanics named below; they do not fork, replace, or duplicate them, add a
+new `METHOD_ID`, add a new analytical intent, or change the 22-method
+registry in `ANALYTICAL_TECHNIQUES.md`.
 
 ### 15.1 `POPULATION_CONTRACT` (CONTROL/CONTRACT)
 
@@ -787,18 +790,25 @@ Decision semantics as designed (not in effect while deferred):
 Since the gate is deferred, §10 alone governs continuation/stopping today —
 there is no separate activation trigger to apply.
 
-## P1 pilot status (issue #445)
+## P1 status (issue #445)
 
-`POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` are activated for a
-bounded pilot only, per issue #445. `ANALYSIS_CONTINUATION_GATE` (§15.3) is
-**deferred, not activated** — the pilot found no incremental catch over §10's
-existing rules; it remains a documented design only. Pilot evidence, the
-10-scenario baseline-vs-candidate matrix, and per-element recommendations
-are recorded in `../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`. `owner review
-required` before any promotion decision; passing the pilot does not itself
-authorize production adoption. `HELD_OUT_TRANSFER_EVAL` (QA/EVAL, not a
-method) is defined in `QA_CHECKLIST.md` and exercised via
-`SMOKE_QA_FOR_ANALYTICS.md`.
+`POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` completed a bounded
+pilot per issue #445 and are now **promoted to standard, active status**
+(owner-authorized promotion decision, 2026-09-06 — see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`). Their activation
+triggers, field lists, and required behavior (§15.1, §15.2) are unchanged by
+promotion; promotion changes only the activation/authorization status ("in
+standard use" rather than "awaiting owner review to use"), not the
+evidence-strength characterization recorded in the original pilot evidence.
+`ANALYSIS_CONTINUATION_GATE` (§15.3) is **not** part of this promotion and
+remains **deferred, not activated** — the pilot found no incremental catch
+over §10's existing rules; it remains a documented design only, and nothing
+in this promotion changes that. Original pilot evidence, the 10-scenario
+baseline-vs-candidate matrix, and per-element recommendations are recorded
+in `../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md` (see that file's own
+promotion pointer). `HELD_OUT_TRANSFER_EVAL` (QA/EVAL, not a method) is
+defined in `QA_CHECKLIST.md` and continues as a standard regression-check
+lane (not a promotion gate), exercised via `SMOKE_QA_FOR_ANALYTICS.md`.
 
 Rollback: `POPULATION_CONTRACT` rolls back to the bare §5 population checks;
 `RECONCILIATION_CONTRACT` rolls back to the existing separate
@@ -808,17 +818,22 @@ was never activated; §10's minimum-sufficient-method/stop/escalation rules
 remain the sole live control. No method-registry migration is required for
 rollback in any case.
 
-## 16. P1-B activated controls (bounded pilot, issue #449) — recommendation evidence, stability, out-of-sample
+## 16. P1-B controls (issue #449) — recommendation evidence, stability, out-of-sample — standard, active
 
-Status: bounded pilot activation only, exactly as §15's framing. `owner
-review required` before any promotion decision; this section does not
-authorize production adoption, merge, deployment, or Project-sync. These six
-elements strengthen the transition `finding → supported explanation →
-recommendation → validated intervention`. They extend the existing P0/§15
-mechanics named below; they add no new `METHOD_ID`, no new analytical
-intent, no second Judge, no second QA framework, and do not change the
-22-method registry in `ANALYTICAL_TECHNIQUES.md`. `ANALYSIS_CONTINUATION_GATE`
-(§15.3) is untouched by this section and remains deferred, not activated.
+Status: **promoted to standard, active status** — see "P1-B status (issue
+#449)" below and `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for
+the promotion decision. Promotion changes the activation/authorization
+status of all six elements (no longer "awaiting owner review to use"); it
+does **not** change the differentiated evidence-strength characterization
+recorded in `P1_449_PILOT_EVIDENCE_2026-09-06.md` (three real incremental
+catches, one modest formalization, one naming/consistency-only, one
+partially-scenario-tested — see "P1-B status" below). These six elements
+strengthen the transition `finding → supported explanation → recommendation
+→ validated intervention`. They extend the existing P0/§15 mechanics named
+below; they add no new `METHOD_ID`, no new analytical intent, no second
+Judge, no second QA framework, and do not change the 22-method registry in
+`ANALYTICAL_TECHNIQUES.md`. `ANALYSIS_CONTINUATION_GATE` (§15.3) is
+untouched by this section and remains deferred, not activated.
 
 ### 16.1 Strengthened material Explanation Challenge (extends §6)
 
@@ -1031,10 +1046,15 @@ where a material evidence gap exists (§16.2–§16.5, `FINAL_EVIDENCE_SUFFICIEN
 or `CONTRADICTING_EVIDENCE` is non-empty). When no material gap exists, the
 field is omitted rather than filled with a placeholder.
 
-## P1-B pilot status (issue #449)
+## P1-B status (issue #449)
 
-All six §16 elements are activated for a bounded pilot only, per issue #449.
-Evidence strength is **not uniform across the six** — each element carries
+All six §16 elements completed a bounded pilot per issue #449 and are now
+**promoted to standard, active status** (owner-authorized promotion
+decision, 2026-09-06 — see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`).
+Promotion is an activation/authorization decision only; it does not upgrade
+or flatten the differentiated evidence-strength verdicts below, which are
+carried forward unchanged from the pilot. Evidence strength is **not
+uniform across the six** — each element carries
 its own, differentiated verdict, and none is asserted as a "concrete
 incremental catch" beyond what the paper-traced scenarios actually support:
 
@@ -1056,17 +1076,20 @@ incremental catch" beyond what the paper-traced scenarios actually support:
   failure" case, independent of the recommendation/stability/forecast
   elements), so its incremental-catch claim is weaker than §16.2–§16.4's.
 
-All six are recommended `ADOPT_FOR_OWNER_REVIEW` in
+All six were recommended `ADOPT_FOR_OWNER_REVIEW` in
 `../Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md` (full 5-scenario
 baseline-vs-candidate matrix, known/held-out separation, per-element
-recommendation) — but `ADOPT_FOR_OWNER_REVIEW` here means "worth the
-owner's review," not "uniformly proven": none was found harmful or
-duplicative to the point of net-negative value, but three of the six
-(§16.5, §16.6, and to a lesser extent §16.1) are closer to formalization/
-naming than to a demonstrated new catch. `owner review required` before any
-promotion decision; passing this pilot does not itself authorize production
-adoption. `ANALYSIS_CONTINUATION_GATE` (§15.3) is not revisited or
-reactivated by this pilot and remains deferred, not activated.
+recommendation) and the owner has since reviewed and authorized promotion
+(2026-09-06) — but promotion means "in standard use," not "uniformly
+proven": none was found harmful or duplicative to the point of net-negative
+value, but three of the six (§16.5, §16.6, and to a lesser extent §16.1)
+remain closer to formalization/naming than to a demonstrated new catch, and
+that honest distinction stays in force after promotion. Normal/promoted use
+of these controls does not mean every output they touch is `SUPPORTED`;
+`recommendation_status`, `claim_support`, and related fields still follow
+their own evidence rules per instance. `ANALYSIS_CONTINUATION_GATE` (§15.3)
+is not revisited or reactivated by this promotion and remains deferred, not
+activated.
 
 Rollback: remove the six §16 wrappers; fall back to existing
 `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`,

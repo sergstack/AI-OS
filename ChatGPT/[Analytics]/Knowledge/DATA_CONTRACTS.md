@@ -157,15 +157,17 @@ preserves it in coverage/denominator fields rather than silently dropping
 affected rows. Use `VALUE_STATE` in `Null policy`, `zero_denominator_rule`,
 and `null_semantics` on `METRIC_DEFINITION_CARD_TEMPLATE.md`.
 
-`UNMATCHED` rows feed the activated `RECONCILIATION_CONTRACT` bounded pilot
-control (`ANALYTICAL_REASONING_STANDARD.md` §15.2, CONTROL/CONTRACT, issue
-#445): a material `UNMATCHED` population must be carried into
-`matched_population` / `only_in_left` / `only_in_right` rather than
-collapsed into an aggregate reconciliation pass. This does not add a
+`UNMATCHED` rows feed the `RECONCILIATION_CONTRACT` control, promoted to
+standard, active status (`ANALYTICAL_REASONING_STANDARD.md` §15.2,
+CONTROL/CONTRACT, issue #445): a material `UNMATCHED` population must be
+carried into `matched_population` / `only_in_left` / `only_in_right` rather
+than collapsed into an aggregate reconciliation pass. This does not add a
 reconciliation method or a new `METHOD_ID`; it makes explicit which existing
 methods and `VALUE_STATE` evidence back which integrity dimension.
-`owner review required` before promotion beyond the bounded pilot; see
-`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`.
+Promoted 2026-09-06 (owner-authorized); see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the promotion
+decision and `../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md` for the original
+pilot evidence.
 
 ## Canonical METRIC_DEFINITION_CARD
 

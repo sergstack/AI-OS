@@ -214,11 +214,14 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
 
-## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, bounded pilot)
+## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, standard, active)
 
-Bounded pilot only. `owner review required` before any promotion decision.
-Reads `ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no
-second Judge, and no second QA framework.
+Promoted to standard, active status 2026-09-06 (owner-authorized; see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`). Reads
+`ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no second
+Judge, and no second QA framework. Promotion is an activation-status change
+only; the differentiated evidence-strength verdicts per element
+(`P1_449_PILOT_EVIDENCE_2026-09-06.md`) are unchanged.
 
 - [ ] `material_explanatory_statement_has_discriminating_test_status?` — a
   material explanatory/intervention-oriented conclusion (§16.1) records
@@ -251,8 +254,9 @@ second Judge, and no second QA framework.
   §16 elements is instantiated without its stated material activation
   trigger; the routine/quick §9 compact path is unaffected.
 
-Pilot results for issue #449 are recorded in
-`P1_449_PILOT_EVIDENCE_2026-09-06.md`.
+Original pilot results for issue #449 are recorded in
+`P1_449_PILOT_EVIDENCE_2026-09-06.md`; the promotion decision is recorded in
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
 
 ## Held-out transfer eval (P1 QA/EVAL, issue #445)
 
@@ -289,6 +293,9 @@ separately, not as one blended pass rate. A known-suite win combined with
 held-out or old-P0-regression deterioration is a promotion **failure**, not a
 partial pass; no promotion follows from development-suite improvement alone.
 
-`owner review required` before any promotion decision based on this eval
-lane. Pilot results for issue #445 are recorded in
-`P1_PILOT_EVIDENCE_2026-09-06.md`.
+`POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` (§15.1/§15.2) were
+promoted to standard, active status 2026-09-06 (owner-authorized; see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`); `HELD_OUT_TRANSFER_EVAL`
+itself continues as a standard regression-check lane for these controls
+going forward, not a promotion gate. Original pilot results for issue #445
+are recorded in `P1_PILOT_EVIDENCE_2026-09-06.md`.

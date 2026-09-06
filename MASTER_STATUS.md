@@ -42,6 +42,26 @@ Canonical list. Other documents (including `CURRENT_STATUS.md`) must reference t
 
 ## Evidence Pointers
 
+- `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` — `[AI OS]`-owned
+  governance-promotion decision for `[Analytics]` P1 (issue #445:
+  `POPULATION_CONTRACT`, `RECONCILIATION_CONTRACT`) and P1-B (issue #449:
+  strengthened Explanation Challenge, `RECOMMENDATION_EVIDENCE`,
+  stability/persistence check, `FORECAST_METHOD_COMPARISON`, `effect_type`,
+  `what_would_change_the_view`), implemented by `[Codex]`. Promoted from
+  "bounded pilot, owner review required" to "standard, active" status,
+  owner-authorized 2026-09-06 — an explicit, deliberate scope extension
+  beyond issue #451's literal (calibration-only) text, delivered on the
+  #451 branch/PR at the owner's direction. `ANALYSIS_CONTINUATION_GATE`
+  (§15.3) is **not** promoted, remains deferred, verified byte-for-byte
+  unchanged; `ANALYTICAL_TECHNIQUES.md` (22-method registry) untouched.
+  Repository-side promotion only: source text, generated bundles, and
+  package/provenance consistency updated and validated
+  (`Knowledge_Bundles/*.md` and provenance regenerated and verified;
+  635/635 tests pass) — repository package ready. `external ChatGPT
+  Project sync: NOT RUN`; `external Analytics behavioral acceptance: NOT
+  RUN` — no behavioral test of the live `[Analytics]` Project or any
+  surrogate for it was performed; that check is owner-reserved on the real
+  Project after upload. See `CURRENT_STATUS.md` — `analytics_p1_promotion_status`.
 - `docs/evidence/ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md` —
   `[Analytics]` P0 adversarial audit follow-up (PR #440). Finding A (§5
   missing consequence for unexplained population/denominator) has a bounded

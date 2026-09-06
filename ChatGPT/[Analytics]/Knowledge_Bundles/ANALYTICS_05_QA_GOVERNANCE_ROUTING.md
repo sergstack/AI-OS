@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:6acbaaa7fb9cf6af6d02694e178763f51fb9aacb7d0c6c926d187560a6114967
+- source_fingerprint: sha256:083e29023f9962b3f1cfef47c89037de91c67e968000d998b5642268fc3f60a9
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -220,10 +220,13 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Inputs listed.
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
-## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, bounded pilot)
-Bounded pilot only. `owner review required` before any promotion decision.
-Reads `ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no
-second Judge, and no second QA framework.
+## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, standard, active)
+Promoted to standard, active status 2026-09-06 (owner-authorized; see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`). Reads
+`ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no second
+Judge, and no second QA framework. Promotion is an activation-status change
+only; the differentiated evidence-strength verdicts per element
+(`P1_449_PILOT_EVIDENCE_2026-09-06.md`) are unchanged.
 - [ ] `material_explanatory_statement_has_discriminating_test_status?` — a
   material explanatory/intervention-oriented conclusion (§16.1) records
   `DISCRIMINATING_TEST_STATUS: executed / blocked / unavailable`; contribution
@@ -254,8 +257,9 @@ second Judge, and no second QA framework.
 - [ ] `p1_b_controls_collapse_on_routine_no_trigger_cases?` — none of the six
   §16 elements is instantiated without its stated material activation
   trigger; the routine/quick §9 compact path is unaffected.
-Pilot results for issue #449 are recorded in
-`P1_449_PILOT_EVIDENCE_2026-09-06.md`.
+Original pilot results for issue #449 are recorded in
+`P1_449_PILOT_EVIDENCE_2026-09-06.md`; the promotion decision is recorded in
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
 ## Held-out transfer eval (P1 QA/EVAL, issue #445)
 Classification: QA/EVAL only. `HELD_OUT_TRANSFER_EVAL` is not an analytical
 method, does not appear in `ANALYTICAL_TECHNIQUES.md`, has no `METHOD_ID`,
@@ -285,9 +289,12 @@ Required comparison and promotion rule: report `known_regression_cases` /
 separately, not as one blended pass rate. A known-suite win combined with
 held-out or old-P0-regression deterioration is a promotion **failure**, not a
 partial pass; no promotion follows from development-suite improvement alone.
-`owner review required` before any promotion decision based on this eval
-lane. Pilot results for issue #445 are recorded in
-`P1_PILOT_EVIDENCE_2026-09-06.md`.
+`POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` (§15.1/§15.2) were
+promoted to standard, active status 2026-09-06 (owner-authorized; see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`); `HELD_OUT_TRANSFER_EVAL`
+itself continues as a standard regression-check lane for these controls
+going forward, not a promotion gate. Original pilot results for issue #445
+are recorded in `P1_PILOT_EVIDENCE_2026-09-06.md`.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md`
 
@@ -436,7 +443,9 @@ A result is accepted when:
     lineage sets `allowed_in_executive = no` and the claim does not appear
     in the executive layer.
 16. For `analytical_depth = material / decision_critical` (issue #449,
-    bounded pilot, `ANALYTICAL_REASONING_STANDARD.md` §16): a material
+    standard/active per `ANALYTICAL_REASONING_STANDARD.md` §16, promoted
+    2026-09-06, see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`): a
+    material
     explanatory/intervention-oriented conclusion has a recorded
     discriminating-test status (§16.1); a material management recommendation
     has a `RECOMMENDATION_EVIDENCE` record and `diagnostic evidence !=

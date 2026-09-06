@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:874774d63d4eeb0311b67d7998790ea204f3909ac0f7102f1b77800266d643d4
+- source_fingerprint: sha256:12ade3c5b5b0cd6bd996e9692a81f9a5e26e682157b9211175ab9cfa5bc7a8fb
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -60,7 +60,7 @@ This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDA
 6. Management implication / decision or action if any.
 7. Limitations.
 8. Appendix / evidence.
-### Management implication section (P1-B, issue #449, bounded pilot)
+### Management implication section (P1-B, issue #449, standard, active)
 For `analytical_depth = material / decision_critical`, the management
 implication section (item 6) reads the `ANALYTICAL_REASONING_STANDARD.md`
 §16 controls rather than redefining them:
@@ -122,7 +122,8 @@ Every important sentence must be backed by:
   are not presented as flagship conclusions.
 - [ ] A management recommendation is not presented as `supported` when
   `RECOMMENDATION_EVIDENCE.recommendation_status` is `pilot_candidate` or
-  `hypothesis` (§16.2, bounded pilot, issue #449).
+  `hypothesis` (§16.2, standard/active, issue #449; promoted 2026-09-06, see
+  `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`).
 - [ ] `what_would_change_the_view` is present when a material evidence gap
   exists for material/decision-critical output, and absent otherwise (§16.6).
 
@@ -349,7 +350,7 @@ Define what a good analytical memo means for `[Analytics]`.
 | Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
 | Risk | Risk has `risk_basis` | Risk without basis |
 | Management implication | Decision/action is stated only if supported; otherwise monitoring, validation, no action, or uncertainty remains explicit | Decision manufactured from an observation |
-| Recommendation strength | Wording matches `RECOMMENDATION_EVIDENCE.recommendation_status` (supported / pilot_candidate / hypothesis); untested interventions read as pilot candidates, not settled decisions (§16.2, bounded pilot, issue #449) | An untested intervention (no `test_or_backtest_performed`) worded as a confirmed management decision |
+| Recommendation strength | Wording matches `RECOMMENDATION_EVIDENCE.recommendation_status` (supported / pilot_candidate / hypothesis); untested interventions read as pilot candidates, not settled decisions (§16.2, standard/active, issue #449, promoted 2026-09-06) | An untested intervention (no `test_or_backtest_performed`) worded as a confirmed management decision |
 | Thinking boundary | Analytics provides evidence and implication; strategic trade-offs remain with `[Thinking]` | Analytics chooses a strategic option without supported criteria |
 | Compression | Executive layer is materially shorter than supporting evidence | Synthesis becomes a second analytical report |
 | Confidence | Confidence and limitations visible | Low confidence as fact |
@@ -364,7 +365,7 @@ A memo is strong when:
 - no headline claim appears without complete Claim/Evidence Registry lineage;
 - limitations are visible before appendix;
 - management implication does not exceed verified evidence;
-- a recommendation's stated strength matches `RECOMMENDATION_EVIDENCE.recommendation_status` and `what_would_change_the_view` is present when a material evidence gap exists (§16.2, §16.6, bounded pilot, issue #449);
+- a recommendation's stated strength matches `RECOMMENDATION_EVIDENCE.recommendation_status` and `what_would_change_the_view` is present when a material evidence gap exists (§16.2, §16.6, standard/active, issue #449, promoted 2026-09-06);
 - executive synthesis is materially shorter than the evidence layer;
 - appendix / evidence layer supports deep claims.
 
