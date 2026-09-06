@@ -1,5 +1,47 @@
 # Changelog
 
+## 2026-09-06 — analytics-eda-claim-calibration (issue #451)
+
+Regression/calibration review, not a new controls framework. `owner review
+required` before any promotion decision; this entry does not itself
+authorize production adoption, merge, deployment, or Project sync.
+
+Added:
+
+- `GOVERNANCE_AND_ANTI_PATTERNS.md`: "EDA-to-claim calibration additions
+  (issue #451)" — 7 new rows in the existing P0 failure-mode table naming
+  narrow, previously-ambiguous instances of existing controls (observed
+  rating != quality/preference; model residual != market
+  inefficiency/fair-value; definition != manufactured evidence; selected
+  reviews/volume != guarantee/expertise; listed price != current
+  price/availability; reviewer confound requires common-support check
+  before normalization; in-sample association != measured predictive
+  performance). No new field, taxonomy, method, or gate.
+- `SMOKE_QA_FOR_ANALYTICS.md`: new case 15 (9 scenarios) covering the 10-row
+  acceptance-criteria table from issue #451 across three fixture families
+  (WineMag wording, a CFO/audit transfer variant reusing case 14 scenario
+  C's pattern, and a routine positive-control/routing fixture). Paper-trace
+  scenarios only; no live model run.
+- `package_manifest.json`: repaired a genuine completeness gap —
+  `Templates/METRIC_DEFINITION_CARD_TEMPLATE.md` (present in `Knowledge/MANIFEST.md`
+  and the canonical `knowledge_bundle_manifest.json` bundle sources since
+  issue #439, but missing from this project's own file list) plus three
+  more recently-added files that had the same gap
+  (`AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md`,
+  `P1_PILOT_EVIDENCE_2026-09-06.md`, `P1_449_PILOT_EVIDENCE_2026-09-06.md`)
+  and this review's own new evidence file.
+- Evidence packet: `EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` — R1–R6
+  mapping table (observed failure pattern -> existing owning rule ->
+  reproduction/trace evidence -> smallest justified correction -> required
+  regression check), 10-scenario paper-trace result, and the manifest
+  finding.
+
+Not changed: `ANALYTICAL_TECHNIQUES.md` (byte-identical to `origin/main`),
+`ANALYSIS_CONTINUATION_GATE` (§15.3, untouched, remains deferred), the
+22-method registry, `confidence: high/medium/low`, any Analytics enum, and
+`PROJECT_INSTRUCTIONS.md` (near its length ceiling; all additions placed in
+`Knowledge/`).
+
 ## 2026-09-06 — analytics-p1-recommendation-evidence (issue #449)
 
 Bounded pilot only. `owner review required` before any promotion decision;

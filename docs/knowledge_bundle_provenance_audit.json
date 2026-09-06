@@ -232,8 +232,8 @@
         "ChatGPT/[Analytics]/Knowledge/MAIN_FILES_STANDARD.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_01_CORE_WORKFLOW_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 29094,
-      "bundle_bytes": 30150,
+      "source_bytes": 29396,
+      "bundle_bytes": 30452,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -314,8 +314,8 @@
         "ChatGPT/[Analytics]/Knowledge/SMOKE_QA_FOR_ANALYTICS.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_05_QA_GOVERNANCE_ROUTING_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 64820,
-      "bundle_bytes": 66134,
+      "source_bytes": 75281,
+      "bundle_bytes": 76545,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

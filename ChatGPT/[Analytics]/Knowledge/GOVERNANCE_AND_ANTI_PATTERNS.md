@@ -106,6 +106,26 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Headline claim published without method/evidence lineage | Require complete Claim/Evidence Registry lineage; set `allowed_in_executive = no` and route to Analytical Judge `revise`/`blocked` when missing. |
 | Data/calculation correctness treated as license for a stronger claim or narrative | Keep `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, `GATE 3 (narrative)` distinct; `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`. |
 
+## EDA-to-claim calibration additions (issue #451)
+
+These rows name specific instances of the failure modes above (claim ladder,
+`causal_status`, `generalization_scope`/`generalization_evidence`, Metric
+Definition Card `forbidden_interpretations`) that a 2026-09-06 review found
+worded ambiguously enough to warrant an explicit example. No new field,
+taxonomy, method, or gate is added; see
+`EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` for the full mapping and
+paper-trace evidence.
+
+| Failure mode | Required control |
+|---|---|
+| An observed rating/score (e.g. a critic's `points`) presented as objective quality or personal preference | State the metric is the observed rating (`DATA FACT` / `CALCULATION RESULT`); a quality or preference claim is an `INTERPRETATION` requiring additional evidence, not an automatic reading of the score. |
+| A model-implied expected value or residual presented as market inefficiency, realizable savings, or fair value | Treat the expected value/residual as a model-conditional `CALCULATION RESULT` (`causal_status: association_only` unless demonstrated otherwise); keep units and any log-price transform explicit; require additional market/comparability evidence before a value-gap or fair-price claim. |
+| A definition/owner decision for an undefined or composite metric mistaken for the missing empirical evidence a claim needs | A definition may fix the intended meaning of a metric (`METRIC_DEFINITION_CARD`); it cannot manufacture evidence — `claim_support` and `status: provisional/approved` remain independent fields. |
+| Selected high-scoring reviews, or reviewer/record volume, presented as a purchase or producer-wide reliability guarantee | Selected/filtered records describe those records; require `generalization_scope` / `generalization_evidence` before extending to future purchases or population-wide reliability. Volume states observed coverage, not demonstrated expertise. |
+| A dataset-listed price (or other point-in-time attribute) presented as current price, availability, or purchase suitability | State the attribute's observation basis (dataset vintage/snapshot date) explicitly; do not invent an observation date or silently substitute a current-state claim. |
+| Reviewer/rater averages treated as a bias-corrected difficulty scale ("strict/generous critics") without checking confounding | Inspect overlap/common support and separability from region/style/product mix before a reviewer-normalized comparison; when the available design cannot separate them, retain the limitation rather than asserting a corrected objective scale. |
+| In-sample association (e.g. text/feature separation by outcome) presented as measured predictive performance | Require an explicit target, baseline, held-out split, metric, and leakage/duplicate-entity check before a predictive-performance claim; association alone supports `causal_status: association_only`, not a performance claim. A retrospective/explanatory use (e.g. reconstructing an already-known label) is distinct from an ex-ante predictive use and must be labeled as such. |
+
 ## Metric / artifact explosion
 
 Anti-pattern:

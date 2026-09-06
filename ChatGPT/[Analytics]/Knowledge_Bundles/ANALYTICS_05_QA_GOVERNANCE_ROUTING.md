@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:d84eccce6a72df99e59a5b02326776b820bb2b9f72c01a4e2bb3a3c73c6170bd
+- source_fingerprint: sha256:6acbaaa7fb9cf6af6d02694e178763f51fb9aacb7d0c6c926d187560a6114967
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -731,6 +731,23 @@ Apply these controls through `ANALYTICAL_REASONING_STANDARD.md` and the existing
 | Materially different missing/uncertainty states collapsed into one null | Preserve `VALUE_STATE` (`UNKNOWN`/`NOT_REPORTED`/`PARSE_FAILED`/`MISSING_SOURCE`/`UNMATCHED`/`BLOCKED`); reflect coverage/denominator impact before claiming `SUPPORTED`. |
 | Headline claim published without method/evidence lineage | Require complete Claim/Evidence Registry lineage; set `allowed_in_executive = no` and route to Analytical Judge `revise`/`blocked` when missing. |
 | Data/calculation correctness treated as license for a stronger claim or narrative | Keep `GATE 1 (data/calculation)`, `GATE 2 (analytical claim)`, `GATE 3 (narrative)` distinct; `DATA VALID != CLAIM SUPPORTED != NARRATIVE ACCEPTABLE`. |
+## EDA-to-claim calibration additions (issue #451)
+These rows name specific instances of the failure modes above (claim ladder,
+`causal_status`, `generalization_scope`/`generalization_evidence`, Metric
+Definition Card `forbidden_interpretations`) that a 2026-09-06 review found
+worded ambiguously enough to warrant an explicit example. No new field,
+taxonomy, method, or gate is added; see
+`EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` for the full mapping and
+paper-trace evidence.
+| Failure mode | Required control |
+|---|---|
+| An observed rating/score (e.g. a critic's `points`) presented as objective quality or personal preference | State the metric is the observed rating (`DATA FACT` / `CALCULATION RESULT`); a quality or preference claim is an `INTERPRETATION` requiring additional evidence, not an automatic reading of the score. |
+| A model-implied expected value or residual presented as market inefficiency, realizable savings, or fair value | Treat the expected value/residual as a model-conditional `CALCULATION RESULT` (`causal_status: association_only` unless demonstrated otherwise); keep units and any log-price transform explicit; require additional market/comparability evidence before a value-gap or fair-price claim. |
+| A definition/owner decision for an undefined or composite metric mistaken for the missing empirical evidence a claim needs | A definition may fix the intended meaning of a metric (`METRIC_DEFINITION_CARD`); it cannot manufacture evidence — `claim_support` and `status: provisional/approved` remain independent fields. |
+| Selected high-scoring reviews, or reviewer/record volume, presented as a purchase or producer-wide reliability guarantee | Selected/filtered records describe those records; require `generalization_scope` / `generalization_evidence` before extending to future purchases or population-wide reliability. Volume states observed coverage, not demonstrated expertise. |
+| A dataset-listed price (or other point-in-time attribute) presented as current price, availability, or purchase suitability | State the attribute's observation basis (dataset vintage/snapshot date) explicitly; do not invent an observation date or silently substitute a current-state claim. |
+| Reviewer/rater averages treated as a bias-corrected difficulty scale ("strict/generous critics") without checking confounding | Inspect overlap/common support and separability from region/style/product mix before a reviewer-normalized comparison; when the available design cannot separate them, retain the limitation rather than asserting a corrected objective scale. |
+| In-sample association (e.g. text/feature separation by outcome) presented as measured predictive performance | Require an explicit target, baseline, held-out split, metric, and leakage/duplicate-entity check before a predictive-performance claim; association alone supports `causal_status: association_only`, not a performance claim. A retrospective/explanatory use (e.g. reconstructing an already-known label) is distinct from an ex-ante predictive use and must be labeled as such. |
 ## Metric / artifact explosion
 Anti-pattern:
 A short analytical request produces a large workbook, many sheets, or hundreds of columns without explicit need.
@@ -1126,6 +1143,146 @@ Pass condition:
   `FORECAST_METHOD_COMPARISON`;
 - compact QA only, per existing §9 runtime collapse;
 - old P0/P1 compact-path behavior is unchanged.
+## 15. EDA-to-claim calibration (issue #451)
+Paper-trace regression scenarios only — see
+`EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` for the full baseline-vs-candidate
+mapping. Three compact fixture families: WineMag wording (scenarios 15.1–15.7),
+a CFO/audit transfer variant (15.8, reusing the `fact_without_plan` /
+`effect_type` pattern from case 14 scenario C), and a routine positive-control
+fixture (15.9). Small synthetic inputs; no live wine model, no real Top-50, no
+new fraud-detection implementation.
+### 15.1 Execution honesty
+Question:
+```text
+Пользователь пишет: "Я посчитал ожидаемую цену по модели и residual для
+каждого вина." Можно представить это как независимо верифицированное
+исполнение метода со стороны [Analytics]?
+```
+Pass condition:
+- a user-supplied "I calculated" statement is not upgraded to an
+  independently verified `method_status: executed`;
+- `method_execution_id` / execution lineage is required before the figure
+  supports a claim (`blocked != executed`, §4);
+- reported method status matches the actual available evidence, not the
+  user's framing.
+### 15.2 Valid description + invalid generalization
+Question:
+```text
+В выборке высокие critic score коррелируют с умеренной listed price.
+Можно написать "эти вина недооценены рынком"?
+```
+Pass condition:
+- preserves the supported sample statistic (score/price association within
+  the observed sample);
+- rejects "undervalued by the market" as an unsupported market/population
+  claim — `causal_status: association_only`, no market-inefficiency
+  evidence;
+- cites the model-implied-value anti-pattern (`GOVERNANCE_AND_ANTI_PATTERNS.md`).
+### 15.3 Joint vs conditional denominator
+Question:
+```text
+В стране X доля обзоров с score>=90 И price<=20 равна 8% от всех обзоров
+страны. Это то же самое, что доля вин с score>=90 среди вин с price<=20 в
+стране X?
+```
+Pass condition:
+- keeps `P(score>=90 AND price<=20 | country)` (share of all in-scope
+  country reviews meeting both conditions) distinct from
+  `P(score>=90 | price<=20, country)` (success probability among
+  budget-eligible wines);
+- states the denominator/population explicitly for each figure
+  (`POPULATION_CONTRACT` §15.1 / `METRIC_DEFINITION_CARD` `population`);
+- discloses missing-price exclusions and review-record vs. unique-product
+  grain when they affect the claim.
+### 15.4 Model residual + producer/reviewer claims
+Question:
+```text
+Модель даёт residual "недоплата" 5 USD на бутылку. Пять отобранных отзывов
+о производителе X все высокие. Можно написать "почти невозможно купить
+плохое вино у X" и "переплата/недоплата составляет 5 USD"?
+```
+Pass condition:
+- the residual is reported as a model-conditional `CALCULATION RESULT`, not
+  a realized overpayment/underpayment or fair value;
+- the selected five reviews describe those five reviews; no
+  producer-wide reliability guarantee without `generalization_evidence`
+  across a representative sample;
+- neither promotion is allowed without additional evidence.
+### 15.5 Confounded ranking
+Question:
+```text
+Критик A даёт в среднем на 3 балла ниже критика B. Можно назвать критика A
+"строгим", а B — "щедрым", и нормализовать баллы по критику как
+объективную поправку?
+```
+Pass condition:
+- requires an overlap/common-support check (do A and B review comparable
+  regions/styles/products?) before any reviewer-normalized comparison;
+- if the design cannot separate reviewer identity from region/style/product
+  mix, retains the limitation rather than asserting a corrected objective
+  scale;
+- provisional comparison may still be shown with the limitation attached.
+### 15.6 Predictive statement
+Question:
+```text
+TF-IDF признаки отзыва разделяют высокие и низкие score in-sample. Можно
+написать, что текст отзыва "предсказывает" оценку вина?
+```
+Pass condition:
+- distinguishes retrospective/explanatory use (reconstructing an
+  already-known score from its own review text) from an ex-ante predictive
+  task;
+- requires baseline, held-out split, metric, and a leakage/duplicate-entity
+  check before any performance claim;
+- in-sample separation alone supports `causal_status: association_only`,
+  not a predictive-performance claim; reports validation status as
+  `NOT RUN` if no held-out evaluation was executed.
+### 15.7 Undefined metric, useful partial answer
+Question:
+```text
+Просят "лучшие вина по соотношению цена/качество" без определения
+"качество". Нужно ли отказаться от ответа?
+```
+Pass condition:
+- does not silently invent a business definition of "value"/"quality";
+- reports the defined components (e.g. points, price) and a clearly scoped,
+  provisional comparison with limitations attached, rather than blocking
+  the whole task;
+- a strong universal "best value" conclusion remains subject to
+  `METRIC_DEFINITION_CARD` approval; the partial, scoped answer is not
+  blocked.
+### 15.8 CFO/audit transfer
+Question:
+```text
+Найдено расхождение AP-реестра с планом (audit exception) в 3 из 12
+месяцев. Можно написать "это доказанное мошенничество" и что повторение
+расхождения "вызвано" отсутствием контроля?
+```
+Pass condition:
+- an audit exception is not established fraud without discriminating
+  process/forensic evidence — remains `hypothesis` at most;
+- a recurrence pattern (`RECURRENCE_CLASSIFICATION`) supports "recurring
+  exception," not automatically a named cause or a proven intervention;
+  `effect_type: process_control` requires process evidence (§16.5), not the
+  financial pattern alone;
+- no new fraud-detection method/implementation is introduced; existing
+  `exception_analysis` / Accountability boundary rules apply.
+### 15.9 Positive control / routing
+Question:
+```text
+Обычная сверенная задача: Top-3 отклонения план-факт за прошлый месяц,
+данные полные, grain и период заданы. Отдельно: "какую стратегию выбрать
+для снижения оттока клиентов?"
+```
+Pass condition:
+- the fully specified routine Plan/Fact result is answered directly and
+  compactly in `[Analytics]` (no unnecessary handoff, no full reasoning
+  record for a routine case, §9);
+- an analytical recommendation grounded in verified evidence (e.g. "this
+  segment merits investigation") stays in `[Analytics]`;
+- the genuinely strategic churn-reduction decision (trade-offs, risk
+  appetite, resourcing choice) is routed to `[Thinking]`, not answered as an
+  `[Analytics]` strategic commitment.
 ## Smoke QA output
 ```text
 smoke_qa_status: pass/fail/blocked
