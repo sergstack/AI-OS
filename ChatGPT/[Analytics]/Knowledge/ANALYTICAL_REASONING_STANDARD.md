@@ -735,15 +735,26 @@ reconciliation-based claim (e.g. "dataset reconciles", "fully matched") would
 be published; routine/quick cases keep the existing single-line
 reconciliation QA result (§9 runtime collapse still applies).
 
-### 15.3 `ANALYSIS_CONTINUATION_GATE` (ROUTING / WORKFLOW CONTROL)
+### 15.3 `ANALYSIS_CONTINUATION_GATE` (ROUTING / WORKFLOW CONTROL) — DEFERRED, NOT ACTIVATED
 
-Activated, explicit restatement of §10's stop/escalation rules as a
-recorded decision for material/decision-critical cases. It is not an
-autonomous loop: it cannot silently add methods, cannot silently retry,
-cannot reason around a missing deterministic prerequisite, must preserve the
-Analytical Judge (§8) and §10 as authoritative, and must collapse to the
-existing compact path for routine/quick cases without a material trigger
-(§9 runtime collapse still applies).
+**Pilot outcome (issue #445): `DEFER`.** The bounded pilot (see
+`P1_PILOT_EVIDENCE_2026-09-06.md`) did not find an incremental catch versus
+§10's existing stop/escalation rules on any of the 10 traced scenarios — the
+gate is not harmful, but it is also unproven, so it is **not activated** as a
+live control. §10 alone remains authoritative for continuation/stopping
+decisions. The field list and decision semantics below are retained as a
+documented P1 extension-point design, not as an active instruction; do not
+instantiate this gate in a live analysis. Re-evaluate only if new pilot
+evidence demonstrates a concrete decision the existing §10 rules would have
+gotten wrong.
+
+The design, if reconsidered: an explicit restatement of §10's stop/escalation
+rules as a recorded decision for material/decision-critical cases. It would
+not be an autonomous loop: it cannot silently add methods, cannot silently
+retry, cannot reason around a missing deterministic prerequisite, must
+preserve the Analytical Judge (§8) and §10 as authoritative, and must
+collapse to the existing compact path for routine/quick cases without a
+material trigger (§9 runtime collapse still applies).
 
 ```text
 ANALYSIS_CONTINUATION_GATE
@@ -759,42 +770,43 @@ decision: CONTINUE / STOP / BLOCK / HANDOFF
 reason:
 ```
 
-Decision semantics:
+Decision semantics as designed (not in effect while deferred):
 
-- `CONTINUE` only when `next_method_candidate` is an already-registered
-  method (§3 registry) that can materially change finding, claim strength,
-  confidence, risk, recommendation, limitation, or evidence assurance
-  (`what_can_it_change` non-empty and material).
-- `STOP` when no eligible next method can materially change the
+- `CONTINUE` would apply only when `next_method_candidate` is an
+  already-registered method (§3 registry) that can materially change
+  finding, claim strength, confidence, risk, recommendation, limitation, or
+  evidence assurance (`what_can_it_change` non-empty and material).
+- `STOP` would apply when no eligible next method can materially change the
   decision-relevant result (restates §10's stop rules).
-- `BLOCK` when `required_evidence_available = no` for the discriminating
-  check (restates `blocked != executed`, §4).
-- `HANDOFF` only when the remaining unresolved question leaves Analytics
-  ownership (restates §10's escalation/decision-boundary rules); it does not
-  silently transfer ownership.
+- `BLOCK` would apply when `required_evidence_available = no` for the
+  discriminating check (restates `blocked != executed`, §4).
+- `HANDOFF` would apply only when the remaining unresolved question leaves
+  Analytics ownership (restates §10's escalation/decision-boundary rules);
+  it would not silently transfer ownership.
 
-Activation trigger: instantiate for material/decision-critical cases at a
-point where continuation is genuinely in question (after a dominant finding,
-before a final claim, or when multiple methods are technically eligible).
-Do not instantiate for routine/quick cases with no material trigger.
+Since the gate is deferred, §10 alone governs continuation/stopping today —
+there is no separate activation trigger to apply.
 
 ## P1 pilot status (issue #445)
 
-`POPULATION_CONTRACT`, `RECONCILIATION_CONTRACT`, and
-`ANALYSIS_CONTINUATION_GATE` are activated for a bounded pilot only, per
-issue #445. Pilot evidence, the 10-scenario baseline-vs-candidate matrix, and
-per-element recommendations are recorded in
-`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`. `owner review required`
-before any promotion decision; passing the pilot does not itself authorize
-production adoption. `HELD_OUT_TRANSFER_EVAL` (QA/EVAL, not a method) is
-defined in `QA_CHECKLIST.md` and exercised via `SMOKE_QA_FOR_ANALYTICS.md`.
+`POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` are activated for a
+bounded pilot only, per issue #445. `ANALYSIS_CONTINUATION_GATE` (§15.3) is
+**deferred, not activated** — the pilot found no incremental catch over §10's
+existing rules; it remains a documented design only. Pilot evidence, the
+10-scenario baseline-vs-candidate matrix, and per-element recommendations
+are recorded in `../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`. `owner review
+required` before any promotion decision; passing the pilot does not itself
+authorize production adoption. `HELD_OUT_TRANSFER_EVAL` (QA/EVAL, not a
+method) is defined in `QA_CHECKLIST.md` and exercised via
+`SMOKE_QA_FOR_ANALYTICS.md`.
 
 Rollback: `POPULATION_CONTRACT` rolls back to the bare §5 population checks;
 `RECONCILIATION_CONTRACT` rolls back to the existing separate
 reconciliation/unmatched/factor-reconciliation/residual/coverage controls
-without the wrapper; `ANALYSIS_CONTINUATION_GATE` rolls back to §10's
-minimum-sufficient-method/stop/escalation rules alone. No method-registry
-migration is required for rollback in any case.
+without the wrapper. `ANALYSIS_CONTINUATION_GATE` requires no rollback — it
+was never activated; §10's minimum-sufficient-method/stop/escalation rules
+remain the sole live control. No method-registry migration is required for
+rollback in any case.
 
 P2 remains deferred. Do not implement expanded taxonomies, reusable pattern
 promotion, autonomous learning, automatic promotion or downgrade, or agentic

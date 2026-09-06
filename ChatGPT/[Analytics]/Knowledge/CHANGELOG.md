@@ -20,11 +20,12 @@ Added:
   existing `reconciliation` / `unmatched_elements_analysis` /
   `factor_reconciliation` / `unexplained_residual` methods; no new
   `METHOD_ID`.
-- Activated `ANALYSIS_CONTINUATION_GATE` (ROUTING/WORKFLOW CONTROL) —
-  CONTINUE/STOP/BLOCK/HANDOFF decision record
-  (`ANALYTICAL_REASONING_STANDARD.md` §15.3). Restates §10's stop/escalation
-  rules explicitly; not an autonomous loop; preserves the Analytical Judge
-  (§8) as authoritative.
+- `ANALYSIS_CONTINUATION_GATE` (ROUTING/WORKFLOW CONTROL) evaluated and
+  **deferred, not activated** — the pilot found no incremental catch over
+  §10's existing stop/escalation rules on any traced scenario
+  (`ANALYTICAL_REASONING_STANDARD.md` §15.3). The CONTINUE/STOP/BLOCK/HANDOFF
+  field design is retained as a documented extension point only; §10 alone
+  remains the live continuation/stopping control.
 - `HELD_OUT_TRANSFER_EVAL` (QA/EVAL only, not a method) — six required lanes:
   `known_regression_cases`, `held_out_cases`, `shifted_domain_cases`,
   `boundary_cases`, `contradictory_evidence_cases`,
@@ -42,8 +43,9 @@ Constraints preserved:
 - 22-method registry not expanded; no new `METHOD_ID`; no new analytical
   intent (`ANALYTICAL_TECHNIQUES.md` unchanged, verified by diff against
   `origin/main`).
-- `POPULATION_CONTRACT` / `RECONCILIATION_CONTRACT` stay CONTROL/CONTRACT;
-  `ANALYSIS_CONTINUATION_GATE` stays ROUTING/WORKFLOW CONTROL;
+- `POPULATION_CONTRACT` / `RECONCILIATION_CONTRACT` stay CONTROL/CONTRACT and
+  are the only P1 controls activated by this pilot; `ANALYSIS_CONTINUATION_GATE`
+  stays classified ROUTING/WORKFLOW CONTROL but is deferred/not activated;
   `HELD_OUT_TRANSFER_EVAL` stays QA/EVAL.
 - Analytical Judge (§8), deterministic-first boundary, `blocked != executed`,
   and §9 compact runtime collapse remain authoritative and unchanged.
