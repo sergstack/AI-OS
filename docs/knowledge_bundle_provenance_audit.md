@@ -213,8 +213,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`, `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 80479
-- Bundle bytes: 81459
+- Source bytes: 81071
+- Bundle bytes: 82049
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -283,8 +283,8 @@ Blocking record count: **0**
 
 - Project: [LLM]
 - Source paths: `ChatGPT/[LLM]/Knowledge/LLM_ROUTING.md`, `ChatGPT/[LLM]/Knowledge/MODEL_ROUTING.md`, `ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md`
-- Source bytes: 2301
-- Bundle bytes: 3126
+- Source bytes: 4342
+- Bundle bytes: 5159
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
@@ -381,8 +381,8 @@ Blocking record count: **0**
 
 - Project: [Codex]
 - Source paths: `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`, `ChatGPT/[Codex]/Knowledge/CODEX_LONG_RUN_PLAYBOOK.md`, `ChatGPT/[Codex]/Knowledge/EXECUTION_REPORTING_RULES.md`, `ChatGPT/[Codex]/Knowledge/FAILURE_MODES.md`, `docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md`, `ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md`
-- Source bytes: 47638
-- Bundle bytes: 48664
+- Source bytes: 48443
+- Bundle bytes: 49468
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable
