@@ -20,6 +20,7 @@ Define what a good analytical memo means for `[Analytics]`.
 | Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
 | Risk | Risk has `risk_basis` | Risk without basis |
 | Management implication | Decision/action is stated only if supported; otherwise monitoring, validation, no action, or uncertainty remains explicit | Decision manufactured from an observation |
+| Recommendation strength | Wording matches `RECOMMENDATION_EVIDENCE.recommendation_status` (supported / pilot_candidate / hypothesis); untested interventions read as pilot candidates, not settled decisions (§16.2, bounded pilot, issue #449) | An untested intervention (no `test_or_backtest_performed`) worded as a confirmed management decision |
 | Thinking boundary | Analytics provides evidence and implication; strategic trade-offs remain with `[Thinking]` | Analytics chooses a strategic option without supported criteria |
 | Compression | Executive layer is materially shorter than supporting evidence | Synthesis becomes a second analytical report |
 | Confidence | Confidence and limitations visible | Low confidence as fact |
@@ -37,5 +38,6 @@ A memo is strong when:
 - no headline claim appears without complete Claim/Evidence Registry lineage;
 - limitations are visible before appendix;
 - management implication does not exceed verified evidence;
+- a recommendation's stated strength matches `RECOMMENDATION_EVIDENCE.recommendation_status` and `what_would_change_the_view` is present when a material evidence gap exists (§16.2, §16.6, bounded pilot, issue #449);
 - executive synthesis is materially shorter than the evidence layer;
 - appendix / evidence layer supports deep claims.

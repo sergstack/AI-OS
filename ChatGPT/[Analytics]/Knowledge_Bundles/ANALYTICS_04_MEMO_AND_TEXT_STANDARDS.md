@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:fd927c16ef73ec92fb4ff43da4c1608b5f7e20f17205634d8d5aac873f0066b3
+- source_fingerprint: sha256:874774d63d4eeb0311b67d7998790ea204f3909ac0f7102f1b77800266d643d4
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -60,6 +60,20 @@ This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDA
 6. Management implication / decision or action if any.
 7. Limitations.
 8. Appendix / evidence.
+### Management implication section (P1-B, issue #449, bounded pilot)
+For `analytical_depth = material / decision_critical`, the management
+implication section (item 6) reads the `ANALYTICAL_REASONING_STANDARD.md`
+§16 controls rather than redefining them:
+- `recommendation_status` (supported / pilot_candidate / hypothesis) from
+  `RECOMMENDATION_EVIDENCE` (§16.2) governs the strength of the wording used;
+  a `pilot_candidate` or `hypothesis` recommendation is worded as such, not
+  as a settled management decision.
+- `what_would_change_the_view` (§16.6) is stated as one compact line when a
+  material evidence gap exists (§16.2–§16.5, `FINAL_EVIDENCE_SUFFICIENCY`, or
+  unresolved `CONTRADICTING_EVIDENCE`); it is omitted when no such gap
+  exists.
+Routine/quick output does not instantiate these fields absent a material
+trigger (§9 runtime collapse).
 ## Audience split
 ### Executive memo
 For CFO / COO / руководители:
@@ -106,6 +120,11 @@ Every important sentence must be backed by:
   executive body.
 - [ ] Ambiguous or unresolved metric definitions (no `METRIC_DEFINITION_CARD`)
   are not presented as flagship conclusions.
+- [ ] A management recommendation is not presented as `supported` when
+  `RECOMMENDATION_EVIDENCE.recommendation_status` is `pilot_candidate` or
+  `hypothesis` (§16.2, bounded pilot, issue #449).
+- [ ] `what_would_change_the_view` is present when a material evidence gap
+  exists for material/decision-critical output, and absent otherwise (§16.6).
 
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_MEMO_STRUCTURE.md`
 
@@ -330,6 +349,7 @@ Define what a good analytical memo means for `[Analytics]`.
 | Drivers | Drivers ranked by relevant business impact | Decorative or mechanically ranked explanation |
 | Risk | Risk has `risk_basis` | Risk without basis |
 | Management implication | Decision/action is stated only if supported; otherwise monitoring, validation, no action, or uncertainty remains explicit | Decision manufactured from an observation |
+| Recommendation strength | Wording matches `RECOMMENDATION_EVIDENCE.recommendation_status` (supported / pilot_candidate / hypothesis); untested interventions read as pilot candidates, not settled decisions (§16.2, bounded pilot, issue #449) | An untested intervention (no `test_or_backtest_performed`) worded as a confirmed management decision |
 | Thinking boundary | Analytics provides evidence and implication; strategic trade-offs remain with `[Thinking]` | Analytics chooses a strategic option without supported criteria |
 | Compression | Executive layer is materially shorter than supporting evidence | Synthesis becomes a second analytical report |
 | Confidence | Confidence and limitations visible | Low confidence as fact |
@@ -344,6 +364,7 @@ A memo is strong when:
 - no headline claim appears without complete Claim/Evidence Registry lineage;
 - limitations are visible before appendix;
 - management implication does not exceed verified evidence;
+- a recommendation's stated strength matches `RECOMMENDATION_EVIDENCE.recommendation_status` and `what_would_change_the_view` is present when a material evidence gap exists (§16.2, §16.6, bounded pilot, issue #449);
 - executive synthesis is materially shorter than the evidence layer;
 - appendix / evidence layer supports deep claims.
 

@@ -1,5 +1,80 @@
 # Changelog
 
+## 2026-09-06 — analytics-p1-recommendation-evidence (issue #449)
+
+Bounded pilot only. `owner review required` before any promotion decision;
+this entry does not itself authorize production adoption, merge, deployment,
+or Project sync.
+
+Added:
+
+- Strengthened material Explanation Challenge (`ANALYTICAL_REASONING_STANDARD.md`
+  §16.1) — a material explanatory/intervention-oriented statement requires a
+  recorded `DISCRIMINATING_TEST_STATUS: executed / blocked / unavailable`;
+  contribution + recurrence alone cannot support it. Reuses existing
+  `alternative_explanation_test`, `CONTRADICTING_EVIDENCE`,
+  `DISCRIMINATING_EVIDENCE`, `FALSIFICATION_TEST`, `FINAL_EVIDENCE_SUFFICIENCY`.
+- `RECOMMENDATION_EVIDENCE` (§16.2, CONTROL, not a method) — compact record
+  for material management recommendations; required invariant `diagnostic
+  evidence != intervention evidence`; an untested intervention caps
+  `recommendation_status <= pilot_candidate`. Read by the Analytical Judge
+  (§8 check 7) and `MEMO_PIPELINE.md`'s management-implication section.
+- Material stability/persistence check (`stability_check`, §16.3) — extends
+  `generalization_scope` / `generalization_evidence` and
+  `RECURRENCE_CLASSIFICATION`; distinguishes stable from rotating
+  concentration before a targeted-redesign recommendation.
+- Out-of-sample validation for forecasting/planning-method change
+  recommendations (`FORECAST_METHOD_COMPARISON`, §16.4) — requires an
+  out-of-sample, comparable-scope, same-metric-definition comparison with a
+  monetary-error metric and a frequency/corridor-accuracy metric where
+  applicable, before a strong method-change recommendation. Reuses
+  `forecast_to_period_end`, `sensitivity_analysis`, `robustness_to_baseline`,
+  and existing backtesting logic; no `backtest` `METHOD_ID` created.
+- Economic vs process diagnosis boundary — `effect_type` classification
+  (§16.5, `VARIANCE_DIAGNOSTIC_CONTRACT.md` Accountability boundary) — names
+  the rule `a financial pattern alone cannot establish a process failure`;
+  `process_control` requires process evidence, not a financial pattern
+  alone. Reuses existing primary-attribution categories, `data_layer_check`,
+  `timing_validation`, `exception_analysis`.
+- `what_would_change_the_view` (§16.6) — compact named field for material
+  executive output, formalizing the existing `ACCEPTANCE_CRITERIA.md` /
+  `QA_CHECKLIST.md` prose criterion.
+- QA_CHECKLIST.md: new "Recommendation evidence, stability, and
+  out-of-sample validation (P1-B, issue #449, bounded pilot)" section (8
+  checklist items). SMOKE_QA_FOR_ANALYTICS.md: new case 14 with the five
+  scenarios (A–E) from issue #449.
+- Pilot evidence packet: 5-scenario OLD-vs-NEW result matrix, per-element
+  recommendation with differentiated confidence, incremental catches, false
+  blocks, regressions, rollback status
+  (`Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md`).
+
+Constraints preserved:
+
+- 22-method registry not expanded; no new `METHOD_ID`; no new analytical
+  intent (`ANALYTICAL_TECHNIQUES.md` unchanged, verified by diff against
+  `origin/main`).
+- All six elements stay CONTROL/field-level additions, not methods; none
+  appears in the registry table.
+- No second Judge, no second QA framework, no autonomous retry/
+  self-improvement loop introduced.
+- `ANALYSIS_CONTINUATION_GATE` (§15.3, issue #445) is untouched and remains
+  **deferred, not activated** — this issue's scope explicitly forbids
+  reviving it without new pilot evidence, and none was introduced.
+- `blocked != executed` is not weakened.
+- Active analytical intents are unchanged.
+- Routine/quick path (§9) is unaffected; all six elements carry an explicit
+  material activation trigger and do not instantiate without it (smoke QA
+  case 14, scenario E).
+- All changes stayed inside `ChatGPT/[Analytics]/**`.
+
+Status:
+
+```text
+production_ready: not claimed
+promotion: owner review required (not decided by this pilot)
+gate_verdict: see Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md
+```
+
 ## 2026-09-06 — analytics-p1-comparative-integrity (issue #445)
 
 Bounded pilot only. `owner review required` before any promotion decision;

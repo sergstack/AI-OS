@@ -808,6 +808,248 @@ was never activated; §10's minimum-sufficient-method/stop/escalation rules
 remain the sole live control. No method-registry migration is required for
 rollback in any case.
 
+## 16. P1-B activated controls (bounded pilot, issue #449) — recommendation evidence, stability, out-of-sample
+
+Status: bounded pilot activation only, exactly as §15's framing. `owner
+review required` before any promotion decision; this section does not
+authorize production adoption, merge, deployment, or Project-sync. These six
+elements strengthen the transition `finding → supported explanation →
+recommendation → validated intervention`. They extend the existing P0/§15
+mechanics named below; they add no new `METHOD_ID`, no new analytical
+intent, no second Judge, no second QA framework, and do not change the
+22-method registry in `ANALYTICAL_TECHNIQUES.md`. `ANALYSIS_CONTINUATION_GATE`
+(§15.3) is untouched by this section and remains deferred, not activated.
+
+### 16.1 Strengthened material Explanation Challenge (extends §6)
+
+For `analytical_depth = material / decision_critical`, when the final output
+contains a material explanatory statement or intervention-oriented
+conclusion — pattern examples: "main reason" / "primary mechanism", "problem
+is caused by", "main reserve is", "should redesign", "requires another
+planning model" — at least one discriminating test from the existing §6
+explanation-challenge structure must be recorded with an explicit status:
+
+```text
+DISCRIMINATING_TEST_STATUS: executed / blocked / unavailable
+```
+
+using the existing `alternative_explanation_test`, `CONTRADICTING_EVIDENCE`,
+`DISCRIMINATING_EVIDENCE`, `FALSIFICATION_TEST`, and
+`FINAL_EVIDENCE_SUFFICIENCY` (§6–§7). A material explanatory or
+intervention-oriented conclusion must not rely on contribution (`%` share of
+variance/error) plus recurrence (`RECURRENCE_CLASSIFICATION`,
+`VARIANCE_DIAGNOSTIC_CONTRACT.md` §5) alone — those two facts, without a
+recorded discriminating-test status, cap the claim at `DRIVER CANDIDATE` /
+`main quantified contributor`, per the existing claim ladder (§6). This does
+not add a method; it names an existing gap between "contribution shown" and
+"explanation challenged" as an explicit required field.
+
+Activation trigger: a material explanatory/intervention pattern is present in
+the final output for `analytical_depth = material / decision_critical`.
+Routine/quick cases with no such pattern keep the existing §9 compact path.
+
+### 16.2 `RECOMMENDATION_EVIDENCE` (CONTROL, not a method)
+
+A compact control for material management recommendations, read by the
+Analytical Judge (§8, check 7 — decision proportionality) and by
+`MEMO_PIPELINE.md`'s management-implication section. It does not create a
+second Judge or a second QA framework.
+
+```text
+RECOMMENDATION_EVIDENCE
+recommendation:
+problem_evidence:
+mechanism_evidence:
+alternative_actions:
+test_or_backtest_performed:
+expected_metric_improvement:
+downside_or_failure_mode:
+recommendation_status: supported / pilot_candidate / hypothesis
+```
+
+Required invariant:
+
+```text
+diagnostic evidence != intervention evidence
+```
+
+A proven problem (`problem_evidence` / `mechanism_evidence` supported) does
+not by itself support the proposed intervention. If `test_or_backtest_performed`
+is `no` or absent, `recommendation_status` cannot exceed `pilot_candidate`.
+`recommendation_status: supported` requires evidence that the specific
+proposed intervention (not only the diagnosis) was tested, piloted, or
+back-tested and produced the `expected_metric_improvement` within a declared
+scope.
+
+Activation trigger: instantiate for `analytical_depth = material /
+decision_critical` cases where the final output proposes a management
+intervention, redesign, process change, or method change. Routine/quick
+cases with no such proposal keep the existing §9 compact path and record no
+`RECOMMENDATION_EVIDENCE` object.
+
+### 16.3 Material stability / persistence check (extends `generalization_scope` / `generalization_evidence`)
+
+For material concentration, recurrence, or persistent-pattern claims that
+would justify a targeted (entity-specific) intervention, record:
+
+```text
+stability_check:
+  same_entities:
+  same_articles_or_categories:
+  same_direction:
+  same_mechanism:
+  same_ranking:
+  persistence_across_periods:
+```
+
+This extends, and does not replace, the existing `generalization_scope` /
+`generalization_evidence` fields (`CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`) and
+`RECURRENCE_CLASSIFICATION` (`VARIANCE_DIAGNOSTIC_CONTRACT.md` §5). Purpose:
+distinguish stable concentration from rotating monthly concentration before
+recommending a targeted redesign.
+
+```text
+same Top-N repeatedly -> targeted redesign candidate eligible
+  (still subject to §16.2 RECOMMENDATION_EVIDENCE)
+rotating Top-N -> broader process/system issue candidate,
+  not a targeted-population redesign
+```
+
+An aggregate concentration figure (e.g. "Top-10 = 60% of error") that is
+stable at the aggregate level but rotates at the entity level cannot support
+a claim that a specific, named population is the stable root of the problem;
+the maximum supported claim in that case is a process/system-level
+observation, not a targeted-entity recommendation.
+
+Activation trigger: instantiate for `analytical_depth = material /
+decision_critical` cases where a concentration, recurrence, or
+persistent-pattern claim is used to justify targeting specific entities,
+articles, or categories for intervention. Routine/quick cases keep the
+existing §9 compact path.
+
+### 16.4 Out-of-sample validation for forecasting / planning-model change recommendations
+
+When a recommendation proposes changing a forecasting or planning method
+(e.g. "replace manual planning with driver-based planning", "switch to
+model X"), `recommendation_status` cannot exceed `pilot_candidate` unless the
+following comparison evidence exists:
+
+```text
+FORECAST_METHOD_COMPARISON
+current_method:
+candidate_method:
+out_of_sample_period:
+population_or_scope: same / comparable / different
+metric_definitions: same / comparable / different
+monetary_error_metric:
+frequency_or_corridor_accuracy_metric:
+result: candidate_improves / candidate_worsens / mixed / inconclusive
+```
+
+Required: an out-of-sample period distinct from the candidate's development
+period; the same or explicitly comparable population/scope; the same metric
+definitions; at least one monetary-error metric (e.g. MAE/MAPE in currency
+terms); and, where applicable, at least one frequency/corridor-accuracy
+metric. This reuses the existing `forecast_to_period_end`,
+`sensitivity_analysis`, `robustness_to_baseline`, and existing backtesting
+logic (comparing a method's output against realized out-of-sample values); it
+does **not** create a `backtest` `METHOD_ID`. A candidate that wins only
+in-sample, or that improves one metric while worsening a monetary-error
+metric, cannot support a strong "switch the planning model" recommendation;
+`recommendation_status` stays `pilot_candidate` (or is rejected) until the
+comparison shows the candidate is not worse on the monetary-error dimension
+out-of-sample.
+
+Activation trigger: instantiate when the final output recommends changing a
+forecasting/planning method for `analytical_depth = material /
+decision_critical`. Routine/quick cases and recommendations that do not
+touch a forecasting/planning method keep the existing §9 compact path.
+
+### 16.5 Economic vs process diagnosis boundary — `effect_type` (extends `VARIANCE_DIAGNOSTIC_CONTRACT.md`)
+
+Restates and names, at the classification-surface level, the existing
+Accountability boundary rule (`VARIANCE_DIAGNOSTIC_CONTRACT.md` §5: "Do not
+infer responsibility, mismanagement, budget violation, or control failure
+solely from amount, ownership, zero-plan status, or driver status") and the
+existing primary-attribution categories (§2 `economic_effect` /
+`timing_effect` / `data_mapping_effect` / `unresolved_effect`), adding one
+named dimension (`process_control`) that was previously only implicit in the
+Accountability-boundary prose:
+
+```text
+effect_type: economic / timing / mapping / data_quality / process_control / unresolved
+```
+
+Required rule:
+
+```text
+a financial pattern alone cannot establish a process failure
+```
+
+`effect_type: process_control` requires process evidence — e.g. an owner
+acknowledgment, a documented control/process rule, a mapping-table defect
+confirmed against the mapping source, or a budget-process exception
+confirmed with the process owner — not merely a recurring or material
+financial/variance pattern. A recurring `fact_without_plan` exception (per
+`RECURRENCE_CLASSIFICATION`) is sufficient to support "recurring exception,"
+but `effect_type: process_control` (e.g. "mapping failure", "owner failure",
+"budget process failure") remains `hypothesis` until discriminating
+process/mapping evidence exists. This does not add a parallel taxonomy: it
+reuses `VARIANCE_DIAGNOSTIC_CONTRACT.md`'s existing categories, `data_layer_check`,
+`timing_validation`, and `exception_analysis`.
+
+Activation trigger: instantiate for `analytical_depth = material /
+decision_critical` cases where the final output classifies a material
+variance/exception pattern as economic, timing, mapping, data-quality, or
+process-control in nature. Routine/quick cases keep the existing §9 compact
+path and the existing one-line Accountability boundary rule.
+
+### 16.6 `what_would_change_the_view` (material executive output field)
+
+Formalizes, as a compact named field, the acceptance criterion already
+present in `ACCEPTANCE_CRITERIA.md` ("material uncertainty remains visible,
+with what would change the view where applicable") and `QA_CHECKLIST.md`
+("What would materially change the conclusion is stated when relevant"). For
+`analytical_depth = material / decision_critical` management-facing output,
+`MEMO_PIPELINE.md`'s management-implication section carries:
+
+```text
+what_would_change_the_view:
+```
+
+Acceptable evidence-gap examples: mapping evidence; owner/process evidence;
+driver data; event calendar; out-of-sample validation; unresolved
+contradictory evidence. The field states which of these, if resolved, would
+change the conclusion; it does not restate the full limitations section. It
+remains one compact line and must not expand routine/quick output.
+
+Activation trigger: material/decision-critical management-facing output
+where a material evidence gap exists (§16.2–§16.5, `FINAL_EVIDENCE_SUFFICIENCY`,
+or `CONTRADICTING_EVIDENCE` is non-empty). When no material gap exists, the
+field is omitted rather than filled with a placeholder.
+
+## P1-B pilot status (issue #449)
+
+All six §16 elements are activated for a bounded pilot only, per issue #449.
+Unlike `ANALYSIS_CONTINUATION_GATE` (§15.3), the paper-traced pilot evidence
+for all six elements found at least one concrete incremental catch (real or
+modest) and no element was found harmful or duplicative of an existing
+control with zero added value — see `../Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md`
+for the full 5-scenario baseline-vs-candidate matrix, known/held-out
+separation, and per-element recommendation (all six recommended
+`ADOPT_FOR_OWNER_REVIEW`, with explicit strength caveats — several are
+"real" catches, two are "modest/formalization-only"). `owner review
+required` before any promotion decision; passing this pilot does not itself
+authorize production adoption. `ANALYSIS_CONTINUATION_GATE` (§15.3) is not
+revisited or reactivated by this pilot and remains deferred, not activated.
+
+Rollback: remove the six §16 wrappers; fall back to existing
+`FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`,
+Analytical Judge (§8), `generalization_scope` / `generalization_evidence`,
+`RECURRENCE_CLASSIFICATION`, and the Accountability boundary rule
+(`VARIANCE_DIAGNOSTIC_CONTRACT.md` §5). No method-registry migration is
+required for rollback.
+
 P2 remains deferred. Do not implement expanded taxonomies, reusable pattern
 promotion, autonomous learning, automatic promotion or downgrade, or agentic
 analytical orchestration.

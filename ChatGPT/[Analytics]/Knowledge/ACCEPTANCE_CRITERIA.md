@@ -36,6 +36,22 @@ A result is accepted when:
     claim has complete Claim/Evidence Registry lineage (§13); missing
     lineage sets `allowed_in_executive = no` and the claim does not appear
     in the executive layer.
+16. For `analytical_depth = material / decision_critical` (issue #449,
+    bounded pilot, `ANALYTICAL_REASONING_STANDARD.md` §16): a material
+    explanatory/intervention-oriented conclusion has a recorded
+    discriminating-test status (§16.1); a material management recommendation
+    has a `RECOMMENDATION_EVIDENCE` record and `diagnostic evidence !=
+    intervention evidence` holds — an untested intervention is capped at
+    `recommendation_status <= pilot_candidate` (§16.2); a material
+    concentration/recurrence/persistent-pattern claim used to justify a
+    targeted intervention has a `stability_check` (§16.3); a recommendation
+    to change a forecasting/planning method has an out-of-sample
+    `FORECAST_METHOD_COMPARISON` against the current method or is capped at
+    `pilot_candidate` (§16.4); an `effect_type: process_control` claim has
+    process evidence, not a financial pattern alone (§16.5); material
+    executive output states `what_would_change_the_view` when a material
+    evidence gap exists (§16.6). Routine/quick cases with no material
+    trigger are unaffected.
 
 ## Main file acceptance
 
@@ -135,6 +151,12 @@ Use `blocked` when:
   `METRIC_DEFINITION_CARD` and the conclusion depends on it.
 - a headline claim for `analytical_depth = material / decision_critical` has
   no complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
+- a material management recommendation proposes an untested intervention or
+  an unvalidated forecasting/planning-method change beyond
+  `recommendation_status: pilot_candidate` (§16.2, §16.4).
+- a material concentration/recurrence claim is used to justify a targeted
+  intervention without a `stability_check` (§16.3), or `effect_type:
+  process_control` is asserted without process evidence (§16.5).
 
 ## Not production-ready rule
 

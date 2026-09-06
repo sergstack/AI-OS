@@ -36,6 +36,24 @@ This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDA
 7. Limitations.
 8. Appendix / evidence.
 
+### Management implication section (P1-B, issue #449, bounded pilot)
+
+For `analytical_depth = material / decision_critical`, the management
+implication section (item 6) reads the `ANALYTICAL_REASONING_STANDARD.md`
+§16 controls rather than redefining them:
+
+- `recommendation_status` (supported / pilot_candidate / hypothesis) from
+  `RECOMMENDATION_EVIDENCE` (§16.2) governs the strength of the wording used;
+  a `pilot_candidate` or `hypothesis` recommendation is worded as such, not
+  as a settled management decision.
+- `what_would_change_the_view` (§16.6) is stated as one compact line when a
+  material evidence gap exists (§16.2–§16.5, `FINAL_EVIDENCE_SUFFICIENCY`, or
+  unresolved `CONTRADICTING_EVIDENCE`); it is omitted when no such gap
+  exists.
+
+Routine/quick output does not instantiate these fields absent a material
+trigger (§9 runtime collapse).
+
 ## Audience split
 
 ### Executive memo
@@ -97,3 +115,8 @@ Every important sentence must be backed by:
   executive body.
 - [ ] Ambiguous or unresolved metric definitions (no `METRIC_DEFINITION_CARD`)
   are not presented as flagship conclusions.
+- [ ] A management recommendation is not presented as `supported` when
+  `RECOMMENDATION_EVIDENCE.recommendation_status` is `pilot_candidate` or
+  `hypothesis` (§16.2, bounded pilot, issue #449).
+- [ ] `what_would_change_the_view` is present when a material evidence gap
+  exists for material/decision-critical output, and absent otherwise (§16.6).
