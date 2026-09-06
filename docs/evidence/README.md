@@ -9,6 +9,19 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`RIOS_RESEARCH_TRANSFER_ANALYSIS_2026-09-06.md`](RIOS_RESEARCH_TRANSFER_ANALYSIS_2026-09-06.md)
+  records Issue #446's five-direction gap analysis translating RIOS FULL_REVIEW
+  research findings into AI-OS decisions. 2 of 5 directions (adaptive model
+  escalation; structured failure diagnosis on the lightweight/local retry
+  path) were accepted and implemented as small additive Knowledge-file
+  changes (`MODEL_ROUTING.md`, `AUTONOMY_POLICY.md`, and their regenerated
+  bundles, plus `CODEX_APP_ULTRA_LONG_RUN_PROTOCOL.md`). 3 of 5 (dynamic
+  context selection; trajectory/original-goal verification; Judge/QA
+  independence) were rejected as already adequately covered by existing
+  mechanisms (`CONTEXT_PACK_STANDARD.md`/`project-context`/
+  `BOUNDED_PROJECT_CONTEXT_FRESHNESS.md`; AES §9.5.1/§10.3; `JUDGE_CALIBRATION.md`)
+  — implementing them would have duplicated an existing control plane under a
+  new name. No RIOS scope expansion. Full suite 635 passed.
 - [`ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md`](ANALYTICS_P0_ADVERSARIAL_LIVE_VALIDATION_2026-09-05.md)
   records live-Project validation of 2 of the 5 scenarios from the PR #440
   P0 adversarial paper-trace audit (denominator drift; population/ЦФО

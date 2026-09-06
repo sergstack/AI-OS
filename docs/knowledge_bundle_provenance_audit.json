@@ -270,8 +270,8 @@
         "ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md",
         "ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 80479,
-      "bundle_bytes": 81459,
+      "source_bytes": 81071,
+      "bundle_bytes": 82049,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -391,8 +391,8 @@
         "ChatGPT/[LLM]/Knowledge/MODEL_ROUTING.md",
         "ChatGPT/[LLM]/Knowledge/ROUTING_AND_HANDOFF.md"
       ],
-      "source_bytes": 2301,
-      "bundle_bytes": 3126,
+      "source_bytes": 4342,
+      "bundle_bytes": 5159,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],
@@ -545,8 +545,8 @@
         "docs/standards/AUTONOMOUS_EXECUTION_STANDARD.md",
         "ChatGPT/[Codex]/Knowledge/CODEX_02_EXECUTION_AUTONOMY_REPORTING_BUNDLE_SEMANTICS.md"
       ],
-      "source_bytes": 47638,
-      "bundle_bytes": 48664,
+      "source_bytes": 48443,
+      "bundle_bytes": 49468,
       "classification": "equivalent",
       "bundle_only_excerpt_or_ref": [],
       "source_only_excerpt_or_ref": [],

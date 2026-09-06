@@ -121,11 +121,15 @@ For safe uncertainty, make the smallest safe assumption and log it.
 If a check fails:
 
 1. classify whether the failure is local, reversible, and inside allowed files;
-2. apply one minimal fix only if safe;
-3. rerun the smallest relevant check;
-4. if it still fails, stop and report diagnostics.
+2. diagnose the cause before fixing (`tool` / `parameters` / `state` /
+   `assumption` / `dependency`) per the canonical Retry policy in
+   `ChatGPT/[Codex]/Knowledge/AUTONOMY_POLICY.md`;
+3. apply one minimal fix targeted at that diagnosed cause, only if safe;
+4. rerun the smallest relevant check;
+5. if it still fails, stop and report diagnostics, including the diagnosed cause.
 
-Do not enter infinite test/fix loops.
+Do not enter infinite test/fix loops. Do not repeat an identical fix for a
+cause already ruled out.
 
 ## Hard stop conditions
 

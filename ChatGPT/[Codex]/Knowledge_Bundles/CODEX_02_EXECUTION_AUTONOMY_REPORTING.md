@@ -22,7 +22,7 @@ ChatGPT Project Sources / Knowledge for `[Codex]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:e9ce1803cb31f462c75b2aeb1e9a8a7622abfe091228caf0588c4b9d3796f26a
+- source_fingerprint: sha256:4f6bb0f6734fa8c9043d68207d557afdee4cc95fc06f17184bf5d5ab3096084e
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -83,7 +83,19 @@ Requires explicit bounded approval:
 Never print, log, expose, summarize, or commit sensitive values. Never commit local configuration or machine-local credential files. Never expose raw provider responses in repo files, PR bodies, logs, or Knowledge bundles.
 Local configuration presence is not approval. Approval must be explicit and bounded.
 ## Retry policy
-If a check fails and the issue is local, reversible, and inside allowed files, attempt one minimal fix and rerun the smallest relevant check.
+If a check fails and the issue is local, reversible, and inside allowed
+files, diagnose before fixing: name which one of `tool` (wrong command/API
+call), `parameters` (wrong argument/value), `state` (stale file, cache, or
+precondition), `assumption` (a logged assumption was wrong), or `dependency`
+(missing/unavailable input, package, or upstream result) best explains the
+observed failure, using the failing command's actual output as evidence.
+Then attempt one minimal fix targeted at that diagnosed cause and rerun the
+smallest relevant check. Do not attempt a fix before naming the cause, and do
+not repeat an identical fix for a cause already ruled out.
+This is a lightweight diagnosis label for the one-fix budget below, not a new
+control plane: where a full AES execution record applies, use its defect
+`classification`/`subtype` (Section 9.2) instead of this label, and do not
+maintain two competing classifications for the same defect.
 If the same validation target still fails, the one-fix budget is exhausted
 for that target and the independently evidenced defect it represents. Stop
 further correction attempts for that target and report:

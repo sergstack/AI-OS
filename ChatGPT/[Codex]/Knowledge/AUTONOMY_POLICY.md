@@ -71,7 +71,20 @@ Local configuration presence is not approval. Approval must be explicit and boun
 
 ## Retry policy
 
-If a check fails and the issue is local, reversible, and inside allowed files, attempt one minimal fix and rerun the smallest relevant check.
+If a check fails and the issue is local, reversible, and inside allowed
+files, diagnose before fixing: name which one of `tool` (wrong command/API
+call), `parameters` (wrong argument/value), `state` (stale file, cache, or
+precondition), `assumption` (a logged assumption was wrong), or `dependency`
+(missing/unavailable input, package, or upstream result) best explains the
+observed failure, using the failing command's actual output as evidence.
+Then attempt one minimal fix targeted at that diagnosed cause and rerun the
+smallest relevant check. Do not attempt a fix before naming the cause, and do
+not repeat an identical fix for a cause already ruled out.
+
+This is a lightweight diagnosis label for the one-fix budget below, not a new
+control plane: where a full AES execution record applies, use its defect
+`classification`/`subtype` (Section 9.2) instead of this label, and do not
+maintain two competing classifications for the same defect.
 
 If the same validation target still fails, the one-fix budget is exhausted
 for that target and the independently evidenced defect it represents. Stop
