@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:0a4f203db260ddbf5895c0248a40e6fac5bb3008d80a1053045489c1b8603076
+- source_fingerprint: sha256:d84eccce6a72df99e59a5b02326776b820bb2b9f72c01a4e2bb3a3c73c6170bd
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -220,6 +220,42 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Inputs listed.
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
+## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, bounded pilot)
+Bounded pilot only. `owner review required` before any promotion decision.
+Reads `ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no
+second Judge, and no second QA framework.
+- [ ] `material_explanatory_statement_has_discriminating_test_status?` — a
+  material explanatory/intervention-oriented conclusion (§16.1) records
+  `DISCRIMINATING_TEST_STATUS: executed / blocked / unavailable`; contribution
+  + recurrence alone does not support it.
+- [ ] `recommendation_evidence_recorded_when_material_intervention_proposed?`
+  — a material management recommendation has a `RECOMMENDATION_EVIDENCE`
+  record (§16.2); `diagnostic evidence != intervention evidence` holds.
+- [ ] `untested_intervention_capped_at_pilot_candidate?` —
+  `test_or_backtest_performed = no` caps `recommendation_status <=
+  pilot_candidate`.
+- [ ] `stability_check_recorded_before_targeted_redesign_claim?` — a material
+  concentration/recurrence/persistent-pattern claim used to justify a
+  targeted (entity-specific) intervention has a `stability_check` (§16.3);
+  rotating Top-N is not read as a stable targeted population.
+- [ ] `forecast_method_change_has_out_of_sample_comparison?` — a
+  recommendation to change a forecasting/planning method has a
+  `FORECAST_METHOD_COMPARISON` with an out-of-sample period, comparable
+  population/scope, same metric definitions, a monetary-error metric, and a
+  frequency/corridor-accuracy metric where applicable (§16.4); otherwise
+  `recommendation_status <= pilot_candidate`.
+- [ ] `process_control_claim_has_process_evidence?` — `effect_type:
+  process_control` (§16.5, `VARIANCE_DIAGNOSTIC_CONTRACT.md`) is not inferred
+  from a financial/variance pattern alone.
+- [ ] `what_would_change_the_view_present_when_material_gap_exists?` — §16.6
+  is stated for material/decision-critical management-facing output with a
+  material evidence gap, and omitted (not filled with a placeholder) when no
+  such gap exists.
+- [ ] `p1_b_controls_collapse_on_routine_no_trigger_cases?` — none of the six
+  §16 elements is instantiated without its stated material activation
+  trigger; the routine/quick §9 compact path is unaffected.
+Pilot results for issue #449 are recorded in
+`P1_449_PILOT_EVIDENCE_2026-09-06.md`.
 ## Held-out transfer eval (P1 QA/EVAL, issue #445)
 Classification: QA/EVAL only. `HELD_OUT_TRANSFER_EVAL` is not an analytical
 method, does not appear in `ANALYTICAL_TECHNIQUES.md`, has no `METHOD_ID`,
@@ -399,6 +435,22 @@ A result is accepted when:
     claim has complete Claim/Evidence Registry lineage (§13); missing
     lineage sets `allowed_in_executive = no` and the claim does not appear
     in the executive layer.
+16. For `analytical_depth = material / decision_critical` (issue #449,
+    bounded pilot, `ANALYTICAL_REASONING_STANDARD.md` §16): a material
+    explanatory/intervention-oriented conclusion has a recorded
+    discriminating-test status (§16.1); a material management recommendation
+    has a `RECOMMENDATION_EVIDENCE` record and `diagnostic evidence !=
+    intervention evidence` holds — an untested intervention is capped at
+    `recommendation_status <= pilot_candidate` (§16.2); a material
+    concentration/recurrence/persistent-pattern claim used to justify a
+    targeted intervention has a `stability_check` (§16.3); a recommendation
+    to change a forecasting/planning method has an out-of-sample
+    `FORECAST_METHOD_COMPARISON` against the current method or is capped at
+    `pilot_candidate` (§16.4); an `effect_type: process_control` claim has
+    process evidence, not a financial pattern alone (§16.5); material
+    executive output states `what_would_change_the_view` when a material
+    evidence gap exists (§16.6). Routine/quick cases with no material
+    trigger are unaffected.
 ## Main file acceptance
 ```text
 stage_main_full: pass/fail/blocked/not_applicable
@@ -476,6 +528,12 @@ Use `blocked` when:
   `METRIC_DEFINITION_CARD` and the conclusion depends on it.
 - a headline claim for `analytical_depth = material / decision_critical` has
   no complete Claim/Evidence Registry lineage (`allowed_in_executive = no`).
+- a material management recommendation proposes an untested intervention or
+  an unvalidated forecasting/planning-method change beyond
+  `recommendation_status: pilot_candidate` (§16.2, §16.4).
+- a material concentration/recurrence claim is used to justify a targeted
+  intervention without a `stability_check` (§16.3), or `effect_type:
+  process_control` is asserted without process evidence (§16.5).
 ## Not production-ready rule
 Smoke QA or a good memo does not equal production readiness. Production readiness requires implementation evidence, tests, acceptance and rollback/release notes where relevant.
 
@@ -1006,6 +1064,68 @@ Pass condition:
 - does not instantiate a full P1 contract/gate record without a material
   trigger;
 - claim calibration and QA note remain as in the pre-#445 compact path.
+## 14. Recommendation evidence, stability, and out-of-sample validation (P1-B QA, issue #449)
+QA scenarios only — full paper-traced P0/P1-vs-P1-B scenario reasoning is
+recorded in `P1_449_PILOT_EVIDENCE_2026-09-06.md`. These are the smoke QA
+question forms for the five scenarios (A–E) from issue #449.
+Question (A — diagnosis proven, intervention untested):
+```text
+Категория объясняет 60% валовой ошибки планирования. Аналитик рекомендует
+заменить ручное планирование на driver-based planning. Out-of-sample
+сравнения методов нет. Можно опубликовать вывод "нужно перейти на
+driver-based planning"?
+```
+Pass condition:
+- `finding: supported` for the 60% contribution;
+- `recommendation_status: pilot_candidate` (not `supported`) because
+  `test_or_backtest_performed` is absent (§16.2, §16.4);
+- no strong "switch the planning model" conclusion is published;
+- `what_would_change_the_view` names out-of-sample validation.
+Question (B — stable aggregate Top-10, rotating members):
+```text
+Top-10 объясняет ~60% суммарной ошибки на протяжении 10 месяцев, но состав
+Top-10 материально меняется каждый месяц. Можно рекомендовать targeted
+redesign для сегодняшнего Top-10?
+```
+Pass condition:
+- does not infer a stable targeted-redesign population without a
+  `stability_check` (§16.3);
+- with rotating membership, the maximum supported claim is a
+  process/system-level observation, not a named-entity targeted redesign;
+- `same_ranking` / `same_entities` are recorded as `no`.
+Question (C — recurring fact-without-plan):
+```text
+Строка fact_without_plan повторяется в 8 из 10 месяцев. Можно написать
+"это mapping failure / owner failure / budget process failure"?
+```
+Pass condition:
+- the recurring exception itself is `supported` (`RECURRENCE_CLASSIFICATION`);
+- `effect_type: process_control` (mapping/owner/budget-process failure)
+  remains `hypothesis` until discriminating process/mapping evidence exists
+  (§16.5);
+- cites `a financial pattern alone cannot establish a process failure`.
+Question (D — candidate planning model wins in-sample only):
+```text
+Кандидатная модель планирования улучшает development-период, но проигрывает
+на held-out месяцах по денежной ошибке (хотя улучшает count accuracy).
+Можно рекомендовать заменить текущую модель планирования?
+```
+Pass condition:
+- no strong recommendation to replace the current planning method;
+- `recommendation_status` stays `pilot_candidate` or is rejected (§16.4);
+- the monetary-error out-of-sample result (worse) is not overridden by the
+  in-sample count-accuracy improvement.
+Question (E — quick regression protection):
+```text
+Простая сверенная задача Plan/Fact, низкая неопределённость, материального
+триггера нет. Нужны полные RECOMMENDATION_EVIDENCE / stability_check /
+FORECAST_METHOD_COMPARISON записи?
+```
+Pass condition:
+- no full `RECOMMENDATION_EVIDENCE` record, no `stability_check`, no
+  `FORECAST_METHOD_COMPARISON`;
+- compact QA only, per existing §9 runtime collapse;
+- old P0/P1 compact-path behavior is unchanged.
 ## Smoke QA output
 ```text
 smoke_qa_status: pass/fail/blocked

@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:a30d8ddca63d012a5378828cf3bca6c0a292edc9a5a254457f292537224b742b
+- source_fingerprint: sha256:e9401a3e69bc90dd5e8437fd15a8f4c2a2f8ea61b7129b87c20b9d2702e332e9
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -65,6 +65,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 | `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
 | `P1_PILOT_EVIDENCE_2026-09-06.md` | P1 bounded-pilot evidence (issue #445) | Нужна evidence для owner review по POPULATION_CONTRACT / RECONCILIATION_CONTRACT / ANALYSIS_CONTINUATION_GATE / HELD_OUT_TRANSFER_EVAL |
+| `P1_449_PILOT_EVIDENCE_2026-09-06.md` | P1-B bounded-pilot evidence (issue #449) | Нужна evidence для owner review по RECOMMENDATION_EVIDENCE / stability_check / FORECAST_METHOD_COMPARISON / effect_type / what_would_change_the_view |
 | `../../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 ## Priority rules
 1. Для аналитических задач сначала используй `ANALYTICS_WORKFLOW.md`, `IN_PROJECT_ANALYSIS_MODE.md`, `MAIN_FILES_STANDARD.md`.

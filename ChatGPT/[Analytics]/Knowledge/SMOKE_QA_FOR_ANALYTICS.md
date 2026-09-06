@@ -422,6 +422,90 @@ Pass condition:
   trigger;
 - claim calibration and QA note remain as in the pre-#445 compact path.
 
+## 14. Recommendation evidence, stability, and out-of-sample validation (P1-B QA, issue #449)
+
+QA scenarios only — full paper-traced P0/P1-vs-P1-B scenario reasoning is
+recorded in `P1_449_PILOT_EVIDENCE_2026-09-06.md`. These are the smoke QA
+question forms for the five scenarios (A–E) from issue #449.
+
+Question (A — diagnosis proven, intervention untested):
+
+```text
+Категория объясняет 60% валовой ошибки планирования. Аналитик рекомендует
+заменить ручное планирование на driver-based planning. Out-of-sample
+сравнения методов нет. Можно опубликовать вывод "нужно перейти на
+driver-based planning"?
+```
+
+Pass condition:
+
+- `finding: supported` for the 60% contribution;
+- `recommendation_status: pilot_candidate` (not `supported`) because
+  `test_or_backtest_performed` is absent (§16.2, §16.4);
+- no strong "switch the planning model" conclusion is published;
+- `what_would_change_the_view` names out-of-sample validation.
+
+Question (B — stable aggregate Top-10, rotating members):
+
+```text
+Top-10 объясняет ~60% суммарной ошибки на протяжении 10 месяцев, но состав
+Top-10 материально меняется каждый месяц. Можно рекомендовать targeted
+redesign для сегодняшнего Top-10?
+```
+
+Pass condition:
+
+- does not infer a stable targeted-redesign population without a
+  `stability_check` (§16.3);
+- with rotating membership, the maximum supported claim is a
+  process/system-level observation, not a named-entity targeted redesign;
+- `same_ranking` / `same_entities` are recorded as `no`.
+
+Question (C — recurring fact-without-plan):
+
+```text
+Строка fact_without_plan повторяется в 8 из 10 месяцев. Можно написать
+"это mapping failure / owner failure / budget process failure"?
+```
+
+Pass condition:
+
+- the recurring exception itself is `supported` (`RECURRENCE_CLASSIFICATION`);
+- `effect_type: process_control` (mapping/owner/budget-process failure)
+  remains `hypothesis` until discriminating process/mapping evidence exists
+  (§16.5);
+- cites `a financial pattern alone cannot establish a process failure`.
+
+Question (D — candidate planning model wins in-sample only):
+
+```text
+Кандидатная модель планирования улучшает development-период, но проигрывает
+на held-out месяцах по денежной ошибке (хотя улучшает count accuracy).
+Можно рекомендовать заменить текущую модель планирования?
+```
+
+Pass condition:
+
+- no strong recommendation to replace the current planning method;
+- `recommendation_status` stays `pilot_candidate` or is rejected (§16.4);
+- the monetary-error out-of-sample result (worse) is not overridden by the
+  in-sample count-accuracy improvement.
+
+Question (E — quick regression protection):
+
+```text
+Простая сверенная задача Plan/Fact, низкая неопределённость, материального
+триггера нет. Нужны полные RECOMMENDATION_EVIDENCE / stability_check /
+FORECAST_METHOD_COMPARISON записи?
+```
+
+Pass condition:
+
+- no full `RECOMMENDATION_EVIDENCE` record, no `stability_check`, no
+  `FORECAST_METHOD_COMPARISON`;
+- compact QA only, per existing §9 runtime collapse;
+- old P0/P1 compact-path behavior is unchanged.
+
 ## Smoke QA output
 
 ```text

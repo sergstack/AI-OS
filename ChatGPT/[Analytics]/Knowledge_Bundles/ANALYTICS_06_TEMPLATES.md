@@ -33,7 +33,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:4d5d1c07f99e23c77c4cda404c6b7922c9ec8756bafb3a6fa1af54c19c58ac54
+- source_fingerprint: sha256:3dacf9fc4e91debbb4d1751a8c40426e9a54bb6886406e9974a9273fdb43a094
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -788,6 +788,25 @@ gate is the claim-level (Gate 2) checkpoint; it does not replace Gate 1
 (data/calculation correctness) or Gate 3 (narrative wording), and it is read,
 not reimplemented, by the Analytical Judge (`ANALYTICAL_REASONING_STANDARD.md`
 §8) and the memo/narrative QA (`MEMO_PIPELINE.md`, `MEMO_RUBRIC.md`).
+## `RECOMMENDATION` row evidence (P1-B, issue #449, bounded pilot)
+A registry row with `claim_type = RECOMMENDATION` for `analytical_depth =
+material / decision_critical` links to a `RECOMMENDATION_EVIDENCE` record
+(`ANALYTICAL_REASONING_STANDARD.md` §16.2) via `claim_id`; no new column is
+added to this template. `claim_support` for such a row cannot be
+`SUPPORTED` while `RECOMMENDATION_EVIDENCE.recommendation_status` is
+`pilot_candidate` or `hypothesis` —
+```text
+diagnostic evidence != intervention evidence
+```
+— a proven `problem_evidence` does not raise `claim_support` for the
+`RECOMMENDATION` row above the recorded `recommendation_status`. Where the
+recommendation proposes a targeted (entity-specific) intervention,
+`generalization_scope` / `generalization_evidence` for that row must reflect
+the §16.3 `stability_check` result (rotating Top-N does not support a
+targeted-entity `generalization_scope`). Where the recommendation proposes a
+forecasting/planning-method change, `evidence_id` must reference the §16.4
+`FORECAST_METHOD_COMPARISON`, not the diagnostic finding alone. Bounded pilot
+only; `owner review required` before promotion.
 
 ## From: `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
 

@@ -214,6 +214,46 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
 
+## Recommendation evidence, stability, and out-of-sample validation (P1-B, issue #449, bounded pilot)
+
+Bounded pilot only. `owner review required` before any promotion decision.
+Reads `ANALYTICAL_REASONING_STANDARD.md` §16 controls; adds no method, no
+second Judge, and no second QA framework.
+
+- [ ] `material_explanatory_statement_has_discriminating_test_status?` — a
+  material explanatory/intervention-oriented conclusion (§16.1) records
+  `DISCRIMINATING_TEST_STATUS: executed / blocked / unavailable`; contribution
+  + recurrence alone does not support it.
+- [ ] `recommendation_evidence_recorded_when_material_intervention_proposed?`
+  — a material management recommendation has a `RECOMMENDATION_EVIDENCE`
+  record (§16.2); `diagnostic evidence != intervention evidence` holds.
+- [ ] `untested_intervention_capped_at_pilot_candidate?` —
+  `test_or_backtest_performed = no` caps `recommendation_status <=
+  pilot_candidate`.
+- [ ] `stability_check_recorded_before_targeted_redesign_claim?` — a material
+  concentration/recurrence/persistent-pattern claim used to justify a
+  targeted (entity-specific) intervention has a `stability_check` (§16.3);
+  rotating Top-N is not read as a stable targeted population.
+- [ ] `forecast_method_change_has_out_of_sample_comparison?` — a
+  recommendation to change a forecasting/planning method has a
+  `FORECAST_METHOD_COMPARISON` with an out-of-sample period, comparable
+  population/scope, same metric definitions, a monetary-error metric, and a
+  frequency/corridor-accuracy metric where applicable (§16.4); otherwise
+  `recommendation_status <= pilot_candidate`.
+- [ ] `process_control_claim_has_process_evidence?` — `effect_type:
+  process_control` (§16.5, `VARIANCE_DIAGNOSTIC_CONTRACT.md`) is not inferred
+  from a financial/variance pattern alone.
+- [ ] `what_would_change_the_view_present_when_material_gap_exists?` — §16.6
+  is stated for material/decision-critical management-facing output with a
+  material evidence gap, and omitted (not filled with a placeholder) when no
+  such gap exists.
+- [ ] `p1_b_controls_collapse_on_routine_no_trigger_cases?` — none of the six
+  §16 elements is instantiated without its stated material activation
+  trigger; the routine/quick §9 compact path is unaffected.
+
+Pilot results for issue #449 are recorded in
+`P1_449_PILOT_EVIDENCE_2026-09-06.md`.
+
 ## Held-out transfer eval (P1 QA/EVAL, issue #445)
 
 Classification: QA/EVAL only. `HELD_OUT_TRANSFER_EVAL` is not an analytical

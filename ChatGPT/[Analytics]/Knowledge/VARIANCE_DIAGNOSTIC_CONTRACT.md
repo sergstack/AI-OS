@@ -233,6 +233,20 @@ management_owner != responsible_for_cause
 
 Do not infer responsibility, mismanagement, budget violation, or control failure solely from amount, ownership, zero-plan status, or driver status. Accountability claims require separate criteria and evidence.
 
+### `effect_type` classification (P1-B, issue #449, bounded pilot)
+
+For material/decision-critical cases, name the primary-attribution categories above and this Accountability boundary rule with one explicit classification surface:
+
+```text
+effect_type: economic / timing / mapping / data_quality / process_control / unresolved
+```
+
+```text
+a financial pattern alone cannot establish a process failure
+```
+
+`effect_type: process_control` requires process evidence (owner acknowledgment, documented control/process rule, confirmed mapping-table defect, or a budget-process exception confirmed with the process owner) — not merely a recurring or material financial/variance pattern. This does not add a parallel taxonomy: it reuses the existing `economic_effect` / `timing_effect` / `data_mapping_effect` / `unresolved_effect` categories (§2), `data_layer_check`, `timing_validation`, and `exception_analysis`, and restates the Accountability boundary rule above at the classification-surface level. See `ANALYTICAL_REASONING_STANDARD.md` §16.5 for the full activation trigger and rollback. Bounded pilot only; `owner review required` before promotion.
+
 ## 6. Reported and adjusted views
 
 ```text
@@ -297,6 +311,7 @@ claim strength <= final evidence sufficiency
 driver != root cause
 reported result != adjusted management view
 net attribution reconciliation != absolute classification coverage
+a financial pattern alone cannot establish a process failure
 ```
 
 Stop or constrain publication when sign normalization is unresolved; the gross or attribution bridge fails; coverage population/denominator is missing; materiality basis is absent; adjusted polarity is ambiguous; or a secondary/generalized claim lacks required evidence.
