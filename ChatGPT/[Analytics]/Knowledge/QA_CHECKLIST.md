@@ -213,3 +213,42 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Inputs listed.
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
+
+## Held-out transfer eval (P1 QA/EVAL, issue #445)
+
+Classification: QA/EVAL only. `HELD_OUT_TRANSFER_EVAL` is not an analytical
+method, does not appear in `ANALYTICAL_TECHNIQUES.md`, has no `METHOD_ID`,
+and does not change the 22-method registry. It measures whether a reliability
+change (e.g. an activated P1 control) transfers beyond development/known
+examples, in addition to — not instead of — existing Smoke/adversarial QA
+(`SMOKE_QA_FOR_ANALYTICS.md`).
+
+Required lanes, each evaluated for P0 baseline vs. P1 candidate:
+
+- [ ] `known_regression_cases` — existing development/adversarial cases the
+  control was designed against.
+- [ ] `held_out_cases` — cases not used during design, same domain.
+- [ ] `shifted_domain_cases` — different business domain, metric type, grain,
+  or denominator semantics than development cases.
+- [ ] `boundary_cases` — edge conditions (e.g. exact tolerance, zero
+  denominator, fully matched population).
+- [ ] `contradictory_evidence_cases` — cases with unresolved conflicting
+  evidence, to confirm no invented resolution.
+- [ ] `old_p0_regression_cases` — routine/quick P0 cases with no material
+  trigger, to confirm compact-path behavior is preserved.
+
+Anti-overfit requirement: `held_out_cases` / `shifted_domain_cases` must not
+be direct paraphrases of development examples — vary business domain, metric
+type, grain, denominator semantics, population-shift mechanism,
+reconciliation-failure mode, timing/evidence structure, wording, and decision
+context.
+
+Required comparison and promotion rule: report `known_regression_cases` /
+`held_out_cases` / `shifted_domain_cases` / `old_p0_regression_cases` results
+separately, not as one blended pass rate. A known-suite win combined with
+held-out or old-P0-regression deterioration is a promotion **failure**, not a
+partial pass; no promotion follows from development-suite improvement alone.
+
+`owner review required` before any promotion decision based on this eval
+lane. Pilot results for issue #445 are recorded in
+`P1_PILOT_EVIDENCE_2026-09-06.md`.

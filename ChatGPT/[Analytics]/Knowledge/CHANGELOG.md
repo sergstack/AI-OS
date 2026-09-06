@@ -1,5 +1,62 @@
 # Changelog
 
+## 2026-09-06 — analytics-p1-comparative-integrity (issue #445)
+
+Bounded pilot only. `owner review required` before any promotion decision;
+this entry does not itself authorize production adoption, merge, deployment,
+or Project sync.
+
+Added:
+
+- Activated `POPULATION_CONTRACT` (CONTROL/CONTRACT) — full field list and
+  required behavior (`ANALYTICAL_REASONING_STANDARD.md` §15.1,
+  `Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`). Extends, does not replace,
+  §5's `population_constant_or_explained?` /
+  `denominator_constant_or_explained?` / `scope_change_quantified?`.
+- Activated `RECONCILIATION_CONTRACT` (CONTROL/CONTRACT) — full field list
+  distinguishing amount/row-count/matched-population/identity-mapping/
+  classification-coverage integrity dimensions
+  (`ANALYTICAL_REASONING_STANDARD.md` §15.2, `DATA_CONTRACTS.md`). Wraps
+  existing `reconciliation` / `unmatched_elements_analysis` /
+  `factor_reconciliation` / `unexplained_residual` methods; no new
+  `METHOD_ID`.
+- Activated `ANALYSIS_CONTINUATION_GATE` (ROUTING/WORKFLOW CONTROL) —
+  CONTINUE/STOP/BLOCK/HANDOFF decision record
+  (`ANALYTICAL_REASONING_STANDARD.md` §15.3). Restates §10's stop/escalation
+  rules explicitly; not an autonomous loop; preserves the Analytical Judge
+  (§8) as authoritative.
+- `HELD_OUT_TRANSFER_EVAL` (QA/EVAL only, not a method) — six required lanes:
+  `known_regression_cases`, `held_out_cases`, `shifted_domain_cases`,
+  `boundary_cases`, `contradictory_evidence_cases`,
+  `old_p0_regression_cases` (`QA_CHECKLIST.md`). New smoke QA case 13
+  (`SMOKE_QA_FOR_ANALYTICS.md`) covering held-out population semantics
+  shift, held-out reconciliation semantics shift, and old-P0 compact
+  regression protection.
+- Pilot evidence packet: 10-scenario P0-baseline-vs-P1-candidate result
+  matrix, known-vs-held-out results reported separately, per-element
+  recommendation, rollback status
+  (`Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`).
+
+Constraints preserved:
+
+- 22-method registry not expanded; no new `METHOD_ID`; no new analytical
+  intent (`ANALYTICAL_TECHNIQUES.md` unchanged, verified by diff against
+  `origin/main`).
+- `POPULATION_CONTRACT` / `RECONCILIATION_CONTRACT` stay CONTROL/CONTRACT;
+  `ANALYSIS_CONTINUATION_GATE` stays ROUTING/WORKFLOW CONTROL;
+  `HELD_OUT_TRANSFER_EVAL` stays QA/EVAL.
+- Analytical Judge (§8), deterministic-first boundary, `blocked != executed`,
+  and §9 compact runtime collapse remain authoritative and unchanged.
+- All changes stayed inside `ChatGPT/[Analytics]/**`.
+
+Status:
+
+```text
+production_ready: not claimed
+promotion: owner review required (not decided by this pilot)
+gate_verdict: see Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md
+```
+
 ## 2026-09-05 — analytics-p0-semantic-contracts (issue #439)
 
 Added:

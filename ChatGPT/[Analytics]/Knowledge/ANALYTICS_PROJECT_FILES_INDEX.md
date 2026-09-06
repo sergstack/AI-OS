@@ -35,6 +35,7 @@
 | `SMOKE_QA_FOR_ANALYTICS.md` | Проверка проекта | После загрузки пакета |
 | `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
+| `P1_PILOT_EVIDENCE_2026-09-06.md` | P1 bounded-pilot evidence (issue #445) | Нужна evidence для owner review по POPULATION_CONTRACT / RECONCILIATION_CONTRACT / ANALYSIS_CONTINUATION_GATE / HELD_OUT_TRANSFER_EVAL |
 | `../../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 
 ## Priority rules

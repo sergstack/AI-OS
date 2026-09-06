@@ -367,6 +367,61 @@ Pass condition:
 - the claim is removed from the executive body or the lineage is completed
   before publication.
 
+## 13. Held-out transfer eval (P1 QA/EVAL, issue #445)
+
+QA/EVAL lane only — see `QA_CHECKLIST.md` for the full lane definition. These
+are the `held_out_cases` / `shifted_domain_cases` entries for the bounded
+pilot; they are not analytical methods. Full P0-vs-P1 scenario reasoning is
+recorded in `P1_PILOT_EVIDENCE_2026-09-06.md`; this section holds the smoke
+QA question form only.
+
+Question (held-out population semantics shift):
+
+```text
+Cost per resolved ticket falls period over period, but the ticket-closure
+policy changed so more low-effort tickets now count as "resolved". Можно
+опубликовать вывод, что стоимость обработки снизилась?
+```
+
+Pass condition:
+
+- treats "resolved" as a changed denominator/population, not familiar
+  terminology from a financial-restructuring example;
+- `denominator_changed_vs_baseline = yes` (or equivalent), `interpretation_allowed`
+  is not `yes` until the closure-policy effect is quantified;
+- does not accept the efficiency conclusion at face value.
+
+Question (held-out reconciliation semantics shift):
+
+```text
+Total customer count is equal across two periods, but a material share of
+customers entered and exited between periods. Означает ли равное общее
+количество, что базы клиентов идентичны?
+```
+
+Pass condition:
+
+- distinguishes equal aggregate count from matched-population integrity;
+- surfaces `only_in_left` / `only_in_right` entrant/exit populations rather
+  than treating equal totals as proof of an unchanged population;
+- does not issue a global "populations match" conclusion from the aggregate
+  count alone.
+
+Question (old P0 compact regression protection):
+
+```text
+Простая быстрая задача Plan/Fact, population стабильна, данные reconciled,
+материального триггера нет. Нужен полный POPULATION_CONTRACT /
+RECONCILIATION_CONTRACT / ANALYSIS_CONTINUATION_GATE в ответе?
+```
+
+Pass condition:
+
+- preserves the existing compact P0 path (§9 runtime collapse);
+- does not instantiate a full P1 contract/gate record without a material
+  trigger;
+- claim calibration and QA note remain as in the pre-#445 compact path.
+
 ## Smoke QA output
 
 ```text

@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:a5bfd150da34db5093b251b71ef8ed37b1d0c50251f19a683cfbfdf0f863a314
+- source_fingerprint: sha256:66442553fd94874649fe2973c84d0404624493a0ed0d15cbb3176f85df477675
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -666,38 +666,146 @@ narrative wording stronger than `maximum_claim_strength`. The Analytical
 Judge remains the post-findings Gate 2 checkpoint; Memo QA / the `[LLM]`
 Judge remains the Gate 3 checkpoint. Neither gate is redefined or
 duplicated by this section.
-## 15. P1 extension points (design only, not implemented in this version)
-The following are forward-compatible placeholders only. They are not wired
-into any active gate, QA check, or acceptance criterion in this version.
-- `POPULATION_CONTRACT` - future population/denominator comparability detail
-  for ratio/rate/share/average/margin/conversion/productivity/frequency
-  metrics (`population_definition`, `numerator_population`,
-  `denominator_population`, `period`, `grain`, `filters`, `exclusions`,
-  `population_changed_vs_baseline`, `denominator_changed_vs_baseline`,
-  `scope_change_amount`, `scope_change_pct`, `interpretation_allowed`). See
-  `../Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`. P1, not active in this
-  version; §5's `population_constant_or_explained?` /
-  `denominator_constant_or_explained?` / `scope_change_quantified?` remain
-  the active controls.
-- `RECONCILIATION_CONTRACT` - a future contract distinguishing total
-  reconciliation, row-count reconciliation, matched population,
-  only-left/only-right population, amount reconciliation, classification
-  coverage, and residual/tolerance, so that an aggregate total match is not
-  read as population integrity. P1, not active in this version; existing
-  RAW/STAGE/MART reconciliation and unmatched-row QA remain the active
-  controls.
-- `ANALYSIS_CONTINUATION_GATE` - a future control on whether to continue,
-  stop, block, or hand off further analysis
-  (`current_question_answered`, `current_claim_strength`,
-  `remaining_uncertainty`, `material_unresolved_question`,
-  `next_method_candidate`, `what_can_it_change`,
-  `required_evidence_available`, `expected_decision_value`,
-  `decision: CONTINUE / STOP / BLOCK / HANDOFF`). P1, not active in this
-  version; §10 stop/escalation rules remain the active controls. This is not
-  an autonomous loop and must not be implemented as one.
-## P1 and P2 status
-P1 is deferred. Do not create fake pilot evidence. Future work may evaluate 5–10 materially different pilot cases, golden and adversarial cases, method and robustness-trigger calibration, confidence-taxonomy migration, and candidate-intent promotion.
-P2 is deferred. Do not implement expanded taxonomies, reusable pattern promotion, autonomous learning, automatic promotion or downgrade, or agentic analytical orchestration.
+## 15. P1 activated controls (bounded pilot, issue #445)
+Status: bounded pilot activation only. `owner review required` before any
+promotion decision; this section does not authorize production adoption,
+merge, deployment, or Project-sync of the pilot. These three controls extend
+the existing P0 mechanics named below; they do not fork, replace, or
+duplicate them, add a new `METHOD_ID`, add a new analytical intent, or change
+the 22-method registry in `ANALYTICAL_TECHNIQUES.md`.
+### 15.1 `POPULATION_CONTRACT` (CONTROL/CONTRACT)
+Activated extension of §5's `population_constant_or_explained?` /
+`denominator_constant_or_explained?` / `scope_change_quantified?` and of
+`../Templates/METRIC_DEFINITION_CARD_TEMPLATE.md`'s `population` field, for
+ratio/rate/share/average/margin/conversion/productivity/frequency and
+analogous denominator-sensitive metrics. It does not replace either.
+```text
+POPULATION_CONTRACT
+population_definition:
+numerator_population:
+denominator_population:
+period:
+grain:
+filters:
+exclusions:
+population_changed_vs_baseline:
+denominator_changed_vs_baseline:
+scope_change_amount:
+scope_change_pct:
+comparability_status: comparable / comparable_with_adjustment / not_comparable / unresolved
+interpretation_allowed: yes / limited / no
+limitation:
+```
+Required behavior: the reported metric may remain visible when
+`comparability_status = unresolved`, but a strong comparative interpretation
+(`interpretation_allowed = yes`) must not be published when a material
+population/denominator/scope change is unresolved or unquantified. This is
+the same §5 cap restated with explicit fields:
+```text
+comparability_status: unresolved or not_comparable
+  and scope_change_quantified? = no
+  -> interpretation_allowed != yes
+  -> claim_support <= PARTIALLY_SUPPORTED
+```
+Activation trigger: instantiate for `analytical_depth = material /
+decision_critical` cases involving a ratio/rate/share/average/margin/
+conversion/productivity/frequency metric with a comparison across periods or
+segments. Routine/quick cases with no material population/denominator
+trigger keep the existing §5 one-line check and do not instantiate the full
+contract (§9 runtime collapse still applies).
+### 15.2 `RECONCILIATION_CONTRACT` (CONTROL/CONTRACT)
+Activated wrapper over existing, unchanged methods and QA
+(`reconciliation`, `unmatched_elements_analysis`, `factor_reconciliation`,
+`unexplained_residual`, classification-coverage QA, `data_layer_check`).
+No second `reconciliation` method and no new `METHOD_ID` are created; the
+contract only makes explicit which integrity dimension each existing result
+covers, so a pass on one dimension is not read as proof of another.
+```text
+RECONCILIATION_CONTRACT
+scope:
+period:
+grain:
+tolerance:
+amount_reconciliation:
+row_count_reconciliation:
+matched_population:
+only_in_left:
+only_in_right:
+identity_mapping_status:
+classification_coverage:
+unexplained_residual:
+overall_interpretation:
+limitations:
+```
+Required invariant:
+```text
+amount_reconciliation != row_count_reconciliation != matched_population
+  != identity_mapping_status != classification_coverage != factor_reconciliation
+```
+`overall_interpretation` may only claim the integrity dimensions that were
+actually tested; a pass on `amount_reconciliation` alone does not authorize
+"fully reconciled" language covering `matched_population`,
+`identity_mapping_status`, or `classification_coverage` when those were not
+separately tested or were tested and failed.
+Activation trigger: instantiate for material/decision-critical cases where a
+reconciliation-based claim (e.g. "dataset reconciles", "fully matched") would
+be published; routine/quick cases keep the existing single-line
+reconciliation QA result (§9 runtime collapse still applies).
+### 15.3 `ANALYSIS_CONTINUATION_GATE` (ROUTING / WORKFLOW CONTROL)
+Activated, explicit restatement of §10's stop/escalation rules as a
+recorded decision for material/decision-critical cases. It is not an
+autonomous loop: it cannot silently add methods, cannot silently retry,
+cannot reason around a missing deterministic prerequisite, must preserve the
+Analytical Judge (§8) and §10 as authoritative, and must collapse to the
+existing compact path for routine/quick cases without a material trigger
+(§9 runtime collapse still applies).
+```text
+ANALYSIS_CONTINUATION_GATE
+current_question_answered:
+current_claim_strength:
+remaining_uncertainty:
+material_unresolved_question:
+next_method_candidate:
+what_can_it_change:
+required_evidence_available:
+expected_decision_value:
+decision: CONTINUE / STOP / BLOCK / HANDOFF
+reason:
+```
+Decision semantics:
+- `CONTINUE` only when `next_method_candidate` is an already-registered
+  method (§3 registry) that can materially change finding, claim strength,
+  confidence, risk, recommendation, limitation, or evidence assurance
+  (`what_can_it_change` non-empty and material).
+- `STOP` when no eligible next method can materially change the
+  decision-relevant result (restates §10's stop rules).
+- `BLOCK` when `required_evidence_available = no` for the discriminating
+  check (restates `blocked != executed`, §4).
+- `HANDOFF` only when the remaining unresolved question leaves Analytics
+  ownership (restates §10's escalation/decision-boundary rules); it does not
+  silently transfer ownership.
+Activation trigger: instantiate for material/decision-critical cases at a
+point where continuation is genuinely in question (after a dominant finding,
+before a final claim, or when multiple methods are technically eligible).
+Do not instantiate for routine/quick cases with no material trigger.
+## P1 pilot status (issue #445)
+`POPULATION_CONTRACT`, `RECONCILIATION_CONTRACT`, and
+`ANALYSIS_CONTINUATION_GATE` are activated for a bounded pilot only, per
+issue #445. Pilot evidence, the 10-scenario baseline-vs-candidate matrix, and
+per-element recommendations are recorded in
+`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`. `owner review required`
+before any promotion decision; passing the pilot does not itself authorize
+production adoption. `HELD_OUT_TRANSFER_EVAL` (QA/EVAL, not a method) is
+defined in `QA_CHECKLIST.md` and exercised via `SMOKE_QA_FOR_ANALYTICS.md`.
+Rollback: `POPULATION_CONTRACT` rolls back to the bare §5 population checks;
+`RECONCILIATION_CONTRACT` rolls back to the existing separate
+reconciliation/unmatched/factor-reconciliation/residual/coverage controls
+without the wrapper; `ANALYSIS_CONTINUATION_GATE` rolls back to §10's
+minimum-sufficient-method/stop/escalation rules alone. No method-registry
+migration is required for rollback in any case.
+P2 remains deferred. Do not implement expanded taxonomies, reusable pattern
+promotion, autonomous learning, automatic promotion or downgrade, or agentic
+analytical orchestration.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`
 
