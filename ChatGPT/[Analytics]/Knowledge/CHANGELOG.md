@@ -1,10 +1,118 @@
 # Changelog
 
+## 2026-09-06 — analytics-p1-p1b-promotion (owner-directed, scope extension beyond issue #451)
+
+Governance-promotion decision, not a new controls framework. This entry
+records an owner-authorized promotion of specific already-implemented P1
+(#445) and P1-B (#449) controls from "bounded pilot, owner review required"
+to "standard, active" status. This is a deliberate scope extension beyond
+issue #451's literal text (#451 was calibration-only and explicitly said
+not to silently promote pilot-only semantics through it) — authorized
+directly by the repository owner in the same working session as this
+change, per `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
+
+Promoted to standard, active status:
+
+- `POPULATION_CONTRACT` (§15.1, issue #445).
+- `RECONCILIATION_CONTRACT` (§15.2, issue #445).
+- Strengthened material Explanation Challenge (§16.1, issue #449).
+- `RECOMMENDATION_EVIDENCE` (§16.2, issue #449).
+- Material stability/persistence check (§16.3, issue #449).
+- `FORECAST_METHOD_COMPARISON` out-of-sample validation (§16.4, issue #449).
+- `effect_type` economic-vs-process boundary (§16.5, issue #449).
+- `what_would_change_the_view` (§16.6, issue #449).
+
+Not promoted, deliberately excluded, no substantive change:
+
+- `ANALYSIS_CONTINUATION_GATE` (§15.3, issue #445) — remains **deferred, not
+  activated**. Verified byte-for-byte unchanged in substance against
+  `origin/main` (only the surrounding "P1 status" summary paragraph was
+  split so §15.1/§15.2 read as promoted and §15.3 still reads as deferred).
+- P2 (autonomous learning, self-improvement, registry expansion) — remains
+  deferred; not touched.
+- `ANALYTICAL_TECHNIQUES.md` (22-method registry) — verified byte-identical
+  to `origin/main` before and after this change.
+
+Promotion changes activation/authorization status only. It does not upgrade
+or flatten evidence-strength characterization: §16.2/§16.3/§16.4 remain
+"real incremental catch," §16.5 remains "modest/formalization," §16.6
+remains "naming/consistency value, not a detection catch," §16.1 remains
+"partially scenario-tested" — exactly as recorded in the original pilot
+evidence docs, which are preserved as historical records with a forward
+pointer added, not rewritten.
+
+This is a repository-side promotion: source text, generated bundles, and
+package/provenance consistency were updated and validated (see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`). It does not include a
+behavioral test of the live `[Analytics]` ChatGPT Project or any surrogate
+standing in for it — `external Analytics behavioral acceptance: NOT RUN`,
+performed separately by the owner on the real Project after upload.
+
+This is a repository-level change. External ChatGPT Project sync/upload of
+the regenerated `Knowledge_Bundles/*.md` files is a separate, owner-gated
+step, not performed here — "package ready" and "live Project updated" are
+different claims.
+
+Status:
+
+```text
+production_ready: repository package ready (bundles regenerated); live
+  ChatGPT Project sync not performed (separate owner-gated step)
+promotion: DONE — 2 P1 controls + 6 P1-B controls promoted to standard/active (owner-authorized 2026-09-06)
+gate_verdict: see docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md
+```
+
+## 2026-09-06 — analytics-eda-claim-calibration (issue #451)
+
+Regression/calibration review, not a new controls framework. `owner review
+required` before any promotion decision; this entry does not itself
+authorize production adoption, merge, deployment, or Project sync.
+
+Added:
+
+- `GOVERNANCE_AND_ANTI_PATTERNS.md`: "EDA-to-claim calibration additions
+  (issue #451)" — 7 new rows in the existing P0 failure-mode table naming
+  narrow, previously-ambiguous instances of existing controls (observed
+  rating != quality/preference; model residual != market
+  inefficiency/fair-value; definition != manufactured evidence; selected
+  reviews/volume != guarantee/expertise; listed price != current
+  price/availability; reviewer confound requires common-support check
+  before normalization; in-sample association != measured predictive
+  performance). No new field, taxonomy, method, or gate.
+- `SMOKE_QA_FOR_ANALYTICS.md`: new case 15 (9 scenarios) covering the 10-row
+  acceptance-criteria table from issue #451 across three fixture families
+  (WineMag wording, a CFO/audit transfer variant reusing case 14 scenario
+  C's pattern, and a routine positive-control/routing fixture). Paper-trace
+  scenarios only; no live model run.
+- `package_manifest.json`: repaired a genuine completeness gap —
+  `Templates/METRIC_DEFINITION_CARD_TEMPLATE.md` (present in `Knowledge/MANIFEST.md`
+  and the canonical `knowledge_bundle_manifest.json` bundle sources since
+  issue #439, but missing from this project's own file list) plus three
+  more recently-added files that had the same gap
+  (`AUTORESEARCH_STOCHASTICITY_NONINFERIORITY_METHOD.md`,
+  `P1_PILOT_EVIDENCE_2026-09-06.md`, `P1_449_PILOT_EVIDENCE_2026-09-06.md`)
+  and this review's own new evidence file.
+- Evidence packet: `EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` — R1–R6
+  mapping table (observed failure pattern -> existing owning rule ->
+  reproduction/trace evidence -> smallest justified correction -> required
+  regression check), 10-scenario paper-trace result, and the manifest
+  finding.
+
+Not changed: `ANALYTICAL_TECHNIQUES.md` (byte-identical to `origin/main`),
+`ANALYSIS_CONTINUATION_GATE` (§15.3, untouched, remains deferred), the
+22-method registry, `confidence: high/medium/low`, any Analytics enum, and
+`PROJECT_INSTRUCTIONS.md` (near its length ceiling; all additions placed in
+`Knowledge/`).
+
 ## 2026-09-06 — analytics-p1-recommendation-evidence (issue #449)
 
-Bounded pilot only. `owner review required` before any promotion decision;
-this entry does not itself authorize production adoption, merge, deployment,
-or Project sync.
+Bounded pilot only at the time of this entry. `owner review required` before
+any promotion decision; this entry does not itself authorize production
+adoption, merge, deployment, or Project sync. **Update (same day, later
+entry above):** all six §16 elements were subsequently promoted to standard,
+active status — see "2026-09-06 — analytics-p1-p1b-promotion" above and
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`. This historical entry
+is otherwise preserved as-written.
 
 Added:
 
@@ -77,9 +185,14 @@ gate_verdict: see Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md
 
 ## 2026-09-06 — analytics-p1-comparative-integrity (issue #445)
 
-Bounded pilot only. `owner review required` before any promotion decision;
-this entry does not itself authorize production adoption, merge, deployment,
-or Project sync.
+Bounded pilot only at the time of this entry. `owner review required` before
+any promotion decision; this entry does not itself authorize production
+adoption, merge, deployment, or Project sync. **Update (same day, later
+entry above):** `POPULATION_CONTRACT` and `RECONCILIATION_CONTRACT` were
+subsequently promoted to standard, active status; `ANALYSIS_CONTINUATION_GATE`
+remains deferred, not activated — see "2026-09-06 — analytics-p1-p1b-promotion"
+above and `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`. This
+historical entry is otherwise preserved as-written.
 
 Added:
 

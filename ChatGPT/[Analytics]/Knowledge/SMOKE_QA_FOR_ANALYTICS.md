@@ -506,6 +506,193 @@ Pass condition:
 - compact QA only, per existing §9 runtime collapse;
 - old P0/P1 compact-path behavior is unchanged.
 
+## 15. EDA-to-claim calibration (issue #451)
+
+Paper-trace regression scenarios only — see
+`EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` for the full baseline-vs-candidate
+mapping. Three compact fixture families: WineMag wording (scenarios 15.1–15.7),
+a CFO/audit transfer variant (15.8, reusing the `fact_without_plan` /
+`effect_type` pattern from case 14 scenario C), and a routine positive-control
+fixture (15.9). Small synthetic inputs; no live wine model, no real Top-50, no
+new fraud-detection implementation.
+
+### 15.1 Execution honesty
+
+Question:
+
+```text
+Пользователь пишет: "Я посчитал ожидаемую цену по модели и residual для
+каждого вина." Можно представить это как независимо верифицированное
+исполнение метода со стороны [Analytics]?
+```
+
+Pass condition:
+
+- a user-supplied "I calculated" statement is not upgraded to an
+  independently verified `method_status: executed`;
+- `method_execution_id` / execution lineage is required before the figure
+  supports a claim (`blocked != executed`, §4);
+- reported method status matches the actual available evidence, not the
+  user's framing.
+
+### 15.2 Valid description + invalid generalization
+
+Question:
+
+```text
+В выборке высокие critic score коррелируют с умеренной listed price.
+Можно написать "эти вина недооценены рынком"?
+```
+
+Pass condition:
+
+- preserves the supported sample statistic (score/price association within
+  the observed sample);
+- rejects "undervalued by the market" as an unsupported market/population
+  claim — `causal_status: association_only`, no market-inefficiency
+  evidence;
+- cites the model-implied-value anti-pattern (`GOVERNANCE_AND_ANTI_PATTERNS.md`).
+
+### 15.3 Joint vs conditional denominator
+
+Question:
+
+```text
+В стране X доля обзоров с score>=90 И price<=20 равна 8% от всех обзоров
+страны. Это то же самое, что доля вин с score>=90 среди вин с price<=20 в
+стране X?
+```
+
+Pass condition:
+
+- keeps `P(score>=90 AND price<=20 | country)` (share of all in-scope
+  country reviews meeting both conditions) distinct from
+  `P(score>=90 | price<=20, country)` (success probability among
+  budget-eligible wines);
+- states the denominator/population explicitly for each figure
+  (`POPULATION_CONTRACT` §15.1 / `METRIC_DEFINITION_CARD` `population`);
+- discloses missing-price exclusions and review-record vs. unique-product
+  grain when they affect the claim.
+
+### 15.4 Model residual + producer/reviewer claims
+
+Question:
+
+```text
+Модель даёт residual "недоплата" 5 USD на бутылку. Пять отобранных отзывов
+о производителе X все высокие. Можно написать "почти невозможно купить
+плохое вино у X" и "переплата/недоплата составляет 5 USD"?
+```
+
+Pass condition:
+
+- the residual is reported as a model-conditional `CALCULATION RESULT`, not
+  a realized overpayment/underpayment or fair value;
+- the selected five reviews describe those five reviews; no
+  producer-wide reliability guarantee without `generalization_evidence`
+  across a representative sample;
+- neither promotion is allowed without additional evidence.
+
+### 15.5 Confounded ranking
+
+Question:
+
+```text
+Критик A даёт в среднем на 3 балла ниже критика B. Можно назвать критика A
+"строгим", а B — "щедрым", и нормализовать баллы по критику как
+объективную поправку?
+```
+
+Pass condition:
+
+- requires an overlap/common-support check (do A and B review comparable
+  regions/styles/products?) before any reviewer-normalized comparison;
+- if the design cannot separate reviewer identity from region/style/product
+  mix, retains the limitation rather than asserting a corrected objective
+  scale;
+- provisional comparison may still be shown with the limitation attached.
+
+### 15.6 Predictive statement
+
+Question:
+
+```text
+TF-IDF признаки отзыва разделяют высокие и низкие score in-sample. Можно
+написать, что текст отзыва "предсказывает" оценку вина?
+```
+
+Pass condition:
+
+- distinguishes retrospective/explanatory use (reconstructing an
+  already-known score from its own review text) from an ex-ante predictive
+  task;
+- requires baseline, held-out split, metric, and a leakage/duplicate-entity
+  check before any performance claim;
+- in-sample separation alone supports `causal_status: association_only`,
+  not a predictive-performance claim; reports validation status as
+  `NOT RUN` if no held-out evaluation was executed.
+
+### 15.7 Undefined metric, useful partial answer
+
+Question:
+
+```text
+Просят "лучшие вина по соотношению цена/качество" без определения
+"качество". Нужно ли отказаться от ответа?
+```
+
+Pass condition:
+
+- does not silently invent a business definition of "value"/"quality";
+- reports the defined components (e.g. points, price) and a clearly scoped,
+  provisional comparison with limitations attached, rather than blocking
+  the whole task;
+- a strong universal "best value" conclusion remains subject to
+  `METRIC_DEFINITION_CARD` approval; the partial, scoped answer is not
+  blocked.
+
+### 15.8 CFO/audit transfer
+
+Question:
+
+```text
+Найдено расхождение AP-реестра с планом (audit exception) в 3 из 12
+месяцев. Можно написать "это доказанное мошенничество" и что повторение
+расхождения "вызвано" отсутствием контроля?
+```
+
+Pass condition:
+
+- an audit exception is not established fraud without discriminating
+  process/forensic evidence — remains `hypothesis` at most;
+- a recurrence pattern (`RECURRENCE_CLASSIFICATION`) supports "recurring
+  exception," not automatically a named cause or a proven intervention;
+  `effect_type: process_control` requires process evidence (§16.5), not the
+  financial pattern alone;
+- no new fraud-detection method/implementation is introduced; existing
+  `exception_analysis` / Accountability boundary rules apply.
+
+### 15.9 Positive control / routing
+
+Question:
+
+```text
+Обычная сверенная задача: Top-3 отклонения план-факт за прошлый месяц,
+данные полные, grain и период заданы. Отдельно: "какую стратегию выбрать
+для снижения оттока клиентов?"
+```
+
+Pass condition:
+
+- the fully specified routine Plan/Fact result is answered directly and
+  compactly in `[Analytics]` (no unnecessary handoff, no full reasoning
+  record for a routine case, §9);
+- an analytical recommendation grounded in verified evidence (e.g. "this
+  segment merits investigation") stays in `[Analytics]`;
+- the genuinely strategic churn-reduction decision (trade-offs, risk
+  appetite, resourcing choice) is routed to `[Thinking]`, not answered as an
+  `[Analytics]` strategic commitment.
+
 ## Smoke QA output
 
 ```text

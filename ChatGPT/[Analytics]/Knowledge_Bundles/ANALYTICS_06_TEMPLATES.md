@@ -33,7 +33,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:3dacf9fc4e91debbb4d1751a8c40426e9a54bb6886406e9974a9273fdb43a094
+- source_fingerprint: sha256:ef697b66cc31e6fc21c61429b51acfba6f77d82b0d1235acadbefb517eaba47a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -788,7 +788,7 @@ gate is the claim-level (Gate 2) checkpoint; it does not replace Gate 1
 (data/calculation correctness) or Gate 3 (narrative wording), and it is read,
 not reimplemented, by the Analytical Judge (`ANALYTICAL_REASONING_STANDARD.md`
 §8) and the memo/narrative QA (`MEMO_PIPELINE.md`, `MEMO_RUBRIC.md`).
-## `RECOMMENDATION` row evidence (P1-B, issue #449, bounded pilot)
+## `RECOMMENDATION` row evidence (P1-B, issue #449, standard, active — promoted 2026-09-06, see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`)
 A registry row with `claim_type = RECOMMENDATION` for `analytical_depth =
 material / decision_critical` links to a `RECOMMENDATION_EVIDENCE` record
 (`ANALYTICAL_REASONING_STANDARD.md` §16.2) via `claim_id`; no new column is
@@ -805,8 +805,9 @@ recommendation proposes a targeted (entity-specific) intervention,
 the §16.3 `stability_check` result (rotating Top-N does not support a
 targeted-entity `generalization_scope`). Where the recommendation proposes a
 forecasting/planning-method change, `evidence_id` must reference the §16.4
-`FORECAST_METHOD_COMPARISON`, not the diagnostic finding alone. Bounded pilot
-only; `owner review required` before promotion.
+`FORECAST_METHOD_COMPARISON`, not the diagnostic finding alone. Promoted to
+standard, active status 2026-09-06 (owner-authorized); see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
 
 ## From: `ChatGPT/[Analytics]/Templates/EVIDENCE_CARD_TEMPLATE.md`
 
@@ -908,20 +909,22 @@ status: approved / provisional / blocked
 - [ ] Forbidden interpretations stated.
 - [ ] Unresolved material metric definition blocks a strong management
   conclusion.
-## P1 activated extension: `POPULATION_CONTRACT` (bounded pilot, issue #445)
+## P1 extension: `POPULATION_CONTRACT` (standard, active, issue #445)
 `POPULATION_CONTRACT` is a more detailed population/denominator
 comparability contract for ratio/rate/share/average/margin/conversion/
-productivity/frequency metrics. It is activated as a bounded pilot control
-(CONTROL/CONTRACT) per issue #445; the full field list, required behavior,
-and activation trigger are defined once in
-`ANALYTICAL_REASONING_STANDARD.md` §15.1 — this section does not restate them
-to avoid drift. It extends, and does not replace, the `population`,
+productivity/frequency metrics. It completed a bounded pilot and is
+promoted to standard, active status (CONTROL/CONTRACT) per issue #445; the
+full field list, required behavior, and activation trigger are defined once
+in `ANALYTICAL_REASONING_STANDARD.md` §15.1 — this section does not restate
+them to avoid drift. It extends, and does not replace, the `population`,
 `inclusions`, `exclusions` fields on this card and the existing
 `population_constant_or_explained?` / `denominator_constant_or_explained?` /
 `scope_change_quantified?` controls in `ANALYTICAL_REASONING_STANDARD.md` §5,
 which remain active for routine/quick cases with no material trigger.
-`owner review required` before promotion beyond the bounded pilot; see
-`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`.
+Promoted 2026-09-06 (owner-authorized); see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the promotion
+decision and `../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md` for the original
+pilot evidence.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
 

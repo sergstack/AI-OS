@@ -1,6 +1,14 @@
 # [Analytics] P1 Pilot Evidence — issue #445
 
-Status: **bounded pilot evidence only**. `owner review required` before any
+**Promoted to standard status on 2026-09-06** — `POPULATION_CONTRACT`
+(§15.1) and `RECONCILIATION_CONTRACT` (§15.2) are now active/standard
+controls (owner-authorized); `ANALYSIS_CONTINUATION_GATE` (§15.3) remains
+deferred, not activated. See
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the promotion
+decision and repository-side validation evidence. The rest of this document
+is preserved unchanged as the original pilot record.
+
+Status (historical, at time of writing): **bounded pilot evidence only**. `owner review required` before any
 promotion, merge, deployment, or Project sync. This document records a
 structured written (paper-trace) evaluation: reasoning through each scenario
 against the OLD (P0-only) contract text and the NEW (P1-activated) contract

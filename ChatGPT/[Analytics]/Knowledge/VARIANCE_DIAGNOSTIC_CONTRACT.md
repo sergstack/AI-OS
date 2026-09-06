@@ -233,7 +233,7 @@ management_owner != responsible_for_cause
 
 Do not infer responsibility, mismanagement, budget violation, or control failure solely from amount, ownership, zero-plan status, or driver status. Accountability claims require separate criteria and evidence.
 
-### `effect_type` classification (P1-B, issue #449, bounded pilot)
+### `effect_type` classification (P1-B, issue #449, standard, active)
 
 For material/decision-critical cases, name the primary-attribution categories above and this Accountability boundary rule with one explicit classification surface:
 
@@ -245,7 +245,7 @@ effect_type: economic / timing / mapping / data_quality / process_control / unre
 a financial pattern alone cannot establish a process failure
 ```
 
-`effect_type: process_control` requires process evidence (owner acknowledgment, documented control/process rule, confirmed mapping-table defect, or a budget-process exception confirmed with the process owner) — not merely a recurring or material financial/variance pattern. This does not add a parallel taxonomy: it reuses the existing `economic_effect` / `timing_effect` / `data_mapping_effect` / `unresolved_effect` categories (§2), `data_layer_check`, `timing_validation`, and `exception_analysis`, and restates the Accountability boundary rule above at the classification-surface level. See `ANALYTICAL_REASONING_STANDARD.md` §16.5 for the full activation trigger and rollback. Bounded pilot only; `owner review required` before promotion.
+`effect_type: process_control` requires process evidence (owner acknowledgment, documented control/process rule, confirmed mapping-table defect, or a budget-process exception confirmed with the process owner) — not merely a recurring or material financial/variance pattern. This does not add a parallel taxonomy: it reuses the existing `economic_effect` / `timing_effect` / `data_mapping_effect` / `unresolved_effect` categories (§2), `data_layer_check`, `timing_validation`, and `exception_analysis`, and restates the Accountability boundary rule above at the classification-surface level. See `ANALYTICAL_REASONING_STANDARD.md` §16.5 for the full activation trigger and rollback. Promoted to standard, active status 2026-09-06 (owner-authorized); evidence strength remains "modest / mostly a formalization" per `P1_449_PILOT_EVIDENCE_2026-09-06.md` — promotion changes activation status only, not that characterization. See `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
 
 ## 6. Reported and adjusted views
 

@@ -1,6 +1,13 @@
 # [Analytics] P1-B Pilot Evidence — issue #449
 
-Status: **bounded pilot evidence only**. `owner review required` before any
+**Promoted to standard status on 2026-09-06** — all six §16 elements
+(§16.1–§16.6) are now active/standard controls (owner-authorized), with
+their differentiated evidence-strength verdicts below unchanged by
+promotion. See `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` for the
+promotion decision and repository-side validation evidence. The rest of this
+document is preserved unchanged as the original pilot record.
+
+Status (historical, at time of writing): **bounded pilot evidence only**. `owner review required` before any
 promotion, merge, deployment, or Project sync. This document records a
 structured written (paper-trace) evaluation: reasoning through each of the
 five scenarios named in issue #449 against the OLD (P0 + issue #445 P1)

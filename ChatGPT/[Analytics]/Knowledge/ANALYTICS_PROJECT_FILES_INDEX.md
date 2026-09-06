@@ -35,8 +35,9 @@
 | `SMOKE_QA_FOR_ANALYTICS.md` | Проверка проекта | После загрузки пакета |
 | `SMOKE_QA_RESULT.md` | Smoke QA result | Когда нужен последний зафиксированный smoke QA результат |
 | `CHANGELOG.md` | История изменений | После обновлений |
-| `P1_PILOT_EVIDENCE_2026-09-06.md` | P1 bounded-pilot evidence (issue #445) | Нужна evidence для owner review по POPULATION_CONTRACT / RECONCILIATION_CONTRACT / ANALYSIS_CONTINUATION_GATE / HELD_OUT_TRANSFER_EVAL |
-| `P1_449_PILOT_EVIDENCE_2026-09-06.md` | P1-B bounded-pilot evidence (issue #449) | Нужна evidence для owner review по RECOMMENDATION_EVIDENCE / stability_check / FORECAST_METHOD_COMPARISON / effect_type / what_would_change_the_view |
+| `P1_PILOT_EVIDENCE_2026-09-06.md` | P1 pilot evidence (issue #445); `POPULATION_CONTRACT` / `RECONCILIATION_CONTRACT` promoted to standard/active 2026-09-06, `ANALYSIS_CONTINUATION_GATE` still deferred — see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` | Нужна историческая evidence для POPULATION_CONTRACT / RECONCILIATION_CONTRACT (now standard) / ANALYSIS_CONTINUATION_GATE (still deferred) / HELD_OUT_TRANSFER_EVAL |
+| `P1_449_PILOT_EVIDENCE_2026-09-06.md` | P1-B pilot evidence (issue #449); all six §16 elements promoted to standard/active 2026-09-06 — see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md` | Нужна историческая evidence для RECOMMENDATION_EVIDENCE / stability_check / FORECAST_METHOD_COMPARISON / effect_type / what_would_change_the_view (now standard) |
+| `EDA_CLAIM_CALIBRATION_REVIEW_2026-09-06.md` | EDA-to-claim calibration/regression review (issue #451) | Нужна evidence по WineMag-стиль wording gaps: observed-rating/quality, residual/market-value, selection/reviews, reviewer confound, predictive claims, joint/conditional denominator |
 | `../../../docs/standards/PARENT_CHILD_ISSUE_GATE_STANDARD.md` | Parent / child gate standard | Complex/high-risk analytics work needing sequenced issues, dependency gates, PR gates, final QA |
 
 ## Priority rules

@@ -37,7 +37,9 @@ A result is accepted when:
     lineage sets `allowed_in_executive = no` and the claim does not appear
     in the executive layer.
 16. For `analytical_depth = material / decision_critical` (issue #449,
-    bounded pilot, `ANALYTICAL_REASONING_STANDARD.md` §16): a material
+    standard/active per `ANALYTICAL_REASONING_STANDARD.md` §16, promoted
+    2026-09-06, see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`): a
+    material
     explanatory/intervention-oriented conclusion has a recorded
     discriminating-test status (§16.1); a material management recommendation
     has a `RECOMMENDATION_EVIDENCE` record and `diagnostic evidence !=

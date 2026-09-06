@@ -9,6 +9,26 @@ Start with [`MASTER_STATUS.md`](../../MASTER_STATUS.md) for gates and
 
 Current decision evidence:
 
+- [`ANALYTICS_P1_PROMOTION_2026-09-06.md`](ANALYTICS_P1_PROMOTION_2026-09-06.md)
+  records the `[AI OS]`-owned promotion decision for `[Analytics]` P1 (issue
+  #445) and P1-B (issue #449) controls — `POPULATION_CONTRACT`,
+  `RECONCILIATION_CONTRACT`, the strengthened Explanation Challenge,
+  `RECOMMENDATION_EVIDENCE`, the stability/persistence check,
+  `FORECAST_METHOD_COMPARISON`, `effect_type`, and
+  `what_would_change_the_view` — from "bounded pilot, owner review required"
+  to "standard, active" status, owner-authorized 2026-09-06. Explicitly a
+  scope extension beyond issue #451's literal (calibration-only) text, done
+  on the same #451 branch/PR at the owner's direction.
+  `ANALYSIS_CONTINUATION_GATE` (§15.3) is **not** promoted and remains
+  deferred, verified byte-for-byte unchanged. This is a repository-side
+  promotion only: bundles + provenance regenerated,
+  `check_knowledge_bundles.py`/`build_knowledge_bundles.py
+  --check`/`audit_bundle_provenance.py --check` all `PASS`, `pytest` 635
+  passed. `external Analytics behavioral acceptance: NOT RUN` — no
+  behavioral test of the live `[Analytics]` ChatGPT Project (or any
+  surrogate for it) was performed; that check is owner-reserved on the real
+  Project. Live `[Analytics]` ChatGPT Project sync is a separate,
+  owner-gated step, also not performed here.
 - [`RIOS_RESEARCH_TRANSFER_ANALYSIS_2026-09-06.md`](RIOS_RESEARCH_TRANSFER_ANALYSIS_2026-09-06.md)
   records Issue #446's five-direction gap analysis translating RIOS FULL_REVIEW
   research findings into AI-OS decisions. 2 of 5 directions (adaptive model

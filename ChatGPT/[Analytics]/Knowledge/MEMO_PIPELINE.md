@@ -36,7 +36,7 @@ This pipeline is the Gate 3 (narrative) checkpoint (`ANALYTICAL_REASONING_STANDA
 7. Limitations.
 8. Appendix / evidence.
 
-### Management implication section (P1-B, issue #449, bounded pilot)
+### Management implication section (P1-B, issue #449, standard, active)
 
 For `analytical_depth = material / decision_critical`, the management
 implication section (item 6) reads the `ANALYTICAL_REASONING_STANDARD.md`
@@ -117,6 +117,7 @@ Every important sentence must be backed by:
   are not presented as flagship conclusions.
 - [ ] A management recommendation is not presented as `supported` when
   `RECOMMENDATION_EVIDENCE.recommendation_status` is `pilot_candidate` or
-  `hypothesis` (§16.2, bounded pilot, issue #449).
+  `hypothesis` (§16.2, standard/active, issue #449; promoted 2026-09-06, see
+  `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`).
 - [ ] `what_would_change_the_view` is present when a material evidence gap
   exists for material/decision-critical output, and absent otherwise (§16.6).

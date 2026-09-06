@@ -65,7 +65,7 @@ gate is the claim-level (Gate 2) checkpoint; it does not replace Gate 1
 not reimplemented, by the Analytical Judge (`ANALYTICAL_REASONING_STANDARD.md`
 §8) and the memo/narrative QA (`MEMO_PIPELINE.md`, `MEMO_RUBRIC.md`).
 
-## `RECOMMENDATION` row evidence (P1-B, issue #449, bounded pilot)
+## `RECOMMENDATION` row evidence (P1-B, issue #449, standard, active — promoted 2026-09-06, see `docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`)
 
 A registry row with `claim_type = RECOMMENDATION` for `analytical_depth =
 material / decision_critical` links to a `RECOMMENDATION_EVIDENCE` record
@@ -85,5 +85,6 @@ recommendation proposes a targeted (entity-specific) intervention,
 the §16.3 `stability_check` result (rotating Top-N does not support a
 targeted-entity `generalization_scope`). Where the recommendation proposes a
 forecasting/planning-method change, `evidence_id` must reference the §16.4
-`FORECAST_METHOD_COMPARISON`, not the diagnostic finding alone. Bounded pilot
-only; `owner review required` before promotion.
+`FORECAST_METHOD_COMPARISON`, not the diagnostic finding alone. Promoted to
+standard, active status 2026-09-06 (owner-authorized); see
+`docs/evidence/ANALYTICS_P1_PROMOTION_2026-09-06.md`.
