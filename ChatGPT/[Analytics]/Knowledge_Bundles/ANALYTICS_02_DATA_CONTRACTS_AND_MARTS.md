@@ -19,7 +19,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:874b154c3606f1f594c21246565aa814f0a82c0085bfe2d2a54550351cf9014c
+- source_fingerprint: sha256:9c07f5c4de36a1f95315d87c7d52b4e94273d781df085c098bca2c67302fd457
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -161,6 +161,15 @@ the row-level `VALUE_STATE` (see `MAIN_FILES_STANDARD.md`); `mart_main_full`
 preserves it in coverage/denominator fields rather than silently dropping
 affected rows. Use `VALUE_STATE` in `Null policy`, `zero_denominator_rule`,
 and `null_semantics` on `METRIC_DEFINITION_CARD_TEMPLATE.md`.
+`UNMATCHED` rows feed the activated `RECONCILIATION_CONTRACT` bounded pilot
+control (`ANALYTICAL_REASONING_STANDARD.md` §15.2, CONTROL/CONTRACT, issue
+#445): a material `UNMATCHED` population must be carried into
+`matched_population` / `only_in_left` / `only_in_right` rather than
+collapsed into an aggregate reconciliation pass. This does not add a
+reconciliation method or a new `METHOD_ID`; it makes explicit which existing
+methods and `VALUE_STATE` evidence back which integrity dimension.
+`owner review required` before promotion beyond the bounded pilot; see
+`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`.
 ## Canonical METRIC_DEFINITION_CARD
 For material, flagship, or ratio-like metrics, a formula alone is not a
 sufficient metric definition. Use

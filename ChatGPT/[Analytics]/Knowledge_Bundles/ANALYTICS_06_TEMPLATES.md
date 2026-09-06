@@ -33,7 +33,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:22e825a9d96e257b9f7ba70b3185a6874fad09396c21be14db467e273f6a18b0
+- source_fingerprint: sha256:4d5d1c07f99e23c77c4cda404c6b7922c9ec8756bafb3a6fa1af54c19c58ac54
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -889,28 +889,20 @@ status: approved / provisional / blocked
 - [ ] Forbidden interpretations stated.
 - [ ] Unresolved material metric definition blocks a strong management
   conclusion.
-## P1 extension point (not implemented in this version)
-`POPULATION_CONTRACT` — a future, more detailed population/denominator
+## P1 activated extension: `POPULATION_CONTRACT` (bounded pilot, issue #445)
+`POPULATION_CONTRACT` is a more detailed population/denominator
 comparability contract for ratio/rate/share/average/margin/conversion/
-productivity/frequency metrics:
-```text
-population_definition
-numerator_population
-denominator_population
-period
-grain
-filters
-exclusions
-population_changed_vs_baseline
-denominator_changed_vs_baseline
-scope_change_amount
-scope_change_pct
-interpretation_allowed
-```
-P1, not active in this version. Until it lands, `population`, `inclusions`,
-`exclusions`, and the existing `population_constant_or_explained?` /
-`denominator_constant_or_explained?` / `scope_change_quantified?` controls in
-`ANALYTICAL_REASONING_STANDARD.md` §5 remain the active mechanism.
+productivity/frequency metrics. It is activated as a bounded pilot control
+(CONTROL/CONTRACT) per issue #445; the full field list, required behavior,
+and activation trigger are defined once in
+`ANALYTICAL_REASONING_STANDARD.md` §15.1 — this section does not restate them
+to avoid drift. It extends, and does not replace, the `population`,
+`inclusions`, `exclusions` fields on this card and the existing
+`population_constant_or_explained?` / `denominator_constant_or_explained?` /
+`scope_change_quantified?` controls in `ANALYTICAL_REASONING_STANDARD.md` §5,
+which remain active for routine/quick cases with no material trigger.
+`owner review required` before promotion beyond the bounded pilot; see
+`../Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md`.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/ANALYTICS_06_TEMPLATES_BUNDLE_SEMANTICS.md`
 

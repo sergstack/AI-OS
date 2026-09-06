@@ -24,7 +24,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:5cb0402f86c6729b0c745d85852b22dbac87c739987789d10e8676ae74132e04
+- source_fingerprint: sha256:0a4f203db260ddbf5895c0248a40e6fac5bb3008d80a1053045489c1b8603076
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -220,6 +220,38 @@ Apply only to material / decision-critical management-facing output:
 - [ ] Inputs listed.
 - [ ] Risks listed.
 - [ ] No unresolved analysis hidden in Codex task.
+## Held-out transfer eval (P1 QA/EVAL, issue #445)
+Classification: QA/EVAL only. `HELD_OUT_TRANSFER_EVAL` is not an analytical
+method, does not appear in `ANALYTICAL_TECHNIQUES.md`, has no `METHOD_ID`,
+and does not change the 22-method registry. It measures whether a reliability
+change (e.g. an activated P1 control) transfers beyond development/known
+examples, in addition to — not instead of — existing Smoke/adversarial QA
+(`SMOKE_QA_FOR_ANALYTICS.md`).
+Required lanes, each evaluated for P0 baseline vs. P1 candidate:
+- [ ] `known_regression_cases` — existing development/adversarial cases the
+  control was designed against.
+- [ ] `held_out_cases` — cases not used during design, same domain.
+- [ ] `shifted_domain_cases` — different business domain, metric type, grain,
+  or denominator semantics than development cases.
+- [ ] `boundary_cases` — edge conditions (e.g. exact tolerance, zero
+  denominator, fully matched population).
+- [ ] `contradictory_evidence_cases` — cases with unresolved conflicting
+  evidence, to confirm no invented resolution.
+- [ ] `old_p0_regression_cases` — routine/quick P0 cases with no material
+  trigger, to confirm compact-path behavior is preserved.
+Anti-overfit requirement: `held_out_cases` / `shifted_domain_cases` must not
+be direct paraphrases of development examples — vary business domain, metric
+type, grain, denominator semantics, population-shift mechanism,
+reconciliation-failure mode, timing/evidence structure, wording, and decision
+context.
+Required comparison and promotion rule: report `known_regression_cases` /
+`held_out_cases` / `shifted_domain_cases` / `old_p0_regression_cases` results
+separately, not as one blended pass rate. A known-suite win combined with
+held-out or old-P0-regression deterioration is a promotion **failure**, not a
+partial pass; no promotion follows from development-suite improvement alone.
+`owner review required` before any promotion decision based on this eval
+lane. Pilot results for issue #445 are recorded in
+`P1_PILOT_EVIDENCE_2026-09-06.md`.
 
 ## From: `ChatGPT/[Analytics]/Knowledge/QUANTITATIVE_SANITY_GATE.md`
 
@@ -933,6 +965,47 @@ Pass condition:
   recoverability, never `pass`;
 - the claim is removed from the executive body or the lineage is completed
   before publication.
+## 13. Held-out transfer eval (P1 QA/EVAL, issue #445)
+QA/EVAL lane only — see `QA_CHECKLIST.md` for the full lane definition. These
+are the `held_out_cases` / `shifted_domain_cases` entries for the bounded
+pilot; they are not analytical methods. Full P0-vs-P1 scenario reasoning is
+recorded in `P1_PILOT_EVIDENCE_2026-09-06.md`; this section holds the smoke
+QA question form only.
+Question (held-out population semantics shift):
+```text
+Cost per resolved ticket falls period over period, but the ticket-closure
+policy changed so more low-effort tickets now count as "resolved". Можно
+опубликовать вывод, что стоимость обработки снизилась?
+```
+Pass condition:
+- treats "resolved" as a changed denominator/population, not familiar
+  terminology from a financial-restructuring example;
+- `denominator_changed_vs_baseline = yes` (or equivalent), `interpretation_allowed`
+  is not `yes` until the closure-policy effect is quantified;
+- does not accept the efficiency conclusion at face value.
+Question (held-out reconciliation semantics shift):
+```text
+Total customer count is equal across two periods, but a material share of
+customers entered and exited between periods. Означает ли равное общее
+количество, что базы клиентов идентичны?
+```
+Pass condition:
+- distinguishes equal aggregate count from matched-population integrity;
+- surfaces `only_in_left` / `only_in_right` entrant/exit populations rather
+  than treating equal totals as proof of an unchanged population;
+- does not issue a global "populations match" conclusion from the aggregate
+  count alone.
+Question (old P0 compact regression protection):
+```text
+Простая быстрая задача Plan/Fact, population стабильна, данные reconciled,
+материального триггера нет. Нужен полный POPULATION_CONTRACT /
+RECONCILIATION_CONTRACT / ANALYSIS_CONTINUATION_GATE в ответе?
+```
+Pass condition:
+- preserves the existing compact P0 path (§9 runtime collapse);
+- does not instantiate a full P1 contract/gate record without a material
+  trigger;
+- claim calibration and QA note remain as in the pre-#445 compact path.
 ## Smoke QA output
 ```text
 smoke_qa_status: pass/fail/blocked
