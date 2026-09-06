@@ -38,6 +38,17 @@ Changed:
 - `ChatGPT/[Analytics]/Knowledge/P1_PILOT_EVIDENCE_2026-09-06.md` — this file
   (new).
 
+**Follow-up correction (owner review pass):** the original pass above
+activated all three of §15.1/§15.2/§15.3 uniformly. Owner review on PR #447
+flagged that §15.3 (`ANALYSIS_CONTINUATION_GATE`) being marked "activated"
+contradicted its own `DEFER` recommendation in §10 below. §15.3 was
+corrected to **deferred, not activated** — the field design is retained as
+documentation only, and §10 (the existing stop/escalation section) remains
+the sole live continuation/stopping control. §15.1 (`POPULATION_CONTRACT`)
+and §15.2 (`RECONCILIATION_CONTRACT`) are unaffected by this correction and
+remain activated. No new evidence was introduced by this correction and the
+`DEFER` verdict is unchanged.
+
 Not changed: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md` (see
 §2, zero diff), `Codex_Tasks/**`, `Knowledge_Bundles/**` source content
 (bundle *outputs* are regenerated deterministically via
@@ -71,6 +82,8 @@ Judge → memo/report → QA → acceptance`, with:
 
 Same architecture, extended by:
 
+**Active bounded-pilot controls:**
+
 - `POPULATION_CONTRACT` (§15.1, CONTROL/CONTRACT) — structured
   population/denominator comparability record with `comparability_status`
   (4-state) and mandatory `scope_change_amount`/`scope_change_pct` fields,
@@ -79,13 +92,25 @@ Same architecture, extended by:
   separating `amount_reconciliation` / `row_count_reconciliation` /
   `matched_population` / `identity_mapping_status` / `classification_coverage`
   / `unexplained_residual`, wrapping the same existing methods.
-- `ANALYSIS_CONTINUATION_GATE` (§15.3, ROUTING/WORKFLOW CONTROL) — structured
-  CONTINUE/STOP/BLOCK/HANDOFF decision record restating §10.
+
+**Active QA/EVAL scaffold:**
+
 - `HELD_OUT_TRANSFER_EVAL` (`QA_CHECKLIST.md`, QA/EVAL) — six-lane transfer
   evaluation scaffold, not a method.
 
-All four collapse to the existing P0 compact/routine path when there is no
-material trigger (§9 unchanged).
+**Deferred, design only — not activated (see §10 recommendation, `DEFER`):**
+
+- `ANALYSIS_CONTINUATION_GATE` (§15.3, ROUTING/WORKFLOW CONTROL) — a
+  structured CONTINUE/STOP/BLOCK/HANDOFF decision-record design was drafted
+  and evaluated against the pilot scenarios, but it is not a live control:
+  §10's existing stop/escalation rules remain the sole authoritative
+  continuation/stopping mechanism. The field design is retained in
+  `ANALYTICAL_REASONING_STANDARD.md` §15.3 as a documented P1 extension
+  point only.
+
+The two active controls and the QA/EVAL scaffold collapse to the existing
+P0 compact/routine path when there is no material trigger (§9 unchanged).
+The deferred gate has no runtime presence at all, active or collapsed.
 
 ## 4. 22-method registry check
 
@@ -126,7 +151,7 @@ limitations.
 | 7 | Discriminating evidence unavailable, causal interpretation requested | §10 escalation rule ("causal language is requested without causal evidence") plus §4 `blocked != executed` and §6 claim ladder already stop causal promotion and require the lower supported claim strength. Correct outcome already. | `ANALYSIS_CONTINUATION_GATE`: `decision: BLOCK`, `required_evidence_available: no`. Same outcome, now recorded as a `BLOCK` rather than an implicit stop. | **Weak.** Same substantive outcome; the gate makes "why we didn't proceed" explicit and auditable rather than leaving it as an unrecorded application of §10. |
 | 8 | Held-out: population semantics shift (cost per resolved ticket; ticket-closure policy changed) | §5's `denominator_constant_or_explained?` is domain-agnostic in wording and *should* generalize, but nothing in P0 forces recognizing "ticket-closure policy changed" as a denominator-population event rather than an efficiency gain — it depends entirely on the executor's own generalization, with no structural prompt. | `POPULATION_CONTRACT`'s field list (`denominator_population`, `denominator_changed_vs_baseline`) is the same generic structure as §5, just more granular; it does not add a domain-transfer mechanism either — transfer still depends on the executor recognizing "ticket-closure policy" as a `denominator_population` change. | **Unproven, not clearly better.** Paper trace cannot show P1 transfers better than P0 here; both rely on the same underlying generalization capability. This is exactly the kind of "held-out deterioration/no-clear-outperformance" case the issue asks to flag honestly rather than force-adopt. |
 | 9 | Held-out: reconciliation semantics shift (equal aggregate customer count, material entrant/exit churn) | `unmatched_elements_analysis` (existing method) is capable of producing `only_in_left`/`only_in_right`, but nothing in P0 forces asking the question when the *aggregate count itself is unchanged* — an aggregate-count match is a weaker prior for suspecting mismatch than a reconciliation-amount pass, so the P0 trigger is even less likely to fire here than in scenario 3. | `RECONCILIATION_CONTRACT`'s `matched_population`/`only_in_left`/`only_in_right` fields are mandatory regardless of domain (financial amounts or customer cohorts) and regardless of whether the aggregate figure itself looks stable. | **Real and transfers.** Because the contract's fields are declared independent of domain-specific triggers, this is the one held-out case where the P1 structure plausibly transfers better than P0's trigger-dependent method activation. |
-| 10 | Old P0 compact regression (simple quick Plan/Fact, stable population, reconciled data, no material trigger) | Compact path per §9: `QUESTION → INTENT → CORE/TRIGGERED METHOD → DETERMINISTIC RESULT → COMPACT QA → ANSWER`. No full population/reconciliation/continuation record. | All three P1 controls carry an explicit "activation trigger" clause requiring a material/decision-critical case; none is instantiated for this routine case. Output stays on the existing compact path — same as P0. | **No regression** (this is the point of the test): P1 additions do not leak into the routine/quick path. |
+| 10 | Old P0 compact regression (simple quick Plan/Fact, stable population, reconciled data, no material trigger) | Compact path per §9: `QUESTION → INTENT → CORE/TRIGGERED METHOD → DETERMINISTIC RESULT → COMPACT QA → ANSWER`. No full population/reconciliation/continuation record. | The two active P1 controls (`POPULATION_CONTRACT`, `RECONCILIATION_CONTRACT`) each carry an explicit "activation trigger" clause requiring a material/decision-critical case, so neither is instantiated for this routine case; `ANALYSIS_CONTINUATION_GATE` has no runtime presence regardless (deferred). Output stays on the existing compact path — same as P0. | **No regression** (this is the point of the test): the active P1 additions do not leak into the routine/quick path. |
 
 ## 6. Known-case vs. held-out/shifted result, reported separately
 
@@ -183,15 +208,20 @@ duplicated as a competing source of truth.
 
 ## 9. Complexity / false-block observations
 
-- No false blocks identified: all four additions are written as
-  activation-gated (material/decision-critical trigger required) and
-  explicitly instructed not to instantiate for routine/quick cases (scenario
-  10).
-- Bloat risk is structurally bounded for `ANALYSIS_CONTINUATION_GATE` by its
-  "activation trigger" clause, but this pilot cannot verify in a live run
-  that an executor actually respects the collapse instruction rather than
-  instantiating the full record defensively "just in case" — flagged as a
-  residual limitation, not asserted as safe.
+- No false blocks identified: the two active bounded-pilot controls
+  (`POPULATION_CONTRACT`, `RECONCILIATION_CONTRACT`) and the QA/EVAL
+  scaffold (`HELD_OUT_TRANSFER_EVAL`) are written as activation-gated
+  (material/decision-critical trigger required) and explicitly instructed
+  not to instantiate for routine/quick cases (scenario 10).
+  `ANALYSIS_CONTINUATION_GATE` is not activation-gated because it is not
+  activated at all — it remains a deferred design with no runtime presence.
+- Bloat risk for the two active contracts is structurally bounded by their
+  own "activation trigger" clauses, but this pilot cannot verify in a live
+  run that an executor actually respects the collapse instruction rather
+  than instantiating the full record defensively "just in case" — flagged
+  as a residual limitation, not asserted as safe. This observation does not
+  apply to `ANALYSIS_CONTINUATION_GATE`, which carries no bloat risk while
+  deferred.
 
 ## 10. Per-element recommendation
 
@@ -227,7 +257,10 @@ Documented and structurally trivial for all four (see
 - `RECONCILIATION_CONTRACT` → existing separate
   reconciliation/unmatched/factor-reconciliation/residual/coverage controls,
   wrapper removed.
-- `ANALYSIS_CONTINUATION_GATE` → §10 stop/escalation rules alone.
+- `ANALYSIS_CONTINUATION_GATE` → **not applicable / no rollback required.**
+  It was never activated — the `DEFER` recommendation (§10 above) means §10's
+  stop/escalation rules remained authoritative throughout this pilot and
+  still are today. There is no live state to roll back from.
 - `HELD_OUT_TRANSFER_EVAL` → delete the QA_CHECKLIST section and smoke QA
   case 13; analytical runtime unaffected.
 
