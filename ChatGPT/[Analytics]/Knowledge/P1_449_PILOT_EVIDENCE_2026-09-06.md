@@ -13,8 +13,16 @@ honesty standard as `P1_PILOT_EVIDENCE_2026-09-06.md` (issue #445).
 
 ## 1. Scope and changed files
 
-All changes are inside `ChatGPT/[Analytics]/**`. No file outside this path
-was modified.
+All **semantic/content** changes are inside `ChatGPT/[Analytics]/**`. In
+addition, `docs/knowledge_bundle_provenance_audit.json` and
+`docs/knowledge_bundle_provenance_audit.md` were mechanically regenerated
+via `scripts/audit_bundle_provenance.py --write` to keep the repo-wide
+provenance snapshot in sync with the regenerated `[Analytics]` bundles — no
+manual edits, no content decisions, and no other file under `docs/**` was
+touched. Unlike issue #445, this issue's scope does not forbid `docs/**`, so
+this regeneration is done in-PR rather than left as a `BLOCKED` item. No
+file outside `ChatGPT/[Analytics]/**` and those two provenance files was
+modified.
 
 Changed:
 
@@ -48,6 +56,10 @@ Changed:
   row for this file.
 - `ChatGPT/[Analytics]/Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md` — this
   file (new).
+- `docs/knowledge_bundle_provenance_audit.json` and
+  `docs/knowledge_bundle_provenance_audit.md` — mechanically regenerated via
+  `scripts/audit_bundle_provenance.py --write` (byte-count/fingerprint sync
+  only, same pattern as PR #447's own provenance-sync commits).
 
 Not changed: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md` (see
 §2, zero diff), `Codex_Tasks/**`, active analytical intents, and
@@ -257,13 +269,29 @@ touched and remains deferred, not activated.
   `QA_CHECKLIST.md` prose criterion as a compact named field; no new
   blocking behavior identified versus the prior prose rule.
 
-No element is recommended `DEFER` or `REJECT`: unlike
-`ANALYSIS_CONTINUATION_GATE` (issue #445), every §16 element showed at least
-one concrete (real or modest/formalization-only) incremental catch in the
-traced scenarios, and none showed a false block or a regression. Confidence
-is reported honestly per element rather than uniformly — §16.2/§16.3/§16.4
-are the strongest adopts; §16.1 is modest; §16.5/§16.6 are the weakest,
-closer to formalization than new prevention.
+No element is recommended `DEFER` or `REJECT`, and none showed a false block
+or a regression — but evidence strength is not uniform, and only three of
+the six elements demonstrate an actual incremental catch in the traced
+scenarios:
+
+- §16.2, §16.3, §16.4 — **real incremental catches** (scenarios A, B, D
+  respectively); the strongest adopts.
+- §16.5 — **modest**: mostly formalizes the existing Accountability boundary
+  rule (scenario C exercises it, but the rule already substantially covered
+  the case beforehand).
+- §16.6 — **consistency/naming value, not a detection catch**: no scenario
+  shows it catching anything §16.2–§16.5/`FINAL_EVIDENCE_SUFFICIENCY`/
+  `CONTRADICTING_EVIDENCE` would have missed on their own.
+- §16.1 — **partially scenario-tested**: reasoned from a genuine contract-text
+  gap (material explanatory wording not previously tied to a recorded
+  discriminating-test status), but no scenario in this pilot isolates the
+  case where the diagnosis itself lacks discriminating evidence, independent
+  of §16.2–§16.4.
+
+`ADOPT_FOR_OWNER_REVIEW` across all six therefore means "worth the owner's
+review, nothing found harmful," not "uniformly demonstrated" — §16.2/§16.3/
+§16.4 are evidence-backed adopts; §16.1/§16.5/§16.6 are adopts on
+formalization/consistency grounds pending further live evidence.
 
 ## 11. Rollback status
 
@@ -323,7 +351,8 @@ PASS_FOR_OWNER_REVIEW
 ```
 
 Rationale: all bounded-pilot acceptance criteria in issue #449 are met —
-scope stayed inside `ChatGPT/[Analytics]/**`; all six elements evaluated
+semantic scope stayed inside `ChatGPT/[Analytics]/**` (plus mechanical
+provenance-artifact regeneration under `docs/**`, see §1); all six elements evaluated
 against all five named scenarios; 22-method registry unchanged (verified by
 diff); no new `METHOD_ID`/analytical intent; `ANALYSIS_CONTINUATION_GATE`
 left deferred/not activated; no second Judge or second QA framework

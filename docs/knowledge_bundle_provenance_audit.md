@@ -213,8 +213,8 @@ Blocking record count: **0**
 
 - Project: [Analytics]
 - Source paths: `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_TECHNIQUES.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICAL_REASONING_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/VARIANCE_DIAGNOSTIC_CONTRACT.md`, `ChatGPT/[Analytics]/Knowledge/CHART_SELECTION_STANDARD.md`, `ChatGPT/[Analytics]/Knowledge/ANALYTICS_03_TECHNIQUES_AND_CHARTS_BUNDLE_SEMANTICS.md`
-- Source bytes: 99303
-- Bundle bytes: 100215
+- Source bytes: 100947
+- Bundle bytes: 101857
 - Classification: equivalent
 - Mapping status: mapped
 - Resolution status: not_applicable

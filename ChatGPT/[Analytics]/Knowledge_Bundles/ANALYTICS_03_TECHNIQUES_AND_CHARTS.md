@@ -21,7 +21,7 @@ ChatGPT Project Sources / Knowledge for `[Analytics]`.
 - production_promotion: no, unless explicitly accepted elsewhere
 - bundle_type: generated compact upload artifact
 - source_of_truth: declared granular source files
-- source_fingerprint: sha256:21b1de9468d5cc943954aa5d8a0076a0354087c31b832e858748303df24db7db
+- source_fingerprint: sha256:ac7972c7273b009cd8b4690b2a6d49380e232052f9051aed53833cf6853eb67a
 - generator: scripts/build_knowledge_bundles.py
 
 ---
@@ -930,9 +930,12 @@ result: candidate_improves / candidate_worsens / mixed / inconclusive
 ```
 Required: an out-of-sample period distinct from the candidate's development
 period; the same or explicitly comparable population/scope; the same metric
-definitions; at least one monetary-error metric (e.g. MAE/MAPE in currency
-terms); and, where applicable, at least one frequency/corridor-accuracy
-metric. This reuses the existing `forecast_to_period_end`,
+definitions; at least one monetary-scale error metric (e.g. MAE, absolute
+EUR/USD error, or an equivalent currency-denominated metric — `MAPE` alone
+does not qualify, since it is a relative/percentage-scale metric, not a
+monetary one); and, where applicable, at least one relative/frequency/
+corridor-accuracy metric (e.g. `MAPE`, hit-rate within a tolerance band, or
+equivalent). This reuses the existing `forecast_to_period_end`,
 `sensitivity_analysis`, `robustness_to_baseline`, and existing backtesting
 logic (comparing a method's output against realized out-of-sample values); it
 does **not** create a `backtest` `METHOD_ID`. A candidate that wins only
@@ -998,17 +1001,37 @@ or `CONTRADICTING_EVIDENCE` is non-empty). When no material gap exists, the
 field is omitted rather than filled with a placeholder.
 ## P1-B pilot status (issue #449)
 All six §16 elements are activated for a bounded pilot only, per issue #449.
-Unlike `ANALYSIS_CONTINUATION_GATE` (§15.3), the paper-traced pilot evidence
-for all six elements found at least one concrete incremental catch (real or
-modest) and no element was found harmful or duplicative of an existing
-control with zero added value — see `../Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md`
-for the full 5-scenario baseline-vs-candidate matrix, known/held-out
-separation, and per-element recommendation (all six recommended
-`ADOPT_FOR_OWNER_REVIEW`, with explicit strength caveats — several are
-"real" catches, two are "modest/formalization-only"). `owner review
-required` before any promotion decision; passing this pilot does not itself
-authorize production adoption. `ANALYSIS_CONTINUATION_GATE` (§15.3) is not
-revisited or reactivated by this pilot and remains deferred, not activated.
+Evidence strength is **not uniform across the six** — each element carries
+its own, differentiated verdict, and none is asserted as a "concrete
+incremental catch" beyond what the paper-traced scenarios actually support:
+- §16.2 `RECOMMENDATION_EVIDENCE` — **real incremental catch** (scenario A).
+- §16.3 stability/persistence check — **real incremental catch** (scenario B).
+- §16.4 `FORECAST_METHOD_COMPARISON` (out-of-sample validation) — **real
+  incremental catch** (scenario D).
+- §16.5 `effect_type` — **modest**: mostly a formalization of the existing
+  Accountability boundary rule (`VARIANCE_DIAGNOSTIC_CONTRACT.md` §5),
+  exercised by scenario C, not a new prevention capability.
+- §16.6 `what_would_change_the_view` — **consistency/naming value, not a
+  detection catch**: it names an evidence gap that other controls (§16.2–§16.5,
+  `FINAL_EVIDENCE_SUFFICIENCY`, `CONTRADICTING_EVIDENCE`) already surface; no
+  scenario shows it catching something those controls would have missed.
+- §16.1 Strengthened Explanation Challenge — **partially scenario-tested**:
+  the pilot's five scenarios exercise it only as a supporting check alongside
+  §16.2–§16.4; no scenario isolates the case where the *diagnosis itself*
+  lacks discriminating evidence (i.e., a dedicated "explanation challenge
+  failure" case, independent of the recommendation/stability/forecast
+  elements), so its incremental-catch claim is weaker than §16.2–§16.4's.
+All six are recommended `ADOPT_FOR_OWNER_REVIEW` in
+`../Knowledge/P1_449_PILOT_EVIDENCE_2026-09-06.md` (full 5-scenario
+baseline-vs-candidate matrix, known/held-out separation, per-element
+recommendation) — but `ADOPT_FOR_OWNER_REVIEW` here means "worth the
+owner's review," not "uniformly proven": none was found harmful or
+duplicative to the point of net-negative value, but three of the six
+(§16.5, §16.6, and to a lesser extent §16.1) are closer to formalization/
+naming than to a demonstrated new catch. `owner review required` before any
+promotion decision; passing this pilot does not itself authorize production
+adoption. `ANALYSIS_CONTINUATION_GATE` (§15.3) is not revisited or
+reactivated by this pilot and remains deferred, not activated.
 Rollback: remove the six §16 wrappers; fall back to existing
 `FINAL_EVIDENCE_SUFFICIENCY`, `CLAIM_EVIDENCE_REGISTRY_TEMPLATE.md`,
 Analytical Judge (§8), `generalization_scope` / `generalization_evidence`,
